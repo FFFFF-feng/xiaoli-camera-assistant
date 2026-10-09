@@ -1,0 +1,155 @@
+version: 1
+profiles:
+  - id: outdoor_portrait
+    label: 户外自然光人像
+    category: portrait
+    aliases: [portrait, outdoor portrait, person]
+    description: 户外以人物为主要主体，强调人脸曝光、眼部对焦和景深控制。
+    subject: person
+    environment: outdoor
+    default_motion: static
+    keywords: [人像, 人物, 女生, 男生, 模特, 背景虚化, 户外人像]
+    user_motion: [静止, 缓慢]
+    brightness: [medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [户外人像, 自然光, 背景虚化, 眼部对焦]
+
+  - id: indoor_portrait
+    label: 室内弱光人像
+    category: portrait
+    aliases: [indoor portrait]
+    description: 室内人物拍摄，通常需要兼顾肤色、快门和高 ISO 噪点。
+    subject: person
+    environment: indoor
+    default_motion: slow
+    keywords: [室内人像, 房间拍人, 室内人物, 咖啡馆人像]
+    user_motion: [静止, 缓慢]
+    brightness: [low, medium]
+    equipment: [handheld, tripod]
+    retrieval_terms: [室内人像, 弱光, 肤色, 安全快门]
+
+  - id: fast_pet
+    label: 快速宠物
+    category: pet
+    aliases: [pet, animal, dog, cat]
+    description: 狗、猫等宠物快速移动，需要高速快门、连续对焦和连拍。
+    subject: pet
+    environment: unknown
+    default_motion: fast
+    keywords: [宠物, 小狗, 狗狗, 狗, 小猫, 猫咪, 猫, 奔跑]
+    user_motion: [快速]
+    brightness: [low, medium, high]
+    equipment: [handheld]
+    retrieval_terms: [宠物, 快速运动, 连续对焦, 高速连拍]
+
+  - id: fast_human
+    label: 运动人物与儿童
+    category: motion
+    aliases: [motion, sports, moving subject]
+    description: 跑步、体育或活跃儿童等快速人物主体，优先凝固动作。
+    subject: person
+    environment: unknown
+    default_motion: fast
+    keywords: [运动员, 体育, 比赛, 跑步, 奔跑, 儿童, 孩子, 篮球, 足球]
+    user_motion: [快速]
+    brightness: [low, medium, high]
+    equipment: [handheld]
+    retrieval_terms: [运动主体, 儿童, 凝固动作, 连续自动对焦]
+
+  - id: daylight_landscape
+    label: 白天风光
+    category: landscape
+    aliases: [landscape, scenery]
+    description: 白天自然风光或城市建筑，重视景深、细节和高光保护。
+    subject: landscape
+    environment: outdoor
+    default_motion: static
+    keywords: [风景, 风光, 山景, 海景, 建筑, 城市风光]
+    user_motion: [静止]
+    brightness: [medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [白天风光, 大景深, 低ISO, 高光保护]
+
+  - id: sunset_backlight
+    label: 夕阳逆光与剪影
+    category: special
+    aliases: [backlight, sunset, silhouette]
+    description: 夕阳、逆光人物或剪影场景，动态范围较高，需要明确曝光主体。
+    subject: backlit subject
+    environment: outdoor
+    default_motion: static
+    keywords: [夕阳, 日落, 逆光, 剪影, 落日]
+    user_motion: [静止, 缓慢]
+    brightness: [medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [逆光, 夕阳, 剪影, 曝光补偿, 保护高光]
+
+  - id: waterfall_long_exposure
+    label: 瀑布与水流拉丝
+    category: landscape
+    aliases: [waterfall, long exposure]
+    description: 使用慢门记录瀑布、溪流或水面的运动轨迹。
+    subject: flowing water
+    environment: outdoor
+    default_motion: slow
+    keywords: [瀑布, 溪流, 水流, 拉丝, 丝绸, 慢门]
+    user_motion: [静止, 缓慢]
+    brightness: [medium, high]
+    equipment: [tripod]
+    retrieval_terms: [瀑布, 水流拉丝, 慢门, 三脚架, ND减光镜]
+
+  - id: handheld_night
+    label: 手持城市夜景
+    category: night
+    aliases: [night, handheld night, night scene]
+    description: 夜晚手持拍摄街道、建筑或霓虹灯，需要安全快门和较高 ISO。
+    subject: night scene
+    environment: outdoor
+    default_motion: static
+    keywords: [夜景, 夜晚, 霓虹, 夜间街道, 城市夜景, 手持夜景]
+    user_motion: [静止, 缓慢]
+    brightness: [low]
+    equipment: [handheld]
+    retrieval_terms: [手持夜景, 安全快门, 高ISO, 霓虹高光]
+
+  - id: tripod_night
+    label: 三脚架静态夜景
+    category: night
+    aliases: [tripod night]
+    description: 使用三脚架拍摄静态夜景，以低 ISO 和较长曝光获得干净画质。
+    subject: night scene
+    environment: outdoor
+    default_motion: static
+    keywords: [三脚架夜景, 长曝光夜景, 城市长曝光, 夜景低噪]
+    user_motion: [静止]
+    brightness: [low]
+    equipment: [tripod]
+    retrieval_terms: [三脚架夜景, 长曝光, 低ISO, 延时快门]
+
+  - id: food_closeup
+    label: 美食与静物特写
+    category: food
+    aliases: [food, still life]
+    description: 食物、咖啡或静物近距离拍摄，强调主体纹理、景深和白平衡。
+    subject: food
+    environment: indoor
+    default_motion: static
+    keywords: [美食, 食物, 菜品, 咖啡, 甜品, 静物, 产品特写]
+    user_motion: [静止]
+    brightness: [low, medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [美食, 静物, 景深, 白平衡, 单点对焦]
+
+  - id: general_scene
+    label: 通用拍摄场景
+    category: general
+    aliases: [general, general scene, main subject]
+    description: 暂时无法归入专门类别的普通拍摄场景。
+    subject: main subject
+    environment: unknown
+    default_motion: unknown
+    keywords: []
+    user_motion: [静止, 缓慢, 快速, 不确定]
+    brightness: [low, medium, high]
+    equipment: [handheld, tripod, unknown]
+    retrieval_terms: [曝光三要素, 通用拍摄, 测光]

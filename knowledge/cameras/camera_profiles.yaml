@@ -1,0 +1,165 @@
+version: 1
+profiles:
+  - profile_id: generic_unknown
+    brand: 通用
+    model: 未指定
+    display_name: 不清楚/其他机型
+    sensor_format: 不清楚
+    crop_factor: 1.5
+    native_iso_min: 100
+    native_iso_max: 12800
+    recommended_auto_iso_max: 3200
+    max_mechanical_shutter: 4000
+    max_electronic_shutter: 8000
+    ibis_stops: 0
+    aperture_priority_name: A/Av 光圈优先
+    shutter_priority_name: S/Tv 快门优先
+    continuous_focus_name: 连续自动对焦
+    single_focus_name: 单次自动对焦
+    metering_name: 评价/矩阵测光
+    notes: [未指定机型，使用保守的通用约束。]
+
+  - profile_id: generic_full_frame
+    brand: 通用
+    model: 全画幅
+    display_name: 通用全画幅相机
+    sensor_format: 全画幅
+    crop_factor: 1.0
+    native_iso_min: 100
+    native_iso_max: 25600
+    recommended_auto_iso_max: 6400
+    max_mechanical_shutter: 4000
+    max_electronic_shutter: 8000
+    ibis_stops: 0
+    aperture_priority_name: A/Av 光圈优先
+    shutter_priority_name: S/Tv 快门优先
+    continuous_focus_name: 连续自动对焦
+    single_focus_name: 单次自动对焦
+    metering_name: 评价/矩阵测光
+    notes: [通用配置不假设机身具备防抖。]
+
+  - profile_id: generic_aps_c
+    brand: 通用
+    model: APS-C
+    display_name: 通用 APS-C 相机
+    sensor_format: APS-C
+    crop_factor: 1.5
+    native_iso_min: 100
+    native_iso_max: 12800
+    recommended_auto_iso_max: 3200
+    max_mechanical_shutter: 4000
+    max_electronic_shutter: 8000
+    ibis_stops: 0
+    aperture_priority_name: A/Av 光圈优先
+    shutter_priority_name: S/Tv 快门优先
+    continuous_focus_name: 连续自动对焦
+    single_focus_name: 单次自动对焦
+    metering_name: 评价/矩阵测光
+    notes: [通用配置不假设机身具备防抖。]
+
+  - profile_id: generic_m43
+    brand: 通用
+    model: M4/3
+    display_name: 通用 M4/3 相机
+    sensor_format: M4/3
+    crop_factor: 2.0
+    native_iso_min: 100
+    native_iso_max: 12800
+    recommended_auto_iso_max: 3200
+    max_mechanical_shutter: 4000
+    max_electronic_shutter: 16000
+    ibis_stops: 0
+    aperture_priority_name: A 光圈优先
+    shutter_priority_name: S 快门优先
+    continuous_focus_name: C-AF 连续自动对焦
+    single_focus_name: S-AF 单次自动对焦
+    metering_name: ESP/评价测光
+    notes: [通用配置不假设机身具备防抖。]
+
+  - profile_id: canon_eos_r50
+    brand: Canon
+    model: EOS R50
+    display_name: Canon EOS R50
+    sensor_format: APS-C
+    crop_factor: 1.6
+    native_iso_min: 100
+    native_iso_max: 32000
+    recommended_auto_iso_max: 3200
+    max_mechanical_shutter: 4000
+    max_electronic_shutter: 8000
+    ibis_stops: 0
+    aperture_priority_name: Av 光圈优先
+    shutter_priority_name: Tv 快门优先
+    continuous_focus_name: Servo AF 伺服自动对焦
+    single_focus_name: One-Shot AF 单次自动对焦
+    metering_name: 评价测光
+    source_url: https://www.usa.canon.com/support/p/eos-r50
+    notes:
+      - 机身不提供五轴防抖，手持安全快门不能依赖 IBIS。
+      - 电子前帘最高 1/4000 秒，电子快门最高 1/8000 秒。
+
+  - profile_id: nikon_z50
+    brand: Nikon
+    model: Z50
+    display_name: Nikon Z50
+    sensor_format: APS-C
+    crop_factor: 1.5
+    native_iso_min: 100
+    native_iso_max: 51200
+    recommended_auto_iso_max: 6400
+    max_mechanical_shutter: 4000
+    max_electronic_shutter: 4000
+    ibis_stops: 0
+    aperture_priority_name: A 光圈优先
+    shutter_priority_name: S 快门优先
+    continuous_focus_name: AF-C 连续伺服自动对焦
+    single_focus_name: AF-S 单次伺服自动对焦
+    metering_name: 矩阵测光
+    source_url: https://www.nikonusa.com/p/z-50/1632/overview
+    notes:
+      - 机身不提供传感器位移防抖，是否防抖取决于镜头。
+      - 标准感光度范围为 ISO 100–51200。
+
+  - profile_id: sony_a6700
+    brand: Sony
+    model: α6700
+    display_name: Sony α6700
+    sensor_format: APS-C
+    crop_factor: 1.5
+    native_iso_min: 100
+    native_iso_max: 32000
+    recommended_auto_iso_max: 6400
+    max_mechanical_shutter: 4000
+    max_electronic_shutter: 8000
+    ibis_stops: 5.0
+    aperture_priority_name: A 光圈优先
+    shutter_priority_name: S 快门优先
+    continuous_focus_name: AF-C 连续自动对焦
+    single_focus_name: AF-S 单次自动对焦
+    metering_name: 多重测光
+    source_url: https://www.sony.com/electronics/support/e-mount-body-ilce-6000-series/ilce-6700/specifications
+    notes:
+      - 具备五轴传感器位移防抖；防抖不能凝固移动主体。
+      - 自动 ISO 的可选上限以机内实际设置为准。
+
+  - profile_id: fujifilm_x_s20
+    brand: Fujifilm
+    model: X-S20
+    display_name: Fujifilm X-S20
+    sensor_format: APS-C
+    crop_factor: 1.5
+    native_iso_min: 160
+    native_iso_max: 12800
+    recommended_auto_iso_max: 3200
+    max_mechanical_shutter: 4000
+    max_electronic_shutter: 32000
+    ibis_stops: 7.0
+    aperture_priority_name: A 光圈优先
+    shutter_priority_name: S 快门优先
+    continuous_focus_name: AF-C 连续自动对焦
+    single_focus_name: AF-S 单次自动对焦
+    metering_name: 多重测光
+    source_url: https://www.fujifilm-x.com/en-gb/products/cameras/x-s20/specifications/
+    notes:
+      - 标准感光度为 ISO 160–12800。
+      - 具备五轴机身防抖；官方标称效果取决于镜头和测试条件。
