@@ -25,6 +25,12 @@ class Settings:
     timeout_seconds: float
     max_image_mb: int
     knowledge_dir: Path
+    knowledge_mode: str = "legacy"
+    knowledge_db_path: Path | None = None
+
+    def __post_init__(self) -> None:
+        if self.knowledge_mode not in {"legacy", "managed"}:
+            raise ValueError("KNOWLEDGE_RETRIEVAL_MODE 只能是 legacy 或 managed。")
 
     @property
     def cloud_ready(self) -> bool:
@@ -47,5 +53,12 @@ class Settings:
             timeout_seconds=float(os.getenv("CAMERA_AI_TIMEOUT_SECONDS", "60")),
             max_image_mb=int(os.getenv("CAMERA_AI_MAX_IMAGE_MB", "15")),
             knowledge_dir=PROJECT_ROOT / "knowledge",
+            knowledge_mode=os.getenv("KNOWLEDGE_RETRIEVAL_MODE", "legacy").strip().lower(),
+            knowledge_db_path=cls._knowledge_db_path(),
         )
 
+    @staticmethod
+    def _knowledge_db_path() -> Path:
+        configured = os.getenv("KNOWLEDGE_DB_PATH", "data/knowledge.db").strip()
+        path = Path(configured or "data/knowledge.db").expanduser()
+        return path.resolve() if path.is_absolute() else (PROJECT_ROOT / path).resolve()

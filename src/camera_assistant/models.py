@@ -131,3 +131,5 @@ class PipelineResult(BaseModel):
     scene: SceneAnalysis
     recommendation: CameraRecommendation
     knowledge_hits: list[KnowledgeHit]
+    knowledge_mode: str = "legacy"
+    knowledge_notes: list[str] = Field(default_factory=list)

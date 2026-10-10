@@ -21,8 +21,8 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-SESSION_SCHEMA_VERSION = 4
-PIPELINE_RESOURCE_VERSION = 2
+SESSION_SCHEMA_VERSION = 5
+PIPELINE_RESOURCE_VERSION = 3
 
 
 def migrate_session_state() -> None:
@@ -178,11 +178,19 @@ def render_result(result: PipelineResult) -> None:
                 st.markdown(f"[厂商资料]({camera_profile.source_url})")
 
     with st.expander("本次检索到的摄影知识"):
+        for note in getattr(result, "knowledge_notes", []):
+            st.caption(note)
         if not result.knowledge_hits:
             st.warning("知识库没有找到足够相关的内容。")
         for hit in result.knowledge_hits:
             st.markdown(f"**{hit.title}**　相关度 `{hit.score:.3f}`")
             st.caption(f"来源：{hit.source} · 文档：{hit.document_id}")
+            if hit.metadata.get("retrieval_backend") == "managed_keyword":
+                st.caption(
+                    f"已发布 · 库：{hit.metadata.get('library_id', '')} · "
+                    f"版本：{hit.metadata.get('version', '')} · "
+                    f"审核人：{hit.metadata.get('reviewer', '')}"
+                )
             st.write(hit.content[:420] + ("…" if len(hit.content) > 420 else ""))
             st.divider()
 

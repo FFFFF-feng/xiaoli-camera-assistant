@@ -1,7 +1,9 @@
 from __future__ import annotations
 
-from camera_assistant.config import Settings
-from camera_assistant.models import PipelineResult, SceneAnalysis, UserRequest
+from camera_assistant.config import PROJECT_ROOT, Settings
+from camera_assistant.knowledge.retriever import ManagedKnowledgeRetriever
+from camera_assistant.knowledge.store import KnowledgeStore
+from camera_assistant.models import KnowledgeHit, PipelineResult, SceneAnalysis, UserRequest
 from camera_assistant.services.advisor import (
     DemoRecommendationAdvisor,
     OpenAICompatibleRecommendationAdvisor,
@@ -26,7 +28,7 @@ class CameraAssistantPipeline:
         image_analyzer: ImageAnalyzer | None = None,
         camera_knowledge: CameraKnowledgeBase | None = None,
         vision_analyzer: VisionAnalyzer | None = None,
-        retriever: LocalKnowledgeRetriever | None = None,
+        retriever: LocalKnowledgeRetriever | ManagedKnowledgeRetriever | None = None,
         scene_knowledge: SceneKnowledgeBase | None = None,
         advisor: RecommendationAdvisor | None = None,
         validator: RecommendationValidator | None = None,
@@ -36,7 +38,14 @@ class CameraAssistantPipeline:
         self.camera_knowledge = camera_knowledge or CameraKnowledgeBase(
             settings.knowledge_dir / "cameras" / "camera_profiles.yaml"
         )
-        self.retriever = retriever or LocalKnowledgeRetriever(settings.knowledge_dir)
+        if retriever is not None:
+            self.retriever = retriever
+        elif settings.knowledge_mode == "managed":
+            self.retriever = ManagedKnowledgeRetriever(
+                KnowledgeStore(settings.knowledge_db_path or PROJECT_ROOT / "data" / "knowledge.db")
+            )
+        else:
+            self.retriever = LocalKnowledgeRetriever(settings.knowledge_dir)
         self.scene_knowledge = scene_knowledge or SceneKnowledgeBase(
             settings.knowledge_dir / "recognition" / "scene_profiles.yaml"
         )
@@ -57,7 +66,24 @@ class CameraAssistantPipeline:
         scene = self.vision_analyzer.analyze(inspection, effective_request, candidates)
         scene = self.scene_knowledge.normalize(scene, candidates)
         query = self._build_query(effective_request, scene)
-        hits = self.retriever.search(query, top_k=4)
+        if isinstance(self.retriever, ManagedKnowledgeRetriever):
+            hits = self.retriever.search(
+                query,
+                top_k=4,
+                libraries=["scene", "technique", "equipment"],
+                conditions={
+                    "scene": scene.scene_type,
+                    "subject": scene.subject,
+                    "motion": scene.subject_motion,
+                    "camera_profile_id": camera.profile_id,
+                    "camera_format": camera.sensor_format,
+                    "handheld": effective_request.handheld,
+                    "tripod": effective_request.tripod,
+                },
+            )
+        else:
+            hits = self.retriever.search(query, top_k=4)
+        notes = self._knowledge_notes(hits)
         recommendation = self.advisor.recommend(effective_request, scene, hits, camera)
         recommendation = self.validator.validate(
             recommendation, effective_request, scene, camera
@@ -68,7 +94,23 @@ class CameraAssistantPipeline:
             scene=scene,
             recommendation=recommendation,
             knowledge_hits=hits,
+            knowledge_mode=(
+                "managed" if isinstance(self.retriever, ManagedKnowledgeRetriever) else "legacy"
+            ),
+            knowledge_notes=notes,
         )
+
+    def _knowledge_notes(self, hits: list[KnowledgeHit]) -> list[str]:
+        if isinstance(self.retriever, ManagedKnowledgeRetriever):
+            if not hits:
+                return [
+                    (
+                        "受管知识库尚无匹配的已发布资料；本次建议没有受管知识依据，"
+                        "演示规则仍可运行，不能视为知识库准确性验证。"
+                    )
+                ]
+            return ["仅使用已发布、允许检索且条件匹配的资料；相关度不代表准确率。"]
+        return ["当前使用旧版演示资料目录，不经过受管知识库的审核与发布流程。"]
 
     @staticmethod
     def _build_query(request: UserRequest, scene: SceneAnalysis) -> str:
