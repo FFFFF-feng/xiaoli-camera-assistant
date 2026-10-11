@@ -6,9 +6,11 @@ from fractions import Fraction
 from camera_assistant.models import (
     CameraProfile,
     CameraRecommendation,
+    PhoneProfile,
     SceneAnalysis,
     UserRequest,
 )
+from camera_assistant.services.phone_advisor import PhoneRecommendationValidator
 
 
 class RecommendationValidator:
@@ -17,8 +19,10 @@ class RecommendationValidator:
         recommendation: CameraRecommendation,
         request: UserRequest,
         scene: SceneAnalysis,
-        camera: CameraProfile | None = None,
+        camera: CameraProfile | PhoneProfile | None = None,
     ) -> CameraRecommendation:
+        if isinstance(camera, PhoneProfile):
+            return PhoneRecommendationValidator().validate(recommendation, request, scene, camera)
         updates: dict[str, object] = {}
         notes = list(recommendation.validation_notes)
         risks = list(recommendation.risks)

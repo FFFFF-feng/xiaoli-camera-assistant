@@ -10,9 +10,10 @@ import streamlit as st
 ROOT = Path(__file__).resolve().parent
 
 from camera_assistant.config import Settings
-from camera_assistant.models import PipelineResult, UserRequest
+from camera_assistant.models import PhoneProfile, PipelineResult, UserRequest
 from camera_assistant.pipeline import CameraAssistantPipeline
 from camera_assistant.services.image_analyzer import ImageValidationError
+from camera_assistant.services.phone_knowledge import PHONE_MODE_NAMES
 
 st.set_page_config(
     page_title="小栗取景参谋｜相机参数助手",
@@ -21,8 +22,8 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-SESSION_SCHEMA_VERSION = 5
-PIPELINE_RESOURCE_VERSION = 3
+SESSION_SCHEMA_VERSION = 6
+PIPELINE_RESOURCE_VERSION = 4
 
 
 def migrate_session_state() -> None:
@@ -56,6 +57,11 @@ def escaped(value: object) -> str:
     return html.escape(str(value))
 
 
+def clear_device_result() -> None:
+    st.session_state.pop("last_result", None)
+    st.session_state["phone_pro_confirm"] = False
+
+
 def render_header(settings: Settings) -> None:
     mode = "演示模式" if not settings.cloud_ready else "多模态模式"
     mascot_uri = asset_data_uri(ROOT / "assets" / "camera-red-panda.png")
@@ -69,7 +75,7 @@ def render_header(settings: Settings) -> None:
           <div class="mobile-hero-copy">
             <span class="hello-chip">嗨，我是你的摄影搭子</span>
             <h1>拍之前，<br>先问问小栗</h1>
-            <p>看懂现场，也看懂你的相机。</p>
+            <p>看懂现场，也看懂你的相机和手机。</p>
             <div class="quick-flow" aria-label="使用流程">
               <span>现场图</span><i></i><span>想要的效果</span><i></i><b>拍摄参数</b>
             </div>
@@ -94,15 +100,22 @@ def render_header(settings: Settings) -> None:
 def render_result(result: PipelineResult) -> None:
     recommendation = result.recommendation
     camera_profile = getattr(result, "camera_profile", None)
+    phone_result = isinstance(camera_profile, PhoneProfile)
+    first_label = "镜头 / 景深" if phone_result else "光圈 APERTURE"
+    result_title = (
+        "手机操作建议 · 能力保守匹配"
+        if phone_result
+        else f"建议设置 · 置信度 {recommendation.confidence:.0%}"
+    )
     scene_label = getattr(result.scene, "scene_label", "") or result.scene.scene_type
     candidate_scenes = getattr(result.scene, "candidate_scenes", [])
     recognition_evidence = getattr(result.scene, "recognition_evidence", [])
     st.markdown(
         f"""
-        <div class="result-shell">
-          <div class="result-title">建议设置 · 置信度 {recommendation.confidence:.0%}</div>
+        <div class="result-shell {"phone-result" if phone_result else ""}">
+          <div class="result-title">{escaped(result_title)}</div>
           <div class="lcd">
-            <div class="lcd-cell"><div class="lcd-label">光圈 APERTURE</div><div class="lcd-value">{escaped(recommendation.aperture)}</div></div>
+            <div class="lcd-cell"><div class="lcd-label">{escaped(first_label)}</div><div class="lcd-value">{escaped(recommendation.aperture)}</div></div>
             <div class="lcd-cell"><div class="lcd-label">快门 SHUTTER</div><div class="lcd-value">{escaped(recommendation.shutter_speed)}</div></div>
             <div class="lcd-cell"><div class="lcd-label">感光度 ISO</div><div class="lcd-value">{escaped(recommendation.iso)}</div></div>
           </div>
@@ -160,23 +173,42 @@ def render_result(result: PipelineResult) -> None:
 
     if camera_profile:
         with st.expander("机型能力匹配"):
-            st.write(
-                f"**{camera_profile.display_name}** · {camera_profile.sensor_format} · "
-                f"等效系数 {camera_profile.crop_factor:g}×"
-            )
-            st.write(
-                f"标准 ISO {camera_profile.native_iso_min}–{camera_profile.native_iso_max}；"
-                f"本系统保守自动 ISO 上限 {camera_profile.recommended_auto_iso_max}。"
-            )
-            st.write(
-                f"机械快门最高 1/{camera_profile.max_mechanical_shutter}s；"
-                f"机身防抖标称 {camera_profile.ibis_stops:g} 挡。"
-            )
-            for note in camera_profile.notes:
-                st.write(f"- {note}")
-            if camera_profile.source_url:
-                st.markdown(f"[厂商资料]({camera_profile.source_url})")
+            if isinstance(camera_profile, PhoneProfile):
+                st.write(f"**{camera_profile.display_name}** · {camera_profile.native_app}")
+                st.caption(f"资料核对：{camera_profile.checked_at}；{camera_profile.region_scope}")
+                for lens in camera_profile.lenses:
+                    aperture = f"f/{lens.aperture:g}" if lens.aperture else "光圈未知"
+                    st.write(f"{lens.name}：{aperture}（{lens.aperture_control}）")
+                for note in camera_profile.notes:
+                    st.write(f"- {note}")
+                for index, url in enumerate(camera_profile.source_urls, start=1):
+                    st.markdown(f"[官方资料 {index}]({url})")
+            else:
+                render_camera_details(camera_profile)
 
+    render_knowledge_and_image(result)
+
+
+def render_camera_details(camera_profile) -> None:
+    st.write(
+        f"**{camera_profile.display_name}** · {camera_profile.sensor_format} · "
+        f"等效系数 {camera_profile.crop_factor:g}×"
+    )
+    st.write(
+        f"标准 ISO {camera_profile.native_iso_min}–{camera_profile.native_iso_max}；"
+        f"本系统保守自动 ISO 上限 {camera_profile.recommended_auto_iso_max}。"
+    )
+    st.write(
+        f"机械快门最高 1/{camera_profile.max_mechanical_shutter}s；"
+        f"机身防抖标称 {camera_profile.ibis_stops:g} 挡。"
+    )
+    for note in camera_profile.notes:
+        st.write(f"- {note}")
+    if camera_profile.source_url:
+        st.markdown(f"[厂商资料]({camera_profile.source_url})")
+
+
+def render_knowledge_and_image(result: PipelineResult) -> None:
     with st.expander("本次检索到的摄影知识"):
         for note in getattr(result, "knowledge_notes", []):
             st.caption(note)
@@ -230,6 +262,56 @@ with st.container(border=True):
     if uploaded_file:
         st.image(uploaded_file, caption="小栗正在观察这张现场图", width="stretch")
 
+    device_name = st.radio(
+        "拍摄设备",
+        ["相机", "手机"],
+        horizontal=True,
+        key="capture_device",
+        on_change=clear_device_result,
+    )
+    phone_profile_id = "generic_phone"
+    phone_capture_mode = "auto"
+    phone_lens_id = "main"
+    phone_pro_confirm = False
+    if device_name == "手机":
+        model_query = st.text_input(
+            "查找手机型号",
+            placeholder="例如 iPhone 15、三星 S24 Ultra、小米14",
+            key="phone_model_query",
+            on_change=clear_device_result,
+        )
+        phone_matches = pipeline.phone_knowledge.search(model_query)
+        if not phone_matches:
+            st.info("该型号还未收录。会提供保守操作，不套用相近型号规格；可交给队员补充官方资料。")
+            phone_matches = [pipeline.phone_knowledge.resolve("generic_phone")]
+        phone_names = {profile.profile_id: profile.display_name for profile in phone_matches}
+        phone_profile_id = st.selectbox(
+            "手机型号",
+            list(phone_names),
+            format_func=phone_names.get,
+            key="phone_model",
+            on_change=clear_device_result,
+        )
+        selected_phone = pipeline.phone_knowledge.resolve(phone_profile_id)
+        st.caption("请核对完整型号后缀；基础版、Pro、Ultra等不能互相替代。")
+        phone_capture_mode = st.selectbox(
+            "当前拍摄模式",
+            selected_phone.modes,
+            format_func=PHONE_MODE_NAMES.get,
+            key="phone_mode",
+            on_change=clear_device_result,
+        )
+        lens_names = {lens.lens_id: lens.name for lens in selected_phone.lenses}
+        phone_lens_id = st.selectbox(
+            "当前后置镜头",
+            list(lens_names),
+            format_func=lens_names.get,
+            key="phone_lens",
+            on_change=clear_device_result,
+        )
+        st.caption("本版只适配原生相机；第三方应用、前置相机、实时控制与HEIC暂未支持。")
+        st.caption("手机资料核对不等于真机验证；模式/镜头不可用时请切回照片模式。")
+
     with st.form("recommendation_form"):
         intent = st.text_area(
             "你想拍出什么效果？",
@@ -241,24 +323,40 @@ with st.container(border=True):
         )
         capture_mode = st.radio("怎么拍？", ["手持", "三脚架"], horizontal=True)
 
-        with st.expander("相机与镜头（选填）"):
-            camera_profile_id = st.selectbox(
-                "相机型号",
-                options=list(camera_profile_names),
-                format_func=lambda profile_id: camera_profile_names[profile_id],
-                help="选择具体机型后，系统会自动使用对应画幅、ISO、快门、防抖和对焦术语。",
+        camera_profile_id = "generic_unknown"
+        camera_format = "不清楚"
+        focal_length = 0
+        max_aperture = 0.0
+        if device_name == "手机" and phone_capture_mode == "pro":
+            phone_pro_confirm = st.checkbox(
+                "当前原生专业模式及所选镜头确实有 ISO、S/SPEED、WB、F 控件",
+                key="phone_pro_confirm",
+                help="只有已确认控制项才会提供方向性手动指导；本版不编造ISO/快门上下限。",
             )
-            camera_format = st.selectbox("相机画幅", ["不清楚", "全画幅", "APS-C", "M4/3"])
-            focal_length = st.number_input(
-                "当前焦段（mm，可选）", min_value=0, max_value=1200, value=0
-            )
-            max_aperture = st.number_input(
-                "镜头最大光圈（可选）",
-                min_value=0.0,
-                max_value=32.0,
-                value=0.0,
-                step=0.1,
-            )
+        render_camera_inputs = device_name == "相机"
+        with (
+            st.expander("相机与镜头（选填）", expanded=False)
+            if render_camera_inputs
+            else st.container()
+        ):
+            if render_camera_inputs:
+                camera_profile_id = st.selectbox(
+                    "相机型号",
+                    options=list(camera_profile_names),
+                    format_func=lambda profile_id: camera_profile_names[profile_id],
+                    help="选择具体机型后，系统会自动使用对应画幅、ISO、快门、防抖和对焦术语。",
+                )
+                camera_format = st.selectbox("相机画幅", ["不清楚", "全画幅", "APS-C", "M4/3"])
+                focal_length = st.number_input(
+                    "当前焦段（mm，可选）", min_value=0, max_value=1200, value=0
+                )
+                max_aperture = st.number_input(
+                    "镜头最大光圈（可选）",
+                    min_value=0.0,
+                    max_value=32.0,
+                    value=0.0,
+                    step=0.1,
+                )
 
         submitted = st.form_submit_button("让小栗帮我配参数", type="primary")
 
@@ -268,7 +366,7 @@ tripod = capture_mode == "三脚架"
 st.markdown('<div class="section-anchor" id="result"></div>', unsafe_allow_html=True)
 with st.container(border=True):
     st.markdown(
-        '<div class="panel-heading result-heading"><span>拍摄方案</span><strong>照着相机屏幕设置</strong></div>',
+        '<div class="panel-heading result-heading"><span>拍摄方案</span><strong>照着设备界面操作</strong></div>',
         unsafe_allow_html=True,
     )
     if submitted:
@@ -286,6 +384,11 @@ with st.container(border=True):
                 camera_profile_id=camera_profile_id,
                 focal_length_mm=focal_length or None,
                 max_aperture=max_aperture or None,
+                device_type="phone" if device_name == "手机" else "camera",
+                phone_profile_id=phone_profile_id,
+                phone_capture_mode=phone_capture_mode,
+                phone_lens_id=phone_lens_id,
+                phone_pro_controls_confirmed=phone_pro_confirm,
             )
             try:
                 with st.spinner("小栗正在识别场景、翻知识手册并检查机型…"):
@@ -299,11 +402,16 @@ with st.container(border=True):
     if "last_result" in st.session_state:
         render_result(st.session_state["last_result"])
     elif not submitted:
+        empty_hint = (
+            "填写完成后，小栗会给出模式、镜头与曝光操作指导"
+            if device_name == "手机"
+            else "填写完成后，小栗会把光圈、快门和 ISO 放在这里"
+        )
         st.markdown(
-            """
+            f"""
             <div class="empty-viewfinder">
               <div class="viewfinder-reticle" aria-hidden="true"></div>
-              <div class="empty-copy"><b>等待一张现场图</b><span>填写完成后，小栗会把光圈、快门和 ISO 放在这里</span></div>
+              <div class="empty-copy"><b>等待一张现场图</b><span>{empty_hint}</span></div>
             </div>
             """,
             unsafe_allow_html=True,

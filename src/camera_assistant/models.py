@@ -2,10 +2,11 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 MotionLevel = Literal["静止", "缓慢", "快速", "不确定"]
 CameraFormat = Literal["全画幅", "APS-C", "M4/3", "不清楚"]
+PhoneCaptureMode = Literal["auto", "portrait", "night", "pro"]
 
 
 class UserRequest(BaseModel):
@@ -17,6 +18,11 @@ class UserRequest(BaseModel):
     camera_profile_id: str = "generic_unknown"
     focal_length_mm: int | None = Field(default=None, ge=8, le=1200)
     max_aperture: float | None = Field(default=None, ge=0.7, le=32)
+    device_type: Literal["camera", "phone"] = "camera"
+    phone_profile_id: str = "generic_phone"
+    phone_capture_mode: PhoneCaptureMode = "auto"
+    phone_lens_id: str = "main"
+    phone_pro_controls_confirmed: bool = False
 
 
 class ExifInfo(BaseModel):
@@ -60,6 +66,7 @@ class SceneCandidate(BaseModel):
 
 
 class CameraProfile(BaseModel):
+    device_type: Literal["camera"] = "camera"
     profile_id: str
     brand: str
     model: str
@@ -79,6 +86,45 @@ class CameraProfile(BaseModel):
     metering_name: str
     source_url: str = ""
     notes: list[str] = Field(default_factory=list)
+
+
+class PhoneLens(BaseModel):
+    lens_id: str
+    name: str
+    aperture: float | None = Field(default=None, gt=0)
+    aperture_control: Literal["fixed", "variable", "unknown"] = "unknown"
+    equivalent_focal_length_mm: float | None = Field(default=None, gt=0)
+    notes: list[str] = Field(default_factory=list)
+
+
+class PhoneProfile(BaseModel):
+    """手机原生相机能力，不用相机的机械快门／画幅参数冒充手机规格。"""
+
+    device_type: Literal["phone"] = "phone"
+    profile_id: str
+    brand: str
+    model: str
+    display_name: str
+    aliases: list[str] = Field(default_factory=list)
+    native_app: str = "原生相机"
+    modes: list[PhoneCaptureMode] = Field(default_factory=lambda: ["auto"])
+    pro_controls: list[Literal["iso", "shutter", "focus", "white_balance"]] = Field(
+        default_factory=list
+    )
+    lenses: list[PhoneLens]
+    source_urls: list[str] = Field(default_factory=list)
+    checked_at: str
+    region_scope: str
+    notes: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def validate_capabilities(self) -> PhoneProfile:
+        ids = [lens.lens_id for lens in self.lenses]
+        if "main" not in ids or len(ids) != len(set(ids)):
+            raise ValueError("手机档案必须包含唯一主摄和不重复的镜头编号")
+        if "auto" not in self.modes or (self.pro_controls and "pro" not in self.modes):
+            raise ValueError("手机档案缺少照片模式或专业控制项对应的模式")
+        return self
 
 
 class SceneAnalysis(BaseModel):
@@ -127,7 +173,7 @@ class CameraRecommendation(BaseModel):
 
 class PipelineResult(BaseModel):
     inspection: ImageInspection
-    camera_profile: CameraProfile
+    camera_profile: CameraProfile | PhoneProfile
     scene: SceneAnalysis
     recommendation: CameraRecommendation
     knowledge_hits: list[KnowledgeHit]

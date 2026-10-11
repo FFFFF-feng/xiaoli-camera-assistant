@@ -1,0 +1,11 @@
+{
+  "knowledge_id": "upload-smoke-v1-invalid-missing-author",
+  "library_id": "scene",
+  "title": "[故意错误] 缺少作者字段",
+  "kind": "guideline",
+  "content": "该文件故意不填写author，预期字段校验失败，不应导入。",
+  "payload": {"test_only": true},
+  "source": {"name": "自制错误样本", "retrieval_allowed": false},
+  "version": 1,
+  "dataset_split": "evaluation"
+}

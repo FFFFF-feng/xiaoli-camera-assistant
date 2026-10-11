@@ -22,6 +22,7 @@ data/knowledge.db*
 data/uploads/
 data/history/
 data/vector_store/
+data/source_cache/
 .streamlit/secrets.toml
 .streamlit/secrets.*
 *.pem
@@ -29,3 +30,4 @@ data/vector_store/
 .DS_Store
 Thumbs.db
 tmp/
+output/playwright/

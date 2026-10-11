@@ -3,7 +3,13 @@ from __future__ import annotations
 from camera_assistant.config import PROJECT_ROOT, Settings
 from camera_assistant.knowledge.retriever import ManagedKnowledgeRetriever
 from camera_assistant.knowledge.store import KnowledgeStore
-from camera_assistant.models import KnowledgeHit, PipelineResult, SceneAnalysis, UserRequest
+from camera_assistant.models import (
+    KnowledgeHit,
+    PhoneProfile,
+    PipelineResult,
+    SceneAnalysis,
+    UserRequest,
+)
 from camera_assistant.services.advisor import (
     DemoRecommendationAdvisor,
     OpenAICompatibleRecommendationAdvisor,
@@ -11,6 +17,7 @@ from camera_assistant.services.advisor import (
 )
 from camera_assistant.services.camera_knowledge import CameraKnowledgeBase
 from camera_assistant.services.image_analyzer import ImageAnalyzer
+from camera_assistant.services.phone_knowledge import PhoneKnowledgeBase
 from camera_assistant.services.retriever import LocalKnowledgeRetriever
 from camera_assistant.services.scene_knowledge import SceneKnowledgeBase
 from camera_assistant.services.validator import RecommendationValidator
@@ -32,9 +39,13 @@ class CameraAssistantPipeline:
         scene_knowledge: SceneKnowledgeBase | None = None,
         advisor: RecommendationAdvisor | None = None,
         validator: RecommendationValidator | None = None,
+        phone_knowledge: PhoneKnowledgeBase | None = None,
     ) -> None:
         self.settings = settings
         self.image_analyzer = image_analyzer or ImageAnalyzer(settings.max_image_mb)
+        self.phone_knowledge = phone_knowledge or PhoneKnowledgeBase(
+            settings.knowledge_dir / "devices" / "phone_profiles.yaml"
+        )
         self.camera_knowledge = camera_knowledge or CameraKnowledgeBase(
             settings.knowledge_dir / "cameras" / "camera_profiles.yaml"
         )
@@ -60,12 +71,38 @@ class CameraAssistantPipeline:
 
     def run(self, image_content: bytes, request: UserRequest) -> PipelineResult:
         inspection = self.image_analyzer.analyze(image_content)
-        camera = self.camera_knowledge.resolve(request.camera_profile_id, request.camera_format)
-        effective_request = request.model_copy(update={"camera_format": camera.sensor_format})
+        device_notes: list[str] = []
+        if request.device_type == "phone":
+            camera = self.phone_knowledge.resolve(request.phone_profile_id)
+            phone_mode = request.phone_capture_mode
+            if phone_mode not in camera.modes:
+                phone_mode = "auto"
+                device_notes.append("请求的手机模式尚未确认，按照片模式检索和提供指导。")
+            lens_id = request.phone_lens_id
+            if lens_id not in {lens.lens_id for lens in camera.lenses}:
+                lens_id = "main"
+                device_notes.append("请求的手机镜头未收录，按主摄核对；拍摄前请确认。")
+            effective_request = request.model_copy(
+                update={
+                    "camera_format": "不清楚",
+                    "camera_profile_id": "generic_unknown",
+                    "focal_length_mm": None,
+                    "max_aperture": None,
+                    "phone_profile_id": camera.profile_id,
+                    "phone_capture_mode": phone_mode,
+                    "phone_lens_id": lens_id,
+                    "phone_pro_controls_confirmed": request.phone_pro_controls_confirmed
+                    and phone_mode == "pro",
+                }
+            )
+        else:
+            camera = self.camera_knowledge.resolve(request.camera_profile_id, request.camera_format)
+            effective_request = request.model_copy(update={"camera_format": camera.sensor_format})
         candidates = self.scene_knowledge.find_candidates(effective_request, inspection)
         scene = self.vision_analyzer.analyze(inspection, effective_request, candidates)
         scene = self.scene_knowledge.normalize(scene, candidates)
         query = self._build_query(effective_request, scene)
+        query += f" 设备 {camera.display_name} {request.device_type}"
         if isinstance(self.retriever, ManagedKnowledgeRetriever):
             hits = self.retriever.search(
                 query,
@@ -76,18 +113,36 @@ class CameraAssistantPipeline:
                     "subject": scene.subject,
                     "motion": scene.subject_motion,
                     "camera_profile_id": camera.profile_id,
-                    "camera_format": camera.sensor_format,
+                    **(
+                        {
+                            "phone_profile_id": camera.profile_id,
+                            "phone_capture_mode": effective_request.phone_capture_mode,
+                            "phone_lens_id": effective_request.phone_lens_id,
+                            "phone_pro_controls_confirmed": effective_request.phone_pro_controls_confirmed,
+                        }
+                        if isinstance(camera, PhoneProfile)
+                        else {"camera_format": camera.sensor_format}
+                    ),
+                    "device_type": request.device_type,
                     "handheld": effective_request.handheld,
                     "tripod": effective_request.tripod,
                 },
             )
+        elif isinstance(camera, PhoneProfile):
+            # 旧库没有设备适用性过滤，不能把相机手动参数当作手机依据。
+            hits = []
         else:
             hits = self.retriever.search(query, top_k=4)
         notes = self._knowledge_notes(hits)
+        notes.extend(device_notes)
+        if isinstance(camera, PhoneProfile):
+            notes.append(
+                "手机使用独立型号能力目录和受控操作指导；当前不从检索正文推导手动曝光数值。"
+            )
+            if not isinstance(self.retriever, ManagedKnowledgeRetriever):
+                notes[0] = "手机分支未检索旧相机Markdown库；启用managed并发布手机资料后才可检索。"
         recommendation = self.advisor.recommend(effective_request, scene, hits, camera)
-        recommendation = self.validator.validate(
-            recommendation, effective_request, scene, camera
-        )
+        recommendation = self.validator.validate(recommendation, effective_request, scene, camera)
         return PipelineResult(
             inspection=inspection,
             camera_profile=camera,

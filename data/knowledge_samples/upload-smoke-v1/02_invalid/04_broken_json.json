@@ -1,0 +1,5 @@
+{
+  "knowledge_id": "upload-smoke-v1-invalid-json",
+  "library_id": "scene",
+  "title": "[故意错误] JSON末尾多余逗号",
+}

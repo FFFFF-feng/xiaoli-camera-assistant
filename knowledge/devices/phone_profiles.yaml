@@ -1,0 +1,117 @@
+# 首批原生相机目录；2026-10-10核对官方资料，不包含未经确认的ISO/快门极限。
+# 模式控制项还需用户确认当前系统与镜头界面；不是全型号目录或真机评测结果。
+profiles:
+  - profile_id: generic_phone
+    brand: 通用
+    model: 未收录手机
+    display_name: 手机型号未收录（保守指导）
+    aliases: []
+    modes: [auto]
+    pro_controls: []
+    lenses:
+      - lens_id: main
+        name: 主摄（规格未知）
+        aperture_control: unknown
+    source_urls: []
+    checked_at: '2026-10-10'
+    region_scope: 未确认
+    notes:
+      - 未收录不等于不支持；仅提供照片模式的通用操作，不借用相近型号参数。
+      - 镜头、系统、相机应用、手动控制和曝光范围都需要用户确认。
+  - profile_id: apple_iphone_15
+    brand: Apple
+    model: iPhone 15
+    display_name: Apple iPhone 15
+    aliases: [iPhone 15, 苹果15, 苹果 15]
+    native_app: Apple 相机
+    modes: [auto, portrait, night]
+    pro_controls: []
+    lenses:
+      - lens_id: main
+        name: 主摄（1×）
+        aperture: 1.6
+        aperture_control: fixed
+        equivalent_focal_length_mm: 26
+      - lens_id: ultrawide
+        name: 超广角（0.5×）
+        aperture: 2.4
+        aperture_control: fixed
+        equivalent_focal_length_mm: 13
+    source_urls:
+      - https://support.apple.com/zh-cn/111831
+      - https://support.apple.com/zh-cn/guide/iphone/iph3dc593597/ios
+      - https://support.apple.com/zh-cn/102519
+    checked_at: '2026-10-10'
+    region_scope: Apple中国规格页；当前iOS菜单需真机确认
+    notes:
+      - 本档案仅指iPhone 15，不代表15 Pro、Plus、Pro Max或其他代际。
+      - 2×取景由主摄传感器实现，不记录成独立长焦镜头；本版先提供两个物理后置镜头。
+      - 原生相机本版不推荐直接输入ISO、快门或物理光圈；人像景深滑块不等于改变物理光圈。
+      - 不从相近型号继承Apple ProRAW或夜间人像等额外能力。
+  - profile_id: samsung_galaxy_s24_ultra
+    brand: Samsung
+    model: Galaxy S24 Ultra
+    display_name: Samsung Galaxy S24 Ultra
+    aliases: [Galaxy S24 Ultra, Samsung S24 Ultra, S24 Ultra, 三星S24 Ultra, 三星 S24 Ultra]
+    native_app: Samsung 相机
+    modes: [auto, portrait, night, pro]
+    pro_controls: [iso, shutter, focus, white_balance]
+    lenses:
+      - lens_id: main
+        name: 主摄（1×）
+        aperture: 1.7
+        aperture_control: fixed
+      - lens_id: ultrawide
+        name: 超广角
+        aperture: 2.2
+        aperture_control: fixed
+      - lens_id: telephoto_3x
+        name: 3×长焦
+        aperture: 2.4
+        aperture_control: fixed
+      - lens_id: telephoto_5x
+        name: 5×长焦
+        aperture: 3.4
+        aperture_control: fixed
+    source_urls:
+      - https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series
+      - https://www.samsung.com/uk/support/mobile-devices/what-are-the-different-camera-modes-and-how-do-i-use-them/
+    checked_at: '2026-10-10'
+    region_scope: 全球发布规格与英国支持资料；One UI及可用镜头需真机确认
+    notes:
+      - 专业模式通用控制说明与S24 Ultra规格分开核对；并不承诺每个系统版本和镜头都显示所有控制项。
+      - Expert RAW是另一应用，本版不把它的能力当作原生相机能力。
+      - 不记录未确认的ISO上下限、最长曝光或最高快门；夜间模式时长不直接当作单帧快门。
+  - profile_id: xiaomi_14
+    brand: Xiaomi
+    model: Xiaomi 14
+    display_name: 小米 14（全球版资料）
+    aliases: [Xiaomi 14, 小米14, 小米 14]
+    native_app: 小米相机
+    modes: [auto, portrait, night, pro]
+    pro_controls: [iso, shutter, focus, white_balance]
+    lenses:
+      - lens_id: main
+        name: 主摄
+        aperture: 1.6
+        aperture_control: fixed
+        equivalent_focal_length_mm: 23
+      - lens_id: ultrawide
+        name: 超广角
+        aperture: 2.2
+        aperture_control: fixed
+        equivalent_focal_length_mm: 14
+      - lens_id: telephoto
+        name: 长焦
+        aperture: 2.0
+        aperture_control: fixed
+        equivalent_focal_length_mm: 75
+    source_urls:
+      - https://www.mi.com/global/product/xiaomi-14/specs/
+      - https://www.mi.com/es/support/article/KA-51452/
+    checked_at: '2026-10-10'
+    region_scope: 全球版规格；西班牙通用Pro说明；中国版及HyperOS需真机确认
+    notes:
+      - 本档案只指小米14，不代表14 Pro、14 Ultra或其他代际。
+      - 不将Pro/Ultra型号的可变物理光圈能力套给小米14。
+      - 专业模式WB/F/S/ISO操作需确认当前系统及镜头界面；不虚构控制项的数值范围。

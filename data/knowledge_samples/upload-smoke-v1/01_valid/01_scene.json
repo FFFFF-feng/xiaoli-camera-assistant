@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "upload-smoke-v1-scene-001",
+  "library_id": "scene",
+  "title": "[上传测试] 室内静物场景",
+  "kind": "guideline",
+  "content": "合成场景：室内窗边有一个静止杯子，背景较简单。本记录仅用于检查场景库文件上传、中文正文和条件字段，不代表经过验证的场景识别规则。",
+  "payload": {"test_only": true, "scenario": "synthetic_indoor_still_life"},
+  "tags": ["上传测试", "合成样本", "室内静物"],
+  "conditions": {"device_type": "phone"},
+  "source": {
+    "name": "小栗上传功能自制测试样本",
+    "location": "样本集 upload-smoke-v1 / 场景库",
+    "license": "仅用于项目导入功能测试，未授权作为正式推荐依据",
+    "retrieval_allowed": false
+  },
+  "author": "上传功能测试员",
+  "version": 1,
+  "dataset_split": "evaluation"
+}
