@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-composition-telephoto-detail",
+  "library_id": "composition",
+  "title": "风景局部：比较宽视野与细节",
+  "kind": "guideline",
+  "content": "# 风景局部：比较宽视野与细节\n\n## 目标与结论\n较窄视野可突出远处细节，不必每张风景都用广角。\n\n## 适用条件与所需信息\n需要用户希望强调的局部及输出分辨率目标。\n\n## 执行动作\n原图内裁切可比较局部表达；改变镜头或拍摄位置需重拍。\n\n## 例外、限制与风险\n数字裁切降低像素量；焦距变化本身不等于机位改变。\n\n## 依据与案例\n来源 WEB-029：[Using Telephoto Lenses](https://www.cambridgeincolour.com/tutorials/telephoto-lenses.htm)；位置：PERSPECTIVE / SUBJECT ISOLATION。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-029"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "daylight_landscape",
+    "subject": "landscape",
+    "motion": "unknown",
+    "goal": "较窄视野可突出远处细节，不必每张风景都用广角。",
+    "requires": [
+      "需要用户希望强调的局部及输出分辨率目标。"
+    ],
+    "actions": [
+      "原图内裁切可比较局部表达；改变镜头或拍摄位置需重拍。"
+    ],
+    "exceptions_and_risks": [
+      "数字裁切降低像素量；焦距变化本身不等于机位改变。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "automatic_execution": false,
+    "protected_regions": {
+      "status": "required_before_execution",
+      "items": [
+        "主体关键区域",
+        "人脸/头部或其他用户指定区域"
+      ],
+      "bbox_xyxy_normalized": null
+    },
+    "geometry": {
+      "coordinate_system": "EXIF 方向校正基图，左上原点，x右y下，xyxy归一化",
+      "base_image_hash": null,
+      "base_width": null,
+      "base_height": null,
+      "candidate_crop_xyxy_normalized": null,
+      "predicates": [
+        "0 <= x1 < x2 <= 1",
+        "0 <= y1 < y2 <= 1",
+        "candidate_crop contains each confirmed protected_region"
+      ],
+      "missing_required_information_action": "skip_or_clarify"
+    },
+    "action_scope": [
+      "crop_existing_pixels",
+      "reshoot_if_viewpoint_changes"
+    ],
+    "source_rule_is_not_quality_score": true
+  },
+  "tags": [
+    "构图库",
+    "风景局部",
+    "daylight_landscape"
+  ],
+  "conditions": {
+    "scene": "daylight_landscape"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/telephoto-lenses.htm",
+    "location": "PERSPECTIVE / SUBJECT ISOLATION",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

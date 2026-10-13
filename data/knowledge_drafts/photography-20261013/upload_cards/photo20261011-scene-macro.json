@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-scene-macro",
+  "library_id": "scene",
+  "title": "近摄场景：局部细节与浅清晰范围",
+  "kind": "guideline",
+  "content": "# 近摄场景：局部细节与浅清晰范围\n\n## 目标与结论\n小主体细节占据显著画面时可登记近摄候选，物理放大率另需证据。\n\n## 适用条件与所需信息\n需主体大小、对焦位置及风或手持运动信息。\n\n## 执行动作\n检查关键细节清晰范围，登记对焦和稳定风险。\n\n## 例外、限制与风险\n仅凭照片不能确认 1:1 放大率，也不能确定使用微距镜头。\n\n## 依据与案例\n来源 WEB-020：[Introduction to Macro Photography](https://www.cambridgeincolour.com/tutorials/macro-photography-intro.htm)；位置：FOCUS / DEPTH OF FIELD / STABILITY。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-020"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "macro",
+    "subject": "small_object",
+    "motion": "unknown",
+    "goal": "小主体细节占据显著画面时可登记近摄候选，物理放大率另需证据。",
+    "requires": [
+      "需主体大小、对焦位置及风或手持运动信息。"
+    ],
+    "actions": [
+      "检查关键细节清晰范围，登记对焦和稳定风险。"
+    ],
+    "exceptions_and_risks": [
+      "仅凭照片不能确认 1:1 放大率，也不能确定使用微距镜头。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": false,
+    "scene_id": "macro",
+    "definition": "小主体细节占据显著画面时可登记近摄候选，物理放大率另需证据。",
+    "aliases": [
+      "macro",
+      "近摄场景",
+      "macro"
+    ],
+    "observable_features": [
+      "局部细节在画面中较突出",
+      "关键细节清晰范围",
+      "主体与背景分离"
+    ],
+    "lighting": {
+      "observable_clues": [
+        "局部细节在画面中较突出",
+        "关键细节清晰范围",
+        "主体与背景分离"
+      ],
+      "actual_light_source": "unknown",
+      "information_source": "model_inference",
+      "note": "候选检查项不是当前照片的观测事实。"
+    },
+    "motion_recording": "只在观测或用户报告支持时记录实际运动，不使用默认猜测",
+    "common_problems": [
+      "仅凭照片不能确认 1:1 放大率，也不能确定使用微距镜头。"
+    ],
+    "example_index": "../../example_index.yaml",
+    "unknown_policy": "意图与图中场景分开；缺失字段 unknown/null"
+  },
+  "tags": [
+    "场景库",
+    "近摄场景",
+    "macro"
+  ],
+  "conditions": {
+    "scene": "macro"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/macro-photography-intro.htm",
+    "location": "FOCUS / DEPTH OF FIELD / STABILITY",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

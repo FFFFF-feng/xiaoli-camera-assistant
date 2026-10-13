@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261013b2-technique-efcs-bokeh",
+  "library_id": "technique",
+  "title": "大光圈散景被截断：检查电子前帘和快门速度",
+  "kind": "guideline",
+  "content": "核心结论：在某些大光圈与快速快门组合中，电子前帘可能使失焦光斑形状不完整；先确认快门类型并比较原片，而不是直接认定镜头损坏。\n\n适用条件：静态照片，已经确认使用电子前帘；接近镜头最大光圈且快门较快，失焦背景形状不符合目标；可在相近取景与光线下试拍比较\n\n操作建议（未实测）：\n1. 记录机型、镜头、光圈、曝光时间与电子前帘状态，确认不是完全电子快门。\n2. 相机允许且环境可接受快门声时，试用机械快门；保持取景/光圈/曝光时间尽量相同并比较失焦区域。\n3. 仍不满意时，权衡较慢曝光或较小光圈再测试，重新校验曝光和运动清晰度。\n\n例外：光斑形状也受镜头设计和画面位置等因素影响，不凭形状确诊电子前帘；支持关闭电子前帘的机型才可采用此操作；不能要求没有机械快门选项的机型切换；完全电子快门的频闪/滚动畸变另查上一批卡，不直接作为万能替代\n\n风险：机械快门会改变声响及振动条件，较慢曝光可能增加运动模糊；缩小光圈会改变景深与曝光；不存在通用光圈/快门阈值保证恢复圆形\n\n信息不足时：快门类型或镜头未知时先核验，不自动输出固定分母、光圈值或维修结论；无法试拍时只登记候选原因和模式限制。\n\n来源事实：Sony α7 IV手册明确大光圈镜头和快速快门时散景圆可能被截断，建议出现时关闭电子前帘 [B2-S04]；Canon EOS R6 Mark II手册记载接近最大光圈与快速快门的失焦区域不完整，可改变前帘方式、降低快门速度或增大f数 [B2-S03]\n\n整理者推断：优先对比机械快门可以避免把完全电子快门的其他限制一起引入；只是条件允许时的诊断建议。\n\n具体来源及核验范围：\nB2-S04 Sony https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000616690.html；e-Front Curtain Shut. / Note；L14–30章节全部正文、设置及三项Note已读。\nB2-S03 Canon https://cam.start.canon/en/C012/manual/html/UG-04_Shooting-1_0370.html；Mechanical / Elec. 1st-curtain / Electronic / Caution；L5–52本章全部教学文本已读，尤其L36–43散景限制；未查看截图或读整本手册。\n\n核验限制：已读原始章节文字；没有真机实测、独立人工审核或许可证明，不能用于正式检索。",
+  "payload": {
+    "core_conclusion": "在某些大光圈与快速快门组合中，电子前帘可能使失焦光斑形状不完整；先确认快门类型并比较原片，而不是直接认定镜头损坏。",
+    "applicable_conditions": [
+      "静态照片，已经确认使用电子前帘",
+      "接近镜头最大光圈且快门较快，失焦背景形状不符合目标",
+      "可在相近取景与光线下试拍比较"
+    ],
+    "operations": [
+      {
+        "action": "记录机型、镜头、光圈、曝光时间与电子前帘状态，确认不是完全电子快门。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "相机允许且环境可接受快门声时，试用机械快门；保持取景/光圈/曝光时间尽量相同并比较失焦区域。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "仍不满意时，权衡较慢曝光或较小光圈再测试，重新校验曝光和运动清晰度。",
+        "evidence_type": "untested_advice"
+      }
+    ],
+    "exceptions": [
+      "光斑形状也受镜头设计和画面位置等因素影响，不凭形状确诊电子前帘",
+      "支持关闭电子前帘的机型才可采用此操作；不能要求没有机械快门选项的机型切换",
+      "完全电子快门的频闪/滚动畸变另查上一批卡，不直接作为万能替代"
+    ],
+    "risks": [
+      "机械快门会改变声响及振动条件，较慢曝光可能增加运动模糊",
+      "缩小光圈会改变景深与曝光；不存在通用光圈/快门阈值保证恢复圆形"
+    ],
+    "missing_information_policy": "快门类型或镜头未知时先核验，不自动输出固定分母、光圈值或维修结论；无法试拍时只登记候选原因和模式限制。",
+    "source_facts": [
+      {
+        "statement": "Sony α7 IV手册明确大光圈镜头和快速快门时散景圆可能被截断，建议出现时关闭电子前帘",
+        "source_ids": [
+          "B2-S04"
+        ]
+      },
+      {
+        "statement": "Canon EOS R6 Mark II手册记载接近最大光圈与快速快门的失焦区域不完整，可改变前帘方式、降低快门速度或增大f数",
+        "source_ids": [
+          "B2-S03"
+        ]
+      }
+    ],
+    "editorial_inferences": [
+      "优先对比机械快门可以避免把完全电子快门的其他限制一起引入；只是条件允许时的诊断建议。"
+    ],
+    "facts": [],
+    "sources": [
+      {
+        "source_id": "B2-S04",
+        "publisher": "Sony",
+        "url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000616690.html",
+        "location": "e-Front Curtain Shut. / Note",
+        "version": "帮助指南URL v1；固件未固定",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L14–30章节全部正文、设置及三项Note已读。",
+        "retrieval_allowed": false,
+        "rights_status": "未核验检索/公开展示/再分发许可，不保存原文或图片"
+      },
+      {
+        "source_id": "B2-S03",
+        "publisher": "Canon",
+        "url": "https://cam.start.canon/en/C012/manual/html/UG-04_Shooting-1_0370.html",
+        "location": "Mechanical / Elec. 1st-curtain / Electronic / Caution",
+        "version": "网页章节D243-089；相机固件未注明",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L5–52本章全部教学文本已读，尤其L36–43散景限制；未查看截图或读整本手册。",
+        "retrieval_allowed": false,
+        "rights_status": "未核验检索/公开展示/再分发许可，不保存原文或图片"
+      }
+    ],
+    "deduplication": {
+      "related_existing_ids": [
+        "photo20261013-technique-rolling-shutter-geometry",
+        "photo20261013-technique-flicker-banding"
+      ],
+      "new_problem": "新卡处理电子前帘的失焦光斑形状；上一批处理全电子快门的运动几何变形和灯光条带。",
+      "decision": "独立问题补充；仍需独立人工复核语义与是否合并"
+    },
+    "verification": {
+      "checked_at": "2026-10-13",
+      "independent_publishers": [
+        "Canon",
+        "Sony"
+      ],
+      "independent_human_review": false,
+      "device_tested": false,
+      "reviewer": null,
+      "review_items": [
+        "检查失焦光斑的实际位置和形状",
+        "目标机型的机械/电子前帘菜单核验",
+        "试拍机械前帘、慢曝光和小光圈并分别记录取舍"
+      ]
+    }
+  },
+  "tags": [
+    "20261013第二批草稿",
+    "摄影",
+    "拍摄排查"
+  ],
+  "conditions": {
+    "shutter_type": "electronic_front_curtain",
+    "capture_mode": "still_photo"
+  },
+  "source": {
+    "name": "Sony",
+    "url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000616690.html",
+    "location": "e-Front Curtain Shut. / Note",
+    "license": "仅最小必要事实自行整理；检索、原文/图片再分发许可待核验",
+    "retrieval_allowed": false
+  },
+  "author": "符梁",
+  "version": 1,
+  "dataset_split": "reference"
+}

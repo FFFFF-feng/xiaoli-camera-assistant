@@ -1,0 +1,280 @@
+{
+  "accessed_at": "2026-10-13",
+  "sources": [
+    {
+      "source_id": "S01",
+      "publisher": "Canon Europe",
+      "title": "Electronic shutter vs mechanical shutter",
+      "original_url": "https://www.canon-europe.com/pro/infobank/electronic-vs-mechanical-shutter/",
+      "section": "What is the difference… / What are the disadvantages… / How to deal with rolling shutter distortion and banding",
+      "accessed_at": "2026-10-13",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "actual_read_scope": "MCP返回文本行L290–376中的正文、图注和署名已读；未读取正文之外的所有导航及页尾；未查看原图。",
+      "version": null,
+      "published_or_modified_at": null,
+      "access_result": "公开网页文本实际读取成功；未登录",
+      "access_permission": "仅执行搜索、open、find、click只读操作；未查询账户级权限清单",
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_republication": "未获许可，不保存原文",
+        "image_storage": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "video_watched": false,
+      "images_inspected": false,
+      "whole_manual_read": false,
+      "caveat": "文章未显示发布日期。全局快门实用性、全系列能力概括存在时效问题，见C01；只使用逐行曝光、运动畸变和频闪原理。"
+    },
+    {
+      "source_id": "S02",
+      "publisher": "Sony UK Support",
+      "title": "What are the restrictions on using the Electronic Shutter?",
+      "original_url": "https://www.sony.co.uk/electronics/support/e-mount-body-ilce-6000-series/ilce-6400a/articles/00176309",
+      "section": "Restrictions… / Shooting Characteristics and Possible Image Effects",
+      "accessed_at": "2026-10-13",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "actual_read_scope": "L8–73全部教学文本已读，涵盖型号例外；嵌入YouTube视频未播放，未同意额外cookies。",
+      "version": null,
+      "published_or_modified_at": "2026-02-12",
+      "access_result": "公开网页文本实际读取成功；未登录",
+      "access_permission": "仅执行搜索、open、find、click只读操作；未查询账户级权限清单",
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_republication": "未获许可，不保存原文",
+        "image_storage": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "video_watched": false,
+      "images_inspected": false,
+      "whole_manual_read": false,
+      "caveat": "页面显示Article ID 00176692，路径末段00176309；保留实际URL和显示编号，不假定二者相同。普通电子快门限制不能外推ILCE-9M3。"
+    },
+    {
+      "source_id": "S03",
+      "publisher": "Sony Help Guide",
+      "title": "ILCE-7M4 α7IV — Anti-flicker Set.",
+      "original_url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000659392.html",
+      "section": "Menu item details / Hint / Note",
+      "accessed_at": "2026-10-13",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "actual_read_scope": "本章节L13–62全部正文及限制已读；未读整个α7 IV帮助指南。",
+      "version": "URL v1；相机固件版本未注明",
+      "published_or_modified_at": null,
+      "access_result": "公开网页文本实际读取成功；未登录",
+      "access_permission": "仅执行搜索、open、find、click只读操作；未查询账户级权限清单",
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_republication": "未获许可，不保存原文",
+        "image_storage": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "video_watched": false,
+      "images_inspected": false,
+      "whole_manual_read": false,
+      "caveat": "只核验列出的文本章节，不声称阅读全文、整本手册或观看视频。"
+    },
+    {
+      "source_id": "S04",
+      "publisher": "Sony Group",
+      "title": "Alpha 9 III, Equipped with Global Shutter Full-Frame Image Sensor",
+      "original_url": "https://www.sony.com/en/SonyInfo/technology/stories/entries/9M3_global-shutter/",
+      "section": "To Create a Camera Like No Other",
+      "accessed_at": "2026-10-13",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "actual_read_scope": "L140–229采访正文、署名及两条脚注已读；未查看配图、关联作品或视频。",
+      "version": null,
+      "published_or_modified_at": "2025-07-08",
+      "access_result": "公开网页文本实际读取成功；未登录",
+      "access_permission": "仅执行搜索、open、find、click只读操作；未查询账户级权限清单",
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_republication": "未获许可，不保存原文",
+        "image_storage": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "video_watched": false,
+      "images_inspected": false,
+      "whole_manual_read": false,
+      "caveat": "只用于滚动快门原理交叉核对及全局快门存在性反例；不采用营销中的全部画质或无失真保证。"
+    },
+    {
+      "source_id": "S05",
+      "publisher": "Apple iPhone User Guide (UK)",
+      "title": "Take macro photos and videos with your iPhone camera",
+      "original_url": "https://support.apple.com/en-gb/guide/iphone/iphfaacf2eb0/18.0/ios/18.0",
+      "section": "Take a macro photo or video / Control automatic macro switching",
+      "accessed_at": "2026-10-13",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "actual_read_scope": "L1074–1113本章节全文已读（包括慢动作、延时和保留设置）；未读整本iPhone指南。",
+      "version": "iOS 18版指南；具体18.x小版本未固定",
+      "published_or_modified_at": null,
+      "access_result": "公开网页文本实际读取成功；未登录",
+      "access_permission": "仅执行搜索、open、find、click只读操作；未查询账户级权限清单",
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_republication": "未获许可，不保存原文",
+        "image_storage": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "video_watched": false,
+      "images_inspected": false,
+      "whole_manual_read": false,
+      "caveat": "只核验列出的文本章节，不声称阅读全文、整本手册或观看视频。"
+    },
+    {
+      "source_id": "S06",
+      "publisher": "Apple iPhone User Guide (UK)",
+      "title": "Models that support macro photography",
+      "original_url": "https://support.apple.com/en-gb/guide/iphone/aside/iph8dc3af8c0/18.0/ios/18.0",
+      "section": "Models that support macro photography",
+      "accessed_at": "2026-10-13",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "actual_read_scope": "L30–50支持机型列表全部已读，含iPhone 16 Pro。",
+      "version": "iOS 18版指南",
+      "published_or_modified_at": null,
+      "access_result": "公开网页文本实际读取成功；未登录",
+      "access_permission": "仅执行搜索、open、find、click只读操作；未查询账户级权限清单",
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_republication": "未获许可，不保存原文",
+        "image_storage": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "video_watched": false,
+      "images_inspected": false,
+      "whole_manual_read": false,
+      "caveat": "只核验列出的文本章节，不声称阅读全文、整本手册或观看视频。"
+    },
+    {
+      "source_id": "S07",
+      "publisher": "Apple Support",
+      "title": "iPhone 16 Pro — Tech Specs",
+      "original_url": "https://support.apple.com/en-us/121031",
+      "section": "Camera",
+      "accessed_at": "2026-10-13",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "actual_read_scope": "实际返回L93–353范围已读；卡片仅采用L116–173 Camera中的微距、ProRAW、Live Photos能力；未读完整857行规格及全部脚注。",
+      "version": "iPhone 16 Pro型号规格；地区为英文美国支持页",
+      "published_or_modified_at": null,
+      "access_result": "公开网页文本实际读取成功；未登录",
+      "access_permission": "仅执行搜索、open、find、click只读操作；未查询账户级权限清单",
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_republication": "未获许可，不保存原文",
+        "image_storage": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "video_watched": false,
+      "images_inspected": false,
+      "whole_manual_read": false,
+      "caveat": "只核验列出的文本章节，不声称阅读全文、整本手册或观看视频。"
+    },
+    {
+      "source_id": "S08",
+      "publisher": "Apple iPhone User Guide (UK)",
+      "title": "Take Live Photos with your iPhone camera",
+      "original_url": "https://support.apple.com/en-gb/guide/iphone/iph17471d6de/18.0/ios/18.0",
+      "section": "Take a Live Photo / Turn off Live Photos / Note",
+      "accessed_at": "2026-10-13",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "actual_read_scope": "L1078–1104本章节全文已读；特别核对L1103 ProRAW与HEIF Max限制；未读整本指南。",
+      "version": "iOS 18版指南；具体18.x小版本未固定",
+      "published_or_modified_at": null,
+      "access_result": "公开网页文本实际读取成功；未登录",
+      "access_permission": "仅执行搜索、open、find、click只读操作；未查询账户级权限清单",
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_republication": "未获许可，不保存原文",
+        "image_storage": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "video_watched": false,
+      "images_inspected": false,
+      "whole_manual_read": false,
+      "caveat": "只核验列出的文本章节，不声称阅读全文、整本手册或观看视频。"
+    },
+    {
+      "source_id": "S09",
+      "publisher": "Apple Support",
+      "title": "Use Night mode on your iPhone",
+      "original_url": "https://support.apple.com/en-us/102519",
+      "section": "Turn on Live Photos and flash",
+      "accessed_at": "2026-10-13",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "actual_read_scope": "L28–76文章正文及发布日期全部已读；未查看配图。",
+      "version": null,
+      "published_or_modified_at": "2026-02-18",
+      "access_result": "公开网页文本实际读取成功；未登录",
+      "access_permission": "仅执行搜索、open、find、click只读操作；未查询账户级权限清单",
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_republication": "未获许可，不保存原文",
+        "image_storage": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "video_watched": false,
+      "images_inspected": false,
+      "whole_manual_read": false,
+      "caveat": "Night mode与Live Photos/闪光互斥在该支持文档有明确说明，但正文未固定iOS版本；本批不据此生成指定系统版本卡。"
+    },
+    {
+      "source_id": "S10",
+      "publisher": "Apple iPhone User Guide (UK)",
+      "title": "Take Night mode photos with your iPhone camera",
+      "original_url": "https://support.apple.com/en-gb/guide/iphone/iph1a3c5b4c3/18.0/ios/18.0",
+      "section": "Take Night mode photos",
+      "accessed_at": "2026-10-13",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "actual_read_scope": "L1078–1106本章节全部教学文本已读；未读整本指南。",
+      "version": "iOS 18版指南",
+      "published_or_modified_at": null,
+      "access_result": "公开网页文本实际读取成功；未登录",
+      "access_permission": "仅执行搜索、open、find、click只读操作；未查询账户级权限清单",
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_republication": "未获许可，不保存原文",
+        "image_storage": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "video_watched": false,
+      "images_inspected": false,
+      "whole_manual_read": false,
+      "caveat": "该章节未明确写出夜间模式与闪光/Live Photos的互斥，不将章节缺少信息视为否定，也不把S09当作该版界面实测。"
+    }
+  ],
+  "failed_reads": [
+    {
+      "url": "https://www.sony.com/electronics/support/articles/00122281",
+      "result": "Internal Error；只搜索摘要，不作为正文依据"
+    },
+    {
+      "url": "https://www.sony.co.uk/electronics/support/articles/00176309",
+      "result": "首次返回页面元信息；后续正文open/find均Internal Error。改读S02型号路径，未声称通用路径阅读全文"
+    },
+    {
+      "url": "https://helpguide.sony.net/ilc/2320/v1/en/contents/211h_overview_global_shutter.html",
+      "result": "Internal Error；改用S04官方采访，不作为已读手册"
+    }
+  ],
+  "search_only_leads": [
+    {
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+      "publisher": "Nikon USA",
+      "result": "MCP可用性探测检索命中；未open正文，未生成卡片"
+    },
+    {
+      "description": "搜索返回的博主、论坛、视频和新闻条目",
+      "result": "仅线索；无一替代正文证据，未播放视频或下载资源"
+    }
+  ]
+}

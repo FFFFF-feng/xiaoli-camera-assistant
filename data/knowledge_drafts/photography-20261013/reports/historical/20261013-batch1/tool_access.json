@@ -1,0 +1,24 @@
+{
+  "mcp_service": "search_service",
+  "actual_tool": "mcp__codex_apps__search_service_web_run",
+  "actual_operations": [
+    "system2_search_query",
+    "open",
+    "find",
+    "click"
+  ],
+  "connection_evidence": "首次Nikon摄影检索及后续Canon/Sony/Apple公开原文读取实际返回成功；部分URL失败见来源登记",
+  "scope": "公开网站只读检索；没有站点专用后台/账户权限，也未核验完整MCP服务部署清单",
+  "other_tools": [
+    "functions.exec",
+    "exec_command（PowerShell与既有.venv Python）",
+    "apply_patch",
+    "request_user_input_async（确认主题与署名）"
+  ],
+  "config_changed": false,
+  "installed": false,
+  "logged_in": false,
+  "credentials_collected": false,
+  "ordinary_web_fallback_used": false,
+  "media_downloaded": false
+}

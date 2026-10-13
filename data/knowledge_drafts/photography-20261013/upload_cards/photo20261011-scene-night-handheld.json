@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-scene-night-handheld",
+  "library_id": "scene",
+  "title": "手持夜景：模糊来源需要分辨",
+  "kind": "guideline",
+  "content": "# 手持夜景：模糊来源需要分辨\n\n## 目标与结论\n低照度手持场景需要区分设备晃动、主体移动与失焦。\n\n## 适用条件与所需信息\n手持状态来自用户确认；单图不能可靠判断所有模糊原因。\n\n## 执行动作\n检查静止边缘和活动主体；登记风险，再关联模糊排查。\n\n## 例外、限制与风险\n防抖不能保证移动人物清晰；手机合成模式需要另外确认。\n\n## 依据与案例\n来源 WEB-009：[Reducing Camera Shake with Hand-Held Photos](https://www.cambridgeincolour.com/tutorials/camera-shake.htm)；位置：HAND-HELD PHOTOS / FOCAL LENGTH / STABILIZATION。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-009"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "handheld_night",
+    "subject": "unknown",
+    "motion": "unknown",
+    "goal": "低照度手持场景需要区分设备晃动、主体移动与失焦。",
+    "requires": [
+      "手持状态来自用户确认；单图不能可靠判断所有模糊原因。"
+    ],
+    "actions": [
+      "检查静止边缘和活动主体；登记风险，再关联模糊排查。"
+    ],
+    "exceptions_and_risks": [
+      "防抖不能保证移动人物清晰；手机合成模式需要另外确认。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "scene_id": "handheld_night",
+    "definition": "低照度手持场景需要区分设备晃动、主体移动与失焦。",
+    "aliases": [
+      "handheld_night",
+      "手持夜景",
+      "night handheld"
+    ],
+    "observable_features": [
+      "低照度与点状高光",
+      "静止边缘模糊形态",
+      "活动主体模糊形态"
+    ],
+    "lighting": {
+      "observable_clues": [
+        "低照度与点状高光",
+        "静止边缘模糊形态",
+        "活动主体模糊形态"
+      ],
+      "actual_light_source": "unknown",
+      "information_source": "model_inference",
+      "note": "候选检查项不是当前照片的观测事实。"
+    },
+    "motion_recording": "只在观测或用户报告支持时记录实际运动，不使用默认猜测",
+    "common_problems": [
+      "防抖不能保证移动人物清晰；手机合成模式需要另外确认。"
+    ],
+    "example_index": "../../example_index.yaml",
+    "unknown_policy": "意图与图中场景分开；缺失字段 unknown/null"
+  },
+  "tags": [
+    "场景库",
+    "手持夜景",
+    "handheld_night"
+  ],
+  "conditions": {
+    "scene": "handheld_night"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/camera-shake.htm",
+    "location": "HAND-HELD PHOTOS / FOCAL LENGTH / STABILIZATION",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

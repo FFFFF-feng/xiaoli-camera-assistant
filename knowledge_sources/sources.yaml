@@ -1,0 +1,73 @@
+checked_at: '2026-10-10'
+# full_text_download仅代表这次本地保存许可，不代表质量审核；厂商页不下载全文。
+sources:
+  - source_id: wikibooks-taking-photos
+    title: Digital Photography / Taking Digital Photos
+    publisher: Wikibooks contributors
+    url: https://en.wikibooks.org/wiki/Digital_Photography/Taking_Digital_Photos
+    license: CC BY-SA 4.0（文本）；图片另有许可，未下载图片
+    license_url: https://en.wikibooks.org/wiki/Wikibooks:Copyrights
+    full_text_download: true
+    quality_notes: 页面旧版包含过时ISO及动态范围描述，只参考基础原理，不采用固定ISO阈值/6EV等陈述。
+  - source_id: wikibooks-introduction
+    title: Digital Photography / Introduction
+    publisher: Wikibooks contributors
+    url: https://en.wikibooks.org/wiki/Digital_Photography/Introduction
+    license: CC BY-SA 4.0（文本）；图片另有许可，未下载图片
+    license_url: https://en.wikibooks.org/wiki/Wikibooks:Copyrights
+    full_text_download: true
+    quality_notes: 只整理裁切和数字放大的信息损失；不把历史产品比较当作当代手机规格。
+  - source_id: nikon-composition
+    title: 5 Easy Composition Guidelines
+    publisher: Nikon / Diane Berkenfeld
+    url: https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines
+    license: 未确认再分发许可；仅原创短摘要和链接，不下载全文或图片
+    full_text_download: false
+  - source_id: canon-depth-of-field
+    title: RF Lens World / Depth of field
+    publisher: Canon
+    url: https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/depth-of-field/index.html
+    license: 未确认再分发许可；仅原理短摘要和链接
+    full_text_download: false
+  - source_id: apple-iphone-15
+    title: iPhone 15 技术规格
+    publisher: Apple
+    url: https://support.apple.com/zh-cn/111831
+    license: 未确认再分发许可；仅结构化事实和短摘要
+    full_text_download: false
+  - source_id: apple-camera-tools
+    title: 使用iPhone相机工具设置照片
+    publisher: Apple
+    url: https://support.apple.com/zh-cn/guide/iphone/iph3dc593597/ios
+    license: 未确认再分发许可；仅操作短摘要；页面随iOS版本变化
+    full_text_download: false
+  - source_id: apple-night-mode
+    title: 在iPhone上使用夜间模式
+    publisher: Apple
+    url: https://support.apple.com/zh-cn/102519
+    license: 未确认再分发许可；仅操作短摘要
+    full_text_download: false
+  - source_id: samsung-s24-ultra
+    title: Galaxy S24 Series 全球发布规格
+    publisher: Samsung
+    url: https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series
+    license: 未确认再分发许可；仅结构化事实
+    full_text_download: false
+  - source_id: samsung-camera-modes
+    title: Galaxy camera modes / Pro
+    publisher: Samsung UK
+    url: https://www.samsung.com/uk/support/mobile-devices/what-are-the-different-camera-modes-and-how-do-i-use-them/
+    license: 未确认再分发许可；仅短摘要；通用说明不能替代具体机型/版本验证
+    full_text_download: false
+  - source_id: xiaomi-14
+    title: Xiaomi 14 Global Specs
+    publisher: Xiaomi
+    url: https://www.mi.com/global/product/xiaomi-14/specs/
+    license: 未确认再分发许可；仅结构化事实
+    full_text_download: false
+  - source_id: xiaomi-pro-mode
+    title: 手机Pro模式说明
+    publisher: Xiaomi España
+    url: https://www.mi.com/es/support/article/KA-51452/
+    license: 未确认再分发许可；仅短摘要；页面注明自动翻译，需要真机复核
+    full_text_download: false

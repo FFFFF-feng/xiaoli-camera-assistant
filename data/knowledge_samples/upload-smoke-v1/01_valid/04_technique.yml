@@ -1,0 +1,29 @@
+schema_version: 1
+knowledge_id: upload-smoke-v1-technique-001
+library_id: technique
+title: "[上传测试] 拍摄前检查流程"
+kind: guideline
+content: >-
+  测试流程：清洁镜头，选择主体，检查对焦位置，然后单张试拍。
+  本记录仅验证拍摄技术库导入和数组字段，不提供经过核验的曝光数值。
+payload:
+  test_only: true
+  steps:
+    - 清洁镜头
+    - 确认主体
+    - 检查对焦
+    - 单张试拍
+tags:
+  - 上传测试
+  - 操作流程
+conditions:
+  device_type: phone
+  phone_capture_mode: auto
+source:
+  name: 小栗上传功能自制测试样本
+  location: 样本集 upload-smoke-v1 / 拍摄技术库
+  license: 仅用于项目导入功能测试，未授权作为正式推荐依据
+  retrieval_allowed: false
+author: 上传功能测试员
+version: 1
+dataset_split: evaluation

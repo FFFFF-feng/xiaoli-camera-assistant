@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261013b2-equipment-a7iv-long-nr",
+  "library_id": "equipment",
+  "title": "Sony α7 IV：长曝光降噪期间不能继续拍摄",
+  "kind": "manufacturer_fact",
+  "content": "核心结论：Sony α7 IV官方指南说明，Long Exposure NR开启且曝光不少于1秒时，拍摄后会进行与曝光等长的降噪；降噪期间不能再拍摄，应预留等待时间。\n\n适用条件：仅Sony ILCE-7M4（α7 IV）静态照片；依据帮助指南URL v1，具体固件需确认；Long Exposure NR为On，快门为机械/电子前帘而非完全电子快门；单张拍摄，非连续拍摄或连续包围，曝光不少于1秒\n\n操作建议（未实测）：\n1. 拍摄前查看Long Exposure NR设置、快门类型和驱动模式。\n2. 出现降噪处理提示时等待完成；不要仅因暂时不能拍摄就判断相机故障。\n3. 需要连续时间覆盖的题材，先确认能否关闭该功能，试拍评估噪声与拍摄间隔，再决定取舍。\n\n例外：α7 IV完全电子快门、连续拍摄和连续包围不提供该功能；Intelligent Auto模式不能将该功能设为Off；不外推到其他Sony型号，更不能将所有长曝光都当成必须等长等待\n\n风险：降噪等待可能错过下一次事件；关闭功能可能保留更多长曝光噪声；总周转时长还包括其他处理，不保证严格等于曝光的两倍\n\n信息不足时：型号、固件或功能状态未知时先查对应官方章节；处理提示不是该功能时另行排查，不从等待秒数推断固定硬件性能。\n\n来源事实：Long Exposure NR章给出不少于1秒的门槛、On时等长处理与拍摄禁止，以及快门/驱动/自动模式限制 [B2-S05]；Shutter Priority章明确等长降噪是在拍摄之后进行，同样说明处理时不能再拍 [B2-S06]\n\n整理者推断：拍摄加等长降噪至少需要预留两个阶段；这是排期推断，不是精确两倍总时长保证，也未实测。\n\n具体来源及核验范围：\nB2-S05 Sony https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000656583.html；Long Exposure NR / Menu item details / Note；L13–32本章全部正文已读，含电子快门、连拍/连续包围、Intelligent Auto限制。\nB2-S06 Sony https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000617337.html；Note: Long Exposure NR after shooting；L13–35本章全部教学文本已读；L34再次核验降噪发生于曝光之后及等待限制。\n\n核验限制：已读原始章节文字；没有真机实测、独立人工审核或许可证明，不能用于正式检索。",
+  "payload": {
+    "core_conclusion": "Sony α7 IV官方指南说明，Long Exposure NR开启且曝光不少于1秒时，拍摄后会进行与曝光等长的降噪；降噪期间不能再拍摄，应预留等待时间。",
+    "applicable_conditions": [
+      "仅Sony ILCE-7M4（α7 IV）静态照片；依据帮助指南URL v1，具体固件需确认",
+      "Long Exposure NR为On，快门为机械/电子前帘而非完全电子快门",
+      "单张拍摄，非连续拍摄或连续包围，曝光不少于1秒"
+    ],
+    "operations": [
+      {
+        "action": "拍摄前查看Long Exposure NR设置、快门类型和驱动模式。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "出现降噪处理提示时等待完成；不要仅因暂时不能拍摄就判断相机故障。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "需要连续时间覆盖的题材，先确认能否关闭该功能，试拍评估噪声与拍摄间隔，再决定取舍。",
+        "evidence_type": "untested_advice"
+      }
+    ],
+    "exceptions": [
+      "α7 IV完全电子快门、连续拍摄和连续包围不提供该功能",
+      "Intelligent Auto模式不能将该功能设为Off",
+      "不外推到其他Sony型号，更不能将所有长曝光都当成必须等长等待"
+    ],
+    "risks": [
+      "降噪等待可能错过下一次事件",
+      "关闭功能可能保留更多长曝光噪声；总周转时长还包括其他处理，不保证严格等于曝光的两倍"
+    ],
+    "missing_information_policy": "型号、固件或功能状态未知时先查对应官方章节；处理提示不是该功能时另行排查，不从等待秒数推断固定硬件性能。",
+    "source_facts": [
+      {
+        "statement": "Long Exposure NR章给出不少于1秒的门槛、On时等长处理与拍摄禁止，以及快门/驱动/自动模式限制",
+        "source_ids": [
+          "B2-S05"
+        ]
+      },
+      {
+        "statement": "Shutter Priority章明确等长降噪是在拍摄之后进行，同样说明处理时不能再拍",
+        "source_ids": [
+          "B2-S06"
+        ]
+      }
+    ],
+    "editorial_inferences": [
+      "拍摄加等长降噪至少需要预留两个阶段；这是排期推断，不是精确两倍总时长保证，也未实测。"
+    ],
+    "facts": [
+      {
+        "field": "long_exposure_nr_threshold_seconds",
+        "value": 1,
+        "unit": "s",
+        "operator": ">=",
+        "conditions": {
+          "camera_model": "Sony ILCE-7M4",
+          "capture_mode": "still_photo",
+          "long_exposure_nr": "on",
+          "drive_mode": "single",
+          "shutter_type": "not_fully_electronic"
+        },
+        "source_id": "B2-S05",
+        "source_location": "Long Exposure NR / first paragraph and Note",
+        "verification_status": "official_text_checked_not_device_tested"
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "B2-S05",
+        "publisher": "Sony",
+        "url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000656583.html",
+        "location": "Long Exposure NR / Menu item details / Note",
+        "version": "帮助指南URL v1；固件未固定",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L13–32本章全部正文已读，含电子快门、连拍/连续包围、Intelligent Auto限制。",
+        "retrieval_allowed": false,
+        "rights_status": "未核验检索/公开展示/再分发许可，不保存原文或图片"
+      },
+      {
+        "source_id": "B2-S06",
+        "publisher": "Sony",
+        "url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000617337.html",
+        "location": "Note: Long Exposure NR after shooting",
+        "version": "帮助指南URL v1；固件未固定",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L13–35本章全部教学文本已读；L34再次核验降噪发生于曝光之后及等待限制。",
+        "retrieval_allowed": false,
+        "rights_status": "未核验检索/公开展示/再分发许可，不保存原文或图片"
+      }
+    ],
+    "deduplication": {
+      "related_existing_ids": [
+        "photo20261011-technique-denoise",
+        "photo20261011-technique-tripod",
+        "photo20261011-equipment-sony-a7iv"
+      ],
+      "new_problem": "旧降噪卡讨论细节代价，本卡限定机型并解决拍后等待和暂时不能继续拍摄。",
+      "decision": "独立问题补充；仍需独立人工复核语义与是否合并"
+    },
+    "verification": {
+      "checked_at": "2026-10-13",
+      "independent_publishers": [
+        "Sony"
+      ],
+      "independent_human_review": false,
+      "device_tested": false,
+      "reviewer": null,
+      "review_items": [
+        "目标固件版本核验",
+        "实拍核对处理提示与计时",
+        "连拍、电子快门和自动模式限制逐项确认"
+      ]
+    }
+  },
+  "tags": [
+    "20261013第二批草稿",
+    "摄影",
+    "拍摄排查"
+  ],
+  "conditions": {
+    "camera_model": "Sony ILCE-7M4",
+    "capture_mode": "still_photo",
+    "drive_mode": "single",
+    "shutter_type": [
+      "mechanical",
+      "electronic_front_curtain"
+    ]
+  },
+  "source": {
+    "name": "Sony",
+    "url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000656583.html",
+    "location": "Long Exposure NR / Menu item details / Note",
+    "license": "仅最小必要事实自行整理；检索、原文/图片再分发许可待核验",
+    "retrieval_allowed": false
+  },
+  "author": "符梁",
+  "version": 1,
+  "dataset_split": "reference"
+}

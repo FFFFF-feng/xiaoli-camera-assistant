@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-equipment-nikon-z24-70f4",
+  "library_id": "equipment",
+  "title": "NIKKOR Z 24-70mm f/4 S：规格、条件与未知能力",
+  "kind": "manufacturer_fact",
+  "content": "逐字段事实见 payload.facts。已查原始规格，但尚未独立审核或真机验证。规格为硬件/模式事实，不是最佳拍摄参数；未真机测试。",
+  "payload": {
+    "schema_version": "draft-1",
+    "equipment_id": "photo20261011-equipment-nikon-z24-70f4",
+    "camera_model": null,
+    "lens_model": "NIKKOR Z 24-70mm f/4 S",
+    "camera_firmware": null,
+    "review_status": "draft",
+    "author": "Codex 本轮资料整理（AI，待独立审核）",
+    "reviewer": null,
+    "accessed_at": "2026-10-11",
+    "verified_at": null,
+    "facts": [
+      {
+        "field": "actual_focal_length_range_mm",
+        "value": [
+          24,
+          70
+        ],
+        "unit": "mm",
+        "conditions": {
+          "lens_model": "NIKKOR Z 24-70mm f/4 S"
+        },
+        "source_id": "WEB-057",
+        "source_url": "https://imaging.nikon.com/imaging/lineup/lens/z-mount/z_24-70mmf4s/index.html",
+        "source_location": "Specifications / Focal length",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "maximum_aperture_f_number",
+        "value": 4.0,
+        "unit": "f_number",
+        "conditions": {
+          "lens_model": "NIKKOR Z 24-70mm f/4 S",
+          "actual_focal_length_range_mm": [
+            24,
+            70
+          ]
+        },
+        "source_id": "WEB-057",
+        "source_url": "https://imaging.nikon.com/imaging/lineup/lens/z-mount/z_24-70mmf4s/index.html",
+        "source_location": "Features / constant maximum aperture; Specifications",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "minimum_aperture_f_number",
+        "value": 22.0,
+        "unit": "f_number",
+        "conditions": {
+          "lens_model": "NIKKOR Z 24-70mm f/4 S"
+        },
+        "source_id": "WEB-057",
+        "source_url": "https://imaging.nikon.com/imaging/lineup/lens/z-mount/z_24-70mmf4s/index.html",
+        "source_location": "Specifications / Minimum aperture",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "minimum_focus_distance",
+        "value": 0.3,
+        "unit": "m",
+        "conditions": {
+          "lens_model": "NIKKOR Z 24-70mm f/4 S"
+        },
+        "source_id": "WEB-057",
+        "source_url": "https://imaging.nikon.com/imaging/lineup/lens/z-mount/z_24-70mmf4s/index.html",
+        "source_location": "Specifications / Minimum focus distance",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      }
+    ],
+    "conflicts": [],
+    "notes": [
+      "规格为硬件/模式事实，不是最佳拍摄参数；未真机测试。"
+    ],
+    "source_id": "WEB-057",
+    "source_url": "https://imaging.nikon.com/imaging/lineup/lens/z-mount/z_24-70mmf4s/index.html"
+  },
+  "tags": [
+    "器材规格",
+    "NIKKOR Z 24-70mm f/4 S"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Nikon（署名作者以页面为准）",
+    "url": "https://imaging.nikon.com/imaging/lineup/lens/z-mount/z_24-70mmf4s/index.html",
+    "location": "逐字段 source_location",
+    "license": "仅记录必要事实；厂商正文和图片使用权限待核验",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-technique-flash-quality",
+  "library_id": "technique",
+  "title": "闪光质感：相对光源大小影响过渡",
+  "kind": "guideline",
+  "content": "# 闪光质感：相对光源大小影响过渡\n\n## 目标与结论\n光源相对主体的大小与方向影响阴影外观。\n\n## 适用条件与所需信息\n确认灯、反射面和主体位置；反射面颜色可能影响肤色。\n\n## 执行动作\n比较直射、反射或柔光后的面部过渡，记录实际布置。\n\n## 例外、限制与风险\n有柔光罩不代表足够柔；光源功率和大小是不同变量。\n\n## 依据与案例\n来源 WEB-027：[Camera Flash: Appearance](https://www.cambridgeincolour.com/tutorials/camera-flash.htm)；位置：LIGHT QUALITY / BOUNCE FLASH。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-027"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "portrait",
+    "subject": "person",
+    "motion": "unknown",
+    "goal": "光源相对主体的大小与方向影响阴影外观。",
+    "requires": [
+      "确认灯、反射面和主体位置；反射面颜色可能影响肤色。"
+    ],
+    "actions": [
+      "比较直射、反射或柔光后的面部过渡，记录实际布置。"
+    ],
+    "exceptions_and_risks": [
+      "有柔光罩不代表足够柔；光源功率和大小是不同变量。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": false,
+    "parameter_requirements": [
+      "exposure_mode",
+      "subject_motion",
+      "handheld_or_supported",
+      "lens_model",
+      "actual_focal_length_mm",
+      "maximum_aperture_f_number",
+      "shutter_type",
+      "lighting_clues",
+      "target_effect"
+    ],
+    "hardware_limits": null,
+    "suggested_parameter_values": null,
+    "suggestion_type": "方向或检查流程；没有固定曝光保证",
+    "parameter_missing_policy": "缺关键条件不生成数值",
+    "numeric_units": {
+      "shutter": "s",
+      "aperture": "f_number",
+      "iso": "number",
+      "focal_length": "mm"
+    }
+  },
+  "tags": [
+    "拍摄技术库",
+    "闪光质感",
+    "portrait"
+  ],
+  "conditions": {
+    "scene": "portrait"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/camera-flash.htm",
+    "location": "LIGHT QUALITY / BOUNCE FLASH",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

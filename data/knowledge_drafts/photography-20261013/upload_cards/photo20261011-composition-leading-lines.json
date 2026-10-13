@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-composition-leading-lines",
+  "library_id": "composition",
+  "title": "引导线：检查指向和遮挡",
+  "kind": "guideline",
+  "content": "# 引导线：检查指向和遮挡\n\n## 目标与结论\n道路或边缘等线条可引导注意力，但也可能带离主体。\n\n## 适用条件与所需信息\n需要真实线条端点、主体区域与线条在图中的关系。\n\n## 执行动作\n比较保留与减少线条的候选；若要改变交汇关系需重拍移动机位。\n\n## 例外、限制与风险\n线条不是越多越好；不将抽象弧线强行拟合成道路。\n\n## 依据与案例\n来源 WEB-003：[5 Easy Composition Guidelines](https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines)；位置：Horizon / Leading lines / Patterns & Textures / Look Carefully。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-003"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "general_scene",
+    "subject": "unknown",
+    "motion": "unknown",
+    "goal": "道路或边缘等线条可引导注意力，但也可能带离主体。",
+    "requires": [
+      "需要真实线条端点、主体区域与线条在图中的关系。"
+    ],
+    "actions": [
+      "比较保留与减少线条的候选；若要改变交汇关系需重拍移动机位。"
+    ],
+    "exceptions_and_risks": [
+      "线条不是越多越好；不将抽象弧线强行拟合成道路。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "automatic_execution": false,
+    "protected_regions": {
+      "status": "required_before_execution",
+      "items": [
+        "主体关键区域",
+        "人脸/头部或其他用户指定区域"
+      ],
+      "bbox_xyxy_normalized": null
+    },
+    "geometry": {
+      "coordinate_system": "EXIF 方向校正基图，左上原点，x右y下，xyxy归一化",
+      "base_image_hash": null,
+      "base_width": null,
+      "base_height": null,
+      "candidate_crop_xyxy_normalized": null,
+      "predicates": [
+        "0 <= x1 < x2 <= 1",
+        "0 <= y1 < y2 <= 1",
+        "candidate_crop contains each confirmed protected_region"
+      ],
+      "missing_required_information_action": "skip_or_clarify"
+    },
+    "action_scope": [
+      "crop_existing_pixels",
+      "reshoot_if_viewpoint_changes"
+    ],
+    "source_rule_is_not_quality_score": true
+  },
+  "tags": [
+    "构图库",
+    "引导线",
+    "general_scene"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon（署名作者以页面为准）",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+    "location": "Horizon / Leading lines / Patterns & Textures / Look Carefully",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

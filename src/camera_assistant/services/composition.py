@@ -13,6 +13,7 @@ from camera_assistant.models import (
     CameraProfile,
     ImageInspection,
     KnowledgeHit,
+    PhoneProfile,
     SceneAnalysis,
     UserRequest,
 )
@@ -28,7 +29,7 @@ class CompositionAdvisor(Protocol):
         scene: SceneAnalysis,
         localization: MethodResult | None,
         knowledge_hits: list[KnowledgeHit],
-        camera: CameraProfile,
+        camera: CameraProfile | PhoneProfile,
     ) -> CompositionAdvice: ...
 
 
@@ -40,7 +41,7 @@ class DemoCompositionAdvisor:
         scene: SceneAnalysis,
         localization: MethodResult | None,
         knowledge_hits: list[KnowledgeHit],
-        camera: CameraProfile,
+        camera: CameraProfile | PhoneProfile,
     ) -> CompositionAdvice:
         return CompositionAdvice(
             status="demo",
@@ -147,7 +148,7 @@ class OpenAICompatibleCompositionAdvisor:
         scene: SceneAnalysis,
         localization: MethodResult | None,
         knowledge_hits: list[KnowledgeHit],
-        camera: CameraProfile,
+        camera: CameraProfile | PhoneProfile,
     ) -> CompositionAdvice:
         evidence = [
             {
@@ -176,6 +177,8 @@ class OpenAICompatibleCompositionAdvisor:
             "每个方案说明动作、理由、适用条件、限制和权衡。action_type=crop 表示只裁切"
             "原图已有内容；改变机位或看到遮挡后的内容必须作为 camera_position/reshoot。"
             "focal_length 建议须符合已知器材，未知焦段能力时说明条件。\n"
+            "手机只使用当前模式和已确认镜头能力；固定光圈不能调节，人像景深控件不是物理光圈。"
+            "手机不能要求更换相机镜头或套用未确认的ISO/快门数值；优先给可执行的机位与取景动作。\n"
             "knowledge_ids 只能引用 knowledge 中的 knowledge_id 精确字符串，"
             "它对应本次检索的 document_id，含版本时须保留版本。无相关依据时用空数组；"
             "不能把模型常识冒充知识依据。无命中时 status=unverified。\n"

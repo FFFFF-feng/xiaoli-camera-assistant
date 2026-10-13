@@ -1,0 +1,68 @@
+{
+  "author": "符梁",
+  "effective_draft_count": 5,
+  "accepted": [
+    {
+      "id": "photo20261013b2-technique-peaking-check",
+      "title": "峰值对焦辅助：彩色轮廓出现后仍检查关键细节",
+      "kind": "guideline",
+      "source_ids": [
+        "B2-S01",
+        "B2-S02"
+      ]
+    },
+    {
+      "id": "photo20261013b2-technique-efcs-bokeh",
+      "title": "大光圈散景被截断：检查电子前帘和快门速度",
+      "kind": "guideline",
+      "source_ids": [
+        "B2-S04",
+        "B2-S03"
+      ]
+    },
+    {
+      "id": "photo20261013b2-equipment-a7iv-long-nr",
+      "title": "Sony α7 IV：长曝光降噪期间不能继续拍摄",
+      "kind": "manufacturer_fact",
+      "source_ids": [
+        "B2-S05",
+        "B2-S06"
+      ]
+    },
+    {
+      "id": "photo20261013b2-equipment-iphone16pro-burst-button",
+      "title": "iPhone 16 Pro（iOS 18）：用调高音量键启动连拍",
+      "kind": "manufacturer_fact",
+      "source_ids": [
+        "B2-S08",
+        "B2-S09"
+      ]
+    },
+    {
+      "id": "photo20261013b2-equipment-iphone16pro-aeaf-lock",
+      "title": "iPhone 16 Pro（iOS 18）：保持对焦与曝光锁定",
+      "kind": "manufacturer_fact",
+      "source_ids": [
+        "B2-S07"
+      ]
+    }
+  ],
+  "rejected_or_deferred": [
+    {
+      "candidate": "先对焦后转动重新构图的通用误差",
+      "reason": "本批未读取足够的双发布者核心依据，且需与静态对焦旧卡区分，暂缓"
+    },
+    {
+      "candidate": "通用降噪、跟踪连拍、电子快门条带与滚动畸变",
+      "reason": "已在主库或上一批交付覆盖，只保留不同问题的机型操作补充"
+    },
+    {
+      "candidate": "固定峰值级别最准确、固定快门保证圆形散景、连拍保证清晰",
+      "reason": "官方原文不能支持这些通用保证"
+    },
+    {
+      "candidate": "英文连拍入口或型号页元信息直接作为正文",
+      "reason": "正文读取失败；连拍事实改用已读中文iOS 18官方原文"
+    }
+  ]
+}

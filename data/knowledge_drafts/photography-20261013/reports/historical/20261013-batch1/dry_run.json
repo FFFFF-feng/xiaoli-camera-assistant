@@ -1,0 +1,29 @@
+{
+  "command": [
+    "<original-workspace>\\xiaoli-camera-assistant\\.venv\\Scripts\\python.exe",
+    "-B",
+    "-m",
+    "camera_assistant.knowledge",
+    "import",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁\\upload_cards",
+    "--dry-run"
+  ],
+  "returncode": 0,
+  "stdout": {
+    "ok": true,
+    "command": "import",
+    "data": {
+      "success": true,
+      "total_files": 4,
+      "validated_count": 4,
+      "imported_count": 0,
+      "unchanged_count": 0,
+      "dry_run": true,
+      "validated_only": true,
+      "skipped_files": [],
+      "errors": [],
+      "revisions": []
+    }
+  },
+  "stderr": ""
+}

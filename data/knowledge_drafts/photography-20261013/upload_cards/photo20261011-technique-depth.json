@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-technique-depth",
+  "library_id": "technique",
+  "title": "景深控制：光圈、距离和观看条件一起确认",
+  "kind": "guideline",
+  "content": "# 景深控制：光圈、距离和观看条件一起确认\n\n## 目标与结论\n清晰范围由多种条件决定，低 f 数通常减少景深。\n\n## 适用条件与所需信息\n确认镜头、距离、焦距、需要清晰的范围与输出用途。\n\n## 执行动作\n调整光圈或拍摄距离，检查前后关键部分是否满足目标。\n\n## 例外、限制与风险\n手机合成虚化不是物理光圈；景深边界不是突然清楚/模糊。\n\n## 依据与案例\n来源 WEB-006：[Understanding Depth of Field in Photography](https://www.cambridgeincolour.com/tutorials/depth-of-field.htm)；位置：DEPTH OF FIELD / CIRCLE OF CONFUSION。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-006"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "general_scene",
+    "subject": "unknown",
+    "motion": "unknown",
+    "goal": "清晰范围由多种条件决定，低 f 数通常减少景深。",
+    "requires": [
+      "确认镜头、距离、焦距、需要清晰的范围与输出用途。"
+    ],
+    "actions": [
+      "调整光圈或拍摄距离，检查前后关键部分是否满足目标。"
+    ],
+    "exceptions_and_risks": [
+      "手机合成虚化不是物理光圈；景深边界不是突然清楚/模糊。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "parameter_requirements": [
+      "exposure_mode",
+      "subject_motion",
+      "handheld_or_supported",
+      "lens_model",
+      "actual_focal_length_mm",
+      "maximum_aperture_f_number",
+      "shutter_type",
+      "lighting_clues",
+      "target_effect"
+    ],
+    "hardware_limits": null,
+    "suggested_parameter_values": null,
+    "suggestion_type": "方向或检查流程；没有固定曝光保证",
+    "parameter_missing_policy": "缺关键条件不生成数值",
+    "numeric_units": {
+      "shutter": "s",
+      "aperture": "f_number",
+      "iso": "number",
+      "focal_length": "mm"
+    }
+  },
+  "tags": [
+    "拍摄技术库",
+    "景深控制",
+    "general_scene"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/depth-of-field.htm",
+    "location": "DEPTH OF FIELD / CIRCLE OF CONFUSION",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

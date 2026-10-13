@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-technique-reciprocal",
+  "library_id": "technique",
+  "title": "倒数经验：只作手持试拍起点",
+  "kind": "guideline",
+  "content": "# 倒数经验：只作手持试拍起点\n\n## 目标与结论\n焦距倒数是经验起点，实际清晰需求与设备、姿态和输出有关。\n\n## 适用条件与所需信息\n确认 35mm 等效焦距、手持、静止主体和防抖状态。\n\n## 执行动作\n按等效焦距估算起点，放大试拍，必要时缩短曝光或支撑。\n\n## 例外、限制与风险\n不能用手机 EXIF 实际短焦距直接套用；防抖不能冻结主体。\n\n## 依据与案例\n来源 WEB-012：[Selecting and Using a Camera Tripod](https://www.cambridgeincolour.com/tutorials/camera-tripods.htm)；位置：WHEN TO USE A TRIPOD / STABILITY。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-012"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "general_scene",
+    "subject": "unknown",
+    "motion": "unknown",
+    "goal": "焦距倒数是经验起点，实际清晰需求与设备、姿态和输出有关。",
+    "requires": [
+      "确认 35mm 等效焦距、手持、静止主体和防抖状态。"
+    ],
+    "actions": [
+      "按等效焦距估算起点，放大试拍，必要时缩短曝光或支撑。"
+    ],
+    "exceptions_and_risks": [
+      "不能用手机 EXIF 实际短焦距直接套用；防抖不能冻结主体。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "parameter_requirements": [
+      "exposure_mode",
+      "subject_motion",
+      "handheld_or_supported",
+      "lens_model",
+      "actual_focal_length_mm",
+      "maximum_aperture_f_number",
+      "shutter_type",
+      "lighting_clues",
+      "target_effect"
+    ],
+    "hardware_limits": null,
+    "suggested_parameter_values": null,
+    "suggestion_type": "方向或检查流程；没有固定曝光保证",
+    "parameter_missing_policy": "缺关键条件不生成数值",
+    "numeric_units": {
+      "shutter": "s",
+      "aperture": "f_number",
+      "iso": "number",
+      "focal_length": "mm"
+    }
+  },
+  "tags": [
+    "拍摄技术库",
+    "倒数经验",
+    "general_scene"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/camera-tripods.htm",
+    "location": "WHEN TO USE A TRIPOD / STABILITY",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

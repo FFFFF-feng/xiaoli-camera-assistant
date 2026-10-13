@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-technique-nd",
+  "library_id": "technique",
+  "title": "ND：为长曝光减光并核验实拍",
+  "kind": "guideline",
+  "content": "# ND：为长曝光减光并核验实拍\n\n## 目标与结论\nND 可减少入射光，为延长曝光提供条件。\n\n## 适用条件与所需信息\n滤镜减光量、镜头尺寸和目标曝光明确，支撑可用。\n\n## 执行动作\n先估算无滤镜曝光，再按减光量换算并试拍核验。\n\n## 例外、限制与风险\n减光标记不能混用光密度和档数；强 ND 可能影响颜色与对焦。\n\n## 依据与案例\n来源 WEB-016：[Using Neutral Density Filters](https://www.cambridgeincolour.com/tutorials/neutral-density-filters.htm)；位置：OVERVIEW / LONG EXPOSURES。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-016"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "waterfall_long_exposure",
+    "subject": "water",
+    "motion": "moving",
+    "goal": "ND 可减少入射光，为延长曝光提供条件。",
+    "requires": [
+      "滤镜减光量、镜头尺寸和目标曝光明确，支撑可用。"
+    ],
+    "actions": [
+      "先估算无滤镜曝光，再按减光量换算并试拍核验。"
+    ],
+    "exceptions_and_risks": [
+      "减光标记不能混用光密度和档数；强 ND 可能影响颜色与对焦。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "parameter_requirements": [
+      "exposure_mode",
+      "subject_motion",
+      "handheld_or_supported",
+      "lens_model",
+      "actual_focal_length_mm",
+      "maximum_aperture_f_number",
+      "shutter_type",
+      "lighting_clues",
+      "target_effect"
+    ],
+    "hardware_limits": null,
+    "suggested_parameter_values": null,
+    "suggestion_type": "方向或检查流程；没有固定曝光保证",
+    "parameter_missing_policy": "缺关键条件不生成数值",
+    "numeric_units": {
+      "shutter": "s",
+      "aperture": "f_number",
+      "iso": "number",
+      "focal_length": "mm"
+    }
+  },
+  "tags": [
+    "拍摄技术库",
+    "ND",
+    "waterfall_long_exposure"
+  ],
+  "conditions": {
+    "scene": "waterfall_long_exposure"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/neutral-density-filters.htm",
+    "location": "OVERVIEW / LONG EXPOSURES",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

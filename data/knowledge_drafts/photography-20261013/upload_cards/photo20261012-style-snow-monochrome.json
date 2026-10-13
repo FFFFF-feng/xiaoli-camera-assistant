@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261012-style-snow-monochrome",
+  "library_id": "style",
+  "title": "黑白雪景：通过轮廓和明暗检查层次",
+  "kind": "guideline",
+  "content": "# 黑白雪景：通过轮廓和明暗检查层次\n\n## 目标与结论\n雪景黑白表达可强调暗主体与亮背景的结构。\n\n## 适用条件与所需信息\n目标明确，可在副本比较颜色与灰度。\n\n## 执行动作\n拍摄：留意主体轮廓；后期：转换副本并检查雪与背景的分离。\n\n## 例外、限制与风险\n去色可能使主体粘连；黑白不保证层次自动增强。\n\n## 依据与案例\n来源 WEB-093：[原始资料](https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/tips-for-photographing-winter-landscapes)；位置：It’s your story to tell / footprints / 温度脚注。操作检查由本轮补充。关联案例未独立审核。\n\n## 审核记录\n2026-10-12 来源访问及草稿整理完成；独立审核人 null，权限 pending，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-093"
+    ],
+    "review_status": "draft",
+    "rights_status": "pending",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-12",
+    "scene": "snow_landscape",
+    "subject": "landscape",
+    "motion": "unknown",
+    "requires": [
+      "目标明确，可在副本比较颜色与灰度。"
+    ],
+    "actions": [
+      "拍摄：留意主体轮廓；后期：转换副本并检查雪与背景的分离。"
+    ],
+    "exceptions_and_risks": [
+      "去色可能使主体粘连；黑白不保证层次自动增强。"
+    ],
+    "runtime_scene_registered": false,
+    "linked_case_ids": [],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "editorial_note": "基本原理来自所列章节，操作检查、保护条件和不确定性处置由本轮补充，需独立审核。",
+      "information_source": "model_inference"
+    },
+    "target_expression": "雪景黑白表达可强调暗主体与亮背景的结构。",
+    "capture_goal": "留意主体轮廓",
+    "postprocess_goal": "转换副本并检查雪与背景的分离。",
+    "composition_tendency": "目标明确，可在副本比较颜色与灰度。",
+    "lighting_tendency": "按目标记录实际光线，未提供统一布光方案",
+    "depth_of_field_goal": "按关键清晰区域确认，未给固定 f 数",
+    "color_tendency": "雪景黑白表达可强调暗主体与亮背景的结构。",
+    "related_rule_ids": [
+      "photo20261011-style-monochrome"
+    ]
+  },
+  "tags": [
+    "风格库",
+    "snow_landscape",
+    "landscape"
+  ],
+  "conditions": {
+    "scene": "snow_landscape"
+  },
+  "source": {
+    "name": "Nikon / Moose Peterson",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/tips-for-photographing-winter-landscapes",
+    "location": "It’s your story to tell / footprints / 温度脚注",
+    "license": "正文与照片权限待核验；原创短整理，未复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex（AI 整理，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

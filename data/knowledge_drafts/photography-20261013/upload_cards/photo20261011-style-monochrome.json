@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-style-monochrome",
+  "library_id": "style",
+  "title": "黑白：按亮度结构检验分离",
+  "kind": "guideline",
+  "content": "# 黑白：按亮度结构检验分离\n\n## 目标与结论\n色彩去除后，不同颜色可能变成相近灰度。\n\n## 适用条件与所需信息\n需要比较关键区域的亮度和纹理；可用 RAW 或可逆编辑。\n\n## 执行动作\n拍摄：关注轮廓、明暗与质感；后期：比较色彩通道转换，保留原版。\n\n## 例外、限制与风险\n黑白转换不能自动解决杂乱构图或模糊。\n\n## 依据与案例\n来源 WEB-023：[Converting a Digital Color Photo into Black and White](https://www.cambridgeincolour.com/tutorials/color-black-white.htm)；位置：COLOR CHANNELS / CONVERSION。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-023"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "general_scene",
+    "subject": "unknown",
+    "motion": "unknown",
+    "goal": "色彩去除后，不同颜色可能变成相近灰度。",
+    "requires": [
+      "需要比较关键区域的亮度和纹理；可用 RAW 或可逆编辑。"
+    ],
+    "actions": [
+      "拍摄：关注轮廓、明暗与质感；后期：比较色彩通道转换，保留原版。"
+    ],
+    "exceptions_and_risks": [
+      "黑白转换不能自动解决杂乱构图或模糊。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "capture_goal": "关注轮廓、明暗与质感",
+    "postprocess_goal": "比较色彩通道转换，保留原版。",
+    "composition_tendency": "需要比较关键区域的亮度和纹理；可用 RAW 或可逆编辑。",
+    "lighting_tendency": "色彩去除后，不同颜色可能变成相近灰度。",
+    "depth_of_field_goal": "根据关键清晰区域另行确认，未提供统一 f 数",
+    "color_tendency": "根据主题确认，未规定滤镜",
+    "related_rule_ids": [
+      "photo20261011-composition-patterns"
+    ]
+  },
+  "tags": [
+    "风格库",
+    "黑白",
+    "general_scene"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/color-black-white.htm",
+    "location": "COLOR CHANNELS / CONVERSION",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

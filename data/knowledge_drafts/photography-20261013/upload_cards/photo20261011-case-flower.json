@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-case-flower",
+  "library_id": "case",
+  "title": "蒲公英近摄原图（LorelMan）",
+  "kind": "observed_case",
+  "content": "已登记来源的真实摄影作品或来源中的对照记录。有本地去元数据基图。没有独立人工评价，不能宣称助手带来改善。",
+  "payload": {
+    "schema_version": "draft-1",
+    "case_id": "photo20261011-case-flower",
+    "capture_session_id": null,
+    "split_group_id": "photo20261011-group-flower",
+    "dataset_split": "reference",
+    "scene_id": "macro",
+    "user_goal": null,
+    "style_id": null,
+    "before_image_id": "photo20261011-image-flower-base-v1",
+    "after_image_id": null,
+    "after_image_type": null,
+    "annotation_base": {
+      "image_id": "photo20261011-image-flower-base-v1",
+      "width": 3888,
+      "height": 2592,
+      "image_hash": "4feb3fc1594ba9f4727f603a89cd42cb4fd931b3431a26a9baeca087069f040e",
+      "hash_algorithm": "sha256",
+      "orientation_corrected": true,
+      "base_version": 1
+    },
+    "subject_bbox_xyxy_normalized": [
+      0.56,
+      0.25,
+      0.8,
+      0.63
+    ],
+    "gaze_direction": "unknown",
+    "motion_direction": "unknown",
+    "protected_regions": [
+      {
+        "label": "花冠",
+        "bbox_xyxy_normalized": [
+          0.56,
+          0.25,
+          0.8,
+          0.63
+        ],
+        "information_source": "model_inference",
+        "review_status": "pending_review"
+      }
+    ],
+    "horizon": null,
+    "distractions": [],
+    "capture_parameters": {
+      "camera_model": "Canon EOS 400D DIGITAL",
+      "lens_model": null,
+      "actual_focal_length_mm": 105.0,
+      "aperture_f_number": 8.0,
+      "shutter_seconds": 0.4,
+      "iso": 100,
+      "exposure_mode": null,
+      "field_sources": {
+        "shutter_seconds": "exif",
+        "aperture_f_number": "exif",
+        "iso": "exif",
+        "actual_focal_length_mm": "exif",
+        "camera_model": "exif"
+      }
+    },
+    "issues": [],
+    "actions": [],
+    "linked_knowledge_ids": [
+      "photo20261011-technique-macro-focus",
+      "photo20261011-technique-depth"
+    ],
+    "human_evaluation": {
+      "reviewer": null,
+      "result": null,
+      "reasons": [],
+      "confounding_changes": []
+    },
+    "rights": {
+      "photographer_permission": "CC0_waiver_recorded_on_source",
+      "depicted_person_permission": "not_applicable",
+      "storage": "allowed_under_CC0",
+      "retrieval_use": "allowed_under_CC0",
+      "public_display": "allowed_under_CC0",
+      "redistribution": "allowed_under_CC0"
+    },
+    "review_status": "draft",
+    "author": "Codex 本轮资料整理（AI，待独立审核）",
+    "reviewer": null,
+    "accessed_at": "2026-10-11",
+    "verified_at": null,
+    "source_id": "WEB-053",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Dandelion_flower_photo.jpg",
+    "source_location": "蒲公英近摄原图（LorelMan）",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "artifact_status": "local_sanitized_base",
+    "observations": [
+      "模型视觉检查：黄色花冠位于画面右侧，背景包含虚化草叶；该描述和框均待人工复核。"
+    ],
+    "observation_sources": {
+      "subject_bbox_xyxy_normalized": "model_inference",
+      "visual_description": "model_inference",
+      "no_depicted_person": "model_inference"
+    },
+    "pending": [
+      "独立内容审核",
+      "图像标注复核",
+      "前后结果与人工评价缺失，不能用于效果宣称"
+    ],
+    "photographer": "LorelMan",
+    "attribution": "Dandelion flower photo — LorelMan — Wikimedia Commons — CC0 1.0；本地副本仅方向校正和去元数据重编码。",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Dandelion_flower_photo.jpg"
+  },
+  "tags": [
+    "参考案例",
+    "macro",
+    "local_sanitized_base"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "LorelMan",
+    "url": "https://commons.wikimedia.org/wiki/File:Dandelion_flower_photo.jpg",
+    "location": "蒲公英近摄原图（LorelMan）",
+    "license": "CC0-1.0",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

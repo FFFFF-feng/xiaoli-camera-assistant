@@ -1,0 +1,28 @@
+{
+  "core_claim_conflicts_found": [],
+  "scope_differences": [
+    {
+      "id": "B2-D01",
+      "sources": [
+        "B2-S01",
+        "B2-S02"
+      ],
+      "issue": "峰值在放大/HDMI显示条件中的限制按机型和显示设备区分",
+      "decision": "保留每台机型的原文限制，不合成统一显示规则"
+    },
+    {
+      "id": "B2-D02",
+      "sources": [
+        "B2-S07"
+      ],
+      "issue": "AE/AF Lock与Exposure Adjustment保留设置在同章分为两个操作",
+      "decision": "不推断AE/AF锁定跨会话保持；没有官方相反结论，属于防止混淆的边界"
+    }
+  ],
+  "unresolved": [
+    "相机固件及iOS 18小版本未实测",
+    "峰值级别、散景形状和噪声改善无本批实拍证据",
+    "未核验资料使用许可"
+  ],
+  "note": "未发现冲突仅限本批实际读取的核心主张，不代表完整手册或所有厂商资料无冲突。"
+}

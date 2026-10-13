@@ -1,0 +1,23 @@
+schema_version: 1
+knowledge_id: upload-smoke-v1-composition-001
+library_id: composition
+title: "[上传测试] 同ID同版本的冲突内容"
+kind: guideline
+content: >-
+  这是故意修改的内容，但仍然沿用构图样本的knowledge_id和version 1。
+  与原构图样本同时上传应在预览时拒绝；原构图样本已入库后单独导入此文件应在保存时拒绝。
+payload:
+  test_only: true
+tags:
+  - 上传测试
+  - 冲突样本
+conditions:
+  device_type: phone
+source:
+  name: 小栗上传功能自制测试样本
+  location: 样本集 upload-smoke-v1 / 同版本冲突
+  license: 仅用于项目导入功能测试，未授权作为正式推荐依据
+  retrieval_allowed: false
+author: 上传功能测试员
+version: 1
+dataset_split: evaluation

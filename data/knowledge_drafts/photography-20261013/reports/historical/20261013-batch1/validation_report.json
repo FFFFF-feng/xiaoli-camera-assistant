@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "draft_cards": 4,
+  "schema_version": 1,
+  "author": "符梁",
+  "source_registry_count": 10,
+  "checks": {
+    "strict_model": true,
+    "source_links": true,
+    "related_existing_ids": true,
+    "main_id_title_duplicates": false,
+    "cli_dry_run": true,
+    "upload_preview_api": true,
+    "isolated_draft_write": true,
+    "upload_repeat_idempotence": true,
+    "directory_repeat_idempotence": true,
+    "draft_keyword_and_structured_isolation": true,
+    "temp_cleanup": true,
+    "main_database_unchanged": true
+  },
+  "main_database_before": {
+    "path": "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge.db",
+    "file_sha256": "8848f2c8d2feb719bf29a5e82a4dc0b60bff681fa0fcd4e7d71aa7bd388049c8",
+    "logical_sha256": "bcf68a21cf8513a179e90614d6aad95492a64b4c1788dbaa1d65f467aae61be1",
+    "revision_count": 112,
+    "audit_count": 112,
+    "statuses": {
+      "draft": 112
+    }
+  },
+  "main_database_after": {
+    "path": "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge.db",
+    "file_sha256": "8848f2c8d2feb719bf29a5e82a4dc0b60bff681fa0fcd4e7d71aa7bd388049c8",
+    "logical_sha256": "bcf68a21cf8513a179e90614d6aad95492a64b4c1788dbaa1d65f467aae61be1",
+    "revision_count": 112,
+    "audit_count": 112,
+    "statuses": {
+      "draft": 112
+    }
+  },
+  "not_executed": [
+    "浏览器实际工作台上传及视觉预览",
+    "真机实拍",
+    "独立人工摄影事实审核",
+    "版权许可核验",
+    "审核/发布流程测试",
+    "Git提交、推送"
+  ],
+  "limits": [
+    "dry-run只校验格式及同批重复，不查询数据库版本冲突",
+    "语义去重不是同ID/同标题检查可以证明的，须独立人工复查",
+    "本批2条摄影建议由Canon与Sony两个独立发布者核对；2条Apple事实没有独立双发布者"
+  ],
+  "environment_issue": {
+    "initial_upload_preview": "失败：系统临时目录无写权限，0条预览；未导入",
+    "resolution": "只为verify_drafts.py进程设置tempfile.tempdir到交付目录下临时子目录；实际重试成功并清理，不修改项目或系统配置"
+  },
+  "card_file_hashes": {
+    "photo20261013-equipment-iphone16pro-live-max.json": "05908696c111efed5ca4d95c531fbf5b45a8978b1f202f8450ad70e7cb8203ba",
+    "photo20261013-equipment-iphone16pro-macro-switch.json": "9427d6b7ecc585bd0e9e5632b60206eb38a085fd02d6385e1b263dce5aced4b8",
+    "photo20261013-technique-flicker-banding.json": "c9371d08c9b66d4c21fd8679905a13326226971a29970ac4a426cd03c383f9ce",
+    "photo20261013-technique-rolling-shutter-geometry.json": "fe2981362cd4e117b4f328f8cd12b41f31978b47165c9a9d9b8980dd758cc009"
+  },
+  "model_schema_fields": [
+    "knowledge_id",
+    "library_id",
+    "title",
+    "kind",
+    "content",
+    "payload",
+    "tags",
+    "conditions",
+    "source",
+    "author",
+    "version",
+    "schema_version",
+    "dataset_split"
+  ]
+}

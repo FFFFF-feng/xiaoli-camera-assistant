@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-technique-focus-static",
+  "library_id": "technique",
+  "title": "静止主体对焦：关键细节优先",
+  "kind": "guideline",
+  "content": "# 静止主体对焦：关键细节优先\n\n## 目标与结论\n应将确认的关键细节作为对焦目标，并复查实际清晰位置。\n\n## 适用条件与所需信息\n主体静止、关键区域明确及对焦模式可确认。\n\n## 执行动作\n选择关键位置，放大预览；必要时改用手动或更合适对焦区域。\n\n## 例外、限制与风险\n低纹理、反光和低照度会影响 AF；对焦成功提示不是全部清晰。\n\n## 依据与案例\n来源 WEB-008：[Understanding Camera Autofocus](https://www.cambridgeincolour.com/tutorials/camera-autofocus.htm)；位置：CONTINUOUS & AI SERVO / ONE SHOT / PORTRAITS。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-008"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "general_scene",
+    "subject": "unknown",
+    "motion": "static",
+    "goal": "应将确认的关键细节作为对焦目标，并复查实际清晰位置。",
+    "requires": [
+      "主体静止、关键区域明确及对焦模式可确认。"
+    ],
+    "actions": [
+      "选择关键位置，放大预览；必要时改用手动或更合适对焦区域。"
+    ],
+    "exceptions_and_risks": [
+      "低纹理、反光和低照度会影响 AF；对焦成功提示不是全部清晰。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "parameter_requirements": [
+      "exposure_mode",
+      "subject_motion",
+      "handheld_or_supported",
+      "lens_model",
+      "actual_focal_length_mm",
+      "maximum_aperture_f_number",
+      "shutter_type",
+      "lighting_clues",
+      "target_effect"
+    ],
+    "hardware_limits": null,
+    "suggested_parameter_values": null,
+    "suggestion_type": "方向或检查流程；没有固定曝光保证",
+    "parameter_missing_policy": "缺关键条件不生成数值",
+    "numeric_units": {
+      "shutter": "s",
+      "aperture": "f_number",
+      "iso": "number",
+      "focal_length": "mm"
+    }
+  },
+  "tags": [
+    "拍摄技术库",
+    "静止主体对焦",
+    "general_scene"
+  ],
+  "conditions": {
+    "motion": "static"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/camera-autofocus.htm",
+    "location": "CONTINUOUS & AI SERVO / ONE SHOT / PORTRAITS",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

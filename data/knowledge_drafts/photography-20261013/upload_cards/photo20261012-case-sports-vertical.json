@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261012-case-sports-vertical",
+  "library_id": "case",
+  "title": "横图裁成竖图示例 / D5000, 55-300mm, 1/1250, f/9, ISO 640",
+  "kind": "observed_case",
+  "content": "来源中的摄影图例记录，只有原始链接。拍摄数值来自图注；没有本地图片或独立评价，不推广为通用参数。",
+  "payload": {
+    "schema_version": "draft-1",
+    "case_id": "photo20261012-case-sports-vertical",
+    "capture_session_id": null,
+    "split_group_id": "photo20261012-group-sports-vertical",
+    "dataset_split": "reference",
+    "scene_id": "fast_human",
+    "user_goal": null,
+    "style_id": null,
+    "before_image_id": null,
+    "after_image_id": null,
+    "after_image_type": "crop",
+    "annotation_base": {
+      "image_id": null,
+      "width": null,
+      "height": null,
+      "image_hash": null,
+      "orientation_corrected": null
+    },
+    "subject_bbox_xyxy_normalized": null,
+    "gaze_direction": "unknown",
+    "motion_direction": "unknown",
+    "protected_regions": [],
+    "horizon": null,
+    "distractions": [],
+    "capture_parameters": {
+      "camera_model": "Nikon D5000",
+      "lens_model": "55-300mm f/4.5-5.6（图注简写）",
+      "actual_focal_length_mm": null,
+      "aperture_f_number": 9.0,
+      "shutter_seconds": 0.0008,
+      "iso": 640,
+      "exposure_mode": null,
+      "field_sources": {
+        "camera_model": "user_report",
+        "lens_model": "user_report",
+        "shutter_seconds": "user_report",
+        "aperture_f_number": "user_report",
+        "iso": "user_report"
+      }
+    },
+    "parameter_source_note": "user_report 在此表示发布者图注，不是本地 EXIF。",
+    "issues": [],
+    "actions": [
+      {
+        "type": "crop",
+        "crop_xyxy_normalized": null,
+        "information_source": "user_report",
+        "action": "来源报告竖裁，未推断精确坐标"
+      }
+    ],
+    "linked_knowledge_ids": [
+      "photo20261012-composition-sports-crop"
+    ],
+    "human_evaluation": {
+      "reviewer": null,
+      "result": null,
+      "reasons": [],
+      "confounding_changes": []
+    },
+    "rights": {
+      "photographer_permission": "unknown",
+      "depicted_person_permission": "unknown",
+      "storage": "unknown",
+      "retrieval_use": "unknown",
+      "public_display": "unknown",
+      "redistribution": "unknown"
+    },
+    "photographer": "Elizabeth Barbieri（图注署名）",
+    "source_id": "WEB-091",
+    "source_url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/photographing-sports-indoors-and-out",
+    "source_location": "横图裁成竖图示例 / D5000, 55-300mm, 1/1250, f/9, ISO 640",
+    "license": "pending",
+    "artifact_status": "source_link_only",
+    "observations": [
+      "原图注为男孩在户外长曲棍球场奔跑，并报告横图竖裁；本轮未取得原始基图。"
+    ],
+    "observation_sources": {
+      "caption_description": "user_report"
+    },
+    "author": "Codex（AI 整理，待独立审核）",
+    "reviewer": null,
+    "accessed_at": "2026-10-12",
+    "verified_at": null,
+    "review_status": "draft",
+    "pending": [
+      "原图及用途许可",
+      "基图和几何标注",
+      "独立内容审核",
+      "前后评价缺失，不能宣称助手改善"
+    ],
+    "observed_context": {
+      "description": "outdoor_lacrosse",
+      "information_source": "user_report"
+    }
+  },
+  "tags": [
+    "参考案例",
+    "fast_human",
+    "source_link_only"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon / Diane Berkenfeld, Elizabeth Barbieri, Michael Earley",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/photographing-sports-indoors-and-out",
+    "location": "横图裁成竖图示例 / D5000, 55-300mm, 1/1250, f/9, ISO 640",
+    "license": "pending",
+    "retrieval_allowed": false
+  },
+  "author": "Codex（AI 整理，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

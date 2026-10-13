@@ -1,0 +1,272 @@
+{
+  "accessed_at": "2026-10-13",
+  "sources": [
+    {
+      "source_id": "B2-S01",
+      "publisher": "Canon",
+      "title": "EOS R6 Mark II — Manual Focus",
+      "original_url": "https://cam.start.canon/en/C012/manual/html/UG-05_AF-Drive_0090.html",
+      "section": "Manual Focus / Setting MF Peaking (Outline Emphasis) / Focus Guide",
+      "accessed_at": "2026-10-13",
+      "version": "网页章节D243-134；相机固件未注明",
+      "published_or_modified_at": null,
+      "actual_read_scope": "L5–138全部章节教学文字、Note和Caution已读；未检查按钮截图及完整手册。",
+      "access_result": "MCP公开网页文本实际读取成功，无登录",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "operations_scope": "搜索/open/find/click只读；未查询完整账户权限清单",
+      "whole_manual_read": false,
+      "video_watched": false,
+      "images_inspected": false,
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_copy": "未获许可，未保存",
+        "images_and_videos": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "note": "只读取列出的章节文本；发布日期未知，网页行号仅为本次输出定位。"
+    },
+    {
+      "source_id": "B2-S02",
+      "publisher": "Sony",
+      "title": "ILCE-7M4 α7 IV — Peaking Display",
+      "original_url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000655327.html",
+      "section": "Peaking Display / Menu item details / Note",
+      "accessed_at": "2026-10-13",
+      "version": "帮助指南URL v1；固件未固定",
+      "published_or_modified_at": null,
+      "actual_read_scope": "L13–31本章全部正文已读；先读MENU目录中L178–187链接，再实际打开专章；未读整本打印版。",
+      "access_result": "MCP公开网页文本实际读取成功，无登录",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "operations_scope": "搜索/open/find/click只读；未查询完整账户权限清单",
+      "whole_manual_read": false,
+      "video_watched": false,
+      "images_inspected": false,
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_copy": "未获许可，未保存",
+        "images_and_videos": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "note": "只读取列出的章节文本；发布日期未知，网页行号仅为本次输出定位。"
+    },
+    {
+      "source_id": "B2-S03",
+      "publisher": "Canon",
+      "title": "EOS R6 Mark II — Shutter Mode",
+      "original_url": "https://cam.start.canon/en/C012/manual/html/UG-04_Shooting-1_0370.html",
+      "section": "Mechanical / Elec. 1st-curtain / Electronic / Caution",
+      "accessed_at": "2026-10-13",
+      "version": "网页章节D243-089；相机固件未注明",
+      "published_or_modified_at": null,
+      "actual_read_scope": "L5–52本章全部教学文本已读，尤其L36–43散景限制；未查看截图或读整本手册。",
+      "access_result": "MCP公开网页文本实际读取成功，无登录",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "operations_scope": "搜索/open/find/click只读；未查询完整账户权限清单",
+      "whole_manual_read": false,
+      "video_watched": false,
+      "images_inspected": false,
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_copy": "未获许可，未保存",
+        "images_and_videos": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "note": "只读取列出的章节文本；发布日期未知，网页行号仅为本次输出定位。"
+    },
+    {
+      "source_id": "B2-S04",
+      "publisher": "Sony",
+      "title": "ILCE-7M4 α7 IV — e-Front Curtain Shut.",
+      "original_url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000616690.html",
+      "section": "e-Front Curtain Shut. / Note",
+      "accessed_at": "2026-10-13",
+      "version": "帮助指南URL v1；固件未固定",
+      "published_or_modified_at": null,
+      "actual_read_scope": "L14–30章节全部正文、设置及三项Note已读。",
+      "access_result": "MCP公开网页文本实际读取成功，无登录",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "operations_scope": "搜索/open/find/click只读；未查询完整账户权限清单",
+      "whole_manual_read": false,
+      "video_watched": false,
+      "images_inspected": false,
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_copy": "未获许可，未保存",
+        "images_and_videos": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "note": "只读取列出的章节文本；发布日期未知，网页行号仅为本次输出定位。"
+    },
+    {
+      "source_id": "B2-S05",
+      "publisher": "Sony",
+      "title": "ILCE-7M4 α7 IV — Long Exposure NR",
+      "original_url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000656583.html",
+      "section": "Long Exposure NR / Menu item details / Note",
+      "accessed_at": "2026-10-13",
+      "version": "帮助指南URL v1；固件未固定",
+      "published_or_modified_at": null,
+      "actual_read_scope": "L13–32本章全部正文已读，含电子快门、连拍/连续包围、Intelligent Auto限制。",
+      "access_result": "MCP公开网页文本实际读取成功，无登录",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "operations_scope": "搜索/open/find/click只读；未查询完整账户权限清单",
+      "whole_manual_read": false,
+      "video_watched": false,
+      "images_inspected": false,
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_copy": "未获许可，未保存",
+        "images_and_videos": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "note": "只读取列出的章节文本；发布日期未知，网页行号仅为本次输出定位。"
+    },
+    {
+      "source_id": "B2-S06",
+      "publisher": "Sony",
+      "title": "ILCE-7M4 α7 IV — Shutter Priority",
+      "original_url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000617337.html",
+      "section": "Note: Long Exposure NR after shooting",
+      "accessed_at": "2026-10-13",
+      "version": "帮助指南URL v1；固件未固定",
+      "published_or_modified_at": null,
+      "actual_read_scope": "L13–35本章全部教学文本已读；L34再次核验降噪发生于曝光之后及等待限制。",
+      "access_result": "MCP公开网页文本实际读取成功，无登录",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "operations_scope": "搜索/open/find/click只读；未查询完整账户权限清单",
+      "whole_manual_read": false,
+      "video_watched": false,
+      "images_inspected": false,
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_copy": "未获许可，未保存",
+        "images_and_videos": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "note": "与B2-S05同一发布者；用于核对文字语义，不计独立发布者。"
+    },
+    {
+      "source_id": "B2-S07",
+      "publisher": "Apple",
+      "title": "Use iPhone camera tools to set up your shot",
+      "original_url": "https://support.apple.com/en-gb/guide/iphone/iph3dc593597/18.0/ios/18.0",
+      "section": "Adjust the camera’s focus and exposure / Lock the exposure setting",
+      "accessed_at": "2026-10-13",
+      "version": "iOS 18版指南；18.x小版本及设备界面未实测",
+      "published_or_modified_at": null,
+      "actual_read_scope": "L1078–1126文本已读，本卡仅用L1081–1105两个小节；未读完整工具章节剩余小节或整本指南。",
+      "access_result": "MCP公开网页文本实际读取成功，无登录",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "operations_scope": "搜索/open/find/click只读；未查询完整账户权限清单",
+      "whole_manual_read": false,
+      "video_watched": false,
+      "images_inspected": false,
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_copy": "未获许可，未保存",
+        "images_and_videos": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "note": "只读取列出的章节文本；发布日期未知，网页行号仅为本次输出定位。"
+    },
+    {
+      "source_id": "B2-S08",
+      "publisher": "Apple",
+      "title": "使用 iPhone 相机的连拍快照模式捕捉动态镜头",
+      "original_url": "https://support.apple.com/zh-cn/guide/iphone/ipha42c55cd0/18.0/ios/18.0",
+      "section": "连拍操作步骤 / 使用调高音量键连拍提示",
+      "accessed_at": "2026-10-13",
+      "version": "中国区iOS 18版指南；18.x小版本未实测",
+      "published_or_modified_at": null,
+      "actual_read_scope": "L1021–1043本章全部教学文字已读；该中文版本可读，英文地区入口未成功读取正文。",
+      "access_result": "MCP公开网页文本实际读取成功，无登录",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "operations_scope": "搜索/open/find/click只读；未查询完整账户权限清单",
+      "whole_manual_read": false,
+      "video_watched": false,
+      "images_inspected": false,
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_copy": "未获许可，未保存",
+        "images_and_videos": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "note": "只读取列出的章节文本；发布日期未知，网页行号仅为本次输出定位。"
+    },
+    {
+      "source_id": "B2-S09",
+      "publisher": "Apple",
+      "title": "iPhone 16 Pro — Tech Specs",
+      "original_url": "https://support.apple.com/en-us/121031",
+      "section": "Camera / Burst mode",
+      "accessed_at": "2026-10-13",
+      "version": "iPhone 16 Pro美国英文规格页",
+      "published_or_modified_at": null,
+      "actual_read_scope": "本次向整理模型显示并读取L0–205，特别L116–173 Camera以及L170 Burst mode；未读完整857行规格及全部脚注。",
+      "access_result": "MCP公开网页文本实际读取成功，无登录",
+      "tool": "mcp__codex_apps__search_service_web_run",
+      "operations_scope": "搜索/open/find/click只读；未查询完整账户权限清单",
+      "whole_manual_read": false,
+      "video_watched": false,
+      "images_inspected": false,
+      "rights": {
+        "retrieval_allowed": false,
+        "full_text_copy": "未获许可，未保存",
+        "images_and_videos": "未获许可，未下载",
+        "public_display": "未核验",
+        "redistribution": "未核验"
+      },
+      "note": "与上一批同一URL，本批重新访问核验；复用来源不等于重复卡片。"
+    }
+  ],
+  "failed_reads": [
+    {
+      "url": "https://support.apple.com/en-gb/guide/iphone/ipha42c55cd0/18.0/ios/18.0",
+      "result": "Internal Error，未读正文，不作事实依据"
+    },
+    {
+      "url": "https://support.apple.com/en-us/guide/iphone/ipha42c55cd0/18.0/ios/18.0",
+      "result": "Internal Error，未读正文，不作事实依据"
+    },
+    {
+      "url": "https://support.apple.com/en-gb/guide/iphone/take-burst-mode-shots-ipha42c55cd0/18.0/ios/18.0",
+      "result": "Internal Error，未读正文，不作事实依据"
+    },
+    {
+      "url": "https://support.apple.com/en-ie/guide/iphone/ipha42c55cd0/18.0/ios/18.0",
+      "result": "Internal Error，未读正文，不作事实依据"
+    },
+    {
+      "url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000616739.html",
+      "result": "Internal Error，未读正文，不作事实依据"
+    },
+    {
+      "url": "https://support.apple.com/en-gb/guide/iphone/iph689bcd137/18.0/ios/18.0",
+      "result": "点击返回型号页元信息；正文open失败，不作额外机型能力依据"
+    }
+  ],
+  "navigation_reads": [
+    {
+      "url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1001803623.html",
+      "scope": "L114–306菜单索引文本已读，使用L185–187 Peaking链接；仅作导航，不为知识事实"
+    }
+  ],
+  "search_only_leads": [
+    {
+      "topic": "先对焦后重新构图的浅景深误差",
+      "result": "检索到Nikon/Canon教程及论坛，未读取足够的双独立原始核心依据，本批暂缓；未下载PDF"
+    },
+    {
+      "topic": "其他搜索返回的第三方手册镜像、博主及评论",
+      "result": "只摘要，未作为知识卡依据"
+    }
+  ]
+}

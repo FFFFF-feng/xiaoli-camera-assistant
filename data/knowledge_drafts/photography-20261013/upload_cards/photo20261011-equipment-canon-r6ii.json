@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-equipment-canon-r6ii",
+  "library_id": "equipment",
+  "title": "Canon EOS R6 Mark II：规格、条件与未知能力",
+  "kind": "manufacturer_fact",
+  "content": "逐字段事实见 payload.facts。已查原始规格，但尚未独立审核或真机验证。规格为硬件/模式事实，不是最佳拍摄参数；未真机测试。电子 1/16000 s 有模式与驱动等限制；未列出的组合必须回手册确认。",
+  "payload": {
+    "schema_version": "draft-1",
+    "equipment_id": "photo20261011-equipment-canon-r6ii",
+    "camera_model": "Canon EOS R6 Mark II",
+    "lens_model": null,
+    "camera_firmware": null,
+    "review_status": "draft",
+    "author": "Codex 本轮资料整理（AI，待独立审核）",
+    "reviewer": null,
+    "accessed_at": "2026-10-11",
+    "verified_at": null,
+    "facts": [
+      {
+        "field": "sensor_dimensions",
+        "value": [
+          36.0,
+          24.0
+        ],
+        "unit": "mm",
+        "conditions": {
+          "capture_mode": "still_photo"
+        },
+        "source_id": "WEB-038",
+        "source_url": "https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0100.html",
+        "source_location": "Image sensor / Screen size",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "iso_normal_range",
+        "value": [
+          100,
+          102400
+        ],
+        "unit": "ISO",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "highlight_tone_priority": "off"
+        },
+        "source_id": "WEB-038",
+        "source_url": "https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0100.html",
+        "source_location": "Normal ISO speed",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "iso_expanded_endpoints",
+        "value": [
+          50,
+          204800
+        ],
+        "unit": "ISO_equivalent",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "HDR_mode": false,
+          "HDR_PQ": false
+        },
+        "source_id": "WEB-038",
+        "source_url": "https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0100.html",
+        "source_location": "Expanded ISO speed / footnotes",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "iso_auto_supported_range",
+        "value": [
+          100,
+          102400
+        ],
+        "unit": "ISO",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "exposure_mode": [
+            "Fv",
+            "P",
+            "Tv",
+            "Av",
+            "M"
+          ],
+          "flash": false,
+          "highlight_tone_priority": "off",
+          "user_auto_limits": "may_narrow_range"
+        },
+        "source_id": "WEB-038",
+        "source_url": "https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0100.html",
+        "source_location": "ISO Auto details for still photos / Creative Zone / notes 1–2",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": 0.000125,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "shutter_type": "mechanical"
+        },
+        "source_id": "WEB-038",
+        "source_url": "https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0100.html",
+        "source_location": "Shutter speed / X-sync table",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": 0.000125,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "shutter_type": "electronic_front_curtain"
+        },
+        "source_id": "WEB-038",
+        "source_url": "https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0100.html",
+        "source_location": "Shutter speed / X-sync table",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": 6.25e-05,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "shutter_type": "electronic",
+          "exposure_mode": [
+            "Tv",
+            "M"
+          ],
+          "drive_mode": "single",
+          "RAW_burst": false,
+          "HDR_mode": false,
+          "focus_bracketing": false,
+          "same_exposure_for_new_aperture": false
+        },
+        "source_id": "WEB-038",
+        "source_url": "https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0100.html",
+        "source_location": "Shutter speed / notes 1–3",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": 0.000125,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "shutter_type": "electronic",
+          "exposure_mode": [
+            "Fv",
+            "P",
+            "Av"
+          ]
+        },
+        "source_id": "WEB-038",
+        "source_url": "https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0100.html",
+        "source_location": "Shutter speed / note 1",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      }
+    ],
+    "conflicts": [],
+    "notes": [
+      "规格为硬件/模式事实，不是最佳拍摄参数；未真机测试。",
+      "电子 1/16000 s 有模式与驱动等限制；未列出的组合必须回手册确认。"
+    ],
+    "source_id": "WEB-038",
+    "source_url": "https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0100.html"
+  },
+  "tags": [
+    "器材规格",
+    "Canon EOS R6 Mark II"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Canon（署名作者以页面为准）",
+    "url": "https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0100.html",
+    "location": "逐字段 source_location",
+    "license": "仅记录必要事实；厂商正文和图片使用权限待核验",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

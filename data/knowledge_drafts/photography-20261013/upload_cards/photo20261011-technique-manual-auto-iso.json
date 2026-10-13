@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-technique-manual-auto-iso",
+  "library_id": "technique",
+  "title": "M 加自动 ISO：第三个变量仍可自动变化",
+  "kind": "guideline",
+  "content": "# M 加自动 ISO：第三个变量仍可自动变化\n\n## 目标与结论\nM 模式设定光圈和快门后，自动 ISO 仍可能改变 ISO。\n\n## 适用条件与所需信息\n先确认具体机型对 Auto ISO 与曝光补偿的操作支持。\n\n## 执行动作\n查看 ISO 是否 AUTO，观察相同光圈快门下亮度和 ISO 的变化。\n\n## 例外、限制与风险\n机型操作差异需查手册；不能将 M 一律描述为三个值都手动。\n\n## 依据与案例\n来源 WEB-038：[Canon : Product Manual : EOS R6 Mark II : Specifications](https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0100.html)；位置：ISO Auto details for still photos / Creative Zone M。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-038"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "general_scene",
+    "subject": "unknown",
+    "motion": "unknown",
+    "goal": "M 模式设定光圈和快门后，自动 ISO 仍可能改变 ISO。",
+    "requires": [
+      "先确认具体机型对 Auto ISO 与曝光补偿的操作支持。"
+    ],
+    "actions": [
+      "查看 ISO 是否 AUTO，观察相同光圈快门下亮度和 ISO 的变化。"
+    ],
+    "exceptions_and_risks": [
+      "机型操作差异需查手册；不能将 M 一律描述为三个值都手动。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "parameter_requirements": [
+      "exposure_mode",
+      "subject_motion",
+      "handheld_or_supported",
+      "lens_model",
+      "actual_focal_length_mm",
+      "maximum_aperture_f_number",
+      "shutter_type",
+      "lighting_clues",
+      "target_effect"
+    ],
+    "hardware_limits": null,
+    "suggested_parameter_values": null,
+    "suggestion_type": "方向或检查流程；没有固定曝光保证",
+    "parameter_missing_policy": "缺关键条件不生成数值",
+    "numeric_units": {
+      "shutter": "s",
+      "aperture": "f_number",
+      "iso": "number",
+      "focal_length": "mm"
+    }
+  },
+  "tags": [
+    "拍摄技术库",
+    "M 加自动 ISO",
+    "general_scene"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Canon（署名作者以页面为准）",
+    "url": "https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0100.html",
+    "location": "ISO Auto details for still photos / Creative Zone M",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

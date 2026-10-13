@@ -1,0 +1,26 @@
+schema_version: 1
+knowledge_id: upload-smoke-v1-composition-001
+library_id: composition
+title: "[上传测试] 主体位置与画面边缘"
+kind: guideline
+content: >-
+  测试指引：先明确画面主体，再观察主体是否贴近边缘、背景是否干扰。
+  本记录仅用于检查构图库的YAML上传和条件字段，不代表已审核的构图规则。
+payload:
+  test_only: true
+  checklist:
+    - 主体是否明确
+    - 画面边缘是否有干扰
+tags:
+  - 上传测试
+  - 构图样本
+conditions:
+  device_type: phone
+source:
+  name: 小栗上传功能自制测试样本
+  location: 样本集 upload-smoke-v1 / 构图库
+  license: 仅用于项目导入功能测试，未授权作为正式推荐依据
+  retrieval_allowed: false
+author: 上传功能测试员
+version: 1
+dataset_split: evaluation

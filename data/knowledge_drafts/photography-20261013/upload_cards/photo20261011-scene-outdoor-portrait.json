@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-scene-outdoor-portrait",
+  "library_id": "scene",
+  "title": "户外单人肖像：先确认主体与光线",
+  "kind": "guideline",
+  "content": "# 户外单人肖像：先确认主体与光线\n\n## 目标与结论\n以一个人物为表达主体，户外环境为背景；观察面部受光和背景亮度。\n\n## 适用条件与所需信息\n需确认用户想突出人物还是环境，以及人物是否在移动。\n\n## 执行动作\n登记主体、明暗关系、遮挡和运动；缺失字段保留 unknown。\n\n## 例外、限制与风险\n有人的照片也可能是环境纪实；不能仅凭脸框替用户确定目标。\n\n## 依据与案例\n来源 WEB-022：[Introduction to Portrait Lighting](https://www.cambridgeincolour.com/tutorials/portrait-lighting.htm)；位置：LIGHT SOURCE / DIRECTION / SIZE。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-022"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "outdoor_portrait",
+    "subject": "person",
+    "motion": "unknown",
+    "goal": "以一个人物为表达主体，户外环境为背景；观察面部受光和背景亮度。",
+    "requires": [
+      "需确认用户想突出人物还是环境，以及人物是否在移动。"
+    ],
+    "actions": [
+      "登记主体、明暗关系、遮挡和运动；缺失字段保留 unknown。"
+    ],
+    "exceptions_and_risks": [
+      "有人的照片也可能是环境纪实；不能仅凭脸框替用户确定目标。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "scene_id": "outdoor_portrait",
+    "definition": "以一个人物为表达主体，户外环境为背景；观察面部受光和背景亮度。",
+    "aliases": [
+      "outdoor_portrait",
+      "户外单人肖像",
+      "outdoor portrait"
+    ],
+    "observable_features": [
+      "人物占据明确视觉区域",
+      "可观察面部与背景明暗关系",
+      "户外环境线索须与用户说明核对"
+    ],
+    "lighting": {
+      "observable_clues": [
+        "人物占据明确视觉区域",
+        "可观察面部与背景明暗关系",
+        "户外环境线索须与用户说明核对"
+      ],
+      "actual_light_source": "unknown",
+      "information_source": "model_inference",
+      "note": "候选检查项不是当前照片的观测事实。"
+    },
+    "motion_recording": "只在观测或用户报告支持时记录实际运动，不使用默认猜测",
+    "common_problems": [
+      "有人的照片也可能是环境纪实；不能仅凭脸框替用户确定目标。"
+    ],
+    "example_index": "../../example_index.yaml",
+    "unknown_policy": "意图与图中场景分开；缺失字段 unknown/null"
+  },
+  "tags": [
+    "场景库",
+    "户外单人肖像",
+    "outdoor_portrait"
+  ],
+  "conditions": {
+    "scene": "outdoor_portrait"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/portrait-lighting.htm",
+    "location": "LIGHT SOURCE / DIRECTION / SIZE",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

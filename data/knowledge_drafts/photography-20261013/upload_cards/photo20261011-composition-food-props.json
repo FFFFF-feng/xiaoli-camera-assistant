@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-composition-food-props",
+  "library_id": "composition",
+  "title": "食物道具：支持主题而非堆满画面",
+  "kind": "guideline",
+  "content": "# 食物道具：支持主题而非堆满画面\n\n## 目标与结论\n颜色、纹理与道具可共同支持食物主题。\n\n## 适用条件与所需信息\n主菜与必要道具明确；布景可调整需用户确认。\n\n## 执行动作\n检查道具是否抢占视觉中心，比较删减布景或原图裁切。\n\n## 例外、限制与风险\n移除实物与裁切是不同动作；道具数量不存在通用最优值。\n\n## 依据与案例\n来源 WEB-036：[Food photography tips - Canon Europe](https://www.canon-europe.com/get-inspired/tips-and-techniques/food-photography-tips/)；位置：1. natural lighting / 2. colours and texture / 3. depth / 4. props。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-036"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "food_closeup",
+    "subject": "food",
+    "motion": "static",
+    "goal": "颜色、纹理与道具可共同支持食物主题。",
+    "requires": [
+      "主菜与必要道具明确；布景可调整需用户确认。"
+    ],
+    "actions": [
+      "检查道具是否抢占视觉中心，比较删减布景或原图裁切。"
+    ],
+    "exceptions_and_risks": [
+      "移除实物与裁切是不同动作；道具数量不存在通用最优值。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "automatic_execution": false,
+    "protected_regions": {
+      "status": "required_before_execution",
+      "items": [
+        "主体关键区域",
+        "人脸/头部或其他用户指定区域"
+      ],
+      "bbox_xyxy_normalized": null
+    },
+    "geometry": {
+      "coordinate_system": "EXIF 方向校正基图，左上原点，x右y下，xyxy归一化",
+      "base_image_hash": null,
+      "base_width": null,
+      "base_height": null,
+      "candidate_crop_xyxy_normalized": null,
+      "predicates": [
+        "0 <= x1 < x2 <= 1",
+        "0 <= y1 < y2 <= 1",
+        "candidate_crop contains each confirmed protected_region"
+      ],
+      "missing_required_information_action": "skip_or_clarify"
+    },
+    "action_scope": [
+      "crop_existing_pixels",
+      "reshoot_if_viewpoint_changes"
+    ],
+    "source_rule_is_not_quality_score": true
+  },
+  "tags": [
+    "构图库",
+    "食物道具",
+    "food_closeup"
+  ],
+  "conditions": {
+    "scene": "food_closeup"
+  },
+  "source": {
+    "name": "Canon（署名作者以页面为准）",
+    "url": "https://www.canon-europe.com/get-inspired/tips-and-techniques/food-photography-tips/",
+    "location": "1. natural lighting / 2. colours and texture / 3. depth / 4. props",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,13 @@
+knowledge_id: upload-smoke-v1-invalid-library
+library_id: phone
+title: "[故意错误] 不存在的知识库名称"
+kind: guideline
+content: 该文件故意将library_id填为phone。手机器材属于equipment库，不是第七个知识库。
+payload:
+  test_only: true
+source:
+  name: 自制错误样本
+  retrieval_allowed: false
+author: 上传功能测试员
+version: 1
+dataset_split: evaluation

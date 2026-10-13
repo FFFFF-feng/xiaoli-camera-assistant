@@ -265,6 +265,54 @@ def test_subject_conditions_use_standard_category_when_model_description_is_chin
     assert hit_ids([*result.knowledge_hits, *result.composition_knowledge_hits]) == {"person_rule"}
 
 
+def test_phone_composition_and_parameter_search_share_normalized_device_conditions(
+    settings, image_content,
+):
+    from camera_assistant.models import PhoneProfile
+
+    store = KnowledgeStore(settings.knowledge_db_path)
+    for library in ("composition", "technique"):
+        publish(store, knowledge_record("phone_" + library, library, conditions={
+            "device_type": "phone", "phone_profile_id": "apple_iphone_15",
+            "phone_capture_mode": "auto", "phone_lens_id": "main",
+            "phone_pro_controls_confirmed": False,
+        }))
+        publish(store, knowledge_record("camera_" + library, library,
+                                        conditions={"device_type": "camera"}))
+        publish(store, knowledge_record("unavailable_pro_" + library, library,
+                                        conditions={"phone_pro_controls_confirmed": True}))
+    composition = FakeCompositionAdvisor()
+    result = make_pipeline(
+        settings, ManagedKnowledgeRetriever(store), localization(), composition=composition,
+    ).run(image_content, UserRequest(
+        intent="拍摄快速人物并突出主体留白", device_type="phone",
+        phone_profile_id="apple_iphone_15", phone_capture_mode="pro",
+        phone_lens_id="unavailable_lens", phone_pro_controls_confirmed=True,
+    ))
+    assert isinstance(result.camera_profile, PhoneProfile)
+    assert hit_ids(result.knowledge_hits) == {"phone_technique"}
+    assert hit_ids(result.composition_knowledge_hits) == {"phone_composition"}
+    assert composition.calls[0][1].phone_capture_mode == "auto"
+    assert composition.calls[0][1].phone_lens_id == "main"
+    assert isinstance(composition.calls[0][5], PhoneProfile)
+    assert result.recommendation.iso.startswith("自动")
+
+
+def test_phone_legacy_mode_does_not_consume_camera_composition_cards(
+    settings, image_content,
+):
+    composition = FakeCompositionAdvisor()
+    result = make_pipeline(
+        replace(settings, knowledge_mode="legacy"), None, localization(),
+        composition=composition,
+    ).run(image_content, UserRequest(
+        intent="手机拍摄人物突出主体", device_type="phone", phone_profile_id="apple_iphone_15",
+    ))
+    assert result.knowledge_hits == []
+    assert result.composition_knowledge_hits == []
+    assert composition.calls[0][4] == []
+
+
 @pytest.mark.parametrize("library", ["composition", "technique"])
 def test_pipeline_rejects_evaluation_and_restricted_records_even_if_store_exposes_them(
     settings, image_content, user_request, monkeypatch, library,

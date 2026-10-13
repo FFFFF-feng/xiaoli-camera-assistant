@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-style-water-silk",
+  "library_id": "style",
+  "title": "丝滑流水：运动表达由曝光时间影响",
+  "kind": "guideline",
+  "content": "# 丝滑流水：运动表达由曝光时间影响\n\n## 目标与结论\n长曝光可改变水的纹理表达，静止环境应另检验清晰。\n\n## 适用条件与所需信息\n确认支撑、主体及用户接受水体细节模糊。\n\n## 执行动作\n拍摄：以逐步延长曝光试拍；后期：控制水体高光和静止参照物细节。\n\n## 例外、限制与风险\n水速、光线和机位变化会改变结果；没有固定最佳秒数。\n\n## 依据与案例\n来源 WEB-018：[Using Camera Shutter Speed Creatively](https://www.cambridgeincolour.com/tutorials/camera-shutter-speed.htm)；位置：FREEZING MOTION / BLUR / PANNING。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-018"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "waterfall_long_exposure",
+    "subject": "water",
+    "motion": "moving",
+    "goal": "长曝光可改变水的纹理表达，静止环境应另检验清晰。",
+    "requires": [
+      "确认支撑、主体及用户接受水体细节模糊。"
+    ],
+    "actions": [
+      "拍摄：以逐步延长曝光试拍；后期：控制水体高光和静止参照物细节。"
+    ],
+    "exceptions_and_risks": [
+      "水速、光线和机位变化会改变结果；没有固定最佳秒数。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "capture_goal": "以逐步延长曝光试拍",
+    "postprocess_goal": "控制水体高光和静止参照物细节。",
+    "composition_tendency": "确认支撑、主体及用户接受水体细节模糊。",
+    "lighting_tendency": "长曝光可改变水的纹理表达，静止环境应另检验清晰。",
+    "depth_of_field_goal": "根据关键清晰区域另行确认，未提供统一 f 数",
+    "color_tendency": "根据主题确认，未规定滤镜",
+    "related_rule_ids": [
+      "photo20261011-technique-tripod"
+    ]
+  },
+  "tags": [
+    "风格库",
+    "丝滑流水",
+    "waterfall_long_exposure"
+  ],
+  "conditions": {
+    "scene": "waterfall_long_exposure"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/camera-shutter-speed.htm",
+    "location": "FREEZING MOTION / BLUR / PANNING",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-equipment-sony-a7iv",
+  "library_id": "equipment",
+  "title": "Sony ILCE-7M4 (α7 IV)：规格、条件与未知能力",
+  "kind": "manufacturer_fact",
+  "content": "逐字段事实见 payload.facts。已查原始规格，但尚未独立审核或真机验证。规格为硬件/模式事实，不是最佳拍摄参数；未真机测试。AUTO 100–12800 的规格描述不能当可选自动 ISO 上限；三类快门分别未定数值，禁止用泛表填补。",
+  "payload": {
+    "schema_version": "draft-1",
+    "equipment_id": "photo20261011-equipment-sony-a7iv",
+    "camera_model": "Sony ILCE-7M4 (α7 IV)",
+    "lens_model": null,
+    "camera_firmware": null,
+    "review_status": "draft",
+    "author": "Codex 本轮资料整理（AI，待独立审核）",
+    "reviewer": null,
+    "accessed_at": "2026-10-11",
+    "verified_at": null,
+    "facts": [
+      {
+        "field": "sensor_dimensions",
+        "value": [
+          35.9,
+          23.9
+        ],
+        "unit": "mm",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "image_area": "full_frame"
+        },
+        "source_id": "WEB-040",
+        "source_url": "https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7m4/specifications",
+        "source_location": "Image Sensor / Sensor Type",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "iso_normal_range",
+        "value": [
+          100,
+          51200
+        ],
+        "unit": "ISO",
+        "conditions": {
+          "capture_mode": "still_photo"
+        },
+        "source_id": "WEB-040",
+        "source_url": "https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7m4/specifications",
+        "source_location": "Exposure / ISO Sensitivity",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "iso_expanded_endpoints",
+        "value": [
+          50,
+          204800
+        ],
+        "unit": "ISO_equivalent",
+        "conditions": {
+          "capture_mode": "still_photo"
+        },
+        "source_id": "WEB-040",
+        "source_url": "https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7m4/specifications",
+        "source_location": "Exposure / ISO Sensitivity",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "iso_auto_spec_display_range",
+        "value": [
+          100,
+          12800
+        ],
+        "unit": "ISO",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "lower_upper_limit": "selectable"
+        },
+        "source_id": "WEB-040",
+        "source_url": "https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7m4/specifications",
+        "source_location": "Exposure / AUTO description",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": null,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "shutter_type": "mechanical"
+        },
+        "source_id": "WEB-040",
+        "source_url": "https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7m4/specifications",
+        "source_location": "Shutter Speed 泛表未分别列三类快门最快值，需要专用章节复核",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": null,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "shutter_type": "electronic_front_curtain"
+        },
+        "source_id": "WEB-040",
+        "source_url": "https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7m4/specifications",
+        "source_location": "Shutter Speed 泛表未分别列三类快门最快值，需要专用章节复核",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": null,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "shutter_type": "electronic"
+        },
+        "source_id": "WEB-040",
+        "source_url": "https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7m4/specifications",
+        "source_location": "Shutter Speed 泛表未分别列三类快门最快值，需要专用章节复核",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "supported_shutter_types",
+        "value": [
+          "mechanical",
+          "electronic_front_curtain",
+          "electronic"
+        ],
+        "unit": "enum_list",
+        "conditions": {
+          "capture_mode": "still_photo"
+        },
+        "source_id": "WEB-040",
+        "source_url": "https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7m4/specifications",
+        "source_location": "Shutter Type / Electronic Front Curtain Shutter",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      }
+    ],
+    "conflicts": [],
+    "notes": [
+      "规格为硬件/模式事实，不是最佳拍摄参数；未真机测试。",
+      "AUTO 100–12800 的规格描述不能当可选自动 ISO 上限；三类快门分别未定数值，禁止用泛表填补。"
+    ],
+    "source_id": "WEB-040",
+    "source_url": "https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7m4/specifications"
+  },
+  "tags": [
+    "器材规格",
+    "Sony ILCE-7M4 (α7 IV)"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Sony",
+    "url": "https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7m4/specifications",
+    "location": "逐字段 source_location",
+    "license": "仅记录必要事实；厂商正文和图片使用权限待核验",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

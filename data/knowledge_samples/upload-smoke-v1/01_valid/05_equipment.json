@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "upload-smoke-v1-equipment-001",
+  "library_id": "equipment",
+  "title": "[上传测试] 未知手机型号器材卡",
+  "kind": "guideline",
+  "content": "器材测试卡：用户选择未知手机型号，当前使用原生照片模式。本卡不声明手机厂商规格，不填写ISO、快门或镜头光圈范围，仅用于测试手机器材条件字段的保存。",
+  "payload": {
+    "test_only": true,
+    "capability_verified": false,
+    "notes": ["完整型号和系统版本尚未核对", "不得用此卡推导数值参数"]
+  },
+  "tags": ["上传测试", "手机", "未知型号"],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "generic_phone",
+    "phone_capture_mode": "auto"
+  },
+  "source": {
+    "name": "小栗上传功能自制测试样本",
+    "location": "样本集 upload-smoke-v1 / 器材库",
+    "license": "仅用于项目导入功能测试，未授权作为正式推荐依据",
+    "retrieval_allowed": false
+  },
+  "author": "上传功能测试员",
+  "version": 1,
+  "dataset_split": "evaluation"
+}

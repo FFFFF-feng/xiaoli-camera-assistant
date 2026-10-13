@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-technique-white-balance",
+  "library_id": "technique",
+  "title": "白平衡：先区分中性目标与暖调目标",
+  "kind": "guideline",
+  "content": "# 白平衡：先区分中性目标与暖调目标\n\n## 目标与结论\n白平衡改变色彩呈现，应依据光源与表达目标。\n\n## 适用条件与所需信息\n可靠参照、光源类型和用户期望。\n\n## 执行动作\n比较自动结果与参照，必要时设置自定义；RAW 保留可逆调整。\n\n## 例外、限制与风险\n混合光难以全局校正；不同屏幕会改变观感。\n\n## 依据与案例\n来源 WEB-007：[Understanding White Balance](https://www.cambridgeincolour.com/tutorials/white-balance.htm)；位置：COLOR TEMPERATURE / CUSTOM WHITE BALANCE。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-007"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "general_scene",
+    "subject": "unknown",
+    "motion": "unknown",
+    "goal": "白平衡改变色彩呈现，应依据光源与表达目标。",
+    "requires": [
+      "可靠参照、光源类型和用户期望。"
+    ],
+    "actions": [
+      "比较自动结果与参照，必要时设置自定义；RAW 保留可逆调整。"
+    ],
+    "exceptions_and_risks": [
+      "混合光难以全局校正；不同屏幕会改变观感。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "parameter_requirements": [
+      "exposure_mode",
+      "subject_motion",
+      "handheld_or_supported",
+      "lens_model",
+      "actual_focal_length_mm",
+      "maximum_aperture_f_number",
+      "shutter_type",
+      "lighting_clues",
+      "target_effect"
+    ],
+    "hardware_limits": null,
+    "suggested_parameter_values": null,
+    "suggestion_type": "方向或检查流程；没有固定曝光保证",
+    "parameter_missing_policy": "缺关键条件不生成数值",
+    "numeric_units": {
+      "shutter": "s",
+      "aperture": "f_number",
+      "iso": "number",
+      "focal_length": "mm"
+    }
+  },
+  "tags": [
+    "拍摄技术库",
+    "白平衡",
+    "general_scene"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/white-balance.htm",
+    "location": "COLOR TEMPERATURE / CUSTOM WHITE BALANCE",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

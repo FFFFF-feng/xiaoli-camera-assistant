@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261012-composition-sports-crop",
+  "library_id": "composition",
+  "title": "运动竖裁：保留人物、器具与动作语境",
+  "kind": "guideline",
+  "content": "# 运动竖裁：保留人物、器具与动作语境\n\n## 目标与结论\n横图可比较竖裁候选，但动作相关内容应先确认。\n\n## 适用条件与所需信息\n人物、球或器具、运动方向及基图可靠。\n\n## 执行动作\n在原图范围内比较竖裁与原版，检查主体和动作线索完整性。\n\n## 例外、限制与风险\n没有足够余量时跳过；竖裁不是提高照片质量的普遍规则。\n\n## 依据与案例\n来源 WEB-091：[原始资料](https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/photographing-sports-indoors-and-out)；位置：Catching the Action / Exposure / Indoor Sports / 图注。操作检查由本轮补充。关联案例未独立审核。\n\n## 审核记录\n2026-10-12 来源访问及草稿整理完成；独立审核人 null，权限 pending，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-091"
+    ],
+    "review_status": "draft",
+    "rights_status": "pending",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-12",
+    "scene": "fast_human",
+    "subject": "person",
+    "motion": "moving",
+    "requires": [
+      "人物、球或器具、运动方向及基图可靠。"
+    ],
+    "actions": [
+      "在原图范围内比较竖裁与原版，检查主体和动作线索完整性。"
+    ],
+    "exceptions_and_risks": [
+      "没有足够余量时跳过；竖裁不是提高照片质量的普遍规则。"
+    ],
+    "runtime_scene_registered": true,
+    "linked_case_ids": [],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "editorial_note": "基本原理来自所列章节，操作检查、保护条件和不确定性处置由本轮补充，需独立审核。",
+      "information_source": "model_inference"
+    },
+    "goal": "横图可比较竖裁候选，但动作相关内容应先确认。",
+    "automatic_execution": false,
+    "protected_regions": {
+      "status": "required_before_execution",
+      "items": [
+        "主体关键区域",
+        "人物或动物眼部／身体",
+        "动作器具、产品文字等用户确认内容"
+      ],
+      "bbox_xyxy_normalized": null
+    },
+    "geometry": {
+      "coordinate_system": "方向校正基图；左上原点，x右y下，xyxy归一化",
+      "base_image_hash": null,
+      "base_width": null,
+      "base_height": null,
+      "candidate_crop_xyxy_normalized": null,
+      "predicates": [
+        "0 <= x1 < x2 <= 1",
+        "0 <= y1 < y2 <= 1",
+        "crop contains confirmed protected regions"
+      ],
+      "missing_required_information_action": "skip_or_clarify"
+    },
+    "action_scope": "移动机位或实物为重拍；裁切仅使用原图内像素"
+  },
+  "tags": [
+    "构图库",
+    "fast_human",
+    "person"
+  ],
+  "conditions": {
+    "scene": "fast_human"
+  },
+  "source": {
+    "name": "Nikon / Diane Berkenfeld, Elizabeth Barbieri, Michael Earley",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/photographing-sports-indoors-and-out",
+    "location": "Catching the Action / Exposure / Indoor Sports / 图注",
+    "license": "正文与照片权限待核验；原创短整理，未复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex（AI 整理，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

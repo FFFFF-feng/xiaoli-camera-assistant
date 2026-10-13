@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261012-style-concert-color",
+  "library_id": "style",
+  "title": "舞台色彩：按灯光表达而非一律中和",
+  "kind": "guideline",
+  "content": "# 舞台色彩：按灯光表达而非一律中和\n\n## 目标与结论\n彩色舞台灯光可以成为表演表达的一部分。\n\n## 适用条件与所需信息\n用户接受舞台氛围，人物关键细节和高光目标明确。\n\n## 执行动作\n拍摄：观察灯光变化并试拍；后期：比较保留灯色与技术校色。\n\n## 例外、限制与风险\n不能用全局校色保证所有区域中性；必要面部细节另保护。\n\n## 依据与案例\n来源 WEB-090：[原始资料](https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/shooting-a-rock-concert)；位置：现场访问、舞台灯光及图注。操作检查由本轮补充。关联案例未独立审核。\n\n## 审核记录\n2026-10-12 来源访问及草稿整理完成；独立审核人 null，权限 pending，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-090"
+    ],
+    "review_status": "draft",
+    "rights_status": "pending",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-12",
+    "scene": "concert_stage",
+    "subject": "person",
+    "motion": "unknown",
+    "requires": [
+      "用户接受舞台氛围，人物关键细节和高光目标明确。"
+    ],
+    "actions": [
+      "拍摄：观察灯光变化并试拍；后期：比较保留灯色与技术校色。"
+    ],
+    "exceptions_and_risks": [
+      "不能用全局校色保证所有区域中性；必要面部细节另保护。"
+    ],
+    "runtime_scene_registered": false,
+    "linked_case_ids": [],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "editorial_note": "基本原理来自所列章节，操作检查、保护条件和不确定性处置由本轮补充，需独立审核。",
+      "information_source": "model_inference"
+    },
+    "target_expression": "彩色舞台灯光可以成为表演表达的一部分。",
+    "capture_goal": "观察灯光变化并试拍",
+    "postprocess_goal": "比较保留灯色与技术校色。",
+    "composition_tendency": "用户接受舞台氛围，人物关键细节和高光目标明确。",
+    "lighting_tendency": "按目标记录实际光线，未提供统一布光方案",
+    "depth_of_field_goal": "按关键清晰区域确认，未给固定 f 数",
+    "color_tendency": "彩色舞台灯光可以成为表演表达的一部分。",
+    "related_rule_ids": [
+      "photo20261011-technique-highlight"
+    ]
+  },
+  "tags": [
+    "风格库",
+    "concert_stage",
+    "person"
+  ],
+  "conditions": {
+    "scene": "concert_stage"
+  },
+  "source": {
+    "name": "Nikon / Mike Corrado",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/shooting-a-rock-concert",
+    "location": "现场访问、舞台灯光及图注",
+    "license": "正文与照片权限待核验；原创短整理，未复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex（AI 整理，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

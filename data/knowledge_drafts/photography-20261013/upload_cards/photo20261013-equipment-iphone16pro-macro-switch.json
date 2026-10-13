@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261013-equipment-iphone16pro-macro-switch",
+  "library_id": "equipment",
+  "title": "iPhone 16 Pro（iOS 18）：控制近摄自动微距切换",
+  "kind": "manufacturer_fact",
+  "content": "核心结论：iPhone 16 Pro在原生相机的照片/视频近摄中支持自动切换超广角进行微距；可通过微距控制按钮关闭自动切换，并用保留设置记住控制状态。\n\n适用条件：仅本卡核验的iPhone 16 Pro；原生Apple相机；文档范围为iOS 18指南，具体18.x小版本及当前设备界面须确认；照片或视频近摄；本卡不规定统一最近对焦距离\n\n操作建议（未实测）：\n1. 先核对手机型号、iOS版本和原生相机；靠近静物观察自动微距按钮。\n2. 按钮出现后点击关闭自动微距切换；关闭后重新检查实际清晰度。\n3. 若关闭后模糊，适当后退，或主动选择0.5×超广角再试。\n4. 需要跨相机会话保留选择时，按iOS 18指南进入设置＞相机＞保留设置，启用微距控制；实际菜单需真机核对。\n\n例外：设置＞相机中的微距控制开关用于显示/关闭手动控制入口，不能等同于永久禁用自动微距；不将本卡套给iPhone 15标准版、16e、第三方App或未经核验的系统版本；慢动作/延时的操作由指南另列，不直接套用本卡照片/视频步骤\n\n风险：关闭切换后可能无法近距离清晰对焦；选择不同模组可能改变取景，应重新核对画面关键区域\n\n信息不足时：按钮缺失或系统不同，先确认设置及对应版本官方指南；不以按钮缺失判断硬件不支持，不假设固定倍数或距离保证清晰。\n\n来源事实：iOS 18微距支持列表明确包含iPhone 16 Pro；该型号规格也列出微距能力 [S06,S07]；iOS 18指南说明近摄自动切换超广角、按钮关闭自动切换、模糊时后退或选0.5×、保留设置路径 [S05]\n\n整理推断：应在关闭自动切换后复查清晰度，不能把保留原模组视为提升画质的保证。\n\n具体来源及核验范围：\nS05 Apple iPhone User Guide (UK) https://support.apple.com/en-gb/guide/iphone/iphfaacf2eb0/18.0/ios/18.0；Take a macro photo or video / Control automatic macro switching；L1074–1113本章节全文已读（包括慢动作、延时和保留设置）；未读整本iPhone指南。\nS06 Apple iPhone User Guide (UK) https://support.apple.com/en-gb/guide/iphone/aside/iph8dc3af8c0/18.0/ios/18.0；Models that support macro photography；L30–50支持机型列表全部已读，含iPhone 16 Pro。\nS07 Apple Support https://support.apple.com/en-us/121031；Camera；实际返回L93–353范围已读；卡片仅采用L116–173 Camera中的微距、ProRAW、Live Photos能力；未读完整857行规格及全部脚注。\n\n核验边界：只核验所列公开文本；未真机实拍、未独立人工审核、未核验使用许可。",
+  "payload": {
+    "core_conclusion": "iPhone 16 Pro在原生相机的照片/视频近摄中支持自动切换超广角进行微距；可通过微距控制按钮关闭自动切换，并用保留设置记住控制状态。",
+    "applicable_conditions": [
+      "仅本卡核验的iPhone 16 Pro；原生Apple相机",
+      "文档范围为iOS 18指南，具体18.x小版本及当前设备界面须确认",
+      "照片或视频近摄；本卡不规定统一最近对焦距离"
+    ],
+    "operations": [
+      {
+        "action": "先核对手机型号、iOS版本和原生相机；靠近静物观察自动微距按钮。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "按钮出现后点击关闭自动微距切换；关闭后重新检查实际清晰度。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "若关闭后模糊，适当后退，或主动选择0.5×超广角再试。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "需要跨相机会话保留选择时，按iOS 18指南进入设置＞相机＞保留设置，启用微距控制；实际菜单需真机核对。",
+        "evidence_type": "untested_advice"
+      }
+    ],
+    "exceptions": [
+      "设置＞相机中的微距控制开关用于显示/关闭手动控制入口，不能等同于永久禁用自动微距",
+      "不将本卡套给iPhone 15标准版、16e、第三方App或未经核验的系统版本",
+      "慢动作/延时的操作由指南另列，不直接套用本卡照片/视频步骤"
+    ],
+    "risks": [
+      "关闭切换后可能无法近距离清晰对焦",
+      "选择不同模组可能改变取景，应重新核对画面关键区域"
+    ],
+    "missing_information_policy": "按钮缺失或系统不同，先确认设置及对应版本官方指南；不以按钮缺失判断硬件不支持，不假设固定倍数或距离保证清晰。",
+    "source_facts": [
+      {
+        "statement": "iOS 18微距支持列表明确包含iPhone 16 Pro；该型号规格也列出微距能力",
+        "source_ids": [
+          "S06",
+          "S07"
+        ]
+      },
+      {
+        "statement": "iOS 18指南说明近摄自动切换超广角、按钮关闭自动切换、模糊时后退或选0.5×、保留设置路径",
+        "source_ids": [
+          "S05"
+        ]
+      }
+    ],
+    "editorial_inferences": [
+      "应在关闭自动切换后复查清晰度，不能把保留原模组视为提升画质的保证。"
+    ],
+    "sources": [
+      {
+        "source_id": "S05",
+        "publisher": "Apple iPhone User Guide (UK)",
+        "url": "https://support.apple.com/en-gb/guide/iphone/iphfaacf2eb0/18.0/ios/18.0",
+        "location": "Take a macro photo or video / Control automatic macro switching",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L1074–1113本章节全文已读（包括慢动作、延时和保留设置）；未读整本iPhone指南。",
+        "version": "iOS 18版指南；具体18.x小版本未固定",
+        "rights_status": "待核验，禁止检索和转载原文/图片"
+      },
+      {
+        "source_id": "S06",
+        "publisher": "Apple iPhone User Guide (UK)",
+        "url": "https://support.apple.com/en-gb/guide/iphone/aside/iph8dc3af8c0/18.0/ios/18.0",
+        "location": "Models that support macro photography",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L30–50支持机型列表全部已读，含iPhone 16 Pro。",
+        "version": "iOS 18版指南",
+        "rights_status": "待核验，禁止检索和转载原文/图片"
+      },
+      {
+        "source_id": "S07",
+        "publisher": "Apple Support",
+        "url": "https://support.apple.com/en-us/121031",
+        "location": "Camera",
+        "accessed_at": "2026-10-13",
+        "read_scope": "实际返回L93–353范围已读；卡片仅采用L116–173 Camera中的微距、ProRAW、Live Photos能力；未读完整857行规格及全部脚注。",
+        "version": "iPhone 16 Pro型号规格；地区为英文美国支持页",
+        "rights_status": "待核验，禁止检索和转载原文/图片"
+      }
+    ],
+    "conflict_ids": [],
+    "deduplication": {
+      "related_existing_ids": [
+        "photo20261011-equipment-iphone15",
+        "photo20261011-technique-macro-focus"
+      ],
+      "decision": "独立问题的补充草稿；关联卡不替代本卡的机型/模式约束，待人工复查语义重叠"
+    },
+    "verification": {
+      "checked_at": "2026-10-13",
+      "method": "公开原始文本核验",
+      "independent_publishers": [
+        "Apple"
+      ],
+      "independent_human_review": false,
+      "device_tested": false,
+      "review_items": [
+        "iOS 18具体小版本和中国区菜单名称真机核对",
+        "微距控制入口与自动切换状态区别",
+        "确认关闭切换后的对焦结果；本卡未实测"
+      ],
+      "reviewer": null
+    }
+  },
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "Apple iPhone 16 Pro",
+    "app": "Apple Camera",
+    "os_major": "iOS 18",
+    "capture_mode": [
+      "photo",
+      "video"
+    ]
+  },
+  "tags": [
+    "20261013草稿",
+    "摄影",
+    "手机模式"
+  ],
+  "source": {
+    "name": "Apple iPhone User Guide (UK)",
+    "url": "https://support.apple.com/en-gb/guide/iphone/iphfaacf2eb0/18.0/ios/18.0",
+    "location": "Take a macro photo or video / Control automatic macro switching",
+    "license": "仅保存自行整理的最小必要事实与建议；原文、图片、检索及再分发许可未核验",
+    "retrieval_allowed": false
+  },
+  "author": "符梁",
+  "version": 1,
+  "dataset_split": "reference"
+}

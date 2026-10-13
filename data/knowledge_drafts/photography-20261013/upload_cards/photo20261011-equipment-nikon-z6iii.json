@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-equipment-nikon-z6iii",
+  "library_id": "equipment",
+  "title": "Nikon Z6III：规格、条件与未知能力",
+  "kind": "manufacturer_fact",
+  "content": "逐字段事实见 payload.facts。已查原始规格，但尚未独立审核或真机验证。规格为硬件/模式事实，不是最佳拍摄参数；未真机测试。规格总表未分别写前帘上限；Exposure 专节明确前帘最快 1/2000 s，采用专节条件，不从总表推断 1/8000 s。使用 specifications_387 当前页面；旧页面 _384 仅保留为历史线索，不混用视频 ISO。固件号未确认。",
+  "payload": {
+    "schema_version": "draft-1",
+    "equipment_id": "photo20261011-equipment-nikon-z6iii",
+    "camera_model": "Nikon Z6III",
+    "lens_model": null,
+    "camera_firmware": null,
+    "review_status": "draft",
+    "author": "Codex 本轮资料整理（AI，待独立审核）",
+    "reviewer": null,
+    "accessed_at": "2026-10-11",
+    "verified_at": null,
+    "facts": [
+      {
+        "field": "sensor_dimensions",
+        "value": [
+          35.9,
+          23.9
+        ],
+        "unit": "mm",
+        "conditions": {
+          "image_area": "FX"
+        },
+        "source_id": "WEB-039",
+        "source_url": "https://onlinemanual.nikonimglib.com/z6III/en/specifications_387.html",
+        "source_location": "Image sensor / Type",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "iso_normal_range",
+        "value": [
+          100,
+          64000
+        ],
+        "unit": "ISO",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "tone_mode": "SDR"
+        },
+        "source_id": "WEB-039",
+        "source_url": "https://onlinemanual.nikonimglib.com/z6III/en/specifications_387.html",
+        "source_location": "Exposure / ISO sensitivity",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "iso_expanded_endpoints",
+        "value": [
+          50,
+          204800
+        ],
+        "unit": "ISO_equivalent",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "tone_mode": "SDR"
+        },
+        "source_id": "WEB-039",
+        "source_url": "https://onlinemanual.nikonimglib.com/z6III/en/specifications_387.html",
+        "source_location": "Exposure / ISO sensitivity",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "iso_normal_range",
+        "value": [
+          400,
+          64000
+        ],
+        "unit": "ISO",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "tone_mode": "HLG"
+        },
+        "source_id": "WEB-039",
+        "source_url": "https://onlinemanual.nikonimglib.com/z6III/en/specifications_387.html",
+        "source_location": "Exposure / HLG note",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "auto_iso_supported",
+        "value": true,
+        "unit": "boolean",
+        "conditions": {
+          "capture_mode": "still_photo"
+        },
+        "source_id": "WEB-039",
+        "source_url": "https://onlinemanual.nikonimglib.com/z6III/en/specifications_387.html",
+        "source_location": "Exposure / auto ISO control available",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": 0.000125,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "shutter_type": "mechanical"
+        },
+        "source_id": "WEB-039",
+        "source_url": "https://onlinemanual.nikonimglib.com/z6III/en/specifications_387.html",
+        "source_location": "Shutter / Speed",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": 0.0005,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "shutter_type": "electronic_front_curtain"
+        },
+        "source_id": "WEB-085",
+        "source_url": "https://onlinemanual.nikonimglib.com/z6III/en/exposure_38.html",
+        "source_location": "S / M：Custom Setting d6 front-curtain limits shutter to 1/2000 s",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": 6.25e-05,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "shutter_type": "electronic"
+        },
+        "source_id": "WEB-039",
+        "source_url": "https://onlinemanual.nikonimglib.com/z6III/en/specifications_387.html",
+        "source_location": "Shutter / electronic shutter note",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "longest_timed_shutter_seconds",
+        "value": 900,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "exposure_mode": "M",
+          "extended_shutter_enabled": true
+        },
+        "source_id": "WEB-039",
+        "source_url": "https://onlinemanual.nikonimglib.com/z6III/en/specifications_387.html",
+        "source_location": "Shutter / extendable to 900 s in mode M",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      }
+    ],
+    "conflicts": [],
+    "notes": [
+      "规格为硬件/模式事实，不是最佳拍摄参数；未真机测试。",
+      "规格总表未分别写前帘上限；Exposure 专节明确前帘最快 1/2000 s，采用专节条件，不从总表推断 1/8000 s。",
+      "使用 specifications_387 当前页面；旧页面 _384 仅保留为历史线索，不混用视频 ISO。固件号未确认。"
+    ],
+    "source_id": "WEB-039",
+    "source_url": "https://onlinemanual.nikonimglib.com/z6III/en/specifications_387.html"
+  },
+  "tags": [
+    "器材规格",
+    "Nikon Z6III"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Nikon（署名作者以页面为准）",
+    "url": "https://onlinemanual.nikonimglib.com/z6III/en/specifications_387.html",
+    "location": "逐字段 source_location",
+    "license": "仅记录必要事实；厂商正文和图片使用权限待核验",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

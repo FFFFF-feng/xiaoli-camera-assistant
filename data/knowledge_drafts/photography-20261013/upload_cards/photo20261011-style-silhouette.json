@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-style-silhouette",
+  "library_id": "style",
+  "title": "剪影：轮廓清楚比暗部细节重要",
+  "kind": "guideline",
+  "content": "# 剪影：轮廓清楚比暗部细节重要\n\n## 目标与结论\n剪影目标通常保留亮背景和主体轮廓。\n\n## 适用条件与所需信息\n用户明确接受主体内部细节减少。\n\n## 执行动作\n拍摄：寻找轮廓分离并保护背景高光；后期：检查轮廓粘连和黑位。\n\n## 例外、限制与风险\n用户要看清脸时不能默认剪影；黑色主体不自动归为剪影。\n\n## 依据与案例\n来源 WEB-005：[Understanding Camera Metering and Exposure](https://www.cambridgeincolour.com/tutorials/camera-metering.htm)；位置：REFLECTED LIGHT / METERING OPTIONS / EXPOSURE COMPENSATION。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-005"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "sunset_backlight",
+    "subject": "unknown",
+    "motion": "unknown",
+    "goal": "剪影目标通常保留亮背景和主体轮廓。",
+    "requires": [
+      "用户明确接受主体内部细节减少。"
+    ],
+    "actions": [
+      "拍摄：寻找轮廓分离并保护背景高光；后期：检查轮廓粘连和黑位。"
+    ],
+    "exceptions_and_risks": [
+      "用户要看清脸时不能默认剪影；黑色主体不自动归为剪影。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "capture_goal": "寻找轮廓分离并保护背景高光",
+    "postprocess_goal": "检查轮廓粘连和黑位。",
+    "composition_tendency": "用户明确接受主体内部细节减少。",
+    "lighting_tendency": "剪影目标通常保留亮背景和主体轮廓。",
+    "depth_of_field_goal": "根据关键清晰区域另行确认，未提供统一 f 数",
+    "color_tendency": "根据主题确认，未规定滤镜",
+    "related_rule_ids": [
+      "photo20261011-composition-edges",
+      "photo20261011-technique-highlight"
+    ]
+  },
+  "tags": [
+    "风格库",
+    "剪影",
+    "sunset_backlight"
+  ],
+  "conditions": {
+    "scene": "sunset_backlight"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/camera-metering.htm",
+    "location": "REFLECTED LIGHT / METERING OPTIONS / EXPOSURE COMPENSATION",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

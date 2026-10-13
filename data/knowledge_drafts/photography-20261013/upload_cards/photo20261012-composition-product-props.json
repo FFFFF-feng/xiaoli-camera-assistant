@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261012-composition-product-props",
+  "library_id": "composition",
+  "title": "产品道具：突出展示面再决定布局",
+  "kind": "guideline",
+  "content": "# 产品道具：突出展示面再决定布局\n\n## 目标与结论\n道具和背景可支持产品表达，应比较居中与偏置布局。\n\n## 适用条件与所需信息\n主要展示面、文字和必要细节明确。\n\n## 执行动作\n比较简化布景及原图内裁切，保护产品与品牌信息。\n\n## 例外、限制与风险\n裁切不能修复被遮挡文字；不同商品的展示要求另确认。\n\n## 依据与案例\n来源 WEB-088：[原始资料](https://www.canon.com.au/get-inspired/product-photography-tips-and-tricks)；位置：Mastering Lighting / Composition and Styling / Post-Processing。操作检查由本轮补充。关联案例未独立审核。\n\n## 审核记录\n2026-10-12 来源访问及草稿整理完成；独立审核人 null，权限 pending，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-088"
+    ],
+    "review_status": "draft",
+    "rights_status": "pending",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-12",
+    "scene": "product_still",
+    "subject": "product",
+    "motion": "static",
+    "requires": [
+      "主要展示面、文字和必要细节明确。"
+    ],
+    "actions": [
+      "比较简化布景及原图内裁切，保护产品与品牌信息。"
+    ],
+    "exceptions_and_risks": [
+      "裁切不能修复被遮挡文字；不同商品的展示要求另确认。"
+    ],
+    "runtime_scene_registered": false,
+    "linked_case_ids": [],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "editorial_note": "基本原理来自所列章节，操作检查、保护条件和不确定性处置由本轮补充，需独立审核。",
+      "information_source": "model_inference"
+    },
+    "goal": "道具和背景可支持产品表达，应比较居中与偏置布局。",
+    "automatic_execution": false,
+    "protected_regions": {
+      "status": "required_before_execution",
+      "items": [
+        "主体关键区域",
+        "人物或动物眼部／身体",
+        "动作器具、产品文字等用户确认内容"
+      ],
+      "bbox_xyxy_normalized": null
+    },
+    "geometry": {
+      "coordinate_system": "方向校正基图；左上原点，x右y下，xyxy归一化",
+      "base_image_hash": null,
+      "base_width": null,
+      "base_height": null,
+      "candidate_crop_xyxy_normalized": null,
+      "predicates": [
+        "0 <= x1 < x2 <= 1",
+        "0 <= y1 < y2 <= 1",
+        "crop contains confirmed protected regions"
+      ],
+      "missing_required_information_action": "skip_or_clarify"
+    },
+    "action_scope": "移动机位或实物为重拍；裁切仅使用原图内像素"
+  },
+  "tags": [
+    "构图库",
+    "product_still",
+    "product"
+  ],
+  "conditions": {
+    "scene": "product_still"
+  },
+  "source": {
+    "name": "Canon Australia / Reuben Looi",
+    "url": "https://www.canon.com.au/get-inspired/product-photography-tips-and-tricks",
+    "location": "Mastering Lighting / Composition and Styling / Post-Processing",
+    "license": "正文与照片权限待核验；原创短整理，未复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex（AI 整理，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

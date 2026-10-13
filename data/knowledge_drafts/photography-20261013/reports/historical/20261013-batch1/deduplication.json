@@ -1,0 +1,98 @@
+{
+  "read_only_sqlite_uri": true,
+  "main_database_snapshot": {
+    "path": "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge.db",
+    "file_sha256": "8848f2c8d2feb719bf29a5e82a4dc0b60bff681fa0fcd4e7d71aa7bd388049c8",
+    "logical_sha256": "bcf68a21cf8513a179e90614d6aad95492a64b4c1788dbaa1d65f467aae61be1",
+    "revision_count": 112,
+    "audit_count": 112,
+    "statuses": {
+      "draft": 112
+    }
+  },
+  "complete_record_scan_count": 112,
+  "prior_import_files_checked": 0,
+  "legacy_files_checked": [
+    {
+      "path": "knowledge\\basics\\exposure_triangle.md",
+      "sha256": "675d95e25a9adc1a50428ee32ae93f8ede186689db0e4733a7b08fac6665987a",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\food\\available_light.md",
+      "sha256": "3cfb05f0612d6d614575cd631570e0c2d34965a23ed3bc42b9acbea3999c31d4",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\landscape\\daylight_landscape.md",
+      "sha256": "d66c7aceecb55edbb19756a565066ef4a48bdcefbf36e882fa97a00e4474ce8f",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\landscape\\waterfall.md",
+      "sha256": "64fda0072806af59a6f8d793fd021faf50e5bafe7a6f5c186dcef4dee7ab89c9",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\motion\\fast_subject.md",
+      "sha256": "11419453bca6b796270b9116046e82f919f8955ce23dc952d6da6e9d280c102b",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\night\\handheld_night.md",
+      "sha256": "923b2de87cdd722cabec74b4d8d7c446f6096a836869fe45632ec81cea3f87fe",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\night\\tripod_night.md",
+      "sha256": "492766185281dfae0fc5ddbb0d066730cf8e23f58f4e32494615138f4c3eebc2",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\portrait\\outdoor_portrait.md",
+      "sha256": "d8314d274bf4a96899a8fc238519e96ce6ba92eda9671db33ec8342f797eef1f",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\special\\backlight.md",
+      "sha256": "162432b6c7445553faf75030176cbec875700e9115adfe97e254eb0df6f3f1a0",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\troubleshooting\\common_failures.md",
+      "sha256": "62e4312d2c310a146afa433bf42752f2769bf405034f630e6018e8a1078b7288",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\cameras\\camera_profiles.yaml",
+      "sha256": "c17efbdc7c8152855464ecbdfa92f3ce578fca93bc50be6af44405996d3bad5f",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\devices\\phone_profiles.yaml",
+      "sha256": "bd37b2fa8be2e494c25c98d11be831bacd6296371c2e3669260f33f3767251f6",
+      "matched_terms": [
+        "ProRAW"
+      ]
+    },
+    {
+      "path": "knowledge\\recognition\\scene_profiles.yaml",
+      "sha256": "95502ec8ab3786366afe92d80766b21684ea15f058be2629616184b06ef90006",
+      "matched_terms": []
+    }
+  ],
+  "prior_files": [],
+  "existing_keyword_matches": [
+    {
+      "knowledge_id": "photo20261011-technique-motion-freeze",
+      "title": "冻结运动：逐步缩短曝光验证",
+      "matched_terms": [
+        "滚动",
+        "畸变"
+      ]
+    }
+  ],
+  "same_id_count": 0,
+  "same_title_count": 0,
+  "semantic_review": "整理助手逐题比对：滚动畸变与原运动冻结卡例外有交集，新卡解决几何变形排查；频闪条带与白平衡不同；手机卡限定新型号及模式互斥。仍需独立人工确认是否合并。"
+}
