@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261012-technique-tilt-plane",
+  "library_id": "technique",
+  "title": "镜头倾角：改变清晰平面不等于增加景深",
+  "kind": "guideline",
+  "content": "# 镜头倾角：改变清晰平面不等于增加景深\n\n## 目标与结论\n倾角可改变清晰平面的位置，光圈仍影响其周围的清晰范围。\n\n## 适用条件与所需信息\n镜头确有倾角功能，目标平面及所需细节明确。\n\n## 执行动作\n小幅调整倾角并放大检查，再结合光圈比较近远细节。\n\n## 例外、限制与风险\n普通镜头不能据此操作；倾角不保证所有空间同时清晰。\n\n## 依据与案例\n来源 WEB-094：[原始资料](https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-pc-lens-advantage-what-you-see-is-what-youll-get)；位置：tilt and shift 原理 / Nature Walk / composite 图注。操作检查由本轮补充。关联案例未独立审核。\n\n## 审核记录\n2026-10-12 来源访问及草稿整理完成；独立审核人 null，权限 pending，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-094"
+    ],
+    "review_status": "draft",
+    "rights_status": "pending",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-12",
+    "scene": "architecture",
+    "subject": "architecture",
+    "motion": "static",
+    "requires": [
+      "镜头确有倾角功能，目标平面及所需细节明确。"
+    ],
+    "actions": [
+      "小幅调整倾角并放大检查，再结合光圈比较近远细节。"
+    ],
+    "exceptions_and_risks": [
+      "普通镜头不能据此操作；倾角不保证所有空间同时清晰。"
+    ],
+    "runtime_scene_registered": false,
+    "linked_case_ids": [],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "editorial_note": "基本原理来自所列章节，操作检查、保护条件和不确定性处置由本轮补充，需独立审核。",
+      "information_source": "model_inference"
+    },
+    "parameter_requirements": [
+      "exposure_mode",
+      "subject_motion",
+      "support",
+      "lens_model",
+      "actual_focal_length_mm",
+      "maximum_aperture_f_number",
+      "shutter_type",
+      "lighting",
+      "target_effect"
+    ],
+    "hardware_limits": null,
+    "suggested_parameter_values": null,
+    "missing_parameter_action": "缺关键条件不生成数值；按机型核验能力",
+    "numeric_units": {
+      "shutter": "s",
+      "aperture": "f_number",
+      "iso": "number",
+      "focal_length": "mm"
+    }
+  },
+  "tags": [
+    "拍摄技术库",
+    "architecture",
+    "architecture"
+  ],
+  "conditions": {
+    "scene": "architecture"
+  },
+  "source": {
+    "name": "Nikon / Adam Woodworth & Graham Hobart",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-pc-lens-advantage-what-you-see-is-what-youll-get",
+    "location": "tilt and shift 原理 / Nature Walk / composite 图注",
+    "license": "正文与照片权限待核验；原创短整理，未复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex（AI 整理，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

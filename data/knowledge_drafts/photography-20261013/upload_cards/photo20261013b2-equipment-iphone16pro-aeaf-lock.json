@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261013b2-equipment-iphone16pro-aeaf-lock",
+  "library_id": "equipment",
+  "title": "iPhone 16 Pro（iOS 18）：保持对焦与曝光锁定",
+  "kind": "manufacturer_fact",
+  "content": "核心结论：iOS 18原生相机可长按对焦区域，直到显示AE/AF Lock来锁定后续拍摄的对焦和曝光设置；再次点按屏幕解除。\n\n适用条件：仅iPhone 16 Pro原生相机照片模式；iOS 18版操作范围，具体18.x界面未实测；希望短时间保持同一焦点/曝光，主体距离和光线相对稳定\n\n操作建议（未实测）：\n1. 点按希望清晰的部位，按需要上下拖动旁边的曝光调节按钮。\n2. 长按对焦区域直到出现AE/AF Lock，再检查焦点及画面亮度。\n3. 主体距离或光线改变后，点按屏幕解除并重新设定，检查保存原片。\n\n例外：此锁定不是连续跟踪对焦，也不能保证锁定后所有画面区域曝光适当；同章Exposure Adjustment保留设置处理的是另一个曝光调节控制，不据此声称AE/AF Lock跨重启相机保留；第三方App、视频模式和其他系统不在本卡核验范围\n\n风险：主体/相机移动可能使原焦点失效，灯光变化可能使原曝光不再适合；只看到锁定文字不能证明原片清晰或高光细节已保留\n\n信息不足时：无法显示锁定或缺少型号、版本时先确认当前模式与官方版本；不把该操作描述成可输入ISO/快门，不推断未核验的白平衡或跨会话保持能力。\n\n来源事实：iOS 18相机工具指南明确长按对焦区域至AE/AF Lock，点按屏幕解除，并另列曝光调节保留设置 [B2-S07]\n\n整理者推断：距离/光线变化后重新锁定是整理者依据原有对焦和曝光原理提出的未实测操作；AE/AF Lock与曝光调节保留是两个控件，不应互相替代。\n\n具体来源及核验范围：\nB2-S07 Apple https://support.apple.com/en-gb/guide/iphone/iph3dc593597/18.0/ios/18.0；Adjust the camera’s focus and exposure / Lock the exposure setting；L1078–1126文本已读，本卡仅用L1081–1105两个小节；未读完整工具章节剩余小节或整本指南。\n\n核验限制：已读原始章节文字；没有真机实测、独立人工审核或许可证明，不能用于正式检索。",
+  "payload": {
+    "core_conclusion": "iOS 18原生相机可长按对焦区域，直到显示AE/AF Lock来锁定后续拍摄的对焦和曝光设置；再次点按屏幕解除。",
+    "applicable_conditions": [
+      "仅iPhone 16 Pro原生相机照片模式；iOS 18版操作范围，具体18.x界面未实测",
+      "希望短时间保持同一焦点/曝光，主体距离和光线相对稳定"
+    ],
+    "operations": [
+      {
+        "action": "点按希望清晰的部位，按需要上下拖动旁边的曝光调节按钮。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "长按对焦区域直到出现AE/AF Lock，再检查焦点及画面亮度。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "主体距离或光线改变后，点按屏幕解除并重新设定，检查保存原片。",
+        "evidence_type": "untested_advice"
+      }
+    ],
+    "exceptions": [
+      "此锁定不是连续跟踪对焦，也不能保证锁定后所有画面区域曝光适当",
+      "同章Exposure Adjustment保留设置处理的是另一个曝光调节控制，不据此声称AE/AF Lock跨重启相机保留",
+      "第三方App、视频模式和其他系统不在本卡核验范围"
+    ],
+    "risks": [
+      "主体/相机移动可能使原焦点失效，灯光变化可能使原曝光不再适合",
+      "只看到锁定文字不能证明原片清晰或高光细节已保留"
+    ],
+    "missing_information_policy": "无法显示锁定或缺少型号、版本时先确认当前模式与官方版本；不把该操作描述成可输入ISO/快门，不推断未核验的白平衡或跨会话保持能力。",
+    "source_facts": [
+      {
+        "statement": "iOS 18相机工具指南明确长按对焦区域至AE/AF Lock，点按屏幕解除，并另列曝光调节保留设置",
+        "source_ids": [
+          "B2-S07"
+        ]
+      }
+    ],
+    "editorial_inferences": [
+      "距离/光线变化后重新锁定是整理者依据原有对焦和曝光原理提出的未实测操作；AE/AF Lock与曝光调节保留是两个控件，不应互相替代。"
+    ],
+    "facts": [],
+    "sources": [
+      {
+        "source_id": "B2-S07",
+        "publisher": "Apple",
+        "url": "https://support.apple.com/en-gb/guide/iphone/iph3dc593597/18.0/ios/18.0",
+        "location": "Adjust the camera’s focus and exposure / Lock the exposure setting",
+        "version": "iOS 18版指南；18.x小版本及设备界面未实测",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L1078–1126文本已读，本卡仅用L1081–1105两个小节；未读完整工具章节剩余小节或整本指南。",
+        "retrieval_allowed": false,
+        "rights_status": "未核验检索/公开展示/再分发许可，不保存原文或图片"
+      }
+    ],
+    "deduplication": {
+      "related_existing_ids": [
+        "photo20261011-technique-focus-static",
+        "photo20261011-technique-compensation",
+        "photo20261013-equipment-iphone16pro-macro-switch"
+      ],
+      "new_problem": "限定手机原生操作与锁定/解除流程，旧卡只有通用静态对焦、曝光补偿或微距模组切换。",
+      "decision": "独立问题补充；仍需独立人工复核语义与是否合并"
+    },
+    "verification": {
+      "checked_at": "2026-10-13",
+      "independent_publishers": [
+        "Apple"
+      ],
+      "independent_human_review": false,
+      "device_tested": false,
+      "reviewer": null,
+      "review_items": [
+        "iOS 18具体小版本与AE/AF Lock行为实机确认",
+        "区分曝光调节保留开关与焦点/曝光锁定",
+        "本事实仅Apple指南，未有第二独立发布者或实测"
+      ]
+    }
+  },
+  "tags": [
+    "20261013第二批草稿",
+    "摄影",
+    "手机操作"
+  ],
+  "conditions": {
+    "camera_model": "Apple iPhone 16 Pro",
+    "device_type": "phone",
+    "os_major": "iOS 18",
+    "app": "Apple Camera",
+    "capture_mode": "photo"
+  },
+  "source": {
+    "name": "Apple",
+    "url": "https://support.apple.com/en-gb/guide/iphone/iph3dc593597/18.0/ios/18.0",
+    "location": "Adjust the camera’s focus and exposure / Lock the exposure setting",
+    "license": "仅最小必要事实自行整理；检索、原文/图片再分发许可待核验",
+    "retrieval_allowed": false
+  },
+  "author": "符梁",
+  "version": 1,
+  "dataset_split": "reference"
+}

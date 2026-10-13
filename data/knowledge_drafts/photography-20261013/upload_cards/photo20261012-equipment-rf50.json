@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261012-equipment-rf50",
+  "library_id": "equipment",
+  "title": "Canon RF50mm F1.8 STM：定焦镜头逐字段规格",
+  "kind": "manufacturer_fact",
+  "content": "记录实际焦距、光圈、近摄距离、放大率、滤镜、重量及卡口；未真机验证。规格和最佳参数分开。",
+  "payload": {
+    "schema_version": "draft-1",
+    "equipment_id": "photo20261012-equipment-rf50",
+    "camera_model": null,
+    "lens_model": "Canon RF50mm F1.8 STM",
+    "camera_firmware": null,
+    "facts": [
+      {
+        "field": "actual_focal_length_mm",
+        "value": 50,
+        "unit": "mm",
+        "conditions": {
+          "lens_model": "Canon RF50mm F1.8 STM",
+          "actual_focal_length_mm": 50,
+          "capture_mode": "still_photo",
+          "camera_body": null
+        },
+        "source_id": "WEB-095",
+        "source_url": "https://in.canon/en/consumer/rf50mm-f-1-8-stm/main/specification",
+        "source_location": "Focal Length / 50mm lens description",
+        "information_source": "manufacturer_fact",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "maximum_aperture_f_number",
+        "value": 1.8,
+        "unit": "f_number",
+        "conditions": {
+          "lens_model": "Canon RF50mm F1.8 STM",
+          "actual_focal_length_mm": 50,
+          "capture_mode": "still_photo",
+          "camera_body": null
+        },
+        "source_id": "WEB-095",
+        "source_url": "https://in.canon/en/consumer/rf50mm-f-1-8-stm/main/specification",
+        "source_location": "Maximum Aperture / Key Features",
+        "information_source": "manufacturer_fact",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "minimum_aperture_f_number",
+        "value": 22,
+        "unit": "f_number",
+        "conditions": {
+          "lens_model": "Canon RF50mm F1.8 STM",
+          "actual_focal_length_mm": 50,
+          "capture_mode": "still_photo",
+          "camera_body": null
+        },
+        "source_id": "WEB-095",
+        "source_url": "https://in.canon/en/consumer/rf50mm-f-1-8-stm/main/specification",
+        "source_location": "Minimum Aperture",
+        "information_source": "manufacturer_fact",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "minimum_focus_distance",
+        "value": 0.3,
+        "unit": "m",
+        "conditions": {
+          "lens_model": "Canon RF50mm F1.8 STM",
+          "actual_focal_length_mm": 50,
+          "capture_mode": "still_photo",
+          "camera_body": null
+        },
+        "source_id": "WEB-095",
+        "source_url": "https://in.canon/en/consumer/rf50mm-f-1-8-stm/main/specification",
+        "source_location": "Minimum Focus Distance / Closest Focusing Distance",
+        "information_source": "manufacturer_fact",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "maximum_reproduction_ratio",
+        "value": 0.25,
+        "unit": "ratio",
+        "conditions": {
+          "lens_model": "Canon RF50mm F1.8 STM",
+          "actual_focal_length_mm": 50,
+          "capture_mode": "still_photo",
+          "camera_body": null
+        },
+        "source_id": "WEB-095",
+        "source_url": "https://in.canon/en/consumer/rf50mm-f-1-8-stm/main/specification",
+        "source_location": "Maximum Reproduction Ratio / Maximum Magnification",
+        "information_source": "manufacturer_fact",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "filter_diameter",
+        "value": 43,
+        "unit": "mm",
+        "conditions": {
+          "lens_model": "Canon RF50mm F1.8 STM",
+          "actual_focal_length_mm": 50,
+          "capture_mode": "still_photo",
+          "camera_body": null
+        },
+        "source_id": "WEB-095",
+        "source_url": "https://in.canon/en/consumer/rf50mm-f-1-8-stm/main/specification",
+        "source_location": "Filter Size",
+        "information_source": "manufacturer_fact",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "lens_weight",
+        "value": 160,
+        "unit": "g",
+        "conditions": {
+          "lens_model": "Canon RF50mm F1.8 STM",
+          "actual_focal_length_mm": 50,
+          "capture_mode": "still_photo",
+          "camera_body": null
+        },
+        "source_id": "WEB-095",
+        "source_url": "https://in.canon/en/consumer/rf50mm-f-1-8-stm/main/specification",
+        "source_location": "Approx. Weight / Weight",
+        "information_source": "manufacturer_fact",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "lens_mount",
+        "value": "Canon RF",
+        "unit": "mount_name",
+        "conditions": {
+          "lens_model": "Canon RF50mm F1.8 STM",
+          "actual_focal_length_mm": 50,
+          "capture_mode": "still_photo",
+          "camera_body": null
+        },
+        "source_id": "WEB-095",
+        "source_url": "https://in.canon/en/consumer/rf50mm-f-1-8-stm/main/specification",
+        "source_location": "Mount Type / RF mount description",
+        "information_source": "manufacturer_fact",
+        "verification_status": "source_checked_pending_independent_review"
+      }
+    ],
+    "conflicts": [],
+    "notes": [
+      "镜头最大光圈是硬件能力，不是最佳拍摄光圈。",
+      "近摄距离的测量基准未从本页单独确认。",
+      "镜头与机身的防抖组合不能视为冻结移动主体的保证。"
+    ],
+    "source_id": "WEB-095",
+    "source_url": "https://in.canon/en/consumer/rf50mm-f-1-8-stm/main/specification",
+    "review_status": "draft",
+    "author": "Codex（AI 整理，待独立审核）",
+    "reviewer": null,
+    "accessed_at": "2026-10-12",
+    "verified_at": null
+  },
+  "tags": [
+    "镜头规格",
+    "Canon RF50mm F1.8 STM"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Canon India",
+    "url": "https://in.canon/en/consumer/rf50mm-f-1-8-stm/main/specification",
+    "location": "Key Features / Specifications / Photo Library 权利声明",
+    "license": "必要规格事实整理，厂商正文和产品图权限另查",
+    "retrieval_allowed": false
+  },
+  "author": "Codex（AI 整理，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

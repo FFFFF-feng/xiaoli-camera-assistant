@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261012-composition-astro-foreground",
+  "library_id": "composition",
+  "title": "星空前景：同时检查天体和地面边界",
+  "kind": "guideline",
+  "content": "# 星空前景：同时检查天体和地面边界\n\n## 目标与结论\n前景可联系天空与地面，宽视野只是可选表达。\n\n## 适用条件与所需信息\n需已存在的前景、天空目标和保护区域。\n\n## 执行动作\n比较原图内天空与前景比例，画外信息仅作为重拍建议。\n\n## 例外、限制与风险\n不能用生成补画伪装成真实前景，也不强制使用广角。\n\n## 依据与案例\n来源 WEB-089：[原始资料](https://www.canon.ca/en/Articles/2024/astrophotography-tips)；位置：Camera Settings / Tripods and Mounts / Long Exposure。操作检查由本轮补充。关联案例未独立审核。\n\n## 审核记录\n2026-10-12 来源访问及草稿整理完成；独立审核人 null，权限 pending，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-089"
+    ],
+    "review_status": "draft",
+    "rights_status": "pending",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-12",
+    "scene": "astro_landscape",
+    "subject": "sky",
+    "motion": "unknown",
+    "requires": [
+      "需已存在的前景、天空目标和保护区域。"
+    ],
+    "actions": [
+      "比较原图内天空与前景比例，画外信息仅作为重拍建议。"
+    ],
+    "exceptions_and_risks": [
+      "不能用生成补画伪装成真实前景，也不强制使用广角。"
+    ],
+    "runtime_scene_registered": false,
+    "linked_case_ids": [],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "editorial_note": "基本原理来自所列章节，操作检查、保护条件和不确定性处置由本轮补充，需独立审核。",
+      "information_source": "model_inference"
+    },
+    "goal": "前景可联系天空与地面，宽视野只是可选表达。",
+    "automatic_execution": false,
+    "protected_regions": {
+      "status": "required_before_execution",
+      "items": [
+        "主体关键区域",
+        "人物或动物眼部／身体",
+        "动作器具、产品文字等用户确认内容"
+      ],
+      "bbox_xyxy_normalized": null
+    },
+    "geometry": {
+      "coordinate_system": "方向校正基图；左上原点，x右y下，xyxy归一化",
+      "base_image_hash": null,
+      "base_width": null,
+      "base_height": null,
+      "candidate_crop_xyxy_normalized": null,
+      "predicates": [
+        "0 <= x1 < x2 <= 1",
+        "0 <= y1 < y2 <= 1",
+        "crop contains confirmed protected regions"
+      ],
+      "missing_required_information_action": "skip_or_clarify"
+    },
+    "action_scope": "移动机位或实物为重拍；裁切仅使用原图内像素"
+  },
+  "tags": [
+    "构图库",
+    "astro_landscape",
+    "sky"
+  ],
+  "conditions": {
+    "scene": "astro_landscape"
+  },
+  "source": {
+    "name": "Canon Canada / featuring Paul Zizka",
+    "url": "https://www.canon.ca/en/Articles/2024/astrophotography-tips",
+    "location": "Camera Settings / Tripods and Mounts / Long Exposure",
+    "license": "正文与照片权限待核验；原创短整理，未复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex（AI 整理，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

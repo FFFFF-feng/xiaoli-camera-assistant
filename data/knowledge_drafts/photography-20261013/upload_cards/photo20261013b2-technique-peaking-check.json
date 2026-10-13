@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261013b2-technique-peaking-check",
+  "library_id": "technique",
+  "title": "峰值对焦辅助：彩色轮廓出现后仍检查关键细节",
+  "kind": "guideline",
+  "content": "核心结论：峰值对焦通过突出轮廓辅助判断焦点，其效果会随主体和镜头变化；不能仅凭彩色轮廓认定关键部位或全部主体已清晰。\n\n适用条件：静态照片，设备及当前手动对焦模式已确认支持峰值显示；关键清晰部位明确，可放大预览和复查保存原片\n\n操作建议（未实测）：\n1. 按本机手册确认MF/DMF与峰值开关，选易辨认的颜色和显示级别。\n2. 以彩色轮廓寻找候选焦点，再切换放大显示复查关键细节，重新取景后检查。\n3. 试拍并放大保存原片；必要时重新对焦，不把提高峰值显示级别当成提高成像清晰度。\n\n例外：Canon EOS R6 Mark II放大显示时不显示峰值，两种辅助可依次使用；不外推其他机型；Sony α7 IV手册说明HDMI外接设备不增强峰值轮廓；外接屏没有彩色轮廓不等于失焦；低纹理主体或低可见度条件可能难以可靠观察，具体效果未实测\n\n风险：显示增强可能让轮廓醒目，却不足以证明拍摄目标清晰；放大检查期间主体/相机移动，先前焦点可能不再适合\n\n信息不足时：不知道峰值支持模式或看不到轮廓时，先确认机型、固件、镜头和输出屏幕；用放大与原片复查，不填入最佳峰值级别或自动判定成功。\n\n来源事实：Sony α7 IV手册将峰值定义为MF/DMF的轮廓辅助，并说明效果随主体和镜头而异 [B2-S02]；Canon EOS R6 Mark II手册说明峰值颜色/级别、放大时不可见以及显示不写入照片，并给出放大手动对焦步骤 [B2-S01]\n\n整理者推断：依次使用峰值与放大、最后检查原片，是整理者结合两份手册的排查建议；不是两份来源共同实测过的流程。\n\n具体来源及核验范围：\nB2-S01 Canon https://cam.start.canon/en/C012/manual/html/UG-05_AF-Drive_0090.html；Manual Focus / Setting MF Peaking (Outline Emphasis) / Focus Guide；L5–138全部章节教学文字、Note和Caution已读；未检查按钮截图及完整手册。\nB2-S02 Sony https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000655327.html；Peaking Display / Menu item details / Note；L13–31本章全部正文已读；先读MENU目录中L178–187链接，再实际打开专章；未读整本打印版。\n\n核验限制：已读原始章节文字；没有真机实测、独立人工审核或许可证明，不能用于正式检索。",
+  "payload": {
+    "core_conclusion": "峰值对焦通过突出轮廓辅助判断焦点，其效果会随主体和镜头变化；不能仅凭彩色轮廓认定关键部位或全部主体已清晰。",
+    "applicable_conditions": [
+      "静态照片，设备及当前手动对焦模式已确认支持峰值显示",
+      "关键清晰部位明确，可放大预览和复查保存原片"
+    ],
+    "operations": [
+      {
+        "action": "按本机手册确认MF/DMF与峰值开关，选易辨认的颜色和显示级别。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "以彩色轮廓寻找候选焦点，再切换放大显示复查关键细节，重新取景后检查。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "试拍并放大保存原片；必要时重新对焦，不把提高峰值显示级别当成提高成像清晰度。",
+        "evidence_type": "untested_advice"
+      }
+    ],
+    "exceptions": [
+      "Canon EOS R6 Mark II放大显示时不显示峰值，两种辅助可依次使用；不外推其他机型",
+      "Sony α7 IV手册说明HDMI外接设备不增强峰值轮廓；外接屏没有彩色轮廓不等于失焦",
+      "低纹理主体或低可见度条件可能难以可靠观察，具体效果未实测"
+    ],
+    "risks": [
+      "显示增强可能让轮廓醒目，却不足以证明拍摄目标清晰",
+      "放大检查期间主体/相机移动，先前焦点可能不再适合"
+    ],
+    "missing_information_policy": "不知道峰值支持模式或看不到轮廓时，先确认机型、固件、镜头和输出屏幕；用放大与原片复查，不填入最佳峰值级别或自动判定成功。",
+    "source_facts": [
+      {
+        "statement": "Sony α7 IV手册将峰值定义为MF/DMF的轮廓辅助，并说明效果随主体和镜头而异",
+        "source_ids": [
+          "B2-S02"
+        ]
+      },
+      {
+        "statement": "Canon EOS R6 Mark II手册说明峰值颜色/级别、放大时不可见以及显示不写入照片，并给出放大手动对焦步骤",
+        "source_ids": [
+          "B2-S01"
+        ]
+      }
+    ],
+    "editorial_inferences": [
+      "依次使用峰值与放大、最后检查原片，是整理者结合两份手册的排查建议；不是两份来源共同实测过的流程。"
+    ],
+    "facts": [],
+    "sources": [
+      {
+        "source_id": "B2-S01",
+        "publisher": "Canon",
+        "url": "https://cam.start.canon/en/C012/manual/html/UG-05_AF-Drive_0090.html",
+        "location": "Manual Focus / Setting MF Peaking (Outline Emphasis) / Focus Guide",
+        "version": "网页章节D243-134；相机固件未注明",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L5–138全部章节教学文字、Note和Caution已读；未检查按钮截图及完整手册。",
+        "retrieval_allowed": false,
+        "rights_status": "未核验检索/公开展示/再分发许可，不保存原文或图片"
+      },
+      {
+        "source_id": "B2-S02",
+        "publisher": "Sony",
+        "url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000655327.html",
+        "location": "Peaking Display / Menu item details / Note",
+        "version": "帮助指南URL v1；固件未固定",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L13–31本章全部正文已读；先读MENU目录中L178–187链接，再实际打开专章；未读整本打印版。",
+        "retrieval_allowed": false,
+        "rights_status": "未核验检索/公开展示/再分发许可，不保存原文或图片"
+      }
+    ],
+    "deduplication": {
+      "related_existing_ids": [
+        "photo20261011-technique-focus-static",
+        "photo20261011-technique-macro-focus"
+      ],
+      "new_problem": "解决峰值轮廓能否作为清晰保证及显示缺失排查，旧卡没有这项辅助功能边界。",
+      "decision": "独立问题补充；仍需独立人工复核语义与是否合并"
+    },
+    "verification": {
+      "checked_at": "2026-10-13",
+      "independent_publishers": [
+        "Canon",
+        "Sony"
+      ],
+      "independent_human_review": false,
+      "device_tested": false,
+      "reviewer": null,
+      "review_items": [
+        "目标固件、显示输出、MF/DMF模式核验",
+        "峰值与放大顺序试拍",
+        "不将所有纹理/镜头状况推广为统一准确率"
+      ]
+    }
+  },
+  "tags": [
+    "20261013第二批草稿",
+    "摄影",
+    "拍摄排查"
+  ],
+  "conditions": {
+    "focus_mode": [
+      "manual",
+      "direct_manual"
+    ],
+    "capture_mode": "still_photo"
+  },
+  "source": {
+    "name": "Canon",
+    "url": "https://cam.start.canon/en/C012/manual/html/UG-05_AF-Drive_0090.html",
+    "location": "Manual Focus / Setting MF Peaking (Outline Emphasis) / Focus Guide",
+    "license": "仅最小必要事实自行整理；检索、原文/图片再分发许可待核验",
+    "retrieval_allowed": false
+  },
+  "author": "符梁",
+  "version": 1,
+  "dataset_split": "reference"
+}

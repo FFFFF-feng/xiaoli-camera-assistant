@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261013-technique-rolling-shutter-geometry",
+  "library_id": "technique",
+  "title": "快速移动主体变形：先核对逐行电子快门",
+  "kind": "guideline",
+  "content": "核心结论：逐行曝光/读出的电子快门可能把快速移动主体记录成倾斜或弯曲；缩短单行曝光不能保证消除整帧时间差造成的几何畸变。\n\n适用条件：静态照片；已经确认使用逐行电子快门；主体快速运动或拍摄时快速扫动相机；需要保持物体真实形状，且可比较原始照片与现场形状\n\n操作建议（未实测）：\n1. 记录机型、固件、快门类型、连拍/单拍、主体运动方向及相机是否扫动。\n2. 分别查看主体形状与边缘拖影，不凭一处弯曲直接确诊。\n3. 设备允许且现场允许快门声时，试用机械快门或电子前帘，尽量保持运动和取景相近并记录曝光差异；对比原片。\n4. 仍有畸变时减少快速扫动或调整安全机位再拍；优先确认该型号模式的读出特性。\n\n例外：全局快门不适用此逐行时间差诊断；Sony α9 III为官方明确的全局快门例子；机械快门也可能存在扫描时间差，不保证切换后完全消除；自然弯曲、透视和后期变形也可能造成类似外观\n\n风险：提高快门速度可能增加曝光压力，却未解决整帧时间差；切换快门类型可能改变噪声、连拍及闪光能力，须查机型手册\n\n信息不足时：缺少机型或快门模式时只列出可能原因，先确认模式；不填写读出毫秒数、不保证固定角度或快门能修复，不把未知变形当成失焦。\n\n来源事实：Canon解释逐行读出时各行对应不同时刻，快速物体可能变形；设定曝光时间与整帧读出时间不同 [S01]；Sony说明逐行结构可使侧面快速列车倾斜；支持页对快速运动畸变单列并排除ILCE-9M3 [S02,S04]\n\n整理推断：以形状变形和拖影分别检查，可以帮助区分候选原因；这只是排查流程，不是视觉诊断保证。\n\n具体来源及核验范围：\nS01 Canon Europe https://www.canon-europe.com/pro/infobank/electronic-vs-mechanical-shutter/；What is the difference… / What are the disadvantages… / How to deal with rolling shutter distortion and banding；MCP返回文本行L290–376中的正文、图注和署名已读；未读取正文之外的所有导航及页尾；未查看原图。\nS02 Sony UK Support https://www.sony.co.uk/electronics/support/e-mount-body-ilce-6000-series/ilce-6400a/articles/00176309；Restrictions… / Shooting Characteristics and Possible Image Effects；L8–73全部教学文本已读，涵盖型号例外；嵌入YouTube视频未播放，未同意额外cookies。\nS04 Sony Group https://www.sony.com/en/SonyInfo/technology/stories/entries/9M3_global-shutter/；To Create a Camera Like No Other；L140–229采访正文、署名及两条脚注已读；未查看配图、关联作品或视频。\n\n核验边界：只核验所列公开文本；未真机实拍、未独立人工审核、未核验使用许可。",
+  "payload": {
+    "core_conclusion": "逐行曝光/读出的电子快门可能把快速移动主体记录成倾斜或弯曲；缩短单行曝光不能保证消除整帧时间差造成的几何畸变。",
+    "applicable_conditions": [
+      "静态照片；已经确认使用逐行电子快门",
+      "主体快速运动或拍摄时快速扫动相机",
+      "需要保持物体真实形状，且可比较原始照片与现场形状"
+    ],
+    "operations": [
+      {
+        "action": "记录机型、固件、快门类型、连拍/单拍、主体运动方向及相机是否扫动。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "分别查看主体形状与边缘拖影，不凭一处弯曲直接确诊。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "设备允许且现场允许快门声时，试用机械快门或电子前帘，尽量保持运动和取景相近并记录曝光差异；对比原片。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "仍有畸变时减少快速扫动或调整安全机位再拍；优先确认该型号模式的读出特性。",
+        "evidence_type": "untested_advice"
+      }
+    ],
+    "exceptions": [
+      "全局快门不适用此逐行时间差诊断；Sony α9 III为官方明确的全局快门例子",
+      "机械快门也可能存在扫描时间差，不保证切换后完全消除",
+      "自然弯曲、透视和后期变形也可能造成类似外观"
+    ],
+    "risks": [
+      "提高快门速度可能增加曝光压力，却未解决整帧时间差",
+      "切换快门类型可能改变噪声、连拍及闪光能力，须查机型手册"
+    ],
+    "missing_information_policy": "缺少机型或快门模式时只列出可能原因，先确认模式；不填写读出毫秒数、不保证固定角度或快门能修复，不把未知变形当成失焦。",
+    "source_facts": [
+      {
+        "statement": "Canon解释逐行读出时各行对应不同时刻，快速物体可能变形；设定曝光时间与整帧读出时间不同",
+        "source_ids": [
+          "S01"
+        ]
+      },
+      {
+        "statement": "Sony说明逐行结构可使侧面快速列车倾斜；支持页对快速运动畸变单列并排除ILCE-9M3",
+        "source_ids": [
+          "S02",
+          "S04"
+        ]
+      }
+    ],
+    "editorial_inferences": [
+      "以形状变形和拖影分别检查，可以帮助区分候选原因；这只是排查流程，不是视觉诊断保证。"
+    ],
+    "sources": [
+      {
+        "source_id": "S01",
+        "publisher": "Canon Europe",
+        "url": "https://www.canon-europe.com/pro/infobank/electronic-vs-mechanical-shutter/",
+        "location": "What is the difference… / What are the disadvantages… / How to deal with rolling shutter distortion and banding",
+        "accessed_at": "2026-10-13",
+        "read_scope": "MCP返回文本行L290–376中的正文、图注和署名已读；未读取正文之外的所有导航及页尾；未查看原图。",
+        "version": null,
+        "rights_status": "待核验，禁止检索和转载原文/图片"
+      },
+      {
+        "source_id": "S02",
+        "publisher": "Sony UK Support",
+        "url": "https://www.sony.co.uk/electronics/support/e-mount-body-ilce-6000-series/ilce-6400a/articles/00176309",
+        "location": "Restrictions… / Shooting Characteristics and Possible Image Effects",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L8–73全部教学文本已读，涵盖型号例外；嵌入YouTube视频未播放，未同意额外cookies。",
+        "version": null,
+        "rights_status": "待核验，禁止检索和转载原文/图片"
+      },
+      {
+        "source_id": "S04",
+        "publisher": "Sony Group",
+        "url": "https://www.sony.com/en/SonyInfo/technology/stories/entries/9M3_global-shutter/",
+        "location": "To Create a Camera Like No Other",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L140–229采访正文、署名及两条脚注已读；未查看配图、关联作品或视频。",
+        "version": null,
+        "rights_status": "待核验，禁止检索和转载原文/图片"
+      }
+    ],
+    "conflict_ids": [
+      "C01"
+    ],
+    "deduplication": {
+      "related_existing_ids": [
+        "photo20261011-technique-motion-freeze",
+        "photo20261011-technique-blur-diagnosis"
+      ],
+      "decision": "独立问题的补充草稿；关联卡不替代本卡的机型/模式约束，待人工复查语义重叠"
+    },
+    "verification": {
+      "checked_at": "2026-10-13",
+      "method": "公开原始文本核验",
+      "independent_publishers": [
+        "Canon",
+        "Sony"
+      ],
+      "independent_human_review": false,
+      "device_tested": false,
+      "review_items": [
+        "核对相关旧卡是否需要合并为滚动畸变专项条目",
+        "核验目标机型读出模式，进行形状与拖影分离实拍",
+        "不采纳S01关于全局快门不实用的过时概括"
+      ],
+      "reviewer": null
+    }
+  },
+  "conditions": {
+    "shutter_type": "electronic_rolling",
+    "motion": "moving"
+  },
+  "tags": [
+    "20261013草稿",
+    "摄影",
+    "电子快门"
+  ],
+  "source": {
+    "name": "Canon Europe",
+    "url": "https://www.canon-europe.com/pro/infobank/electronic-vs-mechanical-shutter/",
+    "location": "What is the difference… / What are the disadvantages… / How to deal with rolling shutter distortion and banding",
+    "license": "仅保存自行整理的最小必要事实与建议；原文、图片、检索及再分发许可未核验",
+    "retrieval_allowed": false
+  },
+  "author": "符梁",
+  "version": 1,
+  "dataset_split": "reference"
+}

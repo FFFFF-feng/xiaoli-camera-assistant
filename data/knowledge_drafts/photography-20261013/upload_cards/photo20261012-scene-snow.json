@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261012-scene-snow",
+  "library_id": "scene",
+  "title": "雪景：明亮区域与色彩表达分开",
+  "kind": "guideline",
+  "content": "# 雪景：明亮区域与色彩表达分开\n\n## 目标与结论\n雪景可有白、蓝或灰的表达，曝光和色彩目标需确认。\n\n## 适用条件与所需信息\n需雪面纹理、主要主体与用户希望的氛围。\n\n## 执行动作\n记录高光、阴影、足迹和主体；现场温度保留未知。\n\n## 例外、限制与风险\n白色画面不证明是雪，作者低温经历不代表机型工作温度。\n\n## 依据与案例\n来源 WEB-093：[原始资料](https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/tips-for-photographing-winter-landscapes)；位置：It’s your story to tell / footprints / 温度脚注。操作检查由本轮补充。关联案例未独立审核。\n\n## 审核记录\n2026-10-12 来源访问及草稿整理完成；独立审核人 null，权限 pending，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-093"
+    ],
+    "review_status": "draft",
+    "rights_status": "pending",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-12",
+    "scene": "snow_landscape",
+    "subject": "landscape",
+    "motion": "unknown",
+    "requires": [
+      "需雪面纹理、主要主体与用户希望的氛围。"
+    ],
+    "actions": [
+      "记录高光、阴影、足迹和主体；现场温度保留未知。"
+    ],
+    "exceptions_and_risks": [
+      "白色画面不证明是雪，作者低温经历不代表机型工作温度。"
+    ],
+    "runtime_scene_registered": false,
+    "linked_case_ids": [],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "editorial_note": "基本原理来自所列章节，操作检查、保护条件和不确定性处置由本轮补充，需独立审核。",
+      "information_source": "model_inference"
+    },
+    "scene_id": "snow_landscape",
+    "definition": "雪景可有白、蓝或灰的表达，曝光和色彩目标需确认。",
+    "aliases": [
+      "snow_landscape",
+      "snow",
+      "雪景"
+    ],
+    "observable_features": [
+      "亮表面与纹理",
+      "足迹候选",
+      "主体与阴影"
+    ],
+    "lighting": {
+      "actual_light_source": "unknown",
+      "observation_required": true
+    },
+    "common_problems": [
+      "白色画面不证明是雪，作者低温经历不代表机型工作温度。"
+    ],
+    "unknown_policy": "图像候选与用户目标分开；不确定字段保留 unknown/null",
+    "example_index": "../../example_index.yaml"
+  },
+  "tags": [
+    "场景库",
+    "snow_landscape",
+    "landscape"
+  ],
+  "conditions": {
+    "scene": "snow_landscape"
+  },
+  "source": {
+    "name": "Nikon / Moose Peterson",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/tips-for-photographing-winter-landscapes",
+    "location": "It’s your story to tell / footprints / 温度脚注",
+    "license": "正文与照片权限待核验；原创短整理，未复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex（AI 整理，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

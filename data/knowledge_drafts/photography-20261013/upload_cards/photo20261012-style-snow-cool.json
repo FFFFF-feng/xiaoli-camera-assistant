@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261012-style-snow-cool",
+  "library_id": "style",
+  "title": "冷调雪景：创意颜色与校色记录分开",
+  "kind": "guideline",
+  "content": "# 冷调雪景：创意颜色与校色记录分开\n\n## 目标与结论\n冷暖色彩可表达冬季氛围，先确认是否追求中性颜色。\n\n## 适用条件与所需信息\n用户希望的冷暖感觉与关键细节明确。\n\n## 执行动作\n拍摄：记录参照及光线；后期：保留中性版再比较冷暖变化。\n\n## 例外、限制与风险\n蓝色雪不自动说明白平衡错误；不可用创意色偏当准确颜色。\n\n## 依据与案例\n来源 WEB-093：[原始资料](https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/tips-for-photographing-winter-landscapes)；位置：It’s your story to tell / footprints / 温度脚注。操作检查由本轮补充。关联案例未独立审核。\n\n## 审核记录\n2026-10-12 来源访问及草稿整理完成；独立审核人 null，权限 pending，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-093"
+    ],
+    "review_status": "draft",
+    "rights_status": "pending",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-12",
+    "scene": "snow_landscape",
+    "subject": "landscape",
+    "motion": "unknown",
+    "requires": [
+      "用户希望的冷暖感觉与关键细节明确。"
+    ],
+    "actions": [
+      "拍摄：记录参照及光线；后期：保留中性版再比较冷暖变化。"
+    ],
+    "exceptions_and_risks": [
+      "蓝色雪不自动说明白平衡错误；不可用创意色偏当准确颜色。"
+    ],
+    "runtime_scene_registered": false,
+    "linked_case_ids": [],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "editorial_note": "基本原理来自所列章节，操作检查、保护条件和不确定性处置由本轮补充，需独立审核。",
+      "information_source": "model_inference"
+    },
+    "target_expression": "冷暖色彩可表达冬季氛围，先确认是否追求中性颜色。",
+    "capture_goal": "记录参照及光线",
+    "postprocess_goal": "保留中性版再比较冷暖变化。",
+    "composition_tendency": "用户希望的冷暖感觉与关键细节明确。",
+    "lighting_tendency": "按目标记录实际光线，未提供统一布光方案",
+    "depth_of_field_goal": "按关键清晰区域确认，未给固定 f 数",
+    "color_tendency": "冷暖色彩可表达冬季氛围，先确认是否追求中性颜色。",
+    "related_rule_ids": [
+      "photo20261011-technique-white-balance"
+    ]
+  },
+  "tags": [
+    "风格库",
+    "snow_landscape",
+    "landscape"
+  ],
+  "conditions": {
+    "scene": "snow_landscape"
+  },
+  "source": {
+    "name": "Nikon / Moose Peterson",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/tips-for-photographing-winter-landscapes",
+    "location": "It’s your story to tell / footprints / 温度脚注",
+    "license": "正文与照片权限待核验；原创短整理，未复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex（AI 整理，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

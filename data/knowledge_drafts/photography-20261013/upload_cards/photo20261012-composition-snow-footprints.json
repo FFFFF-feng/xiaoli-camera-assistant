@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261012-composition-snow-footprints",
+  "library_id": "composition",
+  "title": "雪景足迹：进入场景前确定机位",
+  "kind": "guideline",
+  "content": "# 雪景足迹：进入场景前确定机位\n\n## 目标与结论\n进入雪地可能改变将被拍摄的足迹与纹理。\n\n## 适用条件与所需信息\n现场可重拍，目标是保留当前雪面状态。\n\n## 执行动作\n先从现有位置比较取景，再决定是否移动和换镜头。\n\n## 例外、限制与风险\n已经留下的足迹不能靠机位建议保证消失；不建议越过现场限制。\n\n## 依据与案例\n来源 WEB-093：[原始资料](https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/tips-for-photographing-winter-landscapes)；位置：It’s your story to tell / footprints / 温度脚注。操作检查由本轮补充。关联案例未独立审核。\n\n## 审核记录\n2026-10-12 来源访问及草稿整理完成；独立审核人 null，权限 pending，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-093"
+    ],
+    "review_status": "draft",
+    "rights_status": "pending",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-12",
+    "scene": "snow_landscape",
+    "subject": "landscape",
+    "motion": "unknown",
+    "requires": [
+      "现场可重拍，目标是保留当前雪面状态。"
+    ],
+    "actions": [
+      "先从现有位置比较取景，再决定是否移动和换镜头。"
+    ],
+    "exceptions_and_risks": [
+      "已经留下的足迹不能靠机位建议保证消失；不建议越过现场限制。"
+    ],
+    "runtime_scene_registered": false,
+    "linked_case_ids": [],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "editorial_note": "基本原理来自所列章节，操作检查、保护条件和不确定性处置由本轮补充，需独立审核。",
+      "information_source": "model_inference"
+    },
+    "goal": "进入雪地可能改变将被拍摄的足迹与纹理。",
+    "automatic_execution": false,
+    "protected_regions": {
+      "status": "required_before_execution",
+      "items": [
+        "主体关键区域",
+        "人物或动物眼部／身体",
+        "动作器具、产品文字等用户确认内容"
+      ],
+      "bbox_xyxy_normalized": null
+    },
+    "geometry": {
+      "coordinate_system": "方向校正基图；左上原点，x右y下，xyxy归一化",
+      "base_image_hash": null,
+      "base_width": null,
+      "base_height": null,
+      "candidate_crop_xyxy_normalized": null,
+      "predicates": [
+        "0 <= x1 < x2 <= 1",
+        "0 <= y1 < y2 <= 1",
+        "crop contains confirmed protected regions"
+      ],
+      "missing_required_information_action": "skip_or_clarify"
+    },
+    "action_scope": "移动机位或实物为重拍；裁切仅使用原图内像素"
+  },
+  "tags": [
+    "构图库",
+    "snow_landscape",
+    "landscape"
+  ],
+  "conditions": {
+    "scene": "snow_landscape"
+  },
+  "source": {
+    "name": "Nikon / Moose Peterson",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/tips-for-photographing-winter-landscapes",
+    "location": "It’s your story to tell / footprints / 温度脚注",
+    "license": "正文与照片权限待核验；原创短整理，未复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex（AI 整理，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

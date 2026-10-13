@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261013-equipment-iphone16pro-live-max",
+  "library_id": "equipment",
+  "title": "iPhone 16 Pro（iOS 18）：Live Photos与ProRAW／HEIF Max不能同开",
+  "kind": "manufacturer_fact",
+  "content": "核心结论：iOS 18官方指南说明，打开ProRAW或HEIF Max时Live Photos不可用；iPhone 16 Pro用户需要在动态照片与这些格式/分辨率选项之间选择。\n\n适用条件：仅iPhone 16 Pro原生Apple相机照片模式；按iOS 18版指南核验；具体18.x界面及格式设置需现场确认；用户正在排查Live Photos不可用，并已确认ProRAW或HEIF Max状态\n\n操作建议（未实测）：\n1. 核对原生相机照片模式、型号和iOS版本，查看当前格式/分辨率控制。\n2. 要拍Live Photos时先关闭ProRAW或HEIF Max，再检查Live Photos按钮状态并试拍。\n3. 要保留ProRAW或HEIF Max时，接受Live Photos不可用并告知这一取舍。\n4. 保存测试照片后检查是否确实带动态照片效果，不仅依据菜单文字判断。\n\n例外：本卡不宣称关闭格式控制能解决所有Live Photos不可用原因；不推广到所有RAW应用、所有HEIF文件或其他型号系统；夜间模式/闪光等其他交互不在本卡结论中\n\n风险：改变格式可能改变后续处理需求或输出分辨率；先确认拍摄目标；未核验所有镜头、变焦及照明条件下的最高输出像素，不保证每张达到规格最大像素\n\n信息不足时：格式状态或系统版本未知时先澄清，不默认支持；必要时查对应版本指南并试拍。不要从Live Photos按钮消失推断硬件故障。\n\n来源事实：iPhone 16 Pro规格明确列出Apple ProRAW及Live Photos能力 [S07]；iOS 18 Live Photos章节注释明确：开启ProRAW或HEIF Max时Live Photos不可用 [S08]\n\n整理推断：先关闭被文档列明的互斥设置再试拍，是排查顺序建议；没有证明可排除所有其他原因。\n\n具体来源及核验范围：\nS08 Apple iPhone User Guide (UK) https://support.apple.com/en-gb/guide/iphone/iph17471d6de/18.0/ios/18.0；Take a Live Photo / Turn off Live Photos / Note；L1078–1104本章节全文已读；特别核对L1103 ProRAW与HEIF Max限制；未读整本指南。\nS07 Apple Support https://support.apple.com/en-us/121031；Camera；实际返回L93–353范围已读；卡片仅采用L116–173 Camera中的微距、ProRAW、Live Photos能力；未读完整857行规格及全部脚注。\n\n核验边界：只核验所列公开文本；未真机实拍、未独立人工审核、未核验使用许可。",
+  "payload": {
+    "core_conclusion": "iOS 18官方指南说明，打开ProRAW或HEIF Max时Live Photos不可用；iPhone 16 Pro用户需要在动态照片与这些格式/分辨率选项之间选择。",
+    "applicable_conditions": [
+      "仅iPhone 16 Pro原生Apple相机照片模式",
+      "按iOS 18版指南核验；具体18.x界面及格式设置需现场确认",
+      "用户正在排查Live Photos不可用，并已确认ProRAW或HEIF Max状态"
+    ],
+    "operations": [
+      {
+        "action": "核对原生相机照片模式、型号和iOS版本，查看当前格式/分辨率控制。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "要拍Live Photos时先关闭ProRAW或HEIF Max，再检查Live Photos按钮状态并试拍。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "要保留ProRAW或HEIF Max时，接受Live Photos不可用并告知这一取舍。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "保存测试照片后检查是否确实带动态照片效果，不仅依据菜单文字判断。",
+        "evidence_type": "untested_advice"
+      }
+    ],
+    "exceptions": [
+      "本卡不宣称关闭格式控制能解决所有Live Photos不可用原因",
+      "不推广到所有RAW应用、所有HEIF文件或其他型号系统",
+      "夜间模式/闪光等其他交互不在本卡结论中"
+    ],
+    "risks": [
+      "改变格式可能改变后续处理需求或输出分辨率；先确认拍摄目标",
+      "未核验所有镜头、变焦及照明条件下的最高输出像素，不保证每张达到规格最大像素"
+    ],
+    "missing_information_policy": "格式状态或系统版本未知时先澄清，不默认支持；必要时查对应版本指南并试拍。不要从Live Photos按钮消失推断硬件故障。",
+    "source_facts": [
+      {
+        "statement": "iPhone 16 Pro规格明确列出Apple ProRAW及Live Photos能力",
+        "source_ids": [
+          "S07"
+        ]
+      },
+      {
+        "statement": "iOS 18 Live Photos章节注释明确：开启ProRAW或HEIF Max时Live Photos不可用",
+        "source_ids": [
+          "S08"
+        ]
+      }
+    ],
+    "editorial_inferences": [
+      "先关闭被文档列明的互斥设置再试拍，是排查顺序建议；没有证明可排除所有其他原因。"
+    ],
+    "sources": [
+      {
+        "source_id": "S08",
+        "publisher": "Apple iPhone User Guide (UK)",
+        "url": "https://support.apple.com/en-gb/guide/iphone/iph17471d6de/18.0/ios/18.0",
+        "location": "Take a Live Photo / Turn off Live Photos / Note",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L1078–1104本章节全文已读；特别核对L1103 ProRAW与HEIF Max限制；未读整本指南。",
+        "version": "iOS 18版指南；具体18.x小版本未固定",
+        "rights_status": "待核验，禁止检索和转载原文/图片"
+      },
+      {
+        "source_id": "S07",
+        "publisher": "Apple Support",
+        "url": "https://support.apple.com/en-us/121031",
+        "location": "Camera",
+        "accessed_at": "2026-10-13",
+        "read_scope": "实际返回L93–353范围已读；卡片仅采用L116–173 Camera中的微距、ProRAW、Live Photos能力；未读完整857行规格及全部脚注。",
+        "version": "iPhone 16 Pro型号规格；地区为英文美国支持页",
+        "rights_status": "待核验，禁止检索和转载原文/图片"
+      }
+    ],
+    "conflict_ids": [],
+    "deduplication": {
+      "related_existing_ids": [
+        "photo20261011-technique-raw",
+        "photo20261011-equipment-iphone15"
+      ],
+      "decision": "独立问题的补充草稿；关联卡不替代本卡的机型/模式约束，待人工复查语义重叠"
+    },
+    "verification": {
+      "checked_at": "2026-10-13",
+      "method": "公开原始文本核验",
+      "independent_publishers": [
+        "Apple"
+      ],
+      "independent_human_review": false,
+      "device_tested": false,
+      "review_items": [
+        "iOS 18具体版本真机确认互斥按钮",
+        "确认操作后输出格式、像素和动态效果",
+        "同一发布者两个文档核验，不计作两个独立发布者"
+      ],
+      "reviewer": null
+    }
+  },
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "Apple iPhone 16 Pro",
+    "app": "Apple Camera",
+    "os_major": "iOS 18",
+    "capture_mode": "photo"
+  },
+  "tags": [
+    "20261013草稿",
+    "摄影",
+    "手机模式"
+  ],
+  "source": {
+    "name": "Apple iPhone User Guide (UK)",
+    "url": "https://support.apple.com/en-gb/guide/iphone/iph17471d6de/18.0/ios/18.0",
+    "location": "Take a Live Photo / Turn off Live Photos / Note",
+    "license": "仅保存自行整理的最小必要事实与建议；原文、图片、检索及再分发许可未核验",
+    "retrieval_allowed": false
+  },
+  "author": "符梁",
+  "version": 1,
+  "dataset_split": "reference"
+}

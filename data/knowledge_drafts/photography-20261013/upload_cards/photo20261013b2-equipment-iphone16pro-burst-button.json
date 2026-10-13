@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261013b2-equipment-iphone16pro-burst-button",
+  "library_id": "equipment",
+  "title": "iPhone 16 Pro（iOS 18）：用调高音量键启动连拍",
+  "kind": "manufacturer_fact",
+  "content": "核心结论：iPhone 16 Pro支持连拍；iOS 18原生相机指南说明，可启用“使用调高音量键连拍”，再按住调高音量键拍摄连拍照片。\n\n适用条件：仅iPhone 16 Pro；Apple原生相机照片操作，依据中国区iOS 18指南；具体18.x小版本及设置入口需真机确认；用户需要多张照片供选择\n\n操作建议（未实测）：\n1. 进入设置＞相机，打开“使用调高音量键连拍”。\n2. 打开原生相机，按住调高音量键启动连拍；实际按钮行为先用短测试确认。\n3. 也可按指南把屏幕快门向左轻扫并持续操作，松开停止；不要把单纯长按屏幕快门当作同一操作。\n4. 在连拍缩略图中选择需要单独保留的照片，放大检查关键部位。\n\n例外：其他App、系统版本或未启用开关的按键行为不据此认定；灰色圆点是系统建议保留标记，不等于摄影目标已满足；本卡不承诺帧率、每帧分辨率或每帧自动对焦性能\n\n风险：大量连拍需要筛选且可能占用存储；操作成功不保证每帧清晰或捕捉到指定瞬间\n\n信息不足时：没有开关或按住后行为不同，先查型号、iOS与App，再读对应版本指南；可先尝试官方屏幕滑动方式，不编造兼容性或连拍速度。\n\n来源事实：iPhone 16 Pro型号规格Camera明确列出Burst mode [B2-S09]；中国区iOS 18连拍章说明向左滑动快门、松开停止、选片和启用调高音量键连拍 [B2-S08]\n\n整理者推断：在实际设备先作短测试，可以验证设置是否生效；检索到官方操作不等于本批已真机验证。\n\n具体来源及核验范围：\nB2-S08 Apple https://support.apple.com/zh-cn/guide/iphone/ipha42c55cd0/18.0/ios/18.0；连拍操作步骤 / 使用调高音量键连拍提示；L1021–1043本章全部教学文字已读；该中文版本可读，英文地区入口未成功读取正文。\nB2-S09 Apple https://support.apple.com/en-us/121031；Camera / Burst mode；本次向整理模型显示并读取L0–205，特别L116–173 Camera以及L170 Burst mode；未读完整857行规格及全部脚注。\n\n核验限制：已读原始章节文字；没有真机实测、独立人工审核或许可证明，不能用于正式检索。",
+  "payload": {
+    "core_conclusion": "iPhone 16 Pro支持连拍；iOS 18原生相机指南说明，可启用“使用调高音量键连拍”，再按住调高音量键拍摄连拍照片。",
+    "applicable_conditions": [
+      "仅iPhone 16 Pro；Apple原生相机照片操作，依据中国区iOS 18指南",
+      "具体18.x小版本及设置入口需真机确认；用户需要多张照片供选择"
+    ],
+    "operations": [
+      {
+        "action": "进入设置＞相机，打开“使用调高音量键连拍”。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "打开原生相机，按住调高音量键启动连拍；实际按钮行为先用短测试确认。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "也可按指南把屏幕快门向左轻扫并持续操作，松开停止；不要把单纯长按屏幕快门当作同一操作。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "在连拍缩略图中选择需要单独保留的照片，放大检查关键部位。",
+        "evidence_type": "untested_advice"
+      }
+    ],
+    "exceptions": [
+      "其他App、系统版本或未启用开关的按键行为不据此认定",
+      "灰色圆点是系统建议保留标记，不等于摄影目标已满足",
+      "本卡不承诺帧率、每帧分辨率或每帧自动对焦性能"
+    ],
+    "risks": [
+      "大量连拍需要筛选且可能占用存储",
+      "操作成功不保证每帧清晰或捕捉到指定瞬间"
+    ],
+    "missing_information_policy": "没有开关或按住后行为不同，先查型号、iOS与App，再读对应版本指南；可先尝试官方屏幕滑动方式，不编造兼容性或连拍速度。",
+    "source_facts": [
+      {
+        "statement": "iPhone 16 Pro型号规格Camera明确列出Burst mode",
+        "source_ids": [
+          "B2-S09"
+        ]
+      },
+      {
+        "statement": "中国区iOS 18连拍章说明向左滑动快门、松开停止、选片和启用调高音量键连拍",
+        "source_ids": [
+          "B2-S08"
+        ]
+      }
+    ],
+    "editorial_inferences": [
+      "在实际设备先作短测试，可以验证设置是否生效；检索到官方操作不等于本批已真机验证。"
+    ],
+    "facts": [],
+    "sources": [
+      {
+        "source_id": "B2-S08",
+        "publisher": "Apple",
+        "url": "https://support.apple.com/zh-cn/guide/iphone/ipha42c55cd0/18.0/ios/18.0",
+        "location": "连拍操作步骤 / 使用调高音量键连拍提示",
+        "version": "中国区iOS 18版指南；18.x小版本未实测",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L1021–1043本章全部教学文字已读；该中文版本可读，英文地区入口未成功读取正文。",
+        "retrieval_allowed": false,
+        "rights_status": "未核验检索/公开展示/再分发许可，不保存原文或图片"
+      },
+      {
+        "source_id": "B2-S09",
+        "publisher": "Apple",
+        "url": "https://support.apple.com/en-us/121031",
+        "location": "Camera / Burst mode",
+        "version": "iPhone 16 Pro美国英文规格页",
+        "accessed_at": "2026-10-13",
+        "read_scope": "本次向整理模型显示并读取L0–205，特别L116–173 Camera以及L170 Burst mode；未读完整857行规格及全部脚注。",
+        "retrieval_allowed": false,
+        "rights_status": "未核验检索/公开展示/再分发许可，不保存原文或图片"
+      }
+    ],
+    "deduplication": {
+      "related_existing_ids": [
+        "photo20261012-technique-pet-track",
+        "photo20261013-equipment-iphone16pro-live-max"
+      ],
+      "new_problem": "解决指定手机按键和屏幕手势的连拍操作，不重复活动主体通用连拍建议或Live Photos互斥。",
+      "decision": "独立问题补充；仍需独立人工复核语义与是否合并"
+    },
+    "verification": {
+      "checked_at": "2026-10-13",
+      "independent_publishers": [
+        "Apple"
+      ],
+      "independent_human_review": false,
+      "device_tested": false,
+      "reviewer": null,
+      "review_items": [
+        "中国区iOS 18小版本实机核对按键和手势",
+        "检查连续序列及选片行为",
+        "Apple两个文档同一发布者，不声称双独立来源"
+      ]
+    }
+  },
+  "tags": [
+    "20261013第二批草稿",
+    "摄影",
+    "手机操作"
+  ],
+  "conditions": {
+    "camera_model": "Apple iPhone 16 Pro",
+    "device_type": "phone",
+    "os_major": "iOS 18",
+    "app": "Apple Camera",
+    "capture_mode": "photo"
+  },
+  "source": {
+    "name": "Apple",
+    "url": "https://support.apple.com/zh-cn/guide/iphone/ipha42c55cd0/18.0/ios/18.0",
+    "location": "连拍操作步骤 / 使用调高音量键连拍提示",
+    "license": "仅最小必要事实自行整理；检索、原文/图片再分发许可待核验",
+    "retrieval_allowed": false
+  },
+  "author": "符梁",
+  "version": 1,
+  "dataset_split": "reference"
+}

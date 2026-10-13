@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261013-technique-flicker-banding",
+  "library_id": "technique",
+  "title": "人工光下出现明暗横带：按灯光和快门模式排查",
+  "kind": "guideline",
+  "content": "核心结论：频闪光源与扫描曝光可能产生明暗或色彩条带；应根据具体灯光及机型模式试拍核验，机械快门或防闪烁功能都不保证消除所有条带。\n\n适用条件：静态照片在LED/荧光灯等人工光下出现横向明暗或颜色条带；能记录当前快门类型和实际拍摄设置，并可复查原片\n\n操作建议（未实测）：\n1. 先排除后期处理或传输显示问题，登记灯光及同场其他闪光的可能影响。\n2. 按机型手册核对防闪烁功能在当前模式是否可用；不要把普通防闪烁和可变快门当同一功能。\n3. 保持灯光场景，逐项比较较慢曝光、可用快门类型或兼容的快门微调，检查实际保存原片。\n4. 若减慢曝光使运动拖影不可接受，优先更换可控灯光、机型兼容模式或拍摄方案，并记录取舍。\n\n例外：机械快门也可能出现条带；以Sony α7 IV帮助指南为例，普通Anti-flicker Shoot.仅针对100/120 Hz且电子快门不可用；Var. Shutter另有条件，不外推其他机型；闪光同步、传感器/处理噪声条纹需另行排查\n\n风险：延长曝光可能增加主体运动模糊；防闪烁或可变快门可能增加释放延迟；预览屏可能与实际照片不同；多频率混合灯光或PWM不能用地区电网频率直接推断\n\n信息不足时：机型、固件、灯光频率或模式未知时不推荐固定分母；先读对应手册并拍测试原片。没有条带证据时不将颜色差异直接归因于频闪。\n\n来源事实：Canon指出人工灯频闪可能在电子快门下形成条带，机械快门也非完全免疫 [S01]；Sony支持页记载频闪和他人闪光可形成条带；α7 IV手册明确普通防闪烁和可变快门的适用限制与试拍要求 [S02,S03]\n\n整理推断：在未知PWM/混合光条件下，按现场原片比较优于套用单个电网快门数值；流程未实测。\n\n具体来源及核验范围：\nS03 Sony Help Guide https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000659392.html；Menu item details / Hint / Note；本章节L13–62全部正文及限制已读；未读整个α7 IV帮助指南。\nS01 Canon Europe https://www.canon-europe.com/pro/infobank/electronic-vs-mechanical-shutter/；What is the difference… / What are the disadvantages… / How to deal with rolling shutter distortion and banding；MCP返回文本行L290–376中的正文、图注和署名已读；未读取正文之外的所有导航及页尾；未查看原图。\nS02 Sony UK Support https://www.sony.co.uk/electronics/support/e-mount-body-ilce-6000-series/ilce-6400a/articles/00176309；Restrictions… / Shooting Characteristics and Possible Image Effects；L8–73全部教学文本已读，涵盖型号例外；嵌入YouTube视频未播放，未同意额外cookies。\n\n核验边界：只核验所列公开文本；未真机实拍、未独立人工审核、未核验使用许可。",
+  "payload": {
+    "core_conclusion": "频闪光源与扫描曝光可能产生明暗或色彩条带；应根据具体灯光及机型模式试拍核验，机械快门或防闪烁功能都不保证消除所有条带。",
+    "applicable_conditions": [
+      "静态照片在LED/荧光灯等人工光下出现横向明暗或颜色条带",
+      "能记录当前快门类型和实际拍摄设置，并可复查原片"
+    ],
+    "operations": [
+      {
+        "action": "先排除后期处理或传输显示问题，登记灯光及同场其他闪光的可能影响。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "按机型手册核对防闪烁功能在当前模式是否可用；不要把普通防闪烁和可变快门当同一功能。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "保持灯光场景，逐项比较较慢曝光、可用快门类型或兼容的快门微调，检查实际保存原片。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "若减慢曝光使运动拖影不可接受，优先更换可控灯光、机型兼容模式或拍摄方案，并记录取舍。",
+        "evidence_type": "untested_advice"
+      }
+    ],
+    "exceptions": [
+      "机械快门也可能出现条带",
+      "以Sony α7 IV帮助指南为例，普通Anti-flicker Shoot.仅针对100/120 Hz且电子快门不可用；Var. Shutter另有条件，不外推其他机型",
+      "闪光同步、传感器/处理噪声条纹需另行排查"
+    ],
+    "risks": [
+      "延长曝光可能增加主体运动模糊",
+      "防闪烁或可变快门可能增加释放延迟；预览屏可能与实际照片不同",
+      "多频率混合灯光或PWM不能用地区电网频率直接推断"
+    ],
+    "missing_information_policy": "机型、固件、灯光频率或模式未知时不推荐固定分母；先读对应手册并拍测试原片。没有条带证据时不将颜色差异直接归因于频闪。",
+    "source_facts": [
+      {
+        "statement": "Canon指出人工灯频闪可能在电子快门下形成条带，机械快门也非完全免疫",
+        "source_ids": [
+          "S01"
+        ]
+      },
+      {
+        "statement": "Sony支持页记载频闪和他人闪光可形成条带；α7 IV手册明确普通防闪烁和可变快门的适用限制与试拍要求",
+        "source_ids": [
+          "S02",
+          "S03"
+        ]
+      }
+    ],
+    "editorial_inferences": [
+      "在未知PWM/混合光条件下，按现场原片比较优于套用单个电网快门数值；流程未实测。"
+    ],
+    "sources": [
+      {
+        "source_id": "S03",
+        "publisher": "Sony Help Guide",
+        "url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000659392.html",
+        "location": "Menu item details / Hint / Note",
+        "accessed_at": "2026-10-13",
+        "read_scope": "本章节L13–62全部正文及限制已读；未读整个α7 IV帮助指南。",
+        "version": "URL v1；相机固件版本未注明",
+        "rights_status": "待核验，禁止检索和转载原文/图片"
+      },
+      {
+        "source_id": "S01",
+        "publisher": "Canon Europe",
+        "url": "https://www.canon-europe.com/pro/infobank/electronic-vs-mechanical-shutter/",
+        "location": "What is the difference… / What are the disadvantages… / How to deal with rolling shutter distortion and banding",
+        "accessed_at": "2026-10-13",
+        "read_scope": "MCP返回文本行L290–376中的正文、图注和署名已读；未读取正文之外的所有导航及页尾；未查看原图。",
+        "version": null,
+        "rights_status": "待核验，禁止检索和转载原文/图片"
+      },
+      {
+        "source_id": "S02",
+        "publisher": "Sony UK Support",
+        "url": "https://www.sony.co.uk/electronics/support/e-mount-body-ilce-6000-series/ilce-6400a/articles/00176309",
+        "location": "Restrictions… / Shooting Characteristics and Possible Image Effects",
+        "accessed_at": "2026-10-13",
+        "read_scope": "L8–73全部教学文本已读，涵盖型号例外；嵌入YouTube视频未播放，未同意额外cookies。",
+        "version": null,
+        "rights_status": "待核验，禁止检索和转载原文/图片"
+      }
+    ],
+    "conflict_ids": [
+      "C02"
+    ],
+    "deduplication": {
+      "related_existing_ids": [
+        "photo20261012-technique-sports-wb",
+        "photo20261011-technique-flash-balance"
+      ],
+      "decision": "独立问题的补充草稿；关联卡不替代本卡的机型/模式约束，待人工复查语义重叠"
+    },
+    "verification": {
+      "checked_at": "2026-10-13",
+      "method": "公开原始文本核验",
+      "independent_publishers": [
+        "Canon",
+        "Sony"
+      ],
+      "independent_human_review": false,
+      "device_tested": false,
+      "review_items": [
+        "目标灯光、目标机型/固件的试拍",
+        "确认普通防闪烁与高频微调的菜单、兼容性及延迟",
+        "不同频率或机械快门仍失败时保留样片用于排查"
+      ],
+      "reviewer": null
+    }
+  },
+  "conditions": {
+    "lighting": "flickering_artificial"
+  },
+  "tags": [
+    "20261013草稿",
+    "摄影",
+    "电子快门"
+  ],
+  "source": {
+    "name": "Sony Help Guide",
+    "url": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000659392.html",
+    "location": "Menu item details / Hint / Note",
+    "license": "仅保存自行整理的最小必要事实与建议；原文、图片、检索及再分发许可未核验",
+    "retrieval_allowed": false
+  },
+  "author": "符梁",
+  "version": 1,
+  "dataset_split": "reference"
+}
