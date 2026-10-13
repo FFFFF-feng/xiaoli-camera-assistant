@@ -1,0 +1,1005 @@
+{
+  "date": "2026-10-13",
+  "count": 121,
+  "batches": [
+    {
+      "batch": "20261011",
+      "cards": 80,
+      "author_values": [
+        "Codex 本轮资料整理（AI，待独立审核）"
+      ]
+    },
+    {
+      "batch": "20261012",
+      "cards": 32,
+      "author_values": [
+        "Codex（AI 整理，待独立审核）"
+      ]
+    },
+    {
+      "batch": "20261013-batch1",
+      "cards": 4,
+      "author_values": [
+        "符梁"
+      ]
+    },
+    {
+      "batch": "20261013-batch2",
+      "cards": 5,
+      "author_values": [
+        "符梁"
+      ]
+    }
+  ],
+  "media_included": false,
+  "cards": [
+    {
+      "file": "upload_cards/photo20261011-case-city-night.json",
+      "sha256": "c6900128a1b2d1aae189c024520be6b805d2dd394e3a048b87881d033f75e64e",
+      "knowledge_id": "photo20261011-case-city-night",
+      "version": 1,
+      "library_id": "case",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-case-flower.json",
+      "sha256": "01d5123fa51b7adaacdc00dea624260d8f820bdebceb4f4ace9fbf51a540615b",
+      "knowledge_id": "photo20261011-case-flower",
+      "version": 1,
+      "library_id": "case",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-case-food-sprinkle.json",
+      "sha256": "2490dcfb217642480788c5b19dda8991ea63addecf1977599f081772c216c0db",
+      "knowledge_id": "photo20261011-case-food-sprinkle",
+      "version": 1,
+      "library_id": "case",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-case-landscape-reshoot.json",
+      "sha256": "78bd2a5f953b1568de404b7414d3a833da187c68b689f343dce3d91dfbe628e6",
+      "knowledge_id": "photo20261011-case-landscape-reshoot",
+      "version": 1,
+      "library_id": "case",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-case-still-life.json",
+      "sha256": "8f8672779f12cf5f872b72bcce7ee0212bddcb591c6bebc1e6845187bdb9cb4a",
+      "knowledge_id": "photo20261011-case-still-life",
+      "version": 1,
+      "library_id": "case",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-case-swan-crop.json",
+      "sha256": "1dcf38885edea41bb32f7ba82acfe569f7662cdd09c1778948808888482f7452",
+      "knowledge_id": "photo20261011-case-swan-crop",
+      "version": 1,
+      "library_id": "case",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-composition-edges.json",
+      "sha256": "40566b308b517dd45211eea51fb6c6214299b79383ec5f6fcce5eb8fb3ed620d",
+      "knowledge_id": "photo20261011-composition-edges",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-composition-food-props.json",
+      "sha256": "c64fc51a0f81aa40e60841d9cccce2404655798e7a233e0f4da4bfeae5522fcf",
+      "knowledge_id": "photo20261011-composition-food-props",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-composition-foreground.json",
+      "sha256": "379a50cad81ec38761357d92c72738c5fc78b7d3a0440d886cb001308ea4e9aa",
+      "knowledge_id": "photo20261011-composition-foreground",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-composition-horizon.json",
+      "sha256": "39134a8cc3652b40b0f517b0ef0c0c6b40c5b3061d225ef59628575c3bfafb77",
+      "knowledge_id": "photo20261011-composition-horizon",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-composition-leading-lines.json",
+      "sha256": "9ac7f93d38731594a24984ff38ec998149b937fc02296168c65e1686efad79eb",
+      "knowledge_id": "photo20261011-composition-leading-lines",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-composition-looking-room.json",
+      "sha256": "5d589cd76fa9e2c654c8c5d8953205711eb90f64805bc88d73a64e8b08c3bb65",
+      "knowledge_id": "photo20261011-composition-looking-room",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-composition-motion-room.json",
+      "sha256": "9583911d09efb716f46d22ce2b26c75280f085cbd1f27467d6a8f208acd19ff3",
+      "knowledge_id": "photo20261011-composition-motion-room",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-composition-patterns.json",
+      "sha256": "eb8662f7a26ab029e04cbb40214d6a7325ea07ed3e9fc957527a0d5f2ce7f720",
+      "knowledge_id": "photo20261011-composition-patterns",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-composition-perspective.json",
+      "sha256": "ade51842c9e7aefeaec5703dcf272c89d3deb44b3d56d6649d9a7bb77942a5e2",
+      "knowledge_id": "photo20261011-composition-perspective",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-composition-symmetry.json",
+      "sha256": "376b07a269ee3dfeff9ae23ab5582b656ccc593684cae6589d148a958b7ae5ce",
+      "knowledge_id": "photo20261011-composition-symmetry",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-composition-telephoto-detail.json",
+      "sha256": "4164c05e3adeb734aa2b5bc2dbcd04ea17e4fe7d55b2ed988e8bd0c0fc35b6fd",
+      "knowledge_id": "photo20261011-composition-telephoto-detail",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-composition-thirds.json",
+      "sha256": "9657b86bcc0392609df568d5b7a81c9c383766d40c2903588e828a8a883f186f",
+      "knowledge_id": "photo20261011-composition-thirds",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-equipment-canon-r6ii.json",
+      "sha256": "b087770c3786c283b0c9bdbad9f5b2927b41ede5b191f60d3f9ff79712527405",
+      "knowledge_id": "photo20261011-equipment-canon-r6ii",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-equipment-fuji-18-55-pending.json",
+      "sha256": "f5d63be3eca1dc1c9afd1c540d2cfea9211dacbe294733d0d7d90cb86ac4070e",
+      "knowledge_id": "photo20261011-equipment-fuji-18-55-pending",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-equipment-fuji-xt5.json",
+      "sha256": "74727f0ca0cb12359508c3b38fe2420595773048e3d500f3be17611a7495b7bc",
+      "knowledge_id": "photo20261011-equipment-fuji-xt5",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-equipment-iphone15.json",
+      "sha256": "533c1902774effbff906c17f96b1829f05431dd52d64e0d7c78a6acf99a138a6",
+      "knowledge_id": "photo20261011-equipment-iphone15",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-equipment-nikon-z24-70f4.json",
+      "sha256": "523426ea969e163e1e67919afc9f69378801aa6ddad98401d482c5713dae18a1",
+      "knowledge_id": "photo20261011-equipment-nikon-z24-70f4",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-equipment-nikon-z6iii.json",
+      "sha256": "96b5aeb395679e53dfdca6107de36bf72a5585281ec8c62d3deb3e74c5a3cc8b",
+      "knowledge_id": "photo20261011-equipment-nikon-z6iii",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-equipment-s24ultra.json",
+      "sha256": "c29f101848f70e7e63195dc9662612fdbd0be093542b29f7e489c4e1a754882a",
+      "knowledge_id": "photo20261011-equipment-s24ultra",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-equipment-sony-a7iv.json",
+      "sha256": "f840fcf18854453e74fb1852e9e7f64fe008ef3299ed06f41fd5d5f0f061f8ff",
+      "knowledge_id": "photo20261011-equipment-sony-a7iv",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-equipment-xiaomi14.json",
+      "sha256": "a8edf7cbdee4bb3c3a75e9d3f4489660955544f333982b24b81ced948e5f8273",
+      "knowledge_id": "photo20261011-equipment-xiaomi14",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-scene-backlit-scene.json",
+      "sha256": "54cad815255b7976a05e919bdcfde4634b5713951b9960b0921289bc461a82d5",
+      "knowledge_id": "photo20261011-scene-backlit-scene",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-scene-birds.json",
+      "sha256": "29da770ceea8b195631f00fa60b77fbbfae80b4b1af9e44fa85cfc9a59744e83",
+      "knowledge_id": "photo20261011-scene-birds",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-scene-daylight-landscape.json",
+      "sha256": "0c8524a66828f909316996227245e2c57aa4ece7ca914e33677799326ed5f1b1",
+      "knowledge_id": "photo20261011-scene-daylight-landscape",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-scene-fireworks.json",
+      "sha256": "6b8b8e16b34eae279fd3cac4ed59dba474c12ded85d33aaa2dc36f50961c7357",
+      "knowledge_id": "photo20261011-scene-fireworks",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-scene-flowing-water.json",
+      "sha256": "cba4d82138dd572439530b441d41d1f6e67b0450fe0273ee3749eb7386a03615",
+      "knowledge_id": "photo20261011-scene-flowing-water",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-scene-fog.json",
+      "sha256": "0286fd7e175565961b72f0e8d29e4199e08eb916cf2900d0b86c016d3d4effe1",
+      "knowledge_id": "photo20261011-scene-fog",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-scene-food.json",
+      "sha256": "870266cb1f7062e3c37e98e94321640600c656b226aa87232d31c0c22e971749",
+      "knowledge_id": "photo20261011-scene-food",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-scene-macro.json",
+      "sha256": "143796bd4ad596a641dbf6939cad4ce57d51961a81f261ea548b322d74f7ea5c",
+      "knowledge_id": "photo20261011-scene-macro",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-scene-night-handheld.json",
+      "sha256": "dc412a1ca568fc2f640ffa8c90c8a274f94d6e00425cc221613ed0b175158638",
+      "knowledge_id": "photo20261011-scene-night-handheld",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-scene-night-supported.json",
+      "sha256": "6dad6b293fe3d4a7ab821f0b1c4a761309951cb99cae6e4e573560127a4b7535",
+      "knowledge_id": "photo20261011-scene-night-supported",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-scene-outdoor-portrait.json",
+      "sha256": "58eaac9d27a584647ede12bf307fdf9f52fc6bc051f6189682f4cbe09e22a134",
+      "knowledge_id": "photo20261011-scene-outdoor-portrait",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-scene-window-portrait.json",
+      "sha256": "6748da1bd7edde7efa69444c1a428f3cb41303a34228bc89afc41e6f8235483f",
+      "knowledge_id": "photo20261011-scene-window-portrait",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-style-color-restraint.json",
+      "sha256": "4c5cf902cbc083e67000dcb4aef158218d473d67328ea0a60bfb186bb5bf28a3",
+      "knowledge_id": "photo20261011-style-color-restraint",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-style-fog-depth.json",
+      "sha256": "e6e58e07eb704d8a247c49fff77bf4a038016d1efa23315a71b478b1bab781c5",
+      "knowledge_id": "photo20261011-style-fog-depth",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-style-high-key.json",
+      "sha256": "4ffa349f007ffcdbb4101650f70e21a64d9364e246d8e0e4702c2909a1dda9af",
+      "knowledge_id": "photo20261011-style-high-key",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-style-low-key.json",
+      "sha256": "0190312461418bb4f73322d155cd875832ac33f26d01effe34f4a67b908d2cd5",
+      "knowledge_id": "photo20261011-style-low-key",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-style-monochrome.json",
+      "sha256": "8da8a8bec699a1ecaae53876ed163cecdb890f15a276e2cdc840130abe34c76e",
+      "knowledge_id": "photo20261011-style-monochrome",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-style-moody-food.json",
+      "sha256": "1ce07f199cac3ed3d50315139ce2bd25bafde264b3462617b8faebe25548979b",
+      "knowledge_id": "photo20261011-style-moody-food",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-style-natural-color.json",
+      "sha256": "f887201178571170e88f8c4a5686ba5e95212c5daa9ef43686f235bbe5721b0e",
+      "knowledge_id": "photo20261011-style-natural-color",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-style-silhouette.json",
+      "sha256": "e0275e97fea0da3034168084912ac32bf477a68b9c23c330cd2fa45e2f2ff3e9",
+      "knowledge_id": "photo20261011-style-silhouette",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-style-soft-portrait.json",
+      "sha256": "90579a17ab39085ca0ee2fc5185c1d636b79e99e9f5336b965b2950c90cb45c4",
+      "knowledge_id": "photo20261011-style-soft-portrait",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-style-water-silk.json",
+      "sha256": "9bb4d49d7df7245751b18dd12ddae74abc58a61a62169f7d5441d312324fdf9d",
+      "knowledge_id": "photo20261011-style-water-silk",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-aperture-priority.json",
+      "sha256": "956e3801dacf426776502a12ef8034c29fd86a1474936bad787d8b785ee05d7c",
+      "knowledge_id": "photo20261011-technique-aperture-priority",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-blur-diagnosis.json",
+      "sha256": "7aa8ed01fcd681fffdd5446118df9b6f24e278090691235b5e83a128d80fbe4a",
+      "knowledge_id": "photo20261011-technique-blur-diagnosis",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-compensation.json",
+      "sha256": "c7de4785af1f2f08b7e79bd114473bb73ca789d58b342204ec9ad35b86438392",
+      "knowledge_id": "photo20261011-technique-compensation",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-denoise.json",
+      "sha256": "a4dfb1b399b257595de6b17659b954c0069359bb97974efb2e8d3a011dc8e2df",
+      "knowledge_id": "photo20261011-technique-denoise",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-depth.json",
+      "sha256": "bf52311e304e91008440c118fe76fd27d3bd1dc06d2fe76ab050a96439b3a110",
+      "knowledge_id": "photo20261011-technique-depth",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-diffraction.json",
+      "sha256": "081b6095058a6d132b7a9e433319ba1d5f093a13fbaf8ba33f72cb776a6cf6b7",
+      "knowledge_id": "photo20261011-technique-diffraction",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-exposure-tradeoff.json",
+      "sha256": "d68d99cee203eac37558f715dfb2f8fb6002b21548a37a4cbbfbdb623cb8f85b",
+      "knowledge_id": "photo20261011-technique-exposure-tradeoff",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-flare.json",
+      "sha256": "ef138f4ad9ceabf2633cf58dd2e30b5f5bc7867c508e2f8bae3738bec39ffb15",
+      "knowledge_id": "photo20261011-technique-flare",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-flash-balance.json",
+      "sha256": "a54ed62a51acc094c04d505c379100c7001859f60a7911f6a0246d0e88e120e3",
+      "knowledge_id": "photo20261011-technique-flash-balance",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-flash-quality.json",
+      "sha256": "862ed53976f286a015bb060d888bd33c2709180c6902d05a9485d5e035921f87",
+      "knowledge_id": "photo20261011-technique-flash-quality",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-focus-moving.json",
+      "sha256": "75f49f49e55f15c4dda953629d4dc2117b9c62afa30744b1f095ef003eb44caa",
+      "knowledge_id": "photo20261011-technique-focus-moving",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-focus-stack.json",
+      "sha256": "2b5fae7c88b077833cfa30fee3e89e65dd2a8839f3fb48ba8e998d09a522718b",
+      "knowledge_id": "photo20261011-technique-focus-stack",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-focus-static.json",
+      "sha256": "476fec35d5b825655a7a308c6e7bb122922f834ebbe7e52294dae9704566a5d4",
+      "knowledge_id": "photo20261011-technique-focus-static",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-highlight-recovery.json",
+      "sha256": "fb3a7116afbb9b57972daa2c6dcc5c240bd239ebc08bf1921dbf48bc520dcb42",
+      "knowledge_id": "photo20261011-technique-highlight-recovery",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-highlight.json",
+      "sha256": "faebd5911fae68df4bb16a71b3d48c1709cc5fdc026dd47d3c8cdf9c655da6b1",
+      "knowledge_id": "photo20261011-technique-highlight",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-histogram.json",
+      "sha256": "823b11584fa3052eeedc4732ffc06f5ae7c2bf7d4c4d050ac4f35a006e97c668",
+      "knowledge_id": "photo20261011-technique-histogram",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-hyperfocal.json",
+      "sha256": "5d38541df7d39a3ad5822b9906785cdbbe0ae25de1032411a9c02b11310e2596",
+      "knowledge_id": "photo20261011-technique-hyperfocal",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-macro-focus.json",
+      "sha256": "7fe0dc0c552af1a1cfdf7ef6870336f27bc57b9b34038d343699863cfb0e930e",
+      "knowledge_id": "photo20261011-technique-macro-focus",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-manual-auto-iso.json",
+      "sha256": "8e0fc9debb7cd800e0906eb6e97675b2c2e9e01cdebd149887df7e28dac9034a",
+      "knowledge_id": "photo20261011-technique-manual-auto-iso",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-motion-freeze.json",
+      "sha256": "2e3833508294b17dd59bb30293ab76d88a6abf7785426c94b2c4243f8676b94c",
+      "knowledge_id": "photo20261011-technique-motion-freeze",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-nd.json",
+      "sha256": "6baf20df5ccf868878629d17d9bd7e7ac4d3b13b517837b620a2f155a11e2e83",
+      "knowledge_id": "photo20261011-technique-nd",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-panning.json",
+      "sha256": "1a6e52db81f5ce29ae5f71af1ee79008de9d306233a60278c78d256351a9bbea",
+      "knowledge_id": "photo20261011-technique-panning",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-panorama.json",
+      "sha256": "11baabd957774fa0352b3691935c0a7bcf5cd473ec120386c020bdd1bb0a41cb",
+      "knowledge_id": "photo20261011-technique-panorama",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-perspective-edit.json",
+      "sha256": "108a81900a57c9047e0230a061365b4317b3613a53e064b92ec24ee50c0ceced",
+      "knowledge_id": "photo20261011-technique-perspective-edit",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-polarizer.json",
+      "sha256": "9cc61b6aff31d6493ea298ef1617974aa5d62db8d47ec1f452101bfd9e1eaa2f",
+      "knowledge_id": "photo20261011-technique-polarizer",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-raw.json",
+      "sha256": "c9d3e568f8c035acf8fccac507ecd9596ced8a3cd98898456eed004bbbe04e05",
+      "knowledge_id": "photo20261011-technique-raw",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-reciprocal.json",
+      "sha256": "60b022714e05cb2eb47c5d726d0a745e6fab9bce77c2171011b69a5ffed38ae1",
+      "knowledge_id": "photo20261011-technique-reciprocal",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-shutter-priority.json",
+      "sha256": "d2c42cfd66327d71808b9e5c3b3e2b198fe6dd3fd07b5950e9f106bb8e5bb0d8",
+      "knowledge_id": "photo20261011-technique-shutter-priority",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-spot-meter.json",
+      "sha256": "48ff0ffd47d506f799d93a2517d7bd82c37714a5dbf1aa08b5bab462a19e019a",
+      "knowledge_id": "photo20261011-technique-spot-meter",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-tripod.json",
+      "sha256": "e809f8fdb509c0dabae117a6c0a2667cc68752dae2b11c122982cb433501be8a",
+      "knowledge_id": "photo20261011-technique-tripod",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261011-technique-white-balance.json",
+      "sha256": "2eef32ddbe9fc9f10dba10712970826386ca262f980fc17a2b968e6ceabf08fe",
+      "knowledge_id": "photo20261011-technique-white-balance",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex 本轮资料整理（AI，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-case-pet-yawn.json",
+      "sha256": "84c9dd53fc22004d9379d4d1c007e2f8ec6c2fca7417b7821e5c288eb2573f3f",
+      "knowledge_id": "photo20261012-case-pet-yawn",
+      "version": 1,
+      "library_id": "case",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-case-shift-stream.json",
+      "sha256": "0e2a9762ba2dcf70a0cec490250c50af20b55d4f97caaa0c8d8c95ba854308d8",
+      "knowledge_id": "photo20261012-case-shift-stream",
+      "version": 1,
+      "library_id": "case",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-case-sports-vertical.json",
+      "sha256": "81d96ef1f95c00bb9c3273cb30d29f3c8a717bbb65bfcc17bb3823c8c643c07f",
+      "knowledge_id": "photo20261012-case-sports-vertical",
+      "version": 1,
+      "library_id": "case",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-composition-astro-foreground.json",
+      "sha256": "c05b6c20a6c2bbbd3e338ac5bdc2af7d086e1439180cf0b7215bfc215f3122cb",
+      "knowledge_id": "photo20261012-composition-astro-foreground",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-composition-group-balance.json",
+      "sha256": "85accb2a4f4743231421f3d35a413ce22700ae5f5ec0f3a3eb99075f14cbbdd9",
+      "knowledge_id": "photo20261012-composition-group-balance",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-composition-pet-level.json",
+      "sha256": "cf355c21f227c36cc775609e8bea211068aba773cbdef30ae352f2e40107631c",
+      "knowledge_id": "photo20261012-composition-pet-level",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-composition-product-props.json",
+      "sha256": "7bacefcb6aac09da1c22cbe675d0e614aa3a645e304f8bd9fefce09a6feca6ff",
+      "knowledge_id": "photo20261012-composition-product-props",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-composition-snow-footprints.json",
+      "sha256": "57b6576d951cfc9a29320ce34180fd1602a122841042fe8ca119885a36c7193b",
+      "knowledge_id": "photo20261012-composition-snow-footprints",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-composition-sports-crop.json",
+      "sha256": "84b06867fc958a32e9a0f565bea84098e8eca9e1a1531540ba2d7d1bb8584590",
+      "knowledge_id": "photo20261012-composition-sports-crop",
+      "version": 1,
+      "library_id": "composition",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-equipment-rf50.json",
+      "sha256": "c38462010b49cd087539f10480bf2b094ea3b5dcfaabae12bc28a9d56f94c5dd",
+      "knowledge_id": "photo20261012-equipment-rf50",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-equipment-z50.json",
+      "sha256": "6fbd0333e27827f34813bcab7b95bf91d95e9d2931cd0ed2475201e99eb8aa3c",
+      "knowledge_id": "photo20261012-equipment-z50",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-scene-astro.json",
+      "sha256": "a70a4dcbce17fca18cab995d57fb3fd14a0f249061d8097b348e6e4c2576a966",
+      "knowledge_id": "photo20261012-scene-astro",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-scene-concert.json",
+      "sha256": "f44061654f5d3c04a49af4895ad40e0283a13dae82eff5d63e091ef6d79afbd6",
+      "knowledge_id": "photo20261012-scene-concert",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-scene-group.json",
+      "sha256": "e20bc3876fed2449681f3418a2e8a2bf279f4655b177448d7a77dfb7f822f8ae",
+      "knowledge_id": "photo20261012-scene-group",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-scene-indoor-sports.json",
+      "sha256": "cb1d820d1b6a72843ac7c06dd83f7f9a57f320f336096abd50e1c6e3bebeecc4",
+      "knowledge_id": "photo20261012-scene-indoor-sports",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-scene-pet-action.json",
+      "sha256": "e2087e9ff25ddd3797f3eff0fa5078944b3525a8b1a2f2d4e77225a42cdbda2e",
+      "knowledge_id": "photo20261012-scene-pet-action",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-scene-pet-portrait.json",
+      "sha256": "9521fadfbfbdb7316931e99c44eec0dc2fc9a9cc2c659b12bd4a5b4402d5a97a",
+      "knowledge_id": "photo20261012-scene-pet-portrait",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-scene-product.json",
+      "sha256": "546e2d281cb12b785899305e5a4cfb9c13694389b8ab334ba3812df7774cd897",
+      "knowledge_id": "photo20261012-scene-product",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-scene-snow.json",
+      "sha256": "8dfc49ba5b518c21bbda5f5c6a7772764cf87f8d0b20d843ca7a6e352ee6968c",
+      "knowledge_id": "photo20261012-scene-snow",
+      "version": 1,
+      "library_id": "scene",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-style-concert-color.json",
+      "sha256": "0b4c879aefd44d5b8832e8ce3e2f6ffd2fc7fb9d4c794369ddf96446907a4b31",
+      "knowledge_id": "photo20261012-style-concert-color",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-style-pet-expression.json",
+      "sha256": "24bb6b1fe5d6c124428abee63bdaba2419c3c1d00ab2e65205d0b3eba9480131",
+      "knowledge_id": "photo20261012-style-pet-expression",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-style-product-minimal.json",
+      "sha256": "d496e393563c9b844c4b3df27b47062f02c39b780b224878d4ca9303efffa7bf",
+      "knowledge_id": "photo20261012-style-product-minimal",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-style-snow-cool.json",
+      "sha256": "9a57e0c694239bd743b37807ea3cac18d22a7aeffcf8799276e968da1cb10ae7",
+      "knowledge_id": "photo20261012-style-snow-cool",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-style-snow-monochrome.json",
+      "sha256": "846bd6fb466b00424116d7dcea2b8c85a203a1acce8b582f583f4097f6477b6f",
+      "knowledge_id": "photo20261012-style-snow-monochrome",
+      "version": 1,
+      "library_id": "style",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-technique-astro-duration.json",
+      "sha256": "03c0a233956b620348223abb4a8cb250782a6fce38f88e56ea970cc0d481e2cb",
+      "knowledge_id": "photo20261012-technique-astro-duration",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-technique-group-focus.json",
+      "sha256": "01e7eb5300bfec5e14ac6b5bcd71b5b8361e57427fe69a67c8218ec28b0918ed",
+      "knowledge_id": "photo20261012-technique-group-focus",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-technique-group-motion.json",
+      "sha256": "d067c807f71106561f7c7783f8de8e040ced1c4fbcc8952eb9d190023f1e1666",
+      "knowledge_id": "photo20261012-technique-group-motion",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-technique-pet-track.json",
+      "sha256": "5cb918b8bc8dd9083b2a498956e448af21e017066cb6157b0be4e4ba920cdeff",
+      "knowledge_id": "photo20261012-technique-pet-track",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-technique-product-tether.json",
+      "sha256": "1d23802375e4d2d20cc50e3e6d1df66a7f09f2a8553d4873343809ac9a75a728",
+      "knowledge_id": "photo20261012-technique-product-tether",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-technique-shift-panorama.json",
+      "sha256": "68a431cbfa9cb09278f29a18de41992e84f4fedf1148be098530d745de35015a",
+      "knowledge_id": "photo20261012-technique-shift-panorama",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-technique-sports-wb.json",
+      "sha256": "26cafde02b8ff741a004d771cedf25f845cd7d22754ef5a70c15f2fc4d7f8e76",
+      "knowledge_id": "photo20261012-technique-sports-wb",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261012-technique-tilt-plane.json",
+      "sha256": "898ae69e048ed4b22ab15732f71667bbb133c442b2cd06b72d9deaa074852106",
+      "knowledge_id": "photo20261012-technique-tilt-plane",
+      "version": 1,
+      "library_id": "technique",
+      "author": "Codex（AI 整理，待独立审核）"
+    },
+    {
+      "file": "upload_cards/photo20261013-equipment-iphone16pro-live-max.json",
+      "sha256": "05908696c111efed5ca4d95c531fbf5b45a8978b1f202f8450ad70e7cb8203ba",
+      "knowledge_id": "photo20261013-equipment-iphone16pro-live-max",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "file": "upload_cards/photo20261013-equipment-iphone16pro-macro-switch.json",
+      "sha256": "9427d6b7ecc585bd0e9e5632b60206eb38a085fd02d6385e1b263dce5aced4b8",
+      "knowledge_id": "photo20261013-equipment-iphone16pro-macro-switch",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "file": "upload_cards/photo20261013-technique-flicker-banding.json",
+      "sha256": "c9371d08c9b66d4c21fd8679905a13326226971a29970ac4a426cd03c383f9ce",
+      "knowledge_id": "photo20261013-technique-flicker-banding",
+      "version": 1,
+      "library_id": "technique",
+      "author": "符梁"
+    },
+    {
+      "file": "upload_cards/photo20261013-technique-rolling-shutter-geometry.json",
+      "sha256": "fe2981362cd4e117b4f328f8cd12b41f31978b47165c9a9d9b8980dd758cc009",
+      "knowledge_id": "photo20261013-technique-rolling-shutter-geometry",
+      "version": 1,
+      "library_id": "technique",
+      "author": "符梁"
+    },
+    {
+      "file": "upload_cards/photo20261013b2-equipment-a7iv-long-nr.json",
+      "sha256": "a25612f2403a3847422775516f36cf566029d0282c99fcd66aacfa3786cfa65a",
+      "knowledge_id": "photo20261013b2-equipment-a7iv-long-nr",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "file": "upload_cards/photo20261013b2-equipment-iphone16pro-aeaf-lock.json",
+      "sha256": "a5a64a8f7527c0a63f3c10ca91167ae07e43a513ca6cf8201cbfa4b694dd21f0",
+      "knowledge_id": "photo20261013b2-equipment-iphone16pro-aeaf-lock",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "file": "upload_cards/photo20261013b2-equipment-iphone16pro-burst-button.json",
+      "sha256": "25c17713d40ddf2b1bff0a0e3dee4f8a628fa389f8b401ea5010f427385ebd30",
+      "knowledge_id": "photo20261013b2-equipment-iphone16pro-burst-button",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "file": "upload_cards/photo20261013b2-technique-efcs-bokeh.json",
+      "sha256": "326569ff71b8bf4fb579703b18af0dba9022cb6a2abdf6d3aca56cfb612f506a",
+      "knowledge_id": "photo20261013b2-technique-efcs-bokeh",
+      "version": 1,
+      "library_id": "technique",
+      "author": "符梁"
+    },
+    {
+      "file": "upload_cards/photo20261013b2-technique-peaking-check.json",
+      "sha256": "bc7df1a98a0f5ab56b962e5c4a5bddc3b3c4cb753c010da9fa658d76a2f9d7e7",
+      "knowledge_id": "photo20261013b2-technique-peaking-check",
+      "version": 1,
+      "library_id": "technique",
+      "author": "符梁"
+    }
+  ]
+}
