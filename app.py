@@ -2,16 +2,20 @@ from __future__ import annotations
 
 import base64
 import html
+import io
 from pathlib import Path
 
 import httpx
 import streamlit as st
+from PIL import Image, ImageDraw, ImageFont
+from pydantic import ValidationError
 
 ROOT = Path(__file__).resolve().parent
 
 from camera_assistant.config import Settings
 from camera_assistant.models import PipelineResult, UserRequest
 from camera_assistant.pipeline import CameraAssistantPipeline
+from camera_assistant.services.cloud import ModelServiceError
 from camera_assistant.services.image_analyzer import ImageValidationError
 
 st.set_page_config(
@@ -21,8 +25,8 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-SESSION_SCHEMA_VERSION = 5
-PIPELINE_RESOURCE_VERSION = 3
+SESSION_SCHEMA_VERSION = 6
+PIPELINE_RESOURCE_VERSION = 4
 
 
 def migrate_session_state() -> None:
@@ -89,9 +93,164 @@ def render_header(settings: Settings) -> None:
             """,
             unsafe_allow_html=True,
         )
+    else:
+        st.caption(
+            f"视觉模型：{settings.vision_model} · 参数模型：{settings.text_model} · "
+            f"定位：{'Grounding DINO' if settings.detector_enabled else '未启用'}"
+        )
+
+
+def localization_overlay(result: PipelineResult) -> Image.Image:
+    """在与模型输入同方向、同坐标基准的图像副本上标记候选。"""
+    encoded = result.inspection.model_image_data_url.split(",", 1)[1]
+    with Image.open(io.BytesIO(base64.b64decode(encoded, validate=True))) as source:
+        image = source.convert("RGB")
+    draw = ImageDraw.Draw(image)
+    try:
+        font = ImageFont.truetype("C:/Windows/Fonts/msyh.ttc", max(14, image.width // 65))
+    except OSError:
+        font = ImageFont.load_default()
+    for index, candidate in enumerate(result.localization.candidates, start=1):
+        x1, y1, x2, y2 = candidate.bbox
+        draw.rectangle(
+            (x1 * image.width, y1 * image.height, x2 * image.width, y2 * image.height),
+            outline="#f57b42",
+            width=max(2, image.width // 400),
+        )
+        # 图中只标编号，完整类别和 ID 在图下展示，避免长标签遮住现场。
+        draw.text(
+            (x1 * image.width, y1 * image.height),
+            str(index),
+            font=font,
+            fill="#f57b42",
+            stroke_width=1,
+            stroke_fill="white",
+        )
+    return image
+
+
+def render_composition(result: PipelineResult) -> None:
+    localization = getattr(result, "localization", None)
+    composition = getattr(result, "composition", None)
+    if localization is None and composition is None:
+        return
+
+    st.subheader("构图与主体位置")
+    if localization is not None:
+        status_labels = {
+            "success": "检测完成",
+            "detection_only": "仅获得检测候选",
+            "empty": "没有检测到候选",
+            "environment_missing": "检测环境尚未准备",
+            "model_missing": "检测权重尚未准备",
+            "timeout": "检测超时",
+            "cancelled": "检测已停止",
+            "runtime_error": "检测未完成",
+            "partial_coordinates": "部分候选坐标有问题",
+            "coordinate_error": "候选坐标有问题",
+            "query_missing": "没有可用于定位的对象描述",
+        }
+        state = status_labels.get(localization.status, "定位未完整完成")
+        st.caption(f"Grounding DINO · {state} · {len(localization.candidates)} 个候选框")
+        selection = localization.selection
+        selection_labels = {
+            "selected": "模型已关联任务主体，仍需结合现场确认",
+            "ambiguous": "主体存在歧义",
+            "abstained": "模型未确定主体",
+            "unsupported": "当前目标无法可靠关联",
+            "detection_only": "当前只有检测候选",
+        }
+        st.write(selection_labels.get(selection.status, "主体关联待确认"))
+        if selection.selected_ids:
+            st.caption("模型关联的候选 ID：" + "、".join(selection.selected_ids))
+        if localization.candidates:
+            try:
+                st.image(
+                    localization_overlay(result),
+                    caption="候选对象位置；编号对应下方列表。框选结果需要现场确认。",
+                    width="stretch",
+                )
+            except (ValueError, IndexError, OSError):
+                st.warning("候选框预览暂时无法显示，可查看下方候选列表。")
+            with st.expander("定位候选列表"):
+                for index, candidate in enumerate(localization.candidates, start=1):
+                    score = f" · 检测分数 {candidate.score:.3f}" if candidate.score is not None else ""
+                    st.write(
+                        f"{index}. {candidate.label_display or candidate.label_original} "
+                        f"（ID：{candidate.object_id}）{score}"
+                    )
+                st.caption("检测分数表示模型关联强度，不代表正确率或主角确定程度。")
+        else:
+            st.info("本次没有可显示的候选框；构图建议应结合原图与现场判断。")
+
+    if composition is None:
+        return
+    status_labels = {
+        "grounded": "本次构图方案附有知识库引用",
+        "unverified": "本次没有可用的知识库依据，构图建议待验证",
+        "unavailable": "本次无法生成构图方案",
+        "demo": "演示构图结果，未调用真实模型",
+    }
+    label = status_labels.get(composition.status, "构图结果待验证")
+    if composition.status == "grounded":
+        st.info(label)
+    else:
+        st.warning(label)
+
+    if composition.observations:
+        with st.expander("画面观察与不确定项"):
+            for observation in composition.observations:
+                st.write(f"- {observation}")
+            for uncertainty in composition.uncertainties:
+                st.caption(f"待确认：{uncertainty}")
+    elif composition.uncertainties:
+        for uncertainty in composition.uncertainties:
+            st.caption(f"待确认：{uncertainty}")
+
+    hits = getattr(result, "composition_knowledge_hits", [])
+    hits_by_id = {hit.document_id: hit for hit in hits}
+    action_labels = {
+        "crop": "裁切",
+        "camera_position": "调整机位",
+        "focal_length": "调整焦段",
+        "reshoot": "重新拍摄",
+    }
+    for index, proposal in enumerate(composition.proposals, start=1):
+        action_label = action_labels.get(proposal.action_type, "调整构图")
+        st.markdown(f"**方案 {index} · {action_label}：{proposal.goal}**")
+        for action in proposal.actions:
+            st.write(f"- {action}")
+        for reason in proposal.reasons:
+            st.write(f"依据：{reason}")
+        for tradeoff in proposal.tradeoffs:
+            st.caption(f"取舍：{tradeoff}")
+        for condition in proposal.conditions:
+            st.caption(f"适用条件：{condition}")
+        for limitation in proposal.limitations:
+            st.caption(f"限制：{limitation}")
+        if proposal.crop_bbox is not None:
+            st.caption("建议裁切范围（左、上、右、下；归一化坐标）：" + str(proposal.crop_bbox))
+        for knowledge_id in proposal.knowledge_ids:
+            hit = hits_by_id.get(knowledge_id)
+            if hit is not None:
+                st.caption(f"引用：{hit.title} · {hit.document_id} · 来源：{hit.source}")
+            else:
+                st.caption(f"引用 {knowledge_id} 未匹配本次检索内容，需复核。")
+
+    for note in composition.notes:
+        st.caption(note)
+    with st.expander("本次构图知识依据"):
+        if not hits:
+            st.write("未检索到已发布且适用的构图资料。上传到 GitHub 后仍需导入、审核并发布。")
+        for hit in hits:
+            st.write(f"{hit.title}（{hit.document_id}）")
+            st.caption(f"来源：{hit.source} · 相关度 {hit.score:.3f}")
+            st.write(hit.content[:600] + ("…" if len(hit.content) > 600 else ""))
+            st.divider()
 
 
 def render_result(result: PipelineResult) -> None:
+    render_composition(result)
     recommendation = result.recommendation
     camera_profile = getattr(result, "camera_profile", None)
     scene_label = getattr(result.scene, "scene_label", "") or result.scene.scene_type
@@ -211,7 +370,14 @@ def render_result(result: PipelineResult) -> None:
 
 load_css()
 migrate_session_state()
-settings, pipeline = build_pipeline(PIPELINE_RESOURCE_VERSION)
+try:
+    settings, pipeline = build_pipeline(PIPELINE_RESOURCE_VERSION)
+except Exception:  # noqa: BLE001 - 页面边界统一脱敏，避免异常自动展示凭据。
+    st.error(
+        "应用配置尚未就绪。请检查本地 .env 中的模型、密钥与知识库配置，"
+        "修改后重启。真实模式需要有效密钥；离线体验可设置 APP_DEMO_MODE=true。"
+    )
+    st.stop()
 render_header(settings)
 camera_profiles = pipeline.camera_knowledge.list_profiles()
 camera_profile_names = {profile.profile_id: profile.display_name for profile in camera_profiles}
@@ -235,6 +401,7 @@ with st.container(border=True):
             "你想拍出什么效果？",
             placeholder="例如：夜晚拍正在跑动的小狗，希望主体清晰、背景稍微虚化。",
             height=105,
+            max_chars=500,
         )
         motion = st.radio(
             "主体会动吗？", ["静止", "缓慢", "快速", "不确定"], horizontal=True, index=3
@@ -272,29 +439,40 @@ with st.container(border=True):
         unsafe_allow_html=True,
     )
     if submitted:
+        st.session_state.pop("last_result", None)
         if uploaded_file is None:
             st.error("先放入一张现场原图，小栗才能判断拍摄环境。")
         elif len(intent.strip()) < 2:
             st.error("请用一句话告诉小栗你想拍出的效果。")
         else:
-            user_request = UserRequest(
-                intent=intent.strip(),
-                subject_motion=motion,
-                handheld=handheld,
-                tripod=tripod,
-                camera_format=camera_format,
-                camera_profile_id=camera_profile_id,
-                focal_length_mm=focal_length or None,
-                max_aperture=max_aperture or None,
-            )
             try:
-                with st.spinner("小栗正在识别场景、翻知识手册并检查机型…"):
+                user_request = UserRequest(
+                    intent=intent.strip(),
+                    subject_motion=motion,
+                    handheld=handheld,
+                    tripod=tripod,
+                    camera_format=camera_format,
+                    camera_profile_id=camera_profile_id,
+                    focal_length_mm=focal_length or None,
+                    max_aperture=max_aperture or None,
+                )
+                with st.spinner("小栗正在识别场景、定位候选并查阅拍摄知识…"):
                     result = pipeline.run(uploaded_file.getvalue(), user_request)
                 st.session_state["last_result"] = result
             except ImageValidationError as exc:
                 st.error(str(exc))
-            except (ValueError, KeyError, TypeError, httpx.HTTPError) as exc:
-                st.error(f"这次分析没有完成：{exc}")
+            except ValidationError:
+                st.error("输入或模型返回的数据格式不符合要求。请检查焦段、光圈后重试。")
+            except ModelServiceError as exc:
+                st.error(str(exc))
+            except httpx.TimeoutException:
+                st.error("模型请求超时，请检查网络并稍后重试。")
+            except httpx.HTTPError:
+                st.error("模型服务暂时无法连接，请检查网络、服务地址与密钥配置。")
+            except (ValueError, KeyError, TypeError, RuntimeError, OSError):
+                st.error("这次分析没有完成，请检查模型与知识库配置后重试。")
+            except Exception:  # noqa: BLE001 - 未预见的服务错误也不能回显敏感请求。
+                st.error("这次分析未能完成，请稍后重试或联系项目维护者检查本机运行记录。")
 
     if "last_result" in st.session_state:
         render_result(st.session_state["last_result"])

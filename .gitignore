@@ -2,6 +2,8 @@
 .env.*
 !.env.example
 .venv/
+.venv-detectors/
+.venv-detectors-*/
 venv/
 env/
 __pycache__/
@@ -21,6 +23,7 @@ htmlcov/
 data/knowledge.db*
 data/uploads/
 data/history/
+data/vision_lab/
 data/vector_store/
 .streamlit/secrets.toml
 .streamlit/secrets.*
@@ -29,3 +32,4 @@ data/vector_store/
 .DS_Store
 Thumbs.db
 tmp/
+.tmp/

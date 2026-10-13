@@ -1,16 +1,30 @@
 from __future__ import annotations
 
+from camera_assistant.composition_models import CompositionAdvice
 from camera_assistant.config import PROJECT_ROOT, Settings
 from camera_assistant.knowledge.retriever import ManagedKnowledgeRetriever
 from camera_assistant.knowledge.store import KnowledgeStore
-from camera_assistant.models import KnowledgeHit, PipelineResult, SceneAnalysis, UserRequest
+from camera_assistant.models import (
+    CameraRecommendation,
+    KnowledgeHit,
+    PipelineResult,
+    SceneAnalysis,
+    UserRequest,
+)
 from camera_assistant.services.advisor import (
     DemoRecommendationAdvisor,
     OpenAICompatibleRecommendationAdvisor,
     RecommendationAdvisor,
 )
 from camera_assistant.services.camera_knowledge import CameraKnowledgeBase
+from camera_assistant.services.cloud import ModelServiceError
+from camera_assistant.services.composition import (
+    CompositionAdvisor,
+    DemoCompositionAdvisor,
+    OpenAICompatibleCompositionAdvisor,
+)
 from camera_assistant.services.image_analyzer import ImageAnalyzer
+from camera_assistant.services.localization import GroundingDinoLocalizer
 from camera_assistant.services.retriever import LocalKnowledgeRetriever
 from camera_assistant.services.scene_knowledge import SceneKnowledgeBase
 from camera_assistant.services.validator import RecommendationValidator
@@ -32,8 +46,15 @@ class CameraAssistantPipeline:
         scene_knowledge: SceneKnowledgeBase | None = None,
         advisor: RecommendationAdvisor | None = None,
         validator: RecommendationValidator | None = None,
+        localizer: GroundingDinoLocalizer | None = None,
+        composition_advisor: CompositionAdvisor | None = None,
     ) -> None:
         self.settings = settings
+        if not settings.demo_mode and not settings.cloud_ready:
+            raise ValueError(
+                "真实模式配置不完整：请填写模型与 API Key；GLM-DINO 可使用 ZHIPU_API_KEY "
+                "或实验窗口保存的本机智谱密钥。"
+            )
         self.image_analyzer = image_analyzer or ImageAnalyzer(settings.max_image_mb)
         self.camera_knowledge = camera_knowledge or CameraKnowledgeBase(
             settings.knowledge_dir / "cameras" / "camera_profiles.yaml"
@@ -57,6 +78,15 @@ class CameraAssistantPipeline:
         else:
             self.vision_analyzer = vision_analyzer or DemoVisionAnalyzer()
             self.advisor = advisor or DemoRecommendationAdvisor()
+        self.localizer = localizer
+        if settings.detector_enabled and settings.cloud_ready and self.localizer is None:
+            self.localizer = GroundingDinoLocalizer(settings)
+        self.composition_advisor = composition_advisor
+        if settings.composition_enabled and self.composition_advisor is None:
+            self.composition_advisor = (
+                OpenAICompatibleCompositionAdvisor(settings) if settings.cloud_ready
+                else DemoCompositionAdvisor()
+            )
 
     def run(self, image_content: bytes, request: UserRequest) -> PipelineResult:
         inspection = self.image_analyzer.analyze(image_content)
@@ -65,29 +95,71 @@ class CameraAssistantPipeline:
         candidates = self.scene_knowledge.find_candidates(effective_request, inspection)
         scene = self.vision_analyzer.analyze(inspection, effective_request, candidates)
         scene = self.scene_knowledge.normalize(scene, candidates)
+        localization = None
+        if self.localizer is not None and not self.settings.demo_mode:
+            localization = self.localizer.localize(inspection, effective_request, scene)
         query = self._build_query(effective_request, scene)
+        canonical_subject = next(
+            (candidate.subject for candidate in candidates if candidate.profile_id == scene.scene_type),
+            "main subject",
+        )
+        conditions = {
+            "scene": scene.scene_type, "subject": canonical_subject,
+            "motion": scene.subject_motion, "camera_profile_id": camera.profile_id,
+            "camera_format": camera.sensor_format,
+            "handheld": effective_request.handheld, "tripod": effective_request.tripod,
+            "subject_confirmed": bool(localization and localization.selection.status == "selected"),
+        }
         if isinstance(self.retriever, ManagedKnowledgeRetriever):
             hits = self.retriever.search(
                 query,
                 top_k=4,
                 libraries=["scene", "technique", "equipment"],
-                conditions={
-                    "scene": scene.scene_type,
-                    "subject": scene.subject,
-                    "motion": scene.subject_motion,
-                    "camera_profile_id": camera.profile_id,
-                    "camera_format": camera.sensor_format,
-                    "handheld": effective_request.handheld,
-                    "tripod": effective_request.tripod,
-                },
+                conditions=conditions,
             )
         else:
             hits = self.retriever.search(query, top_k=4)
         notes = self._knowledge_notes(hits)
-        recommendation = self.advisor.recommend(effective_request, scene, hits, camera)
-        recommendation = self.validator.validate(
-            recommendation, effective_request, scene, camera
-        )
+        composition_hits = []
+        composition = None
+        if self.composition_advisor is not None:
+            composition_query = query + " 构图 留白 背景 主体位置 " + " ".join(scene.composition_clues)
+            if isinstance(self.retriever, ManagedKnowledgeRetriever):
+                composition_hits = self.retriever.search(
+                    composition_query, top_k=4, libraries=["composition", "style", "case"],
+                    conditions=conditions,
+                )
+            else:
+                # Legacy exposure cards must not be presented as a composition knowledge base.
+                composition_hits = LocalKnowledgeRetriever(
+                    self.settings.knowledge_dir / "composition"
+                ).search(composition_query, top_k=4)
+            try:
+                composition = self.composition_advisor.recommend(
+                    inspection, effective_request, scene, localization, composition_hits, camera
+                )
+            except (ValueError, KeyError, TypeError) as exc:
+                composition = CompositionAdvice(
+                    status="unavailable", proposals=[],
+                    notes=[str(exc) if isinstance(exc, ModelServiceError)
+                           else "构图模型本次未生成可校验的建议，请重新分析。"],
+                )
+        try:
+            recommendation = self.advisor.recommend(effective_request, scene, hits, camera)
+            recommendation = self.validator.validate(
+                recommendation, effective_request, scene, camera
+            )
+        except (ValueError, KeyError, TypeError) as exc:
+            if self.composition_advisor is None:
+                raise
+            # Preserve successful composition when the separate parameter stage fails.
+            recommendation = CameraRecommendation(
+                shooting_mode="未生成", aperture="未生成", shutter_speed="未生成", iso="未生成",
+                exposure_compensation="未生成", focus_mode="未生成", metering_mode="未生成",
+                drive_mode="未生成", white_balance="未生成", reasons=[], adjustments=[],
+                risks=[str(exc) if isinstance(exc, ModelServiceError)
+                       else "参数模型本次未返回可校验的设置，请重新分析。"], confidence=0,
+            )
         return PipelineResult(
             inspection=inspection,
             camera_profile=camera,
@@ -98,6 +170,9 @@ class CameraAssistantPipeline:
                 "managed" if isinstance(self.retriever, ManagedKnowledgeRetriever) else "legacy"
             ),
             knowledge_notes=notes,
+            localization=localization,
+            composition=composition,
+            composition_knowledge_hits=composition_hits,
         )
 
     def _knowledge_notes(self, hits: list[KnowledgeHit]) -> list[str]:

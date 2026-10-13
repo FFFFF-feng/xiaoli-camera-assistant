@@ -2,7 +2,10 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
+
+from camera_assistant.composition_models import CompositionAdvice
+from vision_lab_tool.detector_models import MethodResult, SemanticObject
 
 MotionLevel = Literal["静止", "缓慢", "快速", "不确定"]
 CameraFormat = Literal["全画幅", "APS-C", "M4/3", "不清楚"]
@@ -97,6 +100,27 @@ class SceneAnalysis(BaseModel):
     recognition_evidence: list[str] = Field(default_factory=list)
     candidate_scenes: list[str] = Field(default_factory=list)
     retrieval_terms: list[str] = Field(default_factory=list)
+    objects: list[SemanticObject] = Field(default_factory=list)
+    main_subject_ids: list[str] = Field(default_factory=list)
+    subject_status: Literal["selected", "ambiguous", "abstained"] = "abstained"
+    composition_clues: list[str] = Field(default_factory=list)
+    uncertainties: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def subject_binding(self) -> SceneAnalysis:
+        from vision_lab_tool.detector_queries import english_queries
+
+        ids = [obj.object_id for obj in self.objects]
+        if len(ids) != len(set(ids)) or len(self.main_subject_ids) != len(set(self.main_subject_ids)):
+            raise ValueError("画面对象或主体 ID 重复。")
+        if any(value not in ids for value in self.main_subject_ids):
+            raise ValueError("主体必须引用画面对象。")
+        if any(obj.parent_object_id and obj.parent_object_id not in ids for obj in self.objects):
+            raise ValueError("部件必须引用存在的父对象。")
+        if (self.subject_status == "selected") != bool(self.main_subject_ids):
+            raise ValueError("主体选择状态与 ID 不一致。")
+        english_queries([obj.query for obj in self.objects])
+        return self
 
 
 class KnowledgeHit(BaseModel):
@@ -133,3 +157,6 @@ class PipelineResult(BaseModel):
     knowledge_hits: list[KnowledgeHit]
     knowledge_mode: str = "legacy"
     knowledge_notes: list[str] = Field(default_factory=list)
+    localization: MethodResult | None = None
+    composition: CompositionAdvice | None = None
+    composition_knowledge_hits: list[KnowledgeHit] = Field(default_factory=list)

@@ -171,7 +171,7 @@ equipment = retriever.query_structured(
 
 规则：
 
-- 条件对象的键由模块共同约定；已有参数链路提供 `scene`、`subject`、`motion`、`camera_profile_id`、`camera_format`、`handheld`、`tripod`。
+- 条件对象的键由模块共同约定；已有参数链路提供 `scene`、`subject`、`motion`、`camera_profile_id`、`camera_format`、`handheld`、`tripod`。`subject` 使用识别场景对应的标准主体类别（`person`、`pet`、`landscape`、`food`、`backlit subject`、`flowing water`、`night scene`、`main subject`），而不是模型自由文本描述，避免中英文差异破坏精确匹配。具体物种或属性可用标签检索，不应把 `cat`/`dog` 误写成这里的 `pet` 条件。
 - 标量条件精确匹配；列表表示多个可接受值；`null`表示未声明限制。
 - 资料声明了条件但请求没有该字段时，保守排除。空条件表示通用资料。
 - 不支持数值区间或复杂谓词执行；不能把 `{"min": 50}` 当成已实现的范围约束。
@@ -192,7 +192,9 @@ KNOWLEDGE_DB_PATH=data/knowledge.db
 
 重启Streamlit以加载配置。受管模式不会混入旧版Markdown；没有已发布匹配资料时，页面明确提示缺少受管知识依据，演示参数生成器仍按旧规则运行，不代表新知识准确性已验证。
 
-目前参数推荐链路只检索 `scene`、`technique`、`equipment`；`composition`、`style`、`case` 已具备独立查询接口，留给构图队员接入。原有场景候选和机型能力服务仍使用旧YAML配置，不会自动被结构化资料覆盖。
+参数推荐链路检索 `scene`、`technique`、`equipment`。开启 `CAMERA_AI_COMPOSITION_ENABLED=true`（`glm-dino` 预设默认开启）后，独立构图链路检索 `composition`、`style`、`case`，并要求建议引用本次命中的 `document_id`（包含资料版本）。两个链路各取 Top-4，构图资料不会挤占参数资料。新增可用条件 `subject_confirmed`，仅在检测与语义关联状态为 `selected` 时为 true；它表示自动关联成立，不等于人工确认或准确率证明。原有场景候选和机型能力服务仍使用旧YAML配置，不会自动被结构化资料覆盖。
+
+GitHub 资料文件需在部署环境导入、审核并发布后才能供受管检索使用，详见 [真实环境接入](real-environment.md)。空库及没有相关资料时，构图结果明确显示缺少知识依据；不能将文件上传或引用 ID 当作建议正确性的证明。
 
 ## 9. 验证与队友交接
 

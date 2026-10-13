@@ -1,10 +1,7 @@
 from __future__ import annotations
 
 import json
-import re
 from typing import Protocol
-
-import httpx
 
 from camera_assistant.config import Settings
 from camera_assistant.models import (
@@ -13,6 +10,7 @@ from camera_assistant.models import (
     SceneCandidate,
     UserRequest,
 )
+from camera_assistant.services.cloud import request_json
 
 
 class VisionAnalyzer(Protocol):
@@ -102,6 +100,15 @@ class OpenAICompatibleVisionAnalyzer:
 不要直接推荐相机参数，不要输出 Markdown。
 scene_type 必须从候选场景的 profile_id 中选择；scene_label 使用对应中文名称。
 recognition_evidence 必须写明画面中实际观察到的主体、光线和运动依据，不能只复述用户要求。
+描述文本使用简体中文，枚举和字段名保留 schema 定义。
+objects 列出真实可见对象、独立 object_id、英文类别 query、整体/部件/实例/区域层级；
+不可确认存在的对象不编造。query 用简短英文类别短语，不含命令或数学表达式。
+只观察光线与运动线索，不从单张静态照片断言速度。entity_kind 无证据时为 unknown。
+main_subject_ids 必须引用 objects；任务未能唯一指定主目标集合时 subject_status=ambiguous
+或 abstained 且 main_subject_ids=[]，不能按显眼程度强选。多个明确目标分别保留。
+composition_clues 描述留白、主体位置、边缘截断、背景干扰等画面事实，
+uncertainties 写无法从当前画面确定的信息；尚不输出构图建议或裁切框。
+只输出 schema 对应的 JSON 实例，不复制 $defs/properties 等 schema 元数据。
 
 用户输入：{request.model_dump_json()}
 图像统计：{inspection.metrics.model_dump_json()}
@@ -125,28 +132,4 @@ JSON Schema：{json.dumps(schema, ensure_ascii=False)}
                 }
             ],
         }
-        content = self._request(payload)
-        return SceneAnalysis.model_validate(self._extract_json(content))
-
-    def _request(self, payload: dict[str, object]) -> str:
-        with httpx.Client(timeout=self.settings.timeout_seconds) as client:
-            response = client.post(
-                f"{self.settings.base_url}/chat/completions",
-                headers={"Authorization": f"Bearer {self.settings.api_key}"},
-                json=payload,
-            )
-            response.raise_for_status()
-            data = response.json()
-        content = data["choices"][0]["message"]["content"]
-        if isinstance(content, list):
-            return "".join(str(item.get("text", "")) for item in content if isinstance(item, dict))
-        return str(content)
-
-    @staticmethod
-    def _extract_json(content: str) -> dict[str, object]:
-        fenced = re.search(r"```(?:json)?\s*(\{.*\})\s*```", content, re.DOTALL)
-        candidate = fenced.group(1) if fenced else content
-        start, end = candidate.find("{"), candidate.rfind("}")
-        if start < 0 or end < 0:
-            raise ValueError("多模态模型没有返回可解析的 JSON。")
-        return json.loads(candidate[start : end + 1])
+        return SceneAnalysis.model_validate(request_json(self.settings, payload))

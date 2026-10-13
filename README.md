@@ -6,7 +6,7 @@
 
 这个学生项目围绕一个常见问题展开：新手知道想拍什么，却不知道怎样设置光圈、快门、ISO 和对焦。小栗尝试把“现场环境 + 拍摄意图 + 器材能力”转换成可执行、可解释、可以继续调整的拍摄方案。
 
-当前版本为 `0.1.0`，采用 Python + Streamlit，提供手机应用式的单列 Web 界面。默认使用无需密钥的演示模式，同时已经实现可配置的多模态模型调用接口。
+当前版本为 `0.1.0`，采用 Python + Streamlit，提供手机应用式的单列 Web 界面。默认使用无需密钥的演示模式，可通过 `glm-dino` 预设接入 GLM-4.6V + 本机 Grounding DINO，生成带知识引用的构图建议与相机参数。
 
 [快速开始](#快速开始) · [当前完成情况](#当前完成情况) · [RAG检索与队友协作](docs/rag-roadmap.md) · [开发路线](#开发路线) · [创新与拓展](#创新与拓展) · [详细架构](docs/architecture.md)
 
@@ -93,6 +93,14 @@ cp .env.example .env
 
 ## 接入多模态服务
 
+### GLM-4.6V + Grounding DINO 实拍试用
+
+本地 `.env` 设置 `APP_DEMO_MODE=false`、`CAMERA_AI_PRESET=glm-dino`、`KNOWLEDGE_RETRIEVAL_MODE=managed`。填写智谱密钥（也可复用本机实验窗口保存的加密智谱密钥），准备独立 DINO 环境后运行 `start_app.ps1`。主页面会显示定位候选、主体关联状态、构图方案和资料来源。知识库尚未发布时，建议明确标记缺少知识依据。完整准备、手机局域网使用与知识上传流程见 [真实环境接入说明](docs/real-environment.md)。
+
+GLM 使用实验中的 Chat、prompt JSON、4096 输出 token 和服务默认思考设置。场景与对象合并为一次视觉请求，随后 DINO 本地定位，再分别调用构图和参数建议；新的主应用提示词与实验提示词不同，需继续实拍验证。DINO 默认沿用 CPU float32、box 0.35、text 0.25，不代表已证明最优阈值。
+
+### 自定义兼容服务
+
 编辑本地 `.env`：
 
 ```dotenv
@@ -105,7 +113,7 @@ CAMERA_AI_TIMEOUT_SECONDS=60
 CAMERA_AI_MAX_IMAGE_MB=15
 ```
 
-接口需兼容 `/chat/completions`，视觉模型需接受 `image_url` 图片消息，两个模型都需返回可解析的 JSON。修改配置后重启 Streamlit 服务，以重新加载缓存的主流程。配置不完整时程序会使用演示模式；云端请求失败时会显示错误，目前没有自动重试或自动切换到离线模式。
+接口需兼容 `/chat/completions`，视觉模型需接受 `image_url` 图片消息，两个模型都需返回可解析的 JSON；开启构图时文本模型也需接受图片。修改配置后重启 Streamlit 服务，以重新加载缓存的主流程。演示模式需显式开启；真实模式配置不完整会报错，云端请求失败会显示脱敏错误，不自动重试或切换到演示模式。构图和参数建议阶段独立保留有效结果。
 
 云端模式会向所配置服务发送用于分析的图像副本、用户拍摄需求和必要的分析信息。请先确认使用的是自己选定的服务。当前代码没有将用户照片写入项目目录，也没有持久化历史库；最近一次结果仅保存在 Streamlit 会话中。
 
@@ -206,6 +214,25 @@ flowchart TD
 ```
 
 ## 本地检查与贡献
+
+### 独立视觉模型测试工具
+
+在项目根目录运行 `.\.venv\Scripts\python.exe -m streamlit run vision_lab.py --server.port 8502`。
+无需密钥即可比较固定模拟夹具；可编辑百炼、方舟、智谱及本地 Chat 兼容配置，并使用独立
+Responses、Anthropic Messages、Gemini generateContent 适配器。支持人工框、盲评、错误清单、
+评分、历史续评与 CSV/JSON 导出。百炼 `qwen3-vl-plus` 已通过一次授权接口测试，
+其他真实 API 与摄影准确率尚未验证，模拟不代表视觉准确率。
+详细配置、实验与计费定义见 [视觉测试工具说明](docs/vision-lab.md)。原 `app.py` 启动方式保持不变。
+
+左栏新增“检测与联合定位”：纯检测无需 Key，可选 Grounding DINO Tiny / YOLO26n；
+定位对照的 A/B1/B2 共享一次视觉模型回答。检测依赖隔离到 `.venv-detectors`，
+原四模型页和历史保留。准备、操作、许可和实际验证见 [检测工具说明](docs/detector-lab.md)
+与 [交付验证记录](docs/detector-verification.md)。两检测器已完成真实 CPU 接入冒烟；
+人工真值质量、真实 VLM 联合效果及 GPU 推理尚未验证。
+
+窗口现在提供 Qwen3-VL Plus、Doubao-Seed 2.1 Lite/Pro、GLM-4.6V 四模型快捷配置；
+填写百炼、火山方舟和智谱三份 API Key 即可使用。Key 可通过 Windows 当前账号加密长期
+保存在本机，普通配置、历史和导出不包含密钥；模拟与自定义配置仍保留。
 
 安装开发依赖后执行：
 
