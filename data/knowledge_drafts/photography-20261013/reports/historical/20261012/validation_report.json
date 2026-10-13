@@ -1,0 +1,46 @@
+{
+  "task_id": "photo-knowledge-20261012-v1",
+  "passed": true,
+  "cards": 32,
+  "sources": 17,
+  "cumulative_sources": 164,
+  "library_counts": {
+    "scene": 8,
+    "composition": 6,
+    "style": 5,
+    "technique": 8,
+    "equipment": 2,
+    "case": 3
+  },
+  "equipment_fields": 16,
+  "dry_run": {
+    "success": true,
+    "total_files": 32,
+    "validated_count": 32,
+    "imported_count": 0,
+    "unchanged_count": 0,
+    "dry_run": true,
+    "validated_only": true,
+    "skipped_files": [],
+    "errors": [],
+    "revisions": []
+  },
+  "isolated_import": {
+    "drafts": 32,
+    "repeat_unchanged": 32,
+    "published": 0
+  },
+  "checks": [
+    "ID 唯一且与前批不冲突",
+    "来源和知识关联有效",
+    "手册字段及六段齐全",
+    "器材事实有单位、条件、出处",
+    "案例仅为链接和图注报告，没有伪造 EXIF 或评价",
+    "哈希一致",
+    "格式校验和临时数据库重复导入通过"
+  ],
+  "limitations": [
+    "程序校验不代替摄影内容、数字与权限的独立审核",
+    "新场景 ID 需要在正式应用前统一词表"
+  ]
+}
