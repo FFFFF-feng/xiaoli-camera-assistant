@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-case-city-night",
+  "library_id": "case",
+  "title": "城市夜景（Jerry Steinfield）",
+  "kind": "observed_case",
+  "content": "已登记来源的真实摄影作品或来源中的对照记录。有本地去元数据基图。没有独立人工评价，不能宣称助手带来改善。",
+  "payload": {
+    "schema_version": "draft-1",
+    "case_id": "photo20261011-case-city-night",
+    "capture_session_id": null,
+    "split_group_id": "photo20261011-group-city-night",
+    "dataset_split": "reference",
+    "scene_id": "handheld_night",
+    "user_goal": null,
+    "style_id": null,
+    "before_image_id": "photo20261011-image-city-night-base-v1",
+    "after_image_id": null,
+    "after_image_type": null,
+    "annotation_base": {
+      "image_id": "photo20261011-image-city-night-base-v1",
+      "width": 4032,
+      "height": 3024,
+      "image_hash": "a6398527237bf8e4b3c65a71375c3bd8fa8ca5bb9c9c57b236f70b1e3f594345",
+      "hash_algorithm": "sha256",
+      "orientation_corrected": true,
+      "base_version": 1
+    },
+    "subject_bbox_xyxy_normalized": null,
+    "gaze_direction": "unknown",
+    "motion_direction": "unknown",
+    "protected_regions": [],
+    "horizon": null,
+    "distractions": [],
+    "capture_parameters": {
+      "camera_model": "iPhone 11 Pro",
+      "lens_model": null,
+      "actual_focal_length_mm": 4.25,
+      "aperture_f_number": 1.8,
+      "shutter_seconds": 0.08333333333333333,
+      "iso": 500,
+      "exposure_mode": null,
+      "field_sources": {
+        "camera_model": "exif",
+        "actual_focal_length_mm": "exif",
+        "aperture_f_number": "exif",
+        "shutter_seconds": "exif",
+        "iso": "exif"
+      }
+    },
+    "issues": [],
+    "actions": [],
+    "linked_knowledge_ids": [
+      "photo20261011-scene-night-handheld",
+      "photo20261011-technique-blur-diagnosis"
+    ],
+    "human_evaluation": {
+      "reviewer": null,
+      "result": null,
+      "reasons": [],
+      "confounding_changes": []
+    },
+    "rights": {
+      "photographer_permission": "CC_BY_SA_license_recorded_on_source",
+      "depicted_person_permission": "not_applicable",
+      "storage": "conditional_attribution",
+      "retrieval_use": "conditional_attribution_and_sharealike_review",
+      "public_display": "conditional_attribution",
+      "redistribution": "conditional_attribution_and_sharealike"
+    },
+    "review_status": "draft",
+    "author": "Codex 本轮资料整理（AI，待独立审核）",
+    "reviewer": null,
+    "accessed_at": "2026-10-11",
+    "verified_at": null,
+    "source_id": "WEB-055",
+    "source_url": "https://commons.wikimedia.org/wiki/File:New_York_City_Skyline_at_night.jpg",
+    "source_location": "城市夜景（Jerry Steinfield）",
+    "license": "CC-BY-SA-4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "artifact_status": "local_sanitized_base",
+    "observations": [
+      "模型视觉检查：夜间城市建筑与点状灯光，画面上部有较大暗天空区域；描述待人工复核。"
+    ],
+    "observation_sources": {
+      "visual_description": "model_inference",
+      "no_identifiable_person": "model_inference"
+    },
+    "pending": [
+      "独立内容审核",
+      "图像标注复核",
+      "前后结果与人工评价缺失，不能用于效果宣称"
+    ],
+    "photographer": "Jerry Steinfield",
+    "attribution": "New York City Skyline at night — Jerry Steinfield — Wikimedia Commons — CC BY-SA 4.0；本地副本方向校正、去敏感元数据并重编码，修改副本沿用 CC BY-SA 4.0。",
+    "notes": [
+      "本次浏览器下载成功。EXIF 曝光不证明手持状态或合成方式。",
+      "handheld_night 是候选归类，实际手持状态 unknown；不能从 EXIF 推断。"
+    ],
+    "parameter_source_note": "本地原图实际提取 EXIF；缺失字段仍为 null。"
+  },
+  "tags": [
+    "参考案例",
+    "handheld_night",
+    "local_sanitized_base"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Jerry Steinfield",
+    "url": "https://commons.wikimedia.org/wiki/File:New_York_City_Skyline_at_night.jpg",
+    "location": "城市夜景（Jerry Steinfield）",
+    "license": "CC-BY-SA-4.0",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

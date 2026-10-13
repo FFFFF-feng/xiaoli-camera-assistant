@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-technique-polarizer",
+  "library_id": "technique",
+  "title": "偏振镜：反射变化有方向性",
+  "kind": "guideline",
+  "content": "# 偏振镜：反射变化有方向性\n\n## 目标与结论\n偏振效果依赖光线与观察方向，可影响部分反光。\n\n## 适用条件与所需信息\n确认反射材质、太阳方向和是否采用广视角。\n\n## 执行动作\n转动滤镜比较变化，同时复查曝光及天空均匀度。\n\n## 例外、限制与风险\n不能保证去除所有反射；广角天空可能出现不均匀暗部。\n\n## 依据与案例\n来源 WEB-015：[Understanding & Using Polarizing Filters](https://www.cambridgeincolour.com/tutorials/polarizing-filters.htm)；位置：POLARIZING FILTERS / DIRECTION / WIDE ANGLE。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-015"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "daylight_landscape",
+    "subject": "landscape",
+    "motion": "unknown",
+    "goal": "偏振效果依赖光线与观察方向，可影响部分反光。",
+    "requires": [
+      "确认反射材质、太阳方向和是否采用广视角。"
+    ],
+    "actions": [
+      "转动滤镜比较变化，同时复查曝光及天空均匀度。"
+    ],
+    "exceptions_and_risks": [
+      "不能保证去除所有反射；广角天空可能出现不均匀暗部。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "parameter_requirements": [
+      "exposure_mode",
+      "subject_motion",
+      "handheld_or_supported",
+      "lens_model",
+      "actual_focal_length_mm",
+      "maximum_aperture_f_number",
+      "shutter_type",
+      "lighting_clues",
+      "target_effect"
+    ],
+    "hardware_limits": null,
+    "suggested_parameter_values": null,
+    "suggestion_type": "方向或检查流程；没有固定曝光保证",
+    "parameter_missing_policy": "缺关键条件不生成数值",
+    "numeric_units": {
+      "shutter": "s",
+      "aperture": "f_number",
+      "iso": "number",
+      "focal_length": "mm"
+    }
+  },
+  "tags": [
+    "拍摄技术库",
+    "偏振镜",
+    "daylight_landscape"
+  ],
+  "conditions": {
+    "scene": "daylight_landscape"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/polarizing-filters.htm",
+    "location": "POLARIZING FILTERS / DIRECTION / WIDE ANGLE",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

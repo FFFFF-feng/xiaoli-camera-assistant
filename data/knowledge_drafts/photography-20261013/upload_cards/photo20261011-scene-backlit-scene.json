@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-scene-backlit-scene",
+  "library_id": "scene",
+  "title": "逆光场景：目标决定保留哪一侧细节",
+  "kind": "guideline",
+  "content": "# 逆光场景：目标决定保留哪一侧细节\n\n## 目标与结论\n亮背景与暗主体并存时，要先确定主体细节或轮廓表达目标。\n\n## 适用条件与所需信息\n需要主体与背景亮度关系；未确认光源方向不能定性逆光。\n\n## 执行动作\n比较主体细节和背景高光，询问想保留哪一项，再选择补光或曝光取舍。\n\n## 例外、限制与风险\n一张低对比图片不能证明没有逆光；后期可能改变明暗关系。\n\n## 依据与案例\n来源 WEB-005：[Understanding Camera Metering and Exposure](https://www.cambridgeincolour.com/tutorials/camera-metering.htm)；位置：REFLECTED LIGHT / METERING OPTIONS / EXPOSURE COMPENSATION。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-005"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "sunset_backlight",
+    "subject": "unknown",
+    "motion": "unknown",
+    "goal": "亮背景与暗主体并存时，要先确定主体细节或轮廓表达目标。",
+    "requires": [
+      "需要主体与背景亮度关系；未确认光源方向不能定性逆光。"
+    ],
+    "actions": [
+      "比较主体细节和背景高光，询问想保留哪一项，再选择补光或曝光取舍。"
+    ],
+    "exceptions_and_risks": [
+      "一张低对比图片不能证明没有逆光；后期可能改变明暗关系。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "scene_id": "sunset_backlight",
+    "definition": "亮背景与暗主体并存时，要先确定主体细节或轮廓表达目标。",
+    "aliases": [
+      "sunset_backlight",
+      "逆光场景",
+      "backlit scene"
+    ],
+    "observable_features": [
+      "背景与主体亮度差",
+      "主体轮廓与内部细节",
+      "光源方向待确认"
+    ],
+    "lighting": {
+      "observable_clues": [
+        "背景与主体亮度差",
+        "主体轮廓与内部细节",
+        "光源方向待确认"
+      ],
+      "actual_light_source": "unknown",
+      "information_source": "model_inference",
+      "note": "候选检查项不是当前照片的观测事实。"
+    },
+    "motion_recording": "只在观测或用户报告支持时记录实际运动，不使用默认猜测",
+    "common_problems": [
+      "一张低对比图片不能证明没有逆光；后期可能改变明暗关系。"
+    ],
+    "example_index": "../../example_index.yaml",
+    "unknown_policy": "意图与图中场景分开；缺失字段 unknown/null"
+  },
+  "tags": [
+    "场景库",
+    "逆光场景",
+    "sunset_backlight"
+  ],
+  "conditions": {
+    "scene": "sunset_backlight"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/camera-metering.htm",
+    "location": "REFLECTED LIGHT / METERING OPTIONS / EXPOSURE COMPENSATION",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

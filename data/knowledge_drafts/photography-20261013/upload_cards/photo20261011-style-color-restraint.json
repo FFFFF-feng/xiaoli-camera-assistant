@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-style-color-restraint",
+  "library_id": "style",
+  "title": "有限色彩：按主题控制色彩权重",
+  "kind": "guideline",
+  "content": "# 有限色彩：按主题控制色彩权重\n\n## 目标与结论\n减少竞争色彩可集中注意力，但应保留主题所需颜色。\n\n## 适用条件与所需信息\n目标色彩及肤色等保护对象明确。\n\n## 执行动作\n拍摄：选择背景与道具；后期：在副本上局部调整并检查肤色。\n\n## 例外、限制与风险\n统一滤镜可能造成色偏；风格偏好不是颜色正确性标准。\n\n## 依据与案例\n来源 WEB-075：[darktable 5.6 user manual - color balance rgb](https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/color-balance-rgb/)；位置：module controls / caveats；固定 darktable 5.6 文档。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-075"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "general_scene",
+    "subject": "unknown",
+    "motion": "unknown",
+    "goal": "减少竞争色彩可集中注意力，但应保留主题所需颜色。",
+    "requires": [
+      "目标色彩及肤色等保护对象明确。"
+    ],
+    "actions": [
+      "拍摄：选择背景与道具；后期：在副本上局部调整并检查肤色。"
+    ],
+    "exceptions_and_risks": [
+      "统一滤镜可能造成色偏；风格偏好不是颜色正确性标准。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "capture_goal": "选择背景与道具",
+    "postprocess_goal": "在副本上局部调整并检查肤色。",
+    "composition_tendency": "目标色彩及肤色等保护对象明确。",
+    "lighting_tendency": "减少竞争色彩可集中注意力，但应保留主题所需颜色。",
+    "depth_of_field_goal": "根据关键清晰区域另行确认，未提供统一 f 数",
+    "color_tendency": "统一滤镜可能造成色偏；风格偏好不是颜色正确性标准。",
+    "related_rule_ids": [
+      "photo20261011-composition-edges"
+    ]
+  },
+  "tags": [
+    "风格库",
+    "有限色彩",
+    "general_scene"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "darktable documentation contributors",
+    "url": "https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/color-balance-rgb/",
+    "location": "module controls / caveats；固定 darktable 5.6 文档",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

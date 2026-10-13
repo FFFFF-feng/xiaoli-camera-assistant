@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-equipment-fuji-xt5",
+  "library_id": "equipment",
+  "title": "FUJIFILM X-T5：规格、条件与未知能力",
+  "kind": "manufacturer_fact",
+  "content": "逐字段事实见 payload.facts。已查原始规格，但尚未独立审核或真机验证。规格为硬件/模式事实，不是最佳拍摄参数；未真机测试。混合 E-front 模式在 1/2000 s 后可能切换快门，不能把混合模式整段记为纯前帘；电子快门不能闪光，快速运动/手持另查限制。",
+  "payload": {
+    "schema_version": "draft-1",
+    "equipment_id": "photo20261011-equipment-fuji-xt5",
+    "camera_model": "FUJIFILM X-T5",
+    "lens_model": null,
+    "camera_firmware": null,
+    "review_status": "draft",
+    "author": "Codex 本轮资料整理（AI，待独立审核）",
+    "reviewer": null,
+    "accessed_at": "2026-10-11",
+    "verified_at": null,
+    "facts": [
+      {
+        "field": "sensor_dimensions",
+        "value": [
+          23.5,
+          15.7
+        ],
+        "unit": "mm",
+        "conditions": {
+          "capture_mode": "still_photo"
+        },
+        "source_id": "WEB-041",
+        "source_url": "https://www.fujifilm-x.com/en-gb/products/cameras/x-t5/specifications/",
+        "source_location": "Image sensor",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "iso_normal_range",
+        "value": [
+          125,
+          12800
+        ],
+        "unit": "ISO",
+        "conditions": {
+          "capture_mode": "still_photo"
+        },
+        "source_id": "WEB-041",
+        "source_url": "https://www.fujifilm-x.com/en-gb/products/cameras/x-t5/specifications/",
+        "source_location": "Sensitivity / Still Image",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "iso_expanded_values",
+        "value": [
+          64,
+          80,
+          100,
+          25600,
+          51200
+        ],
+        "unit": "ISO",
+        "conditions": {
+          "capture_mode": "still_photo"
+        },
+        "source_id": "WEB-041",
+        "source_url": "https://www.fujifilm-x.com/en-gb/products/cameras/x-t5/specifications/",
+        "source_location": "Sensitivity / Extended Output",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "auto_iso_max_supported",
+        "value": 12800,
+        "unit": "ISO",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "auto_iso_preset": [
+            "AUTO1",
+            "AUTO2",
+            "AUTO3"
+          ]
+        },
+        "source_id": "WEB-041",
+        "source_url": "https://www.fujifilm-x.com/en-gb/products/cameras/x-t5/specifications/",
+        "source_location": "Sensitivity / AUTO1–3",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": 0.000125,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "shutter_type": "mechanical",
+          "drive_mode": "single",
+          "exposure_mode": [
+            "P",
+            "A",
+            "S",
+            "M"
+          ]
+        },
+        "source_id": "WEB-041",
+        "source_url": "https://www.fujifilm-x.com/en-gb/products/cameras/x-t5/specifications/",
+        "source_location": "Shutter speed / corresponding row / continuous ranges differ",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": 0.000125,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "shutter_type": "electronic_front_curtain",
+          "drive_mode": "single",
+          "exposure_mode": [
+            "P",
+            "A",
+            "S",
+            "M"
+          ]
+        },
+        "source_id": "WEB-041",
+        "source_url": "https://www.fujifilm-x.com/en-gb/products/cameras/x-t5/specifications/",
+        "source_location": "Shutter speed / corresponding row / continuous ranges differ",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": 5.555555555555556e-06,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "shutter_type": "electronic",
+          "drive_mode": "single",
+          "exposure_mode": [
+            "P",
+            "A",
+            "S",
+            "M"
+          ]
+        },
+        "source_id": "WEB-041",
+        "source_url": "https://www.fujifilm-x.com/en-gb/products/cameras/x-t5/specifications/",
+        "source_location": "Shutter speed / corresponding row / continuous ranges differ",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      }
+    ],
+    "conflicts": [],
+    "notes": [
+      "规格为硬件/模式事实，不是最佳拍摄参数；未真机测试。",
+      "混合 E-front 模式在 1/2000 s 后可能切换快门，不能把混合模式整段记为纯前帘；电子快门不能闪光，快速运动/手持另查限制。"
+    ],
+    "source_id": "WEB-041",
+    "source_url": "https://www.fujifilm-x.com/en-gb/products/cameras/x-t5/specifications/"
+  },
+  "tags": [
+    "器材规格",
+    "FUJIFILM X-T5"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "FUJIFILM",
+    "url": "https://www.fujifilm-x.com/en-gb/products/cameras/x-t5/specifications/",
+    "location": "逐字段 source_location",
+    "license": "仅记录必要事实；厂商正文和图片使用权限待核验",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

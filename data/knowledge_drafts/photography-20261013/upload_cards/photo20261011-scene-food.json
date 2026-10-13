@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-scene-food",
+  "library_id": "scene",
+  "title": "食物静物：纹理、颜色与布景关系",
+  "kind": "guideline",
+  "content": "# 食物静物：纹理、颜色与布景关系\n\n## 目标与结论\n食物主体常由光线、背景、道具和质感共同表达。\n\n## 适用条件与所需信息\n确认拍摄的是成品还是制作过程；动作场景运动不设 static。\n\n## 执行动作\n记录主菜、道具、反光和背景；确认用户希望的明暗氛围。\n\n## 例外、限制与风险\n蒸汽、撒粉、倒液等需另记运动；不能猜测是否可食用。\n\n## 依据与案例\n来源 WEB-036：[Food photography tips - Canon Europe](https://www.canon-europe.com/get-inspired/tips-and-techniques/food-photography-tips/)；位置：1. natural lighting / 2. colours and texture / 3. depth / 4. props。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-036"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "food_closeup",
+    "subject": "food",
+    "motion": "static",
+    "goal": "食物主体常由光线、背景、道具和质感共同表达。",
+    "requires": [
+      "确认拍摄的是成品还是制作过程；动作场景运动不设 static。"
+    ],
+    "actions": [
+      "记录主菜、道具、反光和背景；确认用户希望的明暗氛围。"
+    ],
+    "exceptions_and_risks": [
+      "蒸汽、撒粉、倒液等需另记运动；不能猜测是否可食用。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "scene_id": "food_closeup",
+    "definition": "食物主体常由光线、背景、道具和质感共同表达。",
+    "aliases": [
+      "food_closeup",
+      "食物静物",
+      "food"
+    ],
+    "observable_features": [
+      "食物主体与道具位置",
+      "表面纹理及反光",
+      "背景颜色和明暗"
+    ],
+    "lighting": {
+      "observable_clues": [
+        "食物主体与道具位置",
+        "表面纹理及反光",
+        "背景颜色和明暗"
+      ],
+      "actual_light_source": "unknown",
+      "information_source": "model_inference",
+      "note": "候选检查项不是当前照片的观测事实。"
+    },
+    "motion_recording": "只在观测或用户报告支持时记录实际运动，不使用默认猜测",
+    "common_problems": [
+      "蒸汽、撒粉、倒液等需另记运动；不能猜测是否可食用。"
+    ],
+    "example_index": "../../example_index.yaml",
+    "unknown_policy": "意图与图中场景分开；缺失字段 unknown/null"
+  },
+  "tags": [
+    "场景库",
+    "食物静物",
+    "food_closeup"
+  ],
+  "conditions": {
+    "scene": "food_closeup"
+  },
+  "source": {
+    "name": "Canon（署名作者以页面为准）",
+    "url": "https://www.canon-europe.com/get-inspired/tips-and-techniques/food-photography-tips/",
+    "location": "1. natural lighting / 2. colours and texture / 3. depth / 4. props",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

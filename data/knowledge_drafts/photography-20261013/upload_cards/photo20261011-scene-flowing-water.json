@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-scene-flowing-water",
+  "library_id": "scene",
+  "title": "流水场景：凝固细节与丝滑效果是不同目标",
+  "kind": "guideline",
+  "content": "# 流水场景：凝固细节与丝滑效果是不同目标\n\n## 目标与结论\n连续流动的水可被短曝光冻结，也可被长曝光平均为柔化纹理。\n\n## 适用条件与所需信息\n须确认期望水的表达、是否支撑以及现场光线。\n\n## 执行动作\n记录水体范围、岩石等静止参照物和高光；再选择快门方向。\n\n## 例外、限制与风险\n不能把所有水景统一归为慢快门；目标未知时不输出固定参数。\n\n## 依据与案例\n来源 WEB-018：[Using Camera Shutter Speed Creatively](https://www.cambridgeincolour.com/tutorials/camera-shutter-speed.htm)；位置：FREEZING MOTION / BLUR / PANNING。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-018"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "waterfall_long_exposure",
+    "subject": "water",
+    "motion": "moving",
+    "goal": "连续流动的水可被短曝光冻结，也可被长曝光平均为柔化纹理。",
+    "requires": [
+      "须确认期望水的表达、是否支撑以及现场光线。"
+    ],
+    "actions": [
+      "记录水体范围、岩石等静止参照物和高光；再选择快门方向。"
+    ],
+    "exceptions_and_risks": [
+      "不能把所有水景统一归为慢快门；目标未知时不输出固定参数。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "scene_id": "waterfall_long_exposure",
+    "definition": "连续流动的水可被短曝光冻结，也可被长曝光平均为柔化纹理。",
+    "aliases": [
+      "waterfall_long_exposure",
+      "流水场景",
+      "flowing water"
+    ],
+    "observable_features": [
+      "水体范围与纹理",
+      "静止岩石或岸边",
+      "水体高光"
+    ],
+    "lighting": {
+      "observable_clues": [
+        "水体范围与纹理",
+        "静止岩石或岸边",
+        "水体高光"
+      ],
+      "actual_light_source": "unknown",
+      "information_source": "model_inference",
+      "note": "候选检查项不是当前照片的观测事实。"
+    },
+    "motion_recording": "只在观测或用户报告支持时记录实际运动，不使用默认猜测",
+    "common_problems": [
+      "不能把所有水景统一归为慢快门；目标未知时不输出固定参数。"
+    ],
+    "example_index": "../../example_index.yaml",
+    "unknown_policy": "意图与图中场景分开；缺失字段 unknown/null"
+  },
+  "tags": [
+    "场景库",
+    "流水场景",
+    "waterfall_long_exposure"
+  ],
+  "conditions": {
+    "scene": "waterfall_long_exposure"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/camera-shutter-speed.htm",
+    "location": "FREEZING MOTION / BLUR / PANNING",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-case-still-life",
+  "library_id": "case",
+  "title": "Roger Fenton / Still Life with Fruit（1860 摄影作品）",
+  "kind": "observed_case",
+  "content": "已登记来源的真实摄影作品或来源中的对照记录。有本地去元数据基图。没有独立人工评价，不能宣称助手带来改善。",
+  "payload": {
+    "schema_version": "draft-1",
+    "case_id": "photo20261011-case-still-life",
+    "capture_session_id": null,
+    "split_group_id": "photo20261011-group-still-life",
+    "dataset_split": "reference",
+    "scene_id": "food_closeup",
+    "user_goal": null,
+    "style_id": null,
+    "before_image_id": "photo20261011-image-still-life-base-v1",
+    "after_image_id": null,
+    "after_image_type": null,
+    "annotation_base": {
+      "image_id": "photo20261011-image-still-life-base-v1",
+      "width": 3857,
+      "height": 2967,
+      "image_hash": "0a29f240a8501211e74d117c1d762215fcaf2b1761dbd84ce6eaa06c59d01347",
+      "hash_algorithm": "sha256",
+      "orientation_corrected": true,
+      "base_version": 1
+    },
+    "subject_bbox_xyxy_normalized": null,
+    "gaze_direction": "unknown",
+    "motion_direction": "unknown",
+    "protected_regions": [],
+    "horizon": null,
+    "distractions": [],
+    "capture_parameters": {
+      "camera_model": null,
+      "lens_model": null,
+      "actual_focal_length_mm": null,
+      "aperture_f_number": null,
+      "shutter_seconds": null,
+      "iso": null,
+      "exposure_mode": null,
+      "field_sources": {}
+    },
+    "issues": [],
+    "actions": [],
+    "linked_knowledge_ids": [
+      "photo20261011-composition-food-props",
+      "photo20261011-style-monochrome"
+    ],
+    "human_evaluation": {
+      "reviewer": null,
+      "result": null,
+      "reasons": [],
+      "confounding_changes": []
+    },
+    "rights": {
+      "photographer_permission": "public_domain_digitization_CC0_recorded_on_source",
+      "depicted_person_permission": "not_applicable",
+      "storage": "allowed_under_CC0",
+      "retrieval_use": "allowed_under_CC0",
+      "public_display": "allowed_under_CC0",
+      "redistribution": "allowed_under_CC0"
+    },
+    "review_status": "draft",
+    "author": "Codex 本轮资料整理（AI，待独立审核）",
+    "reviewer": null,
+    "accessed_at": "2026-10-11",
+    "verified_at": null,
+    "source_id": "WEB-054",
+    "source_url": "https://commons.wikimedia.org/wiki/File:-Still_Life_with_Fruit-_MET_DP209008.jpg",
+    "source_location": "Roger Fenton / Still Life with Fruit（1860 摄影作品）",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "artifact_status": "local_sanitized_base",
+    "observations": [
+      "模型视觉检查：水果、葡萄和菠萝构成静物层次，外沿可见历史摄影装裱边界；描述待人工复核。"
+    ],
+    "observation_sources": {
+      "visual_description": "model_inference",
+      "no_depicted_person": "model_inference"
+    },
+    "pending": [
+      "独立内容审核",
+      "图像标注复核",
+      "前后结果与人工评价缺失，不能用于效果宣称"
+    ],
+    "photographer": "Roger Fenton",
+    "attribution": "Roger Fenton, Still Life with Fruit, 1860. The Metropolitan Museum of Art, 2005.100.15. CC0 1.0.",
+    "notes": [
+      "历史摄影的数字化图像，没有原始数字相机 EXIF；本次浏览器下载成功。"
+    ]
+  },
+  "tags": [
+    "参考案例",
+    "food_closeup",
+    "local_sanitized_base"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Roger Fenton",
+    "url": "https://commons.wikimedia.org/wiki/File:-Still_Life_with_Fruit-_MET_DP209008.jpg",
+    "location": "Roger Fenton / Still Life with Fruit（1860 摄影作品）",
+    "license": "CC0-1.0",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

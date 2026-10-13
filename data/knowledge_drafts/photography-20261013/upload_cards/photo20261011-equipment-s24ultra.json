@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-equipment-s24ultra",
+  "library_id": "equipment",
+  "title": "Samsung Galaxy S24 Ultra：规格、条件与未知能力",
+  "kind": "manufacturer_fact",
+  "content": "逐字段事实见 payload.facts。已查原始规格，但尚未独立审核或真机验证。规格为硬件/模式事实，不是最佳拍摄参数；未真机测试。仅记录后置模组事实；原生 App 可调能力和系统版本未核验，不建议把固定物理光圈作为可调参数。",
+  "payload": {
+    "schema_version": "draft-1",
+    "equipment_id": "photo20261011-equipment-s24ultra",
+    "camera_model": "Samsung Galaxy S24 Ultra",
+    "lens_model": null,
+    "camera_firmware": null,
+    "review_status": "draft",
+    "author": "Codex 本轮资料整理（AI，待独立审核）",
+    "reviewer": null,
+    "accessed_at": "2026-10-11",
+    "verified_at": null,
+    "facts": [
+      {
+        "field": "maximum_aperture_f_number",
+        "value": 1.7,
+        "unit": "f_number",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "camera_module": "wide",
+          "model_variant": "Samsung Galaxy S24 Ultra"
+        },
+        "source_id": "WEB-072",
+        "source_url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+        "source_location": "Camera / 摄像头 / Rear Camera 对应模组",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "actual_focal_length_mm",
+        "value": null,
+        "unit": "mm",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "camera_module": "wide",
+          "model_variant": "Samsung Galaxy S24 Ultra"
+        },
+        "source_id": "WEB-072",
+        "source_url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+        "source_location": "官网未确认实际焦距，不能用等效焦距填补",
+        "verification_status": "pending",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "maximum_aperture_f_number",
+        "value": 2.2,
+        "unit": "f_number",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "camera_module": "ultrawide",
+          "model_variant": "Samsung Galaxy S24 Ultra"
+        },
+        "source_id": "WEB-072",
+        "source_url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+        "source_location": "Camera / 摄像头 / Rear Camera 对应模组",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "actual_focal_length_mm",
+        "value": null,
+        "unit": "mm",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "camera_module": "ultrawide",
+          "model_variant": "Samsung Galaxy S24 Ultra"
+        },
+        "source_id": "WEB-072",
+        "source_url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+        "source_location": "官网未确认实际焦距，不能用等效焦距填补",
+        "verification_status": "pending",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "maximum_aperture_f_number",
+        "value": 2.4,
+        "unit": "f_number",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "camera_module": "telephoto_3x",
+          "model_variant": "Samsung Galaxy S24 Ultra"
+        },
+        "source_id": "WEB-072",
+        "source_url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+        "source_location": "Camera / 摄像头 / Rear Camera 对应模组",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "actual_focal_length_mm",
+        "value": null,
+        "unit": "mm",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "camera_module": "telephoto_3x",
+          "model_variant": "Samsung Galaxy S24 Ultra"
+        },
+        "source_id": "WEB-072",
+        "source_url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+        "source_location": "官网未确认实际焦距，不能用等效焦距填补",
+        "verification_status": "pending",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "maximum_aperture_f_number",
+        "value": 3.4,
+        "unit": "f_number",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "camera_module": "telephoto_5x",
+          "model_variant": "Samsung Galaxy S24 Ultra"
+        },
+        "source_id": "WEB-072",
+        "source_url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+        "source_location": "Camera / 摄像头 / Rear Camera 对应模组",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "actual_focal_length_mm",
+        "value": null,
+        "unit": "mm",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "camera_module": "telephoto_5x",
+          "model_variant": "Samsung Galaxy S24 Ultra"
+        },
+        "source_id": "WEB-072",
+        "source_url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+        "source_location": "官网未确认实际焦距，不能用等效焦距填补",
+        "verification_status": "pending",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "iso_normal_range",
+        "value": null,
+        "unit": "ISO",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "app": "native",
+          "app_version": null
+        },
+        "source_id": "WEB-072",
+        "source_url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+        "source_location": "规格未提供原生 App 可调范围",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      },
+      {
+        "field": "fastest_shutter_seconds",
+        "value": null,
+        "unit": "s",
+        "conditions": {
+          "capture_mode": "still_photo",
+          "app": "native",
+          "shutter_type": null
+        },
+        "source_id": "WEB-072",
+        "source_url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+        "source_location": "规格未提供原生 App 模式范围",
+        "verification_status": "source_checked_pending_independent_review",
+        "information_source": "manufacturer_fact"
+      }
+    ],
+    "conflicts": [],
+    "notes": [
+      "规格为硬件/模式事实，不是最佳拍摄参数；未真机测试。",
+      "仅记录后置模组事实；原生 App 可调能力和系统版本未核验，不建议把固定物理光圈作为可调参数。"
+    ],
+    "source_id": "WEB-072",
+    "source_url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series"
+  },
+  "tags": [
+    "器材规格",
+    "Samsung Galaxy S24 Ultra"
+  ],
+  "conditions": {
+    "device_type": "phone"
+  },
+  "source": {
+    "name": "Samsung",
+    "url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+    "location": "逐字段 source_location",
+    "license": "仅记录必要事实；厂商正文和图片使用权限待核验",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

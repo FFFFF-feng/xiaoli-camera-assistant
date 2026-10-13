@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-scene-window-portrait",
+  "library_id": "scene",
+  "title": "窗边人像：侧光方向与明暗过渡",
+  "kind": "guideline",
+  "content": "# 窗边人像：侧光方向与明暗过渡\n\n## 目标与结论\n窗户可形成方向性光源，明暗过渡与窗的相对大小、位置有关。\n\n## 适用条件与所需信息\n需要看见面部和窗光线索；窗外天气不能由室内照片确定。\n\n## 执行动作\n检查脸部两侧亮度和眼睛是否清晰；记录可能光源而非猜测灯数。\n\n## 例外、限制与风险\n直射窗光不一定柔和；窗不可见时光源来源为 unknown。\n\n## 依据与案例\n来源 WEB-022：[Introduction to Portrait Lighting](https://www.cambridgeincolour.com/tutorials/portrait-lighting.htm)；位置：LIGHT SOURCE / DIRECTION / SIZE。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-022"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "window_portrait",
+    "subject": "person",
+    "motion": "unknown",
+    "goal": "窗户可形成方向性光源，明暗过渡与窗的相对大小、位置有关。",
+    "requires": [
+      "需要看见面部和窗光线索；窗外天气不能由室内照片确定。"
+    ],
+    "actions": [
+      "检查脸部两侧亮度和眼睛是否清晰；记录可能光源而非猜测灯数。"
+    ],
+    "exceptions_and_risks": [
+      "直射窗光不一定柔和；窗不可见时光源来源为 unknown。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": false,
+    "scene_id": "window_portrait",
+    "definition": "窗户可形成方向性光源，明暗过渡与窗的相对大小、位置有关。",
+    "aliases": [
+      "window_portrait",
+      "窗边人像",
+      "window portrait"
+    ],
+    "observable_features": [
+      "脸部两侧明暗差异",
+      "窗或开口光线索",
+      "眼部清晰范围"
+    ],
+    "lighting": {
+      "observable_clues": [
+        "脸部两侧明暗差异",
+        "窗或开口光线索",
+        "眼部清晰范围"
+      ],
+      "actual_light_source": "unknown",
+      "information_source": "model_inference",
+      "note": "候选检查项不是当前照片的观测事实。"
+    },
+    "motion_recording": "只在观测或用户报告支持时记录实际运动，不使用默认猜测",
+    "common_problems": [
+      "直射窗光不一定柔和；窗不可见时光源来源为 unknown。"
+    ],
+    "example_index": "../../example_index.yaml",
+    "unknown_policy": "意图与图中场景分开；缺失字段 unknown/null"
+  },
+  "tags": [
+    "场景库",
+    "窗边人像",
+    "window_portrait"
+  ],
+  "conditions": {
+    "scene": "window_portrait"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/portrait-lighting.htm",
+    "location": "LIGHT SOURCE / DIRECTION / SIZE",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-scene-fog",
+  "library_id": "scene",
+  "title": "雾景：低对比与层次递减",
+  "kind": "guideline",
+  "content": "# 雾景：低对比与层次递减\n\n## 目标与结论\n雾可降低远景对比，形成随距离变淡的层次。\n\n## 适用条件与所需信息\n需要远近层次、反差和光线线索；天气名称可保持候选。\n\n## 执行动作\n记录前景轮廓与远景衰减，关联层次或轮廓表达。\n\n## 例外、限制与风险\n低对比也可能来自镜头雾化或后期，不强行诊断实际气象。\n\n## 依据与案例\n来源 WEB-019：[How to Take Photos in Fog, Mist or Haze](https://www.cambridgeincolour.com/tutorials/fog-photography.htm)；位置：DEPTH / CONTRAST / SILHOUETTES。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-019"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "fog_landscape",
+    "subject": "landscape",
+    "motion": "unknown",
+    "goal": "雾可降低远景对比，形成随距离变淡的层次。",
+    "requires": [
+      "需要远近层次、反差和光线线索；天气名称可保持候选。"
+    ],
+    "actions": [
+      "记录前景轮廓与远景衰减，关联层次或轮廓表达。"
+    ],
+    "exceptions_and_risks": [
+      "低对比也可能来自镜头雾化或后期，不强行诊断实际气象。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": false,
+    "scene_id": "fog_landscape",
+    "definition": "雾可降低远景对比，形成随距离变淡的层次。",
+    "aliases": [
+      "fog_landscape",
+      "雾景",
+      "fog"
+    ],
+    "observable_features": [
+      "远景对比相对降低",
+      "近景轮廓相对清楚",
+      "层次随距离递减候选"
+    ],
+    "lighting": {
+      "observable_clues": [
+        "远景对比相对降低",
+        "近景轮廓相对清楚",
+        "层次随距离递减候选"
+      ],
+      "actual_light_source": "unknown",
+      "information_source": "model_inference",
+      "note": "候选检查项不是当前照片的观测事实。"
+    },
+    "motion_recording": "只在观测或用户报告支持时记录实际运动，不使用默认猜测",
+    "common_problems": [
+      "低对比也可能来自镜头雾化或后期，不强行诊断实际气象。"
+    ],
+    "example_index": "../../example_index.yaml",
+    "unknown_policy": "意图与图中场景分开；缺失字段 unknown/null"
+  },
+  "tags": [
+    "场景库",
+    "雾景",
+    "fog_landscape"
+  ],
+  "conditions": {
+    "scene": "fog_landscape"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/fog-photography.htm",
+    "location": "DEPTH / CONTRAST / SILHOUETTES",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

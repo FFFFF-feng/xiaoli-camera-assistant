@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-scene-night-supported",
+  "library_id": "scene",
+  "title": "支撑夜景：稳定设备与运动主体分开",
+  "kind": "guideline",
+  "content": "# 支撑夜景：稳定设备与运动主体分开\n\n## 目标与结论\n低照度城市景物适合稳定支撑；车流和行人可能在长曝光中拖影。\n\n## 适用条件与所需信息\n须确认支撑方式、运动和是否允许延长曝光。\n\n## 执行动作\n登记灯光、高光区域和主体运动；确认支撑后再关联长曝光规则。\n\n## 例外、限制与风险\n不能从 EXIF 慢快门反推一定用了三脚架。\n\n## 依据与案例\n来源 WEB-021：[Common Obstacles in Night Photography](https://www.cambridgeincolour.com/tutorials/night-photography.htm)；位置：COMMON OBSTACLES / EXPOSURE / FOCUS。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-021"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "tripod_night",
+    "subject": "cityscape",
+    "motion": "unknown",
+    "goal": "低照度城市景物适合稳定支撑；车流和行人可能在长曝光中拖影。",
+    "requires": [
+      "须确认支撑方式、运动和是否允许延长曝光。"
+    ],
+    "actions": [
+      "登记灯光、高光区域和主体运动；确认支撑后再关联长曝光规则。"
+    ],
+    "exceptions_and_risks": [
+      "不能从 EXIF 慢快门反推一定用了三脚架。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "scene_id": "tripod_night",
+    "definition": "低照度城市景物适合稳定支撑；车流和行人可能在长曝光中拖影。",
+    "aliases": [
+      "tripod_night",
+      "支撑夜景",
+      "night supported"
+    ],
+    "observable_features": [
+      "暗环境中的灯光和高光",
+      "建筑等静止参照",
+      "车流或人影轨迹候选"
+    ],
+    "lighting": {
+      "observable_clues": [
+        "暗环境中的灯光和高光",
+        "建筑等静止参照",
+        "车流或人影轨迹候选"
+      ],
+      "actual_light_source": "unknown",
+      "information_source": "model_inference",
+      "note": "候选检查项不是当前照片的观测事实。"
+    },
+    "motion_recording": "只在观测或用户报告支持时记录实际运动，不使用默认猜测",
+    "common_problems": [
+      "不能从 EXIF 慢快门反推一定用了三脚架。"
+    ],
+    "example_index": "../../example_index.yaml",
+    "unknown_policy": "意图与图中场景分开；缺失字段 unknown/null"
+  },
+  "tags": [
+    "场景库",
+    "支撑夜景",
+    "tripod_night"
+  ],
+  "conditions": {
+    "scene": "tripod_night"
+  },
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/night-photography.htm",
+    "location": "COMMON OBSTACLES / EXPOSURE / FOCUS",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

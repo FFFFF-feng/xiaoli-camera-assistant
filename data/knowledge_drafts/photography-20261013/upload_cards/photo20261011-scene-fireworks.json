@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-scene-fireworks",
+  "library_id": "scene",
+  "title": "烟花场景：亮轨迹与城市参照物",
+  "kind": "guideline",
+  "content": "# 烟花场景：亮轨迹与城市参照物\n\n## 目标与结论\n烟花在暗背景形成随时间展开的亮轨迹，可搭配建筑作为尺度参照。\n\n## 适用条件与所需信息\n确认稳定支撑、视野、烟花活动和器材的长曝光能力。\n\n## 执行动作\n登记建筑边界、烟花可见范围和试拍高光，关联 Bulb 或长曝光规则。\n\n## 例外、限制与风险\n原图之外的新烟花或建筑不能用裁切创造；曝光时间不固定。\n\n## 依据与案例\n来源 WEB-042：[Taking Pictures of Fireworks](https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/taking-pictures-of-fireworks)；位置：Location / Camera & Lens Settings / Photography Tips。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-042"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "fireworks",
+    "subject": "fireworks",
+    "motion": "moving",
+    "goal": "烟花在暗背景形成随时间展开的亮轨迹，可搭配建筑作为尺度参照。",
+    "requires": [
+      "确认稳定支撑、视野、烟花活动和器材的长曝光能力。"
+    ],
+    "actions": [
+      "登记建筑边界、烟花可见范围和试拍高光，关联 Bulb 或长曝光规则。"
+    ],
+    "exceptions_and_risks": [
+      "原图之外的新烟花或建筑不能用裁切创造；曝光时间不固定。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": false,
+    "scene_id": "fireworks",
+    "definition": "烟花在暗背景形成随时间展开的亮轨迹，可搭配建筑作为尺度参照。",
+    "aliases": [
+      "fireworks",
+      "烟花场景",
+      "fireworks"
+    ],
+    "observable_features": [
+      "暗背景中的亮轨迹",
+      "建筑参照物边界",
+      "轨迹高光与画面边缘"
+    ],
+    "lighting": {
+      "observable_clues": [
+        "暗背景中的亮轨迹",
+        "建筑参照物边界",
+        "轨迹高光与画面边缘"
+      ],
+      "actual_light_source": "unknown",
+      "information_source": "model_inference",
+      "note": "候选检查项不是当前照片的观测事实。"
+    },
+    "motion_recording": "只在观测或用户报告支持时记录实际运动，不使用默认猜测",
+    "common_problems": [
+      "原图之外的新烟花或建筑不能用裁切创造；曝光时间不固定。"
+    ],
+    "example_index": "../../example_index.yaml",
+    "unknown_policy": "意图与图中场景分开；缺失字段 unknown/null"
+  },
+  "tags": [
+    "场景库",
+    "烟花场景",
+    "fireworks"
+  ],
+  "conditions": {
+    "scene": "fireworks"
+  },
+  "source": {
+    "name": "Nikon（署名作者以页面为准）",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/taking-pictures-of-fireworks",
+    "location": "Location / Camera & Lens Settings / Photography Tips",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

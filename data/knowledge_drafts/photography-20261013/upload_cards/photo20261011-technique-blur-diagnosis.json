@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-technique-blur-diagnosis",
+  "library_id": "technique",
+  "title": "模糊排查：先分清晃动、运动和失焦",
+  "kind": "guideline",
+  "content": "# 模糊排查：先分清晃动、运动和失焦\n\n## 目标与结论\n不同模糊来源需要不同调整，单图有时无法确定原因。\n\n## 适用条件与所需信息\n需原尺寸图片、主体运动和支撑情况。\n\n## 执行动作\n比较静止参照与主体；检查焦点，再单独改变曝光时间或稳定方式。\n\n## 例外、限制与风险\n压缩、降噪也会损失细节；不把全部柔化归因于慢快门。\n\n## 依据与案例\n来源 WEB-009：[Reducing Camera Shake with Hand-Held Photos](https://www.cambridgeincolour.com/tutorials/camera-shake.htm)；位置：HAND-HELD PHOTOS / FOCAL LENGTH / STABILIZATION。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-009"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "general_scene",
+    "subject": "unknown",
+    "motion": "unknown",
+    "goal": "不同模糊来源需要不同调整，单图有时无法确定原因。",
+    "requires": [
+      "需原尺寸图片、主体运动和支撑情况。"
+    ],
+    "actions": [
+      "比较静止参照与主体；检查焦点，再单独改变曝光时间或稳定方式。"
+    ],
+    "exceptions_and_risks": [
+      "压缩、降噪也会损失细节；不把全部柔化归因于慢快门。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "parameter_requirements": [
+      "exposure_mode",
+      "subject_motion",
+      "handheld_or_supported",
+      "lens_model",
+      "actual_focal_length_mm",
+      "maximum_aperture_f_number",
+      "shutter_type",
+      "lighting_clues",
+      "target_effect"
+    ],
+    "hardware_limits": null,
+    "suggested_parameter_values": null,
+    "suggestion_type": "方向或检查流程；没有固定曝光保证",
+    "parameter_missing_policy": "缺关键条件不生成数值",
+    "numeric_units": {
+      "shutter": "s",
+      "aperture": "f_number",
+      "iso": "number",
+      "focal_length": "mm"
+    }
+  },
+  "tags": [
+    "拍摄技术库",
+    "模糊排查",
+    "general_scene"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/camera-shake.htm",
+    "location": "HAND-HELD PHOTOS / FOCAL LENGTH / STABILIZATION",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

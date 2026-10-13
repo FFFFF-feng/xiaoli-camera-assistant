@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-style-low-key",
+  "library_id": "style",
+  "title": "低调：暗调氛围不等于丢失主体",
+  "kind": "guideline",
+  "content": "# 低调：暗调氛围不等于丢失主体\n\n## 目标与结论\n低调强调暗调与局部照明，应保留重要主体信息。\n\n## 适用条件与所需信息\n需用户同意暗调表达、主体关键细节和亮部范围。\n\n## 执行动作\n拍摄：控制背景与光源；后期：调整暗部层次而非直接压成全黑。\n\n## 例外、限制与风险\n直方图靠左不直接说明欠曝；照片意图需要确认。\n\n## 依据与案例\n来源 WEB-017：[Understanding Digital Camera Histograms: Tones and Contrast](https://www.cambridgeincolour.com/tutorials/histograms1.htm)；位置：LOW & HIGH KEY / CONTRAST / CLIPPING。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-017"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "general_scene",
+    "subject": "unknown",
+    "motion": "unknown",
+    "goal": "低调强调暗调与局部照明，应保留重要主体信息。",
+    "requires": [
+      "需用户同意暗调表达、主体关键细节和亮部范围。"
+    ],
+    "actions": [
+      "拍摄：控制背景与光源；后期：调整暗部层次而非直接压成全黑。"
+    ],
+    "exceptions_and_risks": [
+      "直方图靠左不直接说明欠曝；照片意图需要确认。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "capture_goal": "控制背景与光源",
+    "postprocess_goal": "调整暗部层次而非直接压成全黑。",
+    "composition_tendency": "需用户同意暗调表达、主体关键细节和亮部范围。",
+    "lighting_tendency": "低调强调暗调与局部照明，应保留重要主体信息。",
+    "depth_of_field_goal": "根据关键清晰区域另行确认，未提供统一 f 数",
+    "color_tendency": "根据主题确认，未规定滤镜",
+    "related_rule_ids": [
+      "photo20261011-technique-histogram"
+    ]
+  },
+  "tags": [
+    "风格库",
+    "低调",
+    "general_scene"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Cambridge in Colour / Sean T. McHugh",
+    "url": "https://www.cambridgeincolour.com/tutorials/histograms1.htm",
+    "location": "LOW & HIGH KEY / CONTRAST / CLIPPING",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

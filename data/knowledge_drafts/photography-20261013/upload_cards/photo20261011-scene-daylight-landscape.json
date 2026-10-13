@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-scene-daylight-landscape",
+  "library_id": "scene",
+  "title": "日间风景：近景与远景信息分开记录",
+  "kind": "guideline",
+  "content": "# 日间风景：近景与远景信息分开记录\n\n## 目标与结论\n远处地形与近处景物可共同构成风景；近景并非必需。\n\n## 适用条件与所需信息\n确认用户希望环境完整还是突出远处局部。\n\n## 执行动作\n记录地平线、近中远景和高光；另记树叶、水面等局部运动。\n\n## 例外、限制与风险\n风景主体静止不代表全画面静止；时间和天气需用户确认。\n\n## 依据与案例\n来源 WEB-037：[Top tips for landscapes - Canon Europe](https://www.canon-europe.com/get-inspired/tips-and-techniques/landscape-photography-tips/)；位置：1. foreground detail / 4. level horizon / 6. angles。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-037"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "daylight_landscape",
+    "subject": "landscape",
+    "motion": "unknown",
+    "goal": "远处地形与近处景物可共同构成风景；近景并非必需。",
+    "requires": [
+      "确认用户希望环境完整还是突出远处局部。"
+    ],
+    "actions": [
+      "记录地平线、近中远景和高光；另记树叶、水面等局部运动。"
+    ],
+    "exceptions_and_risks": [
+      "风景主体静止不代表全画面静止；时间和天气需用户确认。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "scene_id": "daylight_landscape",
+    "definition": "远处地形与近处景物可共同构成风景；近景并非必需。",
+    "aliases": [
+      "daylight_landscape",
+      "日间风景",
+      "daylight landscape"
+    ],
+    "observable_features": [
+      "可见地形或环境区域",
+      "近中远景候选层次",
+      "天空高光和局部运动线索"
+    ],
+    "lighting": {
+      "observable_clues": [
+        "可见地形或环境区域",
+        "近中远景候选层次",
+        "天空高光和局部运动线索"
+      ],
+      "actual_light_source": "unknown",
+      "information_source": "model_inference",
+      "note": "候选检查项不是当前照片的观测事实。"
+    },
+    "motion_recording": "只在观测或用户报告支持时记录实际运动，不使用默认猜测",
+    "common_problems": [
+      "风景主体静止不代表全画面静止；时间和天气需用户确认。"
+    ],
+    "example_index": "../../example_index.yaml",
+    "unknown_policy": "意图与图中场景分开；缺失字段 unknown/null"
+  },
+  "tags": [
+    "场景库",
+    "日间风景",
+    "daylight_landscape"
+  ],
+  "conditions": {
+    "scene": "daylight_landscape"
+  },
+  "source": {
+    "name": "Canon（署名作者以页面为准）",
+    "url": "https://www.canon-europe.com/get-inspired/tips-and-techniques/landscape-photography-tips/",
+    "location": "1. foreground detail / 4. level horizon / 6. angles",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

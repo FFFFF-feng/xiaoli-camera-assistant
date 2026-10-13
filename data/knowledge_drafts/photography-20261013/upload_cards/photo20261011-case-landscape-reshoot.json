@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-case-landscape-reshoot",
+  "library_id": "case",
+  "title": "1. Landscape composition: capture foreground detail / 两张树与霜草照片",
+  "kind": "observed_case",
+  "content": "已登记来源的真实摄影作品或来源中的对照记录。仅来源链接，未收录图片二进制。没有独立人工评价，不能宣称助手带来改善。",
+  "payload": {
+    "schema_version": "draft-1",
+    "case_id": "photo20261011-case-landscape-reshoot",
+    "capture_session_id": null,
+    "split_group_id": "photo20261011-group-landscape-reshoot",
+    "dataset_split": "reference",
+    "scene_id": "daylight_landscape",
+    "user_goal": null,
+    "style_id": null,
+    "before_image_id": null,
+    "after_image_id": null,
+    "after_image_type": "actual_reshoot",
+    "annotation_base": {
+      "image_id": null,
+      "width": null,
+      "height": null,
+      "image_hash": null,
+      "orientation_corrected": null
+    },
+    "subject_bbox_xyxy_normalized": null,
+    "gaze_direction": "unknown",
+    "motion_direction": "unknown",
+    "protected_regions": [],
+    "horizon": null,
+    "distractions": [],
+    "capture_parameters": {
+      "camera_model": "Canon EOS R6",
+      "lens_model": "Canon RF 24-105mm F4-7.1 IS STM",
+      "actual_focal_length_mm": 24.0,
+      "aperture_f_number": 16.0,
+      "shutter_seconds": 0.01,
+      "iso": 160,
+      "exposure_mode": null,
+      "field_sources": {
+        "camera_model": "user_report",
+        "lens_model": "user_report",
+        "actual_focal_length_mm": "user_report",
+        "aperture_f_number": "user_report",
+        "shutter_seconds": "user_report",
+        "iso": "user_report"
+      }
+    },
+    "issues": [],
+    "actions": [
+      {
+        "type": "actual_reshoot",
+        "action": "来源示例降低相机位置，突出近景霜草",
+        "information_source": "user_report"
+      }
+    ],
+    "linked_knowledge_ids": [
+      "photo20261011-composition-foreground"
+    ],
+    "human_evaluation": {
+      "reviewer": null,
+      "result": null,
+      "reasons": [],
+      "confounding_changes": [
+        "机位高度变化；光线与时间一致性未知"
+      ]
+    },
+    "rights": {
+      "photographer_permission": "unknown",
+      "depicted_person_permission": "unknown",
+      "storage": "unknown",
+      "retrieval_use": "unknown",
+      "public_display": "unknown",
+      "redistribution": "unknown"
+    },
+    "review_status": "draft",
+    "author": "Codex 本轮资料整理（AI，待独立审核）",
+    "reviewer": null,
+    "accessed_at": "2026-10-11",
+    "verified_at": null,
+    "source_id": "WEB-037",
+    "source_url": "https://www.canon-europe.com/get-inspired/tips-and-techniques/landscape-photography-tips/",
+    "source_location": "1. Landscape composition: capture foreground detail / 两张树与霜草照片",
+    "license": "pending",
+    "license_url": null,
+    "artifact_status": "source_link_only",
+    "observations": [
+      "原文两张图片说明报告相同机身、焦段及曝光；后图相机位置较低。"
+    ],
+    "observation_sources": {
+      "caption_description": "user_report"
+    },
+    "pending": [
+      "独立内容审核",
+      "图像标注复核",
+      "前后结果与人工评价缺失，不能用于效果宣称"
+    ]
+  },
+  "tags": [
+    "参考案例",
+    "daylight_landscape",
+    "source_link_only"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Canon（署名作者以页面为准）",
+    "url": "https://www.canon-europe.com/get-inspired/tips-and-techniques/landscape-photography-tips/",
+    "location": "1. Landscape composition: capture foreground detail / 两张树与霜草照片",
+    "license": "pending",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

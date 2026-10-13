@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "photo20261011-style-natural-color",
+  "library_id": "style",
+  "title": "自然色彩：技术校色与创意调色分开",
+  "kind": "guideline",
+  "content": "# 自然色彩：技术校色与创意调色分开\n\n## 目标与结论\n中性校色和表达性调色是不同目标，应分开记录。\n\n## 适用条件与所需信息\n可靠中性参照或拍摄者的色彩目标。\n\n## 执行动作\n拍摄：记录光源和参照；后期：先校正，再另设创意调整版本。\n\n## 例外、限制与风险\n混合光可能无法一次全局校正；不能凭白色物体认定中性灰。\n\n## 依据与案例\n来源 WEB-076：[darktable 5.6 user manual - color calibration](https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/color-calibration/)；位置：module controls / caveats；固定 darktable 5.6 文档。没有已审核关联案例。来源支持基本原理；本卡操作检查步骤为整理补充，需独立核验。\n\n## 审核记录\n2026-10-11 完成来源访问与草稿整理；独立审核人未分配，权限待核验。状态 draft，禁止正式检索。\n",
+  "payload": {
+    "source_ids": [
+      "WEB-076"
+    ],
+    "review_status": "draft",
+    "reviewer": null,
+    "verified_at": null,
+    "accessed_at": "2026-10-11",
+    "rights_status": "pending",
+    "scene": "general_scene",
+    "subject": "unknown",
+    "motion": "unknown",
+    "goal": "中性校色和表达性调色是不同目标，应分开记录。",
+    "requires": [
+      "可靠中性参照或拍摄者的色彩目标。"
+    ],
+    "actions": [
+      "拍摄：记录光源和参照；后期：先校正，再另设创意调整版本。"
+    ],
+    "exceptions_and_risks": [
+      "混合光可能无法一次全局校正；不能凭白色物体认定中性灰。"
+    ],
+    "verification": {
+      "source_accessed": true,
+      "independent_review": false,
+      "field_source": "model_inference",
+      "editorial_note": "来源支持基本原理；操作流程、保护要求和边界是整理补充，待审核。"
+    },
+    "linked_case_ids": [],
+    "runtime_scene_registered": true,
+    "capture_goal": "记录光源和参照",
+    "postprocess_goal": "先校正，再另设创意调整版本。",
+    "composition_tendency": "可靠中性参照或拍摄者的色彩目标。",
+    "lighting_tendency": "中性校色和表达性调色是不同目标，应分开记录。",
+    "depth_of_field_goal": "根据关键清晰区域另行确认，未提供统一 f 数",
+    "color_tendency": "混合光可能无法一次全局校正；不能凭白色物体认定中性灰。",
+    "related_rule_ids": [
+      "photo20261011-technique-white-balance"
+    ]
+  },
+  "tags": [
+    "风格库",
+    "自然色彩",
+    "general_scene"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "darktable documentation contributors",
+    "url": "https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/color-calibration/",
+    "location": "module controls / caveats；固定 darktable 5.6 文档",
+    "license": "原文及图片权限待核验；本卡为原创短整理，不复制全文或配图",
+    "retrieval_allowed": false
+  },
+  "author": "Codex 本轮资料整理（AI，待独立审核）",
+  "version": 1,
+  "dataset_split": "reference"
+}
