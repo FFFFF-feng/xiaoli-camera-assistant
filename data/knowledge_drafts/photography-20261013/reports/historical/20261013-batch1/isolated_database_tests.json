@@ -1,0 +1,175 @@
+{
+  "database": "<original-workspace>\\摄影知识草稿-20261013-符梁\\.verification-temp\\xiaoli-20261013-verification-k2kpqchi\\isolated.db",
+  "initial_revisions": 0,
+  "upload_first_commit": {
+    "success": true,
+    "total_files": 4,
+    "validated_count": 4,
+    "imported_count": 4,
+    "unchanged_count": 0,
+    "dry_run": false,
+    "validated_only": false,
+    "skipped_files": [],
+    "errors": [],
+    "revisions": [
+      {
+        "knowledge_id": "photo20261013-equipment-iphone16pro-live-max",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "10003b9552b15e0636686d27527f1f517524d343f05861300d8c11f10d6cf55b"
+      },
+      {
+        "knowledge_id": "photo20261013-equipment-iphone16pro-macro-switch",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "f75897de657c3bd1417bda92f86e7045bee876be4c8b51e1fa528ff52dcc1f2e"
+      },
+      {
+        "knowledge_id": "photo20261013-technique-flicker-banding",
+        "library_id": "technique",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "ae6a6e6f81d9155c8d96628a6ce6df50590b94f9979eb1b1645e3f854369c2ba"
+      },
+      {
+        "knowledge_id": "photo20261013-technique-rolling-shutter-geometry",
+        "library_id": "technique",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "c4a65fed0d463d7cfa809b4f50342f3e91ee2408e56990226ed433a27f022e80"
+      }
+    ]
+  },
+  "repeat_upload_commit": {
+    "success": true,
+    "total_files": 4,
+    "validated_count": 4,
+    "imported_count": 0,
+    "unchanged_count": 4,
+    "dry_run": false,
+    "validated_only": false,
+    "skipped_files": [],
+    "errors": [],
+    "revisions": [
+      {
+        "knowledge_id": "photo20261013-equipment-iphone16pro-live-max",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "10003b9552b15e0636686d27527f1f517524d343f05861300d8c11f10d6cf55b"
+      },
+      {
+        "knowledge_id": "photo20261013-equipment-iphone16pro-macro-switch",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "f75897de657c3bd1417bda92f86e7045bee876be4c8b51e1fa528ff52dcc1f2e"
+      },
+      {
+        "knowledge_id": "photo20261013-technique-flicker-banding",
+        "library_id": "technique",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "ae6a6e6f81d9155c8d96628a6ce6df50590b94f9979eb1b1645e3f854369c2ba"
+      },
+      {
+        "knowledge_id": "photo20261013-technique-rolling-shutter-geometry",
+        "library_id": "technique",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "c4a65fed0d463d7cfa809b4f50342f3e91ee2408e56990226ed433a27f022e80"
+      }
+    ]
+  },
+  "repeat_directory_import": {
+    "success": true,
+    "total_files": 4,
+    "validated_count": 4,
+    "imported_count": 0,
+    "unchanged_count": 4,
+    "dry_run": false,
+    "validated_only": false,
+    "skipped_files": [],
+    "errors": [],
+    "revisions": [
+      {
+        "knowledge_id": "photo20261013-equipment-iphone16pro-live-max",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "10003b9552b15e0636686d27527f1f517524d343f05861300d8c11f10d6cf55b"
+      },
+      {
+        "knowledge_id": "photo20261013-equipment-iphone16pro-macro-switch",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "f75897de657c3bd1417bda92f86e7045bee876be4c8b51e1fa528ff52dcc1f2e"
+      },
+      {
+        "knowledge_id": "photo20261013-technique-flicker-banding",
+        "library_id": "technique",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "ae6a6e6f81d9155c8d96628a6ce6df50590b94f9979eb1b1645e3f854369c2ba"
+      },
+      {
+        "knowledge_id": "photo20261013-technique-rolling-shutter-geometry",
+        "library_id": "technique",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "c4a65fed0d463d7cfa809b4f50342f3e91ee2408e56990226ed433a27f022e80"
+      }
+    ]
+  },
+  "final_revision_count": 4,
+  "audit_entries": 4,
+  "published_count": 0,
+  "retrieval_probes": [
+    {
+      "knowledge_id": "photo20261013-equipment-iphone16pro-live-max",
+      "conditions": {
+        "device_type": "phone",
+        "camera_model": "Apple iPhone 16 Pro",
+        "app": "Apple Camera",
+        "os_major": "iOS 18",
+        "capture_mode": "photo"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0
+    },
+    {
+      "knowledge_id": "photo20261013-equipment-iphone16pro-macro-switch",
+      "conditions": {
+        "device_type": "phone",
+        "camera_model": "Apple iPhone 16 Pro",
+        "app": "Apple Camera",
+        "os_major": "iOS 18",
+        "capture_mode": "photo"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0
+    },
+    {
+      "knowledge_id": "photo20261013-technique-flicker-banding",
+      "conditions": {
+        "lighting": "flickering_artificial"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0
+    },
+    {
+      "knowledge_id": "photo20261013-technique-rolling-shutter-geometry",
+      "conditions": {
+        "shutter_type": "electronic_rolling",
+        "motion": "moving"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0
+    }
+  ],
+  "scope": "只验证本批草稿且retrieval_allowed=false时无检索结果；没有审核/发布，未分别验证其他状态或许可独立分支",
+  "temporary_directory_removed": true
+}

@@ -1,0 +1,67 @@
+{
+  "author": "符梁",
+  "effective_draft_count": 4,
+  "accepted": [
+    {
+      "id": "photo20261013-technique-rolling-shutter-geometry",
+      "title": "快速移动主体变形：先核对逐行电子快门",
+      "kind": "guideline",
+      "sources": [
+        "S01",
+        "S02",
+        "S04"
+      ]
+    },
+    {
+      "id": "photo20261013-technique-flicker-banding",
+      "title": "人工光下出现明暗横带：按灯光和快门模式排查",
+      "kind": "guideline",
+      "sources": [
+        "S03",
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "photo20261013-equipment-iphone16pro-macro-switch",
+      "title": "iPhone 16 Pro（iOS 18）：控制近摄自动微距切换",
+      "kind": "manufacturer_fact",
+      "sources": [
+        "S05",
+        "S06",
+        "S07"
+      ]
+    },
+    {
+      "id": "photo20261013-equipment-iphone16pro-live-max",
+      "title": "iPhone 16 Pro（iOS 18）：Live Photos与ProRAW／HEIF Max不能同开",
+      "kind": "manufacturer_fact",
+      "sources": [
+        "S08",
+        "S07"
+      ]
+    }
+  ],
+  "rejected_or_deferred": [
+    {
+      "candidate": "通用运动冻结、三分法、视线留白、近摄景深",
+      "reason": "主库已覆盖，不重复生成"
+    },
+    {
+      "candidate": "夜间模式与Live Photos/闪光同时开启问题",
+      "reason": "指定系统版本的直接依据不足，G01；暂缓"
+    },
+    {
+      "candidate": "固定快门分母消除所有LED条带、固定角度消除畸变",
+      "reason": "现场频率/模式未知，来源不能支持通用保证"
+    },
+    {
+      "candidate": "所有电子快门都为滚动快门",
+      "reason": "官方全局快门反例，C01"
+    },
+    {
+      "candidate": "视频、论坛、博主摘要直接生成卡",
+      "reason": "未读取原始教学内容或观看视频"
+    }
+  ]
+}

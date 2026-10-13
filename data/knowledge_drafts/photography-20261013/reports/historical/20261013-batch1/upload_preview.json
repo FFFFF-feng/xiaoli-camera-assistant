@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "total_files": 4,
+  "fingerprint": "cf2d00da0f60c4b2fb78ca0a2f4fdcedd8c19918fb412d4d512e6ef3c018ae93",
+  "errors": [],
+  "records": [
+    {
+      "knowledge_id": "photo20261013-equipment-iphone16pro-live-max",
+      "library_id": "equipment",
+      "author": "符梁",
+      "version": 1,
+      "retrieval_allowed": false
+    },
+    {
+      "knowledge_id": "photo20261013-equipment-iphone16pro-macro-switch",
+      "library_id": "equipment",
+      "author": "符梁",
+      "version": 1,
+      "retrieval_allowed": false
+    },
+    {
+      "knowledge_id": "photo20261013-technique-flicker-banding",
+      "library_id": "technique",
+      "author": "符梁",
+      "version": 1,
+      "retrieval_allowed": false
+    },
+    {
+      "knowledge_id": "photo20261013-technique-rolling-shutter-geometry",
+      "library_id": "technique",
+      "author": "符梁",
+      "version": 1,
+      "retrieval_allowed": false
+    }
+  ],
+  "scope": "真实上传桥接preview_uploads函数；未启动浏览器操作或截图核验工作台UI"
+}
