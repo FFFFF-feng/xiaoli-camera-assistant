@@ -1,0 +1,53 @@
+{
+  "task_id": "photo-knowledge-20261011-v1",
+  "passed": true,
+  "sources": 147,
+  "cards": 80,
+  "library_counts": {
+    "scene": 12,
+    "composition": 12,
+    "style": 10,
+    "technique": 31,
+    "equipment": 9,
+    "case": 6
+  },
+  "local_images": 3,
+  "dataset_entries": 22,
+  "equipment_fields": 67,
+  "equipment_nonnull_fields": 47,
+  "equipment_unknown_fields": 20,
+  "checks": [
+    "来源/知识 ID 唯一及关联有效",
+    "手册版字段与导入版对应",
+    "六段文字卡完整",
+    "逐字段器材出处与条件存在",
+    "图片哈希/尺寸/基图/归一化坐标一致",
+    "公开图片无 EXIF/IPTC/XMP",
+    "所有记录无正式检索权限",
+    "临时数据库全部导入为草稿",
+    "重复导入幂等，无发布记录"
+  ],
+  "import_dry_run": {
+    "success": true,
+    "total_files": 80,
+    "validated_count": 80,
+    "imported_count": 0,
+    "unchanged_count": 0,
+    "dry_run": true,
+    "validated_only": true,
+    "skipped_files": [],
+    "errors": [],
+    "revisions": []
+  },
+  "isolated_database": {
+    "initial_imported": 80,
+    "draft_count": 80,
+    "published_count": 0,
+    "repeat_imported": 0,
+    "repeat_unchanged": 80
+  },
+  "limitations": [
+    "格式与一致性校验不替代摄影专业内容审核、逐图权利复核或真机验证",
+    "临时数据库验证未检查项目现有数据库中的同 ID 冲突"
+  ]
+}
