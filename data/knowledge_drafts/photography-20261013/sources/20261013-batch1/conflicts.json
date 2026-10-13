@@ -1,0 +1,58 @@
+{
+  "conflicts": [
+    {
+      "conflict_id": "C01",
+      "claim": "全局快门能否用于现行高画质静态相机",
+      "side_a": {
+        "source_id": "S01",
+        "location": "L316、L332",
+        "basis": "Canon教程概括全局快门尚不实用且现有电子快门逐行读出，文章未显示日期"
+      },
+      "side_b": {
+        "source_id": "S04",
+        "location": "L149、L171–184",
+        "basis": "2025-07-08 Sony官方采访明确α9 III已于2024年推出，采用全画幅全局快门"
+      },
+      "resolution": "不采纳Canon的全局快门不实用/所有电子快门逐行的泛化；逐行卡限定rolling类型，保留α9 III例外。不对主观画质优劣裁决。",
+      "human_review_required": true
+    },
+    {
+      "conflict_id": "C02",
+      "claim": "开启电子快门时能否使用防闪烁",
+      "side_a": {
+        "source_id": "S01",
+        "location": "L357",
+        "basis": "Canon介绍EOS R3具有电子快门高频防闪烁"
+      },
+      "side_b": {
+        "source_id": "S03",
+        "location": "L22–30、L49–59",
+        "basis": "Sony α7 IV普通Anti-flicker Shoot.在电子快门不可用；Var. Shutter是另一功能"
+      },
+      "resolution": "不同机型和功能定义导致表面冲突，不作品牌通用结论。手册v1未注明固件，目标固件下需再次核对。",
+      "human_review_required": true
+    }
+  ],
+  "verification_gaps": [
+    {
+      "id": "G01",
+      "sources": [
+        "S09",
+        "S10"
+      ],
+      "issue": "夜间模式与Live Photos/闪光交互只在未固定iOS版的支持文章明确，iOS 18章节未明确；不是双方矛盾",
+      "decision": "本批暂不制作该指定系统版本卡"
+    },
+    {
+      "id": "G02",
+      "sources": [
+        "S05",
+        "S06",
+        "S07",
+        "S08"
+      ],
+      "issue": "Apple型号事实由Apple多文档核验，仍只有一个发布者；iOS 18小版本及实机未核验",
+      "decision": "作为厂家事实草稿保留，不能声称独立双发布者或实测通过"
+    }
+  ]
+}
