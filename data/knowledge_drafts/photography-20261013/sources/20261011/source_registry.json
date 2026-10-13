@@ -1,0 +1,5583 @@
+{
+  "task_id": "photo-knowledge-20261011-v1",
+  "accessed_at": "2026-10-11",
+  "sources": [
+    {
+      "source_id": "GH-001",
+      "title": "Dreemurr-T/BAID",
+      "publisher": "Dreemurr-T",
+      "url": "https://github.com/Dreemurr-T/BAID",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2023-11-21T02:37:46Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-002",
+      "title": "HuiZeng/Unified_IAA",
+      "publisher": "HuiZeng",
+      "url": "https://github.com/HuiZeng/Unified_IAA",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2019-09-18T12:51:23Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-003",
+      "title": "zhuhancheng/BLG-PIAA",
+      "publisher": "zhuhancheng",
+      "url": "https://github.com/zhuhancheng/BLG-PIAA",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2020-11-20T02:10:04Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-004",
+      "title": "subpic/ava-mlsp",
+      "publisher": "subpic",
+      "url": "https://github.com/subpic/ava-mlsp",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2021-10-04T09:35:23Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-005",
+      "title": "BestiVictory/DPC-Captions",
+      "publisher": "BestiVictory",
+      "url": "https://github.com/BestiVictory/DPC-Captions",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "摄影评论、属性与审美文本研究",
+      "limits": "评论和模型推断不是人工摄影事实；注意图片及评论各自许可。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2019-12-12T11:50:14Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-006",
+      "title": "Openning07/MPADA",
+      "publisher": "Openning07",
+      "url": "https://github.com/Openning07/MPADA",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2020-11-09T13:50:18Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-007",
+      "title": "cgtuebingen/will-people-like-your-image",
+      "publisher": "cgtuebingen",
+      "url": "https://github.com/cgtuebingen/will-people-like-your-image",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2018-04-06T06:59:18Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "LGPL-3.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-008",
+      "title": "GuillaumeBalezo/A-Lamp",
+      "publisher": "GuillaumeBalezo",
+      "url": "https://github.com/GuillaumeBalezo/A-Lamp",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2020-03-08T23:10:17Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-009",
+      "title": "alanspike/personalizedImageAesthetics",
+      "publisher": "alanspike",
+      "url": "https://github.com/alanspike/personalizedImageAesthetics",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2023-05-24T19:54:26Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-010",
+      "title": "aimerykong/deepImageAestheticsAnalysis",
+      "publisher": "aimerykong",
+      "url": "https://github.com/aimerykong/deepImageAestheticsAnalysis",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。 README 另有商业使用注意事项，未作法律判断。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2024-12-12T13:39:22Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "README 限研究用途；逐图许可与附加条件待审核",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-011",
+      "title": "paramoecium/RAPID",
+      "publisher": "paramoecium",
+      "url": "https://github.com/paramoecium/RAPID",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2015-08-07T08:31:40Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-012",
+      "title": "suyukun666/S2CNet",
+      "publisher": "suyukun666",
+      "url": "https://github.com/suyukun666/S2CNet",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2024-03-28T07:18:27Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-013",
+      "title": "jhong93/gencrop",
+      "publisher": "jhong93",
+      "url": "https://github.com/jhong93/gencrop",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2023-12-28T01:32:50Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "BSD-3-Clause",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-014",
+      "title": "CyberAgentAILab/cropping-design-constraints",
+      "publisher": "CyberAgentAILab",
+      "url": "https://github.com/CyberAgentAILab/cropping-design-constraints",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2023-11-28T08:33:55Z"
+      },
+      "archived": true,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-015",
+      "title": "liuxiaoyu1104/UNIC",
+      "publisher": "liuxiaoyu1104",
+      "url": "https://github.com/liuxiaoyu1104/UNIC",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2023-12-15T05:22:44Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-016",
+      "title": "bo-zhang-cs/CACNet-Pytorch",
+      "publisher": "bo-zhang-cs",
+      "url": "https://github.com/bo-zhang-cs/CACNet-Pytorch",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2024-09-23T03:13:35Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      },
+      "implementation_identity": "仓库描述明确 Unofficial，第三方实现"
+    },
+    {
+      "source_id": "GH-017",
+      "title": "bo-zhang-cs/CGS-Pytorch",
+      "publisher": "bo-zhang-cs",
+      "url": "https://github.com/bo-zhang-cs/CGS-Pytorch",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2022-05-13T09:04:10Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      },
+      "implementation_identity": "仓库描述明确 Unofficial，第三方实现"
+    },
+    {
+      "source_id": "GH-018",
+      "title": "HuiZeng/Grid-Anchor-based-Image-Cropping-Pytorch",
+      "publisher": "HuiZeng",
+      "url": "https://github.com/HuiZeng/Grid-Anchor-based-Image-Cropping-Pytorch",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2024-12-28T13:58:50Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-019",
+      "title": "HuiZeng/Grid-Anchor-based-Image-Cropping",
+      "publisher": "HuiZeng",
+      "url": "https://github.com/HuiZeng/Grid-Anchor-based-Image-Cropping",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2020-09-25T09:55:43Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-020",
+      "title": "luwr1022/listwise-view-ranking",
+      "publisher": "luwr1022",
+      "url": "https://github.com/luwr1022/listwise-view-ranking",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2019-12-14T07:31:21Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-021",
+      "title": "zijunwei/ViewEvaluationNet",
+      "publisher": "zijunwei",
+      "url": "https://github.com/zijunwei/ViewEvaluationNet",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2018-06-10T17:21:33Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-022",
+      "title": "zijunwei/ViewProposalNet",
+      "publisher": "zijunwei",
+      "url": "https://github.com/zijunwei/ViewProposalNet",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2018-06-25T15:25:49Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-023",
+      "title": "wuhuikai/TF-A2RL",
+      "publisher": "wuhuikai",
+      "url": "https://github.com/wuhuikai/TF-A2RL",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2018-03-23T08:41:44Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-024",
+      "title": "yiling-chen/view-finding-network",
+      "publisher": "yiling-chen",
+      "url": "https://github.com/yiling-chen/view-finding-network",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2021-11-24T08:42:58Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "GPL-3.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-025",
+      "title": "V-Sense/Aesthetic-Image-Captioning-ICCVW-2019",
+      "publisher": "V-Sense",
+      "url": "https://github.com/V-Sense/Aesthetic-Image-Captioning-ICCVW-2019",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "摄影评论、属性与审美文本研究",
+      "limits": "评论和模型推断不是人工摄影事实；注意图片及评论各自许可。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2019-10-24T13:22:01Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-026",
+      "title": "kunghunglu/DeepPhotoCritic-ICCV17",
+      "publisher": "kunghunglu",
+      "url": "https://github.com/kunghunglu/DeepPhotoCritic-ICCV17",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "摄影评论、属性与审美文本研究",
+      "limits": "评论和模型推断不是人工摄影事实；注意图片及评论各自许可。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2026-07-25T06:23:32Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-027",
+      "title": "kang-gnak/eva-dataset",
+      "publisher": "kang-gnak",
+      "url": "https://github.com/kang-gnak/eva-dataset",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2022-10-07T03:11:33Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "CC0-1.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-028",
+      "title": "bcmi/Image-Composition-Assessment-Dataset-CADB",
+      "publisher": "bcmi",
+      "url": "https://github.com/bcmi/Image-Composition-Assessment-Dataset-CADB",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2026-02-17T04:08:21Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-029",
+      "title": "yiling-chen/flickr-cropping-dataset",
+      "publisher": "yiling-chen",
+      "url": "https://github.com/yiling-chen/flickr-cropping-dataset",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2025-02-10T06:48:17Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-030",
+      "title": "aneeshvartakavi/GNMC",
+      "publisher": "aneeshvartakavi",
+      "url": "https://github.com/aneeshvartakavi/GNMC",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2023-01-03T06:32:01Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-031",
+      "title": "bcmi/Awesome-Aesthetic-Evaluation-and-Cropping",
+      "publisher": "bcmi",
+      "url": "https://github.com/bcmi/Awesome-Aesthetic-Evaluation-and-Cropping",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "scene",
+        "composition",
+        "style",
+        "technique",
+        "equipment",
+        "case"
+      ],
+      "use": "进一步发现来源的索引",
+      "limits": "索引不是事实依据；必须回到原仓库或原作者文档核验。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2024-07-11T10:15:12Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-032",
+      "title": "ibaaj/awesome-OpenSourcePhotography",
+      "publisher": "ibaaj",
+      "url": "https://github.com/ibaaj/awesome-OpenSourcePhotography",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "scene",
+        "composition",
+        "style",
+        "technique",
+        "equipment",
+        "case"
+      ],
+      "use": "进一步发现来源的索引",
+      "limits": "索引不是事实依据；必须回到原仓库或原作者文档核验。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2026-04-19T21:43:56Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-033",
+      "title": "visionxiang/awesome-computational-photography",
+      "publisher": "visionxiang",
+      "url": "https://github.com/visionxiang/awesome-computational-photography",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "scene",
+        "composition",
+        "style",
+        "technique",
+        "equipment",
+        "case"
+      ],
+      "use": "进一步发现来源的索引",
+      "limits": "索引不是事实依据；必须回到原仓库或原作者文档核验。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2025-07-07T06:39:10Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-034",
+      "title": "CSAILVision/places365",
+      "publisher": "CSAILVision",
+      "url": "https://github.com/CSAILVision/places365",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "scene",
+        "case"
+      ],
+      "use": "场景标签、物体与区域标注",
+      "limits": "场景识别结果不是用户拍摄意图；图像和模型许可需独立核验。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2025-10-17T23:52:35Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "README 明确图像版权归原图片所有者",
+        "dataset_license": "pending",
+        "weights_license": "README 声明 Attribution CC BY，版本待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-035",
+      "title": "CSAILVision/ADE20K",
+      "publisher": "CSAILVision",
+      "url": "https://github.com/CSAILVision/ADE20K",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "scene",
+        "case"
+      ],
+      "use": "场景标签、物体与区域标注",
+      "limits": "场景识别结果不是用户拍摄意图；图像和模型许可需独立核验。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2024-11-10T03:17:05Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-036",
+      "title": "bcmi/Human-Centric-Image-Cropping",
+      "publisher": "bcmi",
+      "url": "https://github.com/bcmi/Human-Centric-Image-Cropping",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2022-07-22T08:19:35Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-037",
+      "title": "mediatechnologycenter/Aestheval",
+      "publisher": "mediatechnologycenter",
+      "url": "https://github.com/mediatechnologycenter/Aestheval",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "摄影评论、属性与审美文本研究",
+      "limits": "评论和模型推断不是人工摄影事实；注意图片及评论各自许可。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2023-03-28T12:41:37Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "CC-BY-4.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-038",
+      "title": "LAION-AI/aesthetic-predictor",
+      "publisher": "LAION-AI",
+      "url": "https://github.com/LAION-AI/aesthetic-predictor",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2022-08-15T13:21:41Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-039",
+      "title": "christophschuhmann/improved-aesthetic-predictor",
+      "publisher": "christophschuhmann",
+      "url": "https://github.com/christophschuhmann/improved-aesthetic-predictor",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2024-07-01T11:58:57Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "Apache-2.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-040",
+      "title": "idealo/image-quality-assessment",
+      "publisher": "idealo",
+      "url": "https://github.com/idealo/image-quality-assessment",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。 仓库已归档，旧依赖不可当最新兼容性。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2024-07-12T19:16:31Z"
+      },
+      "archived": true,
+      "license": {
+        "repository_api_spdx": "Apache-2.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-041",
+      "title": "google-research/google-research",
+      "publisher": "google-research",
+      "url": "https://github.com/google-research/google-research",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style"
+      ],
+      "use": "视觉质量研究代码总仓",
+      "limits": "应定位具体子项目；不把整仓作为一条摄影知识。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2026-10-10T14:34:09Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "Apache-2.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-042",
+      "title": "darktable-org/darktable",
+      "publisher": "darktable-org",
+      "url": "https://github.com/darktable-org/darktable",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "style",
+        "technique"
+      ],
+      "use": "后期工作流、色彩与处理文档",
+      "limits": "软件界面与预设需记录版本；后期处理不能当实拍器材能力。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2026-10-09T15:44:34Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "GPL-3.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-043",
+      "title": "RawTherapee/RawTherapee",
+      "publisher": "RawTherapee",
+      "url": "https://github.com/RawTherapee/RawTherapee",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "style",
+        "technique"
+      ],
+      "use": "后期工作流、色彩与处理文档",
+      "limits": "软件界面与预设需记录版本；后期处理不能当实拍器材能力。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "dev",
+        "commit_sha": null,
+        "pushed_at": "2026-10-07T07:20:08Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "GPL-3.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-044",
+      "title": "Exiv2/exiv2",
+      "publisher": "Exiv2",
+      "url": "https://github.com/Exiv2/exiv2",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "equipment",
+        "technique"
+      ],
+      "use": "元数据、RAW 或器材访问工具",
+      "limits": "工具支持或数据库条目不替代逐机型厂家能力；代码许可不覆盖样例照片。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2026-10-10T16:55:34Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "NOASSERTION",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-045",
+      "title": "exiftool/exiftool",
+      "publisher": "exiftool",
+      "url": "https://github.com/exiftool/exiftool",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "equipment",
+        "technique"
+      ],
+      "use": "元数据、RAW 或器材访问工具",
+      "limits": "工具支持或数据库条目不替代逐机型厂家能力；代码许可不覆盖样例照片。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2026-05-27T16:45:01Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "GPL-3.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-046",
+      "title": "LibRaw/LibRaw",
+      "publisher": "LibRaw",
+      "url": "https://github.com/LibRaw/LibRaw",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "equipment",
+        "technique"
+      ],
+      "use": "元数据、RAW 或器材访问工具",
+      "limits": "工具支持或数据库条目不替代逐机型厂家能力；代码许可不覆盖样例照片。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2026-10-09T15:17:15Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "NOASSERTION",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-047",
+      "title": "letmaik/rawpy",
+      "publisher": "letmaik",
+      "url": "https://github.com/letmaik/rawpy",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "equipment",
+        "technique"
+      ],
+      "use": "元数据、RAW 或器材访问工具",
+      "limits": "工具支持或数据库条目不替代逐机型厂家能力；代码许可不覆盖样例照片。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2026-08-30T04:30:16Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-048",
+      "title": "ianare/exif-py",
+      "publisher": "ianare",
+      "url": "https://github.com/ianare/exif-py",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "equipment",
+        "technique"
+      ],
+      "use": "元数据、RAW 或器材访问工具",
+      "limits": "工具支持或数据库条目不替代逐机型厂家能力；代码许可不覆盖样例照片。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2026-06-10T14:55:25Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "BSD-3-Clause",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-049",
+      "title": "gphoto/libgphoto2",
+      "publisher": "gphoto",
+      "url": "https://github.com/gphoto/libgphoto2",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "equipment",
+        "technique"
+      ],
+      "use": "元数据、RAW 或器材访问工具",
+      "limits": "工具支持或数据库条目不替代逐机型厂家能力；代码许可不覆盖样例照片。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2026-10-05T13:28:45Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "LGPL-2.1",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-050",
+      "title": "gphoto/gphoto2",
+      "publisher": "gphoto",
+      "url": "https://github.com/gphoto/gphoto2",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "equipment",
+        "technique"
+      ],
+      "use": "元数据、RAW 或器材访问工具",
+      "limits": "工具支持或数据库条目不替代逐机型厂家能力；代码许可不覆盖样例照片。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2026-06-22T08:13:16Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "GPL-2.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-051",
+      "title": "vivoCameraResearch/PPC-Official",
+      "publisher": "vivoCameraResearch",
+      "url": "https://github.com/vivoCameraResearch/PPC-Official",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2026-03-06T01:33:17Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-052",
+      "title": "WordPress/openverse",
+      "publisher": "WordPress",
+      "url": "https://github.com/WordPress/openverse",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "case"
+      ],
+      "use": "开放许可图片发现入口",
+      "limits": "每张图片仍须回原站核验作者、许可和人物同意。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2026-10-10T18:22:12Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-053",
+      "title": "openimages/dataset",
+      "publisher": "openimages",
+      "url": "https://github.com/openimages/dataset",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "scene",
+        "case"
+      ],
+      "use": "场景标签、物体与区域标注",
+      "limits": "场景识别结果不是用户拍摄意图；图像和模型许可需独立核验。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2021-07-01T18:02:46Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "Apache-2.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-054",
+      "title": "darktable-org/dtdocs",
+      "publisher": "darktable-org",
+      "url": "https://github.com/darktable-org/dtdocs",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "style",
+        "technique"
+      ],
+      "use": "后期工作流、色彩与处理文档",
+      "limits": "软件界面与预设需记录版本；后期处理不能当实拍器材能力。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2026-10-11T03:20:49Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "GPL-3.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-055",
+      "title": "LuminanceHDR/LuminanceHDR",
+      "publisher": "LuminanceHDR",
+      "url": "https://github.com/LuminanceHDR/LuminanceHDR",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "style",
+        "technique"
+      ],
+      "use": "后期工作流、色彩与处理文档",
+      "limits": "软件界面与预设需记录版本；后期处理不能当实拍器材能力。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2026-05-20T07:10:46Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "GPL-2.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-056",
+      "title": "lensfun/lensfun",
+      "publisher": "lensfun",
+      "url": "https://github.com/lensfun/lensfun",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "equipment",
+        "technique"
+      ],
+      "use": "元数据、RAW 或器材访问工具",
+      "limits": "工具支持或数据库条目不替代逐机型厂家能力；代码许可不覆盖样例照片。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2026-10-08T17:57:02Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "LGPL-3.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-057",
+      "title": "opencv/opencv",
+      "publisher": "opencv",
+      "url": "https://github.com/opencv/opencv",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "5.x",
+        "commit_sha": null,
+        "pushed_at": "2026-10-10T09:31:47Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "Apache-2.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-058",
+      "title": "colour-science/colour",
+      "publisher": "colour-science",
+      "url": "https://github.com/colour-science/colour",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "style",
+        "technique"
+      ],
+      "use": "后期工作流、色彩与处理文档",
+      "limits": "软件界面与预设需记录版本；后期处理不能当实拍器材能力。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "develop",
+        "commit_sha": null,
+        "pushed_at": "2026-10-06T07:32:27Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "BSD-3-Clause",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-059",
+      "title": "woshidandan/Image-Color-Aesthetics-and-Quality-Assessment",
+      "publisher": "woshidandan",
+      "url": "https://github.com/woshidandan/Image-Color-Aesthetics-and-Quality-Assessment",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2026-06-15T06:59:19Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-060",
+      "title": "woshidandan/TANet-image-aesthetics-and-quality-assessment",
+      "publisher": "woshidandan",
+      "url": "https://github.com/woshidandan/TANet-image-aesthetics-and-quality-assessment",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2025-09-25T02:44:11Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "Apache-2.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-061",
+      "title": "fei-aiart/ReLIC",
+      "publisher": "fei-aiart",
+      "url": "https://github.com/fei-aiart/ReLIC",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "master",
+        "commit_sha": null,
+        "pushed_at": "2020-07-20T05:21:47Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "GH-062",
+      "title": "woshidandan/Image-Aesthetics-and-Quality-Assessment",
+      "publisher": "woshidandan",
+      "url": "https://github.com/woshidandan/Image-Aesthetics-and-Quality-Assessment",
+      "source_location": "repository metadata；README 已读状态见 verification",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "style",
+        "case"
+      ],
+      "use": "构图、裁切、审美评分研究线索",
+      "limits": "研究评分不等于普遍美学规律；生成视角不能保证重拍得到同样画面。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "default_branch": "main",
+        "commit_sha": null,
+        "pushed_at": "2026-06-15T07:00:04Z"
+      },
+      "archived": false,
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": false,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-001",
+      "title": "Digital Photography Tutorials",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-002",
+      "title": "Digital Photography Techniques",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/photography-techniques.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-003",
+      "title": "5 Easy Composition Guidelines",
+      "publisher": "Nikon（署名作者以页面为准）",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "composition",
+        "scene"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-004",
+      "title": "Camera Exposure: Aperture, ISO & Shutter Speed",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-exposure.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-005",
+      "title": "Understanding Camera Metering and Exposure",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-metering.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-006",
+      "title": "Understanding Depth of Field in Photography",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/depth-of-field.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-007",
+      "title": "Understanding White Balance",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/white-balance.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-008",
+      "title": "Understanding Camera Autofocus",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-autofocus.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-009",
+      "title": "Reducing Camera Shake with Hand-Held Photos",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-shake.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-010",
+      "title": "Digital Exposure Techniques",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/digital-exposure-techniques.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-011",
+      "title": "Making the Most of Natural Light in Photography",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/natural-light-photography.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "style",
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-012",
+      "title": "Selecting and Using a Camera Tripod",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-tripods.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-013",
+      "title": "Using Wide Angle Lenses",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/wide-angle-lenses.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "composition",
+        "scene"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-014",
+      "title": "Macro Camera Lenses",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/macro-lenses.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-015",
+      "title": "Understanding & Using Polarizing Filters",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/polarizing-filters.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-016",
+      "title": "Using Neutral Density Filters",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/neutral-density-filters.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-017",
+      "title": "Understanding Digital Camera Histograms: Tones and Contrast",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/histograms1.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-018",
+      "title": "Using Camera Shutter Speed Creatively",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-shutter-speed.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-019",
+      "title": "How to Take Photos in Fog, Mist or Haze",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/fog-photography.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "technique",
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-020",
+      "title": "Introduction to Macro Photography",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/macro-photography-intro.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "technique",
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-021",
+      "title": "Common Obstacles in Night Photography",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/night-photography.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "technique",
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-022",
+      "title": "Introduction to Portrait Lighting",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/portrait-lighting.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "style",
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-023",
+      "title": "Converting a Digital Color Photo into Black and White",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/color-black-white.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "style",
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-024",
+      "title": "Understanding Camera Lenses",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-lenses.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-025",
+      "title": "Diffraction Limited Photography: Pixel Size, Aperture and Airy Disks",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/diffraction-photography.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-026",
+      "title": "Understanding Your Camera’s Hyperfocal Distance",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/hyperfocal-distance.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-027",
+      "title": "Camera Flash: Appearance",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-flash.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-028",
+      "title": "Camera Flash: Exposure",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/camera-flash-2.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-029",
+      "title": "Using Telephoto Lenses",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/telephoto-lenses.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-030",
+      "title": "Understanding Camera Lens Flare",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/lens-flare.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-031",
+      "title": "Tutorials – The RAW File Format",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/RAW-file-format.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-032",
+      "title": "Using Focus Stacking to Extend Depth of Field",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/focus-stacking.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-033",
+      "title": "Photo Stitching Digital Panoramas",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/digital-panoramas.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-034",
+      "title": "Using Lens Corrections to Improve Image Quality",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/lens-corrections.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-035",
+      "title": "Overview of Color Management",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/color-management1.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-036",
+      "title": "Food photography tips - Canon Europe",
+      "publisher": "Canon（署名作者以页面为准）",
+      "url": "https://www.canon-europe.com/get-inspired/tips-and-techniques/food-photography-tips/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "technique",
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-037",
+      "title": "Top tips for landscapes - Canon Europe",
+      "publisher": "Canon（署名作者以页面为准）",
+      "url": "https://www.canon-europe.com/get-inspired/tips-and-techniques/landscape-photography-tips/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "composition",
+        "scene"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-038",
+      "title": "Canon : Product Manual : EOS R6 Mark II : Specifications",
+      "publisher": "Canon（署名作者以页面为准）",
+      "url": "https://cam.start.canon/en/C012/manual/html/UG-10_Reference_0100.html",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "equipment"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-039",
+      "title": "Specifications",
+      "publisher": "Nikon（署名作者以页面为准）",
+      "url": "https://onlinemanual.nikonimglib.com/z6III/en/specifications_387.html",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "equipment"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-040",
+      "title": "ILCE-7M4 Specifications | Sony USA",
+      "publisher": "Sony",
+      "url": "https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7m4/specifications",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "equipment"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-041",
+      "title": "Specifications | Cameras | FUJIFILM X Series & GFX - UK",
+      "publisher": "FUJIFILM",
+      "url": "https://www.fujifilm-x.com/en-gb/products/cameras/x-t5/specifications/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "equipment"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-042",
+      "title": "Taking Pictures of Fireworks",
+      "publisher": "Nikon（署名作者以页面为准）",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/taking-pictures-of-fireworks",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "technique",
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-043",
+      "title": "Photographing Backyard Birds",
+      "publisher": "Nikon（署名作者以页面为准）",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/photographing-backyard-birds",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "technique",
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-044",
+      "title": "Creative Photography You Can Do At Home",
+      "publisher": "Nikon（署名作者以页面为准）",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/creative-photography-you-can-do-at-home",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-045",
+      "title": "Taking Pictures at Dusk and at Night",
+      "publisher": "Nikon（署名作者以页面为准）",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/taking-pictures-at-dusk-and-at-night",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-046",
+      "title": "License | Unsplash",
+      "publisher": "unsplash.com",
+      "url": "https://unsplash.com/license",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "平台专有许可，不能据旧清单标为 CC0；逐图权利及检索/批量用途仍需核验。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-047",
+      "title": "Free Stock Photo & Video License - Pexels",
+      "publisher": "www.pexels.com",
+      "url": "https://www.pexels.com/license/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "平台专有许可，不能据旧清单标为 CC0；逐图权利及检索/批量用途仍需核验。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-048",
+      "title": "Content License - Pixabay",
+      "publisher": "pixabay.com",
+      "url": "https://pixabay.com/service/license-summary/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "平台专有许可，不能据旧清单标为 CC0；逐图权利及检索/批量用途仍需核验。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-049",
+      "title": "Commons:Reusing content outside Wikimedia - Wikimedia Commons",
+      "publisher": "Wikimedia Commons（逐作品作者另记）",
+      "url": "https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-050",
+      "title": "Deed - Attribution 4.0 International - Creative Commons",
+      "publisher": "Creative Commons",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-051",
+      "title": "Deed - Attribution-ShareAlike 4.0 International - Creative Commons",
+      "publisher": "Creative Commons",
+      "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-052",
+      "title": "Deed - CC0 1.0 Universal - Creative Commons",
+      "publisher": "Creative Commons",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-053",
+      "title": "File:Dandelion flower photo.jpg - Wikimedia Commons",
+      "publisher": "Wikimedia Commons（逐作品作者另记）",
+      "url": "https://commons.wikimedia.org/wiki/File:Dandelion_flower_photo.jpg",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已读作品页许可声明；本地修改图的署名、许可与修改说明见图片署名.md。正文许可另行核验，独立审核待完成。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "CC0-1.0"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false,
+        "image_storage": "allowed_under_declared_license"
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false,
+        "image_license_declaration_read": true
+      }
+    },
+    {
+      "source_id": "WEB-054",
+      "title": "File:-Still Life with Fruit- MET DP209008.jpg - Wikimedia Commons",
+      "publisher": "Wikimedia Commons（逐作品作者另记）",
+      "url": "https://commons.wikimedia.org/wiki/File:-Still_Life_with_Fruit-_MET_DP209008.jpg",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已读作品页许可声明；本地修改图的署名、许可与修改说明见图片署名.md。正文许可另行核验，独立审核待完成。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "CC0-1.0"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false,
+        "image_storage": "allowed_under_declared_license"
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false,
+        "image_license_declaration_read": true
+      }
+    },
+    {
+      "source_id": "WEB-055",
+      "title": "File:New York City Skyline at night.jpg - Wikimedia Commons",
+      "publisher": "Wikimedia Commons（逐作品作者另记）",
+      "url": "https://commons.wikimedia.org/wiki/File:New_York_City_Skyline_at_night.jpg",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已读作品页许可声明；本地修改图的署名、许可与修改说明见图片署名.md。正文许可另行核验，独立审核待完成。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "CC-BY-SA-4.0"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false,
+        "image_storage": "allowed_under_declared_license"
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false,
+        "image_license_declaration_read": true
+      }
+    },
+    {
+      "source_id": "WEB-056",
+      "title": "Gallery | Cameras | FUJIFILM X Series & GFX - USA",
+      "publisher": "FUJIFILM",
+      "url": "https://www.fujifilm-x.com/en-us/products/cameras/x-t5/gallery/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-057",
+      "title": "NIKKOR Z 24-70mm f/4 S | Z mount Lenses | Nikon Consumer",
+      "publisher": "Nikon（署名作者以页面为准）",
+      "url": "https://imaging.nikon.com/imaging/lineup/lens/z-mount/z_24-70mmf4s/index.html",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-058",
+      "title": "Specifications | Lenses | FUJIFILM X Series & GFX - USA",
+      "publisher": "FUJIFILM",
+      "url": "https://www.fujifilm-x.com/en-us/products/lenses/xf18-55mmf28-4-r-lm-ois/specifications/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "equipment"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "本次工具返回正文型号 XF18-135，URL 标识 XF18-55，发生型号不一致；不提取器材数值。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "needs_revision",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-059",
+      "title": "Strobist: Lighting 101: Introduction",
+      "publisher": "Strobist / David Hobby",
+      "url": "https://strobist.blogspot.com/2006/03/lighting-101.html",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "style",
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-060",
+      "title": "Strobist: Strobist Lighting Cookbook",
+      "publisher": "Strobist / David Hobby",
+      "url": "https://strobist.blogspot.com/2017/11/strobist-lighting-cookbook.html",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "style",
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-061",
+      "title": "darktable 5.4 - A Simple Beginner Workflow and Interactive Walkthrough | darktable",
+      "publisher": "darktable documentation contributors",
+      "url": "https://www.darktable.org/2025/12/darktable-5.4-beginner-workflow/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-062",
+      "title": "darktable user manual - process",
+      "publisher": "darktable documentation contributors",
+      "url": "https://darktable-org.github.io/dtdocs/en/overview/workflow/process/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-063",
+      "title": "Digital Photography/Taking Digital Photos - Wikibooks, open books for an open world",
+      "publisher": "Wikibooks contributors",
+      "url": "https://en.wikibooks.org/wiki/Digital_Photography/Taking_Digital_Photos",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "CC BY-SA 4.0；署名贡献者并遵守同许可条件，图片另查",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-064",
+      "title": "Digital Photography/Introduction - Wikibooks, open books for an open world",
+      "publisher": "Wikibooks contributors",
+      "url": "https://en.wikibooks.org/wiki/Digital_Photography/Introduction",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "CC BY-SA 4.0；署名贡献者并遵守同许可条件，图片另查",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-065",
+      "title": "Open Images V6 - Download",
+      "publisher": "storage.googleapis.com",
+      "url": "https://storage.googleapis.com/openimages/web/download.html",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-066",
+      "title": "SACD: Subject-Aware Composition Dataset",
+      "publisher": "cg.cs.tsinghua.edu.cn",
+      "url": "https://cg.cs.tsinghua.edu.cn/SACD/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "case"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-067",
+      "title": "darktable 5.6 user manual - darktable",
+      "publisher": "darktable documentation contributors",
+      "url": "https://docs.darktable.org/usermanual/5.6/en/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": "darktable 5.6",
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-068",
+      "title": "Wikibooks:Copyrights - Wikibooks, open books for an open world",
+      "publisher": "Wikibooks contributors",
+      "url": "https://en.wikibooks.org/wiki/Wikibooks:Copyrights",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "CC BY-SA 4.0；署名贡献者并遵守同许可条件，图片另查",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-069",
+      "title": "Canon : Product Manual : EOS R6 Mark II : Shutter Mode",
+      "publisher": "Canon（署名作者以页面为准）",
+      "url": "https://cam.start.canon/en/C012/manual/html/UG-04_Shooting-1_0370.html",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "equipment"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-070",
+      "title": "Composition: Using the Rule of Thirds",
+      "publisher": "Cambridge in Colour / Sean T. McHugh",
+      "url": "https://www.cambridgeincolour.com/tutorials/rule-of-thirds.htm",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "composition",
+        "scene"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-071",
+      "title": "iPhone 15 - 技术规格 - 官方 Apple 支持 (中国)",
+      "publisher": "Apple",
+      "url": "https://support.apple.com/zh-cn/111831",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "equipment"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-072",
+      "title": "Enter the New Era of Mobile AI With Samsung Galaxy S24 Series – Samsung Global Newsroom",
+      "publisher": "Samsung",
+      "url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "equipment"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-073",
+      "title": "Xiaomi 14 Specs",
+      "publisher": "Xiaomi",
+      "url": "https://www.mi.com/global/product/xiaomi-14/specs/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "equipment"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-074",
+      "title": "darktable 5.6 user manual - crop",
+      "publisher": "darktable documentation contributors",
+      "url": "https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/crop/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": "darktable 5.6",
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-075",
+      "title": "darktable 5.6 user manual - color balance rgb",
+      "publisher": "darktable documentation contributors",
+      "url": "https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/color-balance-rgb/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "style",
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": "darktable 5.6",
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-076",
+      "title": "darktable 5.6 user manual - color calibration",
+      "publisher": "darktable documentation contributors",
+      "url": "https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/color-calibration/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "style",
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": "darktable 5.6",
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-077",
+      "title": "darktable 5.6 user manual - denoise (profiled)",
+      "publisher": "darktable documentation contributors",
+      "url": "https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/denoise-profiled/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": "darktable 5.6",
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-078",
+      "title": "darktable 5.6 user manual - exposure",
+      "publisher": "darktable documentation contributors",
+      "url": "https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/exposure/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": "darktable 5.6",
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-079",
+      "title": "darktable 5.6 user manual - filmic rgb",
+      "publisher": "darktable documentation contributors",
+      "url": "https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/filmic-rgb/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": "darktable 5.6",
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-080",
+      "title": "darktable 5.6 user manual - highlight reconstruction",
+      "publisher": "darktable documentation contributors",
+      "url": "https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/highlight-reconstruction/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": "darktable 5.6",
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-081",
+      "title": "darktable 5.6 user manual - lens correction",
+      "publisher": "darktable documentation contributors",
+      "url": "https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/lens-correction/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": "darktable 5.6",
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-082",
+      "title": "darktable 5.6 user manual - rotate and perspective",
+      "publisher": "darktable documentation contributors",
+      "url": "https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/rotate-perspective/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": "darktable 5.6",
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-083",
+      "title": "darktable 5.6 user manual - white balance",
+      "publisher": "darktable documentation contributors",
+      "url": "https://docs.darktable.org/usermanual/5.6/en/module-reference/processing-modules/white-balance/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": "darktable 5.6",
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-084",
+      "title": "darktable 5.6 user manual - developing monochrome images",
+      "publisher": "darktable documentation contributors",
+      "url": "https://docs.darktable.org/usermanual/5.6/en/guides-tutorials/monochrome/",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": "darktable 5.6",
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    },
+    {
+      "source_id": "WEB-085",
+      "title": "Nikon Z6III / Exposure / S and M modes",
+      "publisher": "Nikon（署名作者以页面为准）",
+      "url": "https://onlinemanual.nikonimglib.com/z6III/en/exposure_38.html",
+      "source_location": "具体卡片记录章节；目录页仅用于发现",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "technique"
+      ],
+      "use": "按标题定位摄影知识、官方规格或许可依据",
+      "limits": "已访问页面不代表已独立审核；正文与图片的使用许可分开。",
+      "accessed_at": "2026-10-11",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "page_revision": null,
+        "snapshot_date": "2026-10-11"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      }
+    }
+  ]
+}
