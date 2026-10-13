@@ -1,0 +1,23 @@
+{
+  "mcp_service": "search_service",
+  "actual_tool": "mcp__codex_apps__search_service_web_run",
+  "operations": [
+    "system2_search_query",
+    "open",
+    "find",
+    "click"
+  ],
+  "confirmed_scope": "公开网页只读搜索与章节文本读取实际成功；部分入口失败，未核验完整部署/账户权限列表",
+  "other_tools": [
+    "functions.exec",
+    "exec_command：PowerShell与现有.venv Python",
+    "apply_patch",
+    "open_in_codex：展示本地报告"
+  ],
+  "installed": false,
+  "logged_in": false,
+  "config_changed": false,
+  "credentials_collected": false,
+  "ordinary_web_fallback_used": false,
+  "media_downloaded": false
+}

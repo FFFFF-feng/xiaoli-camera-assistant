@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "total_files": 5,
+  "fingerprint": "8ddb34b37082d0d99506a7f8b9db356185f83973e9d2dcfe4d3cc6fed426a4c7",
+  "errors": [],
+  "records": [
+    {
+      "knowledge_id": "photo20261013b2-equipment-a7iv-long-nr",
+      "library_id": "equipment",
+      "author": "符梁",
+      "version": 1,
+      "retrieval_allowed": false
+    },
+    {
+      "knowledge_id": "photo20261013b2-equipment-iphone16pro-aeaf-lock",
+      "library_id": "equipment",
+      "author": "符梁",
+      "version": 1,
+      "retrieval_allowed": false
+    },
+    {
+      "knowledge_id": "photo20261013b2-equipment-iphone16pro-burst-button",
+      "library_id": "equipment",
+      "author": "符梁",
+      "version": 1,
+      "retrieval_allowed": false
+    },
+    {
+      "knowledge_id": "photo20261013b2-technique-efcs-bokeh",
+      "library_id": "technique",
+      "author": "符梁",
+      "version": 1,
+      "retrieval_allowed": false
+    },
+    {
+      "knowledge_id": "photo20261013b2-technique-peaking-check",
+      "library_id": "technique",
+      "author": "符梁",
+      "version": 1,
+      "retrieval_allowed": false
+    }
+  ],
+  "scope": "真实上传桥接preview_uploads函数；未启动浏览器操作或截图核验工作台UI"
+}

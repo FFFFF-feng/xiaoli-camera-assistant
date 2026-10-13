@@ -1,0 +1,208 @@
+{
+  "database": "<original-workspace>\\摄影知识草稿-20261013-符梁-第二批\\.verification-temp\\xiaoli-20261013-verification-dfujegra\\isolated.db",
+  "initial_revisions": 0,
+  "upload_first_commit": {
+    "success": true,
+    "total_files": 5,
+    "validated_count": 5,
+    "imported_count": 5,
+    "unchanged_count": 0,
+    "dry_run": false,
+    "validated_only": false,
+    "skipped_files": [],
+    "errors": [],
+    "revisions": [
+      {
+        "knowledge_id": "photo20261013b2-equipment-a7iv-long-nr",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "c2e2e854cac51627f2e56ebc9466e357c1ddd438e4001789c35cfc39d3909716"
+      },
+      {
+        "knowledge_id": "photo20261013b2-equipment-iphone16pro-aeaf-lock",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "ff92d80f41033b5ee96830db65fa76ecffc63a8ad1c8e2768fb9c62cfca5a51a"
+      },
+      {
+        "knowledge_id": "photo20261013b2-equipment-iphone16pro-burst-button",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "a33773a314546c329bfb0f074e31c5dc815de4c32485b940a431d2550ce90bac"
+      },
+      {
+        "knowledge_id": "photo20261013b2-technique-efcs-bokeh",
+        "library_id": "technique",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "aa1ed87fe91d500898fb717b9ac62f7224ffbfff53653f46ddec9519bc74d36e"
+      },
+      {
+        "knowledge_id": "photo20261013b2-technique-peaking-check",
+        "library_id": "technique",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "25c399d4a7306c08c8f25913fc71e426599e7a0d7b054563cd5cc1006457c296"
+      }
+    ]
+  },
+  "repeat_upload_commit": {
+    "success": true,
+    "total_files": 5,
+    "validated_count": 5,
+    "imported_count": 0,
+    "unchanged_count": 5,
+    "dry_run": false,
+    "validated_only": false,
+    "skipped_files": [],
+    "errors": [],
+    "revisions": [
+      {
+        "knowledge_id": "photo20261013b2-equipment-a7iv-long-nr",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "c2e2e854cac51627f2e56ebc9466e357c1ddd438e4001789c35cfc39d3909716"
+      },
+      {
+        "knowledge_id": "photo20261013b2-equipment-iphone16pro-aeaf-lock",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "ff92d80f41033b5ee96830db65fa76ecffc63a8ad1c8e2768fb9c62cfca5a51a"
+      },
+      {
+        "knowledge_id": "photo20261013b2-equipment-iphone16pro-burst-button",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "a33773a314546c329bfb0f074e31c5dc815de4c32485b940a431d2550ce90bac"
+      },
+      {
+        "knowledge_id": "photo20261013b2-technique-efcs-bokeh",
+        "library_id": "technique",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "aa1ed87fe91d500898fb717b9ac62f7224ffbfff53653f46ddec9519bc74d36e"
+      },
+      {
+        "knowledge_id": "photo20261013b2-technique-peaking-check",
+        "library_id": "technique",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "25c399d4a7306c08c8f25913fc71e426599e7a0d7b054563cd5cc1006457c296"
+      }
+    ]
+  },
+  "repeat_directory_import": {
+    "success": true,
+    "total_files": 5,
+    "validated_count": 5,
+    "imported_count": 0,
+    "unchanged_count": 5,
+    "dry_run": false,
+    "validated_only": false,
+    "skipped_files": [],
+    "errors": [],
+    "revisions": [
+      {
+        "knowledge_id": "photo20261013b2-equipment-a7iv-long-nr",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "c2e2e854cac51627f2e56ebc9466e357c1ddd438e4001789c35cfc39d3909716"
+      },
+      {
+        "knowledge_id": "photo20261013b2-equipment-iphone16pro-aeaf-lock",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "ff92d80f41033b5ee96830db65fa76ecffc63a8ad1c8e2768fb9c62cfca5a51a"
+      },
+      {
+        "knowledge_id": "photo20261013b2-equipment-iphone16pro-burst-button",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "a33773a314546c329bfb0f074e31c5dc815de4c32485b940a431d2550ce90bac"
+      },
+      {
+        "knowledge_id": "photo20261013b2-technique-efcs-bokeh",
+        "library_id": "technique",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "aa1ed87fe91d500898fb717b9ac62f7224ffbfff53653f46ddec9519bc74d36e"
+      },
+      {
+        "knowledge_id": "photo20261013b2-technique-peaking-check",
+        "library_id": "technique",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "25c399d4a7306c08c8f25913fc71e426599e7a0d7b054563cd5cc1006457c296"
+      }
+    ]
+  },
+  "final_revision_count": 5,
+  "audit_entries": 5,
+  "published_count": 0,
+  "retrieval_probes": [
+    {
+      "knowledge_id": "photo20261013b2-equipment-a7iv-long-nr",
+      "conditions": {
+        "camera_model": "Sony ILCE-7M4",
+        "capture_mode": "still_photo",
+        "drive_mode": "single",
+        "shutter_type": "mechanical"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0
+    },
+    {
+      "knowledge_id": "photo20261013b2-equipment-iphone16pro-aeaf-lock",
+      "conditions": {
+        "camera_model": "Apple iPhone 16 Pro",
+        "device_type": "phone",
+        "os_major": "iOS 18",
+        "app": "Apple Camera",
+        "capture_mode": "photo"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0
+    },
+    {
+      "knowledge_id": "photo20261013b2-equipment-iphone16pro-burst-button",
+      "conditions": {
+        "camera_model": "Apple iPhone 16 Pro",
+        "device_type": "phone",
+        "os_major": "iOS 18",
+        "app": "Apple Camera",
+        "capture_mode": "photo"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0
+    },
+    {
+      "knowledge_id": "photo20261013b2-technique-efcs-bokeh",
+      "conditions": {
+        "shutter_type": "electronic_front_curtain",
+        "capture_mode": "still_photo"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0
+    },
+    {
+      "knowledge_id": "photo20261013b2-technique-peaking-check",
+      "conditions": {
+        "focus_mode": "manual",
+        "capture_mode": "still_photo"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0
+    }
+  ],
+  "scope": "只验证本批草稿且retrieval_allowed=false时无检索结果；没有审核/发布，未分别验证其他状态或许可独立分支",
+  "temporary_directory_removed": true
+}
