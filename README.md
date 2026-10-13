@@ -49,6 +49,8 @@
 
 新增17条带出处和适用条件的规则草稿，以及11个来源目录；已下载两个开放许可教材文本快照，厂商资料仅摘要。草稿不自动导入或发布，8502可下载本批ZIP。内容、授权、手机边界与复核任务见 [首批规则与手机接入说明](docs/curated-knowledge-starter.md)。
 
+后续完成的四批共 **121 条摄影知识草稿**已整理为可导入的单条 JSON，随附来源登记、冲突记录及核验报告。全部禁止检索，未审核或发布，不自动写入主数据库。查看 [合集与审核交接](docs/photography-knowledge-drafts.md) 或 [知识卡目录](data/knowledge_drafts/photography-20261013/upload_cards/)。
+
 具体机型：Canon EOS R50、Nikon Z50、Sony α6700、Fujifilm X-S20。
 
 通用配置：全画幅、APS-C、M4/3、未知机型。机型资料的厂商链接保存在 [camera_profiles.yaml](knowledge/cameras/camera_profiles.yaml)；保守自动 ISO 上限是本项目策略，不是厂商宣称的画质阈值。
