@@ -1,0 +1,120 @@
+{
+  "date": "2026-10-13",
+  "passed": true,
+  "validated_cards": 121,
+  "library_counts": {
+    "case": 9,
+    "composition": 18,
+    "equipment": 16,
+    "scene": 20,
+    "style": 15,
+    "technique": 43
+  },
+  "schema_version": 1,
+  "retrieval_allowed_true_count": 0,
+  "card_hashes_match_manifest": true,
+  "dry_run": {
+    "ok": true,
+    "command": "import",
+    "data": {
+      "success": true,
+      "total_files": 121,
+      "validated_count": 121,
+      "imported_count": 0,
+      "unchanged_count": 0,
+      "dry_run": true,
+      "validated_only": true,
+      "skipped_files": [],
+      "errors": [],
+      "revisions": []
+    }
+  },
+  "dry_run_stderr": "",
+  "upload_batches": [
+    {
+      "batch": 1,
+      "files": 20,
+      "preview": true,
+      "drafts_written": 20,
+      "repeat_unchanged": 20
+    },
+    {
+      "batch": 2,
+      "files": 20,
+      "preview": true,
+      "drafts_written": 20,
+      "repeat_unchanged": 20
+    },
+    {
+      "batch": 3,
+      "files": 20,
+      "preview": true,
+      "drafts_written": 20,
+      "repeat_unchanged": 20
+    },
+    {
+      "batch": 4,
+      "files": 20,
+      "preview": true,
+      "drafts_written": 20,
+      "repeat_unchanged": 20
+    },
+    {
+      "batch": 5,
+      "files": 20,
+      "preview": true,
+      "drafts_written": 20,
+      "repeat_unchanged": 20
+    },
+    {
+      "batch": 6,
+      "files": 20,
+      "preview": true,
+      "drafts_written": 20,
+      "repeat_unchanged": 20
+    },
+    {
+      "batch": 7,
+      "files": 1,
+      "preview": true,
+      "drafts_written": 1,
+      "repeat_unchanged": 1
+    }
+  ],
+  "isolated_database": {
+    "drafts": 121,
+    "published": 0,
+    "repeat_directory_imported": 0,
+    "repeat_directory_unchanged": 121,
+    "keyword_isolation_probes": 121,
+    "structured_isolation_probes": 121,
+    "all_probe_results_empty": true,
+    "temporary_database_removed": true
+  },
+  "main_database_before": {
+    "file_sha256": "8848f2c8d2feb719bf29a5e82a4dc0b60bff681fa0fcd4e7d71aa7bd388049c8",
+    "logical_sha256": "6c97a6f7b5b0c3807105ccfe34c265a57f4957145fd31e542f2b37eb99982122",
+    "revisions": 112,
+    "audits": 112,
+    "statuses": {
+      "draft": 112
+    }
+  },
+  "main_database_after": {
+    "file_sha256": "8848f2c8d2feb719bf29a5e82a4dc0b60bff681fa0fcd4e7d71aa7bd388049c8",
+    "logical_sha256": "6c97a6f7b5b0c3807105ccfe34c265a57f4957145fd31e542f2b37eb99982122",
+    "revisions": 112,
+    "audits": 112,
+    "statuses": {
+      "draft": 112
+    }
+  },
+  "main_database_unchanged": true,
+  "limits": [
+    "dry-run validates files and within-batch identities, not main DB version conflicts",
+    "isolation checks only the combined draft and retrieval_allowed=false state",
+    "historical source checks were not repeated for this repository upload",
+    "no browser UI upload, physical device tests, independent factual review, rights verification or publication",
+    "source collections with media or local image paths are included as text only; media is not included"
+  ]
+}
