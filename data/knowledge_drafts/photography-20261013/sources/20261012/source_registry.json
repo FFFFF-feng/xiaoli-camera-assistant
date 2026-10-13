@@ -1,0 +1,685 @@
+{
+  "task_id": "photo-knowledge-20261012-v1",
+  "sources": [
+    {
+      "source_id": "GH-063",
+      "title": "wentianli/awesome-3d-photography",
+      "publisher": "wentianli",
+      "url": "https://github.com/wentianli/awesome-3d-photography",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "technique",
+        "style",
+        "case"
+      ],
+      "use": "单图新视角与 cinemagraph 论文索引；索引不是原始事实，合成视角不登记为实拍重拍。",
+      "source_location": "README；目录仅用于发现",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "archived": false,
+      "version": {
+        "default_branch": "main",
+        "pushed_at": "2024-07-22T17:09:00Z",
+        "readme_blob_sha": "f337a1641021f5ff94c65e666f189d1a9bb004a1",
+        "commit_sha": null
+      },
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      },
+      "limits": "单图新视角与 cinemagraph 论文索引；索引不是原始事实，合成视角不登记为实拍重拍。"
+    },
+    {
+      "source_id": "GH-064",
+      "title": "rogersilvasouza/awesome-photography",
+      "publisher": "rogersilvasouza",
+      "url": "https://github.com/rogersilvasouza/awesome-photography",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "technique",
+        "style",
+        "case"
+      ],
+      "use": "摄影学习资源、课程及摆姿入口；仓库 CC0 信号不覆盖外链课程、照片或品牌素材。",
+      "source_location": "readme.md（小写，已读取）",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "archived": false,
+      "version": {
+        "default_branch": "main",
+        "pushed_at": "2026-07-19T17:16:50Z",
+        "readme_blob_sha": "44129dbbf5e9185820c9a84cdf7cc737d098a7b6",
+        "commit_sha": null
+      },
+      "license": {
+        "repository_api_spdx": "CC0-1.0",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      },
+      "limits": "摄影学习资源、课程及摆姿入口；仓库 CC0 信号不覆盖外链课程、照片或品牌素材。"
+    },
+    {
+      "source_id": "GH-065",
+      "title": "brandonhimpfen/awesome-drone-photography-cinematography",
+      "publisher": "brandonhimpfen",
+      "url": "https://github.com/brandonhimpfen/awesome-drone-photography-cinematography",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "technique",
+        "style",
+        "case"
+      ],
+      "use": "航拍工具、教程、工作流和官方入口；未提取法规结论，法规须按地点与当前日期另核验。",
+      "source_location": "README；目录仅用于发现",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "archived": false,
+      "version": {
+        "default_branch": "main",
+        "pushed_at": "2026-09-06T19:53:14Z",
+        "readme_blob_sha": "52de244adf1e2ad6ed1c52118119e4f3097f877f",
+        "commit_sha": null
+      },
+      "license": {
+        "repository_api_spdx": null,
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      },
+      "limits": "航拍工具、教程、工作流和官方入口；未提取法规结论，法规须按地点与当前日期另核验。"
+    },
+    {
+      "source_id": "GH-066",
+      "title": "AsaZhou923/picspeak",
+      "publisher": "AsaZhou923",
+      "url": "https://github.com/AsaZhou923/picspeak",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "technique",
+        "style",
+        "case"
+      ],
+      "use": "摄影点评、重拍反馈产品参考；README 功能声明不作为模型质量或实拍改善证据。",
+      "source_location": "README；目录仅用于发现",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "archived": false,
+      "version": {
+        "default_branch": "main",
+        "pushed_at": "2026-10-10T10:08:29Z",
+        "readme_blob_sha": "a295e7f5c4f2ca26b4f8198cfd1a0690b5e7fc78",
+        "commit_sha": null
+      },
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      },
+      "limits": "摄影点评、重拍反馈产品参考；README 功能声明不作为模型质量或实拍改善证据。"
+    },
+    {
+      "source_id": "GH-067",
+      "title": "prasadt1/ai-photography-coach",
+      "publisher": "prasadt1",
+      "url": "https://github.com/prasadt1/ai-photography-coach",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "technique",
+        "style",
+        "case"
+      ],
+      "use": "AI 摄影反馈原型；README 只有标题和简述，未审查代码或认可效果。",
+      "source_location": "README；目录仅用于发现",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "archived": false,
+      "version": {
+        "default_branch": "main",
+        "pushed_at": "2025-11-08T22:56:51Z",
+        "readme_blob_sha": "08a11e60371fe6a7b9c43d895175970e048e6f16",
+        "commit_sha": null
+      },
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      },
+      "limits": "AI 摄影反馈原型；README 只有标题和简述，未审查代码或认可效果。"
+    },
+    {
+      "source_id": "GH-068",
+      "title": "dennyalfath/POV-Compograph",
+      "publisher": "dennyalfath",
+      "url": "https://github.com/dennyalfath/POV-Compograph",
+      "resource_type": "github_repository",
+      "libraries": [
+        "composition",
+        "technique",
+        "style",
+        "case"
+      ],
+      "use": "构图练习应用参考；README 简短且最近推送较旧，运行兼容性未知。",
+      "source_location": "README；目录仅用于发现",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "archived": false,
+      "version": {
+        "default_branch": "master",
+        "pushed_at": "2020-11-24T15:54:16Z",
+        "readme_blob_sha": "8e4eb0bb58cc52bdf6be37d41885c6721f909d8f",
+        "commit_sha": null
+      },
+      "license": {
+        "repository_api_spdx": "MIT",
+        "code_license_verified": false,
+        "text_license": "pending",
+        "image_license": "逐图待核验",
+        "dataset_license": "pending",
+        "weights_license": "pending"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "repository_metadata_read": true,
+        "readme_read": true,
+        "independent_review": false
+      },
+      "limits": "构图练习应用参考；README 简短且最近推送较旧，运行兼容性未知。"
+    },
+    {
+      "source_id": "WEB-086",
+      "title": "Pet Photography Tips with Jenn Cooper",
+      "publisher": "Canon Australia / Jenn Cooper",
+      "url": "https://www.canon.com.au/get-inspired/pet-photography-tips-jenn-cooper",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "composition",
+        "style",
+        "technique",
+        "case"
+      ],
+      "use": "核验专题摄影原则、来源案例或镜头逐字段规格",
+      "source_location": "Prepare to Pounce / Who’s a Good Boy / Roll Over",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "snapshot_date": "2026-10-12",
+        "page_revision": null
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      },
+      "limits": "原文与照片未复制；网页可访问不表示许可或专业审核通过。"
+    },
+    {
+      "source_id": "WEB-087",
+      "title": "A Guide to Perfect Pet Photography",
+      "publisher": "Canon Hong Kong / 作品逐图署名",
+      "url": "https://www.canon.com.hk/en/club/article/itemDetail.do?itemId=10419",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "composition",
+        "style",
+        "technique",
+        "case"
+      ],
+      "use": "核验专题摄影原则、来源案例或镜头逐字段规格",
+      "source_location": "Shutter Priority / Shoot Horizontally / Know Your Pet",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "snapshot_date": "2026-10-12",
+        "page_revision": null
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      },
+      "limits": "原文与照片未复制；网页可访问不表示许可或专业审核通过。"
+    },
+    {
+      "source_id": "WEB-088",
+      "title": "Professional Product Photography Tips & Tricks",
+      "publisher": "Canon Australia / Reuben Looi",
+      "url": "https://www.canon.com.au/get-inspired/product-photography-tips-and-tricks",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "composition",
+        "style",
+        "technique",
+        "case"
+      ],
+      "use": "核验专题摄影原则、来源案例或镜头逐字段规格",
+      "source_location": "Mastering Lighting / Composition and Styling / Post-Processing",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "snapshot_date": "2026-10-12",
+        "page_revision": null
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      },
+      "limits": "原文与照片未复制；网页可访问不表示许可或专业审核通过。"
+    },
+    {
+      "source_id": "WEB-089",
+      "title": "Astrophotography Tips: Capturing the Night Sky",
+      "publisher": "Canon Canada / featuring Paul Zizka",
+      "url": "https://www.canon.ca/en/Articles/2024/astrophotography-tips",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "composition",
+        "style",
+        "technique",
+        "case"
+      ],
+      "use": "核验专题摄影原则、来源案例或镜头逐字段规格",
+      "source_location": "Camera Settings / Tripods and Mounts / Long Exposure",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "snapshot_date": "2026-10-12",
+        "page_revision": null
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      },
+      "limits": "原文与照片未复制；网页可访问不表示许可或专业审核通过。"
+    },
+    {
+      "source_id": "WEB-090",
+      "title": "Shooting a Rock Concert",
+      "publisher": "Nikon / Mike Corrado",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/shooting-a-rock-concert",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "composition",
+        "style",
+        "technique",
+        "case"
+      ],
+      "use": "核验专题摄影原则、来源案例或镜头逐字段规格",
+      "source_location": "现场访问、舞台灯光及图注",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "snapshot_date": "2026-10-12",
+        "page_revision": null
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      },
+      "limits": "原文与照片未复制；网页可访问不表示许可或专业审核通过。"
+    },
+    {
+      "source_id": "WEB-091",
+      "title": "Photographing Sports Indoors and Out",
+      "publisher": "Nikon / Diane Berkenfeld, Elizabeth Barbieri, Michael Earley",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/photographing-sports-indoors-and-out",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "composition",
+        "style",
+        "technique",
+        "case"
+      ],
+      "use": "核验专题摄影原则、来源案例或镜头逐字段规格",
+      "source_location": "Catching the Action / Exposure / Indoor Sports / 图注",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "snapshot_date": "2026-10-12",
+        "page_revision": null
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      },
+      "limits": "原文与照片未复制；网页可访问不表示许可或专业审核通过。"
+    },
+    {
+      "source_id": "WEB-092",
+      "title": "Elevate Your Group Portraiture",
+      "publisher": "Nikon UK / Paul Santos",
+      "url": "https://www.nikon.co.uk/en_GB/learn-and-explore/magazine/tips-and-tricks/elevate-your-group-portraiture-with-paul-santos",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "composition",
+        "style",
+        "technique",
+        "case"
+      ],
+      "use": "核验专题摄影原则、来源案例或镜头逐字段规格",
+      "source_location": "Take control / chair / AF / slow shutter；2024-09-24",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "snapshot_date": "2026-10-12",
+        "page_revision": "2024-09-24"
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      },
+      "limits": "原文与照片未复制；网页可访问不表示许可或专业审核通过。"
+    },
+    {
+      "source_id": "WEB-093",
+      "title": "Tips for Photographing Winter Landscapes",
+      "publisher": "Nikon / Moose Peterson",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/tips-for-photographing-winter-landscapes",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "composition",
+        "style",
+        "technique",
+        "case"
+      ],
+      "use": "核验专题摄影原则、来源案例或镜头逐字段规格",
+      "source_location": "It’s your story to tell / footprints / 温度脚注",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "snapshot_date": "2026-10-12",
+        "page_revision": null
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      },
+      "limits": "原文与照片未复制；网页可访问不表示许可或专业审核通过。"
+    },
+    {
+      "source_id": "WEB-094",
+      "title": "The PC Lens Advantage",
+      "publisher": "Nikon / Adam Woodworth & Graham Hobart",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-pc-lens-advantage-what-you-see-is-what-youll-get",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "scene",
+        "composition",
+        "style",
+        "technique",
+        "case"
+      ],
+      "use": "核验专题摄影原则、来源案例或镜头逐字段规格",
+      "source_location": "tilt and shift 原理 / Nature Walk / composite 图注",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "snapshot_date": "2026-10-12",
+        "page_revision": null
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      },
+      "limits": "原文与照片未复制；网页可访问不表示许可或专业审核通过。"
+    },
+    {
+      "source_id": "WEB-095",
+      "title": "RF50mm f/1.8 STM — Specifications",
+      "publisher": "Canon India",
+      "url": "https://in.canon/en/consumer/rf50mm-f-1-8-stm/main/specification",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "equipment"
+      ],
+      "use": "核验专题摄影原则、来源案例或镜头逐字段规格",
+      "source_location": "Key Features / Specifications / Photo Library 权利声明",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "snapshot_date": "2026-10-12",
+        "page_revision": null
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      },
+      "limits": "原文与照片未复制；网页可访问不表示许可或专业审核通过。页面照片声明仅新闻用途且不可修改，未下载产品图。"
+    },
+    {
+      "source_id": "WEB-096",
+      "title": "NIKKOR Z 50mm f/1.8 S — Specifications",
+      "publisher": "Nikon USA",
+      "url": "https://www.nikonusa.com/p/nikkor-z-50mm-f18-s/20083/overview",
+      "resource_type": "original_web_page",
+      "libraries": [
+        "equipment"
+      ],
+      "use": "核验专题摄影原则、来源案例或镜头逐字段规格",
+      "source_location": "Tech Specs / Specifications",
+      "accessed_at": "2026-10-12",
+      "verified_at": null,
+      "review_status": "draft",
+      "version": {
+        "snapshot_date": "2026-10-12",
+        "page_revision": null
+      },
+      "license": {
+        "text_license": "pending",
+        "image_license": "逐图待核验"
+      },
+      "permissions": {
+        "full_text_download": false,
+        "retrieval_use": false,
+        "public_display": false,
+        "redistribution": false
+      },
+      "verification": {
+        "page_accessed": true,
+        "independent_review": false
+      },
+      "limits": "原文与照片未复制；网页可访问不表示许可或专业审核通过。"
+    }
+  ]
+}
