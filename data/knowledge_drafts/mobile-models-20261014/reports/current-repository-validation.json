@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "project_git_head": "13ca11b589ac650ef76be20916c82e381a4cb5fa",
+  "author": "符梁",
+  "cards": 22,
+  "models": 27,
+  "sources": 24,
+  "existing_repository_record_files": 138,
+  "existing_main_database_records": 112,
+  "existing_distinct_knowledge_ids": 138,
+  "duplicate_ids": 0,
+  "duplicate_titles": 0,
+  "related_ids_not_in_current_project": [
+    "photo20261013b3-equipment-iphone16pro-style-edit"
+  ],
+  "main_database_before": {
+    "executed": true,
+    "access": "sqlite mode=ro",
+    "file_sha256": "81db818ca4ce9992b445753838b614be108a73bc54af37718f4b21a44474f52e",
+    "logical_sha256": "bcf68a21cf8513a179e90614d6aad95492a64b4c1788dbaa1d65f467aae61be1",
+    "revision_count": 112,
+    "audit_count": 112
+  },
+  "main_database_after": {
+    "executed": true,
+    "access": "sqlite mode=ro",
+    "file_sha256": "81db818ca4ce9992b445753838b614be108a73bc54af37718f4b21a44474f52e",
+    "logical_sha256": "bcf68a21cf8513a179e90614d6aad95492a64b4c1788dbaa1d65f467aae61be1",
+    "revision_count": 112,
+    "audit_count": 112
+  },
+  "main_database_unchanged": true,
+  "model_schema_fields": [
+    "knowledge_id",
+    "library_id",
+    "title",
+    "kind",
+    "content",
+    "payload",
+    "tags",
+    "conditions",
+    "source",
+    "author",
+    "version",
+    "schema_version",
+    "dataset_split"
+  ],
+  "knowledge_code_sha256": {
+    "src\\camera_assistant\\knowledge\\__init__.py": "97f062ddd7f93d1aaac7d2df99f2808543c55cee19114fd965b6c665bf1abe30",
+    "src\\camera_assistant\\knowledge\\__main__.py": "589ea3805268168eed558ec4cfa8619b8398b781c0e3d7401aad15453bf9a7e8",
+    "src\\camera_assistant\\knowledge\\cli.py": "b51e8acf889ee5a786ccae74291188888725cd238ed6d5b0cee10bd180e4b81d",
+    "src\\camera_assistant\\knowledge\\context.py": "6eafe70abe1e37f1b1dd984258cb4150d865649809fd78d18f62f1878055201e",
+    "src\\camera_assistant\\knowledge\\importer.py": "3af4cefa33ad1936b70c0167455e50d99ecd47a1ccc9dc036c23aa504ff5bb7a",
+    "src\\camera_assistant\\knowledge\\models.py": "3e8e5e2e93bcd08e2b519166bcc725c7321760cf3c1a2b39e88ce28e018b43a7",
+    "src\\camera_assistant\\knowledge\\retriever.py": "49eae40263a1662eb372e4ca032cad3a17156c25f494a06957a26f4c13bb355c",
+    "src\\camera_assistant\\knowledge\\store.py": "6b3589f637eeee425cc8bf7d73275caf800d2407c2a3374966ac548edd0858bb",
+    "src\\camera_assistant\\knowledge\\ui_helpers.py": "646162fba13ea31427a7f226d6869837965a6673b6ed443cdf344ac73b54198b",
+    "src\\camera_assistant\\knowledge\\uploads.py": "c957ff162f5c578e07b509317267d4d989e535470ddabaf72c0e5619085b182f"
+  },
+  "checks": {
+    "strict_model": true,
+    "manifest_card_bytes": true,
+    "source_model_module_region_binding": true,
+    "cli_dry_run": {
+      "returncode": 0,
+      "validated": 22,
+      "imported": 0,
+      "stderr": ""
+    },
+    "upload_preview_batch_sizes": [
+      20,
+      2
+    ],
+    "isolated_draft_write": 22,
+    "published": 0,
+    "repeat_upload_added": 0,
+    "repeat_upload_unchanged": 22,
+    "repeat_directory_import_added": 0,
+    "repeat_directory_import_unchanged": 22,
+    "isolated_audit_entries": 22,
+    "model_condition_probes": 27,
+    "keyword_and_structured_hits": 0,
+    "temporary_database_removed": true,
+    "existing_cards_and_knowledge_code_unchanged": true
+  },
+  "limits": [
+    "Existing ID/title scans do not prove absence of semantic overlap; independent review is pending.",
+    "Retrieval probes cover draft plus retrieval_allowed=false together, not each independent branch.",
+    "Source linkage checks do not re-open websites or establish firmware, device behavior or rights."
+  ],
+  "not_executed": [
+    "workbench browser upload",
+    "physical device test",
+    "independent human fact review",
+    "copyright permission verification",
+    "review and publication",
+    "runtime model registration"
+  ]
+}
