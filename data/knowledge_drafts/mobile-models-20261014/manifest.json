@@ -1,0 +1,187 @@
+{
+  "collection": "mobile-models-20261014",
+  "author": "符梁",
+  "collected_at": "2026-10-14",
+  "card_count": 22,
+  "model_count": 27,
+  "source_registry_count": 24,
+  "retrieval_allowed": false,
+  "cards": [
+    {
+      "path": "upload_cards/batch-01/phone20261014-a57-zoom.json",
+      "sha256": "6bd7b98871a90499e721505a80dc22c926ba59d0bf6b83f7e432e630f8c8335c",
+      "knowledge_id": "phone20261014-a57-zoom",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-fold8-variants.json",
+      "sha256": "d370a5a33ce5a2e98d3a2be19b76bd8b75ecf559cb42a785721936fbfc05d4e5",
+      "knowledge_id": "phone20261014-fold8-variants",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-honor-magic9-variants.json",
+      "sha256": "34cd44e67359a75b60d95300df3431e79468b391503fb968d3efc7763b65191d",
+      "knowledge_id": "phone20261014-honor-magic9-variants",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-iphone-air-main.json",
+      "sha256": "85411a06d484897b053daf6729dd13e2aae5c1596c9b69001663d15fcc62d0b5",
+      "knowledge_id": "phone20261014-iphone-air-main",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-iphone17-dual.json",
+      "sha256": "c3bcbe3a1e1897f8cd90169e3deb3516ef7890ea27c0f9740d954c242bb628d8",
+      "knowledge_id": "phone20261014-iphone17-dual",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-iphone17e-main.json",
+      "sha256": "62b460e3423377bff737aab5843e1ec8e72f7cae7354ceb8dcaddd394e2a2119",
+      "knowledge_id": "phone20261014-iphone17e-main",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-iphone18pro-aperture.json",
+      "sha256": "d14096b475d2b10b43d3b2b3ffb6bc7f4f593a44a8b939018b0d9f276dc1f0aa",
+      "knowledge_id": "phone20261014-iphone18pro-aperture",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-mate80pro-zoom.json",
+      "sha256": "f7f57f1e185566f08af792d4e597897f020ff1cc468e412013eaf0a076c86f19",
+      "knowledge_id": "phone20261014-mate80pro-zoom",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-oneplus16.json",
+      "sha256": "b6330c02cda4f4ce763542887588db1dc0b5475466b38cb85a80c0cb12839d12",
+      "knowledge_id": "phone20261014-oneplus16",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-oppo-findx10.json",
+      "sha256": "93c16e2ba61015d9c26b85ee0629a57c635617906ef24d1e7a9545895c926d3a",
+      "knowledge_id": "phone20261014-oppo-findx10",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-oppo-findx10promax.json",
+      "sha256": "4fa271b7c7b22207e3c10138eff94bc1fb9eeb1009c45cc7955c34e01eed0ab4",
+      "knowledge_id": "phone20261014-oppo-findx10promax",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-pixel11pro-family.json",
+      "sha256": "6f2e68a134caacf83bab9fb5b332e4c9d55832190a0c171dfa451c4955830292",
+      "knowledge_id": "phone20261014-pixel11pro-family",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-pura90pro-zoom.json",
+      "sha256": "a07e0f9096152f3aa9ad53367e00214820f3c0e131360d191d736f1a25559b52",
+      "knowledge_id": "phone20261014-pura90pro-zoom",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-redmi-note17pro5g-za.json",
+      "sha256": "8923fa31aefe1a4e25afcfbcb724eafc0cb9262159ec687544628eae53b7bd5d",
+      "knowledge_id": "phone20261014-redmi-note17pro5g-za",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-s26-base-plus.json",
+      "sha256": "d9e9b7816a2f0f904d37ec6d14287f3b4924555a1b1bbbc807cb5a3f91932404",
+      "knowledge_id": "phone20261014-s26-base-plus",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-s26ultra-zoom.json",
+      "sha256": "e4148476bb68f46765cd93309d8c15e8e812bfba8091011111079fd7a74ca208",
+      "knowledge_id": "phone20261014-s26ultra-zoom",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-vivo-x500.json",
+      "sha256": "10f73312c4e00c6d8e98a80ea7861c0210f83c8c68b368ce2d748a255f5cb108",
+      "knowledge_id": "phone20261014-vivo-x500",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-vivo-x500promax.json",
+      "sha256": "31170ea71890abcb2ebfaac4e7fb27c5d88158e898e498c1e82ff68e92ed35f9",
+      "knowledge_id": "phone20261014-vivo-x500promax",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-xiaomi17ultra-uk.json",
+      "sha256": "8b1bc312dbb03a0153a9f3028ab2fa98a13c0a1006086a1f13c654e9851f303b",
+      "knowledge_id": "phone20261014-xiaomi17ultra-uk",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-01/phone20261014-xiaomi18promax.json",
+      "sha256": "c1c1f2d95afea939a1699f3caa3497336749b6af6585277274e442bd65ccc487",
+      "knowledge_id": "phone20261014-xiaomi18promax",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-02/phone20261014-oppo-reno16.json",
+      "sha256": "f9c49edb5fd63fb61c2b179c4f6acf1c8bfb26d4d466528a452929c3ac80efed",
+      "knowledge_id": "phone20261014-oppo-reno16",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    },
+    {
+      "path": "upload_cards/batch-02/phone20261014-vivo-s50.json",
+      "sha256": "7269d9bc59cedb579661a03dc3279ae27805e1e4fce969ec381bbd0a230d2a3c",
+      "knowledge_id": "phone20261014-vivo-s50",
+      "version": 1,
+      "library_id": "equipment",
+      "author": "符梁"
+    }
+  ]
+}
