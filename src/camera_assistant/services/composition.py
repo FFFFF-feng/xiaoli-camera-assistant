@@ -17,6 +17,7 @@ from camera_assistant.models import (
     SceneAnalysis,
     UserRequest,
 )
+from camera_assistant.services.advice_safety import composition_issue
 from camera_assistant.services.cloud import request_json
 from vision_lab_tool.detector_models import MethodResult
 
@@ -102,6 +103,7 @@ def _validate_advice(
     advice: CompositionAdvice,
     localization: MethodResult | None,
     knowledge_hits: list[KnowledgeHit],
+    request: UserRequest | None = None,
 ) -> CompositionAdvice:
     allowed_ids = {hit.document_id for hit in knowledge_hits}
     for proposal in advice.proposals:
@@ -110,8 +112,12 @@ def _validate_advice(
 
     boxes = _selected_boxes(localization)
     proposals = []
-    notes = list(advice.notes)
+    notes = []
     for proposal in advice.proposals:
+        issue = composition_issue(proposal, request) if request is not None else None
+        if issue:
+            notes.append(issue)
+            continue
         if proposal.action_type == "crop":
             if not boxes:
                 notes.append("主体尚未可靠确定，已移除裁切方案；请先确认要保护的主体。")
@@ -177,6 +183,16 @@ class OpenAICompatibleCompositionAdvisor:
             "每个方案说明动作、理由、适用条件、限制和权衡。action_type=crop 表示只裁切"
             "原图已有内容；改变机位或看到遮挡后的内容必须作为 camera_position/reshoot。"
             "focal_length 建议须符合已知器材，未知焦段能力时说明条件。\n"
+            "先使用当前已知镜头给出完整可执行方案，不能把更换未知镜头作为唯一动作。"
+            "当前焦段不变时，后退会减小主体占比，靠近会增大主体占比；"
+            "机位不变时，增加焦段会增大主体占比。焦段和距离同时变化时说明比例要按取景判断。"
+            "移动机位本身不决定曝光时间，不由后退推导快门更长。"
+            "未测量主体距离、未确认最近对焦距离时，不编造精确移动或拍摄距离。"
+            "本次没有测距数据：不要在动作中给出米/厘米的距离或虚构镜头最近对焦规格；"
+            "用相对机位和取景检查描述动作。降低ISO不会减少入射光量，只改变记录亮度和相关画质。"
+            "要保护耳尖/胡须等细节时，明确检查取景四边余量；主体已逼近边缘时不继续盲目靠近。\n"
+            "证据允许时给出两个彼此独立、各自完整的方案，至少一个使用当前器材、"
+            "无需测距的机位/取景调整；不要为了凑数生成无依据的动作。\n"
             "手机只使用当前模式和已确认镜头能力；固定光圈不能调节，人像景深控件不是物理光圈。"
             "手机不能要求更换相机镜头或套用未确认的ISO/快门数值；优先给可执行的机位与取景动作。\n"
             "knowledge_ids 只能引用 knowledge 中的 knowledge_id 精确字符串，"
@@ -218,4 +234,4 @@ class OpenAICompatibleCompositionAdvisor:
             advice = CompositionAdvice.model_validate(answer)
         except ValidationError:
             raise ValueError("构图模型返回的方案格式或裁切坐标无效，请重新分析。") from None
-        return _validate_advice(advice, localization, knowledge_hits)
+        return _validate_advice(advice, localization, knowledge_hits, request)

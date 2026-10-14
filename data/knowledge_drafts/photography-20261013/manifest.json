@@ -179,73 +179,73 @@
     },
     {
       "file": "upload_cards/photo20261011-equipment-canon-r6ii.json",
-      "sha256": "b087770c3786c283b0c9bdbad9f5b2927b41ede5b191f60d3f9ff79712527405",
+      "sha256": "0d12967bee98f8906c7ef6f975af5650fbb4ca0c76b8e4aac21d3f8c17051918",
       "knowledge_id": "photo20261011-equipment-canon-r6ii",
-      "version": 1,
+      "version": 2,
       "library_id": "equipment",
       "author": "Codex 本轮资料整理（AI，待独立审核）"
     },
     {
       "file": "upload_cards/photo20261011-equipment-fuji-18-55-pending.json",
-      "sha256": "f5d63be3eca1dc1c9afd1c540d2cfea9211dacbe294733d0d7d90cb86ac4070e",
+      "sha256": "dc32ea253595f691e2d8a30109fa4cd99a5ef6cca08261323ee303d9d0253acc",
       "knowledge_id": "photo20261011-equipment-fuji-18-55-pending",
-      "version": 1,
+      "version": 2,
       "library_id": "equipment",
       "author": "Codex 本轮资料整理（AI，待独立审核）"
     },
     {
       "file": "upload_cards/photo20261011-equipment-fuji-xt5.json",
-      "sha256": "74727f0ca0cb12359508c3b38fe2420595773048e3d500f3be17611a7495b7bc",
+      "sha256": "941770a88441b770dd2ca1b3c0fffe4876ea48da034cc09a52bfeee91c2ee9aa",
       "knowledge_id": "photo20261011-equipment-fuji-xt5",
-      "version": 1,
+      "version": 2,
       "library_id": "equipment",
       "author": "Codex 本轮资料整理（AI，待独立审核）"
     },
     {
       "file": "upload_cards/photo20261011-equipment-iphone15.json",
-      "sha256": "533c1902774effbff906c17f96b1829f05431dd52d64e0d7c78a6acf99a138a6",
+      "sha256": "40348c4f67d95b70aac7ba773538adf92b4b78b4eb0e1fefbbfb082356d3d123",
       "knowledge_id": "photo20261011-equipment-iphone15",
-      "version": 1,
+      "version": 2,
       "library_id": "equipment",
       "author": "Codex 本轮资料整理（AI，待独立审核）"
     },
     {
       "file": "upload_cards/photo20261011-equipment-nikon-z24-70f4.json",
-      "sha256": "523426ea969e163e1e67919afc9f69378801aa6ddad98401d482c5713dae18a1",
+      "sha256": "a0c9c6a22a093337b3a9aaa5ba1cbbb39456dc77eb7fc15d8b30fa129717e6e8",
       "knowledge_id": "photo20261011-equipment-nikon-z24-70f4",
-      "version": 1,
+      "version": 2,
       "library_id": "equipment",
       "author": "Codex 本轮资料整理（AI，待独立审核）"
     },
     {
       "file": "upload_cards/photo20261011-equipment-nikon-z6iii.json",
-      "sha256": "96b5aeb395679e53dfdca6107de36bf72a5585281ec8c62d3deb3e74c5a3cc8b",
+      "sha256": "19fa8092894cd1c5377ab41b723dfac2681c355bf05fe9424a7b47c6afe9fe91",
       "knowledge_id": "photo20261011-equipment-nikon-z6iii",
-      "version": 1,
+      "version": 2,
       "library_id": "equipment",
       "author": "Codex 本轮资料整理（AI，待独立审核）"
     },
     {
       "file": "upload_cards/photo20261011-equipment-s24ultra.json",
-      "sha256": "c29f101848f70e7e63195dc9662612fdbd0be093542b29f7e489c4e1a754882a",
+      "sha256": "89ace17b852843f3c2588aa3646a5d9e65e6eacae7b4cb478961a51fb15e844b",
       "knowledge_id": "photo20261011-equipment-s24ultra",
-      "version": 1,
+      "version": 2,
       "library_id": "equipment",
       "author": "Codex 本轮资料整理（AI，待独立审核）"
     },
     {
       "file": "upload_cards/photo20261011-equipment-sony-a7iv.json",
-      "sha256": "f840fcf18854453e74fb1852e9e7f64fe008ef3299ed06f41fd5d5f0f061f8ff",
+      "sha256": "8c75768d1b76d25bec4c8225abffd2e6cc4574833f100cd2c4b03e150b45866a",
       "knowledge_id": "photo20261011-equipment-sony-a7iv",
-      "version": 1,
+      "version": 2,
       "library_id": "equipment",
       "author": "Codex 本轮资料整理（AI，待独立审核）"
     },
     {
       "file": "upload_cards/photo20261011-equipment-xiaomi14.json",
-      "sha256": "a8edf7cbdee4bb3c3a75e9d3f4489660955544f333982b24b81ced948e5f8273",
+      "sha256": "72f4b05a0b8e1f6be37b4604b17a6e504dbcada747ba6c3834d1c00a8a94ca92",
       "knowledge_id": "photo20261011-equipment-xiaomi14",
-      "version": 1,
+      "version": 2,
       "library_id": "equipment",
       "author": "Codex 本轮资料整理（AI，待独立审核）"
     },
@@ -747,17 +747,17 @@
     },
     {
       "file": "upload_cards/photo20261012-equipment-rf50.json",
-      "sha256": "c38462010b49cd087539f10480bf2b094ea3b5dcfaabae12bc28a9d56f94c5dd",
+      "sha256": "5a5f9235254532319f9550de00423d74fb86cae71a3a151867e44aea3cf07ab2",
       "knowledge_id": "photo20261012-equipment-rf50",
-      "version": 1,
+      "version": 2,
       "library_id": "equipment",
       "author": "Codex（AI 整理，待独立审核）"
     },
     {
       "file": "upload_cards/photo20261012-equipment-z50.json",
-      "sha256": "6fbd0333e27827f34813bcab7b95bf91d95e9d2931cd0ed2475201e99eb8aa3c",
+      "sha256": "8fc94adddad0226e3077bc8c1aeb388bcee4dd151ab70d65cbad52c1b797ecd0",
       "knowledge_id": "photo20261012-equipment-z50",
-      "version": 1,
+      "version": 2,
       "library_id": "equipment",
       "author": "Codex（AI 整理，待独立审核）"
     },
@@ -955,9 +955,9 @@
     },
     {
       "file": "upload_cards/photo20261013-technique-rolling-shutter-geometry.json",
-      "sha256": "fe2981362cd4e117b4f328f8cd12b41f31978b47165c9a9d9b8980dd758cc009",
+      "sha256": "bb9155772baf6e11eb7c8865b59135eaa07b48ff2a0422beca95f0eb2295391f",
       "knowledge_id": "photo20261013-technique-rolling-shutter-geometry",
-      "version": 1,
+      "version": 2,
       "library_id": "technique",
       "author": "符梁"
     },

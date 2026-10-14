@@ -40,6 +40,8 @@ class Settings:
     detector_timeout_seconds: float = 180
     max_output_tokens: int = 4096
     disable_thinking: bool = False
+    response_format: str = "prompt"
+    format_retry_count: int = 1
 
     def __post_init__(self) -> None:
         if self.knowledge_mode not in {"legacy", "managed"}:
@@ -54,6 +56,10 @@ class Settings:
             raise ValueError("模型超时应为 1–600 秒，图片上限应为 1–100 MB。")
         if not 128 <= self.max_output_tokens <= 65536:
             raise ValueError("模型最大输出 token 应为 128–65536。")
+        if self.response_format not in {"prompt", "json_object"}:
+            raise ValueError("CAMERA_AI_RESPONSE_FORMAT 只能是 prompt 或 json_object。")
+        if not isinstance(self.format_retry_count, int) or not 0 <= self.format_retry_count <= 1:
+            raise ValueError("CAMERA_AI_FORMAT_RETRY_COUNT 只能是 0 或 1。")
         if self.detector_device not in {"cpu", "cuda:0"}:
             raise ValueError("检测设备只能是 cpu 或 cuda:0。")
         if not 0 <= self.detector_box_threshold <= 1 or not 0 <= self.detector_text_threshold <= 1:
@@ -110,6 +116,10 @@ class Settings:
             detector_timeout_seconds=float(os.getenv("CAMERA_AI_DETECTOR_TIMEOUT_SECONDS", "180")),
             max_output_tokens=int(os.getenv("CAMERA_AI_MAX_OUTPUT_TOKENS", "4096")),
             disable_thinking=_as_bool(os.getenv("CAMERA_AI_DISABLE_THINKING"), False),
+            response_format=os.getenv("CAMERA_AI_RESPONSE_FORMAT", "").strip().lower() or (
+                "json_object" if selected else "prompt"
+            ),
+            format_retry_count=int(os.getenv("CAMERA_AI_FORMAT_RETRY_COUNT", "1")),
         )
 
     @staticmethod

@@ -169,7 +169,8 @@
     "Nikon Z6III"
   ],
   "conditions": {
-    "device_type": "camera"
+    "device_type": "camera",
+    "camera_model": "Nikon Z6III"
   },
   "source": {
     "name": "Nikon（署名作者以页面为准）",
@@ -179,6 +180,6 @@
     "retrieval_allowed": false
   },
   "author": "Codex 本轮资料整理（AI，待独立审核）",
-  "version": 1,
+  "version": 2,
   "dataset_split": "reference"
 }

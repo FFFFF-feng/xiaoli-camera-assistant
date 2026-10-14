@@ -361,7 +361,7 @@ def test_background_cancellation_preserves_stage_snapshot(monkeypatch, tmp_path)
 
     original = ui_detectors.run_experiment
     calls, stops = [], []
-    finished, stages_persisted = threading.Event(), threading.Event()
+    stages_persisted = threading.Event()
 
     def background_fixture(image, **kwargs):
         calls.append(1)
@@ -372,7 +372,6 @@ def test_background_cancellation_preserves_stage_snapshot(monkeypatch, tmp_path)
         cancel.wait(10)
         run.stages["run"] = "cancelled"
         run.results[0].status = "cancelled"
-        finished.set()
         return run
 
     monkeypatch.setattr(ui_detectors, "run_experiment", background_fixture)
@@ -382,12 +381,17 @@ def test_background_cancellation_preserves_stage_snapshot(monkeypatch, tmp_path)
     by_label(app.button, "使用检测内置示例图").click().run()
     by_label(app.button, "运行检测").click().run()
     assert not app.exception and calls == [1]
+    job = app.session_state["detector_job"]
+    assert job.thread is not None
     assert stages_persisted.wait(5)
     assert len(DetectorStore(tmp_path).list_runs()) == 1
     app.run()
     assert calls == [1]
     by_label(app.button, "取消当前检测任务").click().run()
-    assert finished.wait(5)
+    # The fixture returns before the job saves its result and marks itself done.
+    # Wait for the actual background task before asking the UI to consume it.
+    job.thread.join(timeout=5)
+    assert not job.thread.is_alive() and job.done
     app.run()
     assert not app.exception and calls == [1] and stops == [1]
     assert app.session_state["detector_active_run"].stages["run"] == "cancelled"

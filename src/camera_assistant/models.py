@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 from camera_assistant.composition_models import CompositionAdvice
 from vision_lab_tool.detector_models import MethodResult, SemanticObject
@@ -26,6 +26,19 @@ class UserRequest(BaseModel):
     phone_capture_mode: PhoneCaptureMode = "auto"
     phone_lens_id: str = "main"
     phone_pro_controls_confirmed: bool = False
+    target_model_name: str | None = Field(default=None, max_length=120)
+    target_lens_name: str | None = Field(default=None, max_length=160)
+    camera_app: str | None = Field(default=None, max_length=80)
+    os_major: int | None = Field(default=None, ge=1, le=100, strict=True)
+    shutter_type: Literal["mechanical", "electronic", "efcs"] | None = None
+    drive_mode: Literal["single", "continuous"] | None = None
+    focus_mode: Literal["AF-S", "AF-C", "MF"] | None = None
+    lighting_type: Literal["natural", "continuous_artificial", "flickering_artificial", "mixed"] | None = None
+
+    @field_validator("target_model_name", "target_lens_name", "camera_app")
+    @classmethod
+    def optional_label(cls, value: str | None) -> str | None:
+        return value.strip() or None if value is not None else None
 
 
 class ExifInfo(BaseModel):
@@ -193,6 +206,7 @@ class CameraRecommendation(BaseModel):
     adjustments: list[str]
     confidence: float = Field(ge=0, le=1)
     validation_notes: list[str] = Field(default_factory=list)
+    safety_notes: list[str] = Field(default_factory=list)
 
 
 class PipelineResult(BaseModel):

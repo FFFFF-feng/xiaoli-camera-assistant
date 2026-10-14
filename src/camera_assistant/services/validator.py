@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import unicodedata
 from fractions import Fraction
 
 from camera_assistant.models import (
@@ -24,7 +25,8 @@ class RecommendationValidator:
         if isinstance(camera, PhoneProfile):
             return PhoneRecommendationValidator().validate(recommendation, request, scene, camera)
         updates: dict[str, object] = {}
-        notes = list(recommendation.validation_notes)
+        # These notes describe checks performed here, never model-authored verification claims.
+        notes: list[str] = []
         risks = list(recommendation.risks)
 
         recommended_aperture = self._first_aperture(recommendation.aperture)
@@ -36,19 +38,32 @@ class RecommendationValidator:
             updates["aperture"] = f"f/{request.max_aperture:g}（镜头最大光圈）"
             notes.append("已按用户填写的镜头最大光圈修正建议。")
 
-        shutter_seconds = self._first_shutter_seconds(recommendation.shutter_speed)
-        if scene.subject_motion == "fast" and shutter_seconds and shutter_seconds > 1 / 500:
+        shutter_seconds = self._shutter_seconds(recommendation.shutter_speed)
+        if shutter_seconds is None:
+            updates["shutter_speed"] = "无法校验快门数值；请在机身界面确认"
+            risks.append("无法校验建议中的快门数值；请确认有效曝光时间后再拍摄。")
+        if scene.subject_motion == "fast" and shutter_seconds and max(shutter_seconds) > 1 / 500:
             updates["shutter_speed"] = "1/500s 或更快"
             notes.append("快速主体的快门已修正为不慢于 1/500s。")
+            shutter_seconds = (1 / 500,)
 
         if camera is not None:
-            if (
-                camera.max_electronic_shutter
-                and shutter_seconds
-                and shutter_seconds < 1 / camera.max_electronic_shutter
-            ):
-                updates["shutter_speed"] = f"1/{camera.max_electronic_shutter}s"
-                notes.append("已按该机型电子快门上限修正快门速度。")
+            shutter_type = getattr(request, "shutter_type", None)
+            shutter_limit = camera.max_mechanical_shutter
+            shutter_label = "机械"
+            if shutter_type == "electronic" and camera.max_electronic_shutter:
+                shutter_limit = camera.max_electronic_shutter
+                shutter_label = "电子"
+            elif shutter_type == "electronic":
+                notes.append("未确认该机型电子快门上限，保守使用已知机械快门边界。")
+            elif shutter_type == "efcs":
+                notes.append("未单独核验电子前帘快门上限，保守使用机械快门边界；请核对当前模式。")
+            elif shutter_type is None:
+                notes.append("未选择快门类型，保守使用机械快门边界；电子快门上限需明确选择后适用。")
+            if shutter_seconds and min(shutter_seconds) < 1 / shutter_limit:
+                updates["shutter_speed"] = f"1/{shutter_limit}s"
+                notes.append(f"已按该机型{shutter_label}快门 1/{shutter_limit}s 上限修正快门速度。")
+                shutter_seconds = (1 / shutter_limit,)
 
             corrected_iso = self._clamp_iso(recommendation.iso, camera)
             if corrected_iso != recommendation.iso:
@@ -70,7 +85,7 @@ class RecommendationValidator:
                     f"该机型具备约 {camera.ibis_stops:g} 挡标称机身防抖；实际效果受镜头和拍摄姿势影响。"
                 )
 
-        if request.handheld and not request.tripod and shutter_seconds and shutter_seconds >= 0.1:
+        if request.handheld and not request.tripod and shutter_seconds and max(shutter_seconds) >= 0.1:
             warning = "当前建议包含慢门，手持容易模糊；请使用三脚架或稳定支撑。"
             if warning not in risks:
                 risks.append(warning)
@@ -88,12 +103,59 @@ class RecommendationValidator:
         return float(match.group(1)) if match else None
 
     @staticmethod
-    def _first_shutter_seconds(value: str) -> float | None:
-        fraction_match = re.search(r"(\d+)\s*/\s*(\d+)\s*s", value, re.IGNORECASE)
-        if fraction_match:
-            return float(Fraction(int(fraction_match.group(1)), int(fraction_match.group(2))))
-        seconds_match = re.search(r"(\d+(?:\.\d+)?)\s*(?:–|-|至)?\s*\d*(?:\.\d+)?\s*s", value)
-        return float(seconds_match.group(1)) if seconds_match else None
+    def _shutter_seconds(value: str) -> tuple[float, ...] | None:
+        """Parse a complete shutter value; unsupported or invalid text returns None.
+
+        A seconds unit may be shared by range endpoints. Without any unit, every
+        endpoint must be a fraction. Only explicit shutter prefixes and speed
+        modifiers are allowed, so numbers in mixed exposure prose are not seconds.
+        One trailing parenthesized mode note may contain no numbers or parameters.
+        """
+        number = r"[+-]?\d+(?:\.\d+)?(?:\s*/\s*\d+(?:\.\d+)?)?"
+        unit = r"(?:seconds?|secs?|s|秒)"
+        pattern = (
+            rf"\s*(?:建议\s*)?(?:快门(?:速度)?|曝光时间)?\s*[:：]?\s*(?:约\s*)?"
+            rf"(?P<first>{number})\s*(?P<first_unit>{unit})?\s*"
+            rf"(?:[-–—~～至到]\s*(?P<last>{number})\s*(?P<last_unit>{unit})?)?"
+            rf"\s*(?:(?:或)?(?:更快|更慢))?\s*"
+            r"(?:\((?P<ascii_note>[^()（）]+)\)|（(?P<chinese_note>[^()（）]+)）)?\s*"
+        )
+        match = re.fullmatch(pattern, value, re.IGNORECASE)
+        if match is None:
+            return None
+        values = [match.group("first")]
+        if match.group("last") is not None:
+            values.append(match.group("last"))
+        if not (match.group("first_unit") or match.group("last_unit")) and any(
+            "/" not in endpoint for endpoint in values
+        ):
+            return None
+        endpoints: list[float] = []
+        for endpoint in values:
+            try:
+                parts = re.sub(r"\s", "", endpoint).split("/")
+                seconds = Fraction(parts[0])
+                if len(parts) == 2:
+                    seconds /= Fraction(parts[1])
+                if seconds <= 0:
+                    return None
+                endpoints.append(float(seconds))
+            except (ValueError, ZeroDivisionError, OverflowError):
+                return None
+        annotation = match.group("ascii_note") or match.group("chinese_note")
+        if annotation is not None:
+            normalized = unicodedata.normalize("NFKC", annotation)
+            parameter_terms = (
+                r"(?<![A-Za-z])(?:iso|ev|seconds?|secs?)(?![A-Za-z])"
+                r"|f\s*/|快门|光圈|曝光(?:时间|补偿)|焦距|感光度|秒"
+            )
+            if (
+                not annotation.strip()
+                or any(character.isnumeric() for character in annotation)
+                or re.search(parameter_terms, normalized, re.IGNORECASE)
+            ):
+                return None
+        return tuple(endpoints)
 
     @staticmethod
     def _clamp_iso(value: str, camera: CameraProfile) -> str:

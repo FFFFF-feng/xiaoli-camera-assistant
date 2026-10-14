@@ -42,6 +42,20 @@ def request_json(settings: Settings, payload: dict[str, object]) -> dict[str, ob
     body = {"stream": False, "max_tokens": settings.max_output_tokens, **payload}
     if settings.disable_thinking:
         body["thinking"] = {"type": "disabled"}
+    if settings.response_format == "json_object":
+        body["response_format"] = {"type": "json_object"}
+    for attempt in range(settings.format_retry_count + 1):
+        # Service failures, refusal and truncation are outside the format-only retry boundary.
+        content = _request_content(settings, body)
+        try:
+            return extract_json(content)
+        except ModelServiceError:
+            if attempt == settings.format_retry_count:
+                raise
+    raise AssertionError("Validated retry count must allow at least one request.")
+
+
+def _request_content(settings: Settings, body: dict[str, object]) -> str:
     try:
         with httpx.Client(timeout=settings.timeout_seconds) as client:
             response = client.post(
@@ -77,4 +91,4 @@ def request_json(settings: Settings, payload: dict[str, object]) -> dict[str, ob
             raise ModelServiceError("模型没有返回分析内容。")
     except (KeyError, IndexError, TypeError, AttributeError):
         raise ModelServiceError("模型服务返回的消息格式无效。") from None
-    return extract_json(content)
+    return content

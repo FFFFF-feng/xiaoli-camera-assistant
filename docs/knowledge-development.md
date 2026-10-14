@@ -51,6 +51,7 @@ SQLite草稿与版本 ──→ 审计记录
 | store.py | 六库注册、SQLite事务、版本、状态流转、审计日志 |
 | importer.py | 严格文件解析、批次检查与原子导入 |
 | retriever.py | 只读已发布资料、条件过滤、来源追踪、结构化查询 |
+| context.py | 从目标设备、用户明确输入及场景观测构建精确检索条件；不读取参考照片EXIF |
 | cli.py／__main__.py | 命令行管理入口 |
 | uploads.py | 上传尺寸与文件名限制、临时预览、输入指纹与原子草稿提交 |
 | ui_helpers.py | 工作台显示词汇与默认无检索许可的占位模板 |
@@ -195,7 +196,7 @@ equipment = retriever.query_structured(
 
 规则：
 
-- 条件对象的键由模块共同约定；已有参数链路提供 `scene`、`subject`、`motion`、`camera_profile_id`、`camera_format`、`handheld`、`tripod`。`subject` 使用识别场景对应的标准主体类别（`person`、`pet`、`landscape`、`food`、`backlit subject`、`flowing water`、`night scene`、`main subject`），而不是模型自由文本描述，避免中英文差异破坏精确匹配。具体物种或属性可用标签检索，不应把 `cat`/`dog` 误写成这里的 `pet` 条件。
+- 条件对象的键由模块共同约定；参数与构图链路共同使用 `knowledge.context.build_knowledge_conditions(request, scene, camera, canonical_subject, localization=None)`。基础字段为 `scene`、`subject`、`motion`、`camera_profile_id`、`device_type`、`handheld`、`tripod`、`subject_confirmed`，相机另有 `camera_format`，手机保留 `phone_profile_id`、`phone_capture_mode`、`phone_lens_id`、`phone_pro_controls_confirmed`。`subject` 使用运行时场景定义中的标准主体类别（包括 `person`、`pet`、`landscape`、`food`、`architecture`、`bird`、`fireworks`、`small subject`、`moving subject`、`product` 等），而不是模型自由文本描述。具体物种或属性可用标签检索，不应把 `cat`/`dog` 误写成这里的 `pet` 条件。
 - 标量条件精确匹配；列表表示多个可接受值；`null`表示未声明限制。
 - 资料声明了条件但请求没有该字段时，保守排除。空条件表示通用资料。
 - 不支持数值区间或复杂谓词执行；不能把 `{"min": 50}` 当成已实现的范围约束。
@@ -204,6 +205,31 @@ equipment = retriever.query_structured(
 - 结果携带知识ID、所属库、版本、来源位置、审核人、内容哈希；相关度不是准确率。
 
 JSON结构查询只返回资料，不会自动执行里面的脚本、URL或指令。检索资料仍应作为数据而非系统指令对待；后续模型调用还需要评测引用真实性和提示注入风险。
+
+### 目标设备与条件兼容修复（2026-10-14）
+
+新增条件的取值与证据边界如下。所有键在 `KNOWLEDGE_CONDITION_KEYS` 中登记；登记字段不表示每次请求都具备该事实。卡片要求的字段缺失时，仍由检索器排除。
+
+| 条件 | 可靠来源与精确取值 |
+| --- | --- |
+| `camera_model` | 已收录且明确选中的设备档案优先；`target_model_name` 仅补充通用画幅／未知手机档案，不允许把具体档案的参数能力与另一个自填机型混用。具体型号别名规范为卡片同一型号，例如 `Sony α7 IV` → `Sony ILCE-7M4`，`iPhone 15` → `Apple iPhone 15`。未选具体档案且未自填型号时省略；不继承相邻代际或 Pro／Ultra 变体 |
+| `lens_model` | 仅用户明确的 `target_lens_name`；如 `RF50mm F1.8 STM` → `Canon RF50mm F1.8 STM`。没有目标镜头时省略，不从参考照片EXIF或机身型号推断 |
+| `app` | 用户明确的 `camera_app`；已知、目标一致的手机档案可用 `native_app`。`Apple 相机` → `Apple Camera`；通用档案的“原生相机”不能证明具体应用 |
+| `os_major` | 仅用户明确输入；已知 Apple iPhone 的 `18` → `iOS 18`，其他设备保留输入整数，不冒充 iOS，也不从档案检查日期推断系统版本 |
+| `capture_mode` | 当前静态照片工作流的相机为 `still_photo`；手机 `auto` → `photo`，`portrait`／`night`／`pro` 保留各自值，不扩大成所有照片模式 |
+| `lighting` | 显式 `lighting_type` 优先，否则保留普通 `scene.lighting` 观测描述。频闪卡片只接受用户确认的 `flickering_artificial`；单张照片的模型猜测不能确认频闪 |
+| `shutter_type` | 仅用户输入；`efcs` → `electronic_front_curtain`，`mechanical` 与 `electronic` 保留。电子快门不证明逐行读取，不能自动变成 `electronic_rolling` |
+| `drive_mode` | 仅用户输入 `single`／`continuous`，未知省略 |
+| `focus_mode` | 仅用户输入，`MF` → `manual`；`AF-S`／`AF-C` 保留。没有模式事实时不因为场景或建议使用MF就填写MF |
+| `motion` | 用户明确运动枚举优先于模型场景结果，`静止`／`缓慢`／`快速` 分别为 `static`／`slow`／`fast`；未知沿用场景结果，不从单张图片断言速度 |
+
+运行时新增 `architecture`、`astro_landscape`、`bird`、`concert_stage`、`fireworks`、`fog_landscape`、`group_portrait`、`indoor_sports`、`macro`、`motion`、`pet_portrait`、`portrait`、`product_still`、`snow_landscape`、`window_portrait` 共15个真实类别，并保留原有11个场景ID及接口。对应43张卡片的场景约束现可解析；没有把不同场景归并到 `general_scene`。猫／狗物种词本身不证明快速运动，静止宠物选 `pet_portrait`，明确快速运动仍选 `fast_pet`；文字中紧邻宠物名称的直接运动事实只在枚举未指定时使用。
+
+`data/knowledge_drafts/photography-20261013/upload_cards` 中7张机身／手机卡新增具体 `camera_model`，4张镜头卡新增具体 `lens_model`；后两张原空条件的镜头卡同时限制 `device_type=camera`。共11张器材卡升为v2，正文、payload事实、作者、来源与许可证均保留。逐行电子快门卡的 `motion=moving` 另以v2改为 `motion=[slow, fast]`，使约束与既有运动枚举一致；仍保留 `shutter_type=electronic_rolling`，因此没有逐行读取事实的普通电子快门请求继续排除。集合manifest同步当前文件路径、版本及SHA-256，Git历史及数据库旧版本保留修订前资料。
+
+本次兼容性审计由 `tests/test_knowledge_context.py` 覆盖：所有集合场景ID均已注册、条件键均在公共契约内、11张器材卡匹配正确型号并排除错误／缺失型号、型号变体不互借、未知条件保守排除、缺失系统／快门／对焦模式不补造、manifest与文件哈希一致。集合121张卡的 `source.retrieval_allowed` 全部保持false；测试只核对适用性边界，不将这些实际卡片发布或授权用于检索。同步到正式数据库必须作为新草稿导入，不能覆盖旧版本或改变发布状态。
+
+实际离线审计结果：运行时26个场景定义；未注册场景约束0、未识别条件键0、缺少具体机身／镜头约束的器材卡0、允许检索卡0；当前集合有12张v2卡。与Git原始资料逐字段对比，12张修订卡仅 `conditions` 和 `version` 改变。定向验证命令 `python -m pytest -q tests/test_knowledge_context.py tests/test_scene_knowledge.py tests/test_knowledge_documentation.py` 通过53项，相关源码与测试Ruff通过。运动文字回归还覆盖否定描述、多个宠物运动状态冲突及静止背景前的运动宠物：无法确定当前主体运动时保留unknown；用户明确运动枚举继续优先。具体相机／手机档案不会被冲突自填型号替换，同型号别名正常匹配。完整应用回归在集成后统一执行。
 
 ## 8. 接入现有应用
 

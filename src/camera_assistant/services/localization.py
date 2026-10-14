@@ -10,12 +10,100 @@ from PIL import Image
 
 from camera_assistant.config import PROJECT_ROOT, Settings
 from camera_assistant.models import ImageInspection, SceneAnalysis, UserRequest
-from vision_lab_tool.detector_models import DetectorConfig, MethodResult, VLMSnapshot
-from vision_lab_tool.detector_queries import compose_queries
-from vision_lab_tool.detector_runner import associate_detection
+from camera_assistant.services.photography_targets import (
+    compose_photography_queries,
+    resolve_photography_scope,
+)
+from vision_lab_tool.detector_models import (
+    DetectionResult,
+    DetectorConfig,
+    MethodResult,
+    SubjectSelection,
+)
+from vision_lab_tool.detector_queries import canonical, label_components
 from vision_lab_tool.detectors.client import DetectorClient
 from vision_lab_tool.images import PreparedImage
-from vision_lab_tool.models import ModelConfig
+
+ASSOCIATION_RULE_VERSION = "production-photography-association-v2"
+
+
+def _associate_photography(detection: DetectionResult, scene: SceneAnalysis,
+                          queries: dict) -> MethodResult:
+    """Bind geometry only when every required semantic target is complete/unique.
+
+    Physical identity remains a VLM claim in the association record. The local
+    category box supplies geometry, never reflection/depiction/entity truth.
+    """
+    objects = [obj.model_copy(deep=True) for obj in detection.filtered_candidates]
+    detector_entity_claims = {obj.object_id: obj.entity_kind for obj in objects}
+    for obj in objects:
+        obj.entity_kind = "unknown"
+    queries = dict(queries)
+    scope = resolve_photography_scope(queries["task_text"], scene.objects, scene.main_subject_ids)
+    queries["task_scope"] = scope
+    normalized = {obj.object_id: label_components(obj.label_original, queries["merged"])
+                  for obj in objects}
+    queries["label_normalization"] = normalized
+    roles = {role["object_id"]: role for role in scope["object_roles"]}
+    associations, uses, selected, covered, matched_main = [], {}, [], set(), set()
+    for sem in scene.objects:
+        query = canonical(sem.query)
+        matches = [obj for obj in objects if normalized[obj.object_id]["components"] == [query]
+                   and sem.target_level != "unknown" and obj.target_level != "unknown"
+                   and (obj.target_level == sem.target_level or (
+                       obj.target_level == "instance" and sem.target_level in {"whole", "instance"}))]
+        association = {"vlm_object_id": sem.object_id, "query": query,
+                       "query_original": sem.query, "scope_role": roles[sem.object_id]["role"],
+                       "scope_evidence": roles[sem.object_id]["evidence"],
+                       "candidate_ids": [obj.object_id for obj in matches],
+                       "status": "unique_class" if len(matches) == 1 else "ambiguous_or_missing",
+                       "semantic_target_level": sem.target_level,
+                       "semantic_entity_kind": sem.entity_kind,
+                       "detector_entity_claims": {
+                           obj.object_id: detector_entity_claims[obj.object_id] for obj in matches},
+                       "entity_evidence_source": "vlm_semantic_claim_only",
+                       "basis": "complete exact class+compatible level; no score/area selection"}
+        associations.append(association)
+        if len(matches) == 1:
+            obj = matches[0]
+            uses.setdefault(obj.object_id, []).append(sem.object_id)
+            covered.add(sem.object_id)
+            if (sem.object_id in scene.main_subject_ids
+                    and sem.entity_kind in {"physical", "unknown"}
+                    and detector_entity_claims[obj.object_id] in {"physical", "unknown"}):
+                selected.append(obj.object_id)
+                matched_main.add(sem.object_id)
+    for association in associations:
+        if any(len(uses.get(value, [])) > 1 for value in association["candidate_ids"]):
+            association["status"] = "ambiguous_shared_candidate"
+            covered.discard(association["vlm_object_id"])
+    required = {role["object_id"] for role in scope["object_roles"] if role["required"]}
+    omitted_required = required - set(scene.main_subject_ids)
+    scope["required_targets_missing_from_main_ids"] = sorted(omitted_required)
+    if detection.status not in {"success", "ok"}:
+        state, reason = "abstained", "检测阶段未提供完整可靠坐标，保留候选并弃权"
+    elif scene.subject_status in {"abstained", "ambiguous"}:
+        state, reason = scene.subject_status, "视觉语义没有可靠主体选择，保留检测候选"
+    elif scope["status"] != "known" or scope["missing_semantic_units"] or required - covered:
+        state, reason = "ambiguous", "用户必需目标、数量或层级尚未获得完整唯一证据"
+    elif omitted_required:
+        state, reason = "ambiguous", "VLM主体集合遗漏用户明确必需目标；完整保护集无法成立"
+    elif any(len(ids) > 1 for ids in uses.values()):
+        state, reason = "ambiguous", "多个语义实例引用同一候选，禁止复用几何框"
+    elif scope["entity_identity_requested"]:
+        state, reason = "ambiguous", "类别框不能证明任务要求的倒影、图绘或模型实体归属"
+    elif (scene.main_subject_ids and matched_main == set(scene.main_subject_ids)
+          and len(selected) == len(set(selected))):
+        state, reason = "selected", "任务明确支持每个主目标且类别与层级唯一匹配；实体归属仍为语义声明"
+    else:
+        state, reason = "ambiguous" if objects else "abstained", "主目标无完整唯一几何关联"
+    return MethodResult(method="B1", detector=detection.config.detector, status=detection.status,
+        candidates=objects, detection=detection, queries=queries,
+        selection=SubjectSelection(status=state, selected_ids=selected if state == "selected" else [],
+            candidate_ids=[obj.object_id for obj in objects], rule_version=ASSOCIATION_RULE_VERSION,
+            reason=reason, associations=associations),
+        stages={"detector": detection.status, "semantics": "success", "selection": state},
+        diagnostics=detection.diagnostics.copy(), timings=detection.timings.copy(), real=detection.real)
 
 
 class GroundingDinoLocalizer:
@@ -44,15 +132,10 @@ class GroundingDinoLocalizer:
             original_format="JPEG", original_sha256=digest, corrected_sha256=digest,
             longest_edge=1600, quality=88, exif={},
         )
-        queries = compose_queries(request.intent, scene.objects)
-        detection = self.client.detect(prepared, queries["merged"], self.config)
-        snapshot = VLMSnapshot(
-            config=ModelConfig(
-                name=self.settings.vision_model, provider="生产视觉模型", protocol="chat",
-                model_id=self.settings.vision_model, base_url=self.settings.base_url,
-            ),
-            status="success", semantic_status="success", selection_status="success",
-            subject_status=scene.subject_status, semantics=scene.objects,
-            main_subject_ids=scene.main_subject_ids,
-        )
-        return associate_detection(detection, snapshot, queries)
+        queries = compose_photography_queries(request.intent, scene.objects)
+        if not queries["merged"]:
+            detection = DetectionResult(config=self.config, status="query_missing",
+                diagnostics=["任务和视觉语义均未提供合法英文类别，跳过本地推理。"])
+        else:
+            detection = self.client.detect(prepared, queries["merged"], self.config)
+        return _associate_photography(detection, scene, queries)

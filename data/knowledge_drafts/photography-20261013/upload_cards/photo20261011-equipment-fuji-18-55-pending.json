@@ -63,7 +63,8 @@
     "FUJINON XF18-55mmF2.8-4 R LM OIS"
   ],
   "conditions": {
-    "device_type": "camera"
+    "device_type": "camera",
+    "lens_model": "FUJINON XF18-55mmF2.8-4 R LM OIS"
   },
   "source": {
     "name": "FUJIFILM",
@@ -73,6 +74,6 @@
     "retrieval_allowed": false
   },
   "author": "Codex 本轮资料整理（AI，待独立审核）",
-  "version": 1,
+  "version": 2,
   "dataset_split": "reference"
 }

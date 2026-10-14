@@ -156,7 +156,8 @@
     "Sony ILCE-7M4 (α7 IV)"
   ],
   "conditions": {
-    "device_type": "camera"
+    "device_type": "camera",
+    "camera_model": "Sony ILCE-7M4"
   },
   "source": {
     "name": "Sony",
@@ -166,6 +167,6 @@
     "retrieval_allowed": false
   },
   "author": "Codex 本轮资料整理（AI，待独立审核）",
-  "version": 1,
+  "version": 2,
   "dataset_split": "reference"
 }

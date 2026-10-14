@@ -26,8 +26,8 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-SESSION_SCHEMA_VERSION = 7
-PIPELINE_RESOURCE_VERSION = 5
+SESSION_SCHEMA_VERSION = 9
+PIPELINE_RESOURCE_VERSION = 8
 
 
 def migrate_session_state() -> None:
@@ -321,6 +321,11 @@ def render_result(result: PipelineResult) -> None:
             for note in recommendation.validation_notes:
                 st.write(f"✓ {note}")
 
+    if recommendation.safety_notes:
+        with st.expander("建议内容检查"):
+            for note in recommendation.safety_notes:
+                st.write(note)
+
     with st.expander("场景识别依据"):
         st.write(f"标准场景 ID：`{result.scene.scene_type}`")
         if candidate_scenes:
@@ -494,6 +499,14 @@ with st.container(border=True):
         camera_format = "不清楚"
         focal_length = 0
         max_aperture = 0.0
+        target_model_name = None
+        target_lens_name = None
+        camera_app = None
+        os_major = 0
+        shutter_type = None
+        drive_mode = None
+        focus_mode = None
+        lighting_type = None
         if device_name == "手机" and phone_capture_mode == "pro":
             phone_pro_confirm = st.checkbox(
                 "当前原生专业模式及所选镜头确实有 ISO、S/SPEED、WB、F 控件",
@@ -524,6 +537,55 @@ with st.container(border=True):
                     value=0.0,
                     step=0.1,
                 )
+                if camera_profile_id.startswith("generic_"):
+                    target_model_name = st.text_input(
+                        "其他相机的完整型号（可选）", max_chars=120,
+                        help="用于匹配资料；未收录型号仍使用通用器材边界，不套用其他机型能力。",
+                    ) or None
+                target_lens_name = st.text_input(
+                    "镜头完整型号（可选）", max_chars=160,
+                    help="例如 RF50mm F1.8 STM；只填写你实际使用的镜头。",
+                ) or None
+
+        with st.expander("拍摄条件补充（选填）"):
+            st.caption("只填写已确认的信息；不清楚的项目留空，相关专用资料会保守排除。")
+            if device_name == "手机":
+                if phone_profile_id.startswith("generic_"):
+                    target_model_name = model_query.strip() or None
+                camera_app = st.text_input(
+                    "相机应用名称（可选）", max_chars=80,
+                    help="已收录型号默认使用原生相机；第三方应用不套用原生控制能力。",
+                ) or None
+                os_major = st.number_input(
+                    "系统大版本（0表示不清楚）", min_value=0, max_value=100, value=0,
+                    help="例如 iOS 18 填18；不会从参考照片猜测系统版本。",
+                )
+            else:
+                shutter_type = st.selectbox(
+                    "当前快门类型", [None, "mechanical", "electronic", "efcs"],
+                    format_func=lambda value: {
+                        None: "不清楚", "mechanical": "机械快门", "electronic": "电子快门",
+                        "efcs": "电子前帘",
+                    }[value],
+                )
+                drive_mode = st.selectbox(
+                    "当前驱动模式", [None, "single", "continuous"],
+                    format_func=lambda value: {None: "不清楚", "single": "单张", "continuous": "连拍"}[value],
+                )
+                focus_mode = st.selectbox(
+                    "当前对焦模式", [None, "AF-S", "AF-C", "MF"],
+                    format_func=lambda value: {
+                        None: "不清楚", "AF-S": "单次自动对焦", "AF-C": "连续自动对焦", "MF": "手动对焦",
+                    }[value],
+                )
+            lighting_type = st.selectbox(
+                "已确认的光线类型", [None, "natural", "continuous_artificial", "flickering_artificial", "mixed"],
+                format_func=lambda value: {
+                    None: "不清楚", "natural": "自然光", "continuous_artificial": "连续人造光",
+                    "flickering_artificial": "已确认频闪的人造光", "mixed": "混合光",
+                }[value],
+                help="单张参考照片不能证明光源频闪；只有已确认时才选频闪。",
+            )
 
         submitted = st.form_submit_button("让小栗帮我配参数", type="primary")
 
@@ -558,6 +620,14 @@ with st.container(border=True):
                     phone_capture_mode=phone_capture_mode,
                     phone_lens_id=phone_lens_id,
                     phone_pro_controls_confirmed=phone_pro_confirm,
+                    target_model_name=target_model_name,
+                    target_lens_name=target_lens_name,
+                    camera_app=camera_app,
+                    os_major=int(os_major) if os_major else None,
+                    shutter_type=shutter_type,
+                    drive_mode=drive_mode,
+                    focus_mode=focus_mode,
+                    lighting_type=lighting_type,
                 )
                 with st.spinner("小栗正在识别场景、定位候选并查阅拍摄知识…"):
                     result = pipeline.run(uploaded_file.getvalue(), user_request)

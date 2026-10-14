@@ -181,7 +181,8 @@
     "Samsung Galaxy S24 Ultra"
   ],
   "conditions": {
-    "device_type": "phone"
+    "device_type": "phone",
+    "camera_model": "Samsung Galaxy S24 Ultra"
   },
   "source": {
     "name": "Samsung",
@@ -191,6 +192,6 @@
     "retrieval_allowed": false
   },
   "author": "Codex 本轮资料整理（AI，待独立审核）",
-  "version": 1,
+  "version": 2,
   "dataset_split": "reference"
 }

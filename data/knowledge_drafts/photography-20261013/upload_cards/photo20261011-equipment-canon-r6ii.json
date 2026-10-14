@@ -178,7 +178,8 @@
     "Canon EOS R6 Mark II"
   ],
   "conditions": {
-    "device_type": "camera"
+    "device_type": "camera",
+    "camera_model": "Canon EOS R6 Mark II"
   },
   "source": {
     "name": "Canon（署名作者以页面为准）",
@@ -188,6 +189,6 @@
     "retrieval_allowed": false
   },
   "author": "Codex 本轮资料整理（AI，待独立审核）",
-  "version": 1,
+  "version": 2,
   "dataset_split": "reference"
 }

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 import yaml
@@ -31,6 +32,23 @@ class SceneKnowledgeBase:
         limit: int = 4,
     ) -> list[SceneCandidate]:
         intent = request.intent.lower()
+        motion = request.subject_motion
+        # 明确的运动输入优先；用户尚未选择时只采用文字中的直接运动事实。
+        if motion == "不确定":
+            pet = r"(?:猫咪|小猫|小狗|狗狗|宠物|猫|狗)"
+            affirmative = r"(?<!不是)(?<!并非)(?<!没有)(?<!不)(?<!非)"
+            static_fact = re.search(
+                rf"(?:{affirmative}静止(?:的)?{pet}|{pet}(?:正在|正)?(?:静止|趴着|坐着|睡觉|不动))",
+                intent,
+            )
+            fast_fact = re.search(
+                rf"(?:{affirmative}正在(?:奔跑|跑|跳跃)(?:的)?{pet}|{pet}正在(?:奔跑|跑|跳跃))",
+                intent,
+            )
+            if static_fact and not fast_fact:
+                motion = "静止"
+            elif fast_fact and not static_fact:
+                motion = "快速"
         brightness = self._brightness_level(inspection.metrics.mean_brightness)
         equipment = "tripod" if request.tripod else "handheld" if request.handheld else "unknown"
         candidates: list[SceneCandidate] = []
@@ -46,12 +64,18 @@ class SceneKnowledgeBase:
             ]
             if matched_keywords:
                 score += min(len(matched_keywords), 3) * 4
+                score += float(profile.get("keyword_priority", 0))
                 evidence.append(f"需求命中关键词：{'、'.join(matched_keywords[:3])}")
 
             supported_motion = [str(value) for value in profile.get("user_motion", [])]
-            if request.subject_motion != "不确定" and request.subject_motion in supported_motion:
+            if motion != "不确定" and motion in supported_motion:
                 score += 2.5
-                evidence.append(f"用户标记主体运动为“{request.subject_motion}”")
+                evidence.append(f"用户明确主体运动为“{motion}”")
+            elif motion != "不确定" and str(profile["id"]) in {"fast_pet", "pet_portrait"}:
+                score -= 8
+            elif motion == "不确定" and str(profile["id"]) == "fast_pet":
+                # 仅有物种词不能证明快速运动；静态照片也不提供速度依据。
+                score -= 8
 
             supported_brightness = [str(value) for value in profile.get("brightness", [])]
             if brightness in supported_brightness:
@@ -66,12 +90,23 @@ class SceneKnowledgeBase:
             if str(profile["id"]) == "general_scene":
                 score = max(score, 0.1)
 
-            candidates.append(self._to_candidate(profile, score, evidence))
+            candidate = self._to_candidate(profile, score, evidence)
+            if request.subject_motion == "不确定" and motion != "不确定":
+                candidate = candidate.model_copy(
+                    update={
+                        "default_motion": {"静止": "static", "缓慢": "slow", "快速": "fast"}[
+                            motion
+                        ],
+                    }
+                )
+            candidates.append(candidate)
 
         candidates.sort(key=lambda item: item.score, reverse=True)
         positive = [candidate for candidate in candidates if candidate.score > 0.1]
         if not positive:
-            positive = [candidate for candidate in candidates if candidate.profile_id == "general_scene"]
+            positive = [
+                candidate for candidate in candidates if candidate.profile_id == "general_scene"
+            ]
         elif not any(candidate.profile_id == "general_scene" for candidate in positive):
             general = next(
                 candidate for candidate in candidates if candidate.profile_id == "general_scene"
@@ -132,4 +167,3 @@ class SceneKnowledgeBase:
         if value > 0.72:
             return "high"
         return "medium"
-

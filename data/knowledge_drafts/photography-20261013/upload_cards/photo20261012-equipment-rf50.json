@@ -159,7 +159,10 @@
     "镜头规格",
     "Canon RF50mm F1.8 STM"
   ],
-  "conditions": {},
+  "conditions": {
+    "lens_model": "Canon RF50mm F1.8 STM",
+    "device_type": "camera"
+  },
   "source": {
     "name": "Canon India",
     "url": "https://in.canon/en/consumer/rf50mm-f-1-8-stm/main/specification",
@@ -168,6 +171,6 @@
     "retrieval_allowed": false
   },
   "author": "Codex（AI 整理，待独立审核）",
-  "version": 1,
+  "version": 2,
   "dataset_split": "reference"
 }

@@ -313,6 +313,30 @@ def test_phone_legacy_mode_does_not_consume_camera_composition_cards(
     assert composition.calls[0][4] == []
 
 
+def test_pipeline_routes_actual_equipment_and_capture_conditions_to_both_searches(
+    settings, image_content, user_request,
+):
+    store = KnowledgeStore(settings.knowledge_db_path)
+    required = {
+        "camera_model": "Canon EOS R50", "lens_model": "Canon RF50mm F1.8 STM",
+        "capture_mode": "still_photo", "shutter_type": "electronic_front_curtain",
+        "drive_mode": "single", "focus_mode": "manual", "lighting": "flickering_artificial",
+    }
+    for library in ("composition", "equipment"):
+        publish(store, knowledge_record("capture_" + library, library, conditions=required))
+        publish(store, knowledge_record("wrong_model_" + library, library,
+                                        conditions={"camera_model": "Sony ILCE-7M4"}))
+    request = user_request.model_copy(update={
+        "target_lens_name": "RF50mm F1.8 STM", "shutter_type": "efcs",
+        "drive_mode": "single", "focus_mode": "MF", "lighting_type": "flickering_artificial",
+    })
+    result = make_pipeline(settings, ManagedKnowledgeRetriever(store), localization()).run(
+        image_content, request,
+    )
+    assert hit_ids(result.knowledge_hits) == {"capture_equipment"}
+    assert hit_ids(result.composition_knowledge_hits) == {"capture_composition"}
+
+
 @pytest.mark.parametrize("library", ["composition", "technique"])
 def test_pipeline_rejects_evaluation_and_restricted_records_even_if_store_exposes_them(
     settings, image_content, user_request, monkeypatch, library,

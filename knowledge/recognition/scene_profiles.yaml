@@ -1,9 +1,9 @@
-version: 1
+version: 2
 profiles:
   - id: outdoor_portrait
     label: 户外自然光人像
     category: portrait
-    aliases: [portrait, outdoor portrait, person]
+    aliases: [outdoor portrait, person]
     description: 户外以人物为主要主体，强调人脸曝光、眼部对焦和景深控制。
     subject: person
     environment: outdoor
@@ -31,7 +31,7 @@ profiles:
   - id: fast_pet
     label: 快速宠物
     category: pet
-    aliases: [pet, animal, dog, cat]
+    aliases: [fast pet, running pet]
     description: 狗、猫等宠物快速移动，需要高速快门、连续对焦和连拍。
     subject: pet
     environment: unknown
@@ -45,7 +45,7 @@ profiles:
   - id: fast_human
     label: 运动人物与儿童
     category: motion
-    aliases: [motion, sports, moving subject]
+    aliases: [sports, moving person]
     description: 跑步、体育或活跃儿童等快速人物主体，优先凝固动作。
     subject: person
     environment: unknown
@@ -153,3 +153,227 @@ profiles:
     brightness: [low, medium, high]
     equipment: [handheld, tripod, unknown]
     retrieval_terms: [曝光三要素, 通用拍摄, 测光]
+
+  - id: architecture
+    label: 建筑与空间线条
+    category: architecture
+    aliases: [architecture, building]
+    description: 建筑与室内空间，关注垂直线、透视、对称和画面边缘。
+    subject: architecture
+    environment: unknown
+    default_motion: static
+    keywords: [建筑, 垂直线, 建筑透视, 建筑摄影, 室内空间]
+    keyword_priority: 2
+    user_motion: [静止]
+    brightness: [low, medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [建筑, 透视, 垂直线, 对称, 移轴]
+
+  - id: astro_landscape
+    label: 星空与地景
+    category: landscape
+    aliases: [astro landscape, astrophotography, milky way]
+    description: 星空与地面前景结合，关注星点拖线、对焦和长曝光稳定性。
+    subject: landscape
+    environment: outdoor
+    default_motion: static
+    keywords: [星空, 银河, 星空地景, 星点, 星轨]
+    keyword_priority: 2
+    user_motion: [静止]
+    brightness: [low]
+    equipment: [tripod]
+    retrieval_terms: [星空, 银河, 地景, 星点拖线, 手动对焦]
+
+  - id: bird
+    label: 鸟类拍摄
+    category: animal
+    aliases: [bird, birds]
+    description: 鸟类栖息或飞行，需根据用户提供的运动状态选择快门与对焦。
+    subject: bird
+    environment: outdoor
+    default_motion: unknown
+    keywords: [鸟类, 飞鸟, 鸟, 飞行, 观鸟]
+    keyword_priority: 2
+    user_motion: [静止, 缓慢, 快速]
+    brightness: [low, medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [鸟类, 鸟眼对焦, 飞行, 运动跟踪]
+
+  - id: concert_stage
+    label: 演唱会与舞台
+    category: stage
+    aliases: [concert, stage, concert stage]
+    description: 舞台表演与彩色人工照明，关注表演者运动、灯光变化和高光。
+    subject: person
+    environment: unknown
+    default_motion: unknown
+    keywords: [演唱会, 舞台, 演出, 音乐会]
+    keyword_priority: 2
+    user_motion: [静止, 缓慢, 快速]
+    brightness: [low, medium]
+    equipment: [handheld, tripod]
+    retrieval_terms: [演唱会, 舞台, 高光保护, 彩色灯光]
+
+  - id: fireworks
+    label: 烟花轨迹
+    category: night
+    aliases: [fireworks]
+    description: 夜间烟花的光迹和爆发过程，关注曝光时机与稳定取景。
+    subject: fireworks
+    environment: outdoor
+    default_motion: unknown
+    keywords: [烟花, 焰火, 礼花]
+    keyword_priority: 2
+    user_motion: [静止, 缓慢, 快速]
+    brightness: [low]
+    equipment: [tripod]
+    retrieval_terms: [烟花, 光迹, 长曝光, 三脚架]
+
+  - id: fog_landscape
+    label: 雾天风光
+    category: landscape
+    aliases: [fog landscape, fog, mist]
+    description: 雾中风光，关注远近层次、低反差与曝光保留。
+    subject: landscape
+    environment: outdoor
+    default_motion: static
+    keywords: [雾天, 雾景, 晨雾, 雾中, 薄雾]
+    keyword_priority: 2
+    user_motion: [静止]
+    brightness: [low, medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [雾天风光, 层次, 低反差, 曝光]
+
+  - id: group_portrait
+    label: 集体合影
+    category: portrait
+    aliases: [group portrait, group photo]
+    description: 多人合影，关注各排人物的对焦平面、景深和表情。
+    subject: person
+    environment: unknown
+    default_motion: unknown
+    keywords: [集体, 合影, 多人, 全家福, 团体照]
+    keyword_priority: 2
+    user_motion: [静止, 缓慢]
+    brightness: [low, medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [集体合影, 多人景深, 对焦平面, 表情]
+
+  - id: indoor_sports
+    label: 室内体育
+    category: motion
+    aliases: [indoor sports]
+    description: 室内体育运动，关注高速动作、人工照明与白平衡一致性。
+    subject: person
+    environment: indoor
+    default_motion: fast
+    keywords: [室内体育, 室内篮球, 室内足球, 室内比赛, 体育馆, 羽毛球, 室内运动]
+    keyword_priority: 6
+    user_motion: [快速]
+    brightness: [low, medium]
+    equipment: [handheld]
+    retrieval_terms: [室内体育, 凝固动作, 人工照明, 白平衡]
+
+  - id: macro
+    label: 微距细节
+    category: closeup
+    aliases: [macro, macro photography]
+    description: 小物体、花蕊和昆虫的近距离细节，关注浅景深和对焦稳定性。
+    subject: small subject
+    environment: unknown
+    default_motion: unknown
+    keywords: [微距, 花蕊, 昆虫, 微小细节]
+    keyword_priority: 2
+    user_motion: [静止, 缓慢]
+    brightness: [low, medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [微距, 浅景深, 放大对焦, 焦点堆栈]
+
+  - id: motion
+    label: 运动主体与追随拍摄
+    category: motion
+    aliases: [motion, moving subject, panning]
+    description: 车辆等运动主体的凝固或追随效果，依据用户运动信息选择方案。
+    subject: moving subject
+    environment: unknown
+    default_motion: unknown
+    keywords: [车辆, 赛车, 追随, 摇拍, 运动轨迹]
+    keyword_priority: 2
+    user_motion: [缓慢, 快速]
+    brightness: [low, medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [运动主体, 追随摇拍, 连续对焦, 凝固动作]
+
+  - id: pet_portrait
+    label: 静态与缓慢宠物肖像
+    category: pet
+    aliases: [pet portrait, pet, animal, dog, cat]
+    description: 静止或缓慢活动的宠物肖像，关注眼部、表情与拍摄高度。
+    subject: pet
+    environment: unknown
+    default_motion: unknown
+    keywords: [宠物, 小狗, 狗狗, 狗, 小猫, 猫咪, 猫, 宠物肖像]
+    user_motion: [静止, 缓慢]
+    brightness: [low, medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [宠物肖像, 眼部对焦, 表情, 低机位]
+
+  - id: portrait
+    label: 人像与棚拍
+    category: portrait
+    aliases: [portrait, studio portrait]
+    description: 未指定室内外的普通或棚拍人像，关注光质、脸部曝光与眼部对焦。
+    subject: person
+    environment: unknown
+    default_motion: unknown
+    keywords: [棚拍, 棚拍人像, 摄影棚, 柔光人像, 闪光人像]
+    keyword_priority: 2
+    user_motion: [静止, 缓慢]
+    brightness: [low, medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [人像, 柔光, 闪光平衡, 肤色]
+
+  - id: product_still
+    label: 产品静物
+    category: still_life
+    aliases: [product still, product photography]
+    description: 商品和非食物静物，关注材质、反光、背景与可重复取景。
+    subject: product
+    environment: indoor
+    default_motion: static
+    keywords: [产品, 商品, 产品静物, 静物, 商业静物]
+    keyword_priority: 2
+    user_motion: [静止]
+    brightness: [low, medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [产品静物, 材质, 反光, 联机拍摄]
+
+  - id: snow_landscape
+    label: 雪景风光
+    category: landscape
+    aliases: [snow landscape, snow]
+    description: 雪地风光与脚印，关注明亮积雪的曝光、色调与层次。
+    subject: landscape
+    environment: outdoor
+    default_motion: static
+    keywords: [雪景, 雪地, 积雪, 脚印, 冰雪]
+    keyword_priority: 2
+    user_motion: [静止]
+    brightness: [medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [雪景, 积雪曝光, 冷色调, 脚印]
+
+  - id: window_portrait
+    label: 窗边自然光人像
+    category: portrait
+    aliases: [window portrait, window light portrait]
+    description: 窗边人物与侧向自然光，关注脸部明暗、窗外高光和光线方向。
+    subject: person
+    environment: indoor
+    default_motion: unknown
+    keywords: [窗边, 窗边人像, 窗光, 窗户旁]
+    keyword_priority: 2
+    user_motion: [静止, 缓慢]
+    brightness: [low, medium, high]
+    equipment: [handheld, tripod]
+    retrieval_terms: [窗边人像, 自然光, 侧光, 脸部曝光]

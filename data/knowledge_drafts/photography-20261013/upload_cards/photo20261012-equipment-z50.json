@@ -159,7 +159,10 @@
     "镜头规格",
     "NIKKOR Z 50mm f/1.8 S"
   ],
-  "conditions": {},
+  "conditions": {
+    "lens_model": "NIKKOR Z 50mm f/1.8 S",
+    "device_type": "camera"
+  },
   "source": {
     "name": "Nikon USA",
     "url": "https://www.nikonusa.com/p/nikkor-z-50mm-f18-s/20083/overview",
@@ -168,6 +171,6 @@
     "retrieval_allowed": false
   },
   "author": "Codex（AI 整理，待独立审核）",
-  "version": 1,
+  "version": 2,
   "dataset_split": "reference"
 }

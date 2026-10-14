@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from camera_assistant.composition_models import CompositionAdvice
 from camera_assistant.config import PROJECT_ROOT, Settings
+from camera_assistant.knowledge.context import build_knowledge_conditions
 from camera_assistant.knowledge.retriever import ManagedKnowledgeRetriever
 from camera_assistant.knowledge.store import KnowledgeStore
 from camera_assistant.models import (
@@ -126,6 +127,10 @@ class CameraAssistantPipeline:
         candidates = self.scene_knowledge.find_candidates(effective_request, inspection)
         scene = self.vision_analyzer.analyze(inspection, effective_request, candidates)
         scene = self.scene_knowledge.normalize(scene, candidates)
+        if effective_request.subject_motion != "不确定":
+            scene = scene.model_copy(update={"subject_motion": {
+                "静止": "static", "缓慢": "slow", "快速": "fast",
+            }[effective_request.subject_motion]})
         localization = None
         if self.localizer is not None and not self.settings.demo_mode:
             localization = self.localizer.localize(inspection, effective_request, scene)
@@ -135,23 +140,12 @@ class CameraAssistantPipeline:
             (candidate.subject for candidate in candidates if candidate.profile_id == scene.scene_type),
             "main subject",
         )
-        conditions = {
-            "scene": scene.scene_type, "subject": canonical_subject,
-            "motion": scene.subject_motion, "camera_profile_id": camera.profile_id,
-            **(
-                {
-                    "phone_profile_id": camera.profile_id,
-                    "phone_capture_mode": effective_request.phone_capture_mode,
-                    "phone_lens_id": effective_request.phone_lens_id,
-                    "phone_pro_controls_confirmed": effective_request.phone_pro_controls_confirmed,
-                }
-                if isinstance(camera, PhoneProfile)
-                else {"camera_format": camera.sensor_format}
-            ),
-            "device_type": request.device_type,
-            "handheld": effective_request.handheld, "tripod": effective_request.tripod,
-            "subject_confirmed": bool(localization and localization.selection.status == "selected"),
-        }
+        conditions = build_knowledge_conditions(
+            effective_request, scene, camera, canonical_subject, localization,
+        )
+        query += " 器材 " + " ".join(str(conditions.get(key, "")) for key in (
+            "camera_model", "lens_model", "app", "capture_mode", "shutter_type",
+        ))
         if isinstance(self.retriever, ManagedKnowledgeRetriever):
             hits = self.retriever.search(
                 query,
