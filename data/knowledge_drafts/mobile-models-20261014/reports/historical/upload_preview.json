@@ -1,0 +1,49 @@
+{
+  "success": true,
+  "total_files": 22,
+  "batch_sizes": [
+    20,
+    2
+  ],
+  "batches": [
+    {
+      "total_files": 20,
+      "total_bytes": 326389,
+      "fingerprint": "1c2a1c187b3947fa2f4c211b7f03b09183ba89d2a8e6309017d12813d4e5cc71",
+      "errors": [],
+      "record_ids": [
+        "phone20261014-a57-zoom",
+        "phone20261014-fold8-variants",
+        "phone20261014-honor-magic9-variants",
+        "phone20261014-iphone-air-main",
+        "phone20261014-iphone17-dual",
+        "phone20261014-iphone17e-main",
+        "phone20261014-iphone18pro-aperture",
+        "phone20261014-mate80pro-zoom",
+        "phone20261014-oneplus16",
+        "phone20261014-oppo-findx10",
+        "phone20261014-oppo-findx10promax",
+        "phone20261014-pixel11pro-family",
+        "phone20261014-pura90pro-zoom",
+        "phone20261014-redmi-note17pro5g-za",
+        "phone20261014-s26-base-plus",
+        "phone20261014-s26ultra-zoom",
+        "phone20261014-vivo-x500",
+        "phone20261014-vivo-x500promax",
+        "phone20261014-xiaomi17ultra-uk",
+        "phone20261014-xiaomi18promax"
+      ]
+    },
+    {
+      "total_files": 2,
+      "total_bytes": 30810,
+      "fingerprint": "54032157ef12f7123ba26236437e66d78d2a7d4d4bb83fc51699109b8472c219",
+      "errors": [],
+      "record_ids": [
+        "phone20261014-oppo-reno16",
+        "phone20261014-vivo-s50"
+      ]
+    }
+  ],
+  "scope": "现有上传桥接preview_uploads函数按20+2分批真实执行，未进行工作台浏览器上传/视觉预览"
+}

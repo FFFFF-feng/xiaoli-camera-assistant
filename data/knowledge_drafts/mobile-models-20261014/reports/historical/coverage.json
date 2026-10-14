@@ -1,0 +1,305 @@
+{
+  "accessed_at": "2026-10-14",
+  "author": "符梁",
+  "new_cards": 22,
+  "distinct_models": 27,
+  "selection_basis": "Omdia品牌级公开研究用于覆盖优先级，型号由当前官方页面和摄影用途选择；不是销量排名或穷尽全部主流设备。",
+  "selection_source": "PH-S00",
+  "coverage": [
+    {
+      "knowledge_id": "phone20261014-iphone18pro-aperture",
+      "brand": "Apple",
+      "models": [
+        "Apple iPhone 18 Pro",
+        "Apple iPhone 18 Pro Max"
+      ],
+      "region_scope": "中国大陆",
+      "source_ids": [
+        "PH-S01"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-iphone17-dual",
+      "brand": "Apple",
+      "models": [
+        "Apple iPhone 17"
+      ],
+      "region_scope": "中国大陆",
+      "source_ids": [
+        "PH-S02"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-iphone-air-main",
+      "brand": "Apple",
+      "models": [
+        "Apple iPhone Air"
+      ],
+      "region_scope": "中国大陆",
+      "source_ids": [
+        "PH-S03"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-iphone17e-main",
+      "brand": "Apple",
+      "models": [
+        "Apple iPhone 17e"
+      ],
+      "region_scope": "中国大陆",
+      "source_ids": [
+        "PH-S04"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-s26ultra-zoom",
+      "brand": "Samsung",
+      "models": [
+        "Samsung Galaxy S26 Ultra"
+      ],
+      "region_scope": "全球发布规格；中国配置另需核对",
+      "source_ids": [
+        "PH-S05"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-s26-base-plus",
+      "brand": "Samsung",
+      "models": [
+        "Samsung Galaxy S26",
+        "Samsung Galaxy S26+"
+      ],
+      "region_scope": "全球发布规格；中国配置另需核对",
+      "source_ids": [
+        "PH-S05"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-a57-zoom",
+      "brand": "Samsung",
+      "models": [
+        "Samsung Galaxy A57 5G"
+      ],
+      "region_scope": "爱尔兰SM-A576BZADEUB",
+      "source_ids": [
+        "PH-S06",
+        "PH-S07"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-fold8-variants",
+      "brand": "Samsung",
+      "models": [
+        "Samsung Galaxy Z Fold8",
+        "Samsung Galaxy Z Fold8 Ultra"
+      ],
+      "region_scope": "全球发布规格；中国版本需核对",
+      "source_ids": [
+        "PH-S08"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-xiaomi18promax",
+      "brand": "Xiaomi",
+      "models": [
+        "Xiaomi 18 Pro Max"
+      ],
+      "region_scope": "中国大陆",
+      "source_ids": [
+        "PH-S09"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-xiaomi17ultra-uk",
+      "brand": "Xiaomi",
+      "models": [
+        "Xiaomi 17 Ultra"
+      ],
+      "region_scope": "英国版规格",
+      "source_ids": [
+        "PH-S10"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-redmi-note17pro5g-za",
+      "brand": "REDMI",
+      "models": [
+        "REDMI Note 17 Pro 5G"
+      ],
+      "region_scope": "南非版，不能套给中国同名/近名型号",
+      "source_ids": [
+        "PH-S11"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-mate80pro-zoom",
+      "brand": "Huawei",
+      "models": [
+        "HUAWEI Mate 80 Pro"
+      ],
+      "region_scope": "中国大陆",
+      "source_ids": [
+        "PH-S12"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-pura90pro-zoom",
+      "brand": "Huawei",
+      "models": [
+        "HUAWEI Pura 90 Pro"
+      ],
+      "region_scope": "中国大陆",
+      "source_ids": [
+        "PH-S13"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-vivo-x500",
+      "brand": "vivo",
+      "models": [
+        "vivo X500"
+      ],
+      "region_scope": "中国大陆V2609A",
+      "source_ids": [
+        "PH-S14"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-vivo-x500promax",
+      "brand": "vivo",
+      "models": [
+        "vivo X500 Pro Max"
+      ],
+      "region_scope": "中国大陆",
+      "source_ids": [
+        "PH-S15"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-oppo-findx10",
+      "brand": "OPPO",
+      "models": [
+        "OPPO Find X10"
+      ],
+      "region_scope": "中国大陆PMW110",
+      "source_ids": [
+        "PH-S16"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-oppo-findx10promax",
+      "brand": "OPPO",
+      "models": [
+        "OPPO Find X10 Pro Max"
+      ],
+      "region_scope": "中国大陆",
+      "source_ids": [
+        "PH-S17"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-honor-magic9-variants",
+      "brand": "HONOR",
+      "models": [
+        "HONOR Magic9",
+        "HONOR Magic9 Pro Max"
+      ],
+      "region_scope": "中国大陆",
+      "source_ids": [
+        "PH-S18",
+        "PH-S19"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-oneplus16",
+      "brand": "OnePlus",
+      "models": [
+        "OnePlus 16"
+      ],
+      "region_scope": "中国大陆",
+      "source_ids": [
+        "PH-S20"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-pixel11pro-family",
+      "brand": "Google",
+      "models": [
+        "Google Pixel 11 Pro",
+        "Google Pixel 11 Pro XL"
+      ],
+      "region_scope": "美国Google Store规格",
+      "source_ids": [
+        "PH-S21"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-vivo-s50",
+      "brand": "vivo",
+      "models": [
+        "vivo S50"
+      ],
+      "region_scope": "中国大陆",
+      "source_ids": [
+        "PH-S22"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    },
+    {
+      "knowledge_id": "phone20261014-oppo-reno16",
+      "brand": "OPPO",
+      "models": [
+        "OPPO Reno16"
+      ],
+      "region_scope": "中国大陆",
+      "source_ids": [
+        "PH-S23"
+      ],
+      "status": "可上传草稿，未审核且禁止检索"
+    }
+  ],
+  "pending_gaps": [
+    "中国标准Xiaomi 18 Pro、REDMI Note 17 Pro及其他SKU尚未建立对应卡",
+    "iPhone Duo、三星Flip、更多中端与既有15/16、S24/S25等存量机的完整能力继续待补",
+    "全球表对应中国SKU、各机型最新小版本和专业控件数值范围需手册或真机进一步核验",
+    "本批未修改运行时phone_profiles.yaml或型号菜单"
+  ],
+  "rejected": [
+    {
+      "candidate": "传闻、评论、非官方参数站及搜索摘要",
+      "reason": "未作型号事实证据"
+    },
+    {
+      "candidate": "把最高数码倍数当光学镜头、把像素数当清晰保证",
+      "reason": "来源不支持这种结论"
+    },
+    {
+      "candidate": "全品牌原生App都能手调ISO/快门/光圈",
+      "reason": "只有型号限定的已读证据，其他保持未知"
+    },
+    {
+      "candidate": "把已有iPhone16 Pro实况、AE/AF、风格操作再成卡",
+      "reason": "既有记录覆盖，不重复收集"
+    }
+  ]
+}
