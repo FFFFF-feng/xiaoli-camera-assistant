@@ -24,7 +24,7 @@ npm --prefix mobile run build
 - `mobile/src/App.vue`：照片选择、拖入、设备设置、分析请求、记录与页面切换。取景框和相册入口直接使用原生文件输入，选图后预览；不会自动发送照片。
 - `mobile/src/style.css`：单栏布局；桌面导航在顶部，手机导航在底部。
 - `mobile/src/components/CompositionView.vue`：方案切换、原图对照与文字步骤。
-- `mobile/src/components/CompositionSketch.vue`、`SketchGlyph.vue`：九宫格分镜、主体画像、轮廓、大小与位置、留白和机位动作。
+- `mobile/src/components/CompositionSketch.vue`、`mobile/src/sketch-trace.mjs`：从本次原照片提取轮廓与浅色层，保持比例摆入九宫格，并提供主体画像和机位动作。`SketchGlyph.vue` 不再用于替代真实主体。
 - `src/camera_assistant/composition_models.py`、`services/composition.py`：模型输出契约、旁白和构图提示词。新增字段兼容旧记录；示意坐标不等同于真实定位框。
 - `src/camera_assistant/web_app.py`、`mobile_api.py`：会话、鉴权、上传限制、设备目录与分析 API。
 - `knowledge/`：运行时知识和设备资料；`data/knowledge_drafts/` 与 `knowledge_sources/`：草稿和来源。草稿不会因文件进仓库就自动发布或参与正式检索。
@@ -48,3 +48,11 @@ npm --prefix mobile run build
 优先在普通浏览器和手机上检查选图、同一文件重选、上传提示、设备切换、分析失败与重新分析。涉及构图修改时，核对图片、主体轮廓、坐标、留白文字和机位动作是否一致；旁白不应虚构画外内容或人物经历。
 
 云模型可能需要数分钟，偶发失败需明确反馈；当前示意是摄影教学草图，不能当作实拍效果、测距或可靠检测结果。旧历史没有新增的旁白或形象字段时，需重新分析才能取得新内容。
+
+## 本轮构图反馈更新
+
+- 模型返回 `framing_plan`：画面诊断、视觉主次、主体摆位、宽高占比、方向留白、边缘保护、背景控制和完成标准。新增教学文字仍经过摄影矛盾和未测量精确距离检查。
+- `source_bbox` 是模型估计的原图取材区域，`bbox` 是建议画面中的摆位区域，两者不能混用。`identity_features` 列出该照片需要保留的可见细节。提取时不拉伸、不镜像、不补画看不见的姿态；包含在主体中的道具不重复绘制。
+- 线稿在浏览器内由原图边缘提取，浅色取自低透明度原图颜色，可关闭。它不是语义抠图，取材框内仍可能保留背景线条。主体画像可选择“保留更多边缘”，适合模型取材框偏紧时复查。
+- 线稿和照片只保留在本次页面内存，不增加额外图片服务调用，不写入历史；点击“保存手稿”才将当前线稿嵌入 SVG 下载。旧记录没有原照片时提示重新分析。
+- 验证覆盖等比摆放、完整边缘、主体内道具去重、内部细节线条、透明输入、坏模型数据回退和 SVG 内嵌图层；并核对了公开插画与普通人像照片。区域准确性及新机位透视仍需实拍核对。

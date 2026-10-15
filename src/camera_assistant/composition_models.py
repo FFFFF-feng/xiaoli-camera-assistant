@@ -21,6 +21,20 @@ class SketchElement(CompositionModel):
                         "red_panda", "pine", "broadleaf", "cup", "bottle", "book", "camera"] = "default"
     facing: Literal["front", "left", "right"] = "front"
     description: str = Field(default="", max_length=70)
+    source_bbox: list[float] | None = None
+    identity_features: list[str] = Field(default_factory=list, max_length=6)
+
+    @field_validator("source_bbox", mode="before")
+    @classmethod
+    def source_region(cls, value: object) -> object:
+        return None if value is None else cls.drawing_box(value)
+
+    @field_validator("identity_features")
+    @classmethod
+    def visible_features(cls, values: list[str]) -> list[str]:
+        if any(not value.strip() or len(value) > 50 for value in values):
+            raise ValueError("主体特征须为简短、非空的可见细节。")
+        return list(dict.fromkeys(value.strip() for value in values))
 
     @field_validator("bbox", mode="before")
     @classmethod
@@ -54,6 +68,24 @@ class CompositionSketch(CompositionModel):
         return self
 
 
+class FramingPlan(CompositionModel):
+    diagnosis: str = Field(min_length=1, max_length=160)
+    visual_priority: str = Field(min_length=1, max_length=100)
+    placement: str = Field(min_length=1, max_length=120)
+    scale: str = Field(min_length=1, max_length=100)
+    negative_space: str = Field(min_length=1, max_length=120)
+    edge_check: str = Field(min_length=1, max_length=120)
+    background_control: str = Field(min_length=1, max_length=120)
+    success_check: str = Field(min_length=1, max_length=140)
+
+    @field_validator("*")
+    @classmethod
+    def nonblank_instruction(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("取景检查项不能为空白。")
+        return value.strip()
+
+
 class CompositionProposal(CompositionModel):
     action_type: Literal["crop", "camera_position", "focal_length", "reshoot"]
     goal: str = Field(min_length=1)
@@ -65,6 +97,17 @@ class CompositionProposal(CompositionModel):
     knowledge_ids: list[str] = Field(default_factory=list)
     crop_bbox: list[float] | None = None
     sketch: CompositionSketch | None = None
+    framing_plan: FramingPlan | None = None
+
+    @field_validator("framing_plan", mode="before")
+    @classmethod
+    def optional_framing_plan(cls, value: object) -> FramingPlan | None:
+        if value is None:
+            return None
+        try:
+            return FramingPlan.model_validate(value)
+        except (ValidationError, TypeError, ValueError):
+            return None
 
     @field_validator("sketch", mode="before")
     @classmethod

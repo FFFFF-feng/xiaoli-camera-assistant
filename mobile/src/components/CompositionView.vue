@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import type { Analysis, CompositionSketchData } from '../types';
+import type { Analysis, CompositionSketchData, FramingPlan } from '../types';
 import CompositionSketch from './CompositionSketch.vue';
-import { usableSketch } from '../composition-sketch.mjs';
+import { usableSketch, usableFramingPlan } from '../composition-sketch.mjs';
 const props = defineProps<{ result: Analysis['result']; preview: string }>();
 const view = ref<'sketch' | 'photo'>('sketch');
 const selected = ref(0);
@@ -12,6 +12,7 @@ const selectedCrop = ref<number | null>(null);
 const proposals = computed(() => props.result.composition?.proposals || []);
 const current = computed(() => proposals.value[selected.value] || proposals.value[0]);
 const sketch = computed(() => usableSketch(current.value?.sketch) as CompositionSketchData | null);
+const framing = computed(() => usableFramingPlan(current.value?.framing_plan) as FramingPlan | null);
 const actionNames: Record<string, string> = { crop: '裁切画面', camera_position: '调整机位', focal_length: '调整焦段', reshoot: '重新拍摄' };
 const statusNames: Record<string, string> = { grounded: '有知识依据', unverified: '待试拍验证', unavailable: '本次暂不可用', demo: '演示模式' };
 const subjects = computed(() => {
@@ -32,9 +33,10 @@ const shadePath = computed(() => {
     <div class="section-heading"><h2 id="composition-title">构图手稿</h2><span class="result-badge">{{ statusNames[result.composition?.status || 'unavailable'] }}</span></div>
     <p class="composition-intro">把主题、主体和留白，放进同一个取景框。</p>
     <div v-if="proposals.length" class="composition-plan-switch" role="group" aria-label="选择构图方案"><button v-for="(proposal, index) in proposals" :key="index" type="button" :aria-pressed="selected === index" @click="selected = index; selectedCrop = null">方案{{ index+1 }} · {{ actionNames[proposal.action_type] || '取景' }}</button></div>
+    <div v-if="framing" class="framing-diagnosis"><strong>先看这一点</strong><p>{{ framing.diagnosis }}</p><span>视觉主次：{{ framing.visual_priority }}</span></div>
     <div v-if="preview || sketch" class="composition-view-switch" role="group" aria-label="构图查看方式"><button type="button" :aria-pressed="view === 'sketch'" @click="view = 'sketch'">构图手稿</button><button v-if="preview" type="button" :aria-pressed="view === 'photo'" @click="view = 'photo'">原图对照</button></div>
     <template v-if="view === 'sketch'">
-      <CompositionSketch v-if="sketch && current" :sketch="sketch" :goal="current.goal" />
+      <CompositionSketch v-if="sketch && current" :sketch="sketch" :goal="current.goal" :preview="preview" />
       <div v-else-if="proposals.length" class="sketch-unavailable"><strong>这份方案暂未附简笔画</strong><p>先按下面的动作试拍。旧记录保留文字，重新分析照片可尝试生成示意图。</p></div>
     </template>
     <template v-if="preview && view === 'photo'">
@@ -51,6 +53,7 @@ const shadePath = computed(() => {
       <p class="helper">参考线辅助取景，不修改原照片。{{ subjects.length ? `已定位主体：${subjects.map(s => s.label_display).join('、')}。` : '本次未确认可靠主体框。' }}</p>
     </template>
     <template v-if="result.composition">
+      <dl v-if="framing" class="framing-checklist"><div v-for="(text,label) in { '主体摆位': framing.placement, '画面比例': framing.scale, '方向与留白': framing.negative_space, '边缘保护': framing.edge_check, '背景控制': framing.background_control, '完成标准': framing.success_check }" :key="label"><dt>{{ label }}</dt><dd>{{ text }}</dd></div></dl>
       <article v-if="current" class="composition-proposal">
         <span class="proposal-type">{{ actionNames[current.action_type] || '构图建议' }}</span><h3>{{ current.goal }}</h3>
         <ol class="composition-steps"><li v-for="action in current.actions" :key="action">{{ action }}</li></ol>
@@ -67,5 +70,6 @@ const shadePath = computed(() => {
 </template>
 
 <style scoped>
+.framing-diagnosis { padding: 16px 18px; margin: 18px 0; background: #f0f4f9; border-left: 2px solid #8aa6c7; }.framing-diagnosis strong { font-size: 12px; color: #5b7899; font-weight: 500; }.framing-diagnosis p { font-size: 14px; line-height: 1.9; margin: 7px 0; color: #354b67; }.framing-diagnosis span { font-size: 12px; line-height: 1.8; color: #738399; }.framing-checklist { margin: 22px 0; }.framing-checklist > div { display: grid; grid-template-columns: 80px minmax(0,1fr); gap: 14px; padding: 12px 0; border-bottom: 1px solid #e7ebef; }.framing-checklist dt { font-size: 12px; color: #738399; padding-top: 2px; }.framing-checklist dd { font-size: 13px; font-weight: 400; line-height: 1.9; margin: 0; color: #435973; }
 .composition-intro { margin: 8px 0 16px; color: var(--muted); font-size: 13px; }.composition-plan-switch, .composition-view-switch { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }.composition-plan-switch button { max-width: 100%; text-align: left; color: #627590; background: white; border: 1px solid #dce2e9; border-radius: 5px; font-size: 12px; padding: 9px 13px; }.composition-plan-switch button[aria-pressed="true"] { background: #315b9c; border-color: #315b9c; color: white; }.composition-view-switch { border-bottom: 1px solid #dce2e9; gap: 20px; }.composition-view-switch button { background: transparent; border: 0; border-bottom: 2px solid transparent; padding: 10px 0; color: #8492a3; font-size: 13px; }.composition-view-switch button[aria-pressed="true"] { color: #315b9c; border-color: #315b9c; font-weight: 600; }.sketch-unavailable { background: #f0f3f7; padding: 20px; border-radius: 10px; margin: 16px 0; }.sketch-unavailable strong { font-size: 14px; }.sketch-unavailable p { font-size: 12px; color: #738399; line-height: 1.8; }.composition-steps { padding-left: 22px; }.composition-steps li { padding-left: 4px; margin: 7px 0; }.composition-steps li::marker { color: #315b9c; font-weight: 600; }.composition-evidence { font-size: 12px; color: var(--muted); line-height: 1.8; margin: 18px 0; }.composition-evidence p { font-size: 12px; }.composition-view-switch button:focus-visible, .composition-plan-switch button:focus-visible { outline: 2px solid #326f99; outline-offset: 3px; }
 </style>

@@ -1,10 +1,28 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { usableSketch, cameraMove, openSpace } from '../src/composition-sketch.mjs';
+import { usableSketch, usableFramingPlan, cameraMove, openSpace } from '../src/composition-sketch.mjs';
 
 const drawing = () => ({ aspect: 'portrait', caption: '树冠完整入画', camera_action: 'farther',
   camera_instruction: '后退一点，检查树冠四周余量', horizon_y: null,
   elements: [{ kind: 'tree', label: '树木', role: 'main', bbox: [.2, .12, .7, .9] }] });
+
+test('原图取材区域与建议摆位分开校验，不接受坏坐标或空白特征', () => {
+  const value=drawing();
+  Object.assign(value.elements[0],{source_bbox:[.05,.05,.9,.95],identity_features:['树冠外沿','分叉树干']});
+  assert.equal(usableSketch(value),value);
+  value.elements[0].source_bbox=[0,0,'1',1]; assert.equal(usableSketch(value),null);
+  value.elements[0].source_bbox=null; value.elements[0].identity_features=[' '];
+  assert.equal(usableSketch(value),null);
+});
+
+test('检查单需完整的可读文字，坏数据回退到原方案', () => {
+  const plan=Object.fromEntries(['diagnosis','visual_priority','placement','scale','negative_space',
+    'edge_check','background_control','success_check'].map(k=>[k,'保留树冠完整轮廓']));
+  assert.equal(usableFramingPlan(plan),plan);
+  assert.equal(usableFramingPlan({...plan,edge_check:' '}),null);
+  assert.equal(usableFramingPlan({...plan,scale:{html:'bad'}}),null);
+  assert.equal(usableFramingPlan(null),null);
+});
 
 test('旧记录没有图时保留文字入口，合法示意可显示', () => {
   assert.equal(usableSketch(undefined), null);

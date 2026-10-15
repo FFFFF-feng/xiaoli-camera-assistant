@@ -24,11 +24,16 @@ export interface CompositionSketchData {
   caption: string;
   elements: { kind: 'person' | 'tree' | 'pet' | 'building' | 'mountain' | 'flower' | 'object';
     label: string; role: 'main' | 'context'; bbox: number[];
-    appearance?: string; facing?: 'front' | 'left' | 'right'; description?: string }[];
+    appearance?: string; facing?: 'front' | 'left' | 'right'; description?: string;
+    source_bbox?: number[] | null; identity_features?: string[] }[];
   horizon_y?: number | null;
   camera_action: 'stay' | 'left' | 'right' | 'closer' | 'farther' | 'lower' | 'higher';
   camera_instruction: string;
   theme?: string; mood?: string; narration?: string; space_note?: string;
+}
+export interface FramingPlan {
+  diagnosis: string; visual_priority: string; placement: string; scale: string;
+  negative_space: string; edge_check: string; background_control: string; success_check: string;
 }
 export interface Analysis {
   analysis_mode: 'cloud' | 'demo'; request_id: string;
@@ -42,7 +47,7 @@ export interface Analysis {
       observations: string[]; uncertainties: string[]; notes: string[];
       proposals: { action_type: string; goal: string; actions: string[]; reasons: string[];
         tradeoffs: string[]; conditions: string[]; limitations: string[]; knowledge_ids: string[];
-        crop_bbox?: number[] | null; sketch?: CompositionSketchData | null }[];
+        crop_bbox?: number[] | null; sketch?: CompositionSketchData | null; framing_plan?: FramingPlan | null }[];
     } | null;
     composition_knowledge_hits?: { document_id: string; title: string; source: string; content: string }[];
     localization?: {

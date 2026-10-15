@@ -330,3 +330,53 @@ def test_sketch_preserves_subject_character_and_photographic_narration():
     assert result.narration == drawing["narration"]
     drawing["elements"][0]["appearance"] = "custom-script"
     assert CompositionProposal.model_validate({**proposal(), "sketch": drawing}).sketch is None
+
+
+def test_photo_source_region_and_identity_are_independent_from_target_placement():
+    drawing = sketch()
+    source = [.05, .08, .9, .96]
+    drawing["elements"][0].update(source_bbox=source, identity_features=["分叉树干", " 完整树冠 ", "分叉树干"])
+    result = CompositionSketch.model_validate(drawing).elements[0]
+    assert result.source_bbox == source
+    assert result.bbox == [.2, .1, .7, .9]
+    assert result.identity_features == ["分叉树干", "完整树冠"]
+    drawing["elements"][0]["source_bbox"] = [0, 0, "1", 1]
+    assert CompositionProposal.model_validate({**proposal(), "sketch": drawing}).sketch is None
+
+
+def test_professional_framing_plan_is_preserved_and_malformed_optional_plan_falls_back():
+    plan = dict.fromkeys(["diagnosis", "visual_priority", "placement", "scale", "negative_space",
+                         "edge_check", "background_control", "success_check"], "保护树冠与树干的完整轮廓")
+    result = CompositionProposal.model_validate({**proposal(), "framing_plan": plan})
+    assert result.framing_plan.edge_check == plan["edge_check"]
+    for malformed in ({**plan, "scale": {}}, {"diagnosis": "缺少其余检查项"}):
+        result = CompositionProposal.model_validate({**proposal(), "framing_plan": malformed})
+        assert result.framing_plan is None
+        assert result.actions
+
+
+def test_visual_feedback_cannot_bypass_unmeasured_distance_checks(inputs, monkeypatch):
+    drawing = sketch()
+    drawing["camera_instruction"] = "机位后退2米，再检查树冠余量"
+    advice = call_advisor(inputs, monkeypatch, response([{**proposal(), "sketch": drawing}]))
+    assert advice.proposals == []
+    assert any("精确距离" in note for note in advice.notes)
+
+
+def test_framing_numbers_match_contained_photo_region_instead_of_model_guesses(inputs):
+    inspection = inputs[0]
+    plan = dict.fromkeys(["diagnosis", "visual_priority", "placement", "scale", "negative_space",
+                         "edge_check", "background_control", "success_check"], "模型猜测宽度99%")
+    drawing = sketch()
+    drawing["elements"][0].update(bbox=[.1, .1, .9, .9], source_bbox=[0, 0, 1, 1])
+    advice = CompositionAdvice.model_validate(response([{**proposal(), "sketch": drawing, "framing_plan": plan}]))
+    resolved = composition._resolve_sketch_geometry(advice, inspection)
+    fixed = resolved.proposals[0]
+    # A 1000:800 source contained in an 80% box on a 3:4 frame is 80% x 48%.
+    assert "宽约80%" in fixed.framing_plan.scale
+    assert "高约48%" in fixed.framing_plan.scale
+    assert "上26%" in fixed.framing_plan.negative_space
+    assert "横向50%" in fixed.framing_plan.placement
+    assert fixed.sketch.elements[0].bbox == [.1, .1, .9, .9]
+    assert fixed.framing_plan.diagnosis == plan["diagnosis"]
+    CompositionAdvice.model_validate(resolved.model_dump())

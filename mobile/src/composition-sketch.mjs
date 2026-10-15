@@ -3,6 +3,10 @@ const moves = new Set(['stay', 'left', 'right', 'closer', 'farther', 'lower', 'h
 const appearances = new Set(['default', 'standing', 'seated', 'walking', 'cat', 'dog', 'bird',
   'red_panda', 'pine', 'broadleaf', 'cup', 'bottle', 'book', 'camera']);
 
+export function frameAspect(aspect) {
+  return {portrait:3/4,landscape:4/3,square:1}[aspect] || 1;
+}
+
 /** Validate stored or older responses before using model coordinates in a drawing. */
 export function usableSketch(value) {
   if (!value || !['portrait', 'landscape', 'square'].includes(value.aspect)
@@ -20,6 +24,12 @@ export function usableSketch(value) {
         || (item?.facing != null && !['front', 'left', 'right'].includes(item.facing))
         || (item?.description != null && (typeof item.description !== 'string'
           || item.description.length > 70))) return null;
+    if (item?.source_bbox != null && (!Array.isArray(item.source_bbox) || item.source_bbox.length !== 4
+        || !item.source_bbox.every(n => typeof n === 'number' && Number.isFinite(n) && n >= 0 && n <= 1)
+        || item.source_bbox[2]-item.source_bbox[0] < .05 || item.source_bbox[3]-item.source_bbox[1] < .05)) return null;
+    if (item?.identity_features != null && (!Array.isArray(item.identity_features)
+        || item.identity_features.length > 6 || item.identity_features.some(s => typeof s !== 'string'
+          || !s.trim() || s.length > 50))) return null;
     if (!kinds.has(item?.kind) || !['main', 'context'].includes(item?.role)
         || typeof item?.label !== 'string' || !item.label.trim() || item.label.length > 18
         || !Array.isArray(b) || b.length !== 4
@@ -27,6 +37,13 @@ export function usableSketch(value) {
         || b[2] - b[0] < .05 || b[3] - b[1] < .05) return null;
   }
   return value.elements.some(item => item.role === 'main') ? value : null;
+}
+
+export function usableFramingPlan(value) {
+  const keys = ['diagnosis','visual_priority','placement','scale','negative_space',
+    'edge_check','background_control','success_check'];
+  return value && keys.every(key => typeof value[key] === 'string'
+    && value[key].trim() && value[key].length <= 180) ? value : null;
 }
 
 export function cameraMove(action) {
