@@ -35,19 +35,33 @@ export interface FramingPlan {
   diagnosis: string; visual_priority: string; placement: string; scale: string;
   negative_space: string; edge_check: string; background_control: string; success_check: string;
 }
+export interface TargetBoard {
+  aspect:'portrait'|'landscape'|'square'; reference_photo_id:string; intent:string;narration?:string;
+  distance_relation:'closer'|'farther'|'similar'|'unknown'; distance_instruction:string;
+  layers:{label:string;kind:string;role:'main'|'foreground'|'background'|'prop';depth:number;bbox:number[];
+    color:'slate'|'blue'|'ochre'|'sage'|'rose';outline:number[][];details:number[][][];
+    identity_features:string[];evidence_photo_ids:string[];certainty:'observed'|'approximate'}[];
+  changes:{problem:string;adjustment:string;benefit:string}[];limitations:string[];
+}
+export interface SceneSurvey {
+  status:'consistent'|'uncertain'|'mixed';summary:string;preferred_photo_id:string;selection_reason:string;
+  views:{image_id:string;contribution:string;viewpoint_hint:string}[];
+  relative_distance:string;subject_options:string[];foreground_options:string[];limitations:string[];
+}
 export interface Analysis {
   analysis_mode: 'cloud' | 'demo'; request_id: string;
+  scene_photo_count?:number;
   result: {
     camera_profile: { display_name: string; device_type: 'phone' | 'camera'; sensor_format?: string };
     equipment_settings?: { camera_lens?: CameraLensProfile | null; focal_length_mm?: number | null;
       equivalent_focal_length_mm?: number | null; max_aperture?: number | null } | null;
-    scene: { scene_label: string; scene_type: string; subject: string; lighting: string; notes: string[] };
+    scene: { scene_label: string; scene_type: string; subject: string; lighting: string; notes: string[];scene_survey?:SceneSurvey|null };
     composition?: {
       status: 'grounded' | 'unverified' | 'unavailable' | 'demo';
       observations: string[]; uncertainties: string[]; notes: string[];
       proposals: { action_type: string; goal: string; actions: string[]; reasons: string[];
         tradeoffs: string[]; conditions: string[]; limitations: string[]; knowledge_ids: string[];
-        crop_bbox?: number[] | null; sketch?: CompositionSketchData | null; framing_plan?: FramingPlan | null }[];
+        crop_bbox?: number[] | null; sketch?: CompositionSketchData | null; framing_plan?: FramingPlan | null;storyboard?:TargetBoard|null }[];
     } | null;
     composition_knowledge_hits?: { document_id: string; title: string; source: string; content: string }[];
     localization?: {

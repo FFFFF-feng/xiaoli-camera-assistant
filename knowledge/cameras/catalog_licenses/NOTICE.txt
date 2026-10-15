@@ -1,0 +1,5 @@
+Camera directory derived from CameraDatabase (MIT, copyright 2025 leavestylecode) and the Lensfun database (CC BY-SA 3.0, Lensfun contributors).
+Upstream: https://github.com/leavestylecode/CameraDatabase and https://github.com/lensfun/lensfun .
+Modifications by Xiaoli Camera Assistant, 2026-10-15: normalized brand/company names, merged exact full-name/explicit-alias duplicates, quarantined ambiguous records, and removed unverified hardware capability boundaries.
+This derived camera_catalog.json is distributed under CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/). Original MIT notices remain in CameraDatabase-MIT.txt. Per-record catalog_sources retain source URLs, attribution, licenses and revisions.
+No endorsement by the upstream projects or camera manufacturers is implied.

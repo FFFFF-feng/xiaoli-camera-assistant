@@ -99,8 +99,12 @@ class CameraAssistantPipeline:
                 else DemoCompositionAdvisor()
             )
 
-    def run(self, image_content: bytes, request: UserRequest) -> PipelineResult:
+    def run(self, image_content: bytes, request: UserRequest,
+            reference_images: list[bytes] | None = None) -> PipelineResult:
+        if reference_images and len(reference_images) > 5:
+            raise ValueError("同一场景最多6张照片。")
         inspection = self.image_analyzer.analyze(image_content)
+        inspection.reference_images = [self.image_analyzer.analyze(image) for image in (reference_images or [])]
         device_notes: list[str] = []
         equipment_settings = None
         if request.device_type == "phone":
@@ -174,6 +178,18 @@ class CameraAssistantPipeline:
                 device_notes.append("通用参数是试拍起点或演示约束，不是该型号已核实的硬件规格。")
         candidates = self.scene_knowledge.find_candidates(effective_request, inspection)
         scene = self.vision_analyzer.analyze(inspection, effective_request, candidates)
+        if scene.scene_survey:
+            available = {f"photo{i+1}" for i in range(1 + len(inspection.reference_images))}
+            survey = scene.scene_survey
+            if (survey.preferred_photo_id not in available
+                    or any(view.image_id not in available for view in survey.views)
+                    or {v.image_id for v in survey.views} != available
+                    or len({v.image_id for v in survey.views}) != len(survey.views)):
+                scene = scene.model_copy(update={"scene_survey": None,
+                    "uncertainties": [*scene.uncertainties, "场景比较引用了未提供或重复的图号，未采用该比较。"]})
+        if inspection.reference_images and not scene.scene_survey and not self.settings.demo_mode:
+            scene = scene.model_copy(update={"uncertainties": [*scene.uncertainties,
+                "本次未返回完整逐图比较，不能据此确认所有照片的场景关联或距离。"]})
         scene = self.scene_knowledge.normalize(scene, candidates)
         if effective_request.subject_motion != "不确定":
             scene = scene.model_copy(update={"subject_motion": {
@@ -218,7 +234,13 @@ class CameraAssistantPipeline:
                 notes[0] = "手机分支未检索旧相机Markdown库；启用managed并发布手机资料后才可检索。"
         composition_hits = []
         composition = None
-        if self.composition_advisor is not None:
+        if inspection.reference_images and self.settings.demo_mode:
+            scene = scene.model_copy(update={"uncertainties": [*scene.uncertainties,
+                "规则演示不识别多图空间关系；真实模式才会联合分析所有参考图。"]})
+        if scene.scene_survey and scene.scene_survey.status == "mixed":
+            composition = CompositionAdvice(status="unavailable", notes=[
+                "这些照片可能来自不同场景，未将它们拼成推荐构图。请移除无关照片后再分析。"])
+        elif self.composition_advisor is not None:
             composition_query = query + " 构图 留白 背景 主体位置 " + " ".join(scene.composition_clues)
             if isinstance(self.retriever, ManagedKnowledgeRetriever):
                 composition_hits = self.retriever.search(

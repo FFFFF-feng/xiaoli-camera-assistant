@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator, model_validator
@@ -76,6 +77,7 @@ class ImageInspection(BaseModel):
     exif: ExifInfo
     metrics: ImageMetrics
     model_image_data_url: str = Field(exclude=True, repr=False)
+    reference_images: list[ImageInspection] = Field(default_factory=list, exclude=True, repr=False)
 
 
 class SceneCandidate(BaseModel):
@@ -218,6 +220,31 @@ class PhoneProfile(BaseModel):
         return self
 
 
+class SurveyView(BaseModel):
+    image_id: Literal["photo1", "photo2", "photo3", "photo4", "photo5", "photo6"]
+    contribution: str = Field(min_length=1, max_length=160)
+    viewpoint_hint: str = Field(default="", max_length=100)
+
+
+class SceneSurvey(BaseModel):
+    status: Literal["consistent", "uncertain", "mixed"]
+    summary: str = Field(min_length=1, max_length=240)
+    views: list[SurveyView] = Field(min_length=1, max_length=6)
+    preferred_photo_id: Literal["photo1", "photo2", "photo3", "photo4", "photo5", "photo6"]
+    selection_reason: str = Field(min_length=1, max_length=180)
+    relative_distance: str = Field(min_length=1, max_length=160)
+    subject_options: list[str] = Field(default_factory=list, max_length=5)
+    foreground_options: list[str] = Field(default_factory=list, max_length=5)
+    limitations: list[str] = Field(default_factory=list, max_length=6)
+
+    @field_validator("relative_distance")
+    @classmethod
+    def no_unmeasured_metric_distance(cls, value: str) -> str:
+        if re.search(r"\d+(?:\.\d+)?\s*(?:厘米|米|cm|m)(?!m)", value, re.IGNORECASE):
+            return "照片没有标定距离；请按主体占比、取景边缘和遮挡关系调整，不能由这些照片给出实测距离。"
+        return value
+
+
 class SceneAnalysis(BaseModel):
     scene_type: str
     scene_label: str = ""
@@ -239,6 +266,7 @@ class SceneAnalysis(BaseModel):
     subject_status: Literal["selected", "ambiguous", "abstained"] = "abstained"
     composition_clues: list[str] = Field(default_factory=list)
     uncertainties: list[str] = Field(default_factory=list)
+    scene_survey: SceneSurvey | None = None
 
     @model_validator(mode="after")
     def subject_binding(self) -> SceneAnalysis:

@@ -169,14 +169,14 @@ def build(root: Path = ROOT) -> tuple[dict, dict]:
         if matched:
             curated_links[next(iter(matched))].extend(identities)
             continue
-        preferred = sorted(
+        preferred = min(
             records,
             key=lambda record: (
                 record.payload["provenance"]["repository"].endswith("lensfun/lensfun"),
                 record.payload["model"],
                 record.knowledge_id,
             ),
-        )[0]
+        )
         brand, preferred_names = identity_names(preferred)
         model = preferred_names[0]
         names = sorted({name for record in records for name in identity_names(record)[1]})
@@ -256,6 +256,8 @@ def build(root: Path = ROOT) -> tuple[dict, dict]:
         "schema_version": 1,
         "kind": "camera_directory",
         "release_date": "2026-10-15",
+        "license": "CC-BY-SA-3.0",
+        "license_notice": "catalog_licenses/NOTICE.txt",
         "catalog_only_count": len(profiles),
         "profiles": profiles,
         "curated_links": dict(curated_links),
@@ -269,6 +271,29 @@ def main() -> None:
     directory = ROOT / "knowledge/cameras"
     # 机械构建产物；人工资料仍保留在 camera_profiles.yaml，绝不写回原始草稿。
     (directory / "camera_catalog.json").write_bytes(serialize(catalog))
+    licenses = directory / "catalog_licenses"
+    licenses.mkdir(parents=True, exist_ok=True)
+    upstream = ROOT / "knowledge_sources" / BATCH / "licenses"
+    for source, target in (
+        ("cameradatabase/LICENSE", "CameraDatabase-MIT.txt"),
+        ("lensfun/COPYING.CC_BY-SA_3.0", "Lensfun-CC-BY-SA-3.0.txt"),
+    ):
+        (licenses / target).write_bytes((upstream / source).read_bytes())
+    (licenses / "NOTICE.txt").write_text(
+        "Camera directory derived from CameraDatabase (MIT, copyright 2025 leavestylecode) "
+        "and the Lensfun database (CC BY-SA 3.0, Lensfun contributors).\n"
+        "Upstream: https://github.com/leavestylecode/CameraDatabase and "
+        "https://github.com/lensfun/lensfun .\n"
+        "Modifications by Xiaoli Camera Assistant, 2026-10-15: normalized brand/company names, "
+        "merged exact full-name/explicit-alias duplicates, quarantined ambiguous records, "
+        "and removed unverified hardware capability boundaries.\n"
+        "This derived camera_catalog.json is distributed under CC BY-SA 3.0 "
+        "(https://creativecommons.org/licenses/by-sa/3.0/). "
+        "Original MIT notices remain in CameraDatabase-MIT.txt. "
+        "Per-record catalog_sources retain source URLs, attribution, licenses and revisions.\n"
+        "No endorsement by the upstream projects or camera manufacturers is implied.\n",
+        encoding="utf-8",
+    )
     destination = ROOT / "knowledge_sources/camera-catalog-release-20261015"
     destination.mkdir(parents=True, exist_ok=True)
     (destination / "deduplication.json").write_bytes(serialize(report))

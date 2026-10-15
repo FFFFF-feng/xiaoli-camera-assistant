@@ -1,4 +1,4 @@
-/** @typedef {{profile_id: string, display_name: string, model?: string, aliases?: string[]}} DeviceProfile */
+/** @typedef {{profile_id: string, display_name: string, model?: string, aliases?: string[], capability_level?: string}} DeviceProfile */
 
 export function normalizeModelName(value) {
   return String(value).normalize('NFKC').toLowerCase().replace(/[\s_-]+/g, '');
@@ -45,7 +45,7 @@ export const mountNames = {
 };
 export function sensorLabel(value) { return value === 'APS-C' ? 'APS-C（半画幅）' : (value || '不清楚'); }
 
-/** @param {{mount?: string, sensor_format?: string} | undefined} camera
+/** @param {{mount?: string, sensor_format?: string, capability_level?: string} | undefined} camera
  * @param {import('./types').CameraLensProfile[]} lenses */
 export function compatibleLenses(camera, lenses) {
   if (camera?.capability_level === 'catalog') return [];

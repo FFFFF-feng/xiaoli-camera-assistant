@@ -1,6 +1,36 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { lineArtPixels, fitPhotoBox, embeddedInMain } from '../src/sketch-trace.mjs';
+import { lineArtPixels, fitPhotoBox, embeddedInMain, sceneLayout } from '../src/sketch-trace.mjs';
+
+test('建筑、树木和远山始终使用同一幅场景，不因各自建议框而分块移动', () => {
+  const elements=[{role:'main',source_bbox:[.1,.3,.6,.85],bbox:[.05,.3,.45,.9]},
+    {role:'context',source_bbox:[.3,.5,.95,1],bbox:[.1,.5,.7,.9]},
+    {role:'context',source_bbox:[0,.1,1,.4],bbox:[.1,.1,.9,.3]}];
+  for(const reframe of [false,true]) {
+    const layout=sceneLayout(1.5,4/3,elements,reframe);
+    const image=layout.imageBox, w=image[2]-image[0],h=image[3]-image[1];
+    assert.ok(Math.abs(w*(4/3)/h-1.5)<1e-10,'整张照片等比');
+    for(let i=0;i<elements.length;i++) for(let k=0;k<4;k++) {
+      const expected=(k%2 ? image[1] : image[0])+elements[i].source_bbox[k]*(k%2 ? h : w);
+      assert.ok(Math.abs(layout.boxes[i][k]-expected)<1e-10,'每个角共用同一变换');
+    }
+    const changed=elements.map(e=>e.role==='context' ? {...e,bbox:[.05,.05,.95,.95]} : e);
+    assert.deepEqual(sceneLayout(1.5,4/3,changed,reframe),layout,'独立环境目标框不搬动实景');
+    assert.ok(layout.boxes.every(b=>b.every(v=>v>=-1e-10 && v<=1+1e-10)),'保留所有已标记景物');
+  }
+});
+
+test('未拍到区域单独记录，不能当作照片里的留白；缺失区域资料时保留完整现场', () => {
+  const elements=[{role:'main',source_bbox:[.2,.2,.8,.8],bbox:[.4,.4,.6,.6]}];
+  const layout=sceneLayout(2,1,elements,true);
+  const area=layout.uncovered.reduce((n,b)=>n+(b[2]-b[0])*(b[3]-b[1]),0);
+  assert.ok(area>.5);
+  const [x1,y1,x2,y2]=layout.imageBox;
+  assert.ok(Math.abs(area+(x2-x1)*(y2-y1)-1)<1e-10);
+  const incomplete=[...elements,{role:'context',bbox:[.1,.1,.4,.4]}];
+  assert.deepEqual(sceneLayout(2,1,incomplete,true),sceneLayout(2,1,incomplete,false));
+  assert.equal(sceneLayout(2,1,incomplete).boxes[1],null);
+});
 
 test('主体以原始比例完整放入目标框，宽高都不溢出', () => {
   for (const aspect of [.35,1,3.2]) for (const frame of [.75,1,1.6]) {
