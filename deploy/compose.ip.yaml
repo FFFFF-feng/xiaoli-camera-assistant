@@ -1,0 +1,6 @@
+services:
+  caddy:
+    environment:
+      XIAOLI_IP: ${XIAOLI_IP}
+    volumes:
+      - ./Caddyfile.ip:/etc/caddy/Caddyfile:ro

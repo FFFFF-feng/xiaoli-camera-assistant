@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-eye-placement",
+  "library_id": "composition",
+  "title": "肖像眼睛位置：三分交点仅是候选",
+  "kind": "guideline",
+  "content": "核心规则：肖像可把面部或眼睛作为构图锚点。\n建议动作：眼睛位置清楚时，比较交点附近与居中版本。；若面部检测不可靠，不输出精确移动距离。\n适用前提：面部和眼睛可清楚确认。\n限制与例外：构图锚点不等于自动对焦点已正确选中。",
+  "payload": {
+    "core_claim": "肖像可把面部或眼睛作为构图锚点。",
+    "goal": "肖像眼睛位置：三分交点仅是候选",
+    "requires": [
+      "面部和眼睛可清楚确认。"
+    ],
+    "actions": [
+      "眼睛位置清楚时，比较交点附近与居中版本。",
+      "若面部检测不可靠，不输出精确移动距离。"
+    ],
+    "limitations": [
+      "构图锚点不等于自动对焦点已正确选中。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "interpretive_goal",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-portrait",
+          "url": "https://www.sony.co.uk/electronics/support/articles/00206555",
+          "location": "Considering the composition / Using back light",
+          "supports": "以眼睛或脸部位置尝试三分构图。"
+        }
+      ],
+      "inference_note": "这是可选表达目标；来源支持方法存在，不证明审美偏好或效果最优。"
+    }
+  },
+  "tags": [
+    "composition",
+    "eye-placement",
+    "肖像眼睛位置",
+    "三分交点仅是候选",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜突出人物的肖像教程",
+    "url": "https://www.sony.co.uk/electronics/support/articles/00206555",
+    "location": "Considering the composition / Using back light",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

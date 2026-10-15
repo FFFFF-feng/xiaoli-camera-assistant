@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-aspect-plan",
+  "library_id": "composition",
+  "title": "宽高比：先确定输出，再留裁剪余量",
+  "kind": "guideline",
+  "content": "核心规则：输出比例会影响需要保留的画面内容。\n建议动作：确认竖屏、横屏或方形用途。；先保留原图，再比较目标比例裁剪，不覆盖唯一原片。\n适用前提：已知输出比例；能够保存原图。\n限制与例外：裁剪不能增加原始细节；各模式裁切行为需实测。",
+  "payload": {
+    "core_claim": "输出比例会影响需要保留的画面内容。",
+    "goal": "宽高比：先确定输出，再留裁剪余量",
+    "requires": [
+      "已知输出比例；能够保存原图。"
+    ],
+    "actions": [
+      "确认竖屏、横屏或方形用途。",
+      "先保留原图，再比较目标比例裁剪，不覆盖唯一原片。"
+    ],
+    "limitations": [
+      "裁剪不能增加原始细节；各模式裁切行为需实测。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "canon-composition",
+          "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+          "location": "Rule of thirds / Lines / Framing / Symmetry / Negative space / Layers / Angles",
+          "supports": "考虑宽高比与裁剪。"
+        },
+        {
+          "source_id": "apple-tools",
+          "url": "https://support.apple.com/zh-cn/guide/iphone/iph3dc593597/ios",
+          "location": "手动调整对焦和曝光 / 网格和水平 / 宽高比",
+          "supports": "可选择照片宽高比。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "composition",
+    "aspect-plan",
+    "宽高比",
+    "先确定输出",
+    "再留裁剪余量",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Canon｜Mastering Photo Composition",
+    "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+    "location": "Rule of thirds / Lines / Framing / Symmetry / Negative space / Layers / Angles",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

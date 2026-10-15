@@ -1,0 +1,12 @@
+{
+  "database": "E:\\develop\\cmera\\data\\knowledge.db",
+  "backup": "E:\\develop\\cmera\\data\\backups\\before-github-sync-20261014T154922631522Z.db",
+  "records_before": 7647,
+  "records_after": 7807,
+  "imported_count": 160,
+  "old_rows_preserved": true,
+  "new_rows_all_draft": true,
+  "sqlite_integrity": "ok",
+  "real_database_repeat_import_new_rows": 0,
+  "new_retrieval_allowed_count": 5
+}

@@ -60,15 +60,27 @@ class RecommendationValidator:
                 notes.append("未单独核验电子前帘快门上限，保守使用机械快门边界；请核对当前模式。")
             elif shutter_type is None:
                 notes.append("未选择快门类型，保守使用机械快门边界；电子快门上限需明确选择后适用。")
-            if shutter_seconds and min(shutter_seconds) < 1 / shutter_limit:
+            if shutter_limit is None:
+                notes.append("本机快门边界尚未核验，请按实际机身菜单确认。")
+            if shutter_limit is not None and shutter_seconds and min(shutter_seconds) < 1 / shutter_limit:
                 updates["shutter_speed"] = f"1/{shutter_limit}s"
                 notes.append(f"已按该机型{shutter_label}快门 1/{shutter_limit}s 上限修正快门速度。")
                 shutter_seconds = (1 / shutter_limit,)
 
             corrected_iso = self._clamp_iso(recommendation.iso, camera)
+            if camera.native_iso_min is None or camera.native_iso_max is None:
+                corrected_iso = (
+                    "Auto ISO（范围以本机菜单为准）"
+                    if "auto" in recommendation.iso.lower()
+                    else "低 ISO（实际数值以本机可用范围为准）"
+                )
             if corrected_iso != recommendation.iso:
                 updates["iso"] = corrected_iso
-                notes.append("已按该机型的标准感光度范围修正 ISO。")
+                notes.append(
+                    "已按该机型的标准感光度范围修正 ISO。"
+                    if camera.native_iso_min is not None and camera.native_iso_max is not None
+                    else "本机曝光边界尚未完整核验，ISO 按实际菜单核对，不输出未经确认的硬件范围。"
+                )
 
             if "光圈优先" in recommendation.shooting_mode:
                 updates["shooting_mode"] = camera.aperture_priority_name
@@ -79,8 +91,16 @@ class RecommendationValidator:
                 updates["focus_mode"] = camera.continuous_focus_name
 
             updates["metering_mode"] = camera.metering_name
-            notes.append(f"已匹配 {camera.display_name} 的机身能力与品牌术语。")
-            if camera.ibis_stops > 0 and scene.subject_motion != "fast":
+            if camera.capability_level == "catalog":
+                updates.update(
+                    shooting_mode="机内可用曝光模式（能力未核验）",
+                    focus_mode="机内可用对焦方式（能力未核验）",
+                    drive_mode="按本机可用拍摄方式选择",
+                    aperture="以本机或镜头可用光圈为准（未核验）",
+                )
+                notes.append("仅匹配基础目录，不代表完成机型适配；数值建议仅作通用试拍目标。")
+            notes.append(f"已匹配 {camera.display_name} 的机身能力目录资料；未收录能力不作保证。")
+            if camera.ibis_stops and scene.subject_motion != "fast":
                 notes.append(
                     f"该机型具备约 {camera.ibis_stops:g} 挡标称机身防抖；实际效果受镜头和拍摄姿势影响。"
                 )
@@ -164,6 +184,8 @@ class RecommendationValidator:
         自动 ISO 的上限额外采用知识库里的保守推荐值，避免只因为机身支持
         很高的扩展 ISO，就把新手默认上限推得过高。
         """
+        if camera.native_iso_min is None or camera.native_iso_max is None:
+            return value
         upper = (
             min(camera.native_iso_max, camera.recommended_auto_iso_max)
             if "auto" in value.lower()

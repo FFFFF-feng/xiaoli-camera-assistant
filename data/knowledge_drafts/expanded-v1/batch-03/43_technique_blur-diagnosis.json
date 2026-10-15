@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-blur-diagnosis",
+  "library_id": "technique",
+  "title": "模糊诊断：焦点、机震、主体运动分开排查",
+  "kind": "guideline",
+  "content": "核心规则：主体移动与相机抖动都可能造成拖影；失焦是另一类问题。\n建议动作：分别检查静止背景和移动主体的细节。；若没有明显迹象，提出候选原因并让用户补充拍摄信息。\n适用前提：有原图和可辨细节；最好有EXIF及运动说明。\n限制与例外：一张图不能保证确定原因；锐度分数不是正确合焦证明。",
+  "payload": {
+    "core_claim": "主体移动与相机抖动都可能造成拖影；失焦是另一类问题。",
+    "goal": "模糊诊断：焦点、机震、主体运动分开排查",
+    "requires": [
+      "有原图和可辨细节；最好有EXIF及运动说明。"
+    ],
+    "actions": [
+      "分别检查静止背景和移动主体的细节。",
+      "若没有明显迹象，提出候选原因并让用户补充拍摄信息。"
+    ],
+    "limitations": [
+      "一张图不能保证确定原因；锐度分数不是正确合焦证明。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-shutter",
+          "url": "https://www.sony.com/electronics/support/articles/00267929",
+          "location": "Shutter Speed / S-Mode",
+          "supports": "机震和主体运动都可能模糊。"
+        },
+        {
+          "source_id": "canon-af-area",
+          "url": "https://cam.start.canon/en/C005/manual/html/UG-05_AF-Drive_0070.html",
+          "location": "AF Shooting Tips / Shooting Conditions That Make Focusing Difficult",
+          "supports": "合焦困难受多种条件影响。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "technique",
+    "blur-diagnosis",
+    "模糊诊断",
+    "焦点",
+    "机震",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜快门与S模式",
+    "url": "https://www.sony.com/electronics/support/articles/00267929",
+    "location": "Shutter Speed / S-Mode",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

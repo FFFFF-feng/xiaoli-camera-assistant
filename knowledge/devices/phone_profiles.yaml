@@ -28,6 +28,7 @@ profiles:
     pro_controls: []
     lenses:
       - lens_id: main
+        modes: [auto, portrait, night]
         name: 主摄（1×）
         aperture: 1.6
         aperture_control: fixed
@@ -58,6 +59,7 @@ profiles:
     pro_controls: [iso, shutter, focus, white_balance]
     lenses:
       - lens_id: main
+        modes: [auto, portrait, night, pro]
         name: 主摄（1×）
         aperture: 1.7
         aperture_control: fixed
@@ -92,6 +94,7 @@ profiles:
     pro_controls: [iso, shutter, focus, white_balance]
     lenses:
       - lens_id: main
+        modes: [auto, portrait, night, pro]
         name: 主摄
         aperture: 1.6
         aperture_control: fixed
@@ -115,3 +118,184 @@ profiles:
       - 本档案只指小米14，不代表14 Pro、14 Ultra或其他代际。
       - 不将Pro/Ultra型号的可变物理光圈能力套给小米14。
       - 专业模式WB/F/S/ISO操作需确认当前系统及镜头界面；不虚构控制项的数值范围。
+
+  # 新增为各型号独立档案，不通过型号前缀继承；副摄先只开放已保守确认的照片入口。
+  - profile_id: apple_iphone_13
+    brand: Apple
+    model: iPhone 13
+    display_name: Apple iPhone 13
+    aliases: [苹果13, 苹果 13]
+    native_app: Apple 相机
+    modes: [auto, portrait, night]
+    lenses:
+      - {lens_id: main, name: '主摄（1×）', aperture: 1.6, aperture_control: fixed, modes: [auto, portrait, night]}
+      - {lens_id: ultrawide, name: '超广角（0.5×）', aperture: 2.4, aperture_control: fixed}
+    source_urls: [https://support.apple.com/zh-cn/111872]
+    checked_at: '2026-10-14'
+    region_scope: Apple中国规格；当前iOS界面需确认
+    notes: [等效焦距本次未单独核验，保留未知；副摄模式组合尚待逐项核对。]
+  - profile_id: apple_iphone_14
+    brand: Apple
+    model: iPhone 14
+    display_name: Apple iPhone 14
+    aliases: [苹果14, 苹果 14]
+    native_app: Apple 相机
+    modes: [auto, portrait, night]
+    lenses:
+      - {lens_id: main, name: '主摄（1×）', aperture: 1.5, aperture_control: fixed, equivalent_focal_length_mm: 26, modes: [auto, portrait, night]}
+      - {lens_id: ultrawide, name: '超广角（0.5×）', aperture: 2.4, aperture_control: fixed, equivalent_focal_length_mm: 13}
+    source_urls: [https://support.apple.com/zh-cn/111850]
+    checked_at: '2026-10-14'
+    region_scope: Apple中国规格；当前iOS界面需确认
+    notes: [此档案不代表14 Plus或Pro；副摄模式组合只开放保守照片入口，不表示其他组合不支持。]
+  - profile_id: apple_iphone_15_pro
+    brand: Apple
+    model: iPhone 15 Pro
+    display_name: Apple iPhone 15 Pro
+    aliases: [苹果15 Pro, 苹果15Pro, iPhone15Pro]
+    native_app: Apple 相机
+    modes: [auto, portrait, night]
+    lenses:
+      - {lens_id: main, name: '主摄（1×）', aperture: 1.78, aperture_control: fixed, equivalent_focal_length_mm: 24, modes: [auto, portrait, night]}
+      - {lens_id: ultrawide, name: '超广角（0.5×）', aperture: 2.2, aperture_control: fixed, equivalent_focal_length_mm: 13}
+      - {lens_id: telephoto_3x, name: '3×长焦', aperture: 2.8, aperture_control: fixed, equivalent_focal_length_mm: 77}
+    source_urls: [https://support.apple.com/zh-cn/111829]
+    checked_at: '2026-10-14'
+    region_scope: Apple中国规格；当前iOS界面需确认
+    notes: [2×为主摄裁切，不是独立物理镜头；ProRAW不等于原生ISO快门手动模式。]
+  - profile_id: apple_iphone_15_pro_max
+    brand: Apple
+    model: iPhone 15 Pro Max
+    display_name: Apple iPhone 15 Pro Max
+    aliases: [苹果15 Pro Max, 苹果15ProMax, iPhone15ProMax]
+    native_app: Apple 相机
+    modes: [auto, portrait, night]
+    lenses:
+      - {lens_id: main, name: '主摄（1×）', aperture: 1.78, aperture_control: fixed, equivalent_focal_length_mm: 24, modes: [auto, portrait, night]}
+      - {lens_id: ultrawide, name: '超广角（0.5×）', aperture: 2.2, aperture_control: fixed, equivalent_focal_length_mm: 13}
+      - {lens_id: telephoto_5x, name: '5×长焦', aperture: 2.8, aperture_control: fixed, equivalent_focal_length_mm: 120}
+    source_urls: [https://support.apple.com/zh-cn/111828]
+    checked_at: '2026-10-14'
+    region_scope: Apple中国规格；当前iOS界面需确认
+    notes: [与15 Pro的3×长焦分别建档；副摄特殊模式尚未逐镜头适配。]
+  - profile_id: apple_iphone_16
+    brand: Apple
+    model: iPhone 16
+    display_name: Apple iPhone 16
+    aliases: [苹果16, 苹果 16]
+    native_app: Apple 相机
+    modes: [auto, portrait, night]
+    lenses:
+      - {lens_id: main, name: '融合式主摄（1×）', aperture: 1.6, aperture_control: fixed, equivalent_focal_length_mm: 26, modes: [auto, portrait, night]}
+      - {lens_id: ultrawide, name: '超广角（0.5×）', aperture: 2.2, aperture_control: fixed, equivalent_focal_length_mm: 13}
+    source_urls: [https://support.apple.com/zh-cn/121029]
+    checked_at: '2026-10-14'
+    region_scope: Apple中国规格；当前iOS界面需确认
+    notes: [2×取景由融合式主摄实现，不作为第三个独立物理摄像头。]
+  - profile_id: apple_iphone_16_pro
+    brand: Apple
+    model: iPhone 16 Pro
+    display_name: Apple iPhone 16 Pro
+    aliases: [苹果16Pro, 苹果16 Pro, iPhone16Pro]
+    native_app: Apple 相机
+    modes: [auto, portrait, night]
+    lenses:
+      - {lens_id: main, name: '融合式主摄（1×）', aperture: 1.78, aperture_control: fixed, equivalent_focal_length_mm: 24, modes: [auto, portrait, night]}
+      - {lens_id: ultrawide, name: '超广角（0.5×）', aperture: 2.2, aperture_control: fixed, equivalent_focal_length_mm: 13}
+      - {lens_id: telephoto_5x, name: '5×长焦', aperture: 2.8, aperture_control: fixed, equivalent_focal_length_mm: 120}
+    source_urls: [https://support.apple.com/zh-cn/121031]
+    checked_at: '2026-10-14'
+    region_scope: Apple中国规格；当前iOS界面需确认
+    notes: [不套用15 Pro的3×长焦；Pro机型名称不代表原生相机支持直接手调ISO与快门。]
+  - profile_id: xiaomi_13
+    brand: Xiaomi
+    model: Xiaomi 13
+    display_name: 小米 13（全球版资料）
+    aliases: [小米13, 小米 13]
+    native_app: 小米相机
+    modes: [auto, night, pro]
+    lenses:
+      - {lens_id: main, name: 主摄, aperture: 1.8, aperture_control: fixed, equivalent_focal_length_mm: 23, modes: [auto, night, pro]}
+      - {lens_id: ultrawide, name: 超广角, aperture: 2.2, aperture_control: fixed, equivalent_focal_length_mm: 15}
+      - {lens_id: telephoto, name: 长焦, aperture: 2.0, aperture_control: fixed, equivalent_focal_length_mm: 75}
+    source_urls: [https://www.mi.com/global/product/xiaomi-13/specs/]
+    checked_at: '2026-10-14'
+    region_scope: 全球版规格；中国版及当前系统界面需确认
+    notes: [专业模式已列入官方规格，但具体控制项尚未录入，本版暂不输出手动曝光数值。]
+  - profile_id: xiaomi_14_ultra
+    brand: Xiaomi
+    model: Xiaomi 14 Ultra
+    display_name: 小米 14 Ultra（全球版资料）
+    aliases: [小米14 Ultra, 小米14Ultra, 小米 14 Ultra]
+    native_app: 小米相机
+    modes: [auto, portrait, night, pro]
+    lenses:
+      - {lens_id: main, name: 主摄, aperture: 1.63, aperture_max: 4.0, aperture_control: variable, equivalent_focal_length_mm: 23, modes: [auto, portrait, night, pro]}
+      - {lens_id: ultrawide, name: 超广角, aperture: 1.8, aperture_control: fixed, equivalent_focal_length_mm: 12}
+      - {lens_id: telephoto_75mm, name: '75mm浮动长焦', aperture: 1.8, aperture_control: fixed, equivalent_focal_length_mm: 75}
+      - {lens_id: telephoto_120mm, name: '120mm潜望长焦', aperture: 2.5, aperture_control: fixed, equivalent_focal_length_mm: 120}
+    source_urls: [https://www.mi.com/global/product/xiaomi-14-ultra/specs/]
+    checked_at: '2026-10-14'
+    region_scope: 全球版规格；中国版及当前系统界面需确认
+    notes: [只有主摄登记为可变物理光圈，不能把此能力套给其他镜头或小米14；专业控件逐项待核验。]
+  - profile_id: vivo_x100_pro
+    brand: vivo
+    model: X100 Pro
+    display_name: vivo X100 Pro
+    aliases: [vivoX100Pro, 维沃X100Pro]
+    native_app: vivo 相机
+    modes: [auto, portrait, night, pro]
+    lenses:
+      - {lens_id: main, name: 主摄, aperture: 1.75, aperture_control: fixed, modes: [auto, portrait, night, pro]}
+      - {lens_id: ultrawide, name: 超广角, aperture: 2.0, aperture_control: fixed}
+      - {lens_id: telephoto, name: '蔡司APO长焦（4.3×）', aperture: 2.5, aperture_control: fixed}
+    source_urls: [https://www.vivo.com.cn/vivo/param/x100pro]
+    checked_at: '2026-10-14'
+    region_scope: 中国官网X100 Pro参数，OriginOS版本需确认
+    notes: [当前来源明确光圈和4.3×光学变焦；本次未核验等效焦距和专业控件，不据变焦倍率推算硬件焦距。]
+  - profile_id: oppo_find_x7_ultra
+    brand: OPPO
+    model: Find X7 Ultra
+    display_name: OPPO Find X7 Ultra
+    aliases: [OPPO FindX7Ultra, OPPO X7 Ultra, FindX7Ultra]
+    native_app: OPPO 相机
+    modes: [auto, portrait, night]
+    lenses:
+      - {lens_id: main, name: 主摄, aperture: 1.8, aperture_control: fixed, equivalent_focal_length_mm: 23, modes: [auto, portrait, night]}
+      - {lens_id: ultrawide, name: 超广角, aperture: 2.0, aperture_control: fixed, equivalent_focal_length_mm: 14}
+      - {lens_id: telephoto_65mm, name: '65mm潜望长焦', aperture: 2.6, aperture_control: fixed, equivalent_focal_length_mm: 65}
+      - {lens_id: telephoto_135mm, name: '135mm潜望长焦', aperture: 4.3, aperture_control: fixed, equivalent_focal_length_mm: 135}
+    source_urls: [https://www.oppo.com/cn/smartphones/series-find-x/find-x7-ultra/specs/]
+    checked_at: '2026-10-14'
+    region_scope: 中国官网PHY110型号；当前ColorOS需确认
+    notes: [大师模式不直接等同本项目通用Pro模式，本次不推断其全部手动控件。]
+  - profile_id: huawei_pura70_ultra
+    brand: Huawei
+    model: Pura 70 Ultra
+    display_name: 华为 Pura 70 Ultra（葡萄牙版资料）
+    aliases: [华为Pura70Ultra, Huawei Pura70 Ultra, Pura70Ultra]
+    native_app: 华为相机
+    modes: [auto]
+    lenses:
+      - {lens_id: main, name: 伸缩式主摄, aperture: 1.6, aperture_max: 4.0, aperture_control: variable, equivalent_focal_length_mm: 24.5}
+      - {lens_id: ultrawide, name: 超广角, aperture: 2.2, aperture_control: fixed, equivalent_focal_length_mm: 13}
+      - {lens_id: telephoto, name: 长焦微距, aperture: 2.1, aperture_control: fixed, equivalent_focal_length_mm: 90}
+    source_urls: [https://consumer.huawei.com/pt/phones/pura70-ultra/specs/]
+    checked_at: '2026-10-14'
+    region_scope: 葡萄牙官方规格，EMUI/中国HarmonyOS菜单不能互相保证
+    notes: [本次只核验物理镜头规格，其他模式需单独确认；没有录入不代表本机不支持。]
+  - profile_id: honor_magic6_pro
+    brand: HONOR
+    model: Magic6 Pro
+    display_name: 荣耀 Magic6 Pro（英国版资料）
+    aliases: [荣耀Magic6Pro, HONOR Magic 6 Pro, 荣耀 Magic6 Pro]
+    native_app: 荣耀相机
+    modes: [auto, portrait, night, pro]
+    lenses:
+      - {lens_id: main, name: 主摄, aperture: 1.4, aperture_max: 2.0, aperture_control: variable, modes: [auto, portrait, night, pro]}
+      - {lens_id: ultrawide, name: 超广角, aperture: 2.0, aperture_control: fixed}
+      - {lens_id: telephoto, name: '潜望长焦（2.5×）', aperture: 2.6, aperture_control: fixed}
+    source_urls: [https://www.honor.com/uk/phones/honor-magic6-pro/spec/]
+    checked_at: '2026-10-14'
+    region_scope: 英国官方规格，当前地区与MagicOS界面需确认
+    notes: [只登记官方主摄f/1.4至f/2.0范围，不声称连续无级可调；专业控件及曝光边界待核验。]

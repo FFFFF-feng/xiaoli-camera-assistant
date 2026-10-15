@@ -1,0 +1,45 @@
+{
+  "batch": "opensource-equipment-20261014",
+  "checked_on": "2026-10-14",
+  "format_validation": {
+    "entrypoint": "python -m camera_assistant.knowledge.cli import data/knowledge_drafts/opensource-equipment-20261014 --dry-run",
+    "total_files": 7546,
+    "validated_count": 7546,
+    "errors": []
+  },
+  "tests": {
+    "command": "python -m pytest tests/test_open_equipment_documents.py tests/test_knowledge_importer.py tests/test_knowledge_store.py tests/test_knowledge_uploads.py tests/test_knowledge_cli.py -q -p no:cacheprovider",
+    "passed": 154,
+    "skipped": 1,
+    "failed": 0
+  },
+  "isolated_database": {
+    "full_batch_import_passed": true,
+    "repeat_import_no_new_records_or_audit_entries": true,
+    "drafts_excluded_from_retrieval": true
+  },
+  "ui_upload_bridge": {
+    "preview_files": 20,
+    "preview_passed": true,
+    "commit_as_drafts_passed": true,
+    "browser_clickthrough_performed": false
+  },
+  "local_database": {
+    "path": "data/knowledge.db",
+    "records_before": 101,
+    "records_after": 7647,
+    "new_records": 7546,
+    "new_records_all_draft_and_retrieval_disallowed": true,
+    "old_rows_preserved": true,
+    "sqlite_integrity": "ok",
+    "backup": "data/backups/before-opensource-equipment-20261014-20261014T152628096522Z.db",
+    "import_report": "knowledge_sources/opensource-equipment-20261014/local-import-20261014T152633048378Z.json"
+  },
+  "accuracy_scope": {
+    "manufacturer_verification_complete": false,
+    "open_sensor_sources_independent": false,
+    "sensor_width_conflicts_remaining": 1,
+    "phone_records_in_this_batch": 0,
+    "runtime_device_dropdown_expanded_by_this_import": false
+  }
+}

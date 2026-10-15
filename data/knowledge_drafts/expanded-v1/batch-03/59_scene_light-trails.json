@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-scene-light-trails",
+  "library_id": "scene",
+  "title": "车流光轨：慢曝光是表达手段",
+  "kind": "guideline",
+  "content": "核心规则：较长曝光可记录移动光源的轨迹。\n建议动作：在合法安全位置稳定相机，确认需要的轨迹范围。；试拍后按轨迹长度和重要高光调整时长。\n适用前提：光源实际移动；设备支持足够长曝光；稳定支撑。\n限制与例外：不默认固定秒数；勿在车道内拍摄；灯条亮不等于整幅应更亮。",
+  "payload": {
+    "core_claim": "较长曝光可记录移动光源的轨迹。",
+    "goal": "车流光轨：慢曝光是表达手段",
+    "requires": [
+      "光源实际移动；设备支持足够长曝光；稳定支撑。"
+    ],
+    "actions": [
+      "在合法安全位置稳定相机，确认需要的轨迹范围。",
+      "试拍后按轨迹长度和重要高光调整时长。"
+    ],
+    "limitations": [
+      "不默认固定秒数；勿在车道内拍摄；灯条亮不等于整幅应更亮。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-night",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/taking-pictures-at-dusk-and-at-night",
+          "location": "Tripod / Long exposure / Light trails",
+          "supports": "长曝光拍摄光轨。"
+        },
+        {
+          "source_id": "sony-shutter",
+          "url": "https://www.sony.com/electronics/support/articles/00267929",
+          "location": "Shutter Speed / S-Mode",
+          "supports": "较长时长可记录流动。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "scene",
+    "light-trails",
+    "车流光轨",
+    "慢曝光是表达手段",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "tripod": true
+  },
+  "source": {
+    "name": "Nikon｜黄昏与夜晚摄影",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/taking-pictures-at-dusk-and-at-night",
+    "location": "Tripod / Long exposure / Light trails",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

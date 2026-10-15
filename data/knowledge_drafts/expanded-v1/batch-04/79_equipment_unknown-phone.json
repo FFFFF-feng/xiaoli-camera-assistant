@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-equipment-unknown-phone",
+  "library_id": "equipment",
+  "title": "未收录手机：补充型号，禁止近似能力继承",
+  "kind": "guideline",
+  "content": "核心规则：不同机型的相机功能不能仅凭品牌或名称相似而继承。\n建议动作：请用户提供准确型号、系统版本、相机应用、当前镜头与模式。；未确认前提供通用取景提示，不生成手动控制范围。\n适用前提：目录未收录或型号不清楚。\n限制与例外：这是本项目保守策略，非厂商通用功能事实；未收录不代表设备不支持。",
+  "payload": {
+    "core_claim": "不同机型的相机功能不能仅凭品牌或名称相似而继承。",
+    "goal": "未收录手机：补充型号，禁止近似能力继承",
+    "requires": [
+      "目录未收录或型号不清楚。"
+    ],
+    "actions": [
+      "请用户提供准确型号、系统版本、相机应用、当前镜头与模式。",
+      "未确认前提供通用取景提示，不生成手动控制范围。"
+    ],
+    "limitations": [
+      "这是本项目保守策略，非厂商通用功能事实；未收录不代表设备不支持。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "manufacturer_facts": {
+      "manual_capability_confirmed": false
+    },
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "apple-proraw",
+          "url": "https://support.apple.com/zh-cn/119916",
+          "location": "支持机型 / 格式 / 使用模式限制",
+          "supports": "功能明确有Pro机型支持边界。"
+        },
+        {
+          "source_id": "xiaomi-pro",
+          "url": "https://www.mi.com/es/support/article/KA-51452/",
+          "location": "Pro features / Notes",
+          "supports": "部分镜头可能因型号不可用。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "equipment",
+    "unknown-phone",
+    "未收录手机",
+    "补充型号",
+    "禁止近似能力继承",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "generic_phone"
+  },
+  "source": {
+    "name": "Apple｜Apple ProRAW支持范围",
+    "url": "https://support.apple.com/zh-cn/119916",
+    "location": "支持机型 / 格式 / 使用模式限制",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

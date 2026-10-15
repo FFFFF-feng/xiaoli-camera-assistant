@@ -1,0 +1,8 @@
+services:
+  app:
+    build:
+      target: dino
+    mem_limit: 6g
+    cpus: 4
+    environment:
+      CAMERA_AI_DETECTOR_ENABLED: "true"

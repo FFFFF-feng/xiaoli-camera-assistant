@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-framing",
+  "library_id": "composition",
+  "title": "框中框：用现场结构包围主体",
+  "kind": "guideline",
+  "content": "核心规则：门窗或其他结构可形成自然取景框。\n建议动作：选择不遮挡重要主体的前景边界。；调整位置，比较有框与无框画面。\n适用前提：确认现场存在框形结构且可移动机位。\n限制与例外：不能把软件新增边框称为现场框中框。",
+  "payload": {
+    "core_claim": "门窗或其他结构可形成自然取景框。",
+    "goal": "框中框：用现场结构包围主体",
+    "requires": [
+      "确认现场存在框形结构且可移动机位。"
+    ],
+    "actions": [
+      "选择不遮挡重要主体的前景边界。",
+      "调整位置，比较有框与无框画面。"
+    ],
+    "limitations": [
+      "不能把软件新增边框称为现场框中框。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "cross_source_agreement",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-center",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/when-center-composition-can-elevate-a-portrait",
+          "location": "Center composition / Simplify background / Framing",
+          "supports": "自然框架可帮助突出人像。"
+        },
+        {
+          "source_id": "canon-composition",
+          "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+          "location": "Rule of thirds / Lines / Framing / Symmetry / Negative space / Layers / Angles",
+          "supports": "framing用于包围主体。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "composition",
+    "framing",
+    "框中框",
+    "用现场结构包围主体",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon｜中心构图的人像表达",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/when-center-composition-can-elevate-a-portrait",
+    "location": "Center composition / Simplify background / Framing",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-scene-food-stilllife",
+  "library_id": "scene",
+  "title": "食物与静物：角度、背景和光线联合比较",
+  "kind": "guideline",
+  "content": "核心规则：静物可通过角度、取景和光线组织突出想展示的细节。\n建议动作：先选纹理、形状或整体摆盘这一主要目标。；比较两个安全角度和更干净背景，试拍后检查色彩。\n适用前提：主体可稳定摆放；可调整机位；目标可说明。\n限制与例外：这是根据一般原理综合的流程，不是真实实拍案例或食物识别保证。",
+  "payload": {
+    "core_claim": "静物可通过角度、取景和光线组织突出想展示的细节。",
+    "goal": "食物与静物：角度、背景和光线联合比较",
+    "requires": [
+      "主体可稳定摆放；可调整机位；目标可说明。"
+    ],
+    "actions": [
+      "先选纹理、形状或整体摆盘这一主要目标。",
+      "比较两个安全角度和更干净背景，试拍后检查色彩。"
+    ],
+    "limitations": [
+      "这是根据一般原理综合的流程，不是真实实拍案例或食物识别保证。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "canon-composition",
+          "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+          "location": "Rule of thirds / Lines / Framing / Symmetry / Negative space / Layers / Angles",
+          "supports": "角度、紧取景和层次是组织方法。"
+        },
+        {
+          "source_id": "sony-light",
+          "url": "https://www.sony.com/electronics/support/articles/00267922",
+          "location": "Lighting and Its Effects",
+          "supports": "侧向与正面光呈现不同阴影。"
+        },
+        {
+          "source_id": "sony-wb",
+          "url": "https://www.sony.com/electronics/support/articles/00267928",
+          "location": "White Balance",
+          "supports": "白平衡影响色彩。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "scene",
+    "food-stilllife",
+    "食物与静物",
+    "角度",
+    "背景和光线联合比较",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Canon｜Mastering Photo Composition",
+    "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+    "location": "Rule of thirds / Lines / Framing / Symmetry / Negative space / Layers / Angles",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

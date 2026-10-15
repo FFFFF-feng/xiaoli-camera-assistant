@@ -77,9 +77,11 @@ profiles:
     notes: [通用配置不假设机身具备防抖。]
 
   - profile_id: canon_eos_r50
+    mount: canon_rf
     brand: Canon
     model: EOS R50
     display_name: Canon EOS R50
+    aliases: [Canon R50, 佳能R50, 佳能 EOS R50, R50]
     sensor_format: APS-C
     crop_factor: 1.6
     native_iso_min: 100
@@ -99,9 +101,11 @@ profiles:
       - 电子前帘最高 1/4000 秒，电子快门最高 1/8000 秒。
 
   - profile_id: nikon_z50
+    mount: nikon_z
     brand: Nikon
     model: Z50
     display_name: Nikon Z50
+    aliases: [尼康Z50, 尼康 Z 50, Z50]
     sensor_format: APS-C
     crop_factor: 1.5
     native_iso_min: 100
@@ -121,9 +125,11 @@ profiles:
       - 标准感光度范围为 ISO 100–51200。
 
   - profile_id: sony_a6700
+    mount: sony_e
     brand: Sony
     model: α6700
     display_name: Sony α6700
+    aliases: [Sony a6700, Sony Alpha 6700, 索尼a6700, a6700]
     sensor_format: APS-C
     crop_factor: 1.5
     native_iso_min: 100
@@ -143,9 +149,11 @@ profiles:
       - 自动 ISO 的可选上限以机内实际设置为准。
 
   - profile_id: fujifilm_x_s20
+    mount: fujifilm_x
     brand: Fujifilm
     model: X-S20
     display_name: Fujifilm X-S20
+    aliases: [富士X-S20, 富士 X S20, X-S20]
     sensor_format: APS-C
     crop_factor: 1.5
     native_iso_min: 160
@@ -163,3 +171,125 @@ profiles:
     notes:
       - 标准感光度为 ISO 160–12800。
       - 具备五轴机身防抖；官方标称效果取决于镜头和测试条件。
+
+  # 以下新增档案只确认画幅、原生卡口和等效换算系数，不复制邻近机型曝光上限。
+  - profile_id: canon_eos_200d_ii
+    brand: Canon
+    model: EOS 200D II
+    display_name: Canon EOS 200D II
+    aliases: [佳能200D二代, 佳能200D II, Canon 200D II, 200D II, 200D2, 佳能200D2]
+    sensor_format: APS-C
+    crop_factor: 1.6
+    mount: canon_ef
+    capability_level: basic
+    checked_at: '2026-10-14'
+    source_url: https://www.canon.com.cn/product/200d2/spec.html
+    notes: [已核对画幅与EF/EF-S原生镜头兼容；未完成全部机身参数核验和真机测试。]
+  - profile_id: canon_eos_r10
+    brand: Canon
+    model: EOS R10
+    display_name: Canon EOS R10
+    aliases: [佳能R10, Canon R10, R10]
+    sensor_format: APS-C
+    crop_factor: 1.6
+    mount: canon_rf
+    capability_level: basic
+    checked_at: '2026-10-14'
+    source_url: https://www.canon.com.cn/product/r10/spec.html
+    notes: [只列原生镜头；EF/EF-S需要转接环，本版不默认转接。]
+  - profile_id: canon_eos_r7
+    brand: Canon
+    model: EOS R7
+    display_name: Canon EOS R7
+    aliases: [佳能R7, Canon R7, R7]
+    sensor_format: APS-C
+    crop_factor: 1.6
+    mount: canon_rf
+    capability_level: basic
+    checked_at: '2026-10-14'
+    source_url: https://www.canon.com.cn/info/products/2552.html
+    notes: [本次只核验画幅及RF原生卡口，不推断ISO及防抖上限。]
+  - profile_id: canon_eos_r8
+    brand: Canon
+    model: EOS R8
+    display_name: Canon EOS R8
+    aliases: [佳能R8, Canon R8, R8]
+    sensor_format: 全画幅
+    crop_factor: 1.0
+    mount: canon_rf
+    capability_level: basic
+    checked_at: '2026-10-14'
+    source_url: https://www.canon.com.cn/product/r8/spec.html
+    notes: [本版只列原生全画幅覆盖镜头；RF-S裁切和转接需额外确认，暂不列入。]
+  - profile_id: nikon_z30
+    brand: Nikon
+    model: Z30
+    display_name: Nikon Z30
+    aliases: [尼康Z30, Nikon Z 30, Z30]
+    sensor_format: APS-C
+    crop_factor: 1.5
+    mount: nikon_z
+    capability_level: basic
+    checked_at: '2026-10-14'
+    source_url: https://onlinemanual.nikonimglib.com/z30/en/15-08.html
+    notes: [DX画幅；本次核对卡口与画幅，不继承Z50的曝光边界。]
+  - profile_id: nikon_z5
+    brand: Nikon
+    model: Z5
+    display_name: Nikon Z5
+    aliases: [尼康Z5, Nikon Z 5, Z5]
+    sensor_format: 全画幅
+    crop_factor: 1.0
+    mount: nikon_z
+    capability_level: basic
+    checked_at: '2026-10-14'
+    source_url: https://onlinemanual.nikonimglib.com/z5/en/15_technical_notes_08.html
+    notes: [FX画幅；暂不提供DX裁切与FTZ转接方案。]
+  - profile_id: sony_a6400
+    brand: Sony
+    model: α6400
+    display_name: Sony α6400
+    aliases: [Sony a6400, 索尼a6400, a6400, ILCE-6400]
+    sensor_format: APS-C
+    crop_factor: 1.5
+    mount: sony_e
+    capability_level: basic
+    checked_at: '2026-10-14'
+    source_url: https://helpguide.sony.net/ilc/1810/v1/en/print.pdf
+    notes: [E卡口APS-C；镜头须由用户确认实际安装，不默认套头。]
+  - profile_id: sony_a7_iv
+    brand: Sony
+    model: α7 IV
+    display_name: Sony α7 IV
+    aliases: [Sony a7 IV, Sony a7m4, 索尼a7m4, a7m4, a7iv, 索尼a7iv, ILCE-7M4]
+    sensor_format: 全画幅
+    crop_factor: 1.0
+    mount: sony_e
+    capability_level: basic
+    checked_at: '2026-10-14'
+    source_url: https://www.sony.com/electronics/support/e-mount-body-ilce-7m4-series/ilce-7m4/specifications
+    notes: [E卡口全画幅；本版不默认APS-C裁切模式，故不列APS-C成像圈镜头。]
+  - profile_id: fujifilm_x_t30_ii
+    brand: Fujifilm
+    model: X-T30 II
+    display_name: Fujifilm X-T30 II
+    aliases: [富士X-T30 II, 富士XT30二代, X-T30 II]
+    sensor_format: APS-C
+    crop_factor: 1.5
+    mount: fujifilm_x
+    capability_level: basic
+    checked_at: '2026-10-14'
+    source_url: https://app.fujifilm-dsc.com/en/manual/x-t30-2/technical_notes/spec/
+    notes: [已核对X卡口与APS-C画幅，其他机身边界尚待补充。]
+  - profile_id: panasonic_g100
+    brand: Panasonic
+    model: LUMIX G100
+    display_name: Panasonic LUMIX G100
+    aliases: [松下G100, Panasonic DC-G100, DC-G100, G100]
+    sensor_format: M4/3
+    crop_factor: 2.0
+    mount: micro_four_thirds
+    capability_level: basic
+    checked_at: '2026-10-14'
+    source_url: https://help.na.panasonic.com/wp-content/uploads/2023/10/DC-G100_DVQP2173ZB_ENG.pdf
+    notes: [静态照片常规视角按2倍换算；视频裁切和电子防抖引入的额外裁切不在本次适配范围。]

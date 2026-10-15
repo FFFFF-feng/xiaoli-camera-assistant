@@ -1,0 +1,319 @@
+{
+  "knowledge_id": "open-eq-v1-zmount-laowa-ranger-s35-lite-17-50mm-t2-9-1bb230554e987ed4",
+  "library_id": "equipment",
+  "title": "[待核验设备档案] LAOWA Ranger S35 LITE 17-50mm T2.9 镜头",
+  "kind": "guideline",
+  "content": "设备：LAOWA Ranger S35 LITE 17-50mm T2.9。产品类型：lens；来源记录卡口或方向：Nikon Z。\n适用规则：必须匹配完整型号、卡口、画幅与使用条件；保留原始结构中的焦距、光圈条件及未知值，不将增距镜或针孔产品当作普通摄影镜头。\n转接器电子触点、自动对焦等上游声明不是任意机身镜头组合的实测保证，还需核对两侧设备及固件。官方页面链接仅供复核，未据链接自动标为厂家已验证。",
+  "payload": {
+    "device_type": "camera",
+    "entity_type": "lens",
+    "model": "LAOWA Ranger S35 LITE 17-50mm T2.9",
+    "provenance": {
+      "repository": "https://github.com/KatsuraIwamoto/z-mount-product-database",
+      "commit": "4a792e661ad85b1527a5447503c0b0ceaf5c4923",
+      "path": "dist/z-mount-lenses.full.json",
+      "record_locator": "products[id=laowa-ranger-s35-17-50mm-t2-9-lite-cine-zoom]",
+      "file_sha256": "25c622ef6a4fceba4e6cf73c30cacdcfd6681bbb3046acc9704295fe544cbdc9",
+      "license": "CC-BY-4.0",
+      "attribution": "Z Mount Product Database, Katsura Iwamoto",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    },
+    "verification": {
+      "level": "upstream_dataset_only",
+      "officially_verified": false
+    },
+    "usage": {
+      "role": "equipment_reference_draft",
+      "controls_hardware_limits": false,
+      "manual_review_required": true,
+      "limitations": [
+        "不能直接覆盖运行时设备档案或生成曝光参数。",
+        "空值是未知，不等于不支持；型号、地区版本和固件须核对。"
+      ]
+    },
+    "brand": "LAOWA",
+    "source_product_id": "laowa-ranger-s35-17-50mm-t2-9-lite-cine-zoom",
+    "source_product": {
+      "id": "laowa-ranger-s35-17-50mm-t2-9-lite-cine-zoom",
+      "productType": "lens",
+      "identity": {
+        "manufacturerId": "venus-optics",
+        "brandId": "laowa",
+        "productName": "LAOWA Ranger S35 LITE 17-50mm T2.9",
+        "modelNumberOptions": null,
+        "alternateNames": null,
+        "variants": null
+      },
+      "lifecycle": {
+        "announcementDate": "2024-08-30",
+        "officialDesignations": []
+      },
+      "officialProductPages": [
+        {
+          "url": "https://laowacine.com/product/laowa-ranger-s35-compact-cine-zoom-series/",
+          "pageFamilies": [
+            "global",
+            "usa"
+          ],
+          "region": null,
+          "language": "en",
+          "publisher": {
+            "type": "manufacturer-or-brand",
+            "name": "LAOWA Cinema Lenses"
+          }
+        },
+        {
+          "url": "https://www.laowa.jp/cat/ranger-s35.html",
+          "pageFamilies": [
+            "japan"
+          ],
+          "region": "JP",
+          "language": "ja",
+          "publisher": {
+            "type": "authorized-distributor",
+            "name": "LAOWA Japan"
+          }
+        }
+      ],
+      "mount": {
+        "systemId": "nikon-z",
+        "replaceability": "user-interchangeable",
+        "mountOwnerRelationship": null,
+        "electronicContacts": {
+          "present": false
+        },
+        "adapter": {
+          "relationship": "optional",
+          "dedicatedToProduct": true,
+          "name": "17-50mm & 50-130mm - Interchangeable Bayonet - Nikon Z",
+          "modelNumberOptions": null,
+          "nativeMountSystemId": "arri-pl"
+        }
+      },
+      "physical": {
+        "dimensionMeasurements": [
+          {
+            "maximumDiameterMm": 80,
+            "lengthMm": 117,
+            "conditions": {}
+          }
+        ],
+        "weightMeasurements": [
+          {
+            "grams": 775,
+            "approximate": true,
+            "conditions": {
+              "attachedComponents": []
+            }
+          }
+        ],
+        "officialEnvironmentalProtectionClaims": null,
+        "filterInterfaces": [
+          {
+            "type": "front-thread",
+            "diameterMm": 77,
+            "host": {
+              "kind": "product"
+            }
+          }
+        ],
+        "tripodSupport": {
+          "present": false
+        },
+        "externalLengthDuringFocus": null,
+        "isRetractableForStorage": false,
+        "externalLengthDuringZoom": null,
+        "frontAccessoryInterface": {
+          "outsideDiameterMm": 80
+        }
+      },
+      "controls": [
+        {
+          "type": "focus-ring",
+          "quantity": 1,
+          "rotationDegrees": 270,
+          "geared": true
+        },
+        {
+          "type": "zoom-ring",
+          "quantity": 1,
+          "rotationDegrees": 100,
+          "geared": true
+        },
+        {
+          "type": "aperture-ring",
+          "quantity": 1,
+          "rotationDegrees": 42,
+          "geared": true
+        },
+        {
+          "type": "focus-distance-scale",
+          "quantity": 1
+        }
+      ],
+      "accessories": null,
+      "lens": {
+        "focalLength": {
+          "kind": "zoom",
+          "rangeMm": {
+            "minimum": 17,
+            "maximum": 50
+          }
+        },
+        "aperture": {
+          "fNumber": null,
+          "tNumber": {
+            "maximumAperture": [
+              {
+                "value": 2.9,
+                "conditions": {}
+              }
+            ],
+            "minimumAperture": [
+              {
+                "value": 22,
+                "conditions": {}
+              }
+            ],
+            "effective": null
+          },
+          "diaphragm": {
+            "present": true,
+            "bladeCount": 11,
+            "bladeShape": null
+          },
+          "controlMechanism": "mechanical"
+        },
+        "anglesOfView": [
+          {
+            "format": "super-35",
+            "orientation": null,
+            "degrees": 80.6,
+            "conditions": {
+              "focalLength": {
+                "kind": "point",
+                "millimeters": 17
+              }
+            }
+          },
+          {
+            "format": "super-35",
+            "orientation": null,
+            "degrees": 32.2,
+            "conditions": {
+              "focalLength": {
+                "kind": "point",
+                "millimeters": 50
+              }
+            }
+          }
+        ],
+        "coverage": {
+          "format": "super-35"
+        },
+        "imageCircleDiameters": [
+          {
+            "diameterMm": 31.5,
+            "conditions": {}
+          }
+        ],
+        "opticalConstruction": {
+          "groups": 18,
+          "elements": 22
+        },
+        "specialElements": null,
+        "coatings": null,
+        "focus": {
+          "autofocus": {
+            "present": false
+          },
+          "manualFocus": {
+            "present": true,
+            "mechanism": "mechanical-coupled"
+          },
+          "opticalFocusingSystems": null,
+          "minimumFocusDistances": [
+            {
+              "distanceM": 0.35,
+              "conditions": {}
+            }
+          ],
+          "reproductionMagnifications": [
+            {
+              "kind": "maximum",
+              "value": 0.22,
+              "conditions": {}
+            }
+          ],
+          "officialFocusBehaviorClaims": [
+            {
+              "type": "focus-breathing-suppressed",
+              "conditions": {}
+            },
+            {
+              "type": "parfocal",
+              "conditions": {}
+            }
+          ]
+        },
+        "stabilization": {
+          "present": false
+        },
+        "specialized": {
+          "cinema": {}
+        },
+        "zoom": {
+          "drive": "manual",
+          "opticalZoomingSystems": null
+        }
+      }
+    },
+    "data_version": "2026.10.09",
+    "source_dataset_content_hash": "sha256:484f0751db150132ce33d3aae7c31f75e5b7a2386c21211432c1051a3f8a50fd",
+    "mount_system_dictionary": {
+      "arri-pl": {
+        "name": "ARRI PL"
+      },
+      "leica-m": {
+        "name": "Leica M"
+      },
+      "leica-m39": {
+        "name": "Leica M39/LTM"
+      },
+      "micro-four-thirds": {
+        "name": "Micro Four Thirds"
+      },
+      "nikon-z": {
+        "name": "Nikon Z"
+      },
+      "t-mount": {
+        "name": "T/T2 mount"
+      }
+    },
+    "release_blockers": [
+      "核对厂家规格与运行时设备型号别名。"
+    ]
+  },
+  "tags": [
+    "开源设备目录",
+    "待核验",
+    "镜头",
+    "zmount"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "lens_model": "LAOWA Ranger S35 LITE 17-50mm T2.9"
+  },
+  "source": {
+    "name": "Z Mount Product Database, Katsura Iwamoto",
+    "url": "https://github.com/KatsuraIwamoto/z-mount-product-database/blob/4a792e661ad85b1527a5447503c0b0ceaf5c4923/dist/z-mount-lenses.full.json",
+    "location": "products[id=laowa-ranger-s35-17-50mm-t2-9-lite-cine-zoom]",
+    "license": "CC-BY-4.0",
+    "retrieval_allowed": false
+  },
+  "author": "小栗项目设备资料转换",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-shutter-motion",
+  "library_id": "technique",
+  "title": "快门：冻结与拖影是不同目标",
+  "kind": "guideline",
+  "content": "核心规则：曝光时间越短通常越有利于减少运动拖影，较长则可表现流动。\n建议动作：先确认要清晰冻结还是保留动感。；拍一张后放大运动主体，按结果逐步调整。\n适用前提：主体有运动；可控制快门或选择适用模式。\n限制与例外：没有适用所有运动速度的单一快门值。",
+  "payload": {
+    "core_claim": "曝光时间越短通常越有利于减少运动拖影，较长则可表现流动。",
+    "goal": "快门：冻结与拖影是不同目标",
+    "requires": [
+      "主体有运动；可控制快门或选择适用模式。"
+    ],
+    "actions": [
+      "先确认要清晰冻结还是保留动感。",
+      "拍一张后放大运动主体，按结果逐步调整。"
+    ],
+    "limitations": [
+      "没有适用所有运动速度的单一快门值。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "cross_source_agreement",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-shutter",
+          "url": "https://www.sony.com/electronics/support/articles/00267929",
+          "location": "Shutter Speed / S-Mode",
+          "supports": "快门时长影响冻结与流动效果。"
+        },
+        {
+          "source_id": "canon-shutter",
+          "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/shutter/index.html",
+          "location": "Shutter Speed",
+          "supports": "快门控制运动呈现。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "shutter-motion",
+    "快门",
+    "冻结与拖影是不同目标",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Sony｜快门与S模式",
+    "url": "https://www.sony.com/electronics/support/articles/00267929",
+    "location": "Shutter Speed / S-Mode",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,121 @@
+{
+  "knowledge_id": "open-eq-v1-cameradatabase-nokia-808-pureview-02a678dc9c82b386",
+  "library_id": "equipment",
+  "title": "[待核验设备档案] Nokia 808 PureView 相机",
+  "kind": "guideline",
+  "content": "设备：Nokia 808 PureView。开源目录记载的传感器尺寸：10.82 x 7.52 mm；传感器类型：CMOS；上市年份：2012。\n适用规则：仅与完整品牌及型号相同的设备比对；保留原始规格，不推断原生卡口或套机镜头。\nISO 文本可能包含扩展感光度；未分机械与电子的快门字段不能作为机械快门上限。光圈、等效光圈、35mm 等效焦距不得混用；空白字段保持未知。\n传感器宽度跨库检查：consistent；并非独立厂家证据。",
+  "payload": {
+    "device_type": "camera",
+    "entity_type": "camera",
+    "model": "Nokia 808 PureView",
+    "provenance": {
+      "repository": "https://github.com/leavestylecode/CameraDatabase",
+      "commit": "374a630bac7847f851b3746e82aa528262ef0b5c",
+      "path": "data/camera_data.json",
+      "record_locator": "array[2007]",
+      "file_sha256": "fc4dc948644ad9b24f4f20ed49a84aaecabf8be50a28148db4e9f80fe26b815d",
+      "license": "MIT",
+      "attribution": "CameraDatabase, leavestylecode and contributors",
+      "license_url": "",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    },
+    "verification": {
+      "level": "upstream_dataset_only",
+      "officially_verified": false
+    },
+    "usage": {
+      "role": "equipment_reference_draft",
+      "controls_hardware_limits": false,
+      "manual_review_required": true,
+      "limitations": [
+        "不能直接覆盖运行时设备档案或生成曝光参数。",
+        "空值是未知，不等于不支持；型号、地区版本和固件须核对。"
+      ]
+    },
+    "brand": "Nokia",
+    "source_specs": {
+      "Brand": "Nokia",
+      "Model": "808 PureView",
+      "Year": "2012",
+      "Total megapixels": null,
+      "Exposure Compensation": null,
+      "Normal focus range": null,
+      "Battery": "Li-Ion 1400 mAh (BV-4D)",
+      "Sensor resolution": "7728 x 5367",
+      "Crop factor": "3.28",
+      "Sensor type": "CMOS",
+      "Dimensions": "123.9 x 60.2 x 13.9 mm",
+      "Max aperture": "f2.4",
+      "Min. shutter speed": null,
+      "White balance presets": "4.0",
+      "Macro focus range": "15 cm",
+      "Optical zoom": null,
+      "USB": "USB 2.0 (480 Mbit/sec)",
+      "Weight": "169 g",
+      "Max. aperture (35mm equiv.)": "f7.9",
+      "Focal length (35mm equiv.)": "28 mm",
+      "Also known as": null,
+      "Aperture priority": null,
+      "Max. image resolution": "7152 x 5368",
+      "Max. shutter speed": null,
+      "Storage types": "16 GB on-board memory",
+      "Effective megapixels": null,
+      "Megapixels": "41.48",
+      "Max. video resolution": null,
+      "Screen size": "4\"",
+      "Metering": null,
+      "Digital zoom": "Yes",
+      "Shutter priority": null,
+      "Sensor size": "10.82 x 7.52 mm",
+      "Viewfinder": null,
+      "Screen resolution": "640 x 360 dots",
+      "ISO": "50 - 1600"
+    },
+    "consistency_checks": [
+      {
+        "field": "sensor_width_mm",
+        "status": "consistent",
+        "independent_evidence": false,
+        "limitation": "OpenSfM 初始数据来自 Digicamdb；同源风险，不代表独立或厂家核验。",
+        "cameradatabase_width_mm": 10.82,
+        "opensfm_model": "Nokia 808 PureView",
+        "opensfm_width_mm": 10.82,
+        "absolute_difference_mm": 0.0,
+        "tolerance_mm": 0.1082,
+        "matching": "NFKC + casefold + whitespace only; full brand/model exact match"
+      }
+    ],
+    "cross_reference": {
+      "repository": "https://github.com/mapillary/OpenSfM",
+      "commit": "b25c07b648b49352797125f2b40f9cef28bbac62",
+      "path": "opensfm/data/sensor_data.json",
+      "record_locator": "Nokia 808 PureView",
+      "file_sha256": "6b0256a2e78430bd016dc7d3a54db5a3f4ec2a5e5cd5032c85a62e1b2ce0b0f5",
+      "license": "BSD-2-Clause",
+      "attribution": "OpenSfM, Mapillary and contributors",
+      "license_url": "",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    }
+  },
+  "tags": [
+    "开源设备目录",
+    "待核验",
+    "相机",
+    "cameradatabase"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "camera_model": "Nokia 808 PureView"
+  },
+  "source": {
+    "name": "CameraDatabase, leavestylecode and contributors",
+    "url": "https://github.com/leavestylecode/CameraDatabase/blob/374a630bac7847f851b3746e82aa528262ef0b5c/data/camera_data.json",
+    "location": "array[2007]",
+    "license": "MIT",
+    "retrieval_allowed": false
+  },
+  "author": "小栗项目设备资料转换",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

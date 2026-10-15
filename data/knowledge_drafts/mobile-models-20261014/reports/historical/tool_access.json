@@ -1,0 +1,32 @@
+{
+  "actual_mcp_services": {
+    "search_service": [
+      "system2_search_query",
+      "open",
+      "find",
+      "click尝试：一次导航失败，未作为证据"
+    ],
+    "cua_repl": [
+      "创建后台临时浏览器页",
+      "goto",
+      "scroll",
+      "getAXState",
+      "getScreenshot"
+    ]
+  },
+  "confirmed_scope": "公开原始页面只读访问；浏览器仅用于动态规格加载，未登录或提交表单",
+  "browser_screenshot_observations": 2,
+  "remote_media_downloaded_or_saved": false,
+  "installed_or_configured": false,
+  "credentials_collected": false,
+  "main_database_written": false,
+  "review_or_publish": false,
+  "github_push": false,
+  "local_tools": [
+    "functions.exec",
+    "exec_command：项目既有.venv Python与PowerShell",
+    "apply_patch",
+    "open_in_codex：请求打开README，返回queued，未确认界面已显示"
+  ],
+  "research_browser_tab_closed": true
+}

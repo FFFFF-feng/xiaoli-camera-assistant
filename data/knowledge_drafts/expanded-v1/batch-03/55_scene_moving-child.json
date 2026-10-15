@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-scene-moving-child",
+  "library_id": "scene",
+  "title": "跑动儿童或宠物：运动优先，而非三脚架优先",
+  "kind": "guideline",
+  "content": "核心规则：拍摄移动主体应联合考虑持续对焦和曝光时间。\n建议动作：确认运动速度大致类别，选择实际支持的连续AF。；短时试拍，放大主体检查失焦与拖影后调整。\n适用前提：主体确在移动；设备具备相关控制。\n限制与例外：流程为综合建议；不能靠单张图确定速度或承诺清晰率。",
+  "payload": {
+    "core_claim": "拍摄移动主体应联合考虑持续对焦和曝光时间。",
+    "goal": "跑动儿童或宠物：运动优先，而非三脚架优先",
+    "requires": [
+      "主体确在移动；设备具备相关控制。"
+    ],
+    "actions": [
+      "确认运动速度大致类别，选择实际支持的连续AF。",
+      "短时试拍，放大主体检查失焦与拖影后调整。"
+    ],
+    "limitations": [
+      "流程为综合建议；不能靠单张图确定速度或承诺清晰率。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-shutter",
+          "url": "https://www.sony.com/electronics/support/articles/00267929",
+          "location": "Shutter Speed / S-Mode",
+          "supports": "运动模糊与曝光时长有关。"
+        },
+        {
+          "source_id": "canon-af",
+          "url": "https://cam.start.canon/en/C005/manual/html/UG-05_AF-Drive_0040.html",
+          "location": "One-Shot AF / Servo AF",
+          "supports": "连续对焦支持移动主体。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "scene",
+    "moving-child",
+    "跑动儿童或宠物",
+    "运动优先",
+    "而非三脚架优先",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "motion": [
+      "slow",
+      "fast"
+    ]
+  },
+  "source": {
+    "name": "Sony｜快门与S模式",
+    "url": "https://www.sony.com/electronics/support/articles/00267929",
+    "location": "Shutter Speed / S-Mode",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-tripod-moving",
+  "library_id": "technique",
+  "title": "三脚架：稳定相机，不冻结移动主体",
+  "kind": "guideline",
+  "content": "核心规则：固定相机不能消除主体在曝光期间的运动。\n建议动作：背景清晰而主体拖影时，先检查主体运动与时长。；按冻结目标比较更短曝光，或接受移动效果。\n适用前提：使用固定支撑；主体可能移动。\n限制与例外：不把三脚架等同于可无限延长曝光而全画面清晰。",
+  "payload": {
+    "core_claim": "固定相机不能消除主体在曝光期间的运动。",
+    "goal": "三脚架：稳定相机，不冻结移动主体",
+    "requires": [
+      "使用固定支撑；主体可能移动。"
+    ],
+    "actions": [
+      "背景清晰而主体拖影时，先检查主体运动与时长。",
+      "按冻结目标比较更短曝光，或接受移动效果。"
+    ],
+    "limitations": [
+      "不把三脚架等同于可无限延长曝光而全画面清晰。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-shutter",
+          "url": "https://www.sony.com/electronics/support/articles/00267929",
+          "location": "Shutter Speed / S-Mode",
+          "supports": "主体运动可形成模糊。"
+        },
+        {
+          "source_id": "nikon-hdr",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/high-dynamic-range-photography",
+          "location": "Bracketing / Tripod / Histogram",
+          "supports": "三脚架稳定多次拍摄。"
+        },
+        {
+          "source_id": "google-nightsight-research",
+          "url": "https://research.google/blog/night-sight-seeing-in-the-dark-on-pixel-phones/",
+          "location": "Motion / Alignment and Merging / Footnote 1",
+          "supports": "稳定措施不能补偿移动物体造成的模糊。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "technique",
+    "tripod-moving",
+    "三脚架",
+    "稳定相机",
+    "不冻结移动主体",
+    "摄影"
+  ],
+  "conditions": {
+    "tripod": true
+  },
+  "source": {
+    "name": "Sony｜快门与S模式",
+    "url": "https://www.sony.com/electronics/support/articles/00267929",
+    "location": "Shutter Speed / S-Mode",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

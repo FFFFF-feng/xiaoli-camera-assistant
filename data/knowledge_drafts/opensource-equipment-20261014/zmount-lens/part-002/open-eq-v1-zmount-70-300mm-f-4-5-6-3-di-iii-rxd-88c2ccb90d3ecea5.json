@@ -1,0 +1,430 @@
+{
+  "knowledge_id": "open-eq-v1-zmount-70-300mm-f-4-5-6-3-di-iii-rxd-88c2ccb90d3ecea5",
+  "library_id": "equipment",
+  "title": "[待核验设备档案] 70-300mm F/4.5-6.3 Di III RXD 镜头",
+  "kind": "guideline",
+  "content": "设备：70-300mm F/4.5-6.3 Di III RXD。产品类型：lens；来源记录卡口或方向：Nikon Z。\n适用规则：必须匹配完整型号、卡口、画幅与使用条件；保留原始结构中的焦距、光圈条件及未知值，不将增距镜或针孔产品当作普通摄影镜头。\n转接器电子触点、自动对焦等上游声明不是任意机身镜头组合的实测保证，还需核对两侧设备及固件。官方页面链接仅供复核，未据链接自动标为厂家已验证。",
+  "payload": {
+    "device_type": "camera",
+    "entity_type": "lens",
+    "model": "70-300mm F/4.5-6.3 Di III RXD",
+    "provenance": {
+      "repository": "https://github.com/KatsuraIwamoto/z-mount-product-database",
+      "commit": "4a792e661ad85b1527a5447503c0b0ceaf5c4923",
+      "path": "dist/z-mount-lenses.full.json",
+      "record_locator": "products[id=tamron-70-to-300mm-f4p5-to-6p3-di-iii-rxd-a047]",
+      "file_sha256": "25c622ef6a4fceba4e6cf73c30cacdcfd6681bbb3046acc9704295fe544cbdc9",
+      "license": "CC-BY-4.0",
+      "attribution": "Z Mount Product Database, Katsura Iwamoto",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    },
+    "verification": {
+      "level": "upstream_dataset_only",
+      "officially_verified": false
+    },
+    "usage": {
+      "role": "equipment_reference_draft",
+      "controls_hardware_limits": false,
+      "manual_review_required": true,
+      "limitations": [
+        "不能直接覆盖运行时设备档案或生成曝光参数。",
+        "空值是未知，不等于不支持；型号、地区版本和固件须核对。"
+      ]
+    },
+    "brand": "TAMRON",
+    "source_product_id": "tamron-70-to-300mm-f4p5-to-6p3-di-iii-rxd-a047",
+    "source_product": {
+      "id": "tamron-70-to-300mm-f4p5-to-6p3-di-iii-rxd-a047",
+      "productType": "lens",
+      "identity": {
+        "manufacturerId": "tamron",
+        "brandId": "tamron",
+        "productName": "70-300mm F/4.5-6.3 Di III RXD",
+        "modelNumberOptions": [
+          "A047"
+        ],
+        "alternateNames": null,
+        "variants": null
+      },
+      "lifecycle": {
+        "announcementDate": "2022-09-06",
+        "officialDesignations": []
+      },
+      "officialProductPages": [
+        {
+          "url": "https://www.tamron.com/jp/consumer/lenses/a047/",
+          "pageFamilies": [
+            "home-country",
+            "japan"
+          ],
+          "region": "JP",
+          "language": "ja",
+          "publisher": {
+            "type": "manufacturer-or-brand",
+            "name": "Tamron"
+          }
+        },
+        {
+          "url": "https://www.tamron.com/global/consumer/lenses/a047/",
+          "pageFamilies": [
+            "global"
+          ],
+          "region": null,
+          "language": "en",
+          "publisher": {
+            "type": "manufacturer-or-brand",
+            "name": "Tamron"
+          }
+        },
+        {
+          "url": "https://tamron-americas.com/product/70-300mm-f-4-5-6-3-di-iii-rxd/",
+          "pageFamilies": [
+            "usa"
+          ],
+          "region": "US",
+          "language": "en",
+          "publisher": {
+            "type": "manufacturer-or-brand",
+            "name": "Tamron"
+          }
+        }
+      ],
+      "mount": {
+        "systemId": "nikon-z",
+        "replaceability": "fixed",
+        "mountOwnerRelationship": "officially-licensed",
+        "electronicContacts": {
+          "present": true,
+          "metadataTransmission": null
+        }
+      },
+      "physical": {
+        "dimensionMeasurements": [
+          {
+            "maximumDiameterMm": 77,
+            "lengthMm": 150.3,
+            "conditions": {}
+          }
+        ],
+        "weightMeasurements": [
+          {
+            "grams": 580,
+            "conditions": {
+              "attachedComponents": []
+            }
+          }
+        ],
+        "officialEnvironmentalProtectionClaims": [
+          {
+            "types": [
+              "moisture-resistant"
+            ],
+            "scope": {
+              "kind": "product"
+            },
+            "conditions": {}
+          }
+        ],
+        "filterInterfaces": [
+          {
+            "type": "front-thread",
+            "diameterMm": 67,
+            "host": {
+              "kind": "product"
+            }
+          }
+        ],
+        "tripodSupport": {
+          "present": false
+        },
+        "externalLengthDuringZoom": "variable",
+        "externalLengthDuringFocus": "constant",
+        "isRetractableForStorage": false
+      },
+      "controls": [
+        {
+          "type": "zoom-ring",
+          "quantity": 1
+        },
+        {
+          "type": "focus-ring",
+          "quantity": 1
+        }
+      ],
+      "accessories": {
+        "lensHoods": [
+          {
+            "relationship": "supplied",
+            "modelNumberOptions": [
+              "HA047"
+            ],
+            "quantity": 1
+          }
+        ],
+        "frontCaps": [
+          {
+            "relationship": "supplied",
+            "modelNumberOptions": [
+              "CF67II"
+            ],
+            "quantity": 1
+          }
+        ],
+        "rearCaps": [
+          {
+            "relationship": "supplied",
+            "modelNumberOptions": [
+              "CR-Z III"
+            ],
+            "quantity": 1
+          }
+        ],
+        "lensStraps": [],
+        "protectiveWraps": [],
+        "lensCases": []
+      },
+      "electronicServices": {
+        "hasPublishedFirmwareUpdate": null,
+        "connections": [
+          {
+            "method": "direct-usb",
+            "connectorType": "usb-c",
+            "purposes": [
+              "firmware-update"
+            ],
+            "application": "TAMRON Lens Utility"
+          }
+        ]
+      },
+      "lens": {
+        "focalLength": {
+          "kind": "zoom",
+          "rangeMm": {
+            "minimum": 70,
+            "maximum": 300
+          }
+        },
+        "aperture": {
+          "fNumber": {
+            "maximumAperture": [
+              {
+                "value": 4.5,
+                "conditions": {
+                  "focalLength": {
+                    "kind": "point",
+                    "millimeters": 70
+                  }
+                }
+              },
+              {
+                "value": 6.3,
+                "conditions": {
+                  "focalLength": {
+                    "kind": "point",
+                    "millimeters": 300
+                  }
+                }
+              }
+            ],
+            "minimumAperture": [
+              {
+                "value": 22,
+                "conditions": {
+                  "focalLength": {
+                    "kind": "point",
+                    "millimeters": 70
+                  }
+                }
+              },
+              {
+                "value": 32,
+                "conditions": {
+                  "focalLength": {
+                    "kind": "point",
+                    "millimeters": 300
+                  }
+                }
+              }
+            ],
+            "effective": null
+          },
+          "diaphragm": {
+            "present": true,
+            "bladeCount": 7,
+            "bladeShape": "rounded"
+          },
+          "controlMechanism": "electronic"
+        },
+        "anglesOfView": [
+          {
+            "format": "full-frame",
+            "orientation": "diagonal",
+            "degrees": 34.35,
+            "conditions": {
+              "focalLength": {
+                "kind": "point",
+                "millimeters": 70
+              }
+            }
+          },
+          {
+            "format": "full-frame",
+            "orientation": "diagonal",
+            "degrees": 8.25,
+            "conditions": {
+              "focalLength": {
+                "kind": "point",
+                "millimeters": 300
+              }
+            }
+          }
+        ],
+        "coverage": {
+          "format": "full-frame"
+        },
+        "opticalConstruction": {
+          "groups": 10,
+          "elements": 15
+        },
+        "specialElements": [
+          {
+            "types": [
+              "low-dispersion"
+            ],
+            "officialName": "LD (Low Dispersion)",
+            "quantity": 1
+          }
+        ],
+        "coatings": [
+          {
+            "types": [
+              "anti-reflective"
+            ],
+            "officialName": "BBAR (Broad-Band Anti-Reflection) Coating",
+            "appliedTo": null
+          }
+        ],
+        "focus": {
+          "autofocus": {
+            "present": true,
+            "motors": [
+              {
+                "type": "stepping-motor",
+                "quantity": null,
+                "officialName": "RXD (Rapid eXtra-silent stepping Drive)"
+              }
+            ]
+          },
+          "manualFocus": {
+            "present": true,
+            "mechanism": "electronic-by-wire"
+          },
+          "opticalFocusingSystems": [
+            {
+              "type": "internal-focusing",
+              "officialName": "IF (Internal Focusing)"
+            }
+          ],
+          "minimumFocusDistances": [
+            {
+              "distanceM": 0.8,
+              "conditions": {
+                "focalLength": {
+                  "kind": "point",
+                  "millimeters": 70
+                }
+              }
+            },
+            {
+              "distanceM": 1.5,
+              "conditions": {
+                "focalLength": {
+                  "kind": "point",
+                  "millimeters": 300
+                }
+              }
+            }
+          ],
+          "reproductionMagnifications": [
+            {
+              "kind": "maximum",
+              "value": 0.11,
+              "conditions": {
+                "focalLength": {
+                  "kind": "point",
+                  "millimeters": 70
+                }
+              }
+            },
+            {
+              "kind": "maximum",
+              "value": 0.2,
+              "conditions": {
+                "focalLength": {
+                  "kind": "point",
+                  "millimeters": 300
+                }
+              }
+            }
+          ],
+          "officialFocusBehaviorClaims": []
+        },
+        "stabilization": {
+          "present": false
+        },
+        "specialized": {},
+        "zoom": {
+          "drive": null,
+          "opticalZoomingSystems": null
+        }
+      }
+    },
+    "data_version": "2026.10.09",
+    "source_dataset_content_hash": "sha256:484f0751db150132ce33d3aae7c31f75e5b7a2386c21211432c1051a3f8a50fd",
+    "mount_system_dictionary": {
+      "arri-pl": {
+        "name": "ARRI PL"
+      },
+      "leica-m": {
+        "name": "Leica M"
+      },
+      "leica-m39": {
+        "name": "Leica M39/LTM"
+      },
+      "micro-four-thirds": {
+        "name": "Micro Four Thirds"
+      },
+      "nikon-z": {
+        "name": "Nikon Z"
+      },
+      "t-mount": {
+        "name": "T/T2 mount"
+      }
+    },
+    "release_blockers": [
+      "核对厂家规格与运行时设备型号别名。"
+    ]
+  },
+  "tags": [
+    "开源设备目录",
+    "待核验",
+    "镜头",
+    "zmount"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "lens_model": "70-300mm F/4.5-6.3 Di III RXD"
+  },
+  "source": {
+    "name": "Z Mount Product Database, Katsura Iwamoto",
+    "url": "https://github.com/KatsuraIwamoto/z-mount-product-database/blob/4a792e661ad85b1527a5447503c0b0ceaf5c4923/dist/z-mount-lenses.full.json",
+    "location": "products[id=tamron-70-to-300mm-f4p5-to-6p3-di-iii-rxd-a047]",
+    "license": "CC-BY-4.0",
+    "retrieval_allowed": false
+  },
+  "author": "小栗项目设备资料转换",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

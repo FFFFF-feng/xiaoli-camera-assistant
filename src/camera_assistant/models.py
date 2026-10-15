@@ -19,9 +19,11 @@ class UserRequest(BaseModel):
     tripod: bool = False
     camera_format: CameraFormat = "不清楚"
     camera_profile_id: str = "generic_unknown"
+    camera_lens_id: str = Field(default="", max_length=100)
     focal_length_mm: int | None = Field(default=None, ge=8, le=1200)
     max_aperture: float | None = Field(default=None, ge=0.7, le=32)
     device_type: Literal["camera", "phone"] = "camera"
+    device_model_name: str = Field(default="", max_length=120)
     phone_profile_id: str = "generic_phone"
     phone_capture_mode: PhoneCaptureMode = "auto"
     phone_lens_id: str = "main"
@@ -39,6 +41,13 @@ class UserRequest(BaseModel):
     @classmethod
     def optional_label(cls, value: str | None) -> str | None:
         return value.strip() or None if value is not None else None
+
+    @field_validator("device_model_name")
+    @classmethod
+    def validate_device_model_name(cls, value: str) -> str:
+        if any(ord(char) < 32 or ord(char) == 127 for char in value):
+            raise ValueError("设备型号不能包含换行或控制字符")
+        return value.strip()
 
 
 class ExifInfo(BaseModel):
@@ -87,29 +96,88 @@ class CameraProfile(BaseModel):
     brand: str
     model: str
     display_name: str
+    aliases: list[str] = Field(default_factory=list)
+    mount: str = "unknown"
+    capability_level: Literal["catalog", "basic", "detailed"] = "detailed"
+    checked_at: str = ""
     sensor_format: CameraFormat
-    crop_factor: float = Field(gt=0)
-    native_iso_min: int = Field(ge=25)
-    native_iso_max: int = Field(ge=100)
-    recommended_auto_iso_max: int = Field(ge=100)
-    max_mechanical_shutter: int = Field(ge=1000)
+    crop_factor: float | None = Field(default=None, gt=0)
+    catalog_sensor_label: str = ""
+    catalog_mount_labels: list[str] = Field(default_factory=list)
+    catalog_sources: list[dict[str, str]] = Field(default_factory=list)
+    native_iso_min: int | None = Field(default=None, ge=25)
+    native_iso_max: int | None = Field(default=None, ge=100)
+    recommended_auto_iso_max: int = Field(default=3200, ge=100)
+    max_mechanical_shutter: int | None = Field(default=None, ge=1000)
     max_electronic_shutter: int | None = Field(default=None, ge=1000)
-    ibis_stops: float = Field(default=0, ge=0)
-    aperture_priority_name: str
-    shutter_priority_name: str
-    continuous_focus_name: str
-    single_focus_name: str
-    metering_name: str
+    ibis_stops: float | None = Field(default=None, ge=0)
+    aperture_priority_name: str = "A/Av 光圈优先"
+    shutter_priority_name: str = "S/Tv 快门优先"
+    continuous_focus_name: str = "连续自动对焦"
+    single_focus_name: str = "单次自动对焦"
+    metering_name: str = "评价/矩阵测光（名称以机内为准）"
     source_url: str = ""
     notes: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def catalog_is_not_hardware_approval(self) -> CameraProfile:
+        if self.capability_level == "catalog" and (
+            self.mount != "unknown" or self.crop_factor is not None
+            or any(value is not None for value in (
+                self.native_iso_min, self.native_iso_max, self.max_mechanical_shutter,
+                self.max_electronic_shutter, self.ibis_stops,
+            ))
+        ):
+            raise ValueError("基础目录不得声明未经核验的硬件能力或卡口兼容")
+        return self
+
+
+class CameraLensProfile(BaseModel):
+    lens_id: str
+    display_name: str
+    mount: str
+    sensor_formats: list[CameraFormat]
+    focal_min_mm: int = Field(ge=8, le=1200)
+    focal_max_mm: int = Field(ge=8, le=1200)
+    max_aperture_wide: float = Field(ge=0.7, le=32)
+    max_aperture_tele: float = Field(ge=0.7, le=32)
+    source_url: str
+    checked_at: str
+    notes: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def validate_range(self) -> CameraLensProfile:
+        if not self.sensor_formats or "不清楚" in self.sensor_formats or self.mount == "unknown":
+            raise ValueError("镜头兼容目录必须明确原生卡口与成像圈画幅")
+        if self.focal_min_mm > self.focal_max_mm:
+            raise ValueError("镜头焦段范围倒置")
+        if self.max_aperture_wide > self.max_aperture_tele:
+            raise ValueError("镜头最大光圈端点顺序不正确")
+        return self
+
+    def conservative_aperture(self, focal_length: int) -> float:
+        # 不伪造变焦镜头中间焦段的逐档光圈曲线。
+        return (
+            self.max_aperture_wide if focal_length == self.focal_min_mm else self.max_aperture_tele
+        )
+
+
+class EquipmentSettings(BaseModel):
+    camera_lens: CameraLensProfile | None = None
+    sensor_format: CameraFormat
+    focal_length_mm: int | None = None
+    equivalent_focal_length_mm: float | None = None
+    max_aperture: float | None = None
 
 
 class PhoneLens(BaseModel):
     lens_id: str
     name: str
     aperture: float | None = Field(default=None, gt=0)
+    aperture_max: float | None = Field(default=None, gt=0)
     aperture_control: Literal["fixed", "variable", "unknown"] = "unknown"
     equivalent_focal_length_mm: float | None = Field(default=None, gt=0)
+    modes: list[PhoneCaptureMode] = Field(default_factory=lambda: ["auto"])
     notes: list[str] = Field(default_factory=list)
 
 
@@ -140,6 +208,13 @@ class PhoneProfile(BaseModel):
             raise ValueError("手机档案必须包含唯一主摄和不重复的镜头编号")
         if "auto" not in self.modes or (self.pro_controls and "pro" not in self.modes):
             raise ValueError("手机档案缺少照片模式或专业控制项对应的模式")
+        for lens in self.lenses:
+            if "auto" not in lens.modes or not set(lens.modes).issubset(self.modes):
+                raise ValueError("镜头模式必须包含照片模式，且属于该手机已收录模式")
+            if lens.aperture_max is not None and (
+                lens.aperture is None or lens.aperture_max < lens.aperture
+            ):
+                raise ValueError("手机物理光圈范围不正确")
         return self
 
 
@@ -212,6 +287,7 @@ class CameraRecommendation(BaseModel):
 class PipelineResult(BaseModel):
     inspection: ImageInspection
     camera_profile: CameraProfile | PhoneProfile
+    equipment_settings: EquipmentSettings | None = None
     scene: SceneAnalysis
     recommendation: CameraRecommendation
     knowledge_hits: list[KnowledgeHit]

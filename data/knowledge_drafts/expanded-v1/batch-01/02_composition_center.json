@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-center",
+  "library_id": "composition",
+  "title": "中心构图：直接突出主体",
+  "kind": "guideline",
+  "content": "核心规则：居中可用于强调主体或组织平衡画面。\n建议动作：把主体放在视觉中心，检查背景是否分散注意力。；若目标是直接、有秩序，可保留中心构图。\n适用前提：用户目标偏直接突出主体。\n限制与例外：不得因居中就判定构图错误。",
+  "payload": {
+    "core_claim": "居中可用于强调主体或组织平衡画面。",
+    "goal": "中心构图：直接突出主体",
+    "requires": [
+      "用户目标偏直接突出主体。"
+    ],
+    "actions": [
+      "把主体放在视觉中心，检查背景是否分散注意力。",
+      "若目标是直接、有秩序，可保留中心构图。"
+    ],
+    "limitations": [
+      "不得因居中就判定构图错误。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "interpretive_goal",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-center",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/when-center-composition-can-elevate-a-portrait",
+          "location": "Center composition / Simplify background / Framing",
+          "supports": "讨论中心构图突出人像与背景组织。"
+        },
+        {
+          "source_id": "canon-composition",
+          "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+          "location": "Rule of thirds / Lines / Framing / Symmetry / Negative space / Layers / Angles",
+          "supports": "讨论对称与视觉平衡。"
+        }
+      ],
+      "inference_note": "这是可选表达目标；来源支持方法存在，不证明审美偏好或效果最优。"
+    }
+  },
+  "tags": [
+    "composition",
+    "center",
+    "中心构图",
+    "直接突出主体",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon｜中心构图的人像表达",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/when-center-composition-can-elevate-a-portrait",
+    "location": "Center composition / Simplify background / Framing",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

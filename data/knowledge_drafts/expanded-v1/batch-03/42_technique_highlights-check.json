@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-highlights-check",
+  "library_id": "technique",
+  "title": "高光保护：区分重要细节与允许的纯亮区域",
+  "kind": "guideline",
+  "content": "核心规则：高光警告与直方图可辅助检查亮部细节。\n建议动作：检查脸部、云层或产品纹理是否需要保留。；亮部重要时比较较暗的曝光，并重新检查主体。\n适用前提：能查看高光警告或直方图；知道重要亮部。\n限制与例外：灯泡或反射点可允许纯亮；JPEG警告不等于RAW一定无法恢复。",
+  "payload": {
+    "core_claim": "高光警告与直方图可辅助检查亮部细节。",
+    "goal": "高光保护：区分重要细节与允许的纯亮区域",
+    "requires": [
+      "能查看高光警告或直方图；知道重要亮部。"
+    ],
+    "actions": [
+      "检查脸部、云层或产品纹理是否需要保留。",
+      "亮部重要时比较较暗的曝光，并重新检查主体。"
+    ],
+    "limitations": [
+      "灯泡或反射点可允许纯亮；JPEG警告不等于RAW一定无法恢复。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-histogram",
+          "url": "https://onlinemanual.nikonimglib.com/z6III/en/photo_information_53.html",
+          "location": "Highlights / RGB Histogram / Shooting Data",
+          "supports": "高光警告与RGB直方图辅助判断。"
+        },
+        {
+          "source_id": "sony-exposure",
+          "url": "https://www.sony.com/electronics/support/articles/00267925",
+          "location": "Exposure / Exposure Compensation",
+          "supports": "补偿可改变成片亮度。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "technique",
+    "highlights-check",
+    "高光保护",
+    "区分重要细节与允许的纯亮区域",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon｜Z6III照片信息手册",
+    "url": "https://onlinemanual.nikonimglib.com/z6III/en/photo_information_53.html",
+    "location": "Highlights / RGB Histogram / Shooting Data",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-flicker-banding",
+  "library_id": "technique",
+  "title": "灯光条纹：确认光源与快门方式",
+  "kind": "guideline",
+  "content": "核心规则：部分闪烁光源与逐行曝光时序可能产生亮暗或颜色条带。\n建议动作：用样片确认问题，检查机型支持的机械快门或防闪烁设置。；LED场景按实际支持的细调功能试拍，不仅套工频经验。\n适用前提：确有条带；可确认光源和实际机型。\n限制与例外：普通防闪烁不能保证处理所有高频LED；不是所有电子快门都相同行为。",
+  "payload": {
+    "core_claim": "部分闪烁光源与逐行曝光时序可能产生亮暗或颜色条带。",
+    "goal": "灯光条纹：确认光源与快门方式",
+    "requires": [
+      "确有条带；可确认光源和实际机型。"
+    ],
+    "actions": [
+      "用样片确认问题，检查机型支持的机械快门或防闪烁设置。",
+      "LED场景按实际支持的细调功能试拍，不仅套工频经验。"
+    ],
+    "limitations": [
+      "普通防闪烁不能保证处理所有高频LED；不是所有电子快门都相同行为。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-flicker",
+          "url": "https://www.sony.com/electronics/support/articles/00122281",
+          "location": "Changing shutter speed / Anti-flicker / Var. Shutter",
+          "supports": "工频、高频LED、不同快门及防闪烁功能的范围。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "flicker-banding",
+    "灯光条纹",
+    "确认光源与快门方式",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Sony｜条纹与频闪控制",
+    "url": "https://www.sony.com/electronics/support/articles/00122281",
+    "location": "Changing shutter speed / Anti-flicker / Var. Shutter",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -26,6 +26,7 @@ from camera_assistant.services.composition import (
     OpenAICompatibleCompositionAdvisor,
 )
 from camera_assistant.services.image_analyzer import ImageAnalyzer
+from camera_assistant.services.lens_knowledge import LensKnowledgeBase
 from camera_assistant.services.localization import GroundingDinoLocalizer
 from camera_assistant.services.phone_knowledge import PhoneKnowledgeBase
 from camera_assistant.services.retriever import LocalKnowledgeRetriever
@@ -66,6 +67,9 @@ class CameraAssistantPipeline:
         self.camera_knowledge = camera_knowledge or CameraKnowledgeBase(
             settings.knowledge_dir / "cameras" / "camera_profiles.yaml"
         )
+        self.lens_knowledge = LensKnowledgeBase(
+            settings.knowledge_dir / "cameras" / "lens_profiles.yaml"
+        )
         if retriever is not None:
             self.retriever = retriever
         elif settings.knowledge_mode == "managed":
@@ -98,8 +102,10 @@ class CameraAssistantPipeline:
     def run(self, image_content: bytes, request: UserRequest) -> PipelineResult:
         inspection = self.image_analyzer.analyze(image_content)
         device_notes: list[str] = []
+        equipment_settings = None
         if request.device_type == "phone":
-            camera = self.phone_knowledge.resolve(request.phone_profile_id)
+            identifier = request.device_model_name or request.phone_profile_id
+            camera = self.phone_knowledge.resolve(identifier)
             phone_mode = request.phone_capture_mode
             if phone_mode not in camera.modes:
                 phone_mode = "auto"
@@ -108,10 +114,17 @@ class CameraAssistantPipeline:
             if lens_id not in {lens.lens_id for lens in camera.lenses}:
                 lens_id = "main"
                 device_notes.append("请求的手机镜头未收录，按主摄核对；拍摄前请确认。")
+            selected_phone_lens = next(lens for lens in camera.lenses if lens.lens_id == lens_id)
+            if phone_mode not in selected_phone_lens.modes:
+                phone_mode = "auto"
+                device_notes.append(
+                    "该镜头的所选模式组合尚未核验，按照片模式提供指导；不代表该手机不支持此组合。"
+                )
             effective_request = request.model_copy(
                 update={
                     "camera_format": "不清楚",
                     "camera_profile_id": "generic_unknown",
+                    "camera_lens_id": "",
                     "focal_length_mm": None,
                     "max_aperture": None,
                     "phone_profile_id": camera.profile_id,
@@ -122,8 +135,43 @@ class CameraAssistantPipeline:
                 }
             )
         else:
-            camera = self.camera_knowledge.resolve(request.camera_profile_id, request.camera_format)
-            effective_request = request.model_copy(update={"camera_format": camera.sensor_format})
+            identifier = request.device_model_name or request.camera_profile_id
+            camera = self.camera_knowledge.resolve(identifier, request.camera_format)
+            effective_request, equipment_settings, lens_notes = self.lens_knowledge.normalize(
+                request, camera
+            )
+            device_notes.extend(lens_notes)
+            if equipment_settings and equipment_settings.camera_lens:
+                effective_request = effective_request.model_copy(update={
+                    "target_lens_name": equipment_settings.camera_lens.display_name,
+                })
+            if camera.capability_level == "catalog":
+                device_notes.append(
+                    "已找到该相机的基础目录；硬件能力未核验，不继承其他机型的卡口、镜头、曝光范围或防抖。"
+                )
+            elif camera.capability_level == "basic":
+                device_notes.append(
+                    "本机型已录入画幅与原生卡口；ISO、快门和防抖边界尚未完整核验，建议不是硬件规格保证。"
+                )
+        if camera.profile_id.startswith("generic_"):
+            supplied_name = request.device_model_name
+            if not supplied_name and not identifier.startswith("generic_"):
+                supplied_name = identifier.strip()[:120]
+            if supplied_name:
+                note = (
+                    f"用户填写型号：{supplied_name}；能力资料未收录，采用通用指导，"
+                    "不继承相近型号的模式、镜头或硬件上限。"
+                )
+                camera = camera.model_copy(
+                    update={
+                        "model": supplied_name,
+                        "display_name": f"{supplied_name}（能力未收录）",
+                        "notes": [*camera.notes, note],
+                    }
+                )
+                device_notes.append(note)
+            if request.device_type == "camera":
+                device_notes.append("通用参数是试拍起点或演示约束，不是该型号已核实的硬件规格。")
         candidates = self.scene_knowledge.find_candidates(effective_request, inspection)
         scene = self.vision_analyzer.analyze(inspection, effective_request, candidates)
         scene = self.scene_knowledge.normalize(scene, candidates)
@@ -146,6 +194,8 @@ class CameraAssistantPipeline:
         query += " 器材 " + " ".join(str(conditions.get(key, "")) for key in (
             "camera_model", "lens_model", "app", "capture_mode", "shutter_type",
         ))
+        if equipment_settings and equipment_settings.camera_lens:
+            query += f" 镜头 {equipment_settings.camera_lens.display_name} 实际焦距 {effective_request.focal_length_mm}mm"
         if isinstance(self.retriever, ManagedKnowledgeRetriever):
             hits = self.retriever.search(
                 query,
@@ -209,9 +259,13 @@ class CameraAssistantPipeline:
                 risks=[str(exc) if isinstance(exc, ModelServiceError)
                        else "参数模型本次未返回可校验的设置，请重新分析。"], confidence=0,
             )
+        recommendation.validation_notes = list(
+            dict.fromkeys([*recommendation.validation_notes, *device_notes])
+        )
         return PipelineResult(
             inspection=inspection,
             camera_profile=camera,
+            equipment_settings=equipment_settings,
             scene=scene,
             recommendation=recommendation,
             knowledge_hits=hits,

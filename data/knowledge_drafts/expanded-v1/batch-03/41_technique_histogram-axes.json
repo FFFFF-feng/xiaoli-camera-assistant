@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-histogram-axes",
+  "library_id": "technique",
+  "title": "直方图：柱高不是曝光溢出",
+  "kind": "guideline",
+  "content": "核心规则：横轴表示亮度分布，纵轴表示对应像素数量。\n建议动作：观察亮度分布到哪一端，再结合成片检查。；重要颜色可检查RGB直方图，而非只看总亮度。\n适用前提：设备或软件提供相应直方图。\n限制与例外：柱子很高不等于溢出；不同显示算法可能不同，不要求钟形分布。",
+  "payload": {
+    "core_claim": "横轴表示亮度分布，纵轴表示对应像素数量。",
+    "goal": "直方图：柱高不是曝光溢出",
+    "requires": [
+      "设备或软件提供相应直方图。"
+    ],
+    "actions": [
+      "观察亮度分布到哪一端，再结合成片检查。",
+      "重要颜色可检查RGB直方图，而非只看总亮度。"
+    ],
+    "limitations": [
+      "柱子很高不等于溢出；不同显示算法可能不同，不要求钟形分布。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-histogram",
+          "url": "https://onlinemanual.nikonimglib.com/z6III/en/photo_information_53.html",
+          "location": "Highlights / RGB Histogram / Shooting Data",
+          "supports": "明确横轴亮度、纵轴像素数，RGB直方图是指南。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "histogram-axes",
+    "直方图",
+    "柱高不是曝光溢出",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon｜Z6III照片信息手册",
+    "url": "https://onlinemanual.nikonimglib.com/z6III/en/photo_information_53.html",
+    "location": "Highlights / RGB Histogram / Shooting Data",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

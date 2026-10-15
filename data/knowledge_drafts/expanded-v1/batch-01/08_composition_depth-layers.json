@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-depth-layers",
+  "library_id": "composition",
+  "title": "前中后景：帮助表达空间层次",
+  "kind": "guideline",
+  "content": "核心规则：前景与后景的组织可提供画面层次。\n建议动作：确认近景、中景和远景对象，不用颜色代替距离证明。；改变位置，避免近景遮挡主要主体。\n适用前提：有可确认的空间层次和安全移动空间。\n限制与例外：单张图距离估计可有误差；不能输出精确米数。",
+  "payload": {
+    "core_claim": "前景与后景的组织可提供画面层次。",
+    "goal": "前中后景：帮助表达空间层次",
+    "requires": [
+      "有可确认的空间层次和安全移动空间。"
+    ],
+    "actions": [
+      "确认近景、中景和远景对象，不用颜色代替距离证明。",
+      "改变位置，避免近景遮挡主要主体。"
+    ],
+    "limitations": [
+      "单张图距离估计可有误差；不能输出精确米数。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "interpretive_goal",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "canon-composition",
+          "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+          "location": "Rule of thirds / Lines / Framing / Symmetry / Negative space / Layers / Angles",
+          "supports": "讨论前景与层次关系。"
+        }
+      ],
+      "inference_note": "这是可选表达目标；来源支持方法存在，不证明审美偏好或效果最优。"
+    }
+  },
+  "tags": [
+    "composition",
+    "depth-layers",
+    "前中后景",
+    "帮助表达空间层次",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Canon｜Mastering Photo Composition",
+    "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+    "location": "Rule of thirds / Lines / Framing / Symmetry / Negative space / Layers / Angles",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

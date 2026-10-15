@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-scene-flower-closeup",
+  "library_id": "scene",
+  "title": "花卉近摄：距离、清晰范围与风分开判断",
+  "kind": "guideline",
+  "content": "核心规则：近摄合焦范围和主体运动都影响特写清晰。\n建议动作：确认能合焦的距离和需要清晰的花蕊等细节。；有风时重新检查拖影，不仅调整光圈。\n适用前提：确有近摄主体；知道镜头能力及是否有风。\n限制与例外：手机微距需型号确认；不推断植物位置或具体最近对焦距离。",
+  "payload": {
+    "core_claim": "近摄合焦范围和主体运动都影响特写清晰。",
+    "goal": "花卉近摄：距离、清晰范围与风分开判断",
+    "requires": [
+      "确有近摄主体；知道镜头能力及是否有风。"
+    ],
+    "actions": [
+      "确认能合焦的距离和需要清晰的花蕊等细节。",
+      "有风时重新检查拖影，不仅调整光圈。"
+    ],
+    "limitations": [
+      "手机微距需型号确认；不推断植物位置或具体最近对焦距离。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-minfocus",
+          "url": "https://www.sony.com/electronics/support/articles/00267924",
+          "location": "Minimum Focusing Distance",
+          "supports": "镜头过近可能不能合焦。"
+        },
+        {
+          "source_id": "canon-dof",
+          "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/depth-of-field/index.html",
+          "location": "Depth of Field",
+          "supports": "对焦距离影响景深。"
+        },
+        {
+          "source_id": "sony-shutter",
+          "url": "https://www.sony.com/electronics/support/articles/00267929",
+          "location": "Shutter Speed / S-Mode",
+          "supports": "主体运动影响成片。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "scene",
+    "flower-closeup",
+    "花卉近摄",
+    "距离",
+    "清晰范围与风分开判断",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜镜头最近对焦距离",
+    "url": "https://www.sony.com/electronics/support/articles/00267924",
+    "location": "Minimum Focusing Distance",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

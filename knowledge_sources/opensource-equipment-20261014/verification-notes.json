@@ -1,0 +1,28 @@
+{
+  "scope": "对转换报告中唯一传感器宽度冲突的补充核查，不改变原始来源值或知识审核状态",
+  "model": "Canon PowerShot S200",
+  "status": "possible_model_reuse_requires_product_year_and_region_disambiguation",
+  "primary_sources": [
+    {
+      "url": "https://global.canon/en/c-museum/product/dcc477.html",
+      "publisher": "Canon",
+      "product": "PowerShot S200 DIGITAL ELPH",
+      "marketed": "2002-04",
+      "sensor_format": "1/2.7-inch type CCD"
+    },
+    {
+      "url": "https://global.canon/en/c-museum/product/dcc646.html",
+      "publisher": "Canon",
+      "product": "PowerShot S200",
+      "marketed": "2013-09",
+      "sensor_format": "1/1.7-inch type"
+    }
+  ],
+  "checked_on": "2026-10-14",
+  "limitations": [
+    "官网证据支持存在不同时代的相近型号，不直接证实 7.53 mm 或 5.33 mm 的精确宽度。",
+    "不把社区来源提升为 manufacturer_fact，不自动合并两种设备，不自动解决冲突。",
+    "完整型号仍可能存在地区或年代歧义；应补充产品年份及地区身份后再发布。"
+  ],
+  "retrieval_allowed": false
+}

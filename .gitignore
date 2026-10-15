@@ -35,3 +35,19 @@ Thumbs.db
 tmp/
 .tmp/
 output/playwright/
+.launcher/
+.android-tools/
+mobile/node_modules/
+mobile/android/.gradle/
+mobile/android/local.properties
+mobile/android/**/build/
+*.apk
+*.aab
+*.jks
+*.keystore
+output/mobile/
+.playwright-cli/
+output/releases/
+
+# Local reports, screenshots, release bundles and unrelated generated projects.
+output/

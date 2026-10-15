@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-aperture-dof",
+  "library_id": "technique",
+  "title": "光圈：进光与景深要同时考虑",
+  "kind": "guideline",
+  "content": "核心规则：其他条件一致时，较小f值通常对应较大开口和较浅景深。\n建议动作：按需要清晰的前后范围选择光圈，再检查快门。；对多人或近摄，不盲目使用最大光圈。\n适用前提：确认镜头可调光圈；比较画幅、距离等条件相同。\n限制与例外：镜头与距离影响结果；本规则不提供通用f值。",
+  "payload": {
+    "core_claim": "其他条件一致时，较小f值通常对应较大开口和较浅景深。",
+    "goal": "光圈：进光与景深要同时考虑",
+    "requires": [
+      "确认镜头可调光圈；比较画幅、距离等条件相同。"
+    ],
+    "actions": [
+      "按需要清晰的前后范围选择光圈，再检查快门。",
+      "对多人或近摄，不盲目使用最大光圈。"
+    ],
+    "limitations": [
+      "镜头与距离影响结果；本规则不提供通用f值。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "cross_source_agreement",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-aperture",
+          "url": "https://www.sony.com/electronics/support/articles/00267926",
+          "location": "Aperture / A-Mode",
+          "supports": "f值与开口、进光和虚化相关。"
+        },
+        {
+          "source_id": "canon-dof",
+          "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/depth-of-field/index.html",
+          "location": "Depth of Field",
+          "supports": "光圈影响景深，距离等也影响结果。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "aperture-dof",
+    "光圈",
+    "进光与景深要同时考虑",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Sony｜光圈与A模式",
+    "url": "https://www.sony.com/electronics/support/articles/00267926",
+    "location": "Aperture / A-Mode",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-aperture-priority",
+  "library_id": "technique",
+  "title": "光圈优先：设好景深后检查自动快门",
+  "kind": "guideline",
+  "content": "核心规则：A/Av类模式优先指定光圈，其他自动项受设置限制。\n建议动作：确定清晰范围后查看相机给出的快门。；快门不适合运动时，调整光圈、补光或已启用的自动ISO策略。\n适用前提：设备有光圈优先模式。\n限制与例外：ISO不会在未启用Auto ISO时自动变化；菜单名称依品牌。",
+  "payload": {
+    "core_claim": "A/Av类模式优先指定光圈，其他自动项受设置限制。",
+    "goal": "光圈优先：设好景深后检查自动快门",
+    "requires": [
+      "设备有光圈优先模式。"
+    ],
+    "actions": [
+      "确定清晰范围后查看相机给出的快门。",
+      "快门不适合运动时，调整光圈、补光或已启用的自动ISO策略。"
+    ],
+    "limitations": [
+      "ISO不会在未启用Auto ISO时自动变化；菜单名称依品牌。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-aperture",
+          "url": "https://www.sony.com/electronics/support/articles/00267926",
+          "location": "Aperture / A-Mode",
+          "supports": "A模式设光圈，相机选择快门。"
+        },
+        {
+          "source_id": "sony-iso",
+          "url": "https://www.sony.com/electronics/support/articles/00267930",
+          "location": "ISO Sensitivity",
+          "supports": "ISO自动与手动需分别设定。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "aperture-priority",
+    "光圈优先",
+    "设好景深后检查自动快门",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Sony｜光圈与A模式",
+    "url": "https://www.sony.com/electronics/support/articles/00267926",
+    "location": "Aperture / A-Mode",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-iphone-touch-focus",
+  "library_id": "technique",
+  "title": "iPhone 15：点按主体调整对焦区域",
+  "kind": "guideline",
+  "content": "核心规则：iPhone相机可通过点按调整对焦区域，并调整曝光。\n建议动作：点按希望清楚的主体，再观察预览。；按实际系统界面调整亮度，拍后检查细节。\n适用前提：普通iPhone15；原生相机；当前模式支持这些控制。\n限制与例外：点按不保证算法始终选择正确细节；不提供新机专属按键步骤。",
+  "payload": {
+    "core_claim": "iPhone相机可通过点按调整对焦区域，并调整曝光。",
+    "goal": "iPhone 15：点按主体调整对焦区域",
+    "requires": [
+      "普通iPhone15；原生相机；当前模式支持这些控制。"
+    ],
+    "actions": [
+      "点按希望清楚的主体，再观察预览。",
+      "按实际系统界面调整亮度，拍后检查细节。"
+    ],
+    "limitations": [
+      "点按不保证算法始终选择正确细节；不提供新机专属按键步骤。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "apple-tools",
+          "url": "https://support.apple.com/zh-cn/guide/iphone/iph3dc593597/ios",
+          "location": "手动调整对焦和曝光 / 网格和水平 / 宽高比",
+          "supports": "触屏选择对焦区域与调整曝光。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "iphone-touch-focus",
+    "iPhone 15",
+    "点按主体调整对焦区域",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "apple_iphone_15"
+  },
+  "source": {
+    "name": "Apple｜iPhone相机工具",
+    "url": "https://support.apple.com/zh-cn/guide/iphone/iph3dc593597/ios",
+    "location": "手动调整对焦和曝光 / 网格和水平 / 宽高比",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-equipment-xiaomi14-pro-check",
+  "library_id": "equipment",
+  "title": "小米14专业操作：不要照抄通用EV建议",
+  "kind": "guideline",
+  "content": "核心规则：小米通用Pro说明涉及WB、F、S、ISO、EV和镜头，但实际界面需确认。\n建议动作：用户先确认当前专业模式与镜头中可用控制项。；曝光方向按主体与亮部目标判断，不因天黑就一律加EV。\n适用前提：用户已确认当前Pro控制项；地区和系统已记录。\n限制与例外：官网说明自动翻译，部分操作简化；不虚构ISO与时长范围，不迁移14 Ultra能力。",
+  "payload": {
+    "core_claim": "小米通用Pro说明涉及WB、F、S、ISO、EV和镜头，但实际界面需确认。",
+    "goal": "小米14专业操作：不要照抄通用EV建议",
+    "requires": [
+      "用户已确认当前Pro控制项；地区和系统已记录。"
+    ],
+    "actions": [
+      "用户先确认当前专业模式与镜头中可用控制项。",
+      "曝光方向按主体与亮部目标判断，不因天黑就一律加EV。"
+    ],
+    "limitations": [
+      "官网说明自动翻译，部分操作简化；不虚构ISO与时长范围，不迁移14 Ultra能力。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "manufacturer_facts": {
+      "iso_range": null,
+      "shutter_range_seconds": null
+    },
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "xiaomi-pro",
+          "url": "https://www.mi.com/es/support/article/KA-51452/",
+          "location": "Pro features / Notes",
+          "supports": "通用Pro控制与镜头可能不可用的说明。"
+        },
+        {
+          "source_id": "xiaomi-14",
+          "url": "https://www.mi.com/global/product/xiaomi-14/specs/",
+          "location": "Rear camera / Telephoto footnotes / Photography modes",
+          "supports": "全球版机型和模式范围。"
+        },
+        {
+          "source_id": "sony-exposure",
+          "url": "https://www.sony.com/electronics/support/articles/00267925",
+          "location": "Exposure / Exposure Compensation",
+          "supports": "补偿按目标调整。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "equipment",
+    "xiaomi14-pro-check",
+    "小米14专业操作",
+    "不要照抄通用EV建议",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "xiaomi_14",
+    "phone_capture_mode": "pro",
+    "phone_pro_controls_confirmed": true
+  },
+  "source": {
+    "name": "Xiaomi｜手机专业模式说明",
+    "url": "https://www.mi.com/es/support/article/KA-51452/",
+    "location": "Pro features / Notes",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

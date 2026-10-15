@@ -1,0 +1,25 @@
+# Public IP HTTPS requires an ACME CA that supports IP certificates.
+# Let's Encrypt requires the shortlived profile; Caddy renews it automatically.
+{
+    # IP clients normally omit SNI; select the public IP certificate explicitly.
+    default_sni {$XIAOLI_IP}
+}
+
+{$XIAOLI_IP} {
+    tls {
+        issuer acme {
+            dir https://acme-v02.api.letsencrypt.org/directory
+            profile shortlived
+        }
+    }
+    request_body {
+        max_size 16MB
+    }
+    reverse_proxy app:8080 {
+        header_up X-Forwarded-For {remote_host}
+        transport http {
+            response_header_timeout 600s
+        }
+    }
+    encode zstd gzip
+}

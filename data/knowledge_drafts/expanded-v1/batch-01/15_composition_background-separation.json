@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-background-separation",
+  "library_id": "composition",
+  "title": "主体分离：先换背景，再讨论虚化",
+  "kind": "guideline",
+  "content": "核心规则：背景组织和虚化都可用于突出主体。\n建议动作：比较干净背景和原背景，确认哪一个保留必要信息。；若需要虚化，再检查背景距离和设备能力。\n适用前提：用户想突出主体；能改变机位或站位。\n限制与例外：不能用虚化替代错误合焦；手机软件虚化有模式限制。",
+  "payload": {
+    "core_claim": "背景组织和虚化都可用于突出主体。",
+    "goal": "主体分离：先换背景，再讨论虚化",
+    "requires": [
+      "用户想突出主体；能改变机位或站位。"
+    ],
+    "actions": [
+      "比较干净背景和原背景，确认哪一个保留必要信息。",
+      "若需要虚化，再检查背景距离和设备能力。"
+    ],
+    "limitations": [
+      "不能用虚化替代错误合焦；手机软件虚化有模式限制。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-center",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/when-center-composition-can-elevate-a-portrait",
+          "location": "Center composition / Simplify background / Framing",
+          "supports": "背景整理可集中注意力。"
+        },
+        {
+          "source_id": "sony-defocus",
+          "url": "https://www.sony.com/electronics/support/articles/00267923",
+          "location": "Four factors of defocus",
+          "supports": "主体与背景距离影响虚化。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "composition",
+    "background-separation",
+    "主体分离",
+    "先换背景",
+    "再讨论虚化",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon｜中心构图的人像表达",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/when-center-composition-can-elevate-a-portrait",
+    "location": "Center composition / Simplify background / Framing",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

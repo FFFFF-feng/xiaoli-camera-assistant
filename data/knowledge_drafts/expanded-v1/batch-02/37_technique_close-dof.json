@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-close-dof",
+  "library_id": "technique",
+  "title": "近摄景深：更近时要复查清晰范围",
+  "kind": "guideline",
+  "content": "核心规则：在其他比较条件相同时，对焦距离变化会影响景深与虚化。\n建议动作：放大查看特写中真正需要清晰的细节。；调整距离或可调光圈后重拍比较。\n适用前提：光学近摄；知道重要清晰范围。\n限制与例外：手机人像滑块不能当作实体光圈；不承诺全主体都清晰。",
+  "payload": {
+    "core_claim": "在其他比较条件相同时，对焦距离变化会影响景深与虚化。",
+    "goal": "近摄景深：更近时要复查清晰范围",
+    "requires": [
+      "光学近摄；知道重要清晰范围。"
+    ],
+    "actions": [
+      "放大查看特写中真正需要清晰的细节。",
+      "调整距离或可调光圈后重拍比较。"
+    ],
+    "limitations": [
+      "手机人像滑块不能当作实体光圈；不承诺全主体都清晰。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "cross_source_agreement",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "canon-dof",
+          "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/depth-of-field/index.html",
+          "location": "Depth of Field",
+          "supports": "对焦距离影响景深。"
+        },
+        {
+          "source_id": "sony-defocus",
+          "url": "https://www.sony.com/electronics/support/articles/00267923",
+          "location": "Four factors of defocus",
+          "supports": "相机与主体距离影响虚化。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "close-dof",
+    "近摄景深",
+    "更近时要复查清晰范围",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Canon｜RF镜头知识：景深",
+    "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/depth-of-field/index.html",
+    "location": "Depth of Field",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

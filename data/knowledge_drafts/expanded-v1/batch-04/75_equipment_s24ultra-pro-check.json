@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-equipment-s24ultra-pro-check",
+  "library_id": "equipment",
+  "title": "S24 Ultra专业操作：当前镜头与菜单先确认",
+  "kind": "guideline",
+  "content": "核心规则：三星通用Pro说明包含ISO、快门、对焦和白平衡，实际可用项需确认。\n建议动作：用户先确认当前原生Pro界面显示的控制项。；只建议已确认的项；每次更换镜头再次检查。\n适用前提：用户已选择并确认原生Pro模式控制项。\n限制与例外：通用支持页含旧机型内容；不推出S24特定范围；Expert RAW另算。",
+  "payload": {
+    "core_claim": "三星通用Pro说明包含ISO、快门、对焦和白平衡，实际可用项需确认。",
+    "goal": "S24 Ultra专业操作：当前镜头与菜单先确认",
+    "requires": [
+      "用户已选择并确认原生Pro模式控制项。"
+    ],
+    "actions": [
+      "用户先确认当前原生Pro界面显示的控制项。",
+      "只建议已确认的项；每次更换镜头再次检查。"
+    ],
+    "limitations": [
+      "通用支持页含旧机型内容；不推出S24特定范围；Expert RAW另算。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "manufacturer_facts": {
+      "iso_range": null,
+      "shutter_range_seconds": null
+    },
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "samsung-modes",
+          "url": "https://www.samsung.com/uk/support/mobile-devices/what-are-the-different-camera-modes-and-how-do-i-use-them/",
+          "location": "Pro / Night / Panorama",
+          "supports": "Pro模式通用控制项。"
+        },
+        {
+          "source_id": "samsung-s24",
+          "url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+          "location": "S24 Ultra camera specification table / Footnote 10",
+          "supports": "型号规格明确为S24 Ultra。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "equipment",
+    "s24ultra-pro-check",
+    "S24 Ultra专业操作",
+    "当前镜头与菜单先确认",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "samsung_galaxy_s24_ultra",
+    "phone_capture_mode": "pro",
+    "phone_pro_controls_confirmed": true
+  },
+  "source": {
+    "name": "Samsung｜Galaxy相机模式说明",
+    "url": "https://www.samsung.com/uk/support/mobile-devices/what-are-the-different-camera-modes-and-how-do-i-use-them/",
+    "location": "Pro / Night / Panorama",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

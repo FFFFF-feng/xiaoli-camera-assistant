@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-style-vivid-scene",
+  "library_id": "style",
+  "title": "鲜明风格：饱和度和高光分开检查",
+  "kind": "guideline",
+  "content": "核心规则：更鲜明的外观可涉及饱和度与反差变化。\n建议动作：比较原图和更鲜明版本，确认是否符合需求。；检查关键颜色和高光是否仍有需要的细节。\n适用前提：用户接受鲜明色彩；能比较输出。\n限制与例外：鲜明不等于过曝；不存在跨品牌同一风格代码。",
+  "payload": {
+    "core_claim": "更鲜明的外观可涉及饱和度与反差变化。",
+    "goal": "鲜明风格：饱和度和高光分开检查",
+    "requires": [
+      "用户接受鲜明色彩；能比较输出。"
+    ],
+    "actions": [
+      "比较原图和更鲜明版本，确认是否符合需求。",
+      "检查关键颜色和高光是否仍有需要的细节。"
+    ],
+    "limitations": [
+      "鲜明不等于过曝；不存在跨品牌同一风格代码。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "interpretive_goal",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-look",
+          "url": "https://www.sony.com/electronics/support/articles/00273574",
+          "location": "Creative Look / Differences from Picture Profile",
+          "supports": "不同外观控制饱和度和反差。"
+        },
+        {
+          "source_id": "nikon-histogram",
+          "url": "https://onlinemanual.nikonimglib.com/z6III/en/photo_information_53.html",
+          "location": "Highlights / RGB Histogram / Shooting Data",
+          "supports": "RGB直方图可辅助查看颜色亮部。"
+        }
+      ],
+      "inference_note": "这是可选表达目标；来源支持方法存在，不证明审美偏好或效果最优。"
+    }
+  },
+  "tags": [
+    "style",
+    "vivid-scene",
+    "鲜明风格",
+    "饱和度和高光分开检查",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜Creative Look",
+    "url": "https://www.sony.com/electronics/support/articles/00273574",
+    "location": "Creative Look / Differences from Picture Profile",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

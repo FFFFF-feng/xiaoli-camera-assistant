@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-leading-lines",
+  "library_id": "composition",
+  "title": "引导线：先核对指向，线条也可以成为主体",
+  "kind": "guideline",
+  "content": "线条可组织视线并引向主体，线条本身也可以成为表达对象。\n适用前提：主要主体和表达目标明确；可辨认线条及其实际延伸方向。\n建议动作：沿可见线条观察它指向主体、其他区域还是画外；比较保留现有线条与安全调整机位后的构图。\n限制与例外：线条不必全部汇聚到同一个点；有意引向画外不自动判错；不从单图断言画外道路或轨道可进入；不得为取景冒险。",
+  "payload": {
+    "batch_id": "web-research-codex-20261013",
+    "core_claim": "线条可组织视线并引向主体，线条本身也可以成为表达对象。",
+    "goal": "引导线：先核对指向，线条也可以成为主体",
+    "requires": [
+      "主要主体和表达目标明确",
+      "可辨认线条及其实际延伸方向"
+    ],
+    "actions": [
+      "沿可见线条观察它指向主体、其他区域还是画外",
+      "比较保留现有线条与安全调整机位后的构图"
+    ],
+    "limitations": [
+      "线条不必全部汇聚到同一个点",
+      "有意引向画外不自动判错",
+      "不从单图断言画外道路或轨道可进入；不得为取景冒险"
+    ],
+    "suggested_text": "先看看线条把注意力带向哪里；若线条本身就是你想拍的主题，不必强行让它汇聚到人物。",
+    "numeric_default": null,
+    "automatic_execution": false,
+    "previous_version": 1,
+    "verification": {
+      "checked_at": "2026-10-13",
+      "status": "cross_source_agreement",
+      "scope": "只核对evidence逐项标明的主张，不把相关来源数量当成整卡全部获得交叉认证。",
+      "inference_note": "安全提醒、视觉不确定时处理和结果检查包含整理者归纳，未做真机或实拍测定；不是原文逐字流程。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-leading",
+          "url": "https://nikonschool.co.uk/hints-and-tips/using-leading-lines-in-your-compositions",
+          "location": "正文线条类型与方向要点",
+          "read_status": "body_read",
+          "supports": "支持线条引导视线，也可作为照片主题。"
+        },
+        {
+          "source_id": "adobe-leading",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "location": "What are leading lines? / Horizontal lines",
+          "read_status": "body_read",
+          "supports": "支持引导视线的作用，并说明有意引向画外的例外。"
+        }
+      ]
+    },
+    "rights": {
+      "retrieval_use": "pending",
+      "public_display": "pending",
+      "redistribution": "pending",
+      "original_media_saved": false
+    }
+  },
+  "tags": [
+    "引导线",
+    "主体",
+    "画外",
+    "构图",
+    "MCP采集20261013"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon School｜Using Leading Lines in your Compositions",
+    "url": "https://nikonschool.co.uk/hints-and-tips/using-leading-lines-in-your-compositions",
+    "location": "正文线条类型与方向要点",
+    "license": "原创短归纳与出处；未保存或再分发原文和媒体，计划检索及公开用途待独立核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料采集助手（AI整理，待队友独立复核）",
+  "version": 2,
+  "dataset_split": "reference"
+}

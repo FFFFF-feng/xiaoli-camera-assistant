@@ -1,0 +1,11 @@
+services:
+  app:
+    build:
+      dockerfile: Dockerfile.prebuilt
+      args:
+        PYTHON_BASE: ${XIAOLI_PYTHON_BASE:-python:3.11-slim@sha256:e88e9763f943ec1834f992a4b51e0f24500486803e8bc534e5767af9ea65f6ce}
+        PIP_INDEX_URL: ${XIAOLI_PIP_INDEX_URL:-https://pypi.org/simple}
+    ports:
+      - "127.0.0.1:8080:8080"
+  caddy:
+    image: ${XIAOLI_CADDY_IMAGE:-caddy:2@sha256:685ae3d7c34d9b5f8caeddc5d14051db7bbd88ff1f5a2fa0c16bd8ca328fb7af}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-equipment-iphone15-no-proraw",
+  "library_id": "equipment",
+  "title": "iPhone 15：不继承Pro系列Apple ProRAW",
+  "kind": "manufacturer_fact",
+  "content": "核心规则：Apple ProRAW官方支持范围为相应Pro机型，不能套给普通iPhone15。\n建议动作：不给普通iPhone15下发原生相机ProRAW开启步骤。；用户提到第三方RAW时，另核实应用、系统与输出格式。\n适用前提：普通iPhone15原生相机。\n限制与例外：不支持Apple ProRAW不等于所有第三方RAW路径都不支持。",
+  "payload": {
+    "core_claim": "Apple ProRAW官方支持范围为相应Pro机型，不能套给普通iPhone15。",
+    "goal": "iPhone 15：不继承Pro系列Apple ProRAW",
+    "requires": [
+      "普通iPhone15原生相机。"
+    ],
+    "actions": [
+      "不给普通iPhone15下发原生相机ProRAW开启步骤。",
+      "用户提到第三方RAW时，另核实应用、系统与输出格式。"
+    ],
+    "limitations": [
+      "不支持Apple ProRAW不等于所有第三方RAW路径都不支持。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "manufacturer_facts": {
+      "native_apple_proraw_supported": false,
+      "third_party_raw_supported": null
+    },
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "apple-proraw",
+          "url": "https://support.apple.com/zh-cn/119916",
+          "location": "支持机型 / 格式 / 使用模式限制",
+          "supports": "iPhone12 Pro及后续Pro机型与系统条件。"
+        },
+        {
+          "source_id": "apple-iphone15",
+          "url": "https://support.apple.com/zh-cn/111831",
+          "location": "摄像头 / 照片拍摄格式",
+          "supports": "本条匹配普通iPhone15技术规格。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "equipment",
+    "iphone15-no-proraw",
+    "iPhone 15",
+    "不继承Pro系列Apple ProRAW",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "apple_iphone_15"
+  },
+  "source": {
+    "name": "Apple｜Apple ProRAW支持范围",
+    "url": "https://support.apple.com/zh-cn/119916",
+    "location": "支持机型 / 格式 / 使用模式限制",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

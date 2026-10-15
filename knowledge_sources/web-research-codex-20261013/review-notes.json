@@ -1,0 +1,54 @@
+{
+  "schema": "research_review_notes_v1",
+  "batch_id": "web-research-codex-20261013",
+  "importable_as_knowledge_records": false,
+  "human_review_status": "not_performed",
+  "field_test_status": "not_performed",
+  "unresolved_hardware_numeric_conflicts": [],
+  "conflict_scope": "仅本批核心主张核对，未开展全库审计；空数组不代表所有来源均无争议。",
+  "scope_decisions": [
+    {
+      "topic": "引导线的目标",
+      "source_ids": ["nikon-leading", "adobe-leading"],
+      "decision": "按主要表达对象解释，保留线条本身为主体及有意画外引导，不把一条来源中的强调语气变成所有场景强制规则。"
+    },
+    {
+      "topic": "留白面积",
+      "source_ids": ["adobe-negative", "canon-composition"],
+      "decision": "只收录留白方法与非纯色例外；未把来源中的面积经验值转换为运行时阈值，未验证比例与情绪因果。"
+    },
+    {
+      "topic": "合照案例参数与翻译",
+      "source_ids": ["nikon-group"],
+      "decision": "源文案例的光圈和排数不推广；只归纳面部可见、边缘余量及试拍检查。",
+      "translation_review_status": "not_performed",
+      "remaining_check": "队友独立核对日文相关段落与中文归纳。"
+    },
+    {
+      "topic": "iPhone操作版本和机型",
+      "source_ids": ["apple-burst", "apple-live", "apple-portrait", "apple-tools", "apple-iphone15"],
+      "decision": "型号功能依据与通用操作文档分别注明；不用其他机型专属硬件步骤，不硬编码所有iOS版本的计时选项。",
+      "remaining_check": "用户iOS版本、当前菜单、模式组合和真机操作尚未验证。"
+    },
+    {
+      "topic": "检索权限与公开展示",
+      "source_ids": [],
+      "decision": "全部候选保持retrieval_allowed=false；公开可读与正确性核对不当作任意检索或再分发许可。"
+    }
+  ],
+  "duplicates": {
+    "same_id_new_revision_count": 5,
+    "new_topic_count": 5,
+    "existing_files_overwritten": false,
+    "details": "见manifest.json；这是人工主题比较和编号检查，不是部署了语义去重算法。"
+  },
+  "validation": {
+    "dry_run_validated_files": 10,
+    "isolated_tests_passed": 153,
+    "isolated_tests_skipped": 1,
+    "project_main_database_modified": false,
+    "project_main_database_sha256_before": "12698199AAAA460F2C9A5CBE575B29CB762B839B9ADAB31E43245737ADE47761",
+    "project_main_database_sha256_after": "12698199AAAA460F2C9A5CBE575B29CB762B839B9ADAB31E43245737ADE47761",
+    "knowledge_published": false
+  }
+}

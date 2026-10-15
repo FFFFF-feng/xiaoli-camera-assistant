@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-equipment-xiaomi14-lenses",
+  "library_id": "equipment",
+  "title": "小米14全球版：等效焦距和镜头规格",
+  "kind": "manufacturer_fact",
+  "content": "核心规则：全球版Xiaomi14规格列出主摄、超广角和浮动长焦。\n建议动作：确认是14而不是14 Pro/Ultra，并记录地区版本。；按当前镜头对应规格解释取景，不迁移其他型号能力。\n适用前提：Xiaomi14全球版资料范围；中国版需复核。\n限制与例外：23/14/75mm是等效焦距；本条不提供实体焦距或可变光圈能力。",
+  "payload": {
+    "core_claim": "全球版Xiaomi14规格列出主摄、超广角和浮动长焦。",
+    "goal": "小米14全球版：等效焦距和镜头规格",
+    "requires": [
+      "Xiaomi14全球版资料范围；中国版需复核。"
+    ],
+    "actions": [
+      "确认是14而不是14 Pro/Ultra，并记录地区版本。",
+      "按当前镜头对应规格解释取景，不迁移其他型号能力。"
+    ],
+    "limitations": [
+      "23/14/75mm是等效焦距；本条不提供实体焦距或可变光圈能力。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "manufacturer_facts": {
+      "region": "global",
+      "main": {
+        "equivalent_focal_length_mm": 23,
+        "aperture_f_number": 1.6
+      },
+      "ultrawide": {
+        "equivalent_focal_length_mm": 14,
+        "aperture_f_number": 2.2
+      },
+      "telephoto": {
+        "equivalent_focal_length_mm": 75,
+        "aperture_f_number": 2
+      }
+    },
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "xiaomi-14",
+          "url": "https://www.mi.com/global/product/xiaomi-14/specs/",
+          "location": "Rear camera / Telephoto footnotes / Photography modes",
+          "supports": "主摄23mm f/1.6、超广角14mm f/2.2、长焦75mm f/2。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "equipment",
+    "xiaomi14-lenses",
+    "小米14全球版",
+    "等效焦距和镜头规格",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "xiaomi_14"
+  },
+  "source": {
+    "name": "Xiaomi｜Xiaomi 14全球版规格",
+    "url": "https://www.mi.com/global/product/xiaomi-14/specs/",
+    "location": "Rear camera / Telephoto footnotes / Photography modes",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

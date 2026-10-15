@@ -1,0 +1,107 @@
+{
+  "passed": true,
+  "draft_cards": 22,
+  "covered_models": 27,
+  "source_registry_count": 24,
+  "upload_batch_sizes": [
+    20,
+    2
+  ],
+  "author": "符梁",
+  "schema_version": 1,
+  "main_database_before": {
+    "path": "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge.db",
+    "file_sha256": "81db818ca4ce9992b445753838b614be108a73bc54af37718f4b21a44474f52e",
+    "logical_sha256": "bcf68a21cf8513a179e90614d6aad95492a64b4c1788dbaa1d65f467aae61be1",
+    "revision_count": 112,
+    "audit_count": 112,
+    "statuses": {
+      "draft": 112
+    }
+  },
+  "main_database_after": {
+    "path": "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge.db",
+    "file_sha256": "81db818ca4ce9992b445753838b614be108a73bc54af37718f4b21a44474f52e",
+    "logical_sha256": "bcf68a21cf8513a179e90614d6aad95492a64b4c1788dbaa1d65f467aae61be1",
+    "revision_count": 112,
+    "audit_count": 112,
+    "statuses": {
+      "draft": 112
+    }
+  },
+  "checks": {
+    "strict_model": true,
+    "zero_id_title_duplicates_against_158": true,
+    "model_module_region_source_binding": true,
+    "unknown_values_preserved": true,
+    "cli_dry_run": true,
+    "upload_preview_api": true,
+    "isolated_draft_write": true,
+    "upload_repeat_idempotence": true,
+    "directory_repeat_idempotence": true,
+    "27_models_condition_matching": true,
+    "draft_keyword_and_structured_isolation": true,
+    "temporary_cleanup": true,
+    "main_database_unchanged": true,
+    "existing_files_and_runtime_code_unchanged": true
+  },
+  "not_executed": [
+    "工作台实际上传与视觉预览",
+    "真机拍摄与相机控件测试",
+    "各型号最新固件全量核验",
+    "独立人工事实/语义审核",
+    "版权许可核验",
+    "运行时型号菜单注册",
+    "审核发布流程",
+    "本批Git提交推送"
+  ],
+  "limits": [
+    "dry-run不查数据库冲突，另以只读基线扫描补充",
+    "全部为型号限定厂商事实，未将同厂资料算作独立发布者",
+    "检索测试仅覆盖draft与retrieval_allowed=false同时成立；条件测试使用当前匹配函数，不证明手机实际行为",
+    "品牌级市场资料只用于选题，不是27型号销量排名或完整主流机型清单"
+  ],
+  "environment_issue": {
+    "known_from_prior_batch": "系统临时目录曾写入失败；本批未重测",
+    "handling": "只为测试进程指定工作区临时子目录，预览/写入/重复/清理真实执行"
+  },
+  "card_file_hashes": {
+    "batch-01\\phone20261014-a57-zoom.json": "6bd7b98871a90499e721505a80dc22c926ba59d0bf6b83f7e432e630f8c8335c",
+    "batch-01\\phone20261014-fold8-variants.json": "d370a5a33ce5a2e98d3a2be19b76bd8b75ecf559cb42a785721936fbfc05d4e5",
+    "batch-01\\phone20261014-honor-magic9-variants.json": "34cd44e67359a75b60d95300df3431e79468b391503fb968d3efc7763b65191d",
+    "batch-01\\phone20261014-iphone-air-main.json": "85411a06d484897b053daf6729dd13e2aae5c1596c9b69001663d15fcc62d0b5",
+    "batch-01\\phone20261014-iphone17-dual.json": "c3bcbe3a1e1897f8cd90169e3deb3516ef7890ea27c0f9740d954c242bb628d8",
+    "batch-01\\phone20261014-iphone17e-main.json": "62b460e3423377bff737aab5843e1ec8e72f7cae7354ceb8dcaddd394e2a2119",
+    "batch-01\\phone20261014-iphone18pro-aperture.json": "d14096b475d2b10b43d3b2b3ffb6bc7f4f593a44a8b939018b0d9f276dc1f0aa",
+    "batch-01\\phone20261014-mate80pro-zoom.json": "f7f57f1e185566f08af792d4e597897f020ff1cc468e412013eaf0a076c86f19",
+    "batch-01\\phone20261014-oneplus16.json": "b6330c02cda4f4ce763542887588db1dc0b5475466b38cb85a80c0cb12839d12",
+    "batch-01\\phone20261014-oppo-findx10.json": "93c16e2ba61015d9c26b85ee0629a57c635617906ef24d1e7a9545895c926d3a",
+    "batch-01\\phone20261014-oppo-findx10promax.json": "4fa271b7c7b22207e3c10138eff94bc1fb9eeb1009c45cc7955c34e01eed0ab4",
+    "batch-01\\phone20261014-pixel11pro-family.json": "6f2e68a134caacf83bab9fb5b332e4c9d55832190a0c171dfa451c4955830292",
+    "batch-01\\phone20261014-pura90pro-zoom.json": "a07e0f9096152f3aa9ad53367e00214820f3c0e131360d191d736f1a25559b52",
+    "batch-01\\phone20261014-redmi-note17pro5g-za.json": "8923fa31aefe1a4e25afcfbcb724eafc0cb9262159ec687544628eae53b7bd5d",
+    "batch-01\\phone20261014-s26-base-plus.json": "d9e9b7816a2f0f904d37ec6d14287f3b4924555a1b1bbbc807cb5a3f91932404",
+    "batch-01\\phone20261014-s26ultra-zoom.json": "e4148476bb68f46765cd93309d8c15e8e812bfba8091011111079fd7a74ca208",
+    "batch-01\\phone20261014-vivo-x500.json": "10f73312c4e00c6d8e98a80ea7861c0210f83c8c68b368ce2d748a255f5cb108",
+    "batch-01\\phone20261014-vivo-x500promax.json": "31170ea71890abcb2ebfaac4e7fb27c5d88158e898e498c1e82ff68e92ed35f9",
+    "batch-01\\phone20261014-xiaomi17ultra-uk.json": "8b1bc312dbb03a0153a9f3028ab2fa98a13c0a1006086a1f13c654e9851f303b",
+    "batch-01\\phone20261014-xiaomi18promax.json": "c1c1f2d95afea939a1699f3caa3497336749b6af6585277274e442bd65ccc487",
+    "batch-02\\phone20261014-oppo-reno16.json": "f9c49edb5fd63fb61c2b179c4f6acf1c8bfb26d4d466528a452929c3ac80efed",
+    "batch-02\\phone20261014-vivo-s50.json": "7269d9bc59cedb579661a03dc3279ae27805e1e4fce969ec381bbd0a230d2a3c"
+  },
+  "model_schema_fields": [
+    "knowledge_id",
+    "library_id",
+    "title",
+    "kind",
+    "content",
+    "payload",
+    "tags",
+    "conditions",
+    "source",
+    "author",
+    "version",
+    "schema_version",
+    "dataset_split"
+  ]
+}

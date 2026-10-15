@@ -157,6 +157,8 @@ class DemoRecommendationAdvisor:
 
     @staticmethod
     def _auto_iso(camera: CameraProfile, preferred_max: int) -> str:
+        if camera.native_iso_min is None or camera.native_iso_max is None:
+            return "Auto ISO（范围以本机菜单为准）"
         upper = min(preferred_max, camera.recommended_auto_iso_max, camera.native_iso_max)
         return f"Auto ISO {camera.native_iso_min}–{upper}"
 
@@ -169,6 +171,8 @@ class DemoRecommendationAdvisor:
     @staticmethod
     def _safe_shutter(request: UserRequest, camera: CameraProfile, minimum: int) -> str:
         crop = camera.crop_factor
+        if crop is None:
+            return f"1/{minimum}s（通用试拍目标，非机型边界）"
         focal = request.focal_length_mm or 50
         target = max(minimum, int(focal * crop))
         standards = [30, 60, 80, 100, 125, 160, 200, 250, 320, 400, 500, 640, 800, 1000]

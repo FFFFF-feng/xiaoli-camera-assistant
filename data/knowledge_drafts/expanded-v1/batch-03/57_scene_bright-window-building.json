@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-scene-bright-window-building",
+  "library_id": "scene",
+  "title": "室内建筑与亮窗：先处理亮暗差异",
+  "kind": "guideline",
+  "content": "核心规则：亮窗与暗室可超过单次拍摄想保留的亮暗范围。\n建议动作：先确认窗外和室内哪一部分重要，检查亮部警告。；场景和设备合适时比较曝光包围与单次曝光。\n适用前提：确有明显亮暗差；多帧时场景可保持稳定。\n限制与例外：不能从JPEG亮度直接量出场景动态范围；不默认启动HDR。",
+  "payload": {
+    "core_claim": "亮窗与暗室可超过单次拍摄想保留的亮暗范围。",
+    "goal": "室内建筑与亮窗：先处理亮暗差异",
+    "requires": [
+      "确有明显亮暗差；多帧时场景可保持稳定。"
+    ],
+    "actions": [
+      "先确认窗外和室内哪一部分重要，检查亮部警告。",
+      "场景和设备合适时比较曝光包围与单次曝光。"
+    ],
+    "limitations": [
+      "不能从JPEG亮度直接量出场景动态范围；不默认启动HDR。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-hdr",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/high-dynamic-range-photography",
+          "location": "Bracketing / Tripod / Histogram",
+          "supports": "不同曝光可用于高动态范围合成。"
+        },
+        {
+          "source_id": "nikon-histogram",
+          "url": "https://onlinemanual.nikonimglib.com/z6III/en/photo_information_53.html",
+          "location": "Highlights / RGB Histogram / Shooting Data",
+          "supports": "亮部与RGB直方图仅作指南。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "scene",
+    "bright-window-building",
+    "室内建筑与亮窗",
+    "先处理亮暗差异",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Nikon｜HDR摄影教程",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/high-dynamic-range-photography",
+    "location": "Bracketing / Tripod / Histogram",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,528 @@
+{
+  "knowledge_id": "phone20261014-fold8-variants",
+  "library_id": "equipment",
+  "title": "Galaxy Z Fold8 / Ultra：双摄与三摄须按完整型号核对",
+  "kind": "manufacturer_fact",
+  "content": "核心结论：Fold8所列后置为5000万广角和5000万超广角；Fold8 Ultra另有2亿广角、5000万超广角和1000万3倍长焦，不能互相继承。\n\n适用条件：只适用所列完整型号及来源地区；当前问题是后置静态照片相机能力；依据2026-10-14读取的公开规格快照；具体系统、相机版本、模式和实际切换镜头需确认\n\n操作建议（未实测）：先核对完整型号、销售地区、系统和原生相机App，再选该型号对应的参数行。；在需要的照片模式检查镜头或倍数按钮，短序列试拍并检查原片；没有确认的控件或数值范围保持未知。\n\n例外：官方表中的Main Camera还可能指内屏自拍，不能把这一名称直接当后置主摄；本卡只采用Rear栏。；未把Flip8参数纳入本卡。；像素数为厂商标称传感器/模式规格，不保证每次保存的像素数、细节或清晰效果；模式、光线和处理流程需另核对。；规格列出光圈不自动证明用户可调；等效/标称焦距不写入EXIF实际焦距；视频、前置和第三方App能力不外推。\n\n风险：借用相近型号、把数码或光学品质变焦登记为新增物理镜头，会给出错误的拍摄操作。；仅凭最高像素、最大倍数或宣传效果选参数，可能高估暗光、运动或远景的实际细节。\n\n信息不足时：型号、地区、模式或版本不明时先确认；本卡没有确认的ISO/快门范围、RAW逐镜头支持、自动镜头切换及手动光圈入口均不补值。\n\n事实与推断：具体数值及模组对应见payload.facts及equipment_profiles；来源事实见source_facts，整理者推断见editorial_inferences。\n\n来源及读取范围：\nPH-S08 Samsung https://news.samsung.com/global/samsung-galaxy-z-fold8-ultra-fold8-and-flip8foldables-perfected-for-every-way-of-living；Specifications / Fold8 Ultra Rear Triple / Fold8 Rear Dual；发布页的折叠机规格；Fold8系统栏Android 17 / One UI 9，实际版本未实测；全球发布规格；中国版本需核对；访问2026-10-14；实际读取L168–246机型标题与相机表、L264–265系统；浏览L274–345另一机型及脚注，但不纳入Flip8卡\n\n核验限制：来源正文已读，未真机实拍或独立人工审核；检索许可未核验，保持禁止检索。",
+  "payload": {
+    "core_conclusion": "Fold8所列后置为5000万广角和5000万超广角；Fold8 Ultra另有2亿广角、5000万超广角和1000万3倍长焦，不能互相继承。",
+    "applicable_conditions": [
+      "只适用所列完整型号及来源地区；当前问题是后置静态照片相机能力",
+      "依据2026-10-14读取的公开规格快照；具体系统、相机版本、模式和实际切换镜头需确认"
+    ],
+    "operations": [
+      {
+        "action": "先核对完整型号、销售地区、系统和原生相机App，再选该型号对应的参数行。",
+        "evidence_type": "untested_advice"
+      },
+      {
+        "action": "在需要的照片模式检查镜头或倍数按钮，短序列试拍并检查原片；没有确认的控件或数值范围保持未知。",
+        "evidence_type": "untested_advice"
+      }
+    ],
+    "exceptions": [
+      "官方表中的Main Camera还可能指内屏自拍，不能把这一名称直接当后置主摄；本卡只采用Rear栏。",
+      "未把Flip8参数纳入本卡。",
+      "像素数为厂商标称传感器/模式规格，不保证每次保存的像素数、细节或清晰效果；模式、光线和处理流程需另核对。",
+      "规格列出光圈不自动证明用户可调；等效/标称焦距不写入EXIF实际焦距；视频、前置和第三方App能力不外推。"
+    ],
+    "risks": [
+      "借用相近型号、把数码或光学品质变焦登记为新增物理镜头，会给出错误的拍摄操作。",
+      "仅凭最高像素、最大倍数或宣传效果选参数，可能高估暗光、运动或远景的实际细节。"
+    ],
+    "missing_information_policy": "型号、地区、模式或版本不明时先确认；本卡没有确认的ISO/快门范围、RAW逐镜头支持、自动镜头切换及手动光圈入口均不补值。",
+    "source_facts": [
+      {
+        "statement": "已读官方相机表列明后置模组参数及该卡收录的变焦/格式/控制声明；对应数值、型号、模组、地区和出处逐项列于facts与equipment_profiles。",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "evidence_type": "original_manufacturer_specification"
+      }
+    ],
+    "editorial_inferences": [
+      "按型号分行登记、先试拍再检查文件是整理助手的未实测建议；规格不是审美或画质保证。",
+      "是否另建物理模组、是否引用近似型号和如何处理未知是整理者判断；不把这些边界判断写成厂家实测结论。",
+      "未列入已读范围的能力维持null，不能把缺项解释为不支持。"
+    ],
+    "facts": [
+      {
+        "field": "declared_sensor_megapixels",
+        "value": 50,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8",
+          "camera_module": "wide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_aperture_f_number",
+        "value": 1.8,
+        "unit": "f_number",
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8",
+          "camera_module": "wide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_ois",
+        "value": true,
+        "unit": null,
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8",
+          "camera_module": "wide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_af",
+        "value": "Dual Pixel AF",
+        "unit": null,
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8",
+          "camera_module": "wide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_sensor_megapixels",
+        "value": 50,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8",
+          "camera_module": "ultrawide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_aperture_f_number",
+        "value": 1.9,
+        "unit": "f_number",
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8",
+          "camera_module": "ultrawide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_af",
+        "value": "Quad Pixel AF",
+        "unit": null,
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8",
+          "camera_module": "ultrawide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_sensor_megapixels",
+        "value": 200,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8 Ultra",
+          "camera_module": "wide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_aperture_f_number",
+        "value": 1.7,
+        "unit": "f_number",
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8 Ultra",
+          "camera_module": "wide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_ois",
+        "value": true,
+        "unit": null,
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8 Ultra",
+          "camera_module": "wide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_af",
+        "value": "Quad Pixel AF",
+        "unit": null,
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8 Ultra",
+          "camera_module": "wide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_sensor_megapixels",
+        "value": 50,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8 Ultra",
+          "camera_module": "ultrawide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_aperture_f_number",
+        "value": 1.9,
+        "unit": "f_number",
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8 Ultra",
+          "camera_module": "ultrawide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_af",
+        "value": "Quad Pixel AF",
+        "unit": null,
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8 Ultra",
+          "camera_module": "ultrawide",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_sensor_megapixels",
+        "value": 10,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8 Ultra",
+          "camera_module": "telephoto",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_aperture_f_number",
+        "value": 2.4,
+        "unit": "f_number",
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8 Ultra",
+          "camera_module": "telephoto",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_ois",
+        "value": true,
+        "unit": null,
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8 Ultra",
+          "camera_module": "telephoto",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_af",
+        "value": "PDAF",
+        "unit": null,
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8 Ultra",
+          "camera_module": "telephoto",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "declared_optical_zoom_ratio",
+        "value": 3,
+        "unit": "ratio",
+        "conditions": {
+          "model_variant": "Samsung Galaxy Z Fold8 Ultra",
+          "camera_module": "telephoto",
+          "capture_mode": "still_photo",
+          "region_scope": "全球发布规格；中国版本需核对"
+        },
+        "information_source": "manufacturer_fact",
+        "source_ids": [
+          "PH-S08"
+        ],
+        "verification_status": "source_checked_pending_independent_review"
+      }
+    ],
+    "equipment_profiles": [
+      {
+        "model_variant": "Samsung Galaxy Z Fold8",
+        "declared_rear_modules": [
+          {
+            "module": "wide",
+            "declared_sensor_megapixels": 50,
+            "declared_aperture_f_number": 1.8,
+            "equivalent_focal_length_35mm": null,
+            "manufacturer_listed_focal_length_mm": null,
+            "actual_focal_length_mm": null,
+            "declared_ois": true,
+            "declared_af": "Dual Pixel AF",
+            "declared_optical_zoom_ratio": null,
+            "manual_aperture_control": null
+          },
+          {
+            "module": "ultrawide",
+            "declared_sensor_megapixels": 50,
+            "declared_aperture_f_number": 1.9,
+            "equivalent_focal_length_35mm": null,
+            "manufacturer_listed_focal_length_mm": null,
+            "actual_focal_length_mm": null,
+            "declared_ois": null,
+            "declared_af": "Quad Pixel AF",
+            "declared_optical_zoom_ratio": null,
+            "manual_aperture_control": null
+          }
+        ],
+        "optical_quality_zoom_labels": [
+          2
+        ],
+        "digital_zoom_max_ratio": null,
+        "other_zoom_feature": null,
+        "declared_still_image_formats": null,
+        "declared_raw_mode": null,
+        "native_manual_controls": {
+          "iso": null,
+          "shutter": null,
+          "white_balance": null,
+          "physical_aperture": null
+        },
+        "iso_range": null,
+        "shutter_seconds_range": null,
+        "actual_firmware": null,
+        "actual_camera_app_version": null,
+        "evidence_source_ids": [
+          "PH-S08"
+        ],
+        "unknown_means": "未核验，不等于不支持；不从同品牌或同系列继承"
+      },
+      {
+        "model_variant": "Samsung Galaxy Z Fold8 Ultra",
+        "declared_rear_modules": [
+          {
+            "module": "wide",
+            "declared_sensor_megapixels": 200,
+            "declared_aperture_f_number": 1.7,
+            "equivalent_focal_length_35mm": null,
+            "manufacturer_listed_focal_length_mm": null,
+            "actual_focal_length_mm": null,
+            "declared_ois": true,
+            "declared_af": "Quad Pixel AF",
+            "declared_optical_zoom_ratio": null,
+            "manual_aperture_control": null
+          },
+          {
+            "module": "ultrawide",
+            "declared_sensor_megapixels": 50,
+            "declared_aperture_f_number": 1.9,
+            "equivalent_focal_length_35mm": null,
+            "manufacturer_listed_focal_length_mm": null,
+            "actual_focal_length_mm": null,
+            "declared_ois": null,
+            "declared_af": "Quad Pixel AF",
+            "declared_optical_zoom_ratio": null,
+            "manual_aperture_control": null
+          },
+          {
+            "module": "telephoto",
+            "declared_sensor_megapixels": 10,
+            "declared_aperture_f_number": 2.4,
+            "equivalent_focal_length_35mm": null,
+            "manufacturer_listed_focal_length_mm": null,
+            "actual_focal_length_mm": null,
+            "declared_ois": true,
+            "declared_af": "PDAF",
+            "declared_optical_zoom_ratio": 3,
+            "manual_aperture_control": null
+          }
+        ],
+        "optical_quality_zoom_labels": [
+          2
+        ],
+        "digital_zoom_max_ratio": null,
+        "other_zoom_feature": null,
+        "declared_still_image_formats": null,
+        "declared_raw_mode": null,
+        "native_manual_controls": {
+          "iso": null,
+          "shutter": null,
+          "white_balance": null,
+          "physical_aperture": null
+        },
+        "iso_range": null,
+        "shutter_seconds_range": null,
+        "actual_firmware": null,
+        "actual_camera_app_version": null,
+        "evidence_source_ids": [
+          "PH-S08"
+        ],
+        "unknown_means": "未核验，不等于不支持；不从同品牌或同系列继承"
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "PH-S08",
+        "publisher": "Samsung",
+        "original_url": "https://news.samsung.com/global/samsung-galaxy-z-fold8-ultra-fold8-and-flip8foldables-perfected-for-every-way-of-living",
+        "section": "Specifications / Fold8 Ultra Rear Triple / Fold8 Rear Dual",
+        "accessed_at": "2026-10-14",
+        "region": "全球发布规格；中国版本需核对",
+        "document_version": "发布页的折叠机规格；Fold8系统栏Android 17 / One UI 9，实际版本未实测",
+        "actual_read_scope": "实际读取L168–246机型标题与相机表、L264–265系统；浏览L274–345另一机型及脚注，但不纳入Flip8卡",
+        "tool": "mcp__codex_apps__search_service_web_run",
+        "retrieval_allowed": false,
+        "rights_status": "检索、展示及再分发许可未核验"
+      }
+    ],
+    "brand": "Samsung",
+    "compiler": "知识采集助手（AI）；按用户要求署名符梁，未代替本人或独立审核人实测",
+    "deduplication": {
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    "verification": {
+      "checked_at": "2026-10-14",
+      "independent_publishers": [
+        "Samsung"
+      ],
+      "policy": "型号事实以对应厂商原文为准；同厂规格与新闻稿不是两个独立发布者",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "runtime_registration": "未修改phone_profiles.yaml或应用型号菜单，导入草稿不等于运行时已启用"
+  },
+  "tags": [
+    "手机型号",
+    "20261014型号专项",
+    "Samsung",
+    "后置相机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": [
+      "Samsung Galaxy Z Fold8",
+      "Samsung Galaxy Z Fold8 Ultra"
+    ],
+    "capture_mode": "still_photo",
+    "region_scope": "全球发布规格；中国版本需核对"
+  },
+  "source": {
+    "name": "Samsung",
+    "url": "https://news.samsung.com/global/samsung-galaxy-z-fold8-ultra-fold8-and-flip8foldables-perfected-for-every-way-of-living",
+    "location": "Specifications / Fold8 Ultra Rear Triple / Fold8 Rear Dual",
+    "license": "最小必要事实自行整理；检索、展示及再分发许可未核验",
+    "retrieval_allowed": false
+  },
+  "author": "符梁",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

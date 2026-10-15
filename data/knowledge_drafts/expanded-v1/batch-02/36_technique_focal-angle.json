@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-focal-angle",
+  "library_id": "technique",
+  "title": "焦距与视角：等效标注不能混为实体焦距",
+  "kind": "guideline",
+  "content": "核心规则：同画幅比较时，较长焦距通常覆盖更窄的视角。\n建议动作：查清设备给的是实际焦距还是35mm等效焦距。；按需要包含的环境选择镜头或取景范围。\n适用前提：知道画幅与标注基准。\n限制与例外：不能把手机23mm等效直接作为实体焦距或手持安全快门输入。",
+  "payload": {
+    "core_claim": "同画幅比较时，较长焦距通常覆盖更窄的视角。",
+    "goal": "焦距与视角：等效标注不能混为实体焦距",
+    "requires": [
+      "知道画幅与标注基准。"
+    ],
+    "actions": [
+      "查清设备给的是实际焦距还是35mm等效焦距。",
+      "按需要包含的环境选择镜头或取景范围。"
+    ],
+    "limitations": [
+      "不能把手机23mm等效直接作为实体焦距或手持安全快门输入。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "cross_source_agreement",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-focal",
+          "url": "https://www.sony.com/electronics/support/articles/00267921",
+          "location": "Focal Length",
+          "supports": "焦距与覆盖视角关系，教程有画幅基准。"
+        },
+        {
+          "source_id": "canon-focal",
+          "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/focus/index.html",
+          "location": "Focal Length",
+          "supports": "焦距对应视角变化。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "focal-angle",
+    "焦距与视角",
+    "等效标注不能混为实体焦距",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜焦距与视角",
+    "url": "https://www.sony.com/electronics/support/articles/00267921",
+    "location": "Focal Length",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-iso-not-photons",
+  "library_id": "technique",
+  "title": "ISO：不把提亮说成增加进光量",
+  "kind": "guideline",
+  "content": "核心规则：ISO设定不让镜头额外收集光子；进光还取决于光圈和曝光时间。\n建议动作：需要更亮时区分增加实际曝光与改变输出放大。；避免用高ISO替代补光或足够的曝光时间。\n适用前提：讨论ISO；光圈与时间等条件可确认。\n限制与例外：不同传感器读出和图像处理不同；手机多帧另有合成。",
+  "payload": {
+    "core_claim": "ISO设定不让镜头额外收集光子；进光还取决于光圈和曝光时间。",
+    "goal": "ISO：不把提亮说成增加进光量",
+    "requires": [
+      "讨论ISO；光圈与时间等条件可确认。"
+    ],
+    "actions": [
+      "需要更亮时区分增加实际曝光与改变输出放大。",
+      "避免用高ISO替代补光或足够的曝光时间。"
+    ],
+    "limitations": [
+      "不同传感器读出和图像处理不同；手机多帧另有合成。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-iso",
+          "url": "https://www.sony.com/electronics/support/articles/00267930",
+          "location": "ISO Sensitivity",
+          "supports": "ISO影响信号放大，光量由光圈与时长决定。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "iso-not-photons",
+    "ISO",
+    "不把提亮说成增加进光量",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜ISO与放大",
+    "url": "https://www.sony.com/electronics/support/articles/00267930",
+    "location": "ISO Sensitivity",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-look-room",
+  "library_id": "composition",
+  "title": "视线方向留空间",
+  "kind": "guideline",
+  "content": "核心规则：人物或动物看向一侧时，可在该方向保留空间。\n建议动作：仅在视线方向可确认时给出左右建议。；比较视线方向留白与压缩空间的表达差异。\n适用前提：眼睛或头部朝向清楚；知道用户目标。\n限制与例外：压缩视线空间也可表达紧张；不确定朝向时询问。",
+  "payload": {
+    "core_claim": "人物或动物看向一侧时，可在该方向保留空间。",
+    "goal": "视线方向留空间",
+    "requires": [
+      "眼睛或头部朝向清楚；知道用户目标。"
+    ],
+    "actions": [
+      "仅在视线方向可确认时给出左右建议。",
+      "比较视线方向留白与压缩空间的表达差异。"
+    ],
+    "limitations": [
+      "压缩视线空间也可表达紧张；不确定朝向时询问。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "cross_source_agreement",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-composition",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "location": "Rule of Thirds / Horizon / Lean Into the Frame / Leading lines / Patterns",
+          "supports": "在主体面向的方向留空间。"
+        },
+        {
+          "source_id": "sony-portrait",
+          "url": "https://www.sony.co.uk/electronics/support/articles/00206555",
+          "location": "Considering the composition / Using back light",
+          "supports": "肖像视线方向可保留空间。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "composition",
+    "look-room",
+    "视线方向留空间",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon｜5 Easy Composition Guidelines",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+    "location": "Rule of Thirds / Horizon / Lean Into the Frame / Leading lines / Patterns",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

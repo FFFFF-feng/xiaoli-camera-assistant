@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-phone-night-steady",
+  "library_id": "technique",
+  "title": "手机夜景：快门后仍需等待拍摄结束",
+  "kind": "guideline",
+  "content": "核心规则：多种手机夜间模式要求拍摄过程中保持稳定。\n建议动作：按下快门后继续稳定持机，等待完成提示。；可用稳固支撑时避免拍摄中触碰。\n适用前提：手机的夜间模式实际可用；确认完成提示。\n限制与例外：不同品牌时间和算法不同；稳定不能解决主体运动。",
+  "payload": {
+    "core_claim": "多种手机夜间模式要求拍摄过程中保持稳定。",
+    "goal": "手机夜景：快门后仍需等待拍摄结束",
+    "requires": [
+      "手机的夜间模式实际可用；确认完成提示。"
+    ],
+    "actions": [
+      "按下快门后继续稳定持机，等待完成提示。",
+      "可用稳固支撑时避免拍摄中触碰。"
+    ],
+    "limitations": [
+      "不同品牌时间和算法不同；稳定不能解决主体运动。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "cross_source_agreement",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "apple-night",
+          "url": "https://support.apple.com/zh-cn/102519",
+          "location": "拍摄夜间模式照片 / 调整拍摄时间 / 闪光灯和实况照片",
+          "supports": "夜间拍摄期间保持稳定至完成。"
+        },
+        {
+          "source_id": "google-night",
+          "url": "https://support.google.com/pixelcamera/answer/9708795?hl=en-GB",
+          "location": "Night Sight / Astrophotography",
+          "supports": "Night Sight拍摄时保持不动。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "phone-night-steady",
+    "手机夜景",
+    "快门后仍需等待拍摄结束",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_capture_mode": "night"
+  },
+  "source": {
+    "name": "Apple｜iPhone夜间模式",
+    "url": "https://support.apple.com/zh-cn/102519",
+    "location": "拍摄夜间模式照片 / 调整拍摄时间 / 闪光灯和实况照片",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

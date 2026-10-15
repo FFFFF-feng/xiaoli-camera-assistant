@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-style-cool-night",
+  "library_id": "style",
+  "title": "冷色夜景：保留夜感，而非统一压暗",
+  "kind": "guideline",
+  "content": "核心规则：冷色夜景是色彩和亮暗关系的目标选择。\n建议动作：先确认希望保留哪些灯光颜色与暗部层次。；比较偏冷与现场色彩版本，按意图选择。\n适用前提：用户选择冷色夜景；有可比较样片。\n限制与例外：不保证调白平衡即可复现参考图；噪声与运动问题另行处理。",
+  "payload": {
+    "core_claim": "冷色夜景是色彩和亮暗关系的目标选择。",
+    "goal": "冷色夜景：保留夜感，而非统一压暗",
+    "requires": [
+      "用户选择冷色夜景；有可比较样片。"
+    ],
+    "actions": [
+      "先确认希望保留哪些灯光颜色与暗部层次。",
+      "比较偏冷与现场色彩版本，按意图选择。"
+    ],
+    "limitations": [
+      "不保证调白平衡即可复现参考图；噪声与运动问题另行处理。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "interpretive_goal",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-wb",
+          "url": "https://www.sony.com/electronics/support/articles/00267928",
+          "location": "White Balance",
+          "supports": "预设和白平衡可以形成暖冷偏好。"
+        },
+        {
+          "source_id": "sony-exposure",
+          "url": "https://www.sony.com/electronics/support/articles/00267925",
+          "location": "Exposure / Exposure Compensation",
+          "supports": "曝光目标可以不同。"
+        }
+      ],
+      "inference_note": "这是可选表达目标；来源支持方法存在，不证明审美偏好或效果最优。"
+    }
+  },
+  "tags": [
+    "style",
+    "cool-night",
+    "冷色夜景",
+    "保留夜感",
+    "而非统一压暗",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜白平衡",
+    "url": "https://www.sony.com/electronics/support/articles/00267928",
+    "location": "White Balance",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

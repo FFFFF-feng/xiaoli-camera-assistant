@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-af-static",
+  "library_id": "technique",
+  "title": "静止主体：单次对焦是候选起点",
+  "kind": "guideline",
+  "content": "核心规则：单次对焦适合距离相对稳定的主体。\n建议动作：对准重要细节完成合焦，再检查主体是否移动。；浅景深下尽量少用大幅重新构图。\n适用前提：主体静止；支持单次AF。\n限制与例外：Sony AF-S和Canon One-Shot不是所有品牌统一名称；锁焦后主体动仍可能失焦。",
+  "payload": {
+    "core_claim": "单次对焦适合距离相对稳定的主体。",
+    "goal": "静止主体：单次对焦是候选起点",
+    "requires": [
+      "主体静止；支持单次AF。"
+    ],
+    "actions": [
+      "对准重要细节完成合焦，再检查主体是否移动。",
+      "浅景深下尽量少用大幅重新构图。"
+    ],
+    "limitations": [
+      "Sony AF-S和Canon One-Shot不是所有品牌统一名称；锁焦后主体动仍可能失焦。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "cross_source_agreement",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-af",
+          "url": "https://www.sony.com/electronics/support/articles/00267931",
+          "location": "AF / MF",
+          "supports": "AF-S用于静止主体并锁定合焦。"
+        },
+        {
+          "source_id": "canon-af",
+          "url": "https://cam.start.canon/en/C005/manual/html/UG-05_AF-Drive_0040.html",
+          "location": "One-Shot AF / Servo AF",
+          "supports": "One-Shot用于静止主体。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "af-static",
+    "静止主体",
+    "单次对焦是候选起点",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "motion": "static"
+  },
+  "source": {
+    "name": "Sony｜自动与手动对焦",
+    "url": "https://www.sony.com/electronics/support/articles/00267931",
+    "location": "AF / MF",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

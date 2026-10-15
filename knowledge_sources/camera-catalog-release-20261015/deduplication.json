@@ -1,0 +1,4149 @@
+{
+  "source_camera_records": 4917,
+  "name_groups": 4366,
+  "merged_groups": 541,
+  "merged_source_records": 549,
+  "catalog_only_cameras": 4331,
+  "adapted_cameras": 14,
+  "searchable_cameras": 4345,
+  "excluded_groups": [
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s200-fc7c85e26ea484e2",
+        "open-eq-v1-lensfun-canon-powershot-s200-97567830c72adc3e"
+      ],
+      "models": [
+        "Canon PowerShot S200",
+        "Canon PowerShot S200"
+      ],
+      "reasons": [
+        "传感器来源存在冲突或完整型号歧义，需补充年份及地区后复核。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nokia-808-pureview-02a678dc9c82b386"
+      ],
+      "models": [
+        "Nokia 808 PureView"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nokia-lumia-1020-c660679e2f249cc9",
+        "open-eq-v1-lensfun-nokia-lumia-1020-345df58940a2b29d"
+      ],
+      "models": [
+        "Nokia Lumia 1020",
+        "Nokia Lumia 1020"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-apple-iphone-xs-358ea307a01696e0"
+      ],
+      "models": [
+        "Apple iPhone XS"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-apple-iphone-xs-tele-a7c06fe191cb35cb"
+      ],
+      "models": [
+        "Apple iPhone XS (tele)"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-generic-crop-factor-0-8-medium-format-b4f3dbd3a16fc5ae"
+      ],
+      "models": [
+        "Generic Crop-factor 0.8 (Medium Format)"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-generic-crop-factor-1-0-full-frame-545391e65dcecfdb"
+      ],
+      "models": [
+        "Generic Crop-factor 1.0 (Full Frame)"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-generic-crop-factor-1-1-d22c37a9fd01935c"
+      ],
+      "models": [
+        "Generic Crop-factor 1.1"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-generic-crop-factor-1-3-aps-h-99d92949e19a34ad"
+      ],
+      "models": [
+        "Generic Crop-factor 1.3 (APS-H)"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-generic-crop-factor-1-5-aps-c-9f04994967437df4"
+      ],
+      "models": [
+        "Generic Crop-factor 1.5 (APS-C)"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-generic-crop-factor-1-6-aps-c-c7a2d1ef33676f38"
+      ],
+      "models": [
+        "Generic Crop-factor 1.6 (APS-C)"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-generic-crop-factor-1-7-cd154a8d9e5479c7"
+      ],
+      "models": [
+        "Generic Crop-factor 1.7"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-generic-crop-factor-2-0-four-thirds-86badb5f4a5e9855"
+      ],
+      "models": [
+        "Generic Crop-factor 2.0 (Four-Thirds)"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-honor-dli-l22-42e710b967ef61f3"
+      ],
+      "models": [
+        "Honor DLI-L22"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-huawei-clt-l29-73a3f8d05f8d010a"
+      ],
+      "models": [
+        "Huawei CLT-L29"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-huawei-vog-l29-4009ce1e79d280d2"
+      ],
+      "models": [
+        "Huawei VOG-L29"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-huawei-was-lx1a-327396cf32b920ba"
+      ],
+      "models": [
+        "Huawei WAS-LX1A"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-lg-mobile-lg-h815-9c361726e78f5210"
+      ],
+      "models": [
+        "LG Mobile LG-H815"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-microsoft-lumia-950-208ce6dff4aac5f4"
+      ],
+      "models": [
+        "Microsoft Lumia 950"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-microsoft-lumia-950-xl-e83ba5f46e67045c"
+      ],
+      "models": [
+        "Microsoft Lumia 950 XL"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-nokia-lumia-1520-a0db1a32bf9aff61"
+      ],
+      "models": [
+        "Nokia Lumia 1520"
+      ],
+      "reasons": [
+        "通用校正模板或手机/手机镜头记录，不发布为独立相机型号。"
+      ]
+    }
+  ],
+  "curated_links": {
+    "canon_eos_r10": [
+      "open-eq-v1-cameradatabase-canon-eos-r10-060bd106c36388f1",
+      "open-eq-v1-lensfun-canon-eos-r10-04f3c855ab6c7476"
+    ],
+    "canon_eos_r50": [
+      "open-eq-v1-cameradatabase-canon-eos-r50-01b5cb4e6fd1d7a8",
+      "open-eq-v1-lensfun-canon-eos-r50-2e9a6bfbedf030d1"
+    ],
+    "canon_eos_r7": [
+      "open-eq-v1-cameradatabase-canon-eos-r7-e215b2360a5e6ba6",
+      "open-eq-v1-lensfun-canon-eos-r7-f0f966c12e894a0f"
+    ],
+    "canon_eos_r8": [
+      "open-eq-v1-cameradatabase-canon-eos-r8-fe4fc8013736cb45",
+      "open-eq-v1-lensfun-canon-eos-r8-b8634b9b6059e5a4"
+    ],
+    "fujifilm_x_s20": [
+      "open-eq-v1-cameradatabase-fujifilm-x-s20-0d3256080dee3893",
+      "open-eq-v1-lensfun-fujifilm-x-s20-892fbbdbfd571de6"
+    ],
+    "fujifilm_x_t30_ii": [
+      "open-eq-v1-cameradatabase-fujifilm-x-t30-ii-1fdcfae57e5f441c",
+      "open-eq-v1-lensfun-fujifilm-x-t30-ii-c20a2b03ea8b310e"
+    ],
+    "nikon_z30": [
+      "open-eq-v1-cameradatabase-nikon-z30-d61dc91268e4074c",
+      "open-eq-v1-lensfun-nikon-corporation-nikon-z-30-b44c33bec3de8799"
+    ],
+    "nikon_z5": [
+      "open-eq-v1-cameradatabase-nikon-z5-52dd14231218a287",
+      "open-eq-v1-lensfun-nikon-corporation-nikon-z-5-db99baed054500d0"
+    ],
+    "nikon_z50": [
+      "open-eq-v1-cameradatabase-nikon-z50-3cf3c8dae4c4a262",
+      "open-eq-v1-lensfun-nikon-corporation-nikon-z-50-b8f4d303f8cb5f62"
+    ],
+    "sony_a6700": [
+      "open-eq-v1-cameradatabase-sony-a6700-1122866ee5cd0bde",
+      "open-eq-v1-lensfun-sony-ilce-6700-2977ff540a483850"
+    ],
+    "sony_a7_iv": [
+      "open-eq-v1-cameradatabase-sony-a7-iv-d32506c35cb9d39d",
+      "open-eq-v1-lensfun-sony-ilce-7m4-6ad8e033815185d7"
+    ],
+    "canon_eos_200d_ii": [
+      "open-eq-v1-lensfun-canon-eos-200d-ii-e652fca75462e08c"
+    ],
+    "panasonic_g100": [
+      "open-eq-v1-lensfun-panasonic-dc-g100-502f4fb309a2734b"
+    ],
+    "sony_a6400": [
+      "open-eq-v1-lensfun-sony-ilce-6400-8058dde1f2865884"
+    ]
+  },
+  "merges": [
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-digital-ixus-40-03a65e4fdbd7410c",
+        "open-eq-v1-lensfun-canon-digital-ixus-40-92b073dd7f634bcf"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-digital-ixus-400-e2cb95c2d2f13d57",
+        "open-eq-v1-lensfun-canon-digital-ixus-400-44b1f8c3cd57883e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-digital-ixus-430-6704956728035e13",
+        "open-eq-v1-lensfun-canon-digital-ixus-430-e53744bcaf7f2aaf"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-digital-ixus-50-8d4ab65d2d2d70af",
+        "open-eq-v1-lensfun-canon-digital-ixus-50-ff3da65266c5aaf1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-digital-ixus-500-f535ddec0afabeae",
+        "open-eq-v1-lensfun-canon-digital-ixus-500-9d98a5fc2ca26896"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-digital-ixus-80-is-255c3f0bc4edcc27",
+        "open-eq-v1-lensfun-canon-digital-ixus-80-is-9c79766c7994d9d4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-digital-ixus-95-is-ce2f1bc03e20e588",
+        "open-eq-v1-lensfun-canon-digital-ixus-95-is-ce11b476be4091a3"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-digital-ixus-i-ba476c50ed089d7f",
+        "open-eq-v1-lensfun-canon-digital-ixus-i-7eeb33671f2c8867"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-digital-ixus-ii-a7d9e6f62af9f967",
+        "open-eq-v1-lensfun-canon-digital-ixus-ii-e10b57e6ea4e530c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-digital-ixus-v2-7c4688287e1a9955",
+        "open-eq-v1-lensfun-canon-digital-ixus-v2-48254449eb7bfb79"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-1000d-879370d7e5dd7e65",
+        "open-eq-v1-lensfun-canon-eos-1000d-06596c166cf1d536"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-10d-410b9cc3ff460f2d",
+        "open-eq-v1-lensfun-canon-eos-10d-12041035666016f4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-1300d-921149d607688356",
+        "open-eq-v1-lensfun-canon-eos-1300d-d873d07a5192cae0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-1d-e20a82ee36946c47",
+        "open-eq-v1-lensfun-canon-eos-1d-ab87379d02ee067a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-1d-mark-ii-674485ea2ffbad26",
+        "open-eq-v1-lensfun-canon-eos-1d-mark-ii-7ccee24556fee7cc"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-1d-mark-ii-n-e75ff45dc1967cf1",
+        "open-eq-v1-lensfun-canon-eos-1d-mark-ii-n-de7661f86e4c084a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-1d-mark-iii-b4766268fa39c549",
+        "open-eq-v1-lensfun-canon-eos-1d-mark-iii-f39a43fa289af437"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-1d-mark-iv-d98af5772df150e4",
+        "open-eq-v1-lensfun-canon-eos-1d-mark-iv-e9cd78251a63dbef"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-1d-x-c290d0893a07e536",
+        "open-eq-v1-lensfun-canon-eos-1d-x-45f0693d30bb7cf2"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-1d-x-mark-ii-e32b04aefcc802d5",
+        "open-eq-v1-lensfun-canon-eos-1d-x-mark-ii-7da734e1d8f39e46"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-1ds-4444c60ee4e9da36",
+        "open-eq-v1-lensfun-canon-eos-1ds-980401b0249a1e2a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-1ds-mark-ii-dc2292ee28a0121c",
+        "open-eq-v1-lensfun-canon-eos-1ds-mark-ii-0d8ad7f29779b266"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-1ds-mark-iii-610f3e7750dc98f0",
+        "open-eq-v1-lensfun-canon-eos-1ds-mark-iii-b6f32edd61f5b331"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-20d-0a5975dcd1cecbd0",
+        "open-eq-v1-lensfun-canon-eos-20d-3f52d1346882a7e4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-250d-5df40833d8b2a85a",
+        "open-eq-v1-lensfun-canon-eos-250d-d51729c65ba8e9d9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-300d-eb74a9518bbd7831",
+        "open-eq-v1-lensfun-canon-eos-300d-digital-4f5f48afa400bec4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-30d-cd7840fe4cfbce30",
+        "open-eq-v1-lensfun-canon-eos-30d-aebcf6fad481486c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-350d-da80bc36d7374889",
+        "open-eq-v1-lensfun-canon-eos-350d-digital-531a118bc1ada828"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-4000d-b9f0ed82e0e65470",
+        "open-eq-v1-lensfun-canon-eos-4000d-be843580bb50e588"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-400d-a3434b0b5a9a2cd9",
+        "open-eq-v1-lensfun-canon-eos-400d-digital-a1fc782a1e952500"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-40d-246309ec0ca60afe",
+        "open-eq-v1-lensfun-canon-eos-40d-664af423f41b79ba"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-450d-346c014557315000",
+        "open-eq-v1-lensfun-canon-eos-450d-df1e57e9f825bf35"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-500d-50059bfdb7c024d7",
+        "open-eq-v1-lensfun-canon-eos-500d-8820d9d5514bb3b4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-50d-6d2137c4650d6ccd",
+        "open-eq-v1-lensfun-canon-eos-50d-8e273821bcb07cb1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-5d-a013fd137452655d",
+        "open-eq-v1-lensfun-canon-eos-5d-83712f7538415ead"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-5d-mark-ii-a21fa0f4e5579659",
+        "open-eq-v1-lensfun-canon-eos-5d-mark-ii-4d262a734dcab65a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-5d-mark-iii-03563a237266f1c4",
+        "open-eq-v1-lensfun-canon-eos-5d-mark-iii-237e9e964d51aeff"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-5d-mark-iv-160dd610e9f90828",
+        "open-eq-v1-lensfun-canon-eos-5d-mark-iv-34bed779a14f4e85"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-5ds-34e104b296ea5495",
+        "open-eq-v1-lensfun-canon-eos-5ds-e3c54a326d0b4b45"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-5ds-r-155fde833fc60d7f",
+        "open-eq-v1-lensfun-canon-eos-5ds-r-2668db674702cb5e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-60d-b45252296c704248",
+        "open-eq-v1-lensfun-canon-eos-60d-d0c5be4c091e5bb8"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-6d-41aec4f2a12a2b01",
+        "open-eq-v1-lensfun-canon-eos-6d-ea91384665053265"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-6d-mark-ii-8158ef259e95640c",
+        "open-eq-v1-lensfun-canon-eos-6d-mark-ii-49e1931a5206aad0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-70d-06c906c585e0f8d0",
+        "open-eq-v1-lensfun-canon-eos-70d-2dd303e6d8d73240"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-77d-bccb72f2760f5c55",
+        "open-eq-v1-lensfun-canon-eos-77d-bf0ac7b20d2c6662"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-7d-07d91f1c789c488f",
+        "open-eq-v1-lensfun-canon-eos-7d-081308310d793a55"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-7d-mark-ii-93a19e04b633c886",
+        "open-eq-v1-lensfun-canon-eos-7d-mark-ii-87790e4a2e433a45"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-80d-95d796bbe9f08f78",
+        "open-eq-v1-lensfun-canon-eos-80d-6fe7debfaa5456da"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-850d-e43efcd6a2b618b3",
+        "open-eq-v1-lensfun-canon-eos-850d-763d2a36da54c78a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-90d-b0ceafc51a4b60da",
+        "open-eq-v1-lensfun-canon-eos-90d-ee490c9638baaa82"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-d30-1c0de502322b5d23",
+        "open-eq-v1-lensfun-canon-eos-d30-f35fa9eb6130e2d5"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-d60-404c358564b4d32f",
+        "open-eq-v1-lensfun-canon-eos-d60-e4ab1c07287ee381"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-m-68bbc609490f5d0f",
+        "open-eq-v1-lensfun-canon-eos-m-82a8c0931521823c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-m10-82c4bf02ffa99d04",
+        "open-eq-v1-lensfun-canon-eos-m10-c8cfa2a334f8663a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-m100-2df43992643abc5b",
+        "open-eq-v1-lensfun-canon-eos-m100-993c2cfe0d723eda"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-m200-71cca2dbd5238151",
+        "open-eq-v1-lensfun-canon-eos-m200-aee0ea922aef554f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-m3-81844739572d5630",
+        "open-eq-v1-lensfun-canon-eos-m3-85e80e65132f406e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-m5-f80e6c46e4d291ec",
+        "open-eq-v1-lensfun-canon-eos-m5-818085864ee47af3"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-m50-3185710ee088bc48",
+        "open-eq-v1-lensfun-canon-eos-m50-ce3f31d88baffa81"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-m6-7287d6ae07e39c36",
+        "open-eq-v1-lensfun-canon-eos-m6-9102dde2707a50e2"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-m6-mark-ii-36d7f4dfbd7df520",
+        "open-eq-v1-lensfun-canon-eos-m6-mark-ii-9484e7458e6c14b4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r-80abc58df6be4be1",
+        "open-eq-v1-lensfun-canon-eos-r-8704b43d679a458f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r1-7700ab28a268d723",
+        "open-eq-v1-lensfun-canon-eos-r1-a6012b1ec92d4825"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r10-060bd106c36388f1",
+        "open-eq-v1-lensfun-canon-eos-r10-04f3c855ab6c7476"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r100-dffd008813901583",
+        "open-eq-v1-lensfun-canon-eos-r100-516aeb4461694936"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r3-473b74bd90f4338d",
+        "open-eq-v1-lensfun-canon-eos-r3-e2605a8864db2e5a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r5-c-9958bea48a048389",
+        "open-eq-v1-lensfun-canon-eos-r5-c-7e79f47c7e585c41"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r5-c0229f886947462e",
+        "open-eq-v1-lensfun-canon-eos-r5-a705b26ab230e701"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r5-mark-ii-1af597b3d157e6dc",
+        "open-eq-v1-lensfun-canon-eos-r5m2-020faa61af6f0a78"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r50-01b5cb4e6fd1d7a8",
+        "open-eq-v1-lensfun-canon-eos-r50-2e9a6bfbedf030d1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r50-v-222e041c2b8bb884",
+        "open-eq-v1-lensfun-canon-eos-r50-v-2d2eff8650754d7f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r6-6cec1de5f977fd5c",
+        "open-eq-v1-lensfun-canon-eos-r6-de17b2d15d041c1d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r6-mark-ii-0bf47c3af5e28560",
+        "open-eq-v1-lensfun-canon-eos-r6m2-e5f59209c7b83849"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r6-mark-iii-cef45901f2603b34",
+        "open-eq-v1-lensfun-canon-eos-r6-mark-iii-80cadd2c0de45710"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r7-e215b2360a5e6ba6",
+        "open-eq-v1-lensfun-canon-eos-r7-f0f966c12e894a0f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-r8-fe4fc8013736cb45",
+        "open-eq-v1-lensfun-canon-eos-r8-b8634b9b6059e5a4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-rebel-sl1-9f0f960e9f9f7654",
+        "open-eq-v1-lensfun-canon-eos-rebel-sl1-4339a4ba1da8cec1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-rebel-sl2-ac1ed8a5ad2ea380",
+        "open-eq-v1-lensfun-canon-eos-rebel-sl2-cea9a00a04f8cc4c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-rebel-t2i-6043e6e3def1a52c",
+        "open-eq-v1-lensfun-canon-eos-rebel-t2i-dd89fdaf8d2453d2"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-rebel-t3-b79b6bfa99ad9187",
+        "open-eq-v1-lensfun-canon-eos-rebel-t3-6b93aa63a65e13d1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-rebel-t3i-7582d018c8842e48",
+        "open-eq-v1-lensfun-canon-eos-rebel-t3i-07aa22afd63edbc5"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-rebel-t4i-de54896851227336",
+        "open-eq-v1-lensfun-canon-eos-rebel-t4i-c448e773aea2814b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-rebel-t5-e253ccfd4b9a8c53",
+        "open-eq-v1-lensfun-canon-eos-rebel-t5-915ca8cf9a53b891"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-rebel-t5i-97ff8baccf71b9bf",
+        "open-eq-v1-lensfun-canon-eos-rebel-t5i-da9c2d8546ea7736"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-rebel-t6i-639c8393eddf405c",
+        "open-eq-v1-lensfun-canon-eos-rebel-t6i-1e674b586799774f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-rebel-t6s-c815644d590394cf",
+        "open-eq-v1-lensfun-canon-eos-rebel-t6s-83bd52f11f6bb54d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-rebel-t7-f7f8ae92f6f24947",
+        "open-eq-v1-lensfun-canon-eos-rebel-t7-2125ff1196555446"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-rebel-t7i-00c17fc642f27de6",
+        "open-eq-v1-lensfun-canon-eos-rebel-t7i-1805476c40c62e4f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-eos-rp-97e98350a9f142c0",
+        "open-eq-v1-lensfun-canon-eos-rp-e1e5d57db0b4dffc"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a10-d17a20e7987fed5c",
+        "open-eq-v1-lensfun-canon-powershot-a10-c0217e77bdd49f70"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a1200-931e50e1bb6f95fb",
+        "open-eq-v1-lensfun-canon-powershot-a1200-310d6e78e31631b1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a20-cc9775134e628ec2",
+        "open-eq-v1-lensfun-canon-powershot-a20-c8ff28702f888b7c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a30-56a89e92efbddb99",
+        "open-eq-v1-lensfun-canon-powershot-a30-d496cbf801a1eb80"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a40-e73a72ceefd8f6c2",
+        "open-eq-v1-lensfun-canon-powershot-a40-05c4369b8335f8f7"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a4000-is-46e033e7e14bd935",
+        "open-eq-v1-lensfun-canon-powershot-a4000-is-ff5c0b4bb4d10180"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a490-01c96fa1f5c472ba",
+        "open-eq-v1-lensfun-canon-powershot-a490-48e84a42167519ba"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a495-8b927fe94dbdad98",
+        "open-eq-v1-lensfun-canon-powershot-a495-ece0537f1f4f9efa"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a510-ca27ab00b3bf397d",
+        "open-eq-v1-lensfun-canon-powershot-a510-4b7418b90dd8b8a8"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a520-9c837a9ed6e6f7fb",
+        "open-eq-v1-lensfun-canon-powershot-a520-3c832e3f21919581"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a60-7bd6bcd9a851a6ce",
+        "open-eq-v1-lensfun-canon-powershot-a60-6ffeb70f8d45aa67"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a610-09b7803183394ef6",
+        "open-eq-v1-lensfun-canon-powershot-a610-de3947d5de3847a0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a620-880eca85f8f9359d",
+        "open-eq-v1-lensfun-canon-powershot-a620-677c6beb40bf8be2"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a640-d36df49a72f6b7bc",
+        "open-eq-v1-lensfun-canon-powershot-a640-c9cae2da2b9cad82"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a650-is-dd8a07c900f13078",
+        "open-eq-v1-lensfun-canon-powershot-a650-is-616cc7bf81115d22"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a70-46b67e027ccd9bda",
+        "open-eq-v1-lensfun-canon-powershot-a70-31af7b297bd146f0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a710-is-b7b7467a4e198af8",
+        "open-eq-v1-lensfun-canon-powershot-a710-is-1968d85384d9008f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a720-is-f5c546729411ed9b",
+        "open-eq-v1-lensfun-canon-powershot-a720-is-db73fea3f4ba167f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a75-93140131a1a44c7d",
+        "open-eq-v1-lensfun-canon-powershot-a75-d8378847594d712a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a80-acc9ebf864583459",
+        "open-eq-v1-lensfun-canon-powershot-a80-4115ca9e61475735"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a85-f44276310a49a139",
+        "open-eq-v1-lensfun-canon-powershot-a85-f4c8aea3f292b6f9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-a95-9ae3d5e0b8418ab8",
+        "open-eq-v1-lensfun-canon-powershot-a95-995af8f472a96e64"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-elph-110-hs-2f07f43517ebf7fe",
+        "open-eq-v1-lensfun-canon-powershot-elph-110-hs-b9491ba8a695d1b9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g1-7e109e8ff9f0fe02",
+        "open-eq-v1-lensfun-canon-powershot-g1-55d5ecfdb5dc8a21"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g1-x-85b81a0c0424076d",
+        "open-eq-v1-lensfun-canon-powershot-g1-x-3460324432a65edf"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g1-x-mark-ii-4d6970e4d0c2ad14",
+        "open-eq-v1-lensfun-canon-powershot-g1-x-mark-ii-950f0a5a30b2b334"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g1-x-mark-iii-7264729eed982642",
+        "open-eq-v1-lensfun-canon-powershot-g1-x-mark-iii-086d7479bb74a8ad"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g10-cddb9cc413cf8982",
+        "open-eq-v1-lensfun-canon-powershot-g10-379112380ecdeef4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g11-26ffe5cbe7e7e3e1",
+        "open-eq-v1-lensfun-canon-powershot-g11-a627c86473077245"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g12-b6bc0e029aca24bb",
+        "open-eq-v1-lensfun-canon-powershot-g12-5db19d2cacec336e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g15-93c6c92206d138a4",
+        "open-eq-v1-lensfun-canon-powershot-g15-18cc04aa787a69ec"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g16-8d92f5e5fb9c5f85",
+        "open-eq-v1-lensfun-canon-powershot-g16-932dfbeafe5cb380"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g2-99db5c983054cb88",
+        "open-eq-v1-lensfun-canon-powershot-g2-7d29441df6dcf368"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g3-7fb868d376ad03e7",
+        "open-eq-v1-lensfun-canon-powershot-g3-a90d5dafbb7d9be4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g3-x-901d7f26e78e6dce",
+        "open-eq-v1-lensfun-canon-powershot-g3-x-db889031bc029c1b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g5-076f66b532194b93",
+        "open-eq-v1-lensfun-canon-powershot-g5-4f36b9e54ed2fa6e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g5-x-a57f54b369189096",
+        "open-eq-v1-lensfun-canon-powershot-g5-x-f9ad9143db8ff0ee"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g5-x-mark-ii-9179c7c5cab99c4d",
+        "open-eq-v1-lensfun-canon-powershot-g5-x-mark-ii-d5436fc8a9c7daba"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g6-8efda0938ed2b922",
+        "open-eq-v1-lensfun-canon-powershot-g6-5e83e87945d9eed3"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g7-0f8599bbb0661c06",
+        "open-eq-v1-lensfun-canon-powershot-g7-96f30c027c42dce5"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g7-x-f494aea95041897a",
+        "open-eq-v1-lensfun-canon-powershot-g7-x-96b493a62f18278e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g7-x-mark-ii-924309413af2d2d1",
+        "open-eq-v1-lensfun-canon-powershot-g7-x-mark-ii-d3e43fcb43bf0d7a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g7-x-mark-iii-88f024e55c3232b9",
+        "open-eq-v1-lensfun-canon-powershot-g7-x-mark-iii-57c79027204ebeb6"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g9-df177b4635cec1e0",
+        "open-eq-v1-lensfun-canon-powershot-g9-9443d2eb409998ce"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g9-x-82eee86631c7be87",
+        "open-eq-v1-lensfun-canon-powershot-g9-x-c7419bc4f77633b4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-g9-x-mark-ii-9c05c796fbfda2dc",
+        "open-eq-v1-lensfun-canon-powershot-g9-x-mark-ii-84070a674ca25758"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-pro1-c73fe7ec5e4eb1fb",
+        "open-eq-v1-lensfun-canon-powershot-pro1-d7a37620ae9e4543"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-pro70-a86596a319e22062",
+        "open-eq-v1-lensfun-canon-powershot-pro70-6187016e1c70aaa8"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-pro90-is-0dd3d069d43d299a",
+        "open-eq-v1-lensfun-canon-powershot-pro90-is-7230b0898502b945"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s1-is-a57f3244df12208d",
+        "open-eq-v1-lensfun-canon-powershot-s1-is-bae5785e811bd672"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s100-948ec34fa2e51407",
+        "open-eq-v1-lensfun-canon-powershot-s100-00a2c6b077339f6d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s110-1a84cd7a20e769d2",
+        "open-eq-v1-lensfun-canon-powershot-s110-a2dd1b870104625f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s120-68ab51fc1cd8adca",
+        "open-eq-v1-lensfun-canon-powershot-s120-8fe570f34cb39643"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s2-is-815c93f1b04f5609",
+        "open-eq-v1-lensfun-canon-powershot-s2-is-a8456ef56e7a39e6"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s30-1065faff4aff418a",
+        "open-eq-v1-lensfun-canon-powershot-s30-d55f963c8ea18514"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s40-8b8ce82b4d4c2d91",
+        "open-eq-v1-lensfun-canon-powershot-s40-3a1cce8124496cee"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s45-854e5546df0fa3cd",
+        "open-eq-v1-lensfun-canon-powershot-s45-97e50f6c919af096"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s5-is-3137a8772dfcefde",
+        "open-eq-v1-lensfun-canon-powershot-s5-is-954867035ee0f0e8"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s50-d583e059bd2c73fc",
+        "open-eq-v1-lensfun-canon-powershot-s50-5607c40316b567e1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s60-c6ba7595d6d37981",
+        "open-eq-v1-lensfun-canon-powershot-s60-74f790b6064164a2"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s70-0d0b1cdd2b0dc19c",
+        "open-eq-v1-lensfun-canon-powershot-s70-c2639dc2363f6327"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s80-2da34b301a95c5a3",
+        "open-eq-v1-lensfun-canon-powershot-s80-aacf2db83f6483f3"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s90-2d2ee0fdd3eb30b1",
+        "open-eq-v1-lensfun-canon-powershot-s90-350884095bee42bc"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-s95-be52e256f38e6a6b",
+        "open-eq-v1-lensfun-canon-powershot-s95-e4c59b840cf59a31"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sd200-2268e8326acd2bd8",
+        "open-eq-v1-lensfun-canon-powershot-sd200-b2afcb6196c93dd6"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sd450-9c3a6c54a31f6713",
+        "open-eq-v1-lensfun-canon-powershot-sd450-35b25e89bb3b4819"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sd500-b77561a1f48e0093",
+        "open-eq-v1-lensfun-canon-powershot-sd500-e2f36f033e6da8af"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sd550-115bbffb1d0c81a9",
+        "open-eq-v1-lensfun-canon-powershot-sd550-fef2c5dc1345adb5"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx1-is-b7e27d5406eb37f6",
+        "open-eq-v1-lensfun-canon-powershot-sx1-is-ea5cc9dc19cb1590"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx10-is-db163915638e0b43",
+        "open-eq-v1-lensfun-canon-powershot-sx10-is-8932cbe7cacb2556"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx130-is-b5e78f950357b14e",
+        "open-eq-v1-lensfun-canon-powershot-sx130-is-9ea1f5dc2a1b07f0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx150-is-cc6effa2c4bd7317",
+        "open-eq-v1-lensfun-canon-powershot-sx150-is-70a481c26cb9e72b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx160-is-0913e218d539fb6d",
+        "open-eq-v1-lensfun-canon-powershot-sx160-is-2762e559b758772c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx220-hs-eee3beca204bb853",
+        "open-eq-v1-lensfun-canon-powershot-sx220-hs-b0c34042338aa290"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx230-hs-d6524a8e5854b2d1",
+        "open-eq-v1-lensfun-canon-powershot-sx230-hs-44f4716e8593c238"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx240-hs-7e8c0a0b53f09486",
+        "open-eq-v1-lensfun-canon-powershot-sx240-hs-8152f217c888350c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx260-hs-57ee4989cfec69c6",
+        "open-eq-v1-lensfun-canon-powershot-sx260-hs-56ed76d61bd7a831"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx30-is-a0efac04df750291",
+        "open-eq-v1-lensfun-canon-powershot-sx30-is-3830216a683b7375"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx50-hs-afeef78444629148",
+        "open-eq-v1-lensfun-canon-powershot-sx50-hs-825fdeb464d7e68d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx510-hs-3b6587316e47845e",
+        "open-eq-v1-lensfun-canon-powershot-sx510-hs-dbfdd4ad543b8b23"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx60-hs-d48ac792313cb14a",
+        "open-eq-v1-lensfun-canon-powershot-sx60-hs-bf468a04bfc8ca8c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx700-hs-b7aff64c12173fe1",
+        "open-eq-v1-lensfun-canon-powershot-sx700-hs-e857562bb5e1ee37"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-canon-powershot-sx710-hs-b45b9b47d1eb40f5",
+        "open-eq-v1-lensfun-canon-powershot-sx710-hs-cf6ccae301a8bc17"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-casio-qv-3000ex-ca4f271c4bcb9380",
+        "open-eq-v1-lensfun-casio-qv-3000ex-f9bc481a2e75fe5f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-casio-qv-3500ex-8a70225b576b1cb6",
+        "open-eq-v1-lensfun-casio-qv-3500ex-7efda4fd9ac37224"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-casio-qv-4000-0c127017f92b7c32",
+        "open-eq-v1-lensfun-casio-qv-4000-cac514f0c5fab061"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-epson-r-d1-d7524aebad40ece1",
+        "open-eq-v1-lensfun-seiko-epson-corp-r-d1-bf86cc8d16eabba3"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-2800-zoom-809c5661962102d4",
+        "open-eq-v1-lensfun-fujifilm-finepix2800zoom-8673d00f6a23e345"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-3800-daa53856e4a797eb",
+        "open-eq-v1-lensfun-fujifilm-finepix-3800-49e55f547c4dd3d0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-f200exr-af452c956e5f4533",
+        "open-eq-v1-lensfun-fujifilm-finepix-f200exr-37b8654de7bff8e5"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-f601-zoom-814b4634b8dd9e8a",
+        "open-eq-v1-lensfun-fujifilm-finepix-f601-zoom-defaaef023b9f09d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-f710-8144df00f6025251",
+        "open-eq-v1-lensfun-fujifilm-finepix-f710-4ee948d3cbf0829d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-f770exr-6eb516d4a92c61cb",
+        "open-eq-v1-lensfun-fujifilm-finepix-f770exr-4722fb6816642040"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-hs20-exr-8dac34d2cb1fa1ad",
+        "open-eq-v1-lensfun-fujifilm-finepix-hs20exr-bd09d50bf16739ae"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-hs30-exr-ae687072ecfc42c4",
+        "open-eq-v1-lensfun-fujifilm-finepix-hs30exr-fa2d9094156adb9f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-is-pro-1821845e37b730f5",
+        "open-eq-v1-lensfun-fujifilm-is-pro-a6e648cd17c908de"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-s1-pro-1cc4a0803ccc4977",
+        "open-eq-v1-lensfun-fujifilm-finepixs1pro-fb1be0878e3fc6dd"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-s2-pro-141de31b12e1b909",
+        "open-eq-v1-lensfun-fujifilm-finepixs2pro-0a5d66434c8f6d04"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-s20-pro-2b68cf37e50d35f7",
+        "open-eq-v1-lensfun-fujifilm-finepix-s20pro-cfa84d586739873d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-s3-pro-34b404335b162bdc",
+        "open-eq-v1-lensfun-fujifilm-finepix-s3pro-6e66b94a229d9b7b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-s304-9da3b621f502a4ee",
+        "open-eq-v1-lensfun-fujifilm-finepix-s304-592ed3be1768f78c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-s5-pro-179a4ca9bf59727e",
+        "open-eq-v1-lensfun-fujifilm-finepix-s5pro-07e5d594aa8f1edf"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-s602-zoom-136e0de23e2c010e",
+        "open-eq-v1-lensfun-fujifilm-finepix-s602-zoom-378d84aaaaa0cc8a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-s9500-2a830219ac05f2cf",
+        "open-eq-v1-lensfun-fujifilm-finepix-s9500-4f053922f66c96fa"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-s9600-2c8ffcb418fa8b08",
+        "open-eq-v1-lensfun-fujifilm-finepix-s9600-4b4129a13e075a5c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-finepix-x100-3210d45e3b36f3c3",
+        "open-eq-v1-lensfun-fujifilm-finepix-x100-ccb7053361aa7528"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-a1-bf4e8422feb6379c",
+        "open-eq-v1-lensfun-fujifilm-x-a1-61527bc1d1fc0e81"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-a10-588c8865640e42eb",
+        "open-eq-v1-lensfun-fujifilm-x-a10-6b6f5765418c964d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-a2-f30efc996b26ca8b",
+        "open-eq-v1-lensfun-fujifilm-x-a2-88a7ee9375a51e48"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-a3-a20f8c550d2cada5",
+        "open-eq-v1-lensfun-fujifilm-x-a3-1a5384eda9500828"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-a5-df85aef000b6550c",
+        "open-eq-v1-lensfun-fujifilm-x-a5-bb78bd4507a49534"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-a7-67c470f18b1efead",
+        "open-eq-v1-lensfun-fujifilm-x-a7-73346364258714b2"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-e1-6d6927f0ff102569",
+        "open-eq-v1-lensfun-fujifilm-x-e1-9d491d562ee39933"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-e2-fe1a7a3a3a5bb5a9",
+        "open-eq-v1-lensfun-fujifilm-x-e2-a4a53021cfeca7ee"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-e2s-fe567da633485455",
+        "open-eq-v1-lensfun-fujifilm-x-e2s-01debca7d01722ce"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-e3-9d662a421a5f867f",
+        "open-eq-v1-lensfun-fujifilm-x-e3-5ff7457db0f28f4b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-e4-9b2d1dd420f6192c",
+        "open-eq-v1-lensfun-fujifilm-x-e4-65d0bec4cfcaeef0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-e5-2a68650e2a7b5bf2",
+        "open-eq-v1-lensfun-fujifilm-x-e5-dd377b6419e9c76c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-h1-993038a5520b16b6",
+        "open-eq-v1-lensfun-fujifilm-x-h1-f0c17f288e990de4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-h2-e8503526aab71684",
+        "open-eq-v1-lensfun-fujifilm-x-h2-2027819262450020"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-h2s-47a74d4aaf81c645",
+        "open-eq-v1-lensfun-fujifilm-x-h2s-f7d9b38322eb4af2"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-m1-3115846a11eae2f1",
+        "open-eq-v1-lensfun-fujifilm-x-m1-000978977d0a5911"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-m5-d12cad01a773990c",
+        "open-eq-v1-lensfun-fujifilm-x-m5-bc3b9d54b0132992"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-pro1-21eb37b3c8361795",
+        "open-eq-v1-lensfun-fujifilm-x-pro1-cfbf83809b56225a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-pro2-905dfabc9752b806",
+        "open-eq-v1-lensfun-fujifilm-x-pro2-0fb693cd6a751a92"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-pro3-789e199182ef9cd2",
+        "open-eq-v1-lensfun-fujifilm-x-pro3-7f70b9d753e1dd47"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-s1-c136b51925d9fbbe",
+        "open-eq-v1-lensfun-fujifilm-x-s1-c94372fd8ef7e9dc"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-s10-24e317a362745f79",
+        "open-eq-v1-lensfun-fujifilm-x-s10-125a37a802233238"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-s20-0d3256080dee3893",
+        "open-eq-v1-lensfun-fujifilm-x-s20-892fbbdbfd571de6"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-t1-883cc573c846efd3",
+        "open-eq-v1-lensfun-fujifilm-x-t1-66769bcd5f0f0e2c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-t10-c087552553d101d1",
+        "open-eq-v1-lensfun-fujifilm-x-t10-1524060d2c23b16b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-t100-8a6ffdf4b27cd645",
+        "open-eq-v1-lensfun-fujifilm-x-t100-f861f9a51f44571a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-t2-14a7653eb344bf0d",
+        "open-eq-v1-lensfun-fujifilm-x-t2-5a9a89f986870346"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-t20-5ea7c8e55550e51f",
+        "open-eq-v1-lensfun-fujifilm-x-t20-ad517cf42ddf16f0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-t200-6baaaf3244a73d03",
+        "open-eq-v1-lensfun-fujifilm-x-t200-d28c0a336e2318fd"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-t3-559dab0efd261f8b",
+        "open-eq-v1-lensfun-fujifilm-x-t3-a7e8d984933bb965"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-t30-a56eb2d0e12db369",
+        "open-eq-v1-lensfun-fujifilm-x-t30-350c15ac1bc72c14"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-t30-ii-1fdcfae57e5f441c",
+        "open-eq-v1-lensfun-fujifilm-x-t30-ii-c20a2b03ea8b310e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-t30-iii-f9a923b67d35682c",
+        "open-eq-v1-lensfun-fujifilm-x-t30-iii-7c71afead7d7ba64"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-t4-c0b47542dca71592",
+        "open-eq-v1-lensfun-fujifilm-x-t4-eee0539655320013"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-t5-6317412b637fb9ac",
+        "open-eq-v1-lensfun-fujifilm-x-t5-6dce97a4ef58b747"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x-t50-3dd2aa868575e44e",
+        "open-eq-v1-lensfun-fujifilm-x-t50-9ecf0bf496757141"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x10-e2eb97a6dfee2e71",
+        "open-eq-v1-lensfun-fujifilm-x10-0d293f86d9a899db"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x100f-43754ba92177835c",
+        "open-eq-v1-lensfun-fujifilm-x100f-7c95c665a130f217"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x100s-909bc0f94c81f2e6",
+        "open-eq-v1-lensfun-fujifilm-x100s-8efa504772f9d0ec"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x100t-36c389f662f0d727",
+        "open-eq-v1-lensfun-fujifilm-x100t-ed42edde91342680"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x100v-617cac226b42169b",
+        "open-eq-v1-lensfun-fujifilm-x100v-0b7e44dadc394bfd"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x100vi-6418eea7466e3214",
+        "open-eq-v1-lensfun-fujifilm-x100vi-41efec8a1036a6c7"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x20-b8fdb358d7e81a50",
+        "open-eq-v1-lensfun-fujifilm-x20-844538a25df0dcab"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x30-234b3519cc985e96",
+        "open-eq-v1-lensfun-fujifilm-x30-b7828c73e76c49e5"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-x70-3c1d4fedbd4ac01f",
+        "open-eq-v1-lensfun-fujifilm-x70-abba1f5f2e6b58f8"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-xf10-de958be18133c1aa",
+        "open-eq-v1-lensfun-fujifilm-xf10-9ff857b7de3c11a9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-fujifilm-xq1-0bd952954ee6198e",
+        "open-eq-v1-lensfun-fujifilm-xq1-fd42ed0bfcd6b4fd"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-kodak-dcs-pro-14n-0f503d084201175a",
+        "open-eq-v1-lensfun-kodak-dcs-pro-14n-fb19a621c8ef2147"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-kodak-dcs-pro-slr-c-75d795ab55d5f353",
+        "open-eq-v1-lensfun-kodak-dcs-pro-slr-c-cb02d4eeaa67340e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-kodak-dcs-pro-slr-n-9f701c116677b4c1",
+        "open-eq-v1-lensfun-kodak-dcs-pro-slr-n-135f213d3ab4f182"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-kodak-dcs520-85ff0567e4e8cb8c",
+        "open-eq-v1-lensfun-kodak-dcs520-f309927c269bb283"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-konica-minolta-dimage-a2-f791360fe3e26d6d",
+        "open-eq-v1-lensfun-konica-minolta-camera-inc-dimage-a2-09152a28a59ee2d7"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-konica-minolta-dimage-a200-f28dc828d84b0f4d",
+        "open-eq-v1-lensfun-konica-minolta-dimage-a200-6f5bccab3171e32f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-konica-minolta-dimage-z10-d64c4fdcb3f968ea",
+        "open-eq-v1-lensfun-konica-minolta-dimage-z10-1c7a1cb3d54d379b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-konica-minolta-dimage-z2-7d8e1f7484e67726",
+        "open-eq-v1-lensfun-konica-minolta-camera-inc-dimage-z2-6e0dbe4def5917c9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-konica-minolta-dimage-z20-fd552b78206098d9",
+        "open-eq-v1-lensfun-konica-minolta-dimage-z20-9b93eaf63bd68167"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-konica-minolta-dimage-z3-5b17208e14460881",
+        "open-eq-v1-lensfun-konica-minolta-dimage-z3-583ff081587ed493"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-konica-minolta-dimage-z5-97123a494453f711",
+        "open-eq-v1-lensfun-konica-minolta-dimage-z5-84c243f3d153c317"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-konica-minolta-dimage-z6-f31d821593f99cec",
+        "open-eq-v1-lensfun-konica-minolta-dimage-z6-2fdc3f6d73563722"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-konica-minolta-dynax-5d-24a9f99daf2711af",
+        "open-eq-v1-lensfun-konica-minolta-dynax-5d-c996f255bcc10e4f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-konica-minolta-dynax-7d-119de68228b6bc79",
+        "open-eq-v1-lensfun-konica-minolta-dynax-7d-a3a3259209222da4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-cl-26767c0f23135d06",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-cl-aac27a797a4ea416"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-d-lux-2-b3c8b34df47b00a3",
+        "open-eq-v1-lensfun-leica-d-lux2-aa38a7d44a21cdf2"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-d-lux-3-0b7e9fb1d296a3f0",
+        "open-eq-v1-lensfun-leica-d-lux-3-676481286b274d97"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-d-lux-4-f32b7e595f02605a",
+        "open-eq-v1-lensfun-leica-d-lux-4-5fcff47aee2dfacd"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-d-lux-7-61066573c1060b39",
+        "open-eq-v1-lensfun-leica-camera-ag-d-lux-7-a8ab4468441f7440"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-d-lux-8-77617ece119c6e79",
+        "open-eq-v1-lensfun-leica-camera-ag-d-lux-8-d70ab64d1e29dc7d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-d-lux-typ-109-c9e042542bfc5a1a",
+        "open-eq-v1-lensfun-leica-d-lux-typ-109-09b2350c5ee37cf2"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-digilux-2-bf56350e174384ff",
+        "open-eq-v1-lensfun-leica-digilux-2-804d3ba410e50d5b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-digilux-3-6f125d49ee8daa1d",
+        "open-eq-v1-lensfun-leica-digilux-3-07d6fced38371573"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-m-monochrom-typ-246-f989ab747b967d5a",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-m-monochrom-typ-246-c58fe4c8e0ffcfed"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-m10-r-d7a3e5308c60286b",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-m10-r-05341a4b7f7fe4d2"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-m11-ec71bc81964a074e",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-m11-f1cf1ed3c9e973e5"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-q-typ-116-751b1e6c5bbd0d11",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-q-typ-116-72f62e597ceef923"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-q2-f19079651e9c3875",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-q2-53c8a0531e8f8f2f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-q3-b7a74f0c7e1be5dc",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-q3-9ff5318c29b9e012"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-sl-typ-601-1e5c02b752c5df5f",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-sl-typ-601-c41b7e6d8eedcbfe"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-sl2-66d59b8dda6e9c80",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-sl2-2e1efa4b7868932a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-sl2-s-895528c5df2e5257",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-sl2-s-f343f386b90ff8f0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-sl3-57605cd106a68f4a",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-sl3-163406398f0021c1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-sl3-s-0697799c609a0fea",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-sl3-s-7f8749b4c047ed20"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-t-typ-701-b4781b124392f571",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-t-typ-701-d132418773b9d61d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-tl-fcc0d3ff9e21527b",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-tl-49be0bd9ff751784"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-leica-tl2-10bc05cd8ddcf9b5",
+        "open-eq-v1-lensfun-leica-camera-ag-leica-tl2-bef57e9f30ff598b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-minolta-dimage-7-064e966e74786f41",
+        "open-eq-v1-lensfun-minolta-co-ltd-dimage-7-389656fc71319369"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-minolta-dimage-7hi-6bea48a64c0321a8",
+        "open-eq-v1-lensfun-minolta-co-ltd-dimage-7hi-a4f0c29435e8c1d3"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-minolta-dimage-7i-41e74c62c7096a99",
+        "open-eq-v1-lensfun-minolta-co-ltd-dimage-7i-18bf0ac7ba28f99e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-minolta-dimage-a1-70fe11b0dcb59175",
+        "open-eq-v1-lensfun-minolta-co-ltd-dimage-a1-7b29199c978e62ee"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-minolta-dimage-x-55788d311c00777a",
+        "open-eq-v1-lensfun-minolta-co-ltd-dimage-x-79e9fa18f990a881"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-minolta-dimage-xi-dab85d7f9a64a1b3",
+        "open-eq-v1-lensfun-minolta-co-ltd-dimage-xi-007dff6e84b118d9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-minolta-dimage-xt-04d4ec7885e96b54",
+        "open-eq-v1-lensfun-minolta-co-ltd-dimage-xt-7b3dfc5cff245a8c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-minolta-dimage-z1-d9ef1ccd57671555",
+        "open-eq-v1-lensfun-minolta-co-ltd-dimage-z1-7c21aeb87599c65f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-1-aw1-880559e805caa6e3",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-1-aw1-f9b8d98f05798093"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-1-j1-b1bcc9aedf739a0b",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-1-j1-c6758f69492b0c2b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-1-j2-42a3018c5950ef26",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-1-j2-95d50ffec2f26d1d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-1-j3-24aeb63fd10a7361",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-1-j3-6112c9fd0566b0cc"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-1-j4-0b442b9a6305cef6",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-1-j4-6c72c7db0a6a8f10"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-1-j5-c22a7097d83940d9",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-1-j5-4d15bf5ef3d83aac"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-1-s1-9e328641b9da9b81",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-1-s1-aef5fb09ef140135"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-1-s2-5d20918f92b8c6da",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-1-s2-7209836a0aa6726a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-1-v1-7af3e6009add9b7f",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-1-v1-9e9becb68cfad96b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-1-v2-51afafdfb3700a2c",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-1-v2-26aef4334320d491"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-1-v3-2425796a340fcc74",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-1-v3-7973ba1e89c18419"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-4200-5232af06b47249e3",
+        "open-eq-v1-lensfun-nikon-e4200-144cb025cb4cd739"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-4500-44a4b47dd6e02b4d",
+        "open-eq-v1-lensfun-nikon-e4500-5a597512384c79ab"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-4800-0dfa9137494c687d",
+        "open-eq-v1-lensfun-nikon-e4800-a66af74a4abf3d31"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-5000-3db1e0469d4f27a0",
+        "open-eq-v1-lensfun-nikon-e5000-e95317afac6f2c33"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-5200-e6f330c39984edd3",
+        "open-eq-v1-lensfun-nikon-e5200-077d237daaa92d3b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-5400-5a29d87c8712f93e",
+        "open-eq-v1-lensfun-nikon-e5400-6eec93bf937505df"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-5700-00f81e9da6800160",
+        "open-eq-v1-lensfun-nikon-e5700-8a1248d48cf66a07"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-5900-55c94def44484266",
+        "open-eq-v1-lensfun-nikon-e5900-9c372f5ddeeaea71"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-7600-d58589b888a30077",
+        "open-eq-v1-lensfun-nikon-e7600-fa625c7adc89afae"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-7900-d305167754f9ca79",
+        "open-eq-v1-lensfun-nikon-e7900-90174a551c6b3c16"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-8400-c1cc4e819d3850cf",
+        "open-eq-v1-lensfun-nikon-e8400-ce60413569623273"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-8700-4cc5b9d19327db98",
+        "open-eq-v1-lensfun-nikon-e8700-6b2c6bbaede74087"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-8800-8184f7f7e7662fff",
+        "open-eq-v1-lensfun-nikon-e8800-481b348afd448752"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-950-d3f58e78fc6855e8",
+        "open-eq-v1-lensfun-nikon-e950-c10725b0f8addc0e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-990-74ed255da84e192f",
+        "open-eq-v1-lensfun-nikon-e990-9986183e586e1880"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-995-638227e2227a5a80",
+        "open-eq-v1-lensfun-nikon-e995-af1531abb9039f0e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-a-caa1d669066561c3",
+        "open-eq-v1-lensfun-nikon-corporation-coolpix-a-8b679f47b3663ccd"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-p1000-d5fc221d75bc63ca",
+        "open-eq-v1-lensfun-nikon-corporation-coolpix-p1000-f613f583c81dc294"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-p1100-f7a1909406781d70",
+        "open-eq-v1-lensfun-nikon-corporation-coolpix-p1100-04ae4656eaf6b369"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-p330-9d021f4770abcf4e",
+        "open-eq-v1-lensfun-nikon-coolpix-p330-59f0bcb9c360c664"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-p340-d54ef5c6ed9792dc",
+        "open-eq-v1-lensfun-nikon-coolpix-p340-3d0d93cce86da869"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-p60-5f03357ac375dd01",
+        "open-eq-v1-lensfun-nikon-coolpix-p60-64add89d57577f94"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-p6000-99d8347c532a166a",
+        "open-eq-v1-lensfun-nikon-coolpix-p6000-78a7c76e7ec36250"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-p7000-a9f116beb18e5bd7",
+        "open-eq-v1-lensfun-nikon-coolpix-p7000-a0b405239c5054a1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-p7800-f6bf1b0e9d9b254c",
+        "open-eq-v1-lensfun-nikon-coolpix-p7800-aab28591f4a13751"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-coolpix-s3300-1dd584a8ebd08d41",
+        "open-eq-v1-lensfun-nikon-coolpix-s3300-b07eee47be65783f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d1-9e9d97b18f2fc2cd",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d1-0549f0f6f663e552"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d100-e2fca156b3aa8e1c",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d100-8f3e95d3e2852d38"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d1h-ef4c82a660cd155b",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d1h-0f5ccb98b4726c39"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d1x-649e4a514fc8ffe0",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d1x-54c53d31227f73b2"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d200-ee3061d272abb031",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d200-cabae96f8f097f08"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d2h-682c60dd6b5ac3dc",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d2h-b18a9e9262f7ef22"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d2hs-fbb543f46009fe24",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d2hs-03ab46e050a4a1be"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d2x-9cd606ba3f450066",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d2x-892b5f4e818b16b4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d2xs-4de479b38d994e46",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d2xs-a735590c05374610"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d3-13baf1a4e57b82ea",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d3-7b3f30dca680b728"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d300-0c125730dd9abcba",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d300-101dc8e66d1ad321"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d3000-59a6da476510ef0f",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d3000-b5f7db96f1a8631c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d300s-01db8fd71b9c7c55",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d300s-39c53d16dd019f18"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d3100-ceb3320f98f5e8d0",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d3100-d913ea9879f3f999"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d3200-f45e67f49e43637d",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d3200-fdda1f1ae9ce6fa3"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d3300-610cbc6545dcc597",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d3300-fc0d7cdb2bf76436"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d3400-6c34e77c2705f1a1",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d3400-c6e6242a37026d16"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d3500-45ab09e2adb8480d",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d3500-18e0c556a907a61c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d3s-37c446e317f0f33f",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d3s-7efdfaac92c0c5e5"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d3x-c065e2516df36bd9",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d3x-d505a963c8ddd86a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d4-b9f27e65d2a466d2",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d4-e6a7ca6122070a89"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d40-d55385f0b5506c77",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d40-3f8f4c5960956260"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d40x-629fd0b6c20cfed6",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d40x-a37a381bbb8a5818"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d4s-60d8e9cb759940d6",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d4s-65b889646f046e22"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d5-f3a2b850ede219f1",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d5-be43a62d213eb56a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d50-f07ab3f48d146527",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d50-a1a42225c0e62a1c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d500-167490c4e60d409a",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d500-19a6b18ed491a112"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d5000-01df8ea6654fd736",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d5000-e7b2fb6e66e3393d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d5100-90e31db9cac4b4f4",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d5100-e04264c49cdfcfcf"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d5200-877466ed92aafd85",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d5200-4bdd5814dd736188"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d5300-2b3cfec32b82ff9b",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d5300-52492c1930479bf9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d5500-97cf3784d477e917",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d5500-2ffabb0646a17635"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d5600-c9ab18bb13e5423b",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d5600-d299566acc3918a7"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d6-013e5b36874448a8",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d6-7a8559d25ec44b6f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d60-342dd97777c5106f",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d60-38b6d1eebfbc5f03"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d600-1f0b1650c35c6f8b",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d600-719d3974964dd2df"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d610-cfa15aef4c01a54b",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d610-e797f124c1a5ccf1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d70-0ac11a1945accbc2",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d70-bcd312e0d4b61ddd"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d700-84ddb8648803f019",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d700-928865779251f619"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d7000-d527294e87cc7635",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d7000-47da5239a37b4861"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d70s-b8ba53353493abd7",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d70s-96f03914b7c7f9cf"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d7100-8c5da8ab2e46cc27",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d7100-9f485317bc59ae16"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d7200-1978a8cfb8e24aee",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d7200-6df153e407aeb8b9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d750-bcfb33c7cb4d1091",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d750-3a38223d84ce70a0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d7500-f0c0a55ae3f3fa85",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d7500-e5f886b1c26df2e4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d780-65736ebaa82f97a7",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d780-17143333acc86d06"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d80-5bf47bf6243732d7",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d80-8f15ca6e908c8755"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d800-4bfb6b652a37ea03",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d800-83d7256a3df6a76d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d800e-b9c9793a2c0496d7",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d800e-fb29877f4f781b74"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d810-eca7dd85af46f5d7",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d810-8ff42b0896dc74f0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d850-feb9555efd7568cd",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d850-697eae3484f8c41c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-d90-8c0c50aaf22d5326",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-d90-3746266fe884f0cb"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-df-20b6efd6850f78f9",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-df-e0534c7236994f78"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-z-fc-9b4f821d31d03ca7",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z-fc-39adc8ee29e0710a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-z30-d61dc91268e4074c",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z-30-b44c33bec3de8799"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-z5-52dd14231218a287",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z-5-db99baed054500d0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-z5-ii-02da15258b3f9d93",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z5-2-02068d59bf6c623c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-z50-3cf3c8dae4c4a262",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z-50-b8f4d303f8cb5f62"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-z50-ii-05e823c8ae5822bf",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z50-2-d72703a61c0573cb"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-z6-56d70e99ca32e6ee",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z-6-c811ceed03f4b185"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-z6-ii-fb2b59353eddb085",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z-6-2-44267e3593e970e9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-z6-iii-859276cfd9aeafdd",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z6-3-fdce2a74d0aee1fa"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-z7-78d75763205f711c",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z-7-1473c38cc3c7598f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-z7-ii-3e19356f625204b7",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z-7-2-0d0bdff6d6fb9c01"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-z8-7a4397399e6e6f60",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z-8-c4314b70ab11bc34"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-z9-2ad76058213e0904",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z-9-c40c2f5614d12544"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-zf-3943d0947b6f8660",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-z-f-28dae9a9be5d2309"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-nikon-zr-f0d9243ac6225a81",
+        "open-eq-v1-lensfun-nikon-corporation-nikon-zr-b76f2100e6ea9fdc"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-c-2040-zoom-4ad87215928c85eb",
+        "open-eq-v1-lensfun-olympus-optical-co-ltd-c2040z-8309eba5f15f1ad9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-c-3040-zoom-59adea231ccea91e",
+        "open-eq-v1-lensfun-olympus-optical-co-ltd-c3040z-0ba5fd95cccddbaf"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-c-4040-zoom-1497dd7825f16751",
+        "open-eq-v1-lensfun-olympus-optical-co-ltd-c4040z-974db6f8502a6c56"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-c-50-zoom-525a485b5c9113a2",
+        "open-eq-v1-lensfun-olympus-optical-co-ltd-x-2-c-50z-5a8698798ad50a69",
+        "open-eq-v1-lensfun-olympus-optical-co-ltd-x-2-c-50z-abf125086f4d0d9d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-c-5050-zoom-e3a95b9b4f9b012a",
+        "open-eq-v1-lensfun-olympus-optical-co-ltd-c5050z-aa06602983d23e41"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-c-5060-wide-zoom-d394f9f3bd64706a",
+        "open-eq-v1-lensfun-olympus-corporation-c5060wz-c14887840cf91d2d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-c-700-uz-7f65010ea7f7ba99",
+        "open-eq-v1-lensfun-olympus-optical-co-ltd-c700uz-a15547d980880dc0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-c-7070-wide-zoom-3fc604ec772f5bd4",
+        "open-eq-v1-lensfun-olympus-imaging-corp-c7070wz-a751900f2e122c12"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-c-730-uz-4b44811f49ee0887",
+        "open-eq-v1-lensfun-olympus-optical-co-ltd-c730uz-a697430e92513b8f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-c-750-uz-47b6bda48015aee4",
+        "open-eq-v1-lensfun-olympus-optical-co-ltd-c750uz-832b12ffec4d35d9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-c-8080-wide-zoom-207ee06fd90849be",
+        "open-eq-v1-lensfun-olympus-corporation-c8080wz-95e3c84f059ea58e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-c-860l-bb81984bbf1fa818",
+        "open-eq-v1-cameradatabase-olympus-d-360l-03331a6c3f1a20cb",
+        "open-eq-v1-lensfun-olympus-optical-co-ltd-c860l-d360l-6ac1a471fd11b9ca",
+        "open-eq-v1-lensfun-olympus-optical-co-ltd-c860l-d360l-9a2fad46c30638be"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-e-1-105238a7958efe46",
+        "open-eq-v1-lensfun-olympus-corporation-e-1-ac0f0caf0d70d12d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-e-10-a346d755786e6a93",
+        "open-eq-v1-lensfun-olympus-optical-co-ltd-e-10-5c28db3b2f782a80"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-e-3-f8a3f4563a81769f",
+        "open-eq-v1-lensfun-olympus-imaging-corp-e-3-6e203d32f3e62c95"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-e-30-cea38557c724a627",
+        "open-eq-v1-lensfun-olympus-imaging-corp-e-30-0db41fa991df419f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-e-400-98932a1a2d89e23c",
+        "open-eq-v1-lensfun-olympus-imaging-corp-e-400-4eefb7e80d1c34ef"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-e-420-0881fdd84fd2e968",
+        "open-eq-v1-lensfun-olympus-imaging-corp-e-420-8bba98145c066110"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-e-450-8a3390caf00a1de1",
+        "open-eq-v1-lensfun-olympus-imaging-corp-e-450-78b2fdebfb03a802"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-e-5-c904a817db831e3d",
+        "open-eq-v1-lensfun-olympus-imaging-corp-e-5-7436e14c4054ed82"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-e-520-1468b3e1b1ec6f2d",
+        "open-eq-v1-lensfun-olympus-imaging-corp-e-520-e85e15658146a1f3"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-e-600-9308f54fb1c4a606",
+        "open-eq-v1-lensfun-olympus-imaging-corp-e-600-ae0217e4e62b70da"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-e-620-1498e02b9325b1ab",
+        "open-eq-v1-lensfun-olympus-imaging-corp-e-620-84a284e7f2127701"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-pen-f-91d6467851845c33",
+        "open-eq-v1-lensfun-olympus-imaging-corp-pen-f-ee1d242dd988ac66"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-sp-350-37687d9317dca0be",
+        "open-eq-v1-lensfun-olympus-imaging-corp-sp350-646f9b3d579aaea7"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-sp-500-uz-841de4c764498665",
+        "open-eq-v1-lensfun-olympus-imaging-corp-sp500uz-514d46e0911d81b5"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-sp-560-uz-ebd989755e629bc9",
+        "open-eq-v1-lensfun-olympus-imaging-corp-sp560uz-0802a2e512199977"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-stylus-1-20e4cd110c8265cb",
+        "open-eq-v1-lensfun-olympus-imaging-corp-stylus1-5304d412fcaa0114"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-tough-tg-3-87cb4200c7646cd9",
+        "open-eq-v1-lensfun-olympus-corporation-tg-3-3c94ac77fd43c248"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-tough-tg-4-85e43ad1d0e8caa7",
+        "open-eq-v1-lensfun-olympus-corporation-tg-4-95511a05cf6f1e47"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-tough-tg-5-744951ad09088a62",
+        "open-eq-v1-lensfun-olympus-corporation-tg-5-adba60eece52f13e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-tough-tg-6-605fd76ad78cbce5",
+        "open-eq-v1-lensfun-olympus-corporation-tg-6-671cfa5689298806"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-olympus-xz-1-0a6ad97b8971e763",
+        "open-eq-v1-lensfun-olympus-imaging-corp-xz-1-ab67480dd5adab10"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-645d-93ed5edd441bd9e2",
+        "open-eq-v1-lensfun-pentax-645d-ea89e7e16838cf0b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-645z-ad04d801f609d299",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-pentax-645z-e4be0d46924cf906"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-ist-d-232e0d8581c9f699",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-ist-d-8d1e4c7b8e49eb88"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-ist-dl-e67a715f27177318",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-ist-dl-92164004299c8ad8"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-ist-dl2-1624c7ba5c92a4fa",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-ist-dl2-798a73583797a191"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-ist-ds-c7d432e58db394c2",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-ist-ds-faef4f8dac00d735"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-ist-ds2-e9060576e6b43e62",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-ist-ds2-daeee0829abde79b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-01-2a6b2fc4623f75b8",
+        "open-eq-v1-lensfun-pentax-k-01-112d52ee83ca1fb3"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-1-f24f8c199e00c232",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-pentax-k-1-683ef111fe0df936"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-1-mark-ii-34e2dacb35ca694a",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-pentax-k-1-mark-ii-e9497051bfc8bc84"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-3-345e177d3810e85c",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-pentax-k-3-64ab86872df26e02"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-3-ii-271ddb207541124f",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-pentax-k-3-ii-e73622df4669dbdb"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-3-mark-iii-c9faf66a81cab7cb",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-pentax-k-3-mark-iii-3bd044ed3c064230"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-30-75fa2cdc3535fc70",
+        "open-eq-v1-lensfun-pentax-k-30-a820aea187877390"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-5-b05ac20f37c63484",
+        "open-eq-v1-lensfun-pentax-k-5-d52cb78f4c57857a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-5-ii-a18a1994037a56c2",
+        "open-eq-v1-lensfun-pentax-k-5-ii-2b3eb3d7627afc1e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-50-528f308f6a5f12cc",
+        "open-eq-v1-lensfun-pentax-k-50-b8c86eceab85a0da"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-500-db2d0e6d300a2df4",
+        "open-eq-v1-lensfun-pentax-k-500-1fa7e69e3a087c36"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-7-d2925e167334cf97",
+        "open-eq-v1-lensfun-pentax-k-7-3eadf3681962c5d1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-70-406eb61a0f96331b",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-pentax-k-70-ef6852b48dcbd5ba"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-m-707b4e85d412e410",
+        "open-eq-v1-lensfun-pentax-k-m-7578902d422c98df"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-r-b327d2d9c0d06f62",
+        "open-eq-v1-lensfun-pentax-k-r-86d08ec88ee7dbe8"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-s1-738f675f6472db26",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-pentax-k-s1-3db10755edf00769"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-s2-05b384581c44b20f",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-pentax-k-s2-a0cf416496dfa858"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k-x-d075e636229e30b6",
+        "open-eq-v1-lensfun-pentax-k-x-bdbb954b6a552266"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k100d-e422cda37881160a",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-k100d-cc276b65e5a1596c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k100d-super-3e6a0739eec6baf9",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-k100d-super-31d039e83aad35a9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k10d-d1616c402ad287c2",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-k10d-912efc6a47b93a07"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k110d-c4ebf824248288d8",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-k110d-e33e8dc55d6040e9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k200d-27a3e59b9c51624a",
+        "open-eq-v1-lensfun-pentax-k200d-cd40fba8b66f3458"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-k20d-e782f5442e200d18",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-k20d-3d8ae27a489c1452"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-kf-8bb52c6201b909f8",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-pentax-kf-1e72dc6409389a2b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-kp-0aabd0374bdbb5be",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-pentax-kp-998ac324e0c8a427"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-optio-330gs-e28cdf62b341bd0a",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-optio-330gs-e553b49efc5b6487"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-optio-33l-7e178b1a232a814a",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-optio-33l-62b35c9dba21f174"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-optio-33lf-106b6c9267a9dfb5",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-optio-33lf-1d541d61d8cd2f4b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-optio-430-8becc810b5f11cb9",
+        "open-eq-v1-lensfun-asahi-optical-co-ltd-pentax-optio-430-667c650a675ec3b6"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-optio-43wr-514cfb7ca055b2eb",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-optio-43wr-2aa567e28e03d4cb"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-optio-450-7b9a1cc6c257c403",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-optio-450-e0311756e7023ffb"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-optio-550-0189d3c05e81d471",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-optio-550-216da1c0ce851ec2"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-optio-555-77a55231a66b3590",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-optio-555-5f72fd6aab464ab6"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-optio-750z-c52a786eb603b946",
+        "open-eq-v1-lensfun-pentax-corporation-pentax-optio-750z-bdc3384ebca5b10c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-q-6cd1cd2b31aeaf73",
+        "open-eq-v1-lensfun-pentax-q-2cc852a30cf53504"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-q-s1-c820b272cd4a3598",
+        "open-eq-v1-lensfun-pentax-q-s1-5331fdf2db47bb10"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-q10-5bd0e4d370cc9163",
+        "open-eq-v1-lensfun-pentax-q10-c67df394eb8f37fc"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-pentax-q7-7d5fc300ca4f43e0",
+        "open-eq-v1-lensfun-pentax-q7-e5bfafadf819a46a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-ricoh-caplio-gx-ffb2f4ae860e06ea",
+        "open-eq-v1-lensfun-ricoh-caplio-gx-1db3ee3c595fa846"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-ricoh-caplio-gx8-c3a26ce1cdc849c9",
+        "open-eq-v1-lensfun-ricoh-caplio-gx8-8253dadbcb9fc1eb"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-ricoh-caplio-rr30-0f10aaf82c09de67",
+        "open-eq-v1-lensfun-ricoh-caplio-rr30-3b2bd531e0f32dff"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-ricoh-gr-b4ec024d843ef45f",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-gr-fa5240bbf9e1690e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-ricoh-gr-digital-9ec3daeac90a4854",
+        "open-eq-v1-lensfun-ricoh-gr-digital-e3342ab70c71b2e1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-ricoh-gr-iii-0b188c2aedc90ee4",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-ricoh-gr-iii-2adb904a446607df"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-ricoh-gr-iiix-3b7f742511336f74",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-ricoh-gr-iiix-92bb867462ad5f8d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-ricoh-gr-iv-b75e5f05a9600559",
+        "open-eq-v1-lensfun-ricoh-imaging-company-ltd-ricoh-gr-iv-7cf06550c23bdc2e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-ex2f-1f4073971bc2858d",
+        "open-eq-v1-lensfun-samsung-ex2f-dd426e84baaa6ca8"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-galaxy-nx-cbcba77ca5561474",
+        "open-eq-v1-lensfun-samsung-ek-gn120-047e7cd7e2881d1f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-gx-10-c629e638ebe60f2c",
+        "open-eq-v1-lensfun-samsung-techwin-co-samsung-gx10-273460050c456819"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-gx-1l-25aa369baa3ade4e",
+        "open-eq-v1-lensfun-samsung-techwin-gx-1l-26fe8cd0f3b4b1c1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-gx-1s-af255c34b6605a22",
+        "open-eq-v1-lensfun-samsung-techwin-gx-1s-31d07e94bd9686c9"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-gx-20-cbb80aa28921186b",
+        "open-eq-v1-lensfun-samsung-techwin-co-gx20-3a643be2c3f021f7"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx-mini-91fe3b2b0cc0f269",
+        "open-eq-v1-lensfun-samsung-nx-mini-b304a02a2061abf1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx1-a81a85be4766c127",
+        "open-eq-v1-lensfun-samsung-nx1-18f5104a1a5365d0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx10-d21468bea0c60178",
+        "open-eq-v1-lensfun-samsung-nx10-877fb98f99c2294e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx100-88f478e555d38cf9",
+        "open-eq-v1-lensfun-samsung-nx100-01041187ebc4033b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx1000-2cfefa2471dc0a48",
+        "open-eq-v1-lensfun-samsung-nx1000-973fef5f63d91373"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx11-cdea7193be21cd8a",
+        "open-eq-v1-lensfun-samsung-nx11-7c175c217bcb742d"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx1100-ca63709bc09a6f48",
+        "open-eq-v1-lensfun-samsung-nx1100-8558738b19e9ebe0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx20-c0c2dd3799766ec6",
+        "open-eq-v1-lensfun-samsung-nx20-5d27727e63845b02"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx200-526712a8130de3b5",
+        "open-eq-v1-lensfun-samsung-nx200-c26e84c2f86c5a33"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx2000-515e1745ff416fdb",
+        "open-eq-v1-lensfun-samsung-nx2000-51b82a87e45d352e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx210-549fdd88db4e258d",
+        "open-eq-v1-lensfun-samsung-nx210-33ac658d0be424a5"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx30-bac5ff936f41af6f",
+        "open-eq-v1-lensfun-samsung-nx30-75505ad8d1fa6594"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx300-1c4ee1f28e7761ea",
+        "open-eq-v1-lensfun-samsung-nx300-ceccb07df8661800"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx3000-e8d38a47d4eb2c8b",
+        "open-eq-v1-lensfun-samsung-nx3000-f33776bcc9888c14"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx5-8bd37a81db05b7e2",
+        "open-eq-v1-lensfun-samsung-nx5-650173b7e65f1ef8"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-nx500-6cdabcb641085bc4",
+        "open-eq-v1-lensfun-samsung-nx500-b0832ccc461719ed"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-samsung-wb2000-a5558ac6d65c80a0",
+        "open-eq-v1-lensfun-samsung-wb2000-f7e9bab56acd1db0"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-bf-c399e672bdf51f7b",
+        "open-eq-v1-lensfun-sigma-bf-31b12a3a20a0b23f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-dp1-940da661091db2a0",
+        "open-eq-v1-lensfun-sigma-dp1-310c64cd4c6d63cf"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-dp1-merrill-cdce20a4528975e6",
+        "open-eq-v1-lensfun-sigma-dp1-merrill-7ac57ece1a545583"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-dp1s-d9759045dd6dfed7",
+        "open-eq-v1-lensfun-sigma-dp1s-bde9b7752f2d3d9e"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-dp1x-06d6ceb22bf4a798",
+        "open-eq-v1-lensfun-sigma-dp1x-d626a27c9009df77"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-dp2-097edd59e10d5adb",
+        "open-eq-v1-lensfun-sigma-dp2-bd82e32628e14060"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-dp2-merrill-a3199ca4c3953e61",
+        "open-eq-v1-lensfun-sigma-dp2-merrill-83fdfcff97ee3465"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-dp2s-ac40686c17734af7",
+        "open-eq-v1-lensfun-sigma-dp2s-b284def9d2ec91cb"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-dp2x-b3bc591beb5f00fb",
+        "open-eq-v1-lensfun-sigma-dp2x-9b471b68f4bbac08"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-dp3-merrill-bd8aa4b088a2fec5",
+        "open-eq-v1-lensfun-sigma-dp3-merrill-280c4bcb4cab75f8"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-fp-bb89eb6aff2728ce",
+        "open-eq-v1-lensfun-sigma-fp-7c1d0f1fc698d3ac"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-fp-l-e416f747b47a79ff",
+        "open-eq-v1-lensfun-sigma-fp-l-b1f6f275ae0a4c9c"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-sd1-d75877ac8deb268a",
+        "open-eq-v1-lensfun-sigma-sd1-1c88452081c8822f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-sd1-merrill-61daa7d300f975b2",
+        "open-eq-v1-lensfun-sigma-sd1-merrill-132c4427101b538b"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-sd10-d6228c08f207caec",
+        "open-eq-v1-lensfun-sigma-sd10-90af312f8c5a5f82"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-sd14-1d60a9c201e437e6",
+        "open-eq-v1-lensfun-sigma-sd14-ed4d593ccf1923d8"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-sd15-4e32ac00f94b7a1b",
+        "open-eq-v1-lensfun-sigma-sd15-e6c258a751284092"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sigma-sd9-dae9105d0fdd2362",
+        "open-eq-v1-lensfun-sigma-sd9-bc3a71c08a631c3a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-a6700-1122866ee5cd0bde",
+        "open-eq-v1-lensfun-sony-ilce-6700-2977ff540a483850"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-a7-iv-d32506c35cb9d39d",
+        "open-eq-v1-lensfun-sony-ilce-7m4-6ad8e033815185d7"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-alpha-7-9df774cfbafa4327",
+        "open-eq-v1-lensfun-sony-ilce-7-e5d7d2f78b1c98f1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-alpha-7-ii-b717e435066aa7a8",
+        "open-eq-v1-lensfun-sony-ilce-7m2-63f06544f2f993ee"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-alpha-7r-07a75bd3e0913e91",
+        "open-eq-v1-lensfun-sony-ilce-7r-950830cef06d72fe"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-alpha-7r-ii-db4982c41ab28cf7",
+        "open-eq-v1-lensfun-sony-ilce-7rm2-f7a79d023a70e107"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-alpha-7s-be6fb2cf48364823",
+        "open-eq-v1-lensfun-sony-ilce-7s-36729f8ec4d688e6"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-alpha-7s-ii-f850b378b75e59d9",
+        "open-eq-v1-lensfun-sony-ilce-7sm2-d6d995841ac70075"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-fx2-eccd14c53e862ec8",
+        "open-eq-v1-lensfun-sony-ilme-fx2-c42957d679187d53"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-fx30-cf0760aa869c0933",
+        "open-eq-v1-lensfun-sony-ilme-fx30-9e2f322066537a5f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-rx1r-iii-1f4ba8635a102e8d",
+        "open-eq-v1-lensfun-sony-dsc-rx1rm3-7cdec947950372f4"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-zv-1-929b3cd6e61b5a34",
+        "open-eq-v1-lensfun-sony-zv-1-05f514090082fe65"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-zv-e1-c296226ea4cda156",
+        "open-eq-v1-lensfun-sony-zv-e1-18f7da94300e1622"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-zv-e10-7057bc23826d85f6",
+        "open-eq-v1-lensfun-sony-zv-e10-944c848f7527f44f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-cameradatabase-sony-zv-e10-ii-597e51613a6973ad",
+        "open-eq-v1-lensfun-sony-zv-e10m2-d521a95bff49b33f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-fujifilm-finepix-f810-605af8a337f9d34c",
+        "open-eq-v1-lensfun-fujifilm-finepix-f810-69d9756c243ebbfa"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-olympus-imaging-corp-u-minid-stylus-v-19d981dfc0027ffd",
+        "open-eq-v1-lensfun-olympus-imaging-corp-u-minid-stylus-v-5bbbf873acefc75f"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-panasonic-dmc-lx1-5c581095464d319d",
+        "open-eq-v1-lensfun-panasonic-dmc-lx1-62f1f2f7b4f4a643",
+        "open-eq-v1-lensfun-panasonic-dmc-lx1-9d79f927ff14db6a"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-panasonic-dmc-lx3-1b0dbd8e13cdb81b",
+        "open-eq-v1-lensfun-panasonic-dmc-lx3-2951b9f43951e9d9",
+        "open-eq-v1-lensfun-panasonic-dmc-lx3-51b04b16363c64a9",
+        "open-eq-v1-lensfun-panasonic-dmc-lx3-bfff69dbda167cfe"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-samsung-sm-g9500-6f7c77cc530ef262",
+        "open-eq-v1-lensfun-samsung-sm-g950f-3a4b55402e41daf1"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    },
+    {
+      "source_ids": [
+        "open-eq-v1-lensfun-sony-cybershot-02b8cb0cd86218e1",
+        "open-eq-v1-lensfun-sony-cybershot-3b927ddec0e52df6",
+        "open-eq-v1-lensfun-sony-cybershot-70e20504897ca1db",
+        "open-eq-v1-lensfun-sony-cybershot-85746293c18da262"
+      ],
+      "rule": "same_brand_and_complete_name_or_explicit_alias"
+    }
+  ],
+  "brands": {
+    "Acer": 17,
+    "AEE DV": 1,
+    "AgfaPhoto": 53,
+    "BenQ": 107,
+    "Canon": 398,
+    "Casio": 170,
+    "Concord": 40,
+    "Contax": 6,
+    "DJI": 8,
+    "Epson": 18,
+    "Fujifilm": 419,
+    "GE": 54,
+    "GitUp": 1,
+    "GoPro": 7,
+    "Hasselblad": 9,
+    "HP": 69,
+    "Jenoptik": 48,
+    "JVC": 2,
+    "KMZ": 6,
+    "Kodak": 212,
+    "Konica": 18,
+    "Konica Minolta": 28,
+    "Kyocera": 17,
+    "Leica": 81,
+    "Mamiya": 2,
+    "Minolta": 27,
+    "Minox": 48,
+    "Nikon": 305,
+    "Olympus": 376,
+    "OM Digital Solutions": 6,
+    "Panasonic": 376,
+    "Pentax": 153,
+    "Phase One": 3,
+    "Praktica": 131,
+    "Ricoh": 85,
+    "Rollei": 121,
+    "Rolleiflex": 1,
+    "Samsung": 284,
+    "Sanyo": 78,
+    "Sigma": 20,
+    "Sony": 450,
+    "Toshiba": 19,
+    "Vivitar": 30,
+    "Yakumo": 25,
+    "YI Technology": 1,
+    "Zeiss": 1
+  },
+  "all_hardware_boundaries_unknown_for_catalog_only": true,
+  "rag_review_or_publication_performed": false,
+  "identity_limit": "同品牌完整名称和明确别名去重；不是所有地区名称的全自动实体核验。"
+}

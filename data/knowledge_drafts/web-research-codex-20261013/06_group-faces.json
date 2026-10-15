@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "web-research-codex-20261013-composition-group-faces",
+  "library_id": "composition",
+  "title": "多人合照：检查面部遮挡与边缘裁切，先试拍再调整",
+  "kind": "guideline",
+  "content": "正式多人合照应检查目标人物的面部是否可见及是否被画面边缘切掉。\n适用前提：用户希望目标人物都被清楚记录；人员及输出范围已确认；排布调整尊重参与者且安全。\n建议动作：从实际拍摄位置检查前后排的面部遮挡；为输出或打印保留适当边缘余量；先拍测试照片，检查每个人的面部与清晰范围，再调整。\n限制与例外：没有通用最佳排数、机位高度或留边百分比；不把源文案例的光圈数值推广到不同人数、镜头和距离；不要求站上不稳固的台阶或为了拍照强迫参与者摆姿势。",
+  "payload": {
+    "batch_id": "web-research-codex-20261013",
+    "core_claim": "正式多人合照应检查目标人物的面部是否可见及是否被画面边缘切掉。",
+    "goal": "多人合照：检查面部遮挡与边缘裁切，先试拍再调整",
+    "requires": [
+      "用户希望目标人物都被清楚记录",
+      "人员及输出范围已确认",
+      "排布调整尊重参与者且安全"
+    ],
+    "actions": [
+      "从实际拍摄位置检查前后排的面部遮挡",
+      "为输出或打印保留适当边缘余量",
+      "先拍测试照片，检查每个人的面部与清晰范围，再调整"
+    ],
+    "limitations": [
+      "没有通用最佳排数、机位高度或留边百分比",
+      "不把源文案例的光圈数值推广到不同人数、镜头和距离",
+      "不要求站上不稳固的台阶或为了拍照强迫参与者摆姿势"
+    ],
+    "suggested_text": "先试拍一张，检查后排有没有脸被挡住、两侧有没有人被切掉；需要保留环境时再比较人和背景的比例。",
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-13",
+      "status": "primary_source_only",
+      "scope": "只核对evidence逐项标明的主张，不把相关来源数量当成整卡全部获得交叉认证。",
+      "inference_note": "安全提醒、视觉不确定时处理和结果检查包含整理者归纳，未做真机或实拍测定；不是原文逐字流程。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-group",
+          "url": "https://nij.nikon.com/learn/phototech/lenslesson/lesson22.html",
+          "location": "並びかた / テスト撮影をする / 撮影後の確認",
+          "read_status": "body_read",
+          "supports": "支持面部可见、边缘余量、试拍及拍后逐人检查；未验证跨设备参数。"
+        }
+      ]
+    },
+    "rights": {
+      "retrieval_use": "pending",
+      "public_display": "pending",
+      "redistribution": "pending",
+      "original_media_saved": false
+    }
+  },
+  "tags": [
+    "合照",
+    "多人",
+    "面部遮挡",
+    "试拍",
+    "构图",
+    "MCP采集20261013"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon Japan｜Lesson22：集合写真の撮りかた",
+    "url": "https://nij.nikon.com/learn/phototech/lenslesson/lesson22.html",
+    "location": "並びかた / テスト撮影をする / 撮影後の確認",
+    "license": "原创短归纳与出处；未保存或再分发原文和媒体，计划检索及公开用途待独立核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料采集助手（AI整理，待队友独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

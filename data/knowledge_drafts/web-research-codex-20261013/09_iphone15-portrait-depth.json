@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "web-research-codex-20261013-equipment-iphone15-portrait-depth",
+  "library_id": "equipment",
+  "title": "iPhone 15：人像景深编辑调节背景效果，不当作实体光圈指令",
+  "kind": "manufacturer_fact",
+  "content": "iPhone 15支持人像景深控制；可对符合条件的人像照片调整背景模糊效果。\n适用前提：已确认普通iPhone 15及Apple原生相机或照片App；照片具有可编辑的人像信息；具体编辑控件以当前系统界面为准。\n建议动作：按人像模式的距离和环境提示完成拍摄；在照片编辑中找到景深控制并比较模糊效果；检查主体轮廓、头发或透明物体附近是否符合预期。\n限制与例外：对已有照片的效果编辑不能称为改变拍摄时实体光圈；不是任意普通JPEG都能恢复可编辑景深；不承诺分割边缘或多个主体始终正确。",
+  "payload": {
+    "batch_id": "web-research-codex-20261013",
+    "core_claim": "iPhone 15支持人像景深控制；可对符合条件的人像照片调整背景模糊效果。",
+    "goal": "iPhone 15：人像景深编辑调节背景效果，不当作实体光圈指令",
+    "requires": [
+      "已确认普通iPhone 15及Apple原生相机或照片App",
+      "照片具有可编辑的人像信息",
+      "具体编辑控件以当前系统界面为准"
+    ],
+    "actions": [
+      "按人像模式的距离和环境提示完成拍摄",
+      "在照片编辑中找到景深控制并比较模糊效果",
+      "检查主体轮廓、头发或透明物体附近是否符合预期"
+    ],
+    "limitations": [
+      "对已有照片的效果编辑不能称为改变拍摄时实体光圈",
+      "不是任意普通JPEG都能恢复可编辑景深",
+      "不承诺分割边缘或多个主体始终正确"
+    ],
+    "suggested_text": "这里调的是人像照片的背景效果。先确认有可编辑的人像信息，再比较效果并检查主体边缘。",
+    "numeric_default": null,
+    "automatic_execution": false,
+    "device_scope": {
+      "model": "iPhone 15",
+      "profile_id": "apple_iphone_15",
+      "app": "Apple原生相机／对应照片编辑",
+      "user_ios_version": "not_reported",
+      "interface_requires_user_confirmation": true
+    },
+    "verification": {
+      "checked_at": "2026-10-13",
+      "status": "primary_source_only",
+      "scope": "只核对evidence逐项标明的主张，不把相关来源数量当成整卡全部获得交叉认证。",
+      "inference_note": "安全提醒、视觉不确定时处理和结果检查包含整理者归纳，未做真机或实拍测定；不是原文逐字流程。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "apple-portrait",
+          "url": "https://support.apple.com/zh-cn/102398",
+          "location": "在人像模式下拍摄照片 / 调整景深控制和人像光效",
+          "read_status": "body_read",
+          "supports": "支持屏幕距离提示及拍后背景模糊效果调整。"
+        },
+        {
+          "source_id": "apple-iphone15",
+          "url": "https://support.apple.com/en-us/111831",
+          "location": "Camera / TrueDepth Camera",
+          "read_status": "body_read",
+          "supports": "明确iPhone 15支持Focus and Depth Control；不提供第三方App能力。"
+        }
+      ]
+    },
+    "rights": {
+      "retrieval_use": "pending",
+      "public_display": "pending",
+      "redistribution": "pending",
+      "original_media_saved": false
+    }
+  },
+  "tags": [
+    "iPhone 15",
+    "人像模式",
+    "景深控制",
+    "背景效果",
+    "MCP采集20261013"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "apple_iphone_15",
+    "phone_capture_mode": "portrait"
+  },
+  "source": {
+    "name": "Apple｜在 iPhone 上使用人像模式",
+    "url": "https://support.apple.com/zh-cn/102398",
+    "location": "在人像模式下拍摄照片 / 调整景深控制和人像光效",
+    "license": "原创短归纳与出处；未保存或再分发原文和媒体，计划检索及公开用途待独立核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料采集助手（AI整理，待队友独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

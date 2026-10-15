@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-equipment-iphone15-rear",
+  "library_id": "equipment",
+  "title": "iPhone 15：两枚后置实体相机的标称规格",
+  "kind": "manufacturer_fact",
+  "content": "核心规则：普通iPhone15后置主摄和超广角的规格应按该机型登记。\n建议动作：核对用户不是15 Pro/Pro Max。；选择实体主摄或超广角时，保持规格与该镜头对应。\n适用前提：普通iPhone15；Apple中国规格页范围。\n限制与例外：26mm/13mm为等效焦距；标称光圈不是要求用户拨动的光圈参数。",
+  "payload": {
+    "core_claim": "普通iPhone15后置主摄和超广角的规格应按该机型登记。",
+    "goal": "iPhone 15：两枚后置实体相机的标称规格",
+    "requires": [
+      "普通iPhone15；Apple中国规格页范围。"
+    ],
+    "actions": [
+      "核对用户不是15 Pro/Pro Max。",
+      "选择实体主摄或超广角时，保持规格与该镜头对应。"
+    ],
+    "limitations": [
+      "26mm/13mm为等效焦距；标称光圈不是要求用户拨动的光圈参数。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "manufacturer_facts": {
+      "rear_physical_camera_count": 2,
+      "main": {
+        "equivalent_focal_length_mm": 26,
+        "aperture_f_number": 1.6
+      },
+      "ultrawide": {
+        "equivalent_focal_length_mm": 13,
+        "aperture_f_number": 2.4
+      }
+    },
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "apple-iphone15",
+          "url": "https://support.apple.com/zh-cn/111831",
+          "location": "摄像头 / 照片拍摄格式",
+          "supports": "主摄26mm等效f/1.6，超广角13mm等效f/2.4。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "equipment",
+    "iphone15-rear",
+    "iPhone 15",
+    "两枚后置实体相机的标称规格",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "apple_iphone_15"
+  },
+  "source": {
+    "name": "Apple｜iPhone 15技术规格",
+    "url": "https://support.apple.com/zh-cn/111831",
+    "location": "摄像头 / 照片拍摄格式",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-depth-layers",
+  "library_id": "composition",
+  "title": "空间层次：前中后景是选项，不要求每张照片都有三层",
+  "kind": "guideline",
+  "content": "组织不同空间层次可表达景深感，但照片不必具备前、中、后三层。\n适用前提：用户希望表达空间关系；画面存在可辨认的相对层次。\n建议动作：确认实际可见的近景、中景和远景对象；比较加入前景后的遮挡与原构图；保留用户需要看清的主要区域。\n限制与例外：不能只凭颜色或模糊程度证明精确距离；不编造画外前景，也不输出猜测的米数；极简或平面化表达可以不加前景。",
+  "payload": {
+    "batch_id": "web-research-codex-20261013",
+    "core_claim": "组织不同空间层次可表达景深感，但照片不必具备前、中、后三层。",
+    "goal": "空间层次：前中后景是选项，不要求每张照片都有三层",
+    "requires": [
+      "用户希望表达空间关系",
+      "画面存在可辨认的相对层次"
+    ],
+    "actions": [
+      "确认实际可见的近景、中景和远景对象",
+      "比较加入前景后的遮挡与原构图",
+      "保留用户需要看清的主要区域"
+    ],
+    "limitations": [
+      "不能只凭颜色或模糊程度证明精确距离",
+      "不编造画外前景，也不输出猜测的米数",
+      "极简或平面化表达可以不加前景"
+    ],
+    "suggested_text": "如果想增加空间感，可以比较已有前景的版本；没有三层也不代表构图失败。",
+    "numeric_default": null,
+    "automatic_execution": false,
+    "previous_version": 1,
+    "verification": {
+      "checked_at": "2026-10-13",
+      "status": "cross_source_agreement",
+      "scope": "只核对evidence逐项标明的主张，不把相关来源数量当成整卡全部获得交叉认证。",
+      "inference_note": "安全提醒、视觉不确定时处理和结果检查包含整理者归纳，未做真机或实拍测定；不是原文逐字流程。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "adobe-layers",
+          "url": "https://www.adobe.com/creativecloud/photography/hub/guides/foreground-middleground-background.html",
+          "location": "层次定义及是否需要三层的说明",
+          "read_status": "body_read",
+          "supports": "支持相对层次定义和不必具备三层的例外。"
+        },
+        {
+          "source_id": "canon-composition",
+          "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+          "location": "Use Depth",
+          "read_status": "body_read",
+          "supports": "支持前中后景作为表达空间层次的方法；非强制属性由Adobe说明支持。"
+        }
+      ]
+    },
+    "rights": {
+      "retrieval_use": "pending",
+      "public_display": "pending",
+      "redistribution": "pending",
+      "original_media_saved": false
+    }
+  },
+  "tags": [
+    "空间层次",
+    "前景",
+    "遮挡",
+    "构图",
+    "MCP采集20261013"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Adobe｜Foreground, middle ground, and background in photography",
+    "url": "https://www.adobe.com/creativecloud/photography/hub/guides/foreground-middleground-background.html",
+    "location": "层次定义及是否需要三层的说明",
+    "license": "原创短归纳与出处；未保存或再分发原文和媒体，计划检索及公开用途待独立核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料采集助手（AI整理，待队友独立复核）",
+  "version": 2,
+  "dataset_split": "reference"
+}

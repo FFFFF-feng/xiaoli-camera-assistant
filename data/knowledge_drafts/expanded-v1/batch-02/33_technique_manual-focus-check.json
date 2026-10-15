@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-manual-focus-check",
+  "library_id": "technique",
+  "title": "手动对焦：放大检查，勿只信峰值",
+  "kind": "guideline",
+  "content": "核心规则：AF难以稳定合焦时可考虑MF并检查细节。\n建议动作：能支持时放大关键细节，确认焦点。；微调后试拍，检查成片而非只看辅助高亮。\n适用前提：型号支持MF和相应辅助；可稳定构图。\n限制与例外：峰值或放大不保证精确；Canon R7放大AF另有行为限制。",
+  "payload": {
+    "core_claim": "AF难以稳定合焦时可考虑MF并检查细节。",
+    "goal": "手动对焦：放大检查，勿只信峰值",
+    "requires": [
+      "型号支持MF和相应辅助；可稳定构图。"
+    ],
+    "actions": [
+      "能支持时放大关键细节，确认焦点。",
+      "微调后试拍，检查成片而非只看辅助高亮。"
+    ],
+    "limitations": [
+      "峰值或放大不保证精确；Canon R7放大AF另有行为限制。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-af",
+          "url": "https://www.sony.com/electronics/support/articles/00267931",
+          "location": "AF / MF",
+          "supports": "MF、DMF及放大/峰值辅助。"
+        },
+        {
+          "source_id": "canon-af-area",
+          "url": "https://cam.start.canon/en/C005/manual/html/UG-05_AF-Drive_0070.html",
+          "location": "AF Shooting Tips / Shooting Conditions That Make Focusing Difficult",
+          "supports": "对焦困难时可MF，放大视图有注意事项。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "technique",
+    "manual-focus-check",
+    "手动对焦",
+    "放大检查",
+    "勿只信峰值",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Sony｜自动与手动对焦",
+    "url": "https://www.sony.com/electronics/support/articles/00267931",
+    "location": "AF / MF",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

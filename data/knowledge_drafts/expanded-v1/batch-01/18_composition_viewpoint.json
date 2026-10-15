@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-viewpoint",
+  "library_id": "composition",
+  "title": "换机位：把建议变成可比较的版本",
+  "kind": "guideline",
+  "content": "核心规则：改变拍摄角度可改变画面关系。\n建议动作：在安全位置比较较高、平视和较低机位。；观察遮挡和背景变化，选择符合叙事的版本。\n适用前提：可安全移动；用户愿意重拍。\n限制与例外：不能承诺换角度一定更美；重拍不是软件裁剪。",
+  "payload": {
+    "core_claim": "改变拍摄角度可改变画面关系。",
+    "goal": "换机位：把建议变成可比较的版本",
+    "requires": [
+      "可安全移动；用户愿意重拍。"
+    ],
+    "actions": [
+      "在安全位置比较较高、平视和较低机位。",
+      "观察遮挡和背景变化，选择符合叙事的版本。"
+    ],
+    "limitations": [
+      "不能承诺换角度一定更美；重拍不是软件裁剪。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "interpretive_goal",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "canon-composition",
+          "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+          "location": "Rule of thirds / Lines / Framing / Symmetry / Negative space / Layers / Angles",
+          "supports": "尝试不同拍摄角度。"
+        }
+      ],
+      "inference_note": "这是可选表达目标；来源支持方法存在，不证明审美偏好或效果最优。"
+    }
+  },
+  "tags": [
+    "composition",
+    "viewpoint",
+    "换机位",
+    "把建议变成可比较的版本",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Canon｜Mastering Photo Composition",
+    "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+    "location": "Rule of thirds / Lines / Framing / Symmetry / Negative space / Layers / Angles",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

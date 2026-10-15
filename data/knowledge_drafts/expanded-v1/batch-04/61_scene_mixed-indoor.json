@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-scene-mixed-indoor",
+  "library_id": "scene",
+  "title": "室内混合灯光：先围绕主体光源决策",
+  "kind": "guideline",
+  "content": "核心规则：不同光源颜色可能使室内不同区域色彩不一致。\n建议动作：询问是否追求中性色或保留暖冷氛围。；能控制现场时减少额外光源，再按主体所受光设置。\n适用前提：现场确有不同光源；用户目标可确认。\n限制与例外：综合流程不是单一色温保证；灯光条带要另行排查。",
+  "payload": {
+    "core_claim": "不同光源颜色可能使室内不同区域色彩不一致。",
+    "goal": "室内混合灯光：先围绕主体光源决策",
+    "requires": [
+      "现场确有不同光源；用户目标可确认。"
+    ],
+    "actions": [
+      "询问是否追求中性色或保留暖冷氛围。",
+      "能控制现场时减少额外光源，再按主体所受光设置。"
+    ],
+    "limitations": [
+      "综合流程不是单一色温保证；灯光条带要另行排查。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-wb",
+          "url": "https://www.sony.com/electronics/support/articles/00267928",
+          "location": "White Balance",
+          "supports": "按光源调整白平衡。"
+        },
+        {
+          "source_id": "nikon-wb",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+          "location": "AUTO / PRE / Presets",
+          "supports": "中性参考与光源预设。"
+        },
+        {
+          "source_id": "sony-flicker",
+          "url": "https://www.sony.com/electronics/support/articles/00122281",
+          "location": "Changing shutter speed / Anti-flicker / Var. Shutter",
+          "supports": "闪烁光源可能造成条带。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "scene",
+    "mixed-indoor",
+    "室内混合灯光",
+    "先围绕主体光源决策",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜白平衡",
+    "url": "https://www.sony.com/electronics/support/articles/00267928",
+    "location": "White Balance",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "web-research-codex-20261013-equipment-iphone15-live-audio",
+  "library_id": "equipment",
+  "title": "iPhone 15：实况照片可能记录画面前后与音频",
+  "kind": "manufacturer_fact",
+  "content": "iPhone 15支持实况照片，该功能会记录照片前后一瞬间的画面和音频。\n适用前提：已确认普通iPhone 15及Apple原生相机；当前照片模式已确认实况状态。\n建议动作：拍摄前检查实况功能当前是自动、打开还是关闭；不需要动态和声音时，按当前界面关闭实况；分享或提交素材前单独核对是否含动态或音频。\n限制与例外：分享检查是整理者的隐私提醒，不是已验证的脱敏流程；关闭之后的拍摄功能不等于已删除过去素材中的音频；导出格式和上传链是否保留实况信息需另测试。",
+  "payload": {
+    "batch_id": "web-research-codex-20261013",
+    "core_claim": "iPhone 15支持实况照片，该功能会记录照片前后一瞬间的画面和音频。",
+    "goal": "iPhone 15：实况照片可能记录画面前后与音频",
+    "requires": [
+      "已确认普通iPhone 15及Apple原生相机",
+      "当前照片模式已确认实况状态"
+    ],
+    "actions": [
+      "拍摄前检查实况功能当前是自动、打开还是关闭",
+      "不需要动态和声音时，按当前界面关闭实况",
+      "分享或提交素材前单独核对是否含动态或音频"
+    ],
+    "limitations": [
+      "分享检查是整理者的隐私提醒，不是已验证的脱敏流程",
+      "关闭之后的拍摄功能不等于已删除过去素材中的音频",
+      "导出格式和上传链是否保留实况信息需另测试"
+    ],
+    "suggested_text": "实况照片可能连声音一起记录；如果只想拍静态画面，拍摄前确认实况已关闭，并核对待分享素材。",
+    "numeric_default": null,
+    "automatic_execution": false,
+    "device_scope": {
+      "model": "iPhone 15",
+      "profile_id": "apple_iphone_15",
+      "app": "Apple原生相机／对应照片编辑",
+      "user_ios_version": "not_reported",
+      "interface_requires_user_confirmation": true
+    },
+    "verification": {
+      "checked_at": "2026-10-13",
+      "status": "primary_source_only",
+      "scope": "只核对evidence逐项标明的主张，不把相关来源数量当成整卡全部获得交叉认证。",
+      "inference_note": "安全提醒、视觉不确定时处理和结果检查包含整理者归纳，未做真机或实拍测定；不是原文逐字流程。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "apple-live",
+          "url": "https://support.apple.com/zh-cn/guide/iphone/iph17471d6de/27/ios/27",
+          "location": "开篇画面与音频说明 / 关闭和打开实况照片",
+          "read_status": "body_read",
+          "supports": "支持实况捕获画面和音频及控制开关；不证明导出脱敏效果。"
+        },
+        {
+          "source_id": "apple-iphone15",
+          "url": "https://support.apple.com/en-us/111831",
+          "location": "Camera / TrueDepth Camera",
+          "read_status": "body_read",
+          "supports": "明确iPhone 15支持Live Photos。"
+        }
+      ]
+    },
+    "rights": {
+      "retrieval_use": "pending",
+      "public_display": "pending",
+      "redistribution": "pending",
+      "original_media_saved": false
+    }
+  },
+  "tags": [
+    "iPhone 15",
+    "实况照片",
+    "音频",
+    "素材检查",
+    "MCP采集20261013"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "apple_iphone_15",
+    "phone_capture_mode": "auto"
+  },
+  "source": {
+    "name": "Apple｜使用 iPhone 相机拍摄实况照片",
+    "url": "https://support.apple.com/zh-cn/guide/iphone/iph17471d6de/27/ios/27",
+    "location": "开篇画面与音频说明 / 关闭和打开实况照片",
+    "license": "原创短归纳与出处；未保存或再分发原文和媒体，计划检索及公开用途待独立核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料采集助手（AI整理，待队友独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

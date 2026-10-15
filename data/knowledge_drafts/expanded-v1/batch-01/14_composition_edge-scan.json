@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-edge-scan",
+  "library_id": "composition",
+  "title": "画面边缘检查：减少非预期干扰",
+  "kind": "guideline",
+  "content": "核心规则：拍摄前可检查无意入镜的背景与边缘元素。\n建议动作：沿四边检查截断物体和高亮干扰，确认是否影响意图。；先尝试移动机位，再决定是否裁剪。\n适用前提：目标主体和需要保留的内容已确认。\n限制与例外：这是整理后的检查流程；不是原文验证过的算法。",
+  "payload": {
+    "core_claim": "拍摄前可检查无意入镜的背景与边缘元素。",
+    "goal": "画面边缘检查：减少非预期干扰",
+    "requires": [
+      "目标主体和需要保留的内容已确认。"
+    ],
+    "actions": [
+      "沿四边检查截断物体和高亮干扰，确认是否影响意图。",
+      "先尝试移动机位，再决定是否裁剪。"
+    ],
+    "limitations": [
+      "这是整理后的检查流程；不是原文验证过的算法。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-center",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/when-center-composition-can-elevate-a-portrait",
+          "location": "Center composition / Simplify background / Framing",
+          "supports": "简化背景与排除额外干扰。"
+        },
+        {
+          "source_id": "sony-portrait",
+          "url": "https://www.sony.co.uk/electronics/support/articles/00206555",
+          "location": "Considering the composition / Using back light",
+          "supports": "紧取景可排除无关环境。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "composition",
+    "edge-scan",
+    "画面边缘检查",
+    "减少非预期干扰",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon｜中心构图的人像表达",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/when-center-composition-can-elevate-a-portrait",
+    "location": "Center composition / Simplify background / Framing",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

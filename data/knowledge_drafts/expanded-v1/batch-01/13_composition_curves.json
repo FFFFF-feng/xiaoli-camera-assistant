@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-curves",
+  "library_id": "composition",
+  "title": "曲线与斜向线：提供另一种视线路径",
+  "kind": "guideline",
+  "content": "核心规则：曲线可成为主体或引导画面中的视线。\n建议动作：标出真实可见的曲线走向，比较顺着曲线取景。；如果倾斜相机才得到斜线，另保留平直版本。\n适用前提：图中有真实曲线或斜线。\n限制与例外：斜向线不自动等于动感；没有自动几何检测保证。",
+  "payload": {
+    "core_claim": "曲线可成为主体或引导画面中的视线。",
+    "goal": "曲线与斜向线：提供另一种视线路径",
+    "requires": [
+      "图中有真实曲线或斜线。"
+    ],
+    "actions": [
+      "标出真实可见的曲线走向，比较顺着曲线取景。",
+      "如果倾斜相机才得到斜线，另保留平直版本。"
+    ],
+    "limitations": [
+      "斜向线不自动等于动感；没有自动几何检测保证。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "interpretive_goal",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-composition",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "location": "Rule of Thirds / Horizon / Lean Into the Frame / Leading lines / Patterns",
+          "supports": "曲线也可成为主体或视线路径。"
+        }
+      ],
+      "inference_note": "这是可选表达目标；来源支持方法存在，不证明审美偏好或效果最优。"
+    }
+  },
+  "tags": [
+    "composition",
+    "curves",
+    "曲线与斜向线",
+    "提供另一种视线路径",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon｜5 Easy Composition Guidelines",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+    "location": "Rule of Thirds / Horizon / Lean Into the Frame / Leading lines / Patterns",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

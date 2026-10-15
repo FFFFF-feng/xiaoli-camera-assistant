@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-hdr-bracket",
+  "library_id": "technique",
+  "title": "曝光包围：先确认场景适合多张合成",
+  "kind": "guideline",
+  "content": "核心规则：HDR可结合不同曝光记录场景的亮暗部分。\n建议动作：相机支持时固定构图与光圈，改变曝光时间进行包围。；保留原片，再检查合成结果是否符合自然或夸张目标。\n适用前提：场景相对静止；设备支持包围；有合成流程。\n限制与例外：不默认固定张数/EV间隔；合成不保证自然效果。",
+  "payload": {
+    "core_claim": "HDR可结合不同曝光记录场景的亮暗部分。",
+    "goal": "曝光包围：先确认场景适合多张合成",
+    "requires": [
+      "场景相对静止；设备支持包围；有合成流程。"
+    ],
+    "actions": [
+      "相机支持时固定构图与光圈，改变曝光时间进行包围。",
+      "保留原片，再检查合成结果是否符合自然或夸张目标。"
+    ],
+    "limitations": [
+      "不默认固定张数/EV间隔；合成不保证自然效果。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-hdr",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/high-dynamic-range-photography",
+          "location": "Bracketing / Tripod / Histogram",
+          "supports": "曝光包围、固定光圈、三脚架与后期合成。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "hdr-bracket",
+    "曝光包围",
+    "先确认场景适合多张合成",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "tripod": true,
+    "motion": "static"
+  },
+  "source": {
+    "name": "Nikon｜HDR摄影教程",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/high-dynamic-range-photography",
+    "location": "Bracketing / Tripod / Histogram",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -5,11 +5,53 @@ from __future__ import annotations
 import math
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator, model_validator
 
 
 class CompositionModel(BaseModel):
     model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
+
+
+class SketchElement(CompositionModel):
+    kind: Literal["person", "tree", "pet", "building", "mountain", "flower", "object"]
+    label: str = Field(min_length=1, max_length=18)
+    role: Literal["main", "context"]
+    bbox: list[float] = Field(min_length=4, max_length=4)
+    appearance: Literal["default", "standing", "seated", "walking", "cat", "dog", "bird",
+                        "red_panda", "pine", "broadleaf", "cup", "bottle", "book", "camera"] = "default"
+    facing: Literal["front", "left", "right"] = "front"
+    description: str = Field(default="", max_length=70)
+
+    @field_validator("bbox", mode="before")
+    @classmethod
+    def drawing_box(cls, value: object) -> object:
+        if (not isinstance(value, list) or len(value) != 4
+                or any(isinstance(n, bool) or not isinstance(n, (int, float)) for n in value)):
+            raise ValueError("示意位置必须为四个数值。")
+        x1, y1, x2, y2 = value
+        if (any(not math.isfinite(n) or not 0 <= n <= 1 for n in value)
+                or x2 - x1 < .05 or y2 - y1 < .05):
+            raise ValueError("示意对象必须完整位于画幅内且具有有效大小。")
+        return value
+
+
+class CompositionSketch(CompositionModel):
+    aspect: Literal["portrait", "landscape", "square"]
+    caption: str = Field(min_length=1, max_length=100)
+    elements: list[SketchElement] = Field(min_length=1, max_length=6)
+    horizon_y: float | None = Field(default=None, ge=0, le=1)
+    camera_action: Literal["stay", "left", "right", "closer", "farther", "lower", "higher"]
+    camera_instruction: str = Field(min_length=1, max_length=100)
+    theme: str = Field(default="", max_length=40)
+    mood: str = Field(default="", max_length=40)
+    narration: str = Field(default="", max_length=160)
+    space_note: str = Field(default="", max_length=100)
+
+    @model_validator(mode="after")
+    def has_subject(self) -> CompositionSketch:
+        if not any(element.role == "main" for element in self.elements):
+            raise ValueError("示意图需要明确的主体。")
+        return self
 
 
 class CompositionProposal(CompositionModel):
@@ -22,6 +64,18 @@ class CompositionProposal(CompositionModel):
     limitations: list[str] = Field(min_length=1)
     knowledge_ids: list[str] = Field(default_factory=list)
     crop_bbox: list[float] | None = None
+    sketch: CompositionSketch | None = None
+
+    @field_validator("sketch", mode="before")
+    @classmethod
+    def keep_text_if_drawing_invalid(cls, value: object) -> CompositionSketch | None:
+        # A malformed optional drawing must not discard otherwise useful photography advice.
+        if value is None:
+            return None
+        try:
+            return CompositionSketch.model_validate(value)
+        except (ValidationError, TypeError, ValueError):
+            return None
 
     @field_validator("goal")
     @classmethod

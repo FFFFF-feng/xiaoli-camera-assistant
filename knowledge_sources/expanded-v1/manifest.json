@@ -1,0 +1,1067 @@
+{
+  "dataset_id": "expanded-v1",
+  "schema_version": 1,
+  "checked_at": "2026-10-11",
+  "record_count": 80,
+  "by_library": {
+    "composition": 20,
+    "technique": 32,
+    "scene": 10,
+    "style": 6,
+    "equipment": 12,
+    "case": 0
+  },
+  "by_verification_status": {
+    "cross_source_agreement": 14,
+    "interpretive_goal": 15,
+    "synthesized_guideline": 30,
+    "primary_source_only": 21
+  },
+  "default_import_status": "draft",
+  "retrieval_allowed": false,
+  "human_review_performed": false,
+  "field_test_performed": false,
+  "batches": [
+    {
+      "directory": "data/knowledge_drafts/expanded-v1/batch-01",
+      "record_count": 20
+    },
+    {
+      "directory": "data/knowledge_drafts/expanded-v1/batch-02",
+      "record_count": 20
+    },
+    {
+      "directory": "data/knowledge_drafts/expanded-v1/batch-03",
+      "record_count": 20
+    },
+    {
+      "directory": "data/knowledge_drafts/expanded-v1/batch-04",
+      "record_count": 20
+    }
+  ],
+  "records": [
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/01_composition_thirds.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-thirds",
+      "version": 1,
+      "library_id": "composition",
+      "title": "三分法：一个可比较的主体位置",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "nikon-composition",
+        "sony-portrait"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/02_composition_center.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-center",
+      "version": 1,
+      "library_id": "composition",
+      "title": "中心构图：直接突出主体",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "nikon-center",
+        "canon-composition"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/03_composition_symmetry.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-symmetry",
+      "version": 1,
+      "library_id": "composition",
+      "title": "对称构图：先确认真正的对称轴",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "canon-composition",
+        "nikon-composition"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/04_composition_horizon.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-horizon",
+      "version": 1,
+      "library_id": "composition",
+      "title": "地平线：平直检查与位置选择分开",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "apple-tools",
+        "nikon-composition"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/05_composition_leading-lines.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-leading-lines",
+      "version": 1,
+      "library_id": "composition",
+      "title": "引导线：观察线条指向哪里",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "nikon-composition",
+        "canon-composition"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/06_composition_framing.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-framing",
+      "version": 1,
+      "library_id": "composition",
+      "title": "框中框：用现场结构包围主体",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "nikon-center",
+        "canon-composition"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/07_composition_negative-space.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-negative-space",
+      "version": 1,
+      "library_id": "composition",
+      "title": "留白：为空间感服务",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "canon-composition"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/08_composition_depth-layers.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-depth-layers",
+      "version": 1,
+      "library_id": "composition",
+      "title": "前中后景：帮助表达空间层次",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "canon-composition"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/09_composition_fill-frame.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-fill-frame",
+      "version": 1,
+      "library_id": "composition",
+      "title": "填满画面：突出细节而非盲目靠近",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "canon-composition",
+        "sony-minfocus"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/10_composition_look-room.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-look-room",
+      "version": 1,
+      "library_id": "composition",
+      "title": "视线方向留空间",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "nikon-composition",
+        "sony-portrait"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/11_composition_motion-room.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-motion-room",
+      "version": 1,
+      "library_id": "composition",
+      "title": "运动方向留空间：不要把朝向当速度",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "nikon-composition"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/12_composition_patterns.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-patterns",
+      "version": 1,
+      "library_id": "composition",
+      "title": "重复图案：寻找节奏和例外",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "nikon-composition",
+        "canon-composition"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/13_composition_curves.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-curves",
+      "version": 1,
+      "library_id": "composition",
+      "title": "曲线与斜向线：提供另一种视线路径",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "nikon-composition"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/14_composition_edge-scan.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-edge-scan",
+      "version": 1,
+      "library_id": "composition",
+      "title": "画面边缘检查：减少非预期干扰",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "nikon-center",
+        "sony-portrait"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/15_composition_background-separation.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-background-separation",
+      "version": 1,
+      "library_id": "composition",
+      "title": "主体分离：先换背景，再讨论虚化",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "nikon-center",
+        "sony-defocus"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/16_composition_orientation.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-orientation",
+      "version": 1,
+      "library_id": "composition",
+      "title": "横竖构图：由叙事与输出决定",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "sony-portrait"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/17_composition_eye-placement.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-eye-placement",
+      "version": 1,
+      "library_id": "composition",
+      "title": "肖像眼睛位置：三分交点仅是候选",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "sony-portrait"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/18_composition_viewpoint.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-viewpoint",
+      "version": 1,
+      "library_id": "composition",
+      "title": "换机位：把建议变成可比较的版本",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "canon-composition"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/19_composition_aspect-plan.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-aspect-plan",
+      "version": 1,
+      "library_id": "composition",
+      "title": "宽高比：先确定输出，再留裁剪余量",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "canon-composition",
+        "apple-tools"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-01/20_composition_crop-guide.json",
+      "batch": "batch-01",
+      "knowledge_id": "expanded-v1-composition-crop-guide",
+      "version": 1,
+      "library_id": "composition",
+      "title": "构图辅助线：建议与机内功能要区分",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "canon-crop",
+        "apple-tools"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/21_technique_aperture-dof.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-aperture-dof",
+      "version": 1,
+      "library_id": "technique",
+      "title": "光圈：进光与景深要同时考虑",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "sony-aperture",
+        "canon-dof"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/22_technique_shutter-motion.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-shutter-motion",
+      "version": 1,
+      "library_id": "technique",
+      "title": "快门：冻结与拖影是不同目标",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "sony-shutter",
+        "canon-shutter"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/23_technique_exposure-stops.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-exposure-stops",
+      "version": 1,
+      "library_id": "technique",
+      "title": "曝光变化：不要把一挡当成任意加一",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "sony-aperture",
+        "sony-shutter"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/24_technique_iso-not-photons.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-iso-not-photons",
+      "version": 1,
+      "library_id": "technique",
+      "title": "ISO：不把提亮说成增加进光量",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "sony-iso"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/25_technique_iso-tradeoff.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-iso-tradeoff",
+      "version": 1,
+      "library_id": "technique",
+      "title": "ISO与噪声：按设备和进光条件权衡",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "sony-iso",
+        "google-nightsight-research"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/26_technique_compensation-direction.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-compensation-direction",
+      "version": 1,
+      "library_id": "technique",
+      "title": "曝光补偿：按目标与高光判断方向",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "sony-exposure",
+        "nikon-compensation"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/27_technique_aperture-priority.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-aperture-priority",
+      "version": 1,
+      "library_id": "technique",
+      "title": "光圈优先：设好景深后检查自动快门",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "sony-aperture",
+        "sony-iso"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/28_technique_shutter-priority.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-shutter-priority",
+      "version": 1,
+      "library_id": "technique",
+      "title": "快门优先：不能假定自动光圈永远足够",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "sony-shutter"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/29_technique_manual-autoiso.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-manual-autoiso",
+      "version": 1,
+      "library_id": "technique",
+      "title": "M与Auto ISO：先确认到底谁在自动变化",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "sony-manual",
+        "nikon-autoiso"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/30_technique_autoiso-limits.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-autoiso-limits",
+      "version": 1,
+      "library_id": "technique",
+      "title": "自动ISO：上限不是画质保证",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "nikon-autoiso"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/31_technique_af-static.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-af-static",
+      "version": 1,
+      "library_id": "technique",
+      "title": "静止主体：单次对焦是候选起点",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "sony-af",
+        "canon-af"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/32_technique_af-moving.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-af-moving",
+      "version": 1,
+      "library_id": "technique",
+      "title": "移动主体：连续对焦与快门配合",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "sony-af",
+        "canon-af"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/33_technique_manual-focus-check.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-manual-focus-check",
+      "version": 1,
+      "library_id": "technique",
+      "title": "手动对焦：放大检查，勿只信峰值",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "sony-af",
+        "canon-af-area"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/34_technique_too-close-focus.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-too-close-focus",
+      "version": 1,
+      "library_id": "technique",
+      "title": "太近无法合焦：先退后，不急着换参数",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "sony-minfocus"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/35_technique_background-distance.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-background-distance",
+      "version": 1,
+      "library_id": "technique",
+      "title": "背景虚化：拉开主体与背景是一种办法",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "sony-defocus"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/36_technique_focal-angle.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-focal-angle",
+      "version": 1,
+      "library_id": "technique",
+      "title": "焦距与视角：等效标注不能混为实体焦距",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "sony-focal",
+        "canon-focal"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/37_technique_close-dof.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-close-dof",
+      "version": 1,
+      "library_id": "technique",
+      "title": "近摄景深：更近时要复查清晰范围",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "canon-dof",
+        "sony-defocus"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/38_technique_wb-start.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-wb-start",
+      "version": 1,
+      "library_id": "technique",
+      "title": "白平衡：自动起步，按目标修正",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "sony-wb",
+        "nikon-wb"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/39_technique_wb-reference.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-wb-reference",
+      "version": 1,
+      "library_id": "technique",
+      "title": "中性参考：测量对象须真中性",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "nikon-wb"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-02/40_technique_mixed-wb.json",
+      "batch": "batch-02",
+      "knowledge_id": "expanded-v1-technique-mixed-wb",
+      "version": 1,
+      "library_id": "technique",
+      "title": "混合光：单一白平衡未必能全画面中性",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "sony-wb",
+        "nikon-wb"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/41_technique_histogram-axes.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-technique-histogram-axes",
+      "version": 1,
+      "library_id": "technique",
+      "title": "直方图：柱高不是曝光溢出",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "nikon-histogram"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/42_technique_highlights-check.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-technique-highlights-check",
+      "version": 1,
+      "library_id": "technique",
+      "title": "高光保护：区分重要细节与允许的纯亮区域",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "nikon-histogram",
+        "sony-exposure"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/43_technique_blur-diagnosis.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-technique-blur-diagnosis",
+      "version": 1,
+      "library_id": "technique",
+      "title": "模糊诊断：焦点、机震、主体运动分开排查",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "sony-shutter",
+        "canon-af-area"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/44_technique_tripod-moving.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-technique-tripod-moving",
+      "version": 1,
+      "library_id": "technique",
+      "title": "三脚架：稳定相机，不冻结移动主体",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "sony-shutter",
+        "nikon-hdr",
+        "google-nightsight-research"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/45_technique_is-subject-motion.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-technique-is-subject-motion",
+      "version": 1,
+      "library_id": "technique",
+      "title": "防抖：不能替代冻结主体所需的曝光时间",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "canon-is",
+        "google-nightsight-research"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/46_technique_hdr-bracket.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-technique-hdr-bracket",
+      "version": 1,
+      "library_id": "technique",
+      "title": "曝光包围：先确认场景适合多张合成",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "nikon-hdr"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/47_technique_multiframe-motion.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-technique-multiframe-motion",
+      "version": 1,
+      "library_id": "technique",
+      "title": "多帧合成：移动边缘要单独检查",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "google-nightsight-research",
+        "nikon-hdr"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/48_technique_flicker-banding.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-technique-flicker-banding",
+      "version": 1,
+      "library_id": "technique",
+      "title": "灯光条纹：确认光源与快门方式",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "sony-flicker"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/49_technique_iphone-touch-focus.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-technique-iphone-touch-focus",
+      "version": 1,
+      "library_id": "technique",
+      "title": "iPhone 15：点按主体调整对焦区域",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "apple-tools"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/50_technique_iphone-aeaf-lock.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-technique-iphone-aeaf-lock",
+      "version": 1,
+      "library_id": "technique",
+      "title": "iPhone 15：稳定场景可尝试AE/AF锁定",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "apple-tools"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/51_technique_phone-night-steady.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-technique-phone-night-steady",
+      "version": 1,
+      "library_id": "technique",
+      "title": "手机夜景：快门后仍需等待拍摄结束",
+      "verification_status": "cross_source_agreement",
+      "source_ids": [
+        "apple-night",
+        "google-night"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/52_technique_night-time-exif.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-technique-night-time-exif",
+      "version": 1,
+      "library_id": "technique",
+      "title": "夜间时长：总拍摄过程与EXIF单帧时长分开",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "apple-night",
+        "google-nightsight-research"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/53_scene_window-portrait.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-scene-window-portrait",
+      "version": 1,
+      "library_id": "scene",
+      "title": "窗边人像：先观察主光方向",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "sony-light",
+        "sony-portrait"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/54_scene_backlit-portrait.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-scene-backlit-portrait",
+      "version": 1,
+      "library_id": "scene",
+      "title": "逆光人像：在主体和背景间选择目标",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "sony-light",
+        "sony-exposure",
+        "nikon-histogram"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/55_scene_moving-child.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-scene-moving-child",
+      "version": 1,
+      "library_id": "scene",
+      "title": "跑动儿童或宠物：运动优先，而非三脚架优先",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "sony-shutter",
+        "canon-af"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/56_scene_landscape-depth.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-scene-landscape-depth",
+      "version": 1,
+      "library_id": "scene",
+      "title": "风景：清晰范围比固定f值重要",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "canon-dof",
+        "sony-shutter",
+        "nikon-histogram"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/57_scene_bright-window-building.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-scene-bright-window-building",
+      "version": 1,
+      "library_id": "scene",
+      "title": "室内建筑与亮窗：先处理亮暗差异",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "nikon-hdr",
+        "nikon-histogram"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/58_scene_night-city.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-scene-night-city",
+      "version": 1,
+      "library_id": "scene",
+      "title": "夜景街道：先区分静态建筑与移动行人",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "nikon-night",
+        "google-nightsight-research"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/59_scene_light-trails.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-scene-light-trails",
+      "version": 1,
+      "library_id": "scene",
+      "title": "车流光轨：慢曝光是表达手段",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "nikon-night",
+        "sony-shutter"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-03/60_scene_flower-closeup.json",
+      "batch": "batch-03",
+      "knowledge_id": "expanded-v1-scene-flower-closeup",
+      "version": 1,
+      "library_id": "scene",
+      "title": "花卉近摄：距离、清晰范围与风分开判断",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "sony-minfocus",
+        "canon-dof",
+        "sony-shutter"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/61_scene_mixed-indoor.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-scene-mixed-indoor",
+      "version": 1,
+      "library_id": "scene",
+      "title": "室内混合灯光：先围绕主体光源决策",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "sony-wb",
+        "nikon-wb",
+        "sony-flicker"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/62_scene_food-stilllife.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-scene-food-stilllife",
+      "version": 1,
+      "library_id": "scene",
+      "title": "食物与静物：角度、背景和光线联合比较",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "canon-composition",
+        "sony-light",
+        "sony-wb"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/63_style_natural-clean.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-style-natural-clean",
+      "version": 1,
+      "library_id": "style",
+      "title": "简洁自然：先定义保留什么",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "nikon-center",
+        "sony-look"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/64_style_soft-portrait.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-style-soft-portrait",
+      "version": 1,
+      "library_id": "style",
+      "title": "柔和人像：柔光目标不等于整张失焦",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "sony-portrait",
+        "sony-look",
+        "apple-portrait"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/65_style_warm-memory.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-style-warm-memory",
+      "version": 1,
+      "library_id": "style",
+      "title": "温暖记忆感：色彩选择而非曝光配方",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "nikon-wb",
+        "sony-look"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/66_style_cool-night.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-style-cool-night",
+      "version": 1,
+      "library_id": "style",
+      "title": "冷色夜景：保留夜感，而非统一压暗",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "sony-wb",
+        "sony-exposure"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/67_style_black-white.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-style-black-white",
+      "version": 1,
+      "library_id": "style",
+      "title": "黑白表达：先看明暗与主体关系",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "sony-look",
+        "nikon-center"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/68_style_vivid-scene.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-style-vivid-scene",
+      "version": 1,
+      "library_id": "style",
+      "title": "鲜明风格：饱和度和高光分开检查",
+      "verification_status": "interpretive_goal",
+      "source_ids": [
+        "sony-look",
+        "nikon-histogram"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/69_equipment_iphone15-rear.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-equipment-iphone15-rear",
+      "version": 1,
+      "library_id": "equipment",
+      "title": "iPhone 15：两枚后置实体相机的标称规格",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "apple-iphone15"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/70_equipment_iphone15-2x.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-equipment-iphone15-2x",
+      "version": 1,
+      "library_id": "equipment",
+      "title": "iPhone 15：2×取景不登记成独立长焦",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "apple-iphone15"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/71_equipment_iphone15-formats.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-equipment-iphone15-formats",
+      "version": 1,
+      "library_id": "equipment",
+      "title": "iPhone 15：HEIF/JPEG与原图传输",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "apple-iphone15"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/72_equipment_iphone15-no-proraw.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-equipment-iphone15-no-proraw",
+      "version": 1,
+      "library_id": "equipment",
+      "title": "iPhone 15：不继承Pro系列Apple ProRAW",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "apple-proraw",
+        "apple-iphone15"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/73_equipment_s24ultra-lenses.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-equipment-s24ultra-lenses",
+      "version": 1,
+      "library_id": "equipment",
+      "title": "S24 Ultra：实体镜头与光圈对应关系",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "samsung-s24"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/74_equipment_s24ultra-zoom-quality.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-equipment-s24ultra-zoom-quality",
+      "version": 1,
+      "library_id": "equipment",
+      "title": "S24 Ultra：光学变焦与光学品质表述区分",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "samsung-s24"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/75_equipment_s24ultra-pro-check.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-equipment-s24ultra-pro-check",
+      "version": 1,
+      "library_id": "equipment",
+      "title": "S24 Ultra专业操作：当前镜头与菜单先确认",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "samsung-modes",
+        "samsung-s24"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/76_equipment_xiaomi14-lenses.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-equipment-xiaomi14-lenses",
+      "version": 1,
+      "library_id": "equipment",
+      "title": "小米14全球版：等效焦距和镜头规格",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "xiaomi-14"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/77_equipment_xiaomi14-tele-footnotes.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-equipment-xiaomi14-tele-footnotes",
+      "version": 1,
+      "library_id": "equipment",
+      "title": "小米14长焦：10cm描述与输出像素须带脚注",
+      "verification_status": "primary_source_only",
+      "source_ids": [
+        "xiaomi-14"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/78_equipment_xiaomi14-pro-check.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-equipment-xiaomi14-pro-check",
+      "version": 1,
+      "library_id": "equipment",
+      "title": "小米14专业操作：不要照抄通用EV建议",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "xiaomi-pro",
+        "xiaomi-14",
+        "sony-exposure"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/79_equipment_unknown-phone.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-equipment-unknown-phone",
+      "version": 1,
+      "library_id": "equipment",
+      "title": "未收录手机：补充型号，禁止近似能力继承",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "apple-proraw",
+        "xiaomi-pro"
+      ]
+    },
+    {
+      "path": "data/knowledge_drafts/expanded-v1/batch-04/80_equipment_camera-stabilization.json",
+      "batch": "batch-04",
+      "knowledge_id": "expanded-v1-equipment-camera-stabilization",
+      "version": 1,
+      "library_id": "equipment",
+      "title": "相机防抖能力：机身和镜头分别确认",
+      "verification_status": "synthesized_guideline",
+      "source_ids": [
+        "canon-is",
+        "nikon-night"
+      ]
+    }
+  ]
+}

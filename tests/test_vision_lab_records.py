@@ -124,7 +124,7 @@ def test_save_configuration_contains_key_source_only(tmp_path):
     config = ModelConfig(name="test", provider="test", protocol="chat", key_env="MY_API_KEY")
     store.save_configs([config])
     assert store.load_configs()[0].key_env == "MY_API_KEY"
-    assert "api_key" not in (tmp_path / "configs.json").read_text()
+    assert "api_key" not in (tmp_path / "configs.json").read_text(encoding="utf-8")
 
 
 def test_opt_in_sample_save(tmp_path):

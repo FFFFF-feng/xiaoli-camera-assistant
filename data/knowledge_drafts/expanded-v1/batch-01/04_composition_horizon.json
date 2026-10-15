@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-horizon",
+  "library_id": "composition",
+  "title": "地平线：平直检查与位置选择分开",
+  "kind": "guideline",
+  "content": "核心规则：水平辅助线可检查倾斜，地平线位置取决于想强调的内容。\n建议动作：先确认海面或远景是否真的提供水平参照。；强调天空时保留更多天空；强调地面时反向比较。\n适用前提：存在可靠的水平参考；用户未要求倾斜效果。\n限制与例外：山坡不是水平线；倒影与刻意倾斜可例外。",
+  "payload": {
+    "core_claim": "水平辅助线可检查倾斜，地平线位置取决于想强调的内容。",
+    "goal": "地平线：平直检查与位置选择分开",
+    "requires": [
+      "存在可靠的水平参考；用户未要求倾斜效果。"
+    ],
+    "actions": [
+      "先确认海面或远景是否真的提供水平参照。",
+      "强调天空时保留更多天空；强调地面时反向比较。"
+    ],
+    "limitations": [
+      "山坡不是水平线；倒影与刻意倾斜可例外。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "apple-tools",
+          "url": "https://support.apple.com/zh-cn/guide/iphone/iph3dc593597/ios",
+          "location": "手动调整对焦和曝光 / 网格和水平 / 宽高比",
+          "supports": "网格和水平工具帮助保持照片平直。"
+        },
+        {
+          "source_id": "nikon-composition",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "location": "Rule of Thirds / Horizon / Lean Into the Frame / Leading lines / Patterns",
+          "supports": "地平线偏上/偏下与倒影例外。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "composition",
+    "horizon",
+    "地平线",
+    "平直检查与位置选择分开",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Apple｜iPhone相机工具",
+    "url": "https://support.apple.com/zh-cn/guide/iphone/iph3dc593597/ios",
+    "location": "手动调整对焦和曝光 / 网格和水平 / 宽高比",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

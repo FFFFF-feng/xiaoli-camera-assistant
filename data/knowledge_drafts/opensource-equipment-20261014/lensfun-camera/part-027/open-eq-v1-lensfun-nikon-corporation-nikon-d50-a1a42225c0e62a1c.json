@@ -1,0 +1,108 @@
+{
+  "knowledge_id": "open-eq-v1-lensfun-nikon-corporation-nikon-d50-a1a42225c0e62a1c",
+  "library_id": "equipment",
+  "title": "[待核验设备档案] Nikon Corporation Nikon D50 相机",
+  "kind": "guideline",
+  "content": "设备：Nikon Corporation Nikon D50。Lensfun 记录的卡口：Nikon F AF；原始裁切系数：1.525。\n适用规则：完整型号和具体卡口版本一致才可使用；同名多卡口镜头不能直接互换。\nLensfun 的 mount compat 不是原生兼容保证，不据此推荐无需转接环。校正用 cropfactor 不直接视作厂家标称画幅；不从畸变或暗角校正采样点推断完整焦段、最大光圈、自动对焦或防抖能力。",
+  "payload": {
+    "device_type": "camera",
+    "entity_type": "camera",
+    "model": "Nikon Corporation Nikon D50",
+    "provenance": {
+      "repository": "https://github.com/lensfun/lensfun",
+      "commit": "43f9e001ab66c4fcdd4f400463f13b72f94b2288",
+      "path": "data/db/slr-nikon.xml",
+      "record_locator": "camera[2]",
+      "file_sha256": "5e591e8b1032203cce4c822f1da3d49524a78e7d71c594ea5a4533f2e57aacdf",
+      "license": "CC-BY-SA-3.0",
+      "attribution": "Lensfun database, Lensfun contributors; see retained XML notices",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    },
+    "verification": {
+      "level": "upstream_dataset_only",
+      "officially_verified": false
+    },
+    "usage": {
+      "role": "equipment_reference_draft",
+      "controls_hardware_limits": false,
+      "manual_review_required": true,
+      "limitations": [
+        "不能直接覆盖运行时设备档案或生成曝光参数。",
+        "空值是未知，不等于不支持；型号、地区版本和固件须核对。"
+      ]
+    },
+    "brand": "Nikon Corporation",
+    "aliases": [
+      "Nikon Corporation Nikon D50",
+      "Nikon Corporation D50"
+    ],
+    "mounts": [
+      "Nikon F AF"
+    ],
+    "source_metadata": {
+      "maker": [
+        {
+          "text": "Nikon Corporation",
+          "attributes": {}
+        },
+        {
+          "text": "Nikon",
+          "attributes": {
+            "lang": "en"
+          }
+        }
+      ],
+      "model": [
+        {
+          "text": "Nikon D50",
+          "attributes": {}
+        },
+        {
+          "text": "D50",
+          "attributes": {
+            "lang": "en"
+          }
+        }
+      ],
+      "mount": [
+        {
+          "text": "Nikon F AF",
+          "attributes": {}
+        }
+      ],
+      "cropfactor": [
+        {
+          "text": "1.525",
+          "attributes": {}
+        }
+      ]
+    },
+    "calibration_sample_counts": {},
+    "derived_data_license": "CC-BY-SA-3.0"
+  },
+  "tags": [
+    "开源设备目录",
+    "待核验",
+    "相机",
+    "lensfun"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "camera_model": [
+      "Nikon Corporation Nikon D50",
+      "Nikon Corporation D50"
+    ]
+  },
+  "source": {
+    "name": "Lensfun database, Lensfun contributors; see retained XML notices",
+    "url": "https://github.com/lensfun/lensfun/blob/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-nikon.xml",
+    "location": "camera[2]",
+    "license": "CC-BY-SA-3.0",
+    "retrieval_allowed": false
+  },
+  "author": "小栗项目设备资料转换",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

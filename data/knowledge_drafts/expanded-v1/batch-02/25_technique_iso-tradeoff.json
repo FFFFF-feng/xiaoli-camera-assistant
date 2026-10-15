@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-iso-tradeoff",
+  "library_id": "technique",
+  "title": "ISO与噪声：按设备和进光条件权衡",
+  "kind": "guideline",
+  "content": "核心规则：低光下缩短曝光和保持可用亮度需要权衡噪声与拖影。\n建议动作：先让主体达到所需清晰度，再评估噪声是否可接受。；若噪声过重，比较补光或更稳定的拍摄方式。\n适用前提：能放大查看样片；主体运动已确认。\n限制与例外：高ISO并非唯一噪声原因；不设跨机型统一可用上限。",
+  "payload": {
+    "core_claim": "低光下缩短曝光和保持可用亮度需要权衡噪声与拖影。",
+    "goal": "ISO与噪声：按设备和进光条件权衡",
+    "requires": [
+      "能放大查看样片；主体运动已确认。"
+    ],
+    "actions": [
+      "先让主体达到所需清晰度，再评估噪声是否可接受。",
+      "若噪声过重，比较补光或更稳定的拍摄方式。"
+    ],
+    "limitations": [
+      "高ISO并非唯一噪声原因；不设跨机型统一可用上限。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-iso",
+          "url": "https://www.sony.com/electronics/support/articles/00267930",
+          "location": "ISO Sensitivity",
+          "supports": "高ISO与短曝光、噪声有权衡。"
+        },
+        {
+          "source_id": "google-nightsight-research",
+          "url": "https://research.google/blog/night-sight-seeing-in-the-dark-on-pixel-phones/",
+          "location": "Motion / Alignment and Merging / Footnote 1",
+          "supports": "少光噪声与单帧时长、运动存在权衡。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "technique",
+    "iso-tradeoff",
+    "ISO与噪声",
+    "按设备和进光条件权衡",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜ISO与放大",
+    "url": "https://www.sony.com/electronics/support/articles/00267930",
+    "location": "ISO Sensitivity",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

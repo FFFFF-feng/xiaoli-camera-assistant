@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-fill-frame",
+  "library_id": "composition",
+  "title": "填满画面：突出细节而非盲目靠近",
+  "kind": "guideline",
+  "content": "核心规则：较紧的取景可减少无关元素并强调主体细节。\n建议动作：用取景或裁剪比较主体更大的版本。；靠近前检查安全距离和是否还能合焦。\n适用前提：目标是细节或主体突出。\n限制与例外：不能删去承担故事信息的背景；勿超过最近对焦限制。",
+  "payload": {
+    "core_claim": "较紧的取景可减少无关元素并强调主体细节。",
+    "goal": "填满画面：突出细节而非盲目靠近",
+    "requires": [
+      "目标是细节或主体突出。"
+    ],
+    "actions": [
+      "用取景或裁剪比较主体更大的版本。",
+      "靠近前检查安全距离和是否还能合焦。"
+    ],
+    "limitations": [
+      "不能删去承担故事信息的背景；勿超过最近对焦限制。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "canon-composition",
+          "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+          "location": "Rule of thirds / Lines / Framing / Symmetry / Negative space / Layers / Angles",
+          "supports": "fill the frame可强调细节。"
+        },
+        {
+          "source_id": "sony-minfocus",
+          "url": "https://www.sony.com/electronics/support/articles/00267924",
+          "location": "Minimum Focusing Distance",
+          "supports": "过近可能无法合焦。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "composition",
+    "fill-frame",
+    "填满画面",
+    "突出细节而非盲目靠近",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Canon｜Mastering Photo Composition",
+    "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+    "location": "Rule of thirds / Lines / Framing / Symmetry / Negative space / Layers / Angles",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

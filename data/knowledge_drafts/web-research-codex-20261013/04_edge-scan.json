@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-edge-scan",
+  "library_id": "composition",
+  "title": "边缘检查：先保护必要内容，再处理非预期入镜",
+  "kind": "guideline",
+  "content": "画面边缘的非预期元素可能分散注意，处理前应确认哪些内容必须保留。\n适用前提：用户的主要主体和需要完整展示的区域已确认；能辨别候选干扰与叙事信息。\n建议动作：沿画面四边检查非预期入镜、切断和亮斑；分别比较重新取景与裁切现有图片的可能方案；处理后再检查主体及必要背景是否被切掉。\n限制与例外：四边扫描流程是整理者归纳，不是已验证的视觉算法；截断与边缘主体也可以是创作选择；不能保证单张图之外有空间可供扩展取景。",
+  "payload": {
+    "batch_id": "web-research-codex-20261013",
+    "core_claim": "画面边缘的非预期元素可能分散注意，处理前应确认哪些内容必须保留。",
+    "goal": "边缘检查：先保护必要内容，再处理非预期入镜",
+    "requires": [
+      "用户的主要主体和需要完整展示的区域已确认",
+      "能辨别候选干扰与叙事信息"
+    ],
+    "actions": [
+      "沿画面四边检查非预期入镜、切断和亮斑",
+      "分别比较重新取景与裁切现有图片的可能方案",
+      "处理后再检查主体及必要背景是否被切掉"
+    ],
+    "limitations": [
+      "四边扫描流程是整理者归纳，不是已验证的视觉算法",
+      "截断与边缘主体也可以是创作选择",
+      "不能保证单张图之外有空间可供扩展取景"
+    ],
+    "suggested_text": "先检查画面四边有没有无意入镜的元素；如果它在讲故事或你想保留，就不必删除。",
+    "numeric_default": null,
+    "automatic_execution": false,
+    "previous_version": 1,
+    "verification": {
+      "checked_at": "2026-10-13",
+      "status": "synthesized_guideline",
+      "scope": "只核对evidence逐项标明的主张，不把相关来源数量当成整卡全部获得交叉认证。",
+      "inference_note": "安全提醒、视觉不确定时处理和结果检查包含整理者归纳，未做真机或实拍测定；不是原文逐字流程。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-portraits",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/take-better-portraits",
+          "location": "画框在两侧、顶部天花板及底部沙发的示例",
+          "read_status": "body_read",
+          "supports": "说明边缘背景元素可能分散注意，不证明四边自动检测流程。"
+        },
+        {
+          "source_id": "adobe-fill",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/fill-the-frame.html",
+          "location": "When should you use it?",
+          "read_status": "body_read",
+          "supports": "支持背景有叙事作用时保留，非必要背景可考虑收紧取景。"
+        }
+      ]
+    },
+    "rights": {
+      "retrieval_use": "pending",
+      "public_display": "pending",
+      "redistribution": "pending",
+      "original_media_saved": false
+    }
+  },
+  "tags": [
+    "边缘干扰",
+    "保护区域",
+    "裁切",
+    "重拍",
+    "构图",
+    "MCP采集20261013"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon / Gary Small｜Take Better Portraits",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/take-better-portraits",
+    "location": "画框在两侧、顶部天花板及底部沙发的示例",
+    "license": "原创短归纳与出处；未保存或再分发原文和媒体，计划检索及公开用途待独立核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料采集助手（AI整理，待队友独立复核）",
+  "version": 2,
+  "dataset_split": "reference"
+}

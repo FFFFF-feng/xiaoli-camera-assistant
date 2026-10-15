@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-equipment-s24ultra-zoom-quality",
+  "library_id": "equipment",
+  "title": "S24 Ultra：光学变焦与光学品质表述区分",
+  "kind": "manufacturer_fact",
+  "content": "核心规则：官方区分3×/5×光学变焦与2×/10×光学品质变焦。\n建议动作：把2×/10×标注为官方光学品质描述，而非独立实体镜头。；高倍率样片需单独检查细节，不承诺所有倍率无损。\n适用前提：Galaxy S24 Ultra；后置取景。\n限制与例外：不能把整段数码缩放当成连续光学变焦。",
+  "payload": {
+    "core_claim": "官方区分3×/5×光学变焦与2×/10×光学品质变焦。",
+    "goal": "S24 Ultra：光学变焦与光学品质表述区分",
+    "requires": [
+      "Galaxy S24 Ultra；后置取景。"
+    ],
+    "actions": [
+      "把2×/10×标注为官方光学品质描述，而非独立实体镜头。",
+      "高倍率样片需单独检查细节，不承诺所有倍率无损。"
+    ],
+    "limitations": [
+      "不能把整段数码缩放当成连续光学变焦。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "manufacturer_facts": {
+      "advertised_optical_zoom_levels": [
+        3,
+        5
+      ],
+      "advertised_optical_quality_levels": [
+        2,
+        10
+      ]
+    },
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "samsung-s24",
+          "url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+          "location": "S24 Ultra camera specification table / Footnote 10",
+          "supports": "官方脚注区分3×/5×optical与2×/10×optical-quality。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "equipment",
+    "s24ultra-zoom-quality",
+    "S24 Ultra",
+    "光学变焦与光学品质表述区分",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "samsung_galaxy_s24_ultra"
+  },
+  "source": {
+    "name": "Samsung｜Galaxy S24系列发布规格",
+    "url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+    "location": "S24 Ultra camera specification table / Footnote 10",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

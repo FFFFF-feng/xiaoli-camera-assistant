@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-multiframe-motion",
+  "library_id": "technique",
+  "title": "多帧合成：移动边缘要单独检查",
+  "kind": "guideline",
+  "content": "核心规则：多帧图像合成需处理对齐，移动物体可能更困难。\n建议动作：检查人物、树叶和车辆边缘，比较普通单次拍摄模式。；有明显伪影时减少运动或改变拍摄方案。\n适用前提：所用模式实际采用多帧，能查看成片。\n限制与例外：Google材料是历史Pixel算法示例；不能推断所有手机算法、帧数或消除伪影能力。",
+  "payload": {
+    "core_claim": "多帧图像合成需处理对齐，移动物体可能更困难。",
+    "goal": "多帧合成：移动边缘要单独检查",
+    "requires": [
+      "所用模式实际采用多帧，能查看成片。"
+    ],
+    "actions": [
+      "检查人物、树叶和车辆边缘，比较普通单次拍摄模式。",
+      "有明显伪影时减少运动或改变拍摄方案。"
+    ],
+    "limitations": [
+      "Google材料是历史Pixel算法示例；不能推断所有手机算法、帧数或消除伪影能力。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "google-nightsight-research",
+          "url": "https://research.google/blog/night-sight-seeing-in-the-dark-on-pixel-phones/",
+          "location": "Motion / Alignment and Merging / Footnote 1",
+          "supports": "对齐和合并要处理运动及错位。"
+        },
+        {
+          "source_id": "nikon-hdr",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/high-dynamic-range-photography",
+          "location": "Bracketing / Tripod / Histogram",
+          "supports": "不同曝光合成依赖稳定场景。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "technique",
+    "multiframe-motion",
+    "多帧合成",
+    "移动边缘要单独检查",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Google｜Night Sight原作者技术说明",
+    "url": "https://research.google/blog/night-sight-seeing-in-the-dark-on-pixel-phones/",
+    "location": "Motion / Alignment and Merging / Footnote 1",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

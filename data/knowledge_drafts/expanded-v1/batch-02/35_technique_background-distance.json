@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-background-distance",
+  "library_id": "technique",
+  "title": "背景虚化：拉开主体与背景是一种办法",
+  "kind": "guideline",
+  "content": "核心规则：主体与背景的间距会影响背景虚化程度。\n建议动作：在安全范围让主体离背景更远，先保持主体取景需求。；再检查重要细节是否清晰。\n适用前提：使用光学成像比较；可调整站位。\n限制与例外：同时改变机位、焦距或构图会改变比较条件；手机软件虚化另论。",
+  "payload": {
+    "core_claim": "主体与背景的间距会影响背景虚化程度。",
+    "goal": "背景虚化：拉开主体与背景是一种办法",
+    "requires": [
+      "使用光学成像比较；可调整站位。"
+    ],
+    "actions": [
+      "在安全范围让主体离背景更远，先保持主体取景需求。",
+      "再检查重要细节是否清晰。"
+    ],
+    "limitations": [
+      "同时改变机位、焦距或构图会改变比较条件；手机软件虚化另论。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-defocus",
+          "url": "https://www.sony.com/electronics/support/articles/00267923",
+          "location": "Four factors of defocus",
+          "supports": "主体与背景距离影响虚化。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "background-distance",
+    "背景虚化",
+    "拉开主体与背景是一种办法",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜背景虚化的影响因素",
+    "url": "https://www.sony.com/electronics/support/articles/00267923",
+    "location": "Four factors of defocus",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

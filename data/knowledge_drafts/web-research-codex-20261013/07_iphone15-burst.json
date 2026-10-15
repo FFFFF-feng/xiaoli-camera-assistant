@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "web-research-codex-20261013-equipment-iphone15-burst",
+  "library_id": "equipment",
+  "title": "iPhone 15：原生相机连拍与照片选择",
+  "kind": "manufacturer_fact",
+  "content": "iPhone 15支持连拍，可在原生相机中快速拍摄多张照片后选择保留。\n适用前提：已确认普通iPhone 15及Apple原生相机；当前照片界面支持对应手势。\n建议动作：按官方连拍说明将快门按钮向左轻扫并保持，抬手停止；拍完后在连拍组中选择要保留的照片；如需音量键连拍，先确认相机设置中的相应选项。\n限制与例外：不是录像的长按快门操作；不记录未核实的连拍帧率或保证每张照片清晰；其他代际、Pro型号或第三方相机操作需另核对。",
+  "payload": {
+    "batch_id": "web-research-codex-20261013",
+    "core_claim": "iPhone 15支持连拍，可在原生相机中快速拍摄多张照片后选择保留。",
+    "goal": "iPhone 15：原生相机连拍与照片选择",
+    "requires": [
+      "已确认普通iPhone 15及Apple原生相机",
+      "当前照片界面支持对应手势"
+    ],
+    "actions": [
+      "按官方连拍说明将快门按钮向左轻扫并保持，抬手停止",
+      "拍完后在连拍组中选择要保留的照片",
+      "如需音量键连拍，先确认相机设置中的相应选项"
+    ],
+    "limitations": [
+      "不是录像的长按快门操作",
+      "不记录未核实的连拍帧率或保证每张照片清晰",
+      "其他代际、Pro型号或第三方相机操作需另核对"
+    ],
+    "suggested_text": "可以试用连拍选动作瞬间；拍完逐张检查，连拍本身不保证主体被完全冻结。",
+    "numeric_default": null,
+    "automatic_execution": false,
+    "device_scope": {
+      "model": "iPhone 15",
+      "profile_id": "apple_iphone_15",
+      "app": "Apple原生相机／对应照片编辑",
+      "user_ios_version": "not_reported",
+      "interface_requires_user_confirmation": true
+    },
+    "verification": {
+      "checked_at": "2026-10-13",
+      "status": "primary_source_only",
+      "scope": "只核对evidence逐项标明的主张，不把相关来源数量当成整卡全部获得交叉认证。",
+      "inference_note": "安全提醒、视觉不确定时处理和结果检查包含整理者归纳，未做真机或实拍测定；不是原文逐字流程。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "apple-burst",
+          "url": "https://support.apple.com/zh-cn/guide/iphone/ipha42c55cd0/ios",
+          "location": "连拍手势、停止及照片选择步骤",
+          "read_status": "body_read",
+          "supports": "支持原生连拍操作流程及可选音量键方式。"
+        },
+        {
+          "source_id": "apple-iphone15",
+          "url": "https://support.apple.com/en-us/111831",
+          "location": "Camera / TrueDepth Camera",
+          "read_status": "body_read",
+          "supports": "明确iPhone 15具备Burst mode，不代表所有模式组合兼容。"
+        }
+      ]
+    },
+    "rights": {
+      "retrieval_use": "pending",
+      "public_display": "pending",
+      "redistribution": "pending",
+      "original_media_saved": false
+    }
+  },
+  "tags": [
+    "iPhone 15",
+    "连拍",
+    "动态主体",
+    "原生相机",
+    "MCP采集20261013"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "apple_iphone_15",
+    "phone_capture_mode": "auto"
+  },
+  "source": {
+    "name": "Apple｜使用 iPhone 相机的连拍快照模式捕捉动态镜头",
+    "url": "https://support.apple.com/zh-cn/guide/iphone/ipha42c55cd0/ios",
+    "location": "连拍手势、停止及照片选择步骤",
+    "license": "原创短归纳与出处；未保存或再分发原文和媒体，计划检索及公开用途待独立核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料采集助手（AI整理，待队友独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

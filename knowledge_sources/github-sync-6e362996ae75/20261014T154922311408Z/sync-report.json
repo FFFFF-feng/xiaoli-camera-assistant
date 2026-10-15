@@ -1,0 +1,1473 @@
+{
+  "repository": "https://github.com/FFFFF-feng/xiaoli-camera-assistant",
+  "commit": "6e362996ae75977c2c41c183f0f474b0f2536dc6",
+  "collections": [
+    "mobile-models-20261014",
+    "photography-20261013",
+    "starter-v1"
+  ],
+  "apply": true,
+  "files": [
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/README.md",
+      "git_blob_sha": "3d9a4b1ad8917a1bb5b3a44a303df021d84bff09",
+      "sha256": "42617c8ee1f3377bba46b79cfb22343f02f481d461c5acf7dd92580988f19e8d",
+      "bytes": 2484,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/manifest.json",
+      "git_blob_sha": "c1ac9780261d1cd1e3d9f959d64c0c6cef6607e9",
+      "sha256": "098e7e837f9413cc71efba45577940a04dfbb4e27e74703024f89d1202d6e2d1",
+      "bytes": 6862,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/reports/current-repository-validation.json",
+      "git_blob_sha": "632496bcaa65b802fcbeb979840b200a7a8b6174",
+      "sha256": "7f6593c69786008554386fbbb35ccf96ce1d9b759d5014de3b6bef5a8c160478",
+      "bytes": 3828,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/reports/historical/coverage.json",
+      "git_blob_sha": "e5093d2fa75a151fb20014c4a08865877834153f",
+      "sha256": "f4649e8c2ec4df316c8e72f21e2d9c68acceef6d9fd431a1634a09585406f5f2",
+      "bytes": 8153,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/reports/historical/deduplication.json",
+      "git_blob_sha": "def0b00485984cada336f03b546b2100be015d60",
+      "sha256": "66d8a942fdbd8e45712a7665d8620d55b05b96b819926766341c226933fd7323",
+      "bytes": 79263,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/reports/historical/dry_run.json",
+      "git_blob_sha": "f5b82036dad47efca3ffc138b4a602b2134bb6c2",
+      "sha256": "0065288411c2a9f8f279d9ddbd8033af9cd6d5b35bf02f85e8497a44017669e2",
+      "bytes": 648,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/reports/historical/isolated_database_tests.json",
+      "git_blob_sha": "6f917f0a5f6b25b0a8be05dbf92888bb2a2f61c5",
+      "sha256": "b1830383f47912655ec7b708d2d673672b0d034a41c7b2a4d183ecf195ad9a6d",
+      "bytes": 30132,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/reports/historical/tool_access.json",
+      "git_blob_sha": "ad93fe5fb3b181256297924b8db3cbcc18c5c556",
+      "sha256": "fd5f7600f6da0ce8429fef0e17cc411e1d47b2b40c901bf76739d2fa7ca35c6e",
+      "bytes": 930,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/reports/historical/upload_preview.json",
+      "git_blob_sha": "1e90288597c3a604b9d64862d01f347b9de6d0f5",
+      "sha256": "f34f399258b3fdfda3e02547edd40cf96cf20a078b5e279516d7f0f2bf6ddbb3",
+      "bytes": 1516,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/reports/historical/validation_report.json",
+      "git_blob_sha": "4e01b55428e6cb0ac9dd42e1910dfd683ced50bf",
+      "sha256": "ec33b6042ffde2fa411941f00dfcf5cd2b52a7836aa9896a0c48e8692a5a832c",
+      "bytes": 5351,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/reports/historical/核验报告.md",
+      "git_blob_sha": "1c42415b726e6c3e73cf71a8fc1e8c42544a12e1",
+      "sha256": "c2c66f6e2da998bd58d5517901e1a7b95a1f74f6b6fce5e81dc8988365d794a5",
+      "bytes": 6094,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/sources/conflicts.json",
+      "git_blob_sha": "3c73ce81309b763124da7088e017e621833ac61e",
+      "sha256": "02a60a56d963e09c851ebab35a6b700bcb44c0f6874a691da40555329a2f1a8c",
+      "bytes": 1884,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/sources/source_registry.json",
+      "git_blob_sha": "b2bc347bc64fb0f8323ca3d2dc6be240d93b575d",
+      "sha256": "fca2e46de44cef79bfa58815e349ba8ab5962b2d3348d39431e9bdccb0b7acff",
+      "bytes": 33611,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-a57-zoom.json",
+      "git_blob_sha": "972e10bf5208257d1a638bae1fedcc67c1c4948b",
+      "sha256": "6bd7b98871a90499e721505a80dc22c926ba59d0bf6b83f7e432e630f8c8335c",
+      "bytes": 13996,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-fold8-variants.json",
+      "git_blob_sha": "583ac7526316a90059e0eb9e4917de6aefecc065",
+      "sha256": "d370a5a33ce5a2e98d3a2be19b76bd8b75ecf559cb42a785721936fbfc05d4e5",
+      "bytes": 21851,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-honor-magic9-variants.json",
+      "git_blob_sha": "195d64cc5658f57b2af2ad7ba160f6ce337a91fa",
+      "sha256": "34cd44e67359a75b60d95300df3431e79468b391503fb968d3efc7763b65191d",
+      "bytes": 22505,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-iphone-air-main.json",
+      "git_blob_sha": "6bc9e949eba901b6ff055a66f6eb7e700a88dfc0",
+      "sha256": "85411a06d484897b053daf6729dd13e2aae5c1596c9b69001663d15fcc62d0b5",
+      "bytes": 10676,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-iphone17-dual.json",
+      "git_blob_sha": "e3132287c93c030d06ee6a1bb5464d47fc8c9b11",
+      "sha256": "c3bcbe3a1e1897f8cd90169e3deb3516ef7890ea27c0f9740d954c242bb628d8",
+      "bytes": 12552,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-iphone17e-main.json",
+      "git_blob_sha": "6de77376bfad779b3d4822be9b036926ba6f15f0",
+      "sha256": "62b460e3423377bff737aab5843e1ec8e72f7cae7354ceb8dcaddd394e2a2119",
+      "bytes": 10735,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-iphone18pro-aperture.json",
+      "git_blob_sha": "4cb005cee8fa37e2e1ec3b918858aea0a6f20771",
+      "sha256": "d14096b475d2b10b43d3b2b3ffb6bc7f4f593a44a8b939018b0d9f276dc1f0aa",
+      "bytes": 23749,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-mate80pro-zoom.json",
+      "git_blob_sha": "e14997007cd4f10e0db1d5eb93b51a5aed81991b",
+      "sha256": "f7f57f1e185566f08af792d4e597897f020ff1cc468e412013eaf0a076c86f19",
+      "bytes": 14227,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-oneplus16.json",
+      "git_blob_sha": "875fb5824f50bd95a2c5e7fefb0f3d1319e47cdf",
+      "sha256": "b6330c02cda4f4ce763542887588db1dc0b5475466b38cb85a80c0cb12839d12",
+      "bytes": 16572,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-oppo-findx10.json",
+      "git_blob_sha": "9abc9f01ba9be5a052ee27ab79288444bd94486d",
+      "sha256": "93c16e2ba61015d9c26b85ee0629a57c635617906ef24d1e7a9545895c926d3a",
+      "bytes": 16643,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-oppo-findx10promax.json",
+      "git_blob_sha": "b3f69cae85fffb72f491b0e6e1e2c30ab8be18bd",
+      "sha256": "4fa271b7c7b22207e3c10138eff94bc1fb9eeb1009c45cc7955c34e01eed0ab4",
+      "bytes": 16715,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-pixel11pro-family.json",
+      "git_blob_sha": "5e71539db66e024a841a3bde3107112613c70378",
+      "sha256": "6f2e68a134caacf83bab9fb5b332e4c9d55832190a0c171dfa451c4955830292",
+      "bytes": 22581,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-pura90pro-zoom.json",
+      "git_blob_sha": "61086ab27a5678932527bd15197efbe6028bb503",
+      "sha256": "a07e0f9096152f3aa9ad53367e00214820f3c0e131360d191d736f1a25559b52",
+      "bytes": 14130,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-redmi-note17pro5g-za.json",
+      "git_blob_sha": "2cb3cfa19bb269620fe1e02b5c6b0decf979e198",
+      "sha256": "8923fa31aefe1a4e25afcfbcb724eafc0cb9262159ec687544628eae53b7bd5d",
+      "bytes": 11988,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-s26-base-plus.json",
+      "git_blob_sha": "e6b8841497bcceff4517ea0dbe05de50aefb145d",
+      "sha256": "d9e9b7816a2f0f904d37ec6d14287f3b4924555a1b1bbbc807cb5a3f91932404",
+      "bytes": 19610,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-s26ultra-zoom.json",
+      "git_blob_sha": "4d13f411da9af0e89758fdcec7fcaaed2a896e7a",
+      "sha256": "e4148476bb68f46765cd93309d8c15e8e812bfba8091011111079fd7a74ca208",
+      "bytes": 15782,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-vivo-x500.json",
+      "git_blob_sha": "d94072b0b656119fdf1c195ee32af1a53bdc8788",
+      "sha256": "10f73312c4e00c6d8e98a80ea7861c0210f83c8c68b368ce2d748a255f5cb108",
+      "bytes": 15223,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-vivo-x500promax.json",
+      "git_blob_sha": "6c7fddd827f9b990b8a827ea1bda4797583eb285",
+      "sha256": "31170ea71890abcb2ebfaac4e7fb27c5d88158e898e498c1e82ff68e92ed35f9",
+      "bytes": 15266,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-xiaomi17ultra-uk.json",
+      "git_blob_sha": "ec5fee7c41c6ddc351b8ca5f8689e47f4a9c09db",
+      "sha256": "8b1bc312dbb03a0153a9f3028ab2fa98a13c0a1006086a1f13c654e9851f303b",
+      "bytes": 15523,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-01/phone20261014-xiaomi18promax.json",
+      "git_blob_sha": "1b63d95403f8bd8e1abd12f721f32e431661c9cd",
+      "sha256": "c1c1f2d95afea939a1699f3caa3497336749b6af6585277274e442bd65ccc487",
+      "bytes": 16065,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-02/phone20261014-oppo-reno16.json",
+      "git_blob_sha": "4ad525ed738dbdf080f29bb95b14a0a5e35add70",
+      "sha256": "f9c49edb5fd63fb61c2b179c4f6acf1c8bfb26d4d466528a452929c3ac80efed",
+      "bytes": 16708,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/mobile-models-20261014/upload_cards/batch-02/phone20261014-vivo-s50.json",
+      "git_blob_sha": "2571929c5b872b196b8b7983f9361fae50d999b8",
+      "sha256": "7269d9bc59cedb579661a03dc3279ae27805e1e4fce969ec381bbd0a230d2a3c",
+      "bytes": 14102,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/README.md",
+      "git_blob_sha": "afd1c95aadd91e5c257e1afd8c1e1d04a2cf15df",
+      "sha256": "f33485af6ac9ccf9fbd8d1da0a5aba607e00495e7f7b6a04b52c774f5321908a",
+      "bytes": 4150,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/manifest.json",
+      "git_blob_sha": "5f6f56644488c7b355663509fda40dcfe68e8770",
+      "sha256": "72ae921861e9b9db8a8e6926ceb81e3ec31f878f09b8e669d63b68f5926bf42a",
+      "bytes": 42935,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261011/validation_report.json",
+      "git_blob_sha": "0a22244e4ec7ca7a99a72210d7cceb5db91e1154",
+      "sha256": "da06351086b4211ddca4c34eab5d1a936916aa6a498aefd8b9990f3fe3a0bc23",
+      "bytes": 1453,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261012/validation_report.json",
+      "git_blob_sha": "211f61facf26026827aa2978a2890f2488a0b522",
+      "sha256": "d23e16b2ac7478fa0416226b978e2278ed94505237718f723751bfd961de1499",
+      "bytes": 1154,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch1/deduplication.json",
+      "git_blob_sha": "9b601ad4d1eef72da53635f21aeb13daf690ad14",
+      "sha256": "b7deef6704aab287984392341a0d2b08baaeb37db1be3a6072887d3bcfe9c6ef",
+      "bytes": 3530,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch1/dry_run.json",
+      "git_blob_sha": "0931d7db84ec010b8ba748cb17ceb0531fdf7ac4",
+      "sha256": "c195294f1ea17395397f2281ae0e14da0d70f3d7013005d7a44918023eb119ca",
+      "bytes": 662,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch1/editorial_selection.json",
+      "git_blob_sha": "c5731d80acbfda716b2616ae556d66ecd8c60865",
+      "sha256": "088f330b110fdd6415f0bf981a149f7f3c0d56902adaacba95d7966101af143e",
+      "bytes": 1934,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch1/isolated_database_tests.json",
+      "git_blob_sha": "7ef2e856e7e38ac828f787322b7ba2df835b5e28",
+      "sha256": "19455547c79e48f2e0087b21e1cfbc1236e631ddbeca7c8e0e11b8de4480f552",
+      "bytes": 5765,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch1/tool_access.json",
+      "git_blob_sha": "64c64a50907d3700c88b053d1be1cd4adad6a652",
+      "sha256": "201f743b0d814d0794101715105151f3dda9dda128b2428b5b1851018705e498",
+      "bytes": 836,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch1/upload_preview.json",
+      "git_blob_sha": "3423dac3caa676fbd7ac52c5d895d9f1fe6b9b49",
+      "sha256": "046a00f355cec12d65e1b9dcaf96114ae0ca5d52346dbc488c4dcacfcefc6e2f",
+      "bytes": 1089,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch1/validation_report.json",
+      "git_blob_sha": "1a2661fee1d40671a6193e3f149eb91fe6c701ef",
+      "sha256": "65a3333dc97b85b0ee29a51999c3fcf969a965e17e3b3e975ef76727aec378c6",
+      "bytes": 2977,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch1/核验报告.md",
+      "git_blob_sha": "c9a0391e3f9d6c2faa2592d5777bc3921e0ea4fe",
+      "sha256": "e70b46d400d5764de9f8582cefe94421c465af8ce85891bb2a081d1cd2a83b7a",
+      "bytes": 7461,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch2/deduplication.json",
+      "git_blob_sha": "38914a8592bf1472f0d37aab317a87146e7357c6",
+      "sha256": "2a785e2afa474c7e3de9ee1a1eaf69f632b3db981c43817c6a23f5622f61e517",
+      "bytes": 5259,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch2/dry_run.json",
+      "git_blob_sha": "7514611f4192523e62fc6030fd6ca7823ec6cf99",
+      "sha256": "85e4daf0fcb0f707a43364845353838b52f103103a4e1e7e203f7e9bc6b08715",
+      "bytes": 672,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch2/editorial_selection.json",
+      "git_blob_sha": "dafb13cc216b8d43467723bdbca7c551a6e147e9",
+      "sha256": "35b8cb68b9e13351566ca89e8f9cf257a8b11670c70f24b42b798d0e19c5424a",
+      "bytes": 2131,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch2/isolated_database_tests.json",
+      "git_blob_sha": "461d69c81b83dd055119c99932939feb5bbec885",
+      "sha256": "2bc4db987937c8317cdc98109c7682ea307e238946d7d4d247287aea55ec3c2e",
+      "bytes": 6906,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch2/tool_access.json",
+      "git_blob_sha": "86a463c0ba9e1f2dcaaa0154d28db3feecaeb190",
+      "sha256": "556c366704bc1b2a6f2c4cd60374f520c3345ae66287f615f66677d3e55161d6",
+      "bytes": 687,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch2/upload_preview.json",
+      "git_blob_sha": "73d94eadecfbd26bb6a72213deef991c369e0f81",
+      "sha256": "27a87d4c93f94c586806bf62a572850278a5ef0a417d29364c61b7db6fe5dce6",
+      "bytes": 1278,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch2/validation_report.json",
+      "git_blob_sha": "82117f750ffdb01047882f1e59791c39837a1004",
+      "sha256": "62696c82bcb3fb6affbdb80500db8b820b6919478c3b60008bd6d5fee86f5225",
+      "bytes": 3107,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/historical/20261013-batch2/核验报告.md",
+      "git_blob_sha": "dbba1d17f6934e5aa9975812485b336a26633794",
+      "sha256": "e82a9ce712df3945f7b631aa9fadfe9c441eab25f140449ba8366d2083bdeaa3",
+      "bytes": 7723,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/reports/repository-upload-validation.json",
+      "git_blob_sha": "29b45c0c3a765907cda593a80152a47e3c291ccc",
+      "sha256": "004a6e2486dc53a1473e2ada4d1b3af0d53c984b37d55d1eb5dfab384b5ea216",
+      "bytes": 3131,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/sources/20261011/source_registry.json",
+      "git_blob_sha": "788c0c33893a9c09bf1eec8c5feb1e3a9cb0b992",
+      "sha256": "45ebd84071796717b7c1b3363d62e60486c2925fc20f10e52d004c1bd58d5a8d",
+      "bytes": 191430,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/sources/20261012/source_registry.json",
+      "git_blob_sha": "5a0c9fd4605a2100082fe855f9aff9f7eb7d7304",
+      "sha256": "e4d257681b5e73068451abd6005e28fda0119da29951bf586162375de121a0b7",
+      "bytes": 23557,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/sources/20261013-batch1/conflicts.json",
+      "git_blob_sha": "33c2119d5f4680a9c042e0b09bdb17dffbf444ef",
+      "sha256": "5e15f3476beebd7cf7e318d75c6c6f04377e6dd64bec27e8f8f56cabe304097a",
+      "bytes": 2150,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/sources/20261013-batch1/source_registry.json",
+      "git_blob_sha": "3fc566d55f3438fb09e58ce617953f9a9857bba9",
+      "sha256": "2290240d4de41de778e467c36197a680c51100e26a1d85c79a6041413c717273",
+      "bytes": 14355,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/sources/20261013-batch2/conflicts.json",
+      "git_blob_sha": "6b2e4e401c7f9287b6982e32c4e79653403bff95",
+      "sha256": "b02a65a58f173fbec5ee77f45dd76ea9b7b3571f439cf8042a2e039bcdf63e4a",
+      "bytes": 954,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/sources/20261013-batch2/source_registry.json",
+      "git_blob_sha": "e5ca225bddcf8c4427f4fb36091d328c90b8dd53",
+      "sha256": "1fdc440806ec1afb432d10e4bc989908f4c0e85ef3585a4abea93500959dc907",
+      "bytes": 13232,
+      "is_card": false
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-case-city-night.json",
+      "git_blob_sha": "3b784674bbdf418f76e48fc1c2f9483ee19b2e46",
+      "sha256": "c6900128a1b2d1aae189c024520be6b805d2dd394e3a048b87881d033f75e64e",
+      "bytes": 4511,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-case-flower.json",
+      "git_blob_sha": "6b9d0c7f9fe1b6b4ce1186174fe4d6f46f5accdc",
+      "sha256": "01d5123fa51b7adaacdc00dea624260d8f820bdebceb4f4ace9fbf51a540615b",
+      "bytes": 4458,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-case-food-sprinkle.json",
+      "git_blob_sha": "9b037a421ac8280576b5e4ad612d29f5588e3753",
+      "sha256": "2490dcfb217642480788c5b19dda8991ea63addecf1977599f081772c216c0db",
+      "bytes": 3754,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-case-landscape-reshoot.json",
+      "git_blob_sha": "4965ed3b6ffba59acc3a409f3bb8a2f70d5a0ee5",
+      "sha256": "78bd2a5f953b1568de404b7414d3a833da187c68b689f343dce3d91dfbe628e6",
+      "bytes": 4006,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-case-still-life.json",
+      "git_blob_sha": "7e4d114683caaf172f23f55941156ff2a7ee9269",
+      "sha256": "8f8672779f12cf5f872b72bcce7ee0212bddcb591c6bebc1e6845187bdb9cb4a",
+      "bytes": 4061,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-case-swan-crop.json",
+      "git_blob_sha": "1aeaafa32ffaa22dcea66705a0a09b39ded4187e",
+      "sha256": "1dcf38885edea41bb32f7ba82acfe569f7662cdd09c1778948808888482f7452",
+      "bytes": 3651,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-composition-edges.json",
+      "git_blob_sha": "e36c03b26b7fefcc55e7e0a0af8fa23fde0e1624",
+      "sha256": "40566b308b517dd45211eea51fb6c6214299b79383ec5f6fcce5eb8fb3ed620d",
+      "bytes": 3755,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-composition-food-props.json",
+      "git_blob_sha": "77efe792e73bcf2d26cc10f51da2069b63763886",
+      "sha256": "c64fc51a0f81aa40e60841d9cccce2404655798e7a233e0f4da4bfeae5522fcf",
+      "bytes": 3740,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-composition-foreground.json",
+      "git_blob_sha": "dd1cbe07503effe6ee421cfb90a150610435b1cd",
+      "sha256": "379a50cad81ec38761357d92c72738c5fc78b7d3a0440d886cb001308ea4e9aa",
+      "bytes": 3758,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-composition-horizon.json",
+      "git_blob_sha": "c0e32ca8a6290e8df901ba9c5905ea9ee98f0f99",
+      "sha256": "39134a8cc3652b40b0f517b0ef0c0c6b40c5b3061d225ef59628575c3bfafb77",
+      "bytes": 3817,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-composition-leading-lines.json",
+      "git_blob_sha": "8b97593f26e254495ab1051010bba7817e6e624c",
+      "sha256": "9ac7f93d38731594a24984ff38ec998149b937fc02296168c65e1686efad79eb",
+      "bytes": 3748,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-composition-looking-room.json",
+      "git_blob_sha": "71d138c11740ca587b1eef5805dc2b8ad49b062f",
+      "sha256": "5d589cd76fa9e2c654c8c5d8953205711eb90f64805bc88d73a64e8b08c3bb65",
+      "bytes": 3712,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-composition-motion-room.json",
+      "git_blob_sha": "1b098343ad0ebb90f4ab0dc11250add23ffadd08",
+      "sha256": "9583911d09efb716f46d22ce2b26c75280f085cbd1f27467d6a8f208acd19ff3",
+      "bytes": 3664,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-composition-patterns.json",
+      "git_blob_sha": "660d1c8fcf0bb1513cd540cb7008324cc6013149",
+      "sha256": "eb8662f7a26ab029e04cbb40214d6a7325ea07ed3e9fc957527a0d5f2ce7f720",
+      "bytes": 3803,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-composition-perspective.json",
+      "git_blob_sha": "f57a3b54beacc9ef0bdf1f5c18f3c729c81890ce",
+      "sha256": "ade51842c9e7aefeaec5703dcf272c89d3deb44b3d56d6649d9a7bb77942a5e2",
+      "bytes": 3660,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-composition-symmetry.json",
+      "git_blob_sha": "b35bbbbf689060bd5436a4ada97eac0d9a2284a1",
+      "sha256": "376b07a269ee3dfeff9ae23ab5582b656ccc593684cae6589d148a958b7ae5ce",
+      "bytes": 3618,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-composition-telephoto-detail.json",
+      "git_blob_sha": "40e33aff3010fdac092acae20dd3ab53f35338da",
+      "sha256": "4164c05e3adeb734aa2b5bc2dbcd04ea17e4fe7d55b2ed988e8bd0c0fc35b6fd",
+      "bytes": 3650,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-composition-thirds.json",
+      "git_blob_sha": "0270946858adadbf12861af5370dec04c3e0c349",
+      "sha256": "9657b86bcc0392609df568d5b7a81c9c383766d40c2903588e828a8a883f186f",
+      "bytes": 3866,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-equipment-canon-r6ii.json",
+      "git_blob_sha": "e5db51e37ea6677dededd3f660fa45362aaf2cac",
+      "sha256": "0d12967bee98f8906c7ef6f975af5650fbb4ca0c76b8e4aac21d3f8c17051918",
+      "bytes": 7025,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-equipment-fuji-18-55-pending.json",
+      "git_blob_sha": "5bf6b097d2bd4187a3624872b9df2572a108d67d",
+      "sha256": "dc32ea253595f691e2d8a30109fa4cd99a5ef6cca08261323ee303d9d0253acc",
+      "bytes": 3103,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-equipment-fuji-xt5.json",
+      "git_blob_sha": "66fc021de026418dfd3c0feba5324a19d557db8f",
+      "sha256": "941770a88441b770dd2ca1b3c0fffe4876ea48da034cc09a52bfeee91c2ee9aa",
+      "bytes": 6466,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-equipment-iphone15.json",
+      "git_blob_sha": "99001baff567a2e3f318abd3a895df1374c80f3d",
+      "sha256": "40348c4f67d95b70aac7ba773538adf92b4b78b4eb0e1fefbbfb082356d3d123",
+      "bytes": 6567,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-equipment-nikon-z24-70f4.json",
+      "git_blob_sha": "2b7932b7eed3e60b326e158850088d7ae77278a9",
+      "sha256": "a0c9c6a22a093337b3a9aaa5ba1cbbb39456dc77eb7fc15d8b30fa129717e6e8",
+      "bytes": 3997,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-equipment-nikon-z6iii.json",
+      "git_blob_sha": "93108a5ee9a8321271ed2c7bb1277f5b36942732",
+      "sha256": "19fa8092894cd1c5377ab41b723dfac2681c355bf05fe9424a7b47c6afe9fe91",
+      "bytes": 7238,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-equipment-s24ultra.json",
+      "git_blob_sha": "549a84909147d3e1a05d1feecddaa98d2ed8b6f7",
+      "sha256": "89ace17b852843f3c2588aa3646a5d9e65e6eacae7b4cb478961a51fb15e844b",
+      "bytes": 8273,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-equipment-sony-a7iv.json",
+      "git_blob_sha": "e50d4eb5a6762e9696eed13e948bcc68c99a0d59",
+      "sha256": "8c75768d1b76d25bec4c8225abffd2e6cc4574833f100cd2c4b03e150b45866a",
+      "bytes": 6836,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-equipment-xiaomi14.json",
+      "git_blob_sha": "3e7a50ac7402c32566c13d2c7c3b7e1c20b66883",
+      "sha256": "72f4b05a0b8e1f6be37b4604b17a6e504dbcada747ba6c3834d1c00a8a94ca92",
+      "bytes": 8215,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-scene-backlit-scene.json",
+      "git_blob_sha": "9c6576b00af8433d68ee7d44e9be0a248e63ef29",
+      "sha256": "54cad815255b7976a05e919bdcfde4634b5713951b9960b0921289bc461a82d5",
+      "bytes": 4018,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-scene-birds.json",
+      "git_blob_sha": "4f17759358478de60a8f372127bbfc21a3531bee",
+      "sha256": "29da770ceea8b195631f00fa60b77fbbfae80b4b1af9e44fa85cfc9a59744e83",
+      "bytes": 3815,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-scene-daylight-landscape.json",
+      "git_blob_sha": "f4e9bf9b91adc11868b68326439fbb504a5a2f85",
+      "sha256": "0c8524a66828f909316996227245e2c57aa4ece7ca914e33677799326ed5f1b1",
+      "bytes": 3992,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-scene-fireworks.json",
+      "git_blob_sha": "3d21629aba97f47d3c5a348a7771d4046d34a444",
+      "sha256": "6b8b8e16b34eae279fd3cac4ed59dba474c12ded85d33aaa2dc36f50961c7357",
+      "bytes": 4004,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-scene-flowing-water.json",
+      "git_blob_sha": "258f9786d0b58244e18885aa2a438ac57ab23618",
+      "sha256": "cba4d82138dd572439530b441d41d1f6e67b0450fe0273ee3749eb7386a03615",
+      "bytes": 3943,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-scene-fog.json",
+      "git_blob_sha": "5d62c96eea805475ce929edac90496d2f873cbf9",
+      "sha256": "0286fd7e175565961b72f0e8d29e4199e08eb916cf2900d0b86c016d3d4effe1",
+      "bytes": 3753,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-scene-food.json",
+      "git_blob_sha": "e2ff8e5c068c9bd095cc143917be6455641062b6",
+      "sha256": "870266cb1f7062e3c37e98e94321640600c656b226aa87232d31c0c22e971749",
+      "bytes": 3921,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-scene-macro.json",
+      "git_blob_sha": "92dc3c74e39ac4dedf95bb90f442155caa36ecf3",
+      "sha256": "143796bd4ad596a641dbf6939cad4ce57d51961a81f261ea548b322d74f7ea5c",
+      "bytes": 3831,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-scene-night-handheld.json",
+      "git_blob_sha": "da71818c539ad979911697b50681452998b3afe8",
+      "sha256": "dc412a1ca568fc2f640ffa8c90c8a274f94d6e00425cc221613ed0b175158638",
+      "bytes": 3887,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-scene-night-supported.json",
+      "git_blob_sha": "875a7ec5e869ac0dd2c2bfd3c1114acd2ff7a73c",
+      "sha256": "6dad6b293fe3d4a7ab821f0b1c4a761309951cb99cae6e4e573560127a4b7535",
+      "bytes": 3852,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-scene-outdoor-portrait.json",
+      "git_blob_sha": "c16d31c74086387004431f7601cb9457834c9c77",
+      "sha256": "58eaac9d27a584647ede12bf307fdf9f52fc6bc051f6189682f4cbe09e22a134",
+      "bytes": 4043,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-scene-window-portrait.json",
+      "git_blob_sha": "bea1ce9cc9b342106a666163a05b46d4fcdd799e",
+      "sha256": "6748da1bd7edde7efa69444c1a428f3cb41303a34228bc89afc41e6f8235483f",
+      "bytes": 3889,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-style-color-restraint.json",
+      "git_blob_sha": "24ed256c971897d11f8fb3c86b40e66337782950",
+      "sha256": "4c5cf902cbc083e67000dcb4aef158218d473d67328ea0a60bfb186bb5bf28a3",
+      "bytes": 3401,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-style-fog-depth.json",
+      "git_blob_sha": "94946c91f1701109a2b366000da4f150d08b93ba",
+      "sha256": "e6e58e07eb704d8a247c49fff77bf4a038016d1efa23315a71b478b1bab781c5",
+      "bytes": 3180,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-style-high-key.json",
+      "git_blob_sha": "674e34dc4b844a123ff29eb183db5d01bc032694",
+      "sha256": "4ffa349f007ffcdbb4101650f70e21a64d9364e246d8e0e4702c2909a1dda9af",
+      "bytes": 3247,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-style-low-key.json",
+      "git_blob_sha": "68ef1e67ba09305be1c04aee2bec4fb0b261c67c",
+      "sha256": "0190312461418bb4f73322d155cd875832ac33f26d01effe34f4a67b908d2cd5",
+      "bytes": 3282,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-style-monochrome.json",
+      "git_blob_sha": "b8ef2e6854519495b937762463fd88e7cb650f08",
+      "sha256": "8da8a8bec699a1ecaae53876ed163cecdb890f15a276e2cdc840130abe34c76e",
+      "bytes": 3253,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-style-moody-food.json",
+      "git_blob_sha": "31d9822050f1cdb61f7ae41a4a19bd6f850ee62f",
+      "sha256": "1ce07f199cac3ed3d50315139ce2bd25bafde264b3462617b8faebe25548979b",
+      "bytes": 3266,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-style-natural-color.json",
+      "git_blob_sha": "18d32348a5b1cae5b4dc82bd5708a224d5f41785",
+      "sha256": "f887201178571170e88f8c4a5686ba5e95212c5daa9ef43686f235bbe5721b0e",
+      "bytes": 3426,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-style-silhouette.json",
+      "git_blob_sha": "15be64f158cffa94465f26dd3d06b0a9b098474c",
+      "sha256": "e0275e97fea0da3034168084912ac32bf477a68b9c23c330cd2fa45e2f2ff3e9",
+      "bytes": 3330,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-style-soft-portrait.json",
+      "git_blob_sha": "d6179bac33dd3ecd43222fac7ffcd9b48fc9577c",
+      "sha256": "90579a17ab39085ca0ee2fc5185c1d636b79e99e9f5336b965b2950c90cb45c4",
+      "bytes": 3352,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-style-water-silk.json",
+      "git_blob_sha": "0db93013dc524a36db2be2708503457e5adb07ea",
+      "sha256": "9bb4d49d7df7245751b18dd12ddae74abc58a61a62169f7d5441d312324fdf9d",
+      "bytes": 3376,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-aperture-priority.json",
+      "git_blob_sha": "3f937c6b5184287ff04e74a6d16a0b07cf728bbd",
+      "sha256": "956e3801dacf426776502a12ef8034c29fd86a1474936bad787d8b785ee05d7c",
+      "bytes": 3404,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-blur-diagnosis.json",
+      "git_blob_sha": "ebec3af4e9bffe9edcde053b6837dbd0c57c2436",
+      "sha256": "7aa8ed01fcd681fffdd5446118df9b6f24e278090691235b5e83a128d80fbe4a",
+      "bytes": 3422,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-compensation.json",
+      "git_blob_sha": "ef2b98b63c7eb1868cbcd7271077a4250fd589d2",
+      "sha256": "c7de4785af1f2f08b7e79bd114473bb73ca789d58b342204ec9ad35b86438392",
+      "bytes": 3425,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-denoise.json",
+      "git_blob_sha": "86de6c1cae1b2650732f109d6363cec896405d37",
+      "sha256": "a4dfb1b399b257595de6b17659b954c0069359bb97974efb2e8d3a011dc8e2df",
+      "bytes": 3444,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-depth.json",
+      "git_blob_sha": "e8fa04d7de97fac6263e2aa712a8502b22c1e237",
+      "sha256": "bf52311e304e91008440c118fe76fd27d3bd1dc06d2fe76ab050a96439b3a110",
+      "bytes": 3421,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-diffraction.json",
+      "git_blob_sha": "8423d7f440b2f09011556ce46829379fc5cd2caa",
+      "sha256": "081b6095058a6d132b7a9e433319ba1d5f093a13fbaf8ba33f72cb776a6cf6b7",
+      "bytes": 3490,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-exposure-tradeoff.json",
+      "git_blob_sha": "a76f99ddf8327dbeb5e2c5f4380ccee0d89092b4",
+      "sha256": "d68d99cee203eac37558f715dfb2f8fb6002b21548a37a4cbbfbdb623cb8f85b",
+      "bytes": 3400,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-flare.json",
+      "git_blob_sha": "a7aedb5ecdca493b6eee589addb11f2f0b465ce0",
+      "sha256": "ef138f4ad9ceabf2633cf58dd2e30b5f5bc7867c508e2f8bae3738bec39ffb15",
+      "bytes": 3330,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-flash-balance.json",
+      "git_blob_sha": "97b25b15abf37aca0fb561fb851a86274675b93b",
+      "sha256": "a54ed62a51acc094c04d505c379100c7001859f60a7911f6a0246d0e88e120e3",
+      "bytes": 3435,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-flash-quality.json",
+      "git_blob_sha": "c8c34fa2cb00c5b57f962cd2fb77668a9a3425a5",
+      "sha256": "862ed53976f286a015bb060d888bd33c2709180c6902d05a9485d5e035921f87",
+      "bytes": 3353,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-focus-moving.json",
+      "git_blob_sha": "f10cf2e6c1962bf5a40cf0b17603a244ae3cbf78",
+      "sha256": "75f49f49e55f15c4dda953629d4dc2117b9c62afa30744b1f095ef003eb44caa",
+      "bytes": 3488,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-focus-stack.json",
+      "git_blob_sha": "1edf9b96777aca11e8ea0ee729ad3387d571da09",
+      "sha256": "2b5fae7c88b077833cfa30fee3e89e65dd2a8839f3fb48ba8e998d09a522718b",
+      "bytes": 3453,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-focus-static.json",
+      "git_blob_sha": "e5649e8d192aafb8e9410482eebf6dd8cdf4b0e5",
+      "sha256": "476fec35d5b825655a7a308c6e7bb122922f834ebbe7e52294dae9704566a5d4",
+      "bytes": 3460,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-highlight-recovery.json",
+      "git_blob_sha": "74f7ce32ae34685996211d2e2f0e81ecfecc29df",
+      "sha256": "fb3a7116afbb9b57972daa2c6dcc5c240bd239ebc08bf1921dbf48bc520dcb42",
+      "bytes": 3575,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-highlight.json",
+      "git_blob_sha": "167a8ed87c42a2c0cb7707fc46a9c8bebca37d61",
+      "sha256": "faebd5911fae68df4bb16a71b3d48c1709cc5fdc026dd47d3c8cdf9c655da6b1",
+      "bytes": 3387,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-histogram.json",
+      "git_blob_sha": "5e1e36fb19f890c2c5585626a05f314ffc094929",
+      "sha256": "823b11584fa3052eeedc4732ffc06f5ae7c2bf7d4c4d050ac4f35a006e97c668",
+      "bytes": 3416,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-hyperfocal.json",
+      "git_blob_sha": "32daf149b1da47fd554a30bab0d583d09d0e544a",
+      "sha256": "5d38541df7d39a3ad5822b9906785cdbbe0ae25de1032411a9c02b11310e2596",
+      "bytes": 3424,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-macro-focus.json",
+      "git_blob_sha": "a9abf44f0ddce5ce97ef5ae734cd7ca2f00e000f",
+      "sha256": "7fe0dc0c552af1a1cfdf7ef6870336f27bc57b9b34038d343699863cfb0e930e",
+      "bytes": 3445,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-manual-auto-iso.json",
+      "git_blob_sha": "569fa77418b5692cecd87b9d75713267e1e72930",
+      "sha256": "8e0fc9debb7cd800e0906eb6e97675b2c2e9e01cdebd149887df7e28dac9034a",
+      "bytes": 3485,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-motion-freeze.json",
+      "git_blob_sha": "4358f58fda2d0d22b2ce6ad218cacec4854d169b",
+      "sha256": "2e3833508294b17dd59bb30293ab76d88a6abf7785426c94b2c4243f8676b94c",
+      "bytes": 3396,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-nd.json",
+      "git_blob_sha": "6fd1648d41d665dbbcadd0dac53d42c7b6d436ba",
+      "sha256": "6baf20df5ccf868878629d17d9bd7e7ac4d3b13b517837b620a2f155a11e2e83",
+      "bytes": 3371,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-panning.json",
+      "git_blob_sha": "f62622cb891b2aeeb9a32f9cf6d5187b93cb9592",
+      "sha256": "1a6e52db81f5ce29ae5f71af1ee79008de9d306233a60278c78d256351a9bbea",
+      "bytes": 3360,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-panorama.json",
+      "git_blob_sha": "5e3309841025fc00fdf713bbde14d50693d238e2",
+      "sha256": "11baabd957774fa0352b3691935c0a7bcf5cd473ec120386c020bdd1bb0a41cb",
+      "bytes": 3453,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-perspective-edit.json",
+      "git_blob_sha": "4774e077286cb0bd0390c9514e291c44053c578c",
+      "sha256": "108a81900a57c9047e0230a061365b4317b3613a53e064b92ec24ee50c0ceced",
+      "bytes": 3558,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-polarizer.json",
+      "git_blob_sha": "93f5a8d3bd8a616d525aaca8dd016406a691be49",
+      "sha256": "9cc61b6aff31d6493ea298ef1617974aa5d62db8d47ec1f452101bfd9e1eaa2f",
+      "bytes": 3400,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-raw.json",
+      "git_blob_sha": "aa0f0199384396d71331f8d837fdb12fcb55ef7f",
+      "sha256": "c9d3e568f8c035acf8fccac507ecd9596ced8a3cd98898456eed004bbbe04e05",
+      "bytes": 3386,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-reciprocal.json",
+      "git_blob_sha": "4e28ded61635727ad9bf7d8ef17f9f905a2989d2",
+      "sha256": "60b022714e05cb2eb47c5d726d0a745e6fab9bce77c2171011b69a5ffed38ae1",
+      "bytes": 3402,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-shutter-priority.json",
+      "git_blob_sha": "e2cd3b8f44b99bcf88609e482bbfd46974861305",
+      "sha256": "d2c42cfd66327d71808b9e5c3b3e2b198fe6dd3fd07b5950e9f106bb8e5bb0d8",
+      "bytes": 3384,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-spot-meter.json",
+      "git_blob_sha": "6a9430be2f70934994a82ab56e25b33816169034",
+      "sha256": "48ff0ffd47d506f799d93a2517d7bd82c37714a5dbf1aa08b5bab462a19e019a",
+      "bytes": 3456,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-tripod.json",
+      "git_blob_sha": "2d75481db9757ba944d0c14bece81a994dde9041",
+      "sha256": "e809f8fdb509c0dabae117a6c0a2667cc68752dae2b11c122982cb433501be8a",
+      "bytes": 3345,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261011-technique-white-balance.json",
+      "git_blob_sha": "828ea0139e23134b0cda9871a62647cdc51dd9ca",
+      "sha256": "2eef32ddbe9fc9f10dba10712970826386ca262f980fc17a2b968e6ceabf08fe",
+      "bytes": 3314,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-case-pet-yawn.json",
+      "git_blob_sha": "29f32388a839c5c4278e388cffa427ab7aed4360",
+      "sha256": "84c9dd53fc22004d9379d4d1c007e2f8ec6c2fca7417b7821e5c288eb2573f3f",
+      "bytes": 3616,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-case-shift-stream.json",
+      "git_blob_sha": "211b931d69f8f8336b0a54f61def3c33eb555971",
+      "sha256": "0e2a9762ba2dcf70a0cec490250c50af20b55d4f97caaa0c8d8c95ba854308d8",
+      "bytes": 4195,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-case-sports-vertical.json",
+      "git_blob_sha": "bb81d38c72f175cff0af93584d8ad74bdd1eabe0",
+      "sha256": "81d96ef1f95c00bb9c3273cb30d29f3c8a717bbb65bfcc17bb3823c8c643c07f",
+      "bytes": 4118,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-composition-astro-foreground.json",
+      "git_blob_sha": "437eff3708bb4d8f709b6e81249c357ab98464ab",
+      "sha256": "c05b6c20a6c2bbbd3e338ac5bdc2af7d086e1439180cf0b7215bfc215f3122cb",
+      "bytes": 3541,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-composition-group-balance.json",
+      "git_blob_sha": "f671789c4db67fd914222d82ab1c42cd2012c28b",
+      "sha256": "85accb2a4f4743231421f3d35a413ce22700ae5f5ec0f3a3eb99075f14cbbdd9",
+      "bytes": 3694,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-composition-pet-level.json",
+      "git_blob_sha": "528bbd9f450c59bc7ae892f437e654e6229cc9a3",
+      "sha256": "cf355c21f227c36cc775609e8bea211068aba773cbdef30ae352f2e40107631c",
+      "bytes": 3544,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-composition-product-props.json",
+      "git_blob_sha": "5746c7f931a3a6036406d5404e8d4fbba47af0da",
+      "sha256": "7bacefcb6aac09da1c22cbe675d0e614aa3a645e304f8bd9fefce09a6feca6ff",
+      "bytes": 3575,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-composition-snow-footprints.json",
+      "git_blob_sha": "064eb602f0d9e780eadaf9bbec20c59c866a9090",
+      "sha256": "57b6576d951cfc9a29320ce34180fd1602a122841042fe8ca119885a36c7193b",
+      "bytes": 3624,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-composition-sports-crop.json",
+      "git_blob_sha": "2857a5118bb2a00263a2e338c29c45b0e1eb1471",
+      "sha256": "84b06867fc958a32e9a0f565bea84098e8eca9e1a1531540ba2d7d1bb8584590",
+      "bytes": 3676,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-equipment-rf50.json",
+      "git_blob_sha": "c2dcbdabcb2a179926b6ae9545959d6ebc06e9e7",
+      "sha256": "5a5f9235254532319f9550de00423d74fb86cae71a3a151867e44aea3cf07ab2",
+      "bytes": 6748,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-equipment-z50.json",
+      "git_blob_sha": "56696e816ac32535aa054a699e8bb1b6fb0f23ce",
+      "sha256": "8fc94adddad0226e3077bc8c1aeb388bcee4dd151ab70d65cbad52c1b797ecd0",
+      "bytes": 6682,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-scene-astro.json",
+      "git_blob_sha": "3eef953a2758672390fd222127370f95aa8b79ac",
+      "sha256": "a70a4dcbce17fca18cab995d57fb3fd14a0f249061d8097b348e6e4c2576a966",
+      "bytes": 3287,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-scene-concert.json",
+      "git_blob_sha": "fb28332f9094f7b4409acaa8b4292cfbbb6771a0",
+      "sha256": "f44061654f5d3c04a49af4895ad40e0283a13dae82eff5d63e091ef6d79afbd6",
+      "bytes": 3280,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-scene-group.json",
+      "git_blob_sha": "865e68ddaf415e24624c1557531bcabad145e0d8",
+      "sha256": "e20bc3876fed2449681f3418a2e8a2bf279f4655b177448d7a77dfb7f822f8ae",
+      "bytes": 3456,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-scene-indoor-sports.json",
+      "git_blob_sha": "561007b9e987a5040f4f0423c5af57eeb594f045",
+      "sha256": "cb1d820d1b6a72843ac7c06dd83f7f9a57f320f336096abd50e1c6e3bebeecc4",
+      "bytes": 3356,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-scene-pet-action.json",
+      "git_blob_sha": "439a443bc8085a97db03dd752e6af095063f7988",
+      "sha256": "e2087e9ff25ddd3797f3eff0fa5078944b3525a8b1a2f2d4e77225a42cdbda2e",
+      "bytes": 3284,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-scene-pet-portrait.json",
+      "git_blob_sha": "e0a1f2e17da767e7ffe479db5995c443543c0799",
+      "sha256": "9521fadfbfbdb7316931e99c44eec0dc2fc9a9cc2c659b12bd4a5b4402d5a97a",
+      "bytes": 3248,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-scene-product.json",
+      "git_blob_sha": "d1e37522f8b32dfb5851219d6627d5cac0b77944",
+      "sha256": "546e2d281cb12b785899305e5a4cfb9c13694389b8ab334ba3812df7774cd897",
+      "bytes": 3331,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-scene-snow.json",
+      "git_blob_sha": "389ed12a79feb8c4fd641c37d4a4c7ff586c8c8d",
+      "sha256": "8dfc49ba5b518c21bbda5f5c6a7772764cf87f8d0b20d843ca7a6e352ee6968c",
+      "bytes": 3364,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-style-concert-color.json",
+      "git_blob_sha": "6c82bbbd1c2c79d3ef06577fcc2a8519852da301",
+      "sha256": "0b4c879aefd44d5b8832e8ce3e2f6ffd2fc7fb9d4c794369ddf96446907a4b31",
+      "bytes": 3280,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-style-pet-expression.json",
+      "git_blob_sha": "01ae9e59ea22e5ebeb2bf8891de626462fd9c2da",
+      "sha256": "24bb6b1fe5d6c124428abee63bdaba2419c3c1d00ab2e65205d0b3eba9480131",
+      "bytes": 3186,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-style-product-minimal.json",
+      "git_blob_sha": "835002b52c6d908b94bfe116b621462fa8eefdbf",
+      "sha256": "d496e393563c9b844c4b3df27b47062f02c39b780b224878d4ca9303efffa7bf",
+      "bytes": 3311,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-style-snow-cool.json",
+      "git_blob_sha": "cc2f91b6e82d377c8da985fad9be52606ed0e71b",
+      "sha256": "9a57e0c694239bd743b37807ea3cac18d22a7aeffcf8799276e968da1cb10ae7",
+      "bytes": 3347,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-style-snow-monochrome.json",
+      "git_blob_sha": "b64c5350ea0be14047984a18cdfef0061a65f719",
+      "sha256": "846bd6fb466b00424116d7dcea2b8c85a203a1acce8b582f583f4097f6477b6f",
+      "bytes": 3289,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-technique-astro-duration.json",
+      "git_blob_sha": "223ff10678d09f46add005cebb145b488070514d",
+      "sha256": "03c0a233956b620348223abb4a8cb250782a6fce38f88e56ea970cc0d481e2cb",
+      "bytes": 3203,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-technique-group-focus.json",
+      "git_blob_sha": "65ddf918c6a42e87547e760a65cabeb12f665be5",
+      "sha256": "01e7eb5300bfec5e14ac6b5bcd71b5b8361e57427fe69a67c8218ec28b0918ed",
+      "bytes": 3278,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-technique-group-motion.json",
+      "git_blob_sha": "1020d552ebadd5d2751e51030e9dfc736a04a9d5",
+      "sha256": "d067c807f71106561f7c7783f8de8e040ced1c4fbcc8952eb9d190023f1e1666",
+      "bytes": 3326,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-technique-pet-track.json",
+      "git_blob_sha": "e452678eb857689535909270a13515285cb4c210",
+      "sha256": "5cb918b8bc8dd9083b2a498956e448af21e017066cb6157b0be4e4ba920cdeff",
+      "bytes": 3151,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-technique-product-tether.json",
+      "git_blob_sha": "3a458d7b7da02433374ed420f70c4431808822fd",
+      "sha256": "1d23802375e4d2d20cc50e3e6d1df66a7f09f2a8553d4873343809ac9a75a728",
+      "bytes": 3261,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-technique-shift-panorama.json",
+      "git_blob_sha": "924e48c46a7c5dd778f91eb79066cfdd4b91c7ac",
+      "sha256": "68a431cbfa9cb09278f29a18de41992e84f4fedf1148be098530d745de35015a",
+      "bytes": 3319,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-technique-sports-wb.json",
+      "git_blob_sha": "5815927741242013e3f49b4c07b11ec6805d971b",
+      "sha256": "26cafde02b8ff741a004d771cedf25f845cd7d22754ef5a70c15f2fc4d7f8e76",
+      "bytes": 3332,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261012-technique-tilt-plane.json",
+      "git_blob_sha": "6eacafb63f1eee9f872c300e84099496d1180293",
+      "sha256": "898ae69e048ed4b22ab15732f71667bbb133c442b2cd06b72d9deaa074852106",
+      "bytes": 3333,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261013-equipment-iphone16pro-live-max.json",
+      "git_blob_sha": "d4f128e87e7da48c306063b9effd86d7826d5c66",
+      "sha256": "05908696c111efed5ca4d95c531fbf5b45a8978b1f202f8450ad70e7cb8203ba",
+      "bytes": 7760,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261013-equipment-iphone16pro-macro-switch.json",
+      "git_blob_sha": "4c5ec5809473f77e8fae4c35eae1591aa5b00434",
+      "sha256": "9427d6b7ecc585bd0e9e5632b60206eb38a085fd02d6385e1b263dce5aced4b8",
+      "bytes": 8815,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261013-technique-flicker-banding.json",
+      "git_blob_sha": "7f6d953eab09dea04fd55e7707400592eab77289",
+      "sha256": "c9371d08c9b66d4c21fd8679905a13326226971a29970ac4a426cd03c383f9ce",
+      "bytes": 9057,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261013-technique-rolling-shutter-geometry.json",
+      "git_blob_sha": "6b8d839b4e74e25e0e3a697993371f4ab796860a",
+      "sha256": "bb9155772baf6e11eb7c8865b59135eaa07b48ff2a0422beca95f0eb2295391f",
+      "bytes": 9104,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261013b2-equipment-a7iv-long-nr.json",
+      "git_blob_sha": "3a5de475cb2cb1689c93a3f32bf80cdc7ff68adc",
+      "sha256": "a25612f2403a3847422775516f36cf566029d0282c99fcd66aacfa3786cfa65a",
+      "bytes": 8388,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261013b2-equipment-iphone16pro-aeaf-lock.json",
+      "git_blob_sha": "1f88ed15dd21ef5c66e7ce5c80bb87c67b83ecbd",
+      "sha256": "a5a64a8f7527c0a63f3c10ca91167ae07e43a513ca6cf8201cbfa4b694dd21f0",
+      "bytes": 6887,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261013b2-equipment-iphone16pro-burst-button.json",
+      "git_blob_sha": "673d7eb72eb5c3cb3d477c08b63f0aeb0fd15db8",
+      "sha256": "25c17713d40ddf2b1bff0a0e3dee4f8a628fa389f8b401ea5010f427385ebd30",
+      "bytes": 7695,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261013b2-technique-efcs-bokeh.json",
+      "git_blob_sha": "20908534838e51df2948fe9bf151c165b08643ac",
+      "sha256": "326569ff71b8bf4fb579703b18af0dba9022cb6a2abdf6d3aca56cfb612f506a",
+      "bytes": 7881,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/photography-20261013/upload_cards/photo20261013b2-technique-peaking-check.json",
+      "git_blob_sha": "2dd5d52d38b66a43a70e1158c52f298d1db130ef",
+      "sha256": "bc7df1a98a0f5ab56b962e5c4a5bddc3b3c4cb753c010da9fa658d76a2f9d7e7",
+      "bytes": 7875,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/composition-horizon-001.md",
+      "git_blob_sha": "788dd8d73254e2c40c61cc5014758958e1fe2ee7",
+      "sha256": "adc1a62a2de7aef0f0932de5fcaff57fe700fe09247ccbd05aabc3657d44dd73",
+      "bytes": 1000,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/composition-looking-room-001.md",
+      "git_blob_sha": "8bccd00c8828c3a3d319b2553840e2062010e5b1",
+      "sha256": "6ebb12dc7ea05c4401fba305b1e07012de58d6bef19d611527351bdbb15fa72a",
+      "bytes": 986,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/composition-thirds-001.md",
+      "git_blob_sha": "b7b20aaf9a13b047c43d80b810dae9e1f93a14f5",
+      "sha256": "b5f86e946ec6e61a8106452e11af7d0cbca980ee5e65ccd77a97392fa3c6aed3",
+      "bytes": 1180,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/equipment-iphone15-001.md",
+      "git_blob_sha": "103ed69f7a5b63210212e190f57f7d9a1cf298a7",
+      "sha256": "313a48a889416b87a75e426b41c592254b2ccf17311bdc65fc6084dda7ed306a",
+      "bytes": 1172,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/equipment-s24ultra-001.md",
+      "git_blob_sha": "b2a6b37c5c5d20e7ff478d2314c3e1e4ff33a0ab",
+      "sha256": "0b5a23882f742921cdb84ba0eaf3b62a81c8e2d468f03b1639bdd9a3d08ab8f0",
+      "bytes": 1233,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/equipment-xiaomi14-001.md",
+      "git_blob_sha": "79733817b05541b7e9a83cfd324bc078955ac297",
+      "sha256": "d1e09afed877c4bdf7d4d55462857345346004bc6061d7f3a17be171a71e7825",
+      "bytes": 1243,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/phone-iphone-focus-exposure-001.md",
+      "git_blob_sha": "f31a79cb35b5bf5841354dcb3098c46adc182282",
+      "sha256": "8edf5a31731240c848eb8fe8797eaf7db3ea58615885b7576b7ab12eddd016d2",
+      "bytes": 991,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/phone-iphone-grid-001.md",
+      "git_blob_sha": "8eb058518b489b1213edcc22fc0ca2e032b3bd7a",
+      "sha256": "cb8af5f3f7cbf5d9346f6b61112e71515d8fe419abb3162843ba8e916c75ed52",
+      "bytes": 940,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/phone-iphone-night-001.md",
+      "git_blob_sha": "cd354d9d65b9d54dc1dba17c71b9e515e41fe1f4",
+      "sha256": "0b7c86e70b492a2ee2854bde378e5bd297de4f789d58bc3bf5e487e5d5c05449",
+      "bytes": 1033,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/phone-samsung-pro-001.md",
+      "git_blob_sha": "ad68607365b25f2881125d822a90b3733002664d",
+      "sha256": "c952b4ab38970a422ec98c898e9c95e1cabf4720dbe61fd35a9a317d0dc98ce8",
+      "bytes": 1162,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/phone-xiaomi-pro-001.md",
+      "git_blob_sha": "48e8a9a3b118de49a77218261cca55be83337a75",
+      "sha256": "1b5a6c9c34d8771c3322bf6120df9c1b020c779ce264777e5bc2d5f53264798a",
+      "bytes": 1067,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/technique-blur-diagnosis-001.md",
+      "git_blob_sha": "b59c4b666f205986f195ea0c77797edc3d310eb3",
+      "sha256": "4db91cdece33db394688cd40e112152a3f50af7bea022f5e54fbfbb53dcb913c",
+      "bytes": 1048,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/technique-depth-of-field-001.md",
+      "git_blob_sha": "97bb7dc322db594379917cf2bf0f88174e13f296",
+      "sha256": "76473bbc2b7385f2e7e4755724856c3575922dc23d3a6f4591dda8517a407da5",
+      "bytes": 1033,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/technique-digital-crop-001.md",
+      "git_blob_sha": "00d12b61512eb7d2a1a7f07effaf59e23b098abe",
+      "sha256": "2ec34e8cd9e62f3952693aed08ab8d8294c4238788e62f9852f3aa9f6d9c9d25",
+      "bytes": 986,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/technique-exposure-clipping-001.md",
+      "git_blob_sha": "bba0e2891a86e4dbe061bcda1b09132be6fa3a89",
+      "sha256": "074a7954bfa9585a51a1955583f52c4c2747a12cf9be4b8b78fa93625e9f594e",
+      "bytes": 976,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/technique-shutter-motion-001.md",
+      "git_blob_sha": "e78589bb337f7ad61591296e7d19897609002d49",
+      "sha256": "13e0d24c682584cfe4b1a84d6353f21f5a4240a4dc8b3462871df10c6af99e6b",
+      "bytes": 1038,
+      "is_card": true
+    },
+    {
+      "path": "data/knowledge_drafts/starter-v1/technique-white-balance-001.md",
+      "git_blob_sha": "0c58e3637eb28591be80e0924effdc93e5c8fe39",
+      "sha256": "457654c6e3540805e949383bd50485b019ac32d3331c03c92a640ca33f122311",
+      "bytes": 927,
+      "is_card": true
+    }
+  ],
+  "manifest_checks": [
+    {
+      "collection": "mobile-models-20261014",
+      "cards": 22,
+      "sha256_verified": true
+    },
+    {
+      "collection": "photography-20261013",
+      "cards": 121,
+      "sha256_verified": true
+    }
+  ],
+  "file_sync": {
+    "new_files_synced": 35,
+    "already_identical": 165
+  },
+  "local_file_conflicts": [],
+  "merge_plan": {
+    "incoming_cards": 160,
+    "selected_for_import": 160,
+    "skipped_count": 0,
+    "conflict_count": 0,
+    "selected_by_library": {
+      "composition": 22,
+      "equipment": 41,
+      "technique": 53,
+      "case": 9,
+      "scene": 20,
+      "style": 15
+    },
+    "selected_by_id_prefix": {
+      "composition": 3,
+      "equipment": 3,
+      "phone": 5,
+      "phone20261014": 22,
+      "photo20261011": 80,
+      "photo20261012": 32,
+      "photo20261013": 4,
+      "photo20261013b2": 5,
+      "technique": 6
+    },
+    "skipped": [],
+    "conflicts": [],
+    "related_titles": []
+  },
+  "notes": [
+    "只做严格记录去重，不宣称已完成语义合并或厂家事实核验。",
+    "不修改作者、正文、来源、许可和版本；不审核发布，不改运行时设备目录。"
+  ],
+  "database_import": {
+    "database": "E:\\develop\\cmera\\data\\knowledge.db",
+    "backup": "E:\\develop\\cmera\\data\\backups\\before-github-sync-20261014T154922631522Z.db",
+    "records_before": 7647,
+    "records_after": 7807,
+    "imported_count": 160,
+    "old_rows_preserved": true,
+    "new_rows_all_draft": true,
+    "sqlite_integrity": "ok",
+    "real_database_repeat_import_new_rows": 0,
+    "new_retrieval_allowed_count": 5
+  }
+}

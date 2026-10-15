@@ -1,0 +1,112 @@
+{
+  "knowledge_id": "open-eq-v1-lensfun-olympus-e-10-compatibles-macro-full-tele-8-inche-159e8e00010ccb1d",
+  "library_id": "equipment",
+  "title": "[待核验设备档案] Olympus E-10 & compatibles, macro (full tele): 8 inches lens-to-subject 镜头",
+  "kind": "guideline",
+  "content": "设备：Olympus E-10 & compatibles, macro (full tele): 8 inches lens-to-subject。Lensfun 记录的卡口：olympusE10；原始裁切系数：3.933。\n适用规则：完整型号和具体卡口版本一致才可使用；同名多卡口镜头不能直接互换。\nLensfun 的 mount compat 不是原生兼容保证，不据此推荐无需转接环。校正用 cropfactor 不直接视作厂家标称画幅；不从畸变或暗角校正采样点推断完整焦段、最大光圈、自动对焦或防抖能力。",
+  "payload": {
+    "device_type": "camera",
+    "entity_type": "lens",
+    "model": "Olympus E-10 & compatibles, macro (full tele): 8 inches lens-to-subject",
+    "provenance": {
+      "repository": "https://github.com/lensfun/lensfun",
+      "commit": "43f9e001ab66c4fcdd4f400463f13b72f94b2288",
+      "path": "data/db/slr-olympus.xml",
+      "record_locator": "lens[18]",
+      "file_sha256": "f7693b6779edd8ed10d7dc23113669255bfa4987cea7db0e843f7f5f2bbbe615",
+      "license": "CC-BY-SA-3.0",
+      "attribution": "Lensfun database, Lensfun contributors; see retained XML notices",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    },
+    "verification": {
+      "level": "upstream_dataset_only",
+      "officially_verified": false
+    },
+    "usage": {
+      "role": "equipment_reference_draft",
+      "controls_hardware_limits": false,
+      "manual_review_required": true,
+      "limitations": [
+        "不能直接覆盖运行时设备档案或生成曝光参数。",
+        "空值是未知，不等于不支持；型号、地区版本和固件须核对。"
+      ]
+    },
+    "brand": "Olympus",
+    "aliases": [
+      "Olympus E-10 & compatibles, macro (full tele): 8 inches lens-to-subject",
+      "Olympus fixed lens, macro (full tele): 8 inches lens-to-subject",
+      "Olympus festes Objektiv, Makro (längste Brennw.): 8 Zoll Fokusabstand"
+    ],
+    "mounts": [
+      "olympusE10"
+    ],
+    "source_metadata": {
+      "maker": [
+        {
+          "text": "Olympus",
+          "attributes": {}
+        }
+      ],
+      "model": [
+        {
+          "text": "Olympus E-10 & compatibles, macro (full tele): 8 inches lens-to-subject",
+          "attributes": {}
+        },
+        {
+          "text": "fixed lens, macro (full tele): 8 inches lens-to-subject",
+          "attributes": {
+            "lang": "en"
+          }
+        },
+        {
+          "text": "festes Objektiv, Makro (längste Brennw.): 8 Zoll Fokusabstand",
+          "attributes": {
+            "lang": "de"
+          }
+        }
+      ],
+      "mount": [
+        {
+          "text": "olympusE10",
+          "attributes": {}
+        }
+      ],
+      "cropfactor": [
+        {
+          "text": "3.933",
+          "attributes": {}
+        }
+      ]
+    },
+    "calibration_sample_counts": {
+      "distortion": 1
+    },
+    "derived_data_license": "CC-BY-SA-3.0"
+  },
+  "tags": [
+    "开源设备目录",
+    "待核验",
+    "镜头",
+    "lensfun"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "lens_model": [
+      "Olympus E-10 & compatibles, macro (full tele): 8 inches lens-to-subject",
+      "Olympus fixed lens, macro (full tele): 8 inches lens-to-subject",
+      "Olympus festes Objektiv, Makro (längste Brennw.): 8 Zoll Fokusabstand"
+    ]
+  },
+  "source": {
+    "name": "Lensfun database, Lensfun contributors; see retained XML notices",
+    "url": "https://github.com/lensfun/lensfun/blob/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-olympus.xml",
+    "location": "lens[18]",
+    "license": "CC-BY-SA-3.0",
+    "retrieval_allowed": false
+  },
+  "author": "小栗项目设备资料转换",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

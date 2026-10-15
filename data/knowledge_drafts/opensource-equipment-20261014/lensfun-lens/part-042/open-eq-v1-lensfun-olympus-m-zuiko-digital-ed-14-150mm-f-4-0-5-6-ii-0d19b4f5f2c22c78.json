@@ -1,0 +1,122 @@
+{
+  "knowledge_id": "open-eq-v1-lensfun-olympus-m-zuiko-digital-ed-14-150mm-f-4-0-5-6-ii-0d19b4f5f2c22c78",
+  "library_id": "equipment",
+  "title": "[待核验设备档案] Olympus M.Zuiko Digital ED 14-150mm f/4.0-5.6 II 镜头",
+  "kind": "guideline",
+  "content": "设备：Olympus M.Zuiko Digital ED 14-150mm f/4.0-5.6 II。Lensfun 记录的卡口：Micro 4/3 System；原始裁切系数：2。\n适用规则：完整型号和具体卡口版本一致才可使用；同名多卡口镜头不能直接互换。\nLensfun 的 mount compat 不是原生兼容保证，不据此推荐无需转接环。校正用 cropfactor 不直接视作厂家标称画幅；不从畸变或暗角校正采样点推断完整焦段、最大光圈、自动对焦或防抖能力。",
+  "payload": {
+    "device_type": "camera",
+    "entity_type": "lens",
+    "model": "Olympus M.Zuiko Digital ED 14-150mm f/4.0-5.6 II",
+    "provenance": {
+      "repository": "https://github.com/lensfun/lensfun",
+      "commit": "43f9e001ab66c4fcdd4f400463f13b72f94b2288",
+      "path": "data/db/mil-olympus.xml",
+      "record_locator": "lens[7]",
+      "file_sha256": "989a3d88ef07a286efc2755df214792fdf71d60366932a1b369a77ad39cf2abb",
+      "license": "CC-BY-SA-3.0",
+      "attribution": "Lensfun database, Lensfun contributors; see retained XML notices",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    },
+    "verification": {
+      "level": "upstream_dataset_only",
+      "officially_verified": false
+    },
+    "usage": {
+      "role": "equipment_reference_draft",
+      "controls_hardware_limits": false,
+      "manual_review_required": true,
+      "limitations": [
+        "不能直接覆盖运行时设备档案或生成曝光参数。",
+        "空值是未知，不等于不支持；型号、地区版本和固件须核对。"
+      ]
+    },
+    "brand": "Olympus",
+    "aliases": [
+      "Olympus M.Zuiko Digital ED 14-150mm f/4.0-5.6 II"
+    ],
+    "mounts": [
+      "Micro 4/3 System"
+    ],
+    "source_metadata": {
+      "maker": [
+        {
+          "text": "Olympus",
+          "attributes": {}
+        }
+      ],
+      "model": [
+        {
+          "text": "Olympus M.Zuiko Digital ED 14-150mm f/4.0-5.6 II",
+          "attributes": {}
+        }
+      ],
+      "mount": [
+        {
+          "text": "Micro 4/3 System",
+          "attributes": {}
+        }
+      ],
+      "cropfactor": [
+        {
+          "text": "2",
+          "attributes": {}
+        }
+      ],
+      "aspect-ratio": [
+        {
+          "text": "4:3",
+          "attributes": {}
+        }
+      ],
+      "focal": [
+        {
+          "text": "",
+          "attributes": {
+            "min": "14",
+            "max": "150"
+          }
+        }
+      ],
+      "aperture": [
+        {
+          "text": "",
+          "attributes": {
+            "min": "4",
+            "max": "22"
+          }
+        }
+      ]
+    },
+    "calibration_sample_counts": {
+      "distortion": 6,
+      "tca": 6,
+      "vignetting": 128
+    },
+    "derived_data_license": "CC-BY-SA-3.0"
+  },
+  "tags": [
+    "开源设备目录",
+    "待核验",
+    "镜头",
+    "lensfun"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "lens_model": [
+      "Olympus M.Zuiko Digital ED 14-150mm f/4.0-5.6 II"
+    ]
+  },
+  "source": {
+    "name": "Lensfun database, Lensfun contributors; see retained XML notices",
+    "url": "https://github.com/lensfun/lensfun/blob/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-olympus.xml",
+    "location": "lens[7]",
+    "license": "CC-BY-SA-3.0",
+    "retrieval_allowed": false
+  },
+  "author": "小栗项目设备资料转换",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

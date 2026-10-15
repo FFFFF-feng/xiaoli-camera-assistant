@@ -65,10 +65,10 @@ def test_exact_phone_aliases(identifier: str, expected: str) -> None:
 @pytest.mark.parametrize(
     "identifier",
     [
-        "iPhone 15 Pro",
+        "iPhone 15 Pro Future",
         "iPhone 15 Plus",
-        "iPhone 15 Pro Max",
-        "小米14 Ultra",
+        "iPhone 15 Pro Max Future",
+        "小米14 Ultra Future",
         "小米14 Pro",
         "Galaxy S24",
         "Galaxy S24 FE",
@@ -82,7 +82,7 @@ def test_unknown_suffixes_do_not_inherit_nearby_model(identifier: str) -> None:
 def test_phone_catalog_search_is_candidate_list_not_automatic_fuzzy_resolution() -> None:
     assert phones().search("小米")[0].profile_id == "xiaomi_14"
     assert phones().resolve("小米").profile_id == "generic_phone"
-    assert len(phones().list_profiles()) == 4
+    assert len(phones().list_profiles()) == 16
     assert "pro" not in phones().resolve("iPhone 15").modes
     assert not hasattr(phones().resolve("iPhone 15"), "max_mechanical_shutter")
 
@@ -278,7 +278,7 @@ def test_phone_ui_search_modes_and_unsupported_model(monkeypatch, tmp_path: Path
     assert (
         "phone_pro_confirm" not in app.session_state or not app.session_state["phone_pro_confirm"]
     )
-    app.text_input(key="phone_model_query").set_value("iPhone 15 Pro").run()
+    app.text_input(key="phone_model_query").set_value("iPhone 15 Pro Future").run()
     assert app.selectbox(key="phone_model").value == "generic_phone"
     assert app.info
     assert not app.exception

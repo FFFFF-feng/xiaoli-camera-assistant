@@ -1,0 +1,94 @@
+{
+  "knowledge_id": "open-eq-v1-lensfun-panasonic-dc-tz200d-94f979079c5107b4",
+  "library_id": "equipment",
+  "title": "[待核验设备档案] Panasonic DC-TZ200D 相机",
+  "kind": "guideline",
+  "content": "设备：Panasonic DC-TZ200D。Lensfun 记录的卡口：panasonicZS200；原始裁切系数：2.73。\n适用规则：完整型号和具体卡口版本一致才可使用；同名多卡口镜头不能直接互换。\nLensfun 的 mount compat 不是原生兼容保证，不据此推荐无需转接环。校正用 cropfactor 不直接视作厂家标称画幅；不从畸变或暗角校正采样点推断完整焦段、最大光圈、自动对焦或防抖能力。",
+  "payload": {
+    "device_type": "camera",
+    "entity_type": "camera",
+    "model": "Panasonic DC-TZ200D",
+    "provenance": {
+      "repository": "https://github.com/lensfun/lensfun",
+      "commit": "43f9e001ab66c4fcdd4f400463f13b72f94b2288",
+      "path": "data/db/compact-panasonic.xml",
+      "record_locator": "camera[70]",
+      "file_sha256": "f191fc2a5d49fb50c06f4c399ee8c1a83a05f93a0efaecd352ec5c1479b8e60b",
+      "license": "CC-BY-SA-3.0",
+      "attribution": "Lensfun database, Lensfun contributors; see retained XML notices",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    },
+    "verification": {
+      "level": "upstream_dataset_only",
+      "officially_verified": false
+    },
+    "usage": {
+      "role": "equipment_reference_draft",
+      "controls_hardware_limits": false,
+      "manual_review_required": true,
+      "limitations": [
+        "不能直接覆盖运行时设备档案或生成曝光参数。",
+        "空值是未知，不等于不支持；型号、地区版本和固件须核对。"
+      ]
+    },
+    "brand": "Panasonic",
+    "aliases": [
+      "Panasonic DC-TZ200D"
+    ],
+    "mounts": [
+      "panasonicZS200"
+    ],
+    "source_metadata": {
+      "maker": [
+        {
+          "text": "Panasonic",
+          "attributes": {}
+        }
+      ],
+      "model": [
+        {
+          "text": "DC-TZ200D",
+          "attributes": {}
+        }
+      ],
+      "mount": [
+        {
+          "text": "panasonicZS200",
+          "attributes": {}
+        }
+      ],
+      "cropfactor": [
+        {
+          "text": "2.73",
+          "attributes": {}
+        }
+      ]
+    },
+    "calibration_sample_counts": {},
+    "derived_data_license": "CC-BY-SA-3.0"
+  },
+  "tags": [
+    "开源设备目录",
+    "待核验",
+    "相机",
+    "lensfun"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "camera_model": [
+      "Panasonic DC-TZ200D"
+    ]
+  },
+  "source": {
+    "name": "Lensfun database, Lensfun contributors; see retained XML notices",
+    "url": "https://github.com/lensfun/lensfun/blob/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-panasonic.xml",
+    "location": "camera[70]",
+    "license": "CC-BY-SA-3.0",
+    "retrieval_allowed": false
+  },
+  "author": "小栗项目设备资料转换",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

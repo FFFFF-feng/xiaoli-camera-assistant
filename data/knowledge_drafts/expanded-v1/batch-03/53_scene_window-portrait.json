@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-scene-window-portrait",
+  "library_id": "scene",
+  "title": "窗边人像：先观察主光方向",
+  "kind": "guideline",
+  "content": "核心规则：窗光位置与人物朝向可改变明暗和面部立体感。\n建议动作：让人物在安全可用的窗边比较正面与侧向光。；对准重要面部细节，试拍后检查脸部与窗外亮度。\n适用前提：确认人物、窗口和实际光线方向；得到拍摄同意。\n限制与例外：照片有窗不代表窗是主光；规则不保证识别正确或给出精确光强。",
+  "payload": {
+    "core_claim": "窗光位置与人物朝向可改变明暗和面部立体感。",
+    "goal": "窗边人像：先观察主光方向",
+    "requires": [
+      "确认人物、窗口和实际光线方向；得到拍摄同意。"
+    ],
+    "actions": [
+      "让人物在安全可用的窗边比较正面与侧向光。",
+      "对准重要面部细节，试拍后检查脸部与窗外亮度。"
+    ],
+    "limitations": [
+      "照片有窗不代表窗是主光；规则不保证识别正确或给出精确光强。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-light",
+          "url": "https://www.sony.com/electronics/support/articles/00267922",
+          "location": "Lighting and Its Effects",
+          "supports": "窗光位置可产生不同方向效果。"
+        },
+        {
+          "source_id": "sony-portrait",
+          "url": "https://www.sony.co.uk/electronics/support/articles/00206555",
+          "location": "Considering the composition / Using back light",
+          "supports": "人像需结合光线和主体亮度。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "scene",
+    "window-portrait",
+    "窗边人像",
+    "先观察主光方向",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜光线方向及效果",
+    "url": "https://www.sony.com/electronics/support/articles/00267922",
+    "location": "Lighting and Its Effects",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

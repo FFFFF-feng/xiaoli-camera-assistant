@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-mixed-wb",
+  "library_id": "technique",
+  "title": "混合光：单一白平衡未必能全画面中性",
+  "kind": "guideline",
+  "content": "核心规则：不同光源区域可能需要不同的颜色处理。\n建议动作：优先确认主体所受的光，减少不必要的混合光源。；接受局部暖冷差异，或在允许的后期流程中分别调整。\n适用前提：现场确有多种光源；目标是中性还原。\n限制与例外：综合推导：不能保证一个色温同时校正不同光源区域。",
+  "payload": {
+    "core_claim": "不同光源区域可能需要不同的颜色处理。",
+    "goal": "混合光：单一白平衡未必能全画面中性",
+    "requires": [
+      "现场确有多种光源；目标是中性还原。"
+    ],
+    "actions": [
+      "优先确认主体所受的光，减少不必要的混合光源。",
+      "接受局部暖冷差异，或在允许的后期流程中分别调整。"
+    ],
+    "limitations": [
+      "综合推导：不能保证一个色温同时校正不同光源区域。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-wb",
+          "url": "https://www.sony.com/electronics/support/articles/00267928",
+          "location": "White Balance",
+          "supports": "白平衡补偿光源颜色。"
+        },
+        {
+          "source_id": "nikon-wb",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+          "location": "AUTO / PRE / Presets",
+          "supports": "按实际光线选白平衡与参考。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "technique",
+    "mixed-wb",
+    "混合光",
+    "单一白平衡未必能全画面中性",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜白平衡",
+    "url": "https://www.sony.com/electronics/support/articles/00267928",
+    "location": "White Balance",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

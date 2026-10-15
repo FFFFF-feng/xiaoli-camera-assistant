@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-orientation",
+  "library_id": "composition",
+  "title": "横竖构图：由叙事与输出决定",
+  "kind": "guideline",
+  "content": "核心规则：竖向与横向取景强调的内容可能不同。\n建议动作：人物为主时试竖向，环境重要时试横向。；按最终展示比例再检查关键内容是否被截断。\n适用前提：知道输出用途和需保留的信息。\n限制与例外：肖像并不必须竖拍。",
+  "payload": {
+    "core_claim": "竖向与横向取景强调的内容可能不同。",
+    "goal": "横竖构图：由叙事与输出决定",
+    "requires": [
+      "知道输出用途和需保留的信息。"
+    ],
+    "actions": [
+      "人物为主时试竖向，环境重要时试横向。",
+      "按最终展示比例再检查关键内容是否被截断。"
+    ],
+    "limitations": [
+      "肖像并不必须竖拍。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "interpretive_goal",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-portrait",
+          "url": "https://www.sony.co.uk/electronics/support/articles/00206555",
+          "location": "Considering the composition / Using back light",
+          "supports": "竖向强调人物，横向可包含背景。"
+        }
+      ],
+      "inference_note": "这是可选表达目标；来源支持方法存在，不证明审美偏好或效果最优。"
+    }
+  },
+  "tags": [
+    "composition",
+    "orientation",
+    "横竖构图",
+    "由叙事与输出决定",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜突出人物的肖像教程",
+    "url": "https://www.sony.co.uk/electronics/support/articles/00206555",
+    "location": "Considering the composition / Using back light",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

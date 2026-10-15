@@ -1,0 +1,24 @@
+{
+  "batch_id": "equipment-linkage-20261014",
+  "checked_at": "2026-10-14",
+  "purpose": "设备选择联动目录，不是RAG已发布知识卡",
+  "counts": {"known_cameras": 14, "new_cameras": 10, "known_phones": 15, "new_phones": 12, "camera_lenses": 12},
+  "files": ["knowledge/cameras/camera_profiles.yaml", "knowledge/cameras/lens_profiles.yaml", "knowledge/devices/phone_profiles.yaml"],
+  "verification_scope": [
+    "新增相机只核验画幅、原生卡口和名义等效系数；未填ISO/快门/防抖硬件边界",
+    "镜头核验明确版本、原生卡口、成像圈、实际焦段和最大光圈端点；不假设转接/裁切",
+    "新增手机按具体型号独立建档，记录物理镜头和已列明模式；副摄模式组合保守限制为auto，待进一步核验",
+    "所有资料核对不等于真机验证；区域和系统版本差异保留在对应档案notes/region_scope",
+    "仅整理事实和来源链接，未复制媒体或网页全文，未向主知识数据库导入/发布记录"
+  ],
+  "secondary_checks": [
+    {"item": "Canon EOS 200D II + EF-S 18-55 f/4-5.6 IS STM", "sources": ["https://www.canon.com.cn/product/200d2/spec.html", "https://asia.canon/en/consumer/eos-200d-ii/ef-s-18-55mm-f-4-5-6-is-stm-black/specification", "https://asia.canon/en/consumer/ef-s18-55mm-f4-5_6-is-stm/product?category=photography&subCategory=ef-lenses"]},
+    {"item": "Fujifilm XF 18-55 f/2.8-4", "sources": ["https://www.fujifilm-x.com/global/products/lenses/xf18-55mmf28-4-r-lm-ois/specifications/", "https://dl.fujifilm-x.com/support/manual/lenses/lens_xf10-24_xf18-55_xf55-200_manual_02.pdf"]},
+    {"item": "Fujifilm XC 15-45 f/3.5-5.6", "sources": ["https://www.fujifilm-x.com/en-us/products/lenses/xc15-45mmf35-56-ois-pz/specifications/", "https://dl.fujifilm-x.com/support/manual/lenses/lens_xc15-45_manual_01.pdf"]}
+  ],
+  "excluded_or_replaced_sources": [
+    {"url": "https://www.fujifilm-x.com/en-us/products/lenses/xf18-55mmf28-4-r-lm-ois/specifications/", "reason": "本次访问正文Type及Focal length对应18-135mm，与URL18-55不符；改用官方PDF和全球规格交叉核验"},
+    {"url": "https://consumer.huawei.com/cn/phones/pura70-ultra/specs/", "reason": "本次重定向到手机首页，未用于型号规格；采用葡萄牙官方型号规格并标注地区"},
+    {"url": "https://www.honor.com/cn/phones/magic6-pro/spec/", "reason": "本次未返回有效型号规格；采用英国官网明确型号规格并标注地区"}
+  ]
+}

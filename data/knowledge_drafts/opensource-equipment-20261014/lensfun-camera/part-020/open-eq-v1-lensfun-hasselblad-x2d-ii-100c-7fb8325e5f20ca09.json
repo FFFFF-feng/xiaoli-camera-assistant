@@ -1,0 +1,94 @@
+{
+  "knowledge_id": "open-eq-v1-lensfun-hasselblad-x2d-ii-100c-7fb8325e5f20ca09",
+  "library_id": "equipment",
+  "title": "[待核验设备档案] Hasselblad X2D II 100C 相机",
+  "kind": "guideline",
+  "content": "设备：Hasselblad X2D II 100C。Lensfun 记录的卡口：Hasselblad X；原始裁切系数：0.79。\n适用规则：完整型号和具体卡口版本一致才可使用；同名多卡口镜头不能直接互换。\nLensfun 的 mount compat 不是原生兼容保证，不据此推荐无需转接环。校正用 cropfactor 不直接视作厂家标称画幅；不从畸变或暗角校正采样点推断完整焦段、最大光圈、自动对焦或防抖能力。",
+  "payload": {
+    "device_type": "camera",
+    "entity_type": "camera",
+    "model": "Hasselblad X2D II 100C",
+    "provenance": {
+      "repository": "https://github.com/lensfun/lensfun",
+      "commit": "43f9e001ab66c4fcdd4f400463f13b72f94b2288",
+      "path": "data/db/mil-hasselblad.xml",
+      "record_locator": "camera[2]",
+      "file_sha256": "13e1fa55d36c2ed7d22964c21ce6c21d887bfe4506e840e425da1ce4157c3756",
+      "license": "CC-BY-SA-3.0",
+      "attribution": "Lensfun database, Lensfun contributors; see retained XML notices",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    },
+    "verification": {
+      "level": "upstream_dataset_only",
+      "officially_verified": false
+    },
+    "usage": {
+      "role": "equipment_reference_draft",
+      "controls_hardware_limits": false,
+      "manual_review_required": true,
+      "limitations": [
+        "不能直接覆盖运行时设备档案或生成曝光参数。",
+        "空值是未知，不等于不支持；型号、地区版本和固件须核对。"
+      ]
+    },
+    "brand": "Hasselblad",
+    "aliases": [
+      "Hasselblad X2D II 100C"
+    ],
+    "mounts": [
+      "Hasselblad X"
+    ],
+    "source_metadata": {
+      "maker": [
+        {
+          "text": "Hasselblad",
+          "attributes": {}
+        }
+      ],
+      "model": [
+        {
+          "text": "X2D II 100C",
+          "attributes": {}
+        }
+      ],
+      "mount": [
+        {
+          "text": "Hasselblad X",
+          "attributes": {}
+        }
+      ],
+      "cropfactor": [
+        {
+          "text": "0.79",
+          "attributes": {}
+        }
+      ]
+    },
+    "calibration_sample_counts": {},
+    "derived_data_license": "CC-BY-SA-3.0"
+  },
+  "tags": [
+    "开源设备目录",
+    "待核验",
+    "相机",
+    "lensfun"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "camera_model": [
+      "Hasselblad X2D II 100C"
+    ]
+  },
+  "source": {
+    "name": "Lensfun database, Lensfun contributors; see retained XML notices",
+    "url": "https://github.com/lensfun/lensfun/blob/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-hasselblad.xml",
+    "location": "camera[2]",
+    "license": "CC-BY-SA-3.0",
+    "retrieval_allowed": false
+  },
+  "author": "小栗项目设备资料转换",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

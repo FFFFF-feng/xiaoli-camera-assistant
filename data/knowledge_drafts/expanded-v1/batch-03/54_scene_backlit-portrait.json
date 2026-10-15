@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-scene-backlit-portrait",
+  "library_id": "scene",
+  "title": "逆光人像：在主体和背景间选择目标",
+  "kind": "guideline",
+  "content": "核心规则：逆光可能使主体偏暗，提亮主体也会影响背景。\n建议动作：先询问想保留剪影还是看清面部。；试拍并检查重要高光，再比较亮度调整或换位置。\n适用前提：确认光从主体后方来；用户目标已明确。\n限制与例外：不是所有逆光都应加补偿；不能恢复已无细节的亮部。",
+  "payload": {
+    "core_claim": "逆光可能使主体偏暗，提亮主体也会影响背景。",
+    "goal": "逆光人像：在主体和背景间选择目标",
+    "requires": [
+      "确认光从主体后方来；用户目标已明确。"
+    ],
+    "actions": [
+      "先询问想保留剪影还是看清面部。",
+      "试拍并检查重要高光，再比较亮度调整或换位置。"
+    ],
+    "limitations": [
+      "不是所有逆光都应加补偿；不能恢复已无细节的亮部。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-light",
+          "url": "https://www.sony.com/electronics/support/articles/00267922",
+          "location": "Lighting and Its Effects",
+          "supports": "逆光主体可能较暗。"
+        },
+        {
+          "source_id": "sony-exposure",
+          "url": "https://www.sony.com/electronics/support/articles/00267925",
+          "location": "Exposure / Exposure Compensation",
+          "supports": "按目标进行补偿。"
+        },
+        {
+          "source_id": "nikon-histogram",
+          "url": "https://onlinemanual.nikonimglib.com/z6III/en/photo_information_53.html",
+          "location": "Highlights / RGB Histogram / Shooting Data",
+          "supports": "高光警告辅助检查。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "scene",
+    "backlit-portrait",
+    "逆光人像",
+    "在主体和背景间选择目标",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜光线方向及效果",
+    "url": "https://www.sony.com/electronics/support/articles/00267922",
+    "location": "Lighting and Its Effects",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

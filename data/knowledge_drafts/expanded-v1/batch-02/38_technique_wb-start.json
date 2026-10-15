@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-wb-start",
+  "library_id": "technique",
+  "title": "白平衡：自动起步，按目标修正",
+  "kind": "guideline",
+  "content": "核心规则：AWB与光源预设都可作为白平衡起点。\n建议动作：先确认要还原中性色还是保留暖冷氛围。；比较自动和适合光源的预设，避免同时乱改多个色彩项。\n适用前提：确认主光源；能调整白平衡或后期色彩。\n限制与例外：自动不保证所有场景准确；没有通用室内色温。",
+  "payload": {
+    "core_claim": "AWB与光源预设都可作为白平衡起点。",
+    "goal": "白平衡：自动起步，按目标修正",
+    "requires": [
+      "确认主光源；能调整白平衡或后期色彩。"
+    ],
+    "actions": [
+      "先确认要还原中性色还是保留暖冷氛围。",
+      "比较自动和适合光源的预设，避免同时乱改多个色彩项。"
+    ],
+    "limitations": [
+      "自动不保证所有场景准确；没有通用室内色温。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "cross_source_agreement",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-wb",
+          "url": "https://www.sony.com/electronics/support/articles/00267928",
+          "location": "White Balance",
+          "supports": "AWB和预设用于光源颜色调整。"
+        },
+        {
+          "source_id": "nikon-wb",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+          "location": "AUTO / PRE / Presets",
+          "supports": "自动与预设白平衡、色彩偏好。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "wb-start",
+    "白平衡",
+    "自动起步",
+    "按目标修正",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜白平衡",
+    "url": "https://www.sony.com/electronics/support/articles/00267928",
+    "location": "White Balance",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

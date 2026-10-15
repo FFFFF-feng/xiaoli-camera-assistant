@@ -1,0 +1,127 @@
+# 原生卡口、常规静态画幅的保守白名单，不包含默认转接/裁切。
+# 焦段为实际焦距；只核验最大光圈的广角/长焦端点，不线性插值物理光圈。
+lenses:
+  - lens_id: canon_ef_s_18_55_f4_56_is_stm
+    display_name: Canon EF-S 18–55mm f/4–5.6 IS STM
+    mount: canon_ef
+    sensor_formats: [APS-C]
+    focal_min_mm: 18
+    focal_max_mm: 55
+    max_aperture_wide: 4.0
+    max_aperture_tele: 5.6
+    source_url: https://asia.canon/en/consumer/ef-s18-55mm-f4-5_6-is-stm/product?category=photography&subCategory=ef-lenses
+    checked_at: '2026-10-14'
+    notes: [这是f/4–5.6 IS STM版本，不是其他18–55镜头版本；EOS R机身需转接，暂不自动列出。]
+  - lens_id: canon_rf_s_18_45_f45_63_is_stm
+    display_name: Canon RF-S 18–45mm F4.5–6.3 IS STM
+    mount: canon_rf
+    sensor_formats: [APS-C]
+    focal_min_mm: 18
+    focal_max_mm: 45
+    max_aperture_wide: 4.5
+    max_aperture_tele: 6.3
+    source_url: https://www.canon.com.cn/product/rfs1845f4563/
+    checked_at: '2026-10-14'
+  - lens_id: canon_rf_24_105_f4_71_is_stm
+    display_name: Canon RF 24–105mm F4–7.1 IS STM
+    mount: canon_rf
+    sensor_formats: [全画幅, APS-C]
+    focal_min_mm: 24
+    focal_max_mm: 105
+    max_aperture_wide: 4.0
+    max_aperture_tele: 7.1
+    source_url: https://downloads.canon.com/nw/camera/products/lenses/rf-24-105mm-f4-7-1-is-stm/specs/rf24-105-is-stm-specifications.pdf
+    checked_at: '2026-10-14'
+  - lens_id: canon_rf_50_f18_stm
+    display_name: Canon RF 50mm F1.8 STM
+    mount: canon_rf
+    sensor_formats: [全画幅, APS-C]
+    focal_min_mm: 50
+    focal_max_mm: 50
+    max_aperture_wide: 1.8
+    max_aperture_tele: 1.8
+    source_url: https://www.usa.canon.com/shop/p/rf50mm-f1-8-stm?color=Black&type=New
+    checked_at: '2026-10-14'
+  - lens_id: nikon_z_dx_16_50_f35_63_vr
+    display_name: Nikon NIKKOR Z DX 16–50mm f/3.5–6.3 VR
+    mount: nikon_z
+    sensor_formats: [APS-C]
+    focal_min_mm: 16
+    focal_max_mm: 50
+    max_aperture_wide: 3.5
+    max_aperture_tele: 6.3
+    source_url: https://onlinemanual.nikonimglib.com/z50/en/90_technical_notes_12.html
+    checked_at: '2026-10-14'
+  - lens_id: nikon_z_24_50_f4_63
+    display_name: Nikon NIKKOR Z 24–50mm f/4–6.3
+    mount: nikon_z
+    sensor_formats: [全画幅, APS-C]
+    focal_min_mm: 24
+    focal_max_mm: 50
+    max_aperture_wide: 4.0
+    max_aperture_tele: 6.3
+    source_url: https://onlinemanual.nikonimglib.com/z5/en/16_kit_lens_manual_03.html
+    checked_at: '2026-10-14'
+  - lens_id: sony_e_pz_16_50_f35_56_oss
+    display_name: Sony E PZ 16–50mm F3.5–5.6 OSS（SELP1650）
+    mount: sony_e
+    sensor_formats: [APS-C]
+    focal_min_mm: 16
+    focal_max_mm: 50
+    max_aperture_wide: 3.5
+    max_aperture_tele: 5.6
+    source_url: https://pro.sony/s3/cms-static-content/file/19/1237493267219.pdf
+    checked_at: '2026-10-14'
+    notes: [SELP1650原版，不默认等同SELP16502二代。]
+  - lens_id: sony_e_18_55_f35_56_oss
+    display_name: Sony E 18–55mm F3.5–5.6 OSS（SEL1855）
+    mount: sony_e
+    sensor_formats: [APS-C]
+    focal_min_mm: 18
+    focal_max_mm: 55
+    max_aperture_wide: 3.5
+    max_aperture_tele: 5.6
+    source_url: https://pro.sony/s3/cms-static-content/file/19/1237493267219.pdf
+    checked_at: '2026-10-14'
+  - lens_id: sony_fe_28_70_f35_56_oss
+    display_name: Sony FE 28–70mm F3.5–5.6 OSS（SEL2870）
+    mount: sony_e
+    sensor_formats: [全画幅, APS-C]
+    focal_min_mm: 28
+    focal_max_mm: 70
+    max_aperture_wide: 3.5
+    max_aperture_tele: 5.6
+    source_url: https://pro.sony/s3/cms-static-content/file/19/1237493267219.pdf
+    checked_at: '2026-10-14'
+  - lens_id: fujifilm_xf_18_55_f28_4
+    display_name: Fujifilm XF 18–55mm F2.8–4 R LM OIS
+    mount: fujifilm_x
+    sensor_formats: [APS-C]
+    focal_min_mm: 18
+    focal_max_mm: 55
+    max_aperture_wide: 2.8
+    max_aperture_tele: 4.0
+    source_url: https://dl.fujifilm-x.com/support/manual/lenses/lens_xf10-24_xf18-55_xf55-200_manual_02.pdf
+    checked_at: '2026-10-14'
+    notes: [美国旧规格URL当前正文型号不一致，已改用多镜头官方手册与全球规格页交叉核验。]
+  - lens_id: fujifilm_xc_15_45_f35_56
+    display_name: Fujifilm XC 15–45mm F3.5–5.6 OIS PZ
+    mount: fujifilm_x
+    sensor_formats: [APS-C]
+    focal_min_mm: 15
+    focal_max_mm: 45
+    max_aperture_wide: 3.5
+    max_aperture_tele: 5.6
+    source_url: https://dl.fujifilm-x.com/support/manual/lenses/lens_xc15-45_manual_01.pdf
+    checked_at: '2026-10-14'
+  - lens_id: panasonic_g_12_32_f35_56
+    display_name: Panasonic LUMIX G VARIO 12–32mm F3.5–5.6
+    mount: micro_four_thirds
+    sensor_formats: [M4/3]
+    focal_min_mm: 12
+    focal_max_mm: 32
+    max_aperture_wide: 3.5
+    max_aperture_tele: 5.6
+    source_url: https://help.na.panasonic.com/wp-content/uploads/2023/10/DC-G100_DVQP2173ZB_ENG.pdf
+    checked_at: '2026-10-14'
+    notes: [对应H-FS12032，不默认套用其他12–32镜头版本。]

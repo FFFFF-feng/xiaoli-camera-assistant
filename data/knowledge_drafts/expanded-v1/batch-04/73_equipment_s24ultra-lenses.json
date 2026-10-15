@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-equipment-s24ultra-lenses",
+  "library_id": "equipment",
+  "title": "S24 Ultra：实体镜头与光圈对应关系",
+  "kind": "manufacturer_fact",
+  "content": "核心规则：Galaxy S24 Ultra规格含超广角、主摄及3×/5×长焦。\n建议动作：严格匹配Ultra型号，不继承S24或S24+。；使用不同镜头时单独确认当前模式可用性。\n适用前提：Galaxy S24 Ultra；全球发布规格范围。\n限制与例外：像素与光圈是标称规格，不保证所有模式按标称像素输出。",
+  "payload": {
+    "core_claim": "Galaxy S24 Ultra规格含超广角、主摄及3×/5×长焦。",
+    "goal": "S24 Ultra：实体镜头与光圈对应关系",
+    "requires": [
+      "Galaxy S24 Ultra；全球发布规格范围。"
+    ],
+    "actions": [
+      "严格匹配Ultra型号，不继承S24或S24+。",
+      "使用不同镜头时单独确认当前模式可用性。"
+    ],
+    "limitations": [
+      "像素与光圈是标称规格，不保证所有模式按标称像素输出。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "manufacturer_facts": {
+      "ultrawide": {
+        "advertised_megapixels": 12,
+        "aperture_f_number": 2.2
+      },
+      "main": {
+        "advertised_megapixels": 200,
+        "aperture_f_number": 1.7
+      },
+      "telephoto_3x": {
+        "advertised_megapixels": 10,
+        "aperture_f_number": 2.4
+      },
+      "telephoto_5x": {
+        "advertised_megapixels": 50,
+        "aperture_f_number": 3.4
+      }
+    },
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "samsung-s24",
+          "url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+          "location": "S24 Ultra camera specification table / Footnote 10",
+          "supports": "Ultra相机规格表：12/200/10/50MP与对应光圈。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "equipment",
+    "s24ultra-lenses",
+    "S24 Ultra",
+    "实体镜头与光圈对应关系",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "samsung_galaxy_s24_ultra"
+  },
+  "source": {
+    "name": "Samsung｜Galaxy S24系列发布规格",
+    "url": "https://news.samsung.com/global/enter-the-new-era-of-mobile-ai-with-samsung-galaxy-s24-series",
+    "location": "S24 Ultra camera specification table / Footnote 10",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

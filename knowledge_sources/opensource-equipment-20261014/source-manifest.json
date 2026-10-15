@@ -1,0 +1,536 @@
+{
+  "sources": {
+    "cameradatabase": {
+      "repo": "leavestylecode/CameraDatabase",
+      "commit": "374a630bac7847f851b3746e82aa528262ef0b5c",
+      "license": "MIT",
+      "credit": "CameraDatabase, leavestylecode and contributors",
+      "files": [
+        "data/camera_data.json",
+        "LICENSE",
+        "README.md"
+      ]
+    },
+    "opensfm": {
+      "repo": "mapillary/OpenSfM",
+      "commit": "b25c07b648b49352797125f2b40f9cef28bbac62",
+      "license": "BSD-2-Clause",
+      "credit": "OpenSfM, Mapillary and contributors",
+      "files": [
+        "opensfm/data/sensor_data.json",
+        "opensfm/data/sensor_data.readme.txt",
+        "LICENSE"
+      ]
+    },
+    "zmount": {
+      "repo": "KatsuraIwamoto/z-mount-product-database",
+      "commit": "4a792e661ad85b1527a5447503c0b0ceaf5c4923",
+      "license": "CC-BY-4.0",
+      "credit": "Z Mount Product Database, Katsura Iwamoto",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "files": [
+        "dist/z-mount-lenses.full.json",
+        "dist/z-mount-adapters.full.json",
+        "LICENSING.md",
+        "LICENSES/CC-BY-4.0.txt",
+        "data/LICENSE"
+      ]
+    },
+    "lensfun": {
+      "repo": "lensfun/lensfun",
+      "commit": "43f9e001ab66c4fcdd4f400463f13b72f94b2288",
+      "license": "CC-BY-SA-3.0",
+      "credit": "Lensfun database, Lensfun contributors; see retained XML notices",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "files": [
+        "data/COPYING.CC_BY-SA_3.0",
+        "README.md"
+      ]
+    }
+  },
+  "files": [
+    {
+      "source": "cameradatabase",
+      "path": "data/camera_data.json",
+      "url": "https://raw.githubusercontent.com/leavestylecode/CameraDatabase/374a630bac7847f851b3746e82aa528262ef0b5c/data/camera_data.json",
+      "bytes": 5089199,
+      "sha256": "fc4dc948644ad9b24f4f20ed49a84aaecabf8be50a28148db4e9f80fe26b815d"
+    },
+    {
+      "source": "cameradatabase",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/leavestylecode/CameraDatabase/374a630bac7847f851b3746e82aa528262ef0b5c/LICENSE",
+      "bytes": 1071,
+      "sha256": "97fdf5aa75ead60a24b1f3fba811c1f7b14cbe748a62d576d5e5da115753c13c"
+    },
+    {
+      "source": "cameradatabase",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/leavestylecode/CameraDatabase/374a630bac7847f851b3746e82aa528262ef0b5c/README.md",
+      "bytes": 4307,
+      "sha256": "2eb2ea5940c5a9d8cc93670c788279f6adda73dcc30e1c715eb3c7f2efc085f4"
+    },
+    {
+      "source": "opensfm",
+      "path": "opensfm/data/sensor_data.json",
+      "url": "https://raw.githubusercontent.com/mapillary/OpenSfM/b25c07b648b49352797125f2b40f9cef28bbac62/opensfm/data/sensor_data.json",
+      "bytes": 118506,
+      "sha256": "6b0256a2e78430bd016dc7d3a54db5a3f4ec2a5e5cd5032c85a62e1b2ce0b0f5"
+    },
+    {
+      "source": "opensfm",
+      "path": "opensfm/data/sensor_data.readme.txt",
+      "url": "https://raw.githubusercontent.com/mapillary/OpenSfM/b25c07b648b49352797125f2b40f9cef28bbac62/opensfm/data/sensor_data.readme.txt",
+      "bytes": 1412,
+      "sha256": "f46b641594d0a183c69554dbcdf47c2eae25a44fb9b7f1414a2b67ff8928bc1a"
+    },
+    {
+      "source": "opensfm",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/mapillary/OpenSfM/b25c07b648b49352797125f2b40f9cef28bbac62/LICENSE",
+      "bytes": 1292,
+      "sha256": "541dafb605fb0f23df51c92cd6c8970a4d10d5e7bb7be9e6f91df798d997ec9e"
+    },
+    {
+      "source": "zmount",
+      "path": "dist/z-mount-lenses.full.json",
+      "url": "https://raw.githubusercontent.com/KatsuraIwamoto/z-mount-product-database/4a792e661ad85b1527a5447503c0b0ceaf5c4923/dist/z-mount-lenses.full.json",
+      "bytes": 3103754,
+      "sha256": "25c622ef6a4fceba4e6cf73c30cacdcfd6681bbb3046acc9704295fe544cbdc9"
+    },
+    {
+      "source": "zmount",
+      "path": "dist/z-mount-adapters.full.json",
+      "url": "https://raw.githubusercontent.com/KatsuraIwamoto/z-mount-product-database/4a792e661ad85b1527a5447503c0b0ceaf5c4923/dist/z-mount-adapters.full.json",
+      "bytes": 930982,
+      "sha256": "eb18b5a779bffe77c416307900bb3225f7a14005cb46a61d6a31a1862be1c960"
+    },
+    {
+      "source": "zmount",
+      "path": "LICENSING.md",
+      "url": "https://raw.githubusercontent.com/KatsuraIwamoto/z-mount-product-database/4a792e661ad85b1527a5447503c0b0ceaf5c4923/LICENSING.md",
+      "bytes": 6535,
+      "sha256": "0e91421b8a77d9ab44779561a6e13746480ffdf740f55164315572fe8b09bfb8"
+    },
+    {
+      "source": "zmount",
+      "path": "LICENSES/CC-BY-4.0.txt",
+      "url": "https://raw.githubusercontent.com/KatsuraIwamoto/z-mount-product-database/4a792e661ad85b1527a5447503c0b0ceaf5c4923/LICENSES/CC-BY-4.0.txt",
+      "bytes": 17023,
+      "sha256": "d557539df68e771cc1eedcc91d13f70fca930e508d11eedcafa4b15db49e3744"
+    },
+    {
+      "source": "zmount",
+      "path": "data/LICENSE",
+      "url": "https://raw.githubusercontent.com/KatsuraIwamoto/z-mount-product-database/4a792e661ad85b1527a5447503c0b0ceaf5c4923/data/LICENSE",
+      "bytes": 797,
+      "sha256": "6a8f1640cadb794cef6b8b8c75fbf64bc6a05a2195f0a52e3cfd584cacc9025d"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/COPYING.CC_BY-SA_3.0",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/COPYING.CC_BY-SA_3.0",
+      "bytes": 22240,
+      "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+    },
+    {
+      "source": "lensfun",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/README.md",
+      "bytes": 6873,
+      "sha256": "5e13aab274d8f648c7baa6fd8bf5f8323898fdeee5c618fc1476aba07187a3ed"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/6x6.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/6x6.xml",
+      "bytes": 29550,
+      "sha256": "ca13c2756b32d728675372695c072517a0e38af5eff2ecd3e17599dee7fc58b3"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/actioncams.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/actioncams.xml",
+      "bytes": 17188,
+      "sha256": "79a5da0322574b95690464444c9d9ba1da0e1f827da44fd6bff120a0ec10e4b4"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-canon.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-canon.xml",
+      "bytes": 247046,
+      "sha256": "bae47e4b3a0f8852641038ae2dcca5b28ed7965e65ca795fd676f9de857c4670"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-casio.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-casio.xml",
+      "bytes": 6889,
+      "sha256": "ab35433879c4574ef8f97cd4e3d114d7ff8db4e7279da9d502fc9e911b51ee27"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-fujifilm.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-fujifilm.xml",
+      "bytes": 67954,
+      "sha256": "58af9ebef2410c428ae2c5d01003d2247330d47d918823e63522b4d897a997d1"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-kodak.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-kodak.xml",
+      "bytes": 2091,
+      "sha256": "377018ccd74f58e966b37a11e5a8689be4268153bebece9f1f2a0dbfa8234845"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-konica-minolta.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-konica-minolta.xml",
+      "bytes": 13349,
+      "sha256": "832a7473951ab625e10c48af6cf60f89b57280016d45729e2584cf9e41ad3cc7"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-leica.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-leica.xml",
+      "bytes": 9113,
+      "sha256": "8e4676679377576dc19e7900ce86fc69b0248ea1d4538aa22ee1ee09431a3be3"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-nikon.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-nikon.xml",
+      "bytes": 40003,
+      "sha256": "5393bdb8223e13d21b85818e96571e97c035470b49b0452dfcedc2e1ff512d3b"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-olympus.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-olympus.xml",
+      "bytes": 34454,
+      "sha256": "7637d469ad54a02ebce9492a9aa9424a2ff1ec07b0398158076f762fdc08389b"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-panasonic.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-panasonic.xml",
+      "bytes": 70621,
+      "sha256": "f191fc2a5d49fb50c06f4c399ee8c1a83a05f93a0efaecd352ec5c1479b8e60b"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-pentax.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-pentax.xml",
+      "bytes": 6689,
+      "sha256": "596fae3edaadcf2d90ae930fc1bec42597ca0b2bd11842e686e1b915f3736390"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-ricoh.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-ricoh.xml",
+      "bytes": 18424,
+      "sha256": "46df96ebc367d5170cb6b7dfc3742093f0ad946264518fc5488573ba052f29d7"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-samsung.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-samsung.xml",
+      "bytes": 13875,
+      "sha256": "36e3a778046d56385c387d48474cd32a89a5da94d99e640b5ce716ce747f898d"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-sigma.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-sigma.xml",
+      "bytes": 2395,
+      "sha256": "0ddc265e3e580da05dcd4664d1b9c2464838d74dd02519c826520950c8f1759e"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/compact-sony.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/compact-sony.xml",
+      "bytes": 126229,
+      "sha256": "be146388b4f6f7bf0d73394e20386ce6ccef3559ab39f1268ba3c14aaef03207"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/contax.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/contax.xml",
+      "bytes": 1696,
+      "sha256": "5eba12e6fd4913470afb6fe25fee47a263084b6cec830297273909872f47669a"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/generic.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/generic.xml",
+      "bytes": 5416,
+      "sha256": "cd572d4110981546b2c4cd296c2ff16755b30063fa136d8b06ad2ca13ab4c59f"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-canon.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-canon.xml",
+      "bytes": 247994,
+      "sha256": "2de8e9467a6af6f83cc9da834d3d3b94d1aaf54519f60c68ac6bc02780a77516"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-fujifilm.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-fujifilm.xml",
+      "bytes": 210586,
+      "sha256": "64586336153b948fe2325f6c46679149a4e3c114a70bee4bd1de88721cb4de72"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-hasselblad.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-hasselblad.xml",
+      "bytes": 1048,
+      "sha256": "13e1fa55d36c2ed7d22964c21ce6c21d887bfe4506e840e425da1ce4157c3756"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-leica.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-leica.xml",
+      "bytes": 11663,
+      "sha256": "c691037e2e0743388473c2a0545e340462c412b7e3b57e451f4f9c89dde2388a"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-nikon.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-nikon.xml",
+      "bytes": 178941,
+      "sha256": "dcae5ec2e505411a7f00b6b8dd03825e55620403b558b156be15e9ddfbeaf159"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-olympus.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-olympus.xml",
+      "bytes": 147123,
+      "sha256": "989a3d88ef07a286efc2755df214792fdf71d60366932a1b369a77ad39cf2abb"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-panasonic.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-panasonic.xml",
+      "bytes": 299264,
+      "sha256": "eb5f01f33e65721f3900786d5970c7e220dd042aaa56968be33c009a358ff3c5"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-pentax.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-pentax.xml",
+      "bytes": 1385,
+      "sha256": "675a94f52794868ad9f1d79e17b7128783c34b3db23e9eac346c5963812a16e5"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-samsung.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-samsung.xml",
+      "bytes": 13007,
+      "sha256": "10130e9e125e0882a16fd3033cfed0175e9c14cb7d35e630cdb94736f27e5dc3"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-samyang.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-samyang.xml",
+      "bytes": 25990,
+      "sha256": "ae3bf262f12facdc6f81b837cf6d36fdde2a930d2bfb0918d5abaa47fcfea3ab"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-sigma.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-sigma.xml",
+      "bytes": 126080,
+      "sha256": "5f39b232efba5c208e5a98d8afe92cb2eee879213322d47827fcc6f0dc3a06f9"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-sony.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-sony.xml",
+      "bytes": 274541,
+      "sha256": "f9f7e5d7461ac58f76eb55dcc5b211f2e9a451402ddb4a9ecb12d1e4dc04f2b8"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-tamron.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-tamron.xml",
+      "bytes": 106950,
+      "sha256": "2f0c9c4dfb9b0419ba0fac2e618bc251c2e71e068b6e09a23d7994b0ff62db0a"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-tokina.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-tokina.xml",
+      "bytes": 1014,
+      "sha256": "addb27bd82b0d729644b9da1342f92401f63cc5945309ed17f38f4b7af1649e3"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/mil-zeiss.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/mil-zeiss.xml",
+      "bytes": 19171,
+      "sha256": "ef8a238904fc9ea6fdb6171863dfd70cd94814af19ecd8c31ee000ca1864589d"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/misc.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/misc.xml",
+      "bytes": 176039,
+      "sha256": "2000a347d9dc37d908ea5b56c760de5b2b4ab475857959ae2e901c31339b01bb"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/om-system.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/om-system.xml",
+      "bytes": 35344,
+      "sha256": "a53a627e6ba79fbabb0fa7552ce2b6e56e206425d2eaf0e8ccdb6b8c40c20755"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/rf-leica.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/rf-leica.xml",
+      "bytes": 6712,
+      "sha256": "f93636e1980ad308d1873cc3ac078cdc77c0d529d777cd45c5c8d0e4781981e3"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-canon.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-canon.xml",
+      "bytes": 780353,
+      "sha256": "5244e6df8f2522f829c57e2073313ce31a624e9ed9605310fe43613b9d588c99"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-hasselblad.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-hasselblad.xml",
+      "bytes": 642,
+      "sha256": "97602c467699904bf101179ea2fa24f05f3e1879250498a6ba306cd95a3b7a6b"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-konica-minolta.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-konica-minolta.xml",
+      "bytes": 47170,
+      "sha256": "5639ca94f121f609247c2c120b65830b3ef7784db6ecfa7e8eb3d29ff5046c1b"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-leica.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-leica.xml",
+      "bytes": 432,
+      "sha256": "c5e74cb511712e99ed60a066e85c842fea58f693c5039c3819485619f5293d0e"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-nikon.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-nikon.xml",
+      "bytes": 550157,
+      "sha256": "5e591e8b1032203cce4c822f1da3d49524a78e7d71c594ea5a4533f2e57aacdf"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-olympus.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-olympus.xml",
+      "bytes": 116602,
+      "sha256": "f7693b6779edd8ed10d7dc23113669255bfa4987cea7db0e843f7f5f2bbbe615"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-panasonic.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-panasonic.xml",
+      "bytes": 419,
+      "sha256": "cd79acb49d9ce5f2a4cecc572b3e117f03da380bed2dcbfd52327192d8ce2381"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-pentax.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-pentax.xml",
+      "bytes": 209552,
+      "sha256": "2fba773e41a1cfb70f0c85efdab6d78944bf80ddf89bc2035ef6db39da352f29"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-ricoh.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-ricoh.xml",
+      "bytes": 2869,
+      "sha256": "c835798136a53535fdf4f81312ac9aad0ea3de3ef732c183d8cc4d2f432011d9"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-samsung.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-samsung.xml",
+      "bytes": 1110,
+      "sha256": "dc0a29e424ff96e4316ddeb76126fa6f6c73a8836905a3e1f56f0c493826148f"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-samyang.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-samyang.xml",
+      "bytes": 16811,
+      "sha256": "fb1585bea91f5f59e1fae8811dd76c92252ee5d52e3647df2aff4695048443b5"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-schneider.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-schneider.xml",
+      "bytes": 5890,
+      "sha256": "de607cfe4ba6e7debc61e282ce39b72825c07601572e14af2bc9108ba67faf81"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-sigma.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-sigma.xml",
+      "bytes": 444640,
+      "sha256": "f55f41c144fbb72e3c51d2dfef40e918930d37db1b4150bd02bd746406c036d2"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-soligor.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-soligor.xml",
+      "bytes": 573,
+      "sha256": "1aba0aab19bce87ea86175b6551cb5306a512eb54be1698b89991b86008f6a04"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-sony.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-sony.xml",
+      "bytes": 88865,
+      "sha256": "e5ca7f532afe23ff380bf2f9e5458f687bed603355d73a254d85c4e692942fdc"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-tamron.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-tamron.xml",
+      "bytes": 201992,
+      "sha256": "c62090789cebe6bbb663111c6e97beeb1111852bb735088e29cf8782df4bab45"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-tokina.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-tokina.xml",
+      "bytes": 91977,
+      "sha256": "b1213eda81a613bc3976340398c6b8ce8b7dc29423476fc565d5f8e5cf612ecf"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-ussr.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-ussr.xml",
+      "bytes": 19024,
+      "sha256": "1fd6acc8a8f40373379bea2899ffd96fc34b22d9b044d0474dabd4c89af44efb"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-vivitar.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-vivitar.xml",
+      "bytes": 2157,
+      "sha256": "c5c67e3fe38e8fa19044acadc7730047690435f66aac563f55ffe04997a88111"
+    },
+    {
+      "source": "lensfun",
+      "path": "data/db/slr-zeiss.xml",
+      "url": "https://raw.githubusercontent.com/lensfun/lensfun/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-zeiss.xml",
+      "bytes": 14957,
+      "sha256": "49aa211a41fd5fe391d26af5fa65bdf9428d60863ffff15d3916fa1c520dc101"
+    }
+  ]
+}

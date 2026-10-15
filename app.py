@@ -26,8 +26,8 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-SESSION_SCHEMA_VERSION = 9
-PIPELINE_RESOURCE_VERSION = 8
+SESSION_SCHEMA_VERSION = 10
+PIPELINE_RESOURCE_VERSION = 9
 
 
 def migrate_session_state() -> None:
@@ -64,6 +64,43 @@ def escaped(value: object) -> str:
 def clear_device_result() -> None:
     st.session_state.pop("last_result", None)
     st.session_state["phone_pro_confirm"] = False
+
+
+def clear_camera_lens_result() -> None:
+    clear_device_result()
+    st.session_state.pop("camera_focal", None)
+
+
+def clear_phone_equipment() -> None:
+    clear_device_result()
+    for key in ("phone_lens", "phone_mode"):
+        st.session_state.pop(key, None)
+
+
+def clear_camera_equipment() -> None:
+    clear_camera_lens_result()
+    for key in (
+        "camera_lens",
+        "camera_custom_focal",
+        "camera_custom_aperture",
+        "camera_sensor_manual",
+    ):
+        st.session_state.pop(key, None)
+
+
+def sensor_label(value: str) -> str:
+    return "APS-C（半画幅）" if value == "APS-C" else value
+
+
+MOUNT_NAMES = {
+    "canon_rf": "Canon RF / RF-S",
+    "canon_ef": "Canon EF / EF-S",
+    "nikon_z": "Nikon Z",
+    "sony_e": "Sony E / FE",
+    "fujifilm_x": "Fujifilm X",
+    "micro_four_thirds": "Micro Four Thirds",
+    "unknown": "卡口未确认",
+}
 
 
 def render_header(settings: Settings) -> None:
@@ -339,7 +376,12 @@ def render_result(result: PipelineResult) -> None:
         with st.expander("机型能力匹配"):
             if isinstance(camera_profile, PhoneProfile):
                 st.write(f"**{camera_profile.display_name}** · {camera_profile.native_app}")
-                st.caption(f"资料核对：{camera_profile.checked_at}；{camera_profile.region_scope}")
+                if camera_profile.profile_id == "generic_phone":
+                    st.caption("能力未收录；以下是通用操作，不是该型号的已核实规格。")
+                else:
+                    st.caption(
+                        f"资料核对：{camera_profile.checked_at}；{camera_profile.region_scope}"
+                    )
                 for lens in camera_profile.lenses:
                     aperture = f"f/{lens.aperture:g}" if lens.aperture else "光圈未知"
                     st.write(f"{lens.name}：{aperture}（{lens.aperture_control}）")
@@ -349,11 +391,37 @@ def render_result(result: PipelineResult) -> None:
                     st.markdown(f"[官方资料 {index}]({url})")
             else:
                 render_camera_details(camera_profile)
+    equipment = getattr(result, "equipment_settings", None)
+    if equipment and equipment.camera_lens:
+        st.caption(
+            f"本次镜头：{equipment.camera_lens.display_name}；实际 {equipment.focal_length_mm}mm，约 {equipment.equivalent_focal_length_mm:g}mm 全画幅等效视角。"
+        )
 
     render_knowledge_and_image(result)
 
 
 def render_camera_details(camera_profile) -> None:
+    if camera_profile.capability_level == "catalog":
+        st.write(f"{camera_profile.display_name} · 基础目录，硬件能力待核验")
+        if camera_profile.catalog_sensor_label:
+            st.caption(f"来源传感器记录：{camera_profile.catalog_sensor_label}；仅供复核，不作为参数边界。")
+        for source in camera_profile.catalog_sources:
+            st.markdown(f"[资料来源 · {source['license']}]({source['url']})")
+        return
+    if camera_profile.profile_id.startswith("generic_"):
+        st.write(camera_profile.display_name)
+        st.info("未匹配具体机型能力资料。参数仅是通用试拍起点，请核对实际相机与镜头可用范围。")
+        for note in camera_profile.notes:
+            st.write(f"- {note}")
+        return
+    if camera_profile.capability_level == "basic":
+        st.write(f"{camera_profile.display_name} · {sensor_label(camera_profile.sensor_format)}")
+        st.caption(
+            f"原生卡口：{MOUNT_NAMES.get(camera_profile.mount, camera_profile.mount)}；仅核对画幅与卡口，曝光边界尚待补充。"
+        )
+        if camera_profile.source_url:
+            st.markdown(f"[官方资料]({camera_profile.source_url})")
+        return
     st.write(
         f"**{camera_profile.display_name}** · {camera_profile.sensor_format} · "
         f"等效系数 {camera_profile.crop_factor:g}×"
@@ -364,7 +432,7 @@ def render_camera_details(camera_profile) -> None:
     )
     st.write(
         f"机械快门最高 1/{camera_profile.max_mechanical_shutter}s；"
-        f"机身防抖标称 {camera_profile.ibis_stops:g} 挡。"
+        f"机身防抖标称 {camera_profile.ibis_stops or 0:g} 挡。"
     )
     for note in camera_profile.notes:
         st.write(f"- {note}")
@@ -417,7 +485,10 @@ except Exception:  # noqa: BLE001 - 页面边界统一脱敏，避免异常自�
     st.stop()
 render_header(settings)
 camera_profiles = pipeline.camera_knowledge.list_profiles()
-camera_profile_names = {profile.profile_id: profile.display_name for profile in camera_profiles}
+known_camera_count = sum(not p.profile_id.startswith("generic_") for p in camera_profiles)
+known_phone_count = sum(
+    p.profile_id != "generic_phone" for p in pipeline.phone_knowledge.list_profiles()
+)
 
 st.markdown('<div class="section-anchor" id="shoot"></div>', unsafe_allow_html=True)
 with st.container(border=True):
@@ -444,14 +515,44 @@ with st.container(border=True):
     phone_capture_mode = "auto"
     phone_lens_id = "main"
     phone_pro_confirm = False
+    camera_profile_id = "generic_unknown"
+    camera_lens_id = ""
+    camera_format = "不清楚"
+    focal_length = 0
+    max_aperture = 0.0
+    device_model_name = ""
+    st.caption(
+        f"可搜索 {known_camera_count} 个相机目录项、{known_phone_count} 款手机；基础目录不代表完成调参适配。"
+        "找不到型号也可填写使用，但只提供通用指导。"
+    )
     if device_name == "手机":
+        phone_brands = [
+            "全部品牌",
+            *sorted(
+                {
+                    p.brand
+                    for p in pipeline.phone_knowledge.list_profiles()
+                    if p.profile_id != "generic_phone"
+                }
+            ),
+        ]
+        phone_brand = st.selectbox(
+            "手机品牌", phone_brands, key="phone_brand", on_change=clear_phone_equipment
+        )
         model_query = st.text_input(
             "查找手机型号",
             placeholder="例如 iPhone 15、三星 S24 Ultra、小米14",
             key="phone_model_query",
-            on_change=clear_device_result,
+            max_chars=120,
+            on_change=clear_phone_equipment,
         )
         phone_matches = pipeline.phone_knowledge.search(model_query)
+        if phone_brand != "全部品牌":
+            phone_matches = [
+                p
+                for p in phone_matches
+                if p.brand == phone_brand or p.profile_id == "generic_phone"
+            ]
         if not phone_matches:
             st.info("该型号还未收录。会提供保守操作，不套用相近型号规格；可交给队员补充官方资料。")
             phone_matches = [pipeline.phone_knowledge.resolve("generic_phone")]
@@ -461,17 +562,22 @@ with st.container(border=True):
             list(phone_names),
             format_func=phone_names.get,
             key="phone_model",
-            on_change=clear_device_result,
+            on_change=clear_phone_equipment,
         )
         selected_phone = pipeline.phone_knowledge.resolve(phone_profile_id)
+        if phone_profile_id == "generic_phone":
+            if model_query.strip() and not pipeline.phone_knowledge.search(model_query):
+                device_model_name = model_query.strip()
+                st.caption(f"将保留型号“{device_model_name}”，能力未收录，不套用其他手机。")
+            else:
+                device_model_name = st.text_input(
+                    "填写手机完整型号（选填）",
+                    placeholder="例如 vivo X100 Pro、荣耀 Magic6 Pro",
+                    max_chars=120,
+                    key="phone_manual_model",
+                    on_change=clear_device_result,
+                ).strip()
         st.caption("请核对完整型号后缀；基础版、Pro、Ultra等不能互相替代。")
-        phone_capture_mode = st.selectbox(
-            "当前拍摄模式",
-            selected_phone.modes,
-            format_func=PHONE_MODE_NAMES.get,
-            key="phone_mode",
-            on_change=clear_device_result,
-        )
         lens_names = {lens.lens_id: lens.name for lens in selected_phone.lenses}
         phone_lens_id = st.selectbox(
             "当前后置镜头",
@@ -480,8 +586,156 @@ with st.container(border=True):
             key="phone_lens",
             on_change=clear_device_result,
         )
+        selected_phone_lens = next(
+            lens for lens in selected_phone.lenses if lens.lens_id == phone_lens_id
+        )
+        lens_modes = [mode for mode in selected_phone.modes if mode in selected_phone_lens.modes]
+        phone_capture_mode = st.selectbox(
+            "当前拍摄模式",
+            lens_modes,
+            format_func=PHONE_MODE_NAMES.get,
+            key="phone_mode",
+            on_change=clear_device_result,
+        )
+        aperture_text = (
+            f"f/{selected_phone_lens.aperture:g}" if selected_phone_lens.aperture else "光圈未知"
+        )
+        if selected_phone_lens.aperture_max:
+            aperture_text += f"–f/{selected_phone_lens.aperture_max:g}（可变范围）"
+        focal_text = (
+            f"约 {selected_phone_lens.equivalent_focal_length_mm:g}mm 等效"
+            if selected_phone_lens.equivalent_focal_length_mm
+            else "等效焦距待核验"
+        )
+        st.caption(
+            f"当前镜头：{aperture_text} · {focal_text}。只列本镜头已录入的模式组合，未列出不等于不支持。"
+        )
         st.caption("本版只适配原生相机；第三方应用、前置相机、实时控制与HEIC暂未支持。")
         st.caption("手机资料核对不等于真机验证；模式/镜头不可用时请切回照片模式。")
+    else:
+        camera_brands = [
+            "全部品牌",
+            *sorted({p.brand for p in camera_profiles if not p.profile_id.startswith("generic_")}),
+        ]
+        camera_brand = st.selectbox(
+            "相机品牌", camera_brands, key="camera_brand", on_change=clear_camera_equipment
+        )
+        camera_query = st.text_input(
+            "查找相机型号",
+            placeholder="输入完整型号或品牌，例如佳能R50、索尼",
+            max_chars=120,
+            key="camera_model_query",
+            on_change=clear_camera_equipment,
+        )
+        camera_matches = pipeline.camera_knowledge.search(camera_query)
+        if camera_brand != "全部品牌":
+            camera_matches = [
+                p
+                for p in camera_matches
+                if p.brand == camera_brand or p.profile_id.startswith("generic_")
+            ]
+        if not camera_matches:
+            st.info("该相机型号还未收录。会保留填写的名称，并使用通用试拍起点。")
+            camera_matches = [pipeline.camera_knowledge.resolve("generic_unknown", "不清楚")]
+            device_model_name = camera_query.strip()
+        camera_names = {p.profile_id: p.display_name + ("（基础目录）" if p.capability_level == "catalog" else "") for p in camera_matches}
+        camera_profile_id = st.selectbox(
+            "相机型号",
+            list(camera_names),
+            format_func=camera_names.get,
+            key="camera_model",
+            on_change=clear_camera_equipment,
+            help="仅对已收录机型使用具体能力资料；未收录型号不继承相近型号规格。",
+        )
+        if camera_profile_id.startswith("generic_") and not device_model_name:
+            device_model_name = st.text_input(
+                "填写相机完整型号（选填）",
+                max_chars=120,
+                key="camera_manual_model",
+                on_change=clear_device_result,
+                placeholder="例如 Canon EOS R8、Sony α7 IV",
+            ).strip()
+        selected_camera = pipeline.camera_knowledge.resolve(
+            device_model_name or camera_profile_id, "不清楚"
+        )
+        if selected_camera.capability_level == "catalog":
+            st.info("已匹配基础目录；规格尚未核验，不自动套用其他型号的镜头或曝光范围。")
+            if selected_camera.catalog_sensor_label:
+                st.caption(f"来源传感器记录：{selected_camera.catalog_sensor_label}（仅供复核）")
+        if selected_camera.profile_id.startswith("generic_") or selected_camera.capability_level == "catalog":
+            camera_format = st.selectbox(
+                "相机画幅",
+                ["不清楚", "全画幅", "APS-C", "M4/3"],
+                index=["不清楚", "全画幅", "APS-C", "M4/3"].index(selected_camera.sensor_format),
+                key="camera_sensor_manual",
+                on_change=clear_device_result,
+            )
+        else:
+            camera_format = selected_camera.sensor_format
+            st.text_input(
+                "相机画幅（自动匹配）",
+                sensor_label(camera_format),
+                disabled=True,
+                key=f"camera_sensor_{selected_camera.profile_id}",
+            )
+            st.caption(
+                f"原生卡口：{MOUNT_NAMES.get(selected_camera.mount, selected_camera.mount)}。以下只列原生画幅兼容镜头，不默认使用转接环或裁切。"
+            )
+        compatible_lenses = pipeline.lens_knowledge.for_camera(selected_camera)
+        lens_options = {
+            "": "未选择 / 自定义镜头",
+            **{lens.lens_id: lens.display_name for lens in compatible_lenses},
+        }
+        camera_lens_id = st.selectbox(
+            "实际安装镜头",
+            list(lens_options),
+            format_func=lens_options.get,
+            key="camera_lens",
+            on_change=clear_camera_lens_result,
+        )
+        selected_lens = next(
+            (lens for lens in compatible_lenses if lens.lens_id == camera_lens_id), None
+        )
+        if selected_lens:
+            if selected_lens.focal_min_mm == selected_lens.focal_max_mm:
+                focal_length = selected_lens.focal_min_mm
+                st.caption(f"定焦镜头：实际焦距 {focal_length}mm")
+            else:
+                focal_length = st.slider(
+                    "当前实际焦距（mm）",
+                    selected_lens.focal_min_mm,
+                    selected_lens.focal_max_mm,
+                    value=selected_lens.focal_min_mm,
+                    key="camera_focal",
+                    on_change=clear_device_result,
+                )
+            max_aperture = selected_lens.conservative_aperture(focal_length)
+            st.caption(
+                f"实际 {focal_length}mm → 约 {focal_length * selected_camera.crop_factor:g}mm 全画幅等效视角；保守可用光圈起点 f/{max_aperture:g}。不是建议你把镜头调到最大焦距。"
+            )
+            if selected_lens.max_aperture_wide != selected_lens.max_aperture_tele:
+                st.caption(
+                    "变焦中间段未录入逐档最大光圈曲线，非广角端按长焦端值保守处理；实际以镜头界面为准。"
+                )
+        else:
+            st.caption("请选择你实际安装的镜头；未收录可自行填写实际焦距，不根据机身猜套头。")
+            focal_length = st.number_input(
+                "当前焦段（mm，可选）",
+                min_value=0,
+                max_value=1200,
+                value=0,
+                key="camera_custom_focal",
+                on_change=clear_device_result,
+            )
+            max_aperture = st.number_input(
+                "镜头最大光圈（可选）",
+                min_value=0.0,
+                max_value=32.0,
+                value=0.0,
+                step=0.1,
+                key="camera_custom_aperture",
+                on_change=clear_device_result,
+            )
 
     with st.form("recommendation_form"):
         intent = st.text_area(
@@ -495,10 +749,6 @@ with st.container(border=True):
         )
         capture_mode = st.radio("怎么拍？", ["手持", "三脚架"], horizontal=True)
 
-        camera_profile_id = "generic_unknown"
-        camera_format = "不清楚"
-        focal_length = 0
-        max_aperture = 0.0
         target_model_name = None
         target_lens_name = None
         camera_app = None
@@ -507,46 +757,12 @@ with st.container(border=True):
         drive_mode = None
         focus_mode = None
         lighting_type = None
-        if device_name == "手机" and phone_capture_mode == "pro":
+        if device_name == "手机" and phone_capture_mode == "pro" and selected_phone.pro_controls:
             phone_pro_confirm = st.checkbox(
                 "当前原生专业模式及所选镜头确实有 ISO、S/SPEED、WB、F 控件",
                 key="phone_pro_confirm",
                 help="只有已确认控制项才会提供方向性手动指导；本版不编造ISO/快门上下限。",
             )
-        render_camera_inputs = device_name == "相机"
-        with (
-            st.expander("相机与镜头（选填）", expanded=False)
-            if render_camera_inputs
-            else st.container()
-        ):
-            if render_camera_inputs:
-                camera_profile_id = st.selectbox(
-                    "相机型号",
-                    options=list(camera_profile_names),
-                    format_func=lambda profile_id: camera_profile_names[profile_id],
-                    help="选择具体机型后，系统会自动使用对应画幅、ISO、快门、防抖和对焦术语。",
-                )
-                camera_format = st.selectbox("相机画幅", ["不清楚", "全画幅", "APS-C", "M4/3"])
-                focal_length = st.number_input(
-                    "当前焦段（mm，可选）", min_value=0, max_value=1200, value=0
-                )
-                max_aperture = st.number_input(
-                    "镜头最大光圈（可选）",
-                    min_value=0.0,
-                    max_value=32.0,
-                    value=0.0,
-                    step=0.1,
-                )
-                if camera_profile_id.startswith("generic_"):
-                    target_model_name = st.text_input(
-                        "其他相机的完整型号（可选）", max_chars=120,
-                        help="用于匹配资料；未收录型号仍使用通用器材边界，不套用其他机型能力。",
-                    ) or None
-                target_lens_name = st.text_input(
-                    "镜头完整型号（可选）", max_chars=160,
-                    help="例如 RF50mm F1.8 STM；只填写你实际使用的镜头。",
-                ) or None
-
         with st.expander("拍摄条件补充（选填）"):
             st.caption("只填写已确认的信息；不清楚的项目留空，相关专用资料会保守排除。")
             if device_name == "手机":
@@ -613,6 +829,8 @@ with st.container(border=True):
                     tripod=tripod,
                     camera_format=camera_format,
                     camera_profile_id=camera_profile_id,
+                    camera_lens_id=camera_lens_id,
+                    device_model_name=device_model_name,
                     focal_length_mm=focal_length or None,
                     max_aperture=max_aperture or None,
                     device_type="phone" if device_name == "手机" else "camera",

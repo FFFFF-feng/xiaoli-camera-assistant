@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "web-research-codex-20261013-equipment-iphone15-timer",
+  "library_id": "equipment",
+  "title": "iPhone 15：原生相机计时器用于延迟拍摄，时长按系统界面确认",
+  "kind": "manufacturer_fact",
+  "content": "iPhone原生相机提供计时器，可在按下快门后预留进入画面的时间。\n适用前提：已确认普通iPhone 15及Apple原生相机；当前照片界面可找到计时器；手机已安全放置且取景确认。\n建议动作：从屏幕相机工具中找到计时器；依据实际可选项设置延迟，按快门后进入画面；不再需要延迟时将计时器关闭。\n限制与例外：本卡只把通用计时功能用于已收录iPhone 15，不继承其他机型专属硬件控制；不把某一系统页面的时长列表当所有iOS版本的固定列表；计时器不会自动保证合焦或所有人的表情；没有做真机操作测试。",
+  "payload": {
+    "batch_id": "web-research-codex-20261013",
+    "core_claim": "iPhone原生相机提供计时器，可在按下快门后预留进入画面的时间。",
+    "goal": "iPhone 15：原生相机计时器用于延迟拍摄，时长按系统界面确认",
+    "requires": [
+      "已确认普通iPhone 15及Apple原生相机",
+      "当前照片界面可找到计时器",
+      "手机已安全放置且取景确认"
+    ],
+    "actions": [
+      "从屏幕相机工具中找到计时器",
+      "依据实际可选项设置延迟，按快门后进入画面",
+      "不再需要延迟时将计时器关闭"
+    ],
+    "limitations": [
+      "本卡只把通用计时功能用于已收录iPhone 15，不继承其他机型专属硬件控制",
+      "不把某一系统页面的时长列表当所有iOS版本的固定列表",
+      "计时器不会自动保证合焦或所有人的表情；没有做真机操作测试"
+    ],
+    "suggested_text": "可以用计时器给自己留出进入画面的时间；先稳固手机并确认构图，再按当前界面选择延迟。",
+    "numeric_default": null,
+    "automatic_execution": false,
+    "device_scope": {
+      "model": "iPhone 15",
+      "profile_id": "apple_iphone_15",
+      "app": "Apple原生相机／对应照片编辑",
+      "user_ios_version": "not_reported",
+      "interface_requires_user_confirmation": true
+    },
+    "verification": {
+      "checked_at": "2026-10-13",
+      "status": "primary_source_only",
+      "scope": "只核对evidence逐项标明的主张，不把相关来源数量当成整卡全部获得交叉认证。",
+      "inference_note": "安全提醒、视觉不确定时处理和结果检查包含整理者归纳，未做真机或实拍测定；不是原文逐字流程。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "apple-tools",
+          "url": "https://support.apple.com/zh-cn/guide/iphone/iph3dc593597/ios",
+          "location": "使用计时器",
+          "read_status": "body_read",
+          "supports": "官方通用iPhone说明支持延迟拍摄与关闭功能；用户系统版本和具体可选项仍待核对。"
+        }
+      ]
+    },
+    "rights": {
+      "retrieval_use": "pending",
+      "public_display": "pending",
+      "redistribution": "pending",
+      "original_media_saved": false
+    }
+  },
+  "tags": [
+    "iPhone 15",
+    "计时器",
+    "自拍",
+    "原生相机",
+    "MCP采集20261013"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "apple_iphone_15",
+    "phone_capture_mode": "auto"
+  },
+  "source": {
+    "name": "Apple｜使用 iPhone 相机工具设置照片",
+    "url": "https://support.apple.com/zh-cn/guide/iphone/iph3dc593597/ios",
+    "location": "使用计时器",
+    "license": "原创短归纳与出处；未保存或再分发原文和媒体，计划检索及公开用途待独立核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料采集助手（AI整理，待队友独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

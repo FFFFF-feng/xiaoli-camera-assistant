@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-manual-autoiso",
+  "library_id": "technique",
+  "title": "M与Auto ISO：先确认到底谁在自动变化",
+  "kind": "guideline",
+  "content": "核心规则：M模式下光圈和快门手动；部分设备仍可使用自动ISO。\n建议动作：观察ISO是否随场景变化，不仅看模式字母M。；如果要锁定成片表现，明确记录三项与补偿状态。\n适用前提：用户有实际机型手册和当前菜单状态。\n限制与例外：M加Auto ISO与补偿行为依机型；不声称M必定全手动。",
+  "payload": {
+    "core_claim": "M模式下光圈和快门手动；部分设备仍可使用自动ISO。",
+    "goal": "M与Auto ISO：先确认到底谁在自动变化",
+    "requires": [
+      "用户有实际机型手册和当前菜单状态。"
+    ],
+    "actions": [
+      "观察ISO是否随场景变化，不仅看模式字母M。",
+      "如果要锁定成片表现，明确记录三项与补偿状态。"
+    ],
+    "limitations": [
+      "M加Auto ISO与补偿行为依机型；不声称M必定全手动。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-manual",
+          "url": "https://www.sony.com/electronics/support/articles/00267933",
+          "location": "Manual Exposure",
+          "supports": "M模式与可选Auto ISO。"
+        },
+        {
+          "source_id": "nikon-autoiso",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-auto-iso",
+          "location": "Maximum sensitivity / Minimum shutter speed",
+          "supports": "Auto ISO可在具体手动曝光示例中使用。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "technique",
+    "manual-autoiso",
+    "M与Auto ISO",
+    "先确认到底谁在自动变化",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Sony｜M模式与手动曝光",
+    "url": "https://www.sony.com/electronics/support/articles/00267933",
+    "location": "Manual Exposure",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

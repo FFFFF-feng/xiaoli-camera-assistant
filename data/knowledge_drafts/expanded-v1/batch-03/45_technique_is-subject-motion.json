@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-is-subject-motion",
+  "library_id": "technique",
+  "title": "防抖：不能替代冻结主体所需的曝光时间",
+  "kind": "guideline",
+  "content": "核心规则：相机或镜头防抖针对机震，不使移动主体静止。\n建议动作：确认当前防抖能力，再独立判断主体运动。；拍运动主体时仍放大检查拖影。\n适用前提：设备有已确认防抖；主体运动有信息。\n限制与例外：不能按宣传挡数直接推算可靠手持快门；本建议为机制综合。",
+  "payload": {
+    "core_claim": "相机或镜头防抖针对机震，不使移动主体静止。",
+    "goal": "防抖：不能替代冻结主体所需的曝光时间",
+    "requires": [
+      "设备有已确认防抖；主体运动有信息。"
+    ],
+    "actions": [
+      "确认当前防抖能力，再独立判断主体运动。",
+      "拍运动主体时仍放大检查拖影。"
+    ],
+    "limitations": [
+      "不能按宣传挡数直接推算可靠手持快门；本建议为机制综合。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "canon-is",
+          "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/correction/index.html",
+          "location": "Image Stabilisation",
+          "supports": "防抖补偿相机抖动。"
+        },
+        {
+          "source_id": "google-nightsight-research",
+          "url": "https://research.google/blog/night-sight-seeing-in-the-dark-on-pixel-phones/",
+          "location": "Motion / Alignment and Merging / Footnote 1",
+          "supports": "OIS不能解决移动物体的模糊。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "technique",
+    "is-subject-motion",
+    "防抖",
+    "不能替代冻结主体所需的曝光时间",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Canon｜RF镜头知识：防抖",
+    "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/correction/index.html",
+    "location": "Image Stabilisation",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

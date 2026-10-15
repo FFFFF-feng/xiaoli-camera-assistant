@@ -10,7 +10,11 @@ def safe_phone_settings(
     request: UserRequest, phone: PhoneProfile
 ) -> tuple[dict[str, str], list[str]]:
     mode = request.phone_capture_mode
-    notes = [f"已匹配 {phone.display_name}；以当前原生相机、系统与镜头界面为准。"]
+    notes = [
+        f"{phone.display_name}：能力未收录，只提供通用照片模式指导，需核对实际界面。"
+        if phone.profile_id == "generic_phone"
+        else f"已匹配 {phone.display_name}；以当前原生相机、系统与镜头界面为准。"
+    ]
     if mode not in phone.modes:
         mode = "auto"
         notes.append("所选模式未在该型号资料中确认，已按照片模式提供保守操作。")
@@ -18,11 +22,18 @@ def safe_phone_settings(
     if lens is None:
         lens = next(item for item in phone.lenses if item.lens_id == "main")
         notes.append("所选镜头未收录，已按主摄说明；拍摄前请确认选中的摄像头。")
+    if mode not in lens.modes:
+        mode = "auto"
+        notes.append("该镜头与所选模式的组合未录入，按照片模式指导；并非断言硬件不支持。")
     aperture = "镜头光圈未确认；不建议调节物理光圈"
     if lens.aperture is not None and lens.aperture_control == "fixed":
         aperture = f"{lens.name} f/{lens.aperture:g}（固定，不可手动调节）"
     elif lens.aperture_control == "variable":
-        aperture = "物理光圈范围尚未确认；按当前镜头界面核对"
+        aperture = (
+            f"{lens.name} f/{lens.aperture:g}–f/{lens.aperture_max:g}（可变；实际控制以当前镜头界面为准）"
+            if lens.aperture is not None and lens.aperture_max is not None
+            else "物理光圈范围尚未确认；按当前镜头界面核对"
+        )
     if mode == "portrait":
         aperture += "；景深滑块为人像虚化控制"
     values = {

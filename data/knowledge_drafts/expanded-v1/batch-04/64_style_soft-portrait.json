@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-style-soft-portrait",
+  "library_id": "style",
+  "title": "柔和人像：柔光目标不等于整张失焦",
+  "kind": "guideline",
+  "content": "核心规则：柔和可指较温和反差和背景表达，不必牺牲主体关键细节。\n建议动作：确认用户想要柔和色调、光线还是背景虚化。；保持关键眼部细节清楚，再比较较温和的反差。\n适用前提：人像目标已说明；光线和设备可调整。\n限制与例外：不同柔光来源和软件处理不能混为一项；不默认最大光圈。；手机人像景深效果不等于实体光圈；当前机型和模式需确认。",
+  "payload": {
+    "core_claim": "柔和可指较温和反差和背景表达，不必牺牲主体关键细节。",
+    "goal": "柔和人像：柔光目标不等于整张失焦",
+    "requires": [
+      "人像目标已说明；光线和设备可调整。"
+    ],
+    "actions": [
+      "确认用户想要柔和色调、光线还是背景虚化。",
+      "保持关键眼部细节清楚，再比较较温和的反差。"
+    ],
+    "limitations": [
+      "不同柔光来源和软件处理不能混为一项；不默认最大光圈。",
+      "手机人像景深效果不等于实体光圈；当前机型和模式需确认。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "interpretive_goal",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-portrait",
+          "url": "https://www.sony.co.uk/electronics/support/articles/00206555",
+          "location": "Considering the composition / Using back light",
+          "supports": "逆光可提供柔和表达，也有主体偏暗风险。"
+        },
+        {
+          "source_id": "sony-look",
+          "url": "https://www.sony.com/electronics/support/articles/00273574",
+          "location": "Creative Look / Differences from Picture Profile",
+          "supports": "外观预设可改变反差和色调。"
+        },
+        {
+          "source_id": "apple-portrait",
+          "url": "https://support.apple.com/zh-cn/guide/iphone/iphd7d3a91a2/ios",
+          "location": "调整背景模糊 / 景深信息",
+          "supports": "人像模式景深效果可调整背景模糊。"
+        }
+      ],
+      "inference_note": "这是可选表达目标；来源支持方法存在，不证明审美偏好或效果最优。"
+    }
+  },
+  "tags": [
+    "style",
+    "soft-portrait",
+    "柔和人像",
+    "柔光目标不等于整张失焦",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜突出人物的肖像教程",
+    "url": "https://www.sony.co.uk/electronics/support/articles/00206555",
+    "location": "Considering the composition / Using back light",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-iphone-aeaf-lock",
+  "library_id": "technique",
+  "title": "iPhone 15：稳定场景可尝试AE/AF锁定",
+  "kind": "guideline",
+  "content": "核心规则：长按对焦区域可锁定自动曝光和自动对焦，点按可解锁。\n建议动作：画面稳定时长按，看到锁定提示后再拍。；主体距离或光线变了，重新点按或解锁调整。\n适用前提：普通iPhone15；原生相机触屏控制可用。\n限制与例外：锁定不是连续追焦；不继承其他机型新增手动追踪功能。",
+  "payload": {
+    "core_claim": "长按对焦区域可锁定自动曝光和自动对焦，点按可解锁。",
+    "goal": "iPhone 15：稳定场景可尝试AE/AF锁定",
+    "requires": [
+      "普通iPhone15；原生相机触屏控制可用。"
+    ],
+    "actions": [
+      "画面稳定时长按，看到锁定提示后再拍。",
+      "主体距离或光线变了，重新点按或解锁调整。"
+    ],
+    "limitations": [
+      "锁定不是连续追焦；不继承其他机型新增手动追踪功能。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "apple-tools",
+          "url": "https://support.apple.com/zh-cn/guide/iphone/iph3dc593597/ios",
+          "location": "手动调整对焦和曝光 / 网格和水平 / 宽高比",
+          "supports": "自动曝光/自动对焦锁定与解锁。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "iphone-aeaf-lock",
+    "iPhone 15",
+    "稳定场景可尝试AE/AF锁定",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "apple_iphone_15"
+  },
+  "source": {
+    "name": "Apple｜iPhone相机工具",
+    "url": "https://support.apple.com/zh-cn/guide/iphone/iph3dc593597/ios",
+    "location": "手动调整对焦和曝光 / 网格和水平 / 宽高比",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-compensation-direction",
+  "library_id": "technique",
+  "title": "曝光补偿：按目标与高光判断方向",
+  "kind": "guideline",
+  "content": "核心规则：在会响应补偿的曝光模式中，正补偿趋向更亮，负补偿趋向更暗。\n建议动作：先试拍，确认主体亮度和重要高光。；按想要的结果小步调整，而不是仅看天气套数值。\n适用前提：确认当前模式支持有效曝光补偿。\n限制与例外：M模式固定ISO可能只改变测光指示；具体行为查实际手册。",
+  "payload": {
+    "core_claim": "在会响应补偿的曝光模式中，正补偿趋向更亮，负补偿趋向更暗。",
+    "goal": "曝光补偿：按目标与高光判断方向",
+    "requires": [
+      "确认当前模式支持有效曝光补偿。"
+    ],
+    "actions": [
+      "先试拍，确认主体亮度和重要高光。",
+      "按想要的结果小步调整，而不是仅看天气套数值。"
+    ],
+    "limitations": [
+      "M模式固定ISO可能只改变测光指示；具体行为查实际手册。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "cross_source_agreement",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-exposure",
+          "url": "https://www.sony.com/electronics/support/articles/00267925",
+          "location": "Exposure / Exposure Compensation",
+          "supports": "补偿方向影响亮度。"
+        },
+        {
+          "source_id": "nikon-compensation",
+          "url": "https://onlinemanual.nikonimglib.com/d850/en/11_exposure_06.html",
+          "location": "Exposure Compensation",
+          "supports": "正负补偿与模式响应说明。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "compensation-direction",
+    "曝光补偿",
+    "按目标与高光判断方向",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Sony｜曝光与曝光补偿",
+    "url": "https://www.sony.com/electronics/support/articles/00267925",
+    "location": "Exposure / Exposure Compensation",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

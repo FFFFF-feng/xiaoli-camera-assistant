@@ -1,0 +1,158 @@
+{
+  "schema": "knowledge_batch_manifest_v1",
+  "batch_id": "web-research-codex-20261013",
+  "importable_as_knowledge_records": false,
+  "record_count": 10,
+  "new_topic_count": 5,
+  "revision_count": 5,
+  "records": [
+    {
+      "path": "data/knowledge_drafts/web-research-codex-20261013/01_leading-lines.json",
+      "knowledge_id": "expanded-v1-composition-leading-lines",
+      "library_id": "composition",
+      "kind": "guideline",
+      "title": "引导线：先核对指向，线条也可以成为主体",
+      "version": 2,
+      "source_ids": [
+        "nikon-leading",
+        "adobe-leading"
+      ],
+      "verification_status": "cross_source_agreement",
+      "dedup_action": "same_id_new_revision",
+      "change_reason": "沿用已有ID，在独立新文件补充证据、执行前提或例外；保留v1。"
+    },
+    {
+      "path": "data/knowledge_drafts/web-research-codex-20261013/02_horizon.json",
+      "knowledge_id": "expanded-v1-composition-horizon",
+      "library_id": "composition",
+      "kind": "guideline",
+      "title": "地平线：平直与位置分别判断，倒影保留居中选项",
+      "version": 2,
+      "source_ids": [
+        "nikon-composition",
+        "canon-composition"
+      ],
+      "verification_status": "cross_source_agreement",
+      "dedup_action": "same_id_new_revision",
+      "change_reason": "沿用已有ID，在独立新文件补充证据、执行前提或例外；保留v1。"
+    },
+    {
+      "path": "data/knowledge_drafts/web-research-codex-20261013/03_depth-layers.json",
+      "knowledge_id": "expanded-v1-composition-depth-layers",
+      "library_id": "composition",
+      "kind": "guideline",
+      "title": "空间层次：前中后景是选项，不要求每张照片都有三层",
+      "version": 2,
+      "source_ids": [
+        "adobe-layers",
+        "canon-composition"
+      ],
+      "verification_status": "cross_source_agreement",
+      "dedup_action": "same_id_new_revision",
+      "change_reason": "沿用已有ID，在独立新文件补充证据、执行前提或例外；保留v1。"
+    },
+    {
+      "path": "data/knowledge_drafts/web-research-codex-20261013/04_edge-scan.json",
+      "knowledge_id": "expanded-v1-composition-edge-scan",
+      "library_id": "composition",
+      "kind": "guideline",
+      "title": "边缘检查：先保护必要内容，再处理非预期入镜",
+      "version": 2,
+      "source_ids": [
+        "nikon-portraits",
+        "adobe-fill"
+      ],
+      "verification_status": "synthesized_guideline",
+      "dedup_action": "same_id_new_revision",
+      "change_reason": "沿用已有ID，在独立新文件补充证据、执行前提或例外；保留v1。"
+    },
+    {
+      "path": "data/knowledge_drafts/web-research-codex-20261013/05_negative-space.json",
+      "knowledge_id": "expanded-v1-composition-negative-space",
+      "library_id": "composition",
+      "kind": "guideline",
+      "title": "留白：不必纯白或纯色，不用面积比例硬评分",
+      "version": 2,
+      "source_ids": [
+        "adobe-negative",
+        "canon-composition"
+      ],
+      "verification_status": "cross_source_agreement",
+      "dedup_action": "same_id_new_revision",
+      "change_reason": "沿用已有ID，在独立新文件补充证据、执行前提或例外；保留v1。"
+    },
+    {
+      "path": "data/knowledge_drafts/web-research-codex-20261013/06_group-faces.json",
+      "knowledge_id": "web-research-codex-20261013-composition-group-faces",
+      "library_id": "composition",
+      "kind": "guideline",
+      "title": "多人合照：检查面部遮挡与边缘裁切，先试拍再调整",
+      "version": 1,
+      "source_ids": [
+        "nikon-group"
+      ],
+      "verification_status": "primary_source_only",
+      "dedup_action": "new_topic",
+      "change_reason": "查过当前草稿主题，新增独立问题卡；不声称语义去重算法已实现。"
+    },
+    {
+      "path": "data/knowledge_drafts/web-research-codex-20261013/07_iphone15-burst.json",
+      "knowledge_id": "web-research-codex-20261013-equipment-iphone15-burst",
+      "library_id": "equipment",
+      "kind": "manufacturer_fact",
+      "title": "iPhone 15：原生相机连拍与照片选择",
+      "version": 1,
+      "source_ids": [
+        "apple-burst",
+        "apple-iphone15"
+      ],
+      "verification_status": "primary_source_only",
+      "dedup_action": "new_topic",
+      "change_reason": "查过当前草稿主题，新增独立问题卡；不声称语义去重算法已实现。"
+    },
+    {
+      "path": "data/knowledge_drafts/web-research-codex-20261013/08_iphone15-live-audio.json",
+      "knowledge_id": "web-research-codex-20261013-equipment-iphone15-live-audio",
+      "library_id": "equipment",
+      "kind": "manufacturer_fact",
+      "title": "iPhone 15：实况照片可能记录画面前后与音频",
+      "version": 1,
+      "source_ids": [
+        "apple-live",
+        "apple-iphone15"
+      ],
+      "verification_status": "primary_source_only",
+      "dedup_action": "new_topic",
+      "change_reason": "查过当前草稿主题，新增独立问题卡；不声称语义去重算法已实现。"
+    },
+    {
+      "path": "data/knowledge_drafts/web-research-codex-20261013/09_iphone15-portrait-depth.json",
+      "knowledge_id": "web-research-codex-20261013-equipment-iphone15-portrait-depth",
+      "library_id": "equipment",
+      "kind": "manufacturer_fact",
+      "title": "iPhone 15：人像景深编辑调节背景效果，不当作实体光圈指令",
+      "version": 1,
+      "source_ids": [
+        "apple-portrait",
+        "apple-iphone15"
+      ],
+      "verification_status": "primary_source_only",
+      "dedup_action": "new_topic",
+      "change_reason": "查过当前草稿主题，新增独立问题卡；不声称语义去重算法已实现。"
+    },
+    {
+      "path": "data/knowledge_drafts/web-research-codex-20261013/10_iphone15-timer.json",
+      "knowledge_id": "web-research-codex-20261013-equipment-iphone15-timer",
+      "library_id": "equipment",
+      "kind": "manufacturer_fact",
+      "title": "iPhone 15：原生相机计时器用于延迟拍摄，时长按系统界面确认",
+      "version": 1,
+      "source_ids": [
+        "apple-tools"
+      ],
+      "verification_status": "primary_source_only",
+      "dedup_action": "new_topic",
+      "change_reason": "查过当前草稿主题，新增独立问题卡；不声称语义去重算法已实现。"
+    }
+  ]
+}

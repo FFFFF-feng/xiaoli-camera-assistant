@@ -6,7 +6,11 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from camera_assistant.composition_models import CompositionAdvice, CompositionProposal
+from camera_assistant.composition_models import (
+    CompositionAdvice,
+    CompositionProposal,
+    CompositionSketch,
+)
 from camera_assistant.config import Settings
 from camera_assistant.models import (
     ExifInfo,
@@ -280,3 +284,49 @@ def test_demo_does_not_invent_image_observations_or_grounded_suggestions(inputs)
     assert advice.observations == []
     assert advice.proposals == []
     assert any("没有生成针对这张照片" in note for note in advice.notes)
+
+
+def sketch():
+    return {"aspect": "portrait", "caption": "树冠完整入画，四边留出余量",
+            "elements": [{"kind": "tree", "label": "树木", "role": "main", "bbox": [.2, .1, .7, .9]}],
+            "horizon_y": None, "camera_action": "farther", "camera_instruction": "后退一点，检查树冠余量"}
+
+
+def test_sketch_is_validated_and_preserved_with_advice(inputs, monkeypatch):
+    item = {**proposal(), "sketch": sketch()}
+    captured = {}
+    advice = call_advisor(inputs, monkeypatch, response([item]), captured=captured)
+    assert advice.proposals[0].sketch.elements[0].kind == "tree"
+    assert "简笔画分镜数据" in captured["messages"][0]["content"][0]["text"]
+
+
+@pytest.mark.parametrize("box", [[0, 0, 2, 1], [False, 0, 1, 1], [0, 0, float("nan"), 1], [.5, 0, .4, 1]])
+def test_invalid_sketch_keeps_valid_text_proposal(box):
+    drawing = sketch()
+    drawing["elements"][0]["bbox"] = box
+    item = CompositionProposal.model_validate({**proposal(), "sketch": drawing})
+    assert item.goal == "减少边缘干扰"
+    assert item.sketch is None
+
+
+def test_sketch_requires_main_subject_and_refuses_arbitrary_graphics():
+    drawing = sketch()
+    drawing["elements"][0]["role"] = "context"
+    with pytest.raises(ValidationError):
+        CompositionSketch.model_validate(drawing)
+    drawing = sketch()
+    drawing["elements"][0]["kind"] = "<svg onload='alert(1)'>"
+    assert CompositionProposal.model_validate({**proposal(), "sketch": drawing}).sketch is None
+
+
+def test_sketch_preserves_subject_character_and_photographic_narration():
+    drawing = sketch()
+    drawing.update(theme="树与天空", mood="疏朗", narration="让树冠和右侧的天空共同构成画面。",
+                   space_note="右侧留出天空")
+    drawing["elements"][0].update(appearance="broadleaf", facing="front", description="完整的树冠")
+    result = CompositionSketch.model_validate(drawing)
+    assert result.theme == "树与天空"
+    assert result.elements[0].appearance == "broadleaf"
+    assert result.narration == drawing["narration"]
+    drawing["elements"][0]["appearance"] = "custom-script"
+    assert CompositionProposal.model_validate({**proposal(), "sketch": drawing}).sketch is None

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-autoiso-limits",
+  "library_id": "technique",
+  "title": "自动ISO：上限不是画质保证",
+  "kind": "guideline",
+  "content": "核心规则：最大ISO和最低快门设置可约束自动曝光，但受机型逻辑影响。\n建议动作：按样片接受程度选择上限，确认到上限后相机的行为。；有运动时检查实际快门，别只依赖最低快门名称。\n适用前提：型号支持相应自动ISO限制。\n限制与例外：旧教程的具体范围不是所有机型能力；上限不会凭空补足光线。",
+  "payload": {
+    "core_claim": "最大ISO和最低快门设置可约束自动曝光，但受机型逻辑影响。",
+    "goal": "自动ISO：上限不是画质保证",
+    "requires": [
+      "型号支持相应自动ISO限制。"
+    ],
+    "actions": [
+      "按样片接受程度选择上限，确认到上限后相机的行为。",
+      "有运动时检查实际快门，别只依赖最低快门名称。"
+    ],
+    "limitations": [
+      "旧教程的具体范围不是所有机型能力；上限不会凭空补足光线。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-autoiso",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-auto-iso",
+          "location": "Maximum sensitivity / Minimum shutter speed",
+          "supports": "最大感光度与最低快门相关设置。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "autoiso-limits",
+    "自动ISO",
+    "上限不是画质保证",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Nikon｜自动ISO说明",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-auto-iso",
+    "location": "Maximum sensitivity / Minimum shutter speed",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

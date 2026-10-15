@@ -1,0 +1,121 @@
+{
+  "knowledge_id": "open-eq-v1-cameradatabase-casio-exilim-pro-ex-f1-116ce035061c0473",
+  "library_id": "equipment",
+  "title": "[待核验设备档案] Casio Exilim Pro EX-F1 相机",
+  "kind": "guideline",
+  "content": "设备：Casio Exilim Pro EX-F1。开源目录记载的传感器尺寸：1/1.8\" (~ 7.11 x 5.33 mm)；传感器类型：CCD；上市年份：2008。\n适用规则：仅与完整品牌及型号相同的设备比对；保留原始规格，不推断原生卡口或套机镜头。\nISO 文本可能包含扩展感光度；未分机械与电子的快门字段不能作为机械快门上限。光圈、等效光圈、35mm 等效焦距不得混用；空白字段保持未知。\n传感器宽度跨库检查：consistent；并非独立厂家证据。",
+  "payload": {
+    "device_type": "camera",
+    "entity_type": "camera",
+    "model": "Casio Exilim Pro EX-F1",
+    "provenance": {
+      "repository": "https://github.com/leavestylecode/CameraDatabase",
+      "commit": "374a630bac7847f851b3746e82aa528262ef0b5c",
+      "path": "data/camera_data.json",
+      "record_locator": "array[581]",
+      "file_sha256": "fc4dc948644ad9b24f4f20ed49a84aaecabf8be50a28148db4e9f80fe26b815d",
+      "license": "MIT",
+      "attribution": "CameraDatabase, leavestylecode and contributors",
+      "license_url": "",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    },
+    "verification": {
+      "level": "upstream_dataset_only",
+      "officially_verified": false
+    },
+    "usage": {
+      "role": "equipment_reference_draft",
+      "controls_hardware_limits": false,
+      "manual_review_required": true,
+      "limitations": [
+        "不能直接覆盖运行时设备档案或生成曝光参数。",
+        "空值是未知，不等于不支持；型号、地区版本和固件须核对。"
+      ]
+    },
+    "brand": "Casio",
+    "source_specs": {
+      "Brand": "Casio",
+      "Model": "Exilim Pro EX-F1",
+      "Year": "2008",
+      "Total megapixels": "6.6",
+      "Exposure Compensation": "±2 EV (in 1/3 EV steps)",
+      "Normal focus range": "40 cm",
+      "Battery": "Casio NP-100 Li Ion battery",
+      "Sensor resolution": "2825 x 2124",
+      "Crop factor": "4.87",
+      "Sensor type": "CCD",
+      "Dimensions": "127.7 x 79.6 x 130.1 mm",
+      "Max aperture": "f2.7 - f4.6",
+      "Min. shutter speed": "60 sec",
+      "White balance presets": "5.0",
+      "Macro focus range": "5 cm",
+      "Optical zoom": "12x",
+      "USB": "USB 2.0 (480 Mbit/sec)",
+      "Weight": "671 g",
+      "Max. aperture (35mm equiv.)": "f13.1 - f22.4",
+      "Focal length (35mm equiv.)": "36 - 432 mm",
+      "Also known as": null,
+      "Aperture priority": "Yes",
+      "Max. image resolution": "2816 x 2112",
+      "Max. shutter speed": "1/40000 sec",
+      "Storage types": "MultiMedia, SDHC, Secure Digital",
+      "Effective megapixels": "6.0",
+      "Megapixels": null,
+      "Max. video resolution": null,
+      "Screen size": "2.8\"",
+      "Metering": "Centre weighted, Multi-pattern, Spot",
+      "Digital zoom": "Yes",
+      "Shutter priority": "Yes",
+      "Sensor size": "1/1.8\" (~ 7.11 x 5.33 mm)",
+      "Viewfinder": "Electronic",
+      "Screen resolution": "230,160 dots",
+      "ISO": "Auto, 100, 200, 400, 800, 1600"
+    },
+    "consistency_checks": [
+      {
+        "field": "sensor_width_mm",
+        "status": "consistent",
+        "independent_evidence": false,
+        "limitation": "OpenSfM 初始数据来自 Digicamdb；同源风险，不代表独立或厂家核验。",
+        "cameradatabase_width_mm": 7.11,
+        "opensfm_model": "Casio EXILIM Pro EX-F1",
+        "opensfm_width_mm": 7.11,
+        "absolute_difference_mm": 0.0,
+        "tolerance_mm": 0.1,
+        "matching": "NFKC + casefold + whitespace only; full brand/model exact match"
+      }
+    ],
+    "cross_reference": {
+      "repository": "https://github.com/mapillary/OpenSfM",
+      "commit": "b25c07b648b49352797125f2b40f9cef28bbac62",
+      "path": "opensfm/data/sensor_data.json",
+      "record_locator": "Casio Exilim Pro EX-F1",
+      "file_sha256": "6b0256a2e78430bd016dc7d3a54db5a3f4ec2a5e5cd5032c85a62e1b2ce0b0f5",
+      "license": "BSD-2-Clause",
+      "attribution": "OpenSfM, Mapillary and contributors",
+      "license_url": "",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    }
+  },
+  "tags": [
+    "开源设备目录",
+    "待核验",
+    "相机",
+    "cameradatabase"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "camera_model": "Casio Exilim Pro EX-F1"
+  },
+  "source": {
+    "name": "CameraDatabase, leavestylecode and contributors",
+    "url": "https://github.com/leavestylecode/CameraDatabase/blob/374a630bac7847f851b3746e82aa528262ef0b5c/data/camera_data.json",
+    "location": "array[581]",
+    "license": "MIT",
+    "retrieval_allowed": false
+  },
+  "author": "小栗项目设备资料转换",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

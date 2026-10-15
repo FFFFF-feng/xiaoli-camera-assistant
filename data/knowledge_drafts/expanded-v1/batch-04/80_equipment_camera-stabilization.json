@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-equipment-camera-stabilization",
+  "library_id": "equipment",
+  "title": "相机防抖能力：机身和镜头分别确认",
+  "kind": "guideline",
+  "content": "核心规则：防抖可能来自镜头或机身，具体组合能力需查实际规格。\n建议动作：记录完整机身和镜头型号，查支持的防抖方式。；三脚架下的开关行为按该组合手册确认，不照抄通用教程。\n适用前提：有实际机身、镜头型号及手册。\n限制与例外：不能假定所有EOS R机身有IBIS；宣传挡数不是清晰率；未核验范围保持未知。",
+  "payload": {
+    "core_claim": "防抖可能来自镜头或机身，具体组合能力需查实际规格。",
+    "goal": "相机防抖能力：机身和镜头分别确认",
+    "requires": [
+      "有实际机身、镜头型号及手册。"
+    ],
+    "actions": [
+      "记录完整机身和镜头型号，查支持的防抖方式。",
+      "三脚架下的开关行为按该组合手册确认，不照抄通用教程。"
+    ],
+    "limitations": [
+      "不能假定所有EOS R机身有IBIS；宣传挡数不是清晰率；未核验范围保持未知。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "manufacturer_facts": {
+      "camera_model": null,
+      "lens_model": null,
+      "stabilization_stops": null
+    },
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "canon-is",
+          "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/correction/index.html",
+          "location": "Image Stabilisation",
+          "supports": "介绍机身/镜头防抖及机震类型。"
+        },
+        {
+          "source_id": "nikon-night",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/taking-pictures-at-dusk-and-at-night",
+          "location": "Tripod / Long exposure / Light trails",
+          "supports": "夜景支撑建议涉及具体VR操作，需限定。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "equipment",
+    "camera-stabilization",
+    "相机防抖能力",
+    "机身和镜头分别确认",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Canon｜RF镜头知识：防抖",
+    "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/correction/index.html",
+    "location": "Image Stabilisation",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

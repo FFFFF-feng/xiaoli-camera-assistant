@@ -1,0 +1,311 @@
+{
+  "knowledge_id": "open-eq-v1-zmount-meike-af-35mm-f1-8-pro-8dbdeebf42335c53",
+  "library_id": "equipment",
+  "title": "[待核验设备档案] Meike AF 35mm F1.8 Pro 镜头",
+  "kind": "guideline",
+  "content": "设备：Meike AF 35mm F1.8 Pro。产品类型：lens；来源记录卡口或方向：Nikon Z。\n适用规则：必须匹配完整型号、卡口、画幅与使用条件；保留原始结构中的焦距、光圈条件及未知值，不将增距镜或针孔产品当作普通摄影镜头。\n转接器电子触点、自动对焦等上游声明不是任意机身镜头组合的实测保证，还需核对两侧设备及固件。官方页面链接仅供复核，未据链接自动标为厂家已验证。",
+  "payload": {
+    "device_type": "camera",
+    "entity_type": "lens",
+    "model": "Meike AF 35mm F1.8 Pro",
+    "provenance": {
+      "repository": "https://github.com/KatsuraIwamoto/z-mount-product-database",
+      "commit": "4a792e661ad85b1527a5447503c0b0ceaf5c4923",
+      "path": "dist/z-mount-lenses.full.json",
+      "record_locator": "products[id=meike-af-35mm-f1-8-pro]",
+      "file_sha256": "25c622ef6a4fceba4e6cf73c30cacdcfd6681bbb3046acc9704295fe544cbdc9",
+      "license": "CC-BY-4.0",
+      "attribution": "Z Mount Product Database, Katsura Iwamoto",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    },
+    "verification": {
+      "level": "upstream_dataset_only",
+      "officially_verified": false
+    },
+    "usage": {
+      "role": "equipment_reference_draft",
+      "controls_hardware_limits": false,
+      "manual_review_required": true,
+      "limitations": [
+        "不能直接覆盖运行时设备档案或生成曝光参数。",
+        "空值是未知，不等于不支持；型号、地区版本和固件须核对。"
+      ]
+    },
+    "brand": "Meike",
+    "source_product_id": "meike-af-35mm-f1-8-pro",
+    "source_product": {
+      "id": "meike-af-35mm-f1-8-pro",
+      "productType": "lens",
+      "identity": {
+        "manufacturerId": "meike",
+        "brandId": "meike",
+        "productName": "Meike AF 35mm F1.8 Pro",
+        "modelNumberOptions": null,
+        "alternateNames": null,
+        "variants": null
+      },
+      "lifecycle": {
+        "announcementDate": null,
+        "officialDesignations": []
+      },
+      "officialProductPages": [
+        {
+          "url": "https://meikeglobal.com/products/3518proz",
+          "pageFamilies": [
+            "global",
+            "usa"
+          ],
+          "region": null,
+          "language": "en",
+          "publisher": {
+            "type": "manufacturer-or-brand",
+            "name": "Meike Global"
+          }
+        }
+      ],
+      "mount": {
+        "systemId": "nikon-z",
+        "replaceability": "fixed",
+        "mountOwnerRelationship": null,
+        "electronicContacts": {
+          "present": true,
+          "metadataTransmission": {
+            "present": true,
+            "standards": [
+              "exif"
+            ]
+          }
+        }
+      },
+      "physical": {
+        "dimensionMeasurements": [
+          {
+            "maximumDiameterMm": 74,
+            "lengthMm": 93,
+            "conditions": {}
+          }
+        ],
+        "weightMeasurements": [
+          {
+            "grams": 404,
+            "conditions": {
+              "attachedComponents": []
+            },
+            "approximate": true
+          }
+        ],
+        "officialEnvironmentalProtectionClaims": null,
+        "filterInterfaces": [
+          {
+            "type": "front-thread",
+            "diameterMm": 58,
+            "host": {
+              "kind": "product"
+            }
+          }
+        ],
+        "tripodSupport": {
+          "present": false
+        },
+        "externalLengthDuringFocus": null,
+        "isRetractableForStorage": false
+      },
+      "controls": [
+        {
+          "type": "aperture-ring",
+          "quantity": 1
+        },
+        {
+          "type": "focus-mode-switch",
+          "quantity": 1
+        }
+      ],
+      "accessories": null,
+      "electronicServices": {
+        "hasPublishedFirmwareUpdate": true,
+        "connections": [
+          {
+            "method": "direct-usb",
+            "connectorType": "usb-c",
+            "purposes": [
+              "firmware-update"
+            ]
+          }
+        ]
+      },
+      "lens": {
+        "focalLength": {
+          "kind": "prime",
+          "millimeters": 35
+        },
+        "aperture": {
+          "fNumber": {
+            "maximumAperture": [
+              {
+                "value": 1.8,
+                "conditions": {}
+              }
+            ],
+            "minimumAperture": [
+              {
+                "value": 16,
+                "conditions": {}
+              }
+            ],
+            "effective": null
+          },
+          "diaphragm": {
+            "present": true,
+            "bladeCount": 9,
+            "bladeShape": null
+          },
+          "controlMechanism": "electronic"
+        },
+        "anglesOfView": [
+          {
+            "format": "full-frame",
+            "orientation": "horizontal",
+            "degrees": 55.5,
+            "conditions": {}
+          },
+          {
+            "format": "full-frame",
+            "orientation": "vertical",
+            "degrees": 38.2,
+            "conditions": {}
+          },
+          {
+            "format": "full-frame",
+            "orientation": "diagonal",
+            "degrees": 64.8,
+            "conditions": {}
+          },
+          {
+            "format": "aps-c",
+            "orientation": "horizontal",
+            "degrees": 37.4,
+            "conditions": {}
+          },
+          {
+            "format": "aps-c",
+            "orientation": "vertical",
+            "degrees": 25.2,
+            "conditions": {}
+          },
+          {
+            "format": "aps-c",
+            "orientation": "diagonal",
+            "degrees": 44.6,
+            "conditions": {}
+          }
+        ],
+        "coverage": {
+          "format": "full-frame"
+        },
+        "opticalConstruction": {
+          "groups": 10,
+          "elements": 12
+        },
+        "specialElements": [
+          {
+            "types": [
+              "low-dispersion"
+            ],
+            "quantity": 3,
+            "officialName": "ED"
+          },
+          {
+            "types": [
+              "aspherical"
+            ],
+            "quantity": 2
+          }
+        ],
+        "coatings": [
+          {
+            "types": [
+              "anti-reflective"
+            ],
+            "appliedTo": null
+          }
+        ],
+        "focus": {
+          "autofocus": {
+            "present": true,
+            "motors": [
+              {
+                "type": "stepping-motor",
+                "quantity": null,
+                "officialName": "STM"
+              }
+            ]
+          },
+          "manualFocus": {
+            "present": true,
+            "mechanism": null
+          },
+          "opticalFocusingSystems": null,
+          "minimumFocusDistances": [
+            {
+              "distanceM": 0.35,
+              "conditions": {}
+            }
+          ],
+          "reproductionMagnifications": null,
+          "officialFocusBehaviorClaims": []
+        },
+        "stabilization": {
+          "present": false
+        },
+        "specialized": {}
+      }
+    },
+    "data_version": "2026.10.09",
+    "source_dataset_content_hash": "sha256:484f0751db150132ce33d3aae7c31f75e5b7a2386c21211432c1051a3f8a50fd",
+    "mount_system_dictionary": {
+      "arri-pl": {
+        "name": "ARRI PL"
+      },
+      "leica-m": {
+        "name": "Leica M"
+      },
+      "leica-m39": {
+        "name": "Leica M39/LTM"
+      },
+      "micro-four-thirds": {
+        "name": "Micro Four Thirds"
+      },
+      "nikon-z": {
+        "name": "Nikon Z"
+      },
+      "t-mount": {
+        "name": "T/T2 mount"
+      }
+    },
+    "release_blockers": [
+      "核对厂家规格与运行时设备型号别名。"
+    ]
+  },
+  "tags": [
+    "开源设备目录",
+    "待核验",
+    "镜头",
+    "zmount"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "lens_model": "Meike AF 35mm F1.8 Pro"
+  },
+  "source": {
+    "name": "Z Mount Product Database, Katsura Iwamoto",
+    "url": "https://github.com/KatsuraIwamoto/z-mount-product-database/blob/4a792e661ad85b1527a5447503c0b0ceaf5c4923/dist/z-mount-lenses.full.json",
+    "location": "products[id=meike-af-35mm-f1-8-pro]",
+    "license": "CC-BY-4.0",
+    "retrieval_allowed": false
+  },
+  "author": "小栗项目设备资料转换",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

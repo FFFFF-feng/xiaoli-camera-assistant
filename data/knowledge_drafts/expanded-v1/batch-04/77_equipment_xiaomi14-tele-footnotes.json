@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-equipment-xiaomi14-tele-footnotes",
+  "library_id": "equipment",
+  "title": "小米14长焦：10cm描述与输出像素须带脚注",
+  "kind": "manufacturer_fact",
+  "content": "核心规则：小米14全球规格的长焦近摄描述与输出像素有专门说明。\n建议动作：保留官方10cm近摄描述，不转换为精确传感器平面最近对焦距离。；区分照片模式与人像模式的输出说明，现场检查原片尺寸。\n适用前提：Xiaomi14全球版；使用对应长焦与模式。\n限制与例外：厂商页面未明确10cm的测量基准；不据此强制站位；像素不是画质保证。",
+  "payload": {
+    "core_claim": "小米14全球规格的长焦近摄描述与输出像素有专门说明。",
+    "goal": "小米14长焦：10cm描述与输出像素须带脚注",
+    "requires": [
+      "Xiaomi14全球版；使用对应长焦与模式。"
+    ],
+    "actions": [
+      "保留官方10cm近摄描述，不转换为精确传感器平面最近对焦距离。",
+      "区分照片模式与人像模式的输出说明，现场检查原片尺寸。"
+    ],
+    "limitations": [
+      "厂商页面未明确10cm的测量基准；不据此强制站位；像素不是画质保证。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "manufacturer_facts": {
+      "advertised_macro_distance_cm": 10,
+      "distance_reference_plane": null,
+      "telephoto_photo_output_megapixels": 32,
+      "telephoto_portrait_output_megapixels": 50
+    },
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "xiaomi-14",
+          "url": "https://www.mi.com/global/product/xiaomi-14/specs/",
+          "location": "Rear camera / Telephoto footnotes / Photography modes",
+          "supports": "支持10cm近摄，脚注列照片32MP/人像50MP。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "equipment",
+    "xiaomi14-tele-footnotes",
+    "小米14长焦",
+    "10cm描述与输出像素须带脚注",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "xiaomi_14"
+  },
+  "source": {
+    "name": "Xiaomi｜Xiaomi 14全球版规格",
+    "url": "https://www.mi.com/global/product/xiaomi-14/specs/",
+    "location": "Rear camera / Telephoto footnotes / Photography modes",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

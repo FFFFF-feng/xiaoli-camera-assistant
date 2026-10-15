@@ -1,0 +1,350 @@
+{
+  "knowledge_id": "open-eq-v1-zmount-boryoza-fx-nz-auto-focus-adapter-compatible-with-1d0115ac62e04194",
+  "library_id": "equipment",
+  "title": "[待核验设备档案] BORYOZA FX-NZ Auto Focus Adapter Compatible with Fujifilm X Mount Lens to Nikon Z Mount Cameras 转接器",
+  "kind": "guideline",
+  "content": "设备：BORYOZA FX-NZ Auto Focus Adapter Compatible with Fujifilm X Mount Lens to Nikon Z Mount Cameras。产品类型：adapter；来源记录卡口或方向：镜头侧 fujifilm-x → 机身侧 nikon-z。\n适用规则：必须匹配完整型号、卡口、画幅与使用条件；保留原始结构中的焦距、光圈条件及未知值，不将增距镜或针孔产品当作普通摄影镜头。\n转接器电子触点、自动对焦等上游声明不是任意机身镜头组合的实测保证，还需核对两侧设备及固件。官方页面链接仅供复核，未据链接自动标为厂家已验证。",
+  "payload": {
+    "device_type": "camera",
+    "entity_type": "adapter",
+    "model": "BORYOZA FX-NZ Auto Focus Adapter Compatible with Fujifilm X Mount Lens to Nikon Z Mount Cameras",
+    "provenance": {
+      "repository": "https://github.com/KatsuraIwamoto/z-mount-product-database",
+      "commit": "4a792e661ad85b1527a5447503c0b0ceaf5c4923",
+      "path": "dist/z-mount-adapters.full.json",
+      "record_locator": "adapters[id=boryoza-fx-nz]",
+      "file_sha256": "eb18b5a779bffe77c416307900bb3225f7a14005cb46a61d6a31a1862be1c960",
+      "license": "CC-BY-4.0",
+      "attribution": "Z Mount Product Database, Katsura Iwamoto",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    },
+    "verification": {
+      "level": "upstream_dataset_only",
+      "officially_verified": false
+    },
+    "usage": {
+      "role": "equipment_reference_draft",
+      "controls_hardware_limits": false,
+      "manual_review_required": true,
+      "limitations": [
+        "不能直接覆盖运行时设备档案或生成曝光参数。",
+        "空值是未知，不等于不支持；型号、地区版本和固件须核对。"
+      ]
+    },
+    "brand": "BORYOZA",
+    "source_product_id": "boryoza-fx-nz",
+    "source_product": {
+      "id": "boryoza-fx-nz",
+      "identity": {
+        "manufacturerId": "boryoza",
+        "brandId": "boryoza",
+        "productName": "BORYOZA FX-NZ Auto Focus Adapter Compatible with Fujifilm X Mount Lens to Nikon Z Mount Cameras",
+        "modelNumberOptions": [
+          "FX-NZ",
+          "F010760EXB"
+        ],
+        "alternateNames": null,
+        "variants": null
+      },
+      "lifecycle": {
+        "announcementDate": null,
+        "officialDesignations": []
+      },
+      "officialProductPages": [
+        {
+          "url": "https://boryoza.net/en/product?slug=fx-nz",
+          "pageFamilies": [
+            "global"
+          ],
+          "region": null,
+          "language": "en",
+          "publisher": {
+            "type": "manufacturer-or-brand",
+            "name": "BORYOZA"
+          }
+        }
+      ],
+      "mountConfigurations": [
+        {
+          "lensSideMountSystemId": "fujifilm-x",
+          "cameraSideMountSystemId": "nikon-z",
+          "lensRetention": null,
+          "lensRearProtrusionLimits": null
+        }
+      ],
+      "electronics": {
+        "electronicContacts": true,
+        "autofocus": true,
+        "cameraControlledAperture": true,
+        "lensStabilizationCommunication": true,
+        "manualFocusAssistance": true,
+        "metadataTransmission": {
+          "present": true,
+          "standards": [
+            "exif"
+          ]
+        },
+        "lensPowerTransmission": null,
+        "recordingTriggerTransmission": null
+      },
+      "mechanisms": [],
+      "physical": {
+        "dimensionMeasurements": null,
+        "weightMeasurements": null,
+        "officialEnvironmentalProtectionClaims": null,
+        "tripodSupport": null
+      },
+      "electronicServices": {
+        "hasPublishedFirmwareUpdate": true,
+        "connections": [
+          {
+            "method": "dock",
+            "connectorType": "micro-usb",
+            "purposes": [
+              "firmware-update"
+            ]
+          }
+        ]
+      },
+      "conversionOptics": {
+        "present": false
+      }
+    },
+    "data_version": "2026.10.09",
+    "source_dataset_content_hash": "sha256:84a64958d2fc3aa73642e7a907bba516c8b94883768166de7c5e874c7fda1a32",
+    "mount_system_dictionary": {
+      "alpa": {
+        "name": "ALPA"
+      },
+      "arri-bayonet": {
+        "name": "ARRI Bayonet"
+      },
+      "arri-lpl": {
+        "name": "ARRI LPL"
+      },
+      "arri-pl": {
+        "name": "ARRI PL"
+      },
+      "asa-m37": {
+        "name": "ASA M37"
+      },
+      "b4-2-3-inch": {
+        "name": "B4 2/3-inch"
+      },
+      "bnc": {
+        "name": "BNC"
+      },
+      "bncr": {
+        "name": "BNCR"
+      },
+      "bronica-etr": {
+        "name": "Bronica ETR"
+      },
+      "bronica-sq": {
+        "name": "Bronica SQ"
+      },
+      "c-mount": {
+        "name": "C-mount"
+      },
+      "canon-7-rangefinder": {
+        "name": "Canon 7 rangefinder"
+      },
+      "canon-ef": {
+        "name": "Canon EF"
+      },
+      "canon-fd": {
+        "name": "Canon FD"
+      },
+      "contarex": {
+        "name": "Contarex"
+      },
+      "contax-g": {
+        "name": "Contax G"
+      },
+      "contax-rangefinder": {
+        "name": "Contax rangefinder"
+      },
+      "contax-yashica": {
+        "name": "Contax/Yashica"
+      },
+      "d-mount": {
+        "name": "D-mount"
+      },
+      "dkl": {
+        "name": "Deckel DKL"
+      },
+      "exakta": {
+        "name": "Exakta"
+      },
+      "exakta-topcon": {
+        "name": "Exakta/Topcon"
+      },
+      "four-thirds": {
+        "name": "Four Thirds"
+      },
+      "fuji-ox": {
+        "name": "Fuji OX"
+      },
+      "fujica-gl690": {
+        "name": "Fujica GL690"
+      },
+      "fujica-x": {
+        "name": "Fujica X"
+      },
+      "fujifilm-g": {
+        "name": "Fujifilm G"
+      },
+      "fujifilm-x": {
+        "name": "Fujifilm X"
+      },
+      "hasselblad-v": {
+        "name": "Hasselblad V"
+      },
+      "hasselblad-xpan": {
+        "name": "Hasselblad XPan"
+      },
+      "icarex-35s": {
+        "name": "Icarex 35S"
+      },
+      "kiev-88": {
+        "name": "Kiev 88"
+      },
+      "konica-ar": {
+        "name": "Konica AR"
+      },
+      "leica-l": {
+        "name": "Leica L-Mount"
+      },
+      "leica-m": {
+        "name": "Leica M"
+      },
+      "leica-m39": {
+        "name": "Leica M39/LTM"
+      },
+      "leica-r": {
+        "name": "Leica R"
+      },
+      "leica-visoflex": {
+        "name": "Leica Visoflex"
+      },
+      "m42": {
+        "name": "M42"
+      },
+      "m80x1-x-ray": {
+        "name": "M80x1 X-ray lens mount"
+      },
+      "mamiya-645": {
+        "name": "Mamiya 645"
+      },
+      "mamiya-645-af": {
+        "name": "Mamiya 645 AF"
+      },
+      "mamiya-7": {
+        "name": "Mamiya 7"
+      },
+      "mamiya-rb-rz": {
+        "name": "Mamiya RB67/RZ67"
+      },
+      "micro-four-thirds": {
+        "name": "Micro Four Thirds"
+      },
+      "minolta-sr": {
+        "name": "Minolta SR"
+      },
+      "miranda": {
+        "name": "Miranda"
+      },
+      "nikon-f": {
+        "name": "Nikon F"
+      },
+      "nikon-s-rangefinder": {
+        "name": "Nikon S rangefinder"
+      },
+      "nikon-z": {
+        "name": "Nikon Z"
+      },
+      "novoflex-a": {
+        "name": "NOVOFLEX A"
+      },
+      "oct-18": {
+        "name": "OCT-18"
+      },
+      "oct-19": {
+        "name": "OCT-19"
+      },
+      "olympus-om": {
+        "name": "Olympus OM"
+      },
+      "olympus-pen-f": {
+        "name": "Olympus Pen F"
+      },
+      "panavision-pv": {
+        "name": "Panavision PV"
+      },
+      "panavision-sp70": {
+        "name": "Panavision SP70"
+      },
+      "pentacon-six": {
+        "name": "Pentacon Six/Kiev 60"
+      },
+      "pentax-110": {
+        "name": "Pentax 110"
+      },
+      "pentax-645": {
+        "name": "Pentax 645"
+      },
+      "pentax-67": {
+        "name": "Pentax 6x7/67"
+      },
+      "pentax-k": {
+        "name": "Pentax K"
+      },
+      "praktica-b": {
+        "name": "Praktica B"
+      },
+      "rodenstock-modular-focus-mount": {
+        "name": "Rodenstock Modular Focus Mount"
+      },
+      "rollei-qbm": {
+        "name": "Rollei QBM"
+      },
+      "sony-a": {
+        "name": "Sony A"
+      },
+      "sony-e": {
+        "name": "Sony E"
+      },
+      "t-mount": {
+        "name": "T/T2 mount"
+      },
+      "tamron-adaptall": {
+        "name": "Tamron Adaptall"
+      }
+    },
+    "release_blockers": [
+      "转接器组合级精确匹配尚未实现，禁止批量发布。"
+    ]
+  },
+  "tags": [
+    "开源设备目录",
+    "待核验",
+    "转接器",
+    "zmount"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "camera_mount": "nikon_z"
+  },
+  "source": {
+    "name": "Z Mount Product Database, Katsura Iwamoto",
+    "url": "https://github.com/KatsuraIwamoto/z-mount-product-database/blob/4a792e661ad85b1527a5447503c0b0ceaf5c4923/dist/z-mount-adapters.full.json",
+    "location": "adapters[id=boryoza-fx-nz]",
+    "license": "CC-BY-4.0",
+    "retrieval_allowed": false
+  },
+  "author": "小栗项目设备资料转换",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

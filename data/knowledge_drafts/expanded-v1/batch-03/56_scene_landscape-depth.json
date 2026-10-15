@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-scene-landscape-depth",
+  "library_id": "scene",
+  "title": "风景：清晰范围比固定f值重要",
+  "kind": "guideline",
+  "content": "核心规则：风景可先确定需要清晰的远近对象，再组织曝光。\n建议动作：选重要前景与远景，检查是否同时达到所需清晰程度。；光圈调整后检查手持快门与重要亮部。\n适用前提：确认景物远近关系；镜头光圈可调。\n限制与例外：不默认f/8或f/11；风吹树叶和水面不是静止主体。",
+  "payload": {
+    "core_claim": "风景可先确定需要清晰的远近对象，再组织曝光。",
+    "goal": "风景：清晰范围比固定f值重要",
+    "requires": [
+      "确认景物远近关系；镜头光圈可调。"
+    ],
+    "actions": [
+      "选重要前景与远景，检查是否同时达到所需清晰程度。",
+      "光圈调整后检查手持快门与重要亮部。"
+    ],
+    "limitations": [
+      "不默认f/8或f/11；风吹树叶和水面不是静止主体。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "canon-dof",
+          "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/depth-of-field/index.html",
+          "location": "Depth of Field",
+          "supports": "景深与光圈、距离等有关。"
+        },
+        {
+          "source_id": "sony-shutter",
+          "url": "https://www.sony.com/electronics/support/articles/00267929",
+          "location": "Shutter Speed / S-Mode",
+          "supports": "时长与移动模糊有关。"
+        },
+        {
+          "source_id": "nikon-histogram",
+          "url": "https://onlinemanual.nikonimglib.com/z6III/en/photo_information_53.html",
+          "location": "Highlights / RGB Histogram / Shooting Data",
+          "supports": "亮部分布可检查。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "scene",
+    "landscape-depth",
+    "风景",
+    "清晰范围比固定f值重要",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Canon｜RF镜头知识：景深",
+    "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/depth-of-field/index.html",
+    "location": "Depth of Field",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

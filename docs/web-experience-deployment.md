@@ -1,0 +1,125 @@
+# 小栗网页体验版与阿里云部署
+
+2026-10-14：整合远端 `13ca11b` 的 GLM / DINO / 构图流程与本地手机、相机镜头联动。
+
+## 本机直接体验
+
+```powershell
+python -m pip install -e ".[mobile]"
+cd mobile
+npm ci
+npm run build
+cd ..
+python scripts/start_web.py --demo
+```
+
+打开 http://127.0.0.1:8080/ 。网页自动连接同站接口，无需填写电脑 IP 或连接令牌。上传 JPEG / PNG，填写需求，选择器材，确认上传说明后生成方案。构图页支持三分参考线；真实检测可靠选中主体时才显示主体框，通过校验的裁切方案才显示裁切参考。
+
+最近 10 次方案保存在当前浏览器，不包含照片；可以导出文本方案。规则演示不调用真实视觉模型，构图页会说明本次没有针对照片生成真实构图方案。使用真实模式时不加 `--demo`，配置方式沿用 `docs/real-environment.md`。
+
+原 Android 客户端仍可独立连接原手机网关。Streamlit 主页面、知识工作台和模型实验工具保留原入口，不挂载到公网网页服务。
+
+## 服务器准备
+
+使用已有 Linux 服务器、Docker Engine 与 Compose 插件。域名应解析到该服务器；入口使用 80/443，应用 8080 仅在容器网络内开放。确认现有网站是否占用 80/443；如已占用，应接入现有反向代理，并按实际代理 IP 配置 `WEB_TRUSTED_PROXY_IP`，不要覆盖其他站点。
+
+本轮准备了默认 `runtime` 与可选 `dino` 镜像；后者增加 CPU 主体检测与固定 revision 的模型权重。默认容器资源上限为 2 GB / 2 CPU；DINO 配置为 6 GB / 4 CPU，实际需求仍需用目标服务器实测。也提供 `Dockerfile.prebuilt`，直接使用已经通过前端构建的 `mobile/dist`，服务器无需下载 Node 镜像。本机 Docker 引擎未运行；预构建前端方案已在 Ubuntu 22.04 ECS 上实际构建并通过容器健康检查。
+
+## 部署
+
+将发布包放到服务器上的新目录解压。它包含当前应用源码及构建好的网页，不包含本机 `.env`、模型密钥、实验凭据、知识数据库、照片或模型权重。
+
+```bash
+tar -xzf xiaoli-web-experience.tar.gz
+cd xiaoli
+python3 scripts/configure_web_deploy.py --domain 你的真实域名
+docker compose -f deploy/compose.yaml config --quiet
+docker compose -f deploy/compose.yaml up -d --build
+```
+
+`deploy/.env` 会生成随机体验码与会话签名密钥；体验码在 `WEB_ACCESS_CODE`，由维护者私下提供给体验者。该命令不会覆盖已有配置。Caddy 根据域名申请 HTTPS 证书；公网 DNS、80/443 连通性和证书签发成功后才可完成访问验收。
+
+先保持 `APP_DEMO_MODE=true` 验证上传与结果页面，再在服务器的 `deploy/.env` 配置模型密钥与模型名称，设 `APP_DEMO_MODE=false`。模型密钥不填进网页、不保存到前端构建产物、不在部署包中传输。
+
+若使用发布包里的已构建网页，运行：
+
+```bash
+docker compose --env-file deploy/.env -f deploy/compose.yaml -f deploy/compose.prebuilt.yaml up -d --build
+```
+
+预构建方案将 8080 仅绑定到服务器 `127.0.0.1`，便于内部验收；公网仅由 Caddy 提供 80/443。可通过 `XIAOLI_PYTHON_BASE`、`XIAOLI_CADDY_IMAGE` 和 `XIAOLI_PIP_INDEX_URL` 指定可信镜像代理与包索引。镜像应保留经官方 registry 核对的 digest，不关闭 TLS 验证。
+
+规则演示需要免体验码公开体验时，可同时设置 `APP_DEMO_MODE=true`、`WEB_PUBLIC_DEMO=true`、`WEB_ACCESS_CODE=`；仍使用签名会话、同源校验和频率限制。切换真实模型时必须配置至少 8 字符的体验码，否则服务拒绝启动。
+
+使用队友的完整 GLM / DINO 组合时，在服务器配置中将 `CAMERA_AI_PRESET=glm-dino`、`CAMERA_AI_API_KEY` 设为服务器使用的有效智谱密钥；保持构图开启。然后执行：
+
+```bash
+docker compose -f deploy/compose.yaml -f deploy/compose.dino.yaml up -d --build
+```
+
+可选镜像构建显式下载 CPU 依赖与 DINO 权重；运行时只读本地权重。第一次构建可能较慢。未准备检测环境时不能把空框或模拟输出视作检测成功。
+
+受管知识库需要经过既有审核发布流程；草稿上传到 GitHub 不等于已审核。若要使用现有已发布 SQLite 内容，应由维护者另行迁移到应用数据卷，再开启 `KNOWLEDGE_RETRIEVAL_MODE=managed`。默认不会批准草稿或自动公开管理工具。
+
+## 验收和运维
+
+```bash
+docker compose -f deploy/compose.yaml ps
+docker compose -f deploy/compose.yaml logs --tail 80 app caddy
+curl https://你的真实域名/health
+```
+
+验收：体验码登录、上传照片、手机 / 相机器材选择、拍摄方案、构图状态、历史和导出、退出后重新登录。真实模型验收还应核对主体框与原图方向、构图引用及实际器材约束。
+
+服务不持久化上传照片。DINO 请求使用有界临时文件，处理后清理。云模型模式会向配置的模型服务发送缩放照片副本。会话 Cookie 为 HttpOnly / Secure / SameSite Strict，12 小时失效；同一会话最多 10 分钟分析 6 次，同一网络最多每小时 20 次。登录限制为每个网络五分钟 10 次。额度在单实例内管理，重启会重置，不能替代模型提供商的账户预算设置。
+
+更新前保存上一份发布目录与部署配置。在新目录构建后用原数据卷启动；出现问题可切回旧目录与旧镜像。不要使用 `docker compose down -v` 删除数据库或证书数据卷。
+
+本机验证记录：Python 全量测试 986 通过 / 1 跳过；前端 9 项测试通过；Ruff 与 Vue / Vite 构建通过。浏览器已验证真实上传请求、规则结果、历史恢复和文本导出，并检查 390px 手机与电脑布局。
+
+2026-10-14 服务器内部验收：Ubuntu 22.04、2 vCPU / 2 GiB；应用容器构建成功且健康。通过首页、签名会话、器材目录、JPEG 上传与规则构图结果的完整 HTTP 流程；未登录请求返回 401，配置与管理路径返回 404。
+
+同日公网验收：`https://xiaolicamera.vip/` 已可访问；根域名 A 记录指向 `115.29.241.181`。经用户确认，安全组新增公网 TCP 80、443；未开放应用 8080。Caddy 成功获得 Let's Encrypt 证书，HTTP 返回 308 跳转到 HTTPS，HTTPS `/health` 返回 200。公网浏览器完成了测试图片上传、iPhone 15 器材选择、规则建议生成与历史记录查看。公网导出的自动下载捕获未完成，本机导出验证已通过。
+
+部署目录：`/opt/xiaoli-release-20261014/xiaoli`，私有配置：`deploy/.env`。首轮为规则演示；以下更新记录覆盖其当前运行状态。
+
+2026-10-15 更新：用户配置有效智谱密钥后，服务切换为 `APP_DEMO_MODE=false`、`WEB_PUBLIC_DEMO=false`，视觉与建议模型均为 `glm-4.6v`，构图开启，DINO 保持关闭。服务器内部完成一次真实图像、构图与参数链路验收（HTTP 200，约 123 秒，返回可校验的构图方案）。已生成体验码，并轮换会话签名密钥，撤销此前公开演示会话。
+
+域名在备案过程中，外网检查已观察到阿里云 `Non-compliance ICP Filing` 拦截。按用户要求，当前体验地址改为 `https://115.29.241.181/`；域名入口暂不使用。IP 使用 Let's Encrypt `shortlived` 证书并由 Caddy 自动续期，`default_sni` 明确选择 IP 证书，使不发送 SNI 的 IP 客户端也能正常握手。公网可信 TLS、`/health` 的 cloud 状态及浏览器体验码登录均已验证。备案进度仍由用户继续办理；IP 访问不代表完成备案或保证不受平台访问策略限制。
+
+IP 部署使用同一数据卷与模型配置，额外设置 `XIAOLI_IP` 为公网 IP、`WEB_ORIGIN=https://公网IP`，执行：
+
+```bash
+docker compose --env-file deploy/.env -f deploy/compose.yaml -f deploy/compose.prebuilt.yaml -f deploy/compose.ip.yaml up -d
+```
+
+本机密钥来源为 Git 忽略的 `.env.zhipu-deploy`，单独的体验码文件为 `.env.web-invite`。不要将这两个文件提交仓库或打包。模型密钥只注入 app，Caddy 仅接收入口地址配置。IP 入口的完整公网分析验收记录见后续更新。
+
+## 构图简笔画反馈
+
+构图方案新增可选 `sketch`：模型根据当前照片和方案给出画幅、可见主体的类型与建议摆放、主要机位动作及简短指引。网页使用固定的线稿图形绘制教学示意，不执行模型返回的 SVG / HTML。画面图用于理解取景，机位图用于理解移动或抬高 / 降低；位置不是实测坐标，也不能作为主体检测框使用。
+
+结果默认显示“简笔画指引”，可以切换方案、查看原图对照、保存 SVG 简笔画。旧记录缺少绘图字段或绘图数据无效时，保留原文字方案；演示模式不伪造真实图像构图。可信主体未定位时仍不提供自动裁切。
+
+本次验证：Python 全量 1026 通过 / 1 跳过，前端 12 项测试通过，Vue / Vite 构建与 Ruff 通过。浏览器样例验证横幅、竖幅、降低机位、方案切换及 SVG 下载，390px 宽度没有横向溢出。更新时保留原应用文件和配置备份，并将模型单次输出上限从 4096 调整为 8192，容纳新增绘图数据。
+
+公网真实验收已完成：可信 HTTPS、体验码会话、图片上传到分析接口均通过。测试图获得 HTTP 200（约 130 秒），返回 1 个经过校验的构图方案与 1 张结构化简笔画；状态为待实拍验证。用公网返回结果在同一 Vue 组件中回放，验证原图 / 简笔画切换与机位动作一致。旧浏览器需刷新后重新分析；旧历史方案不会自动补绘。
+
+
+### 2026-10-15：单栏构图手稿与白屏修复
+
+- 页面采用单栏阅读顺序，设备设置、参数建议按需展开；构图反馈切换九宫格、主体画像和机位动作。
+- 模型可提供主题、视觉气氛、旁白、留白解释，以及人物姿态、动物种类和静物轮廓。无可靠识别时仍使用通用形象或保留文字说明。
+- 位置、宽高占比从建议图的归一化坐标计算，明确标注示意；留白着色避开主体和已绘制环境。不是实际照片尺寸或检测结果。
+- 旧历史兼容；重新分析才能取得新增旁白和形象信息。没有增加外部图片生成服务，也不向前端传模型密钥。
+- 白屏根因：以 `umask 077` 接收新静态资源时创建了仅 root 可读的文件，而应用以 UID 10001 运行。首页和 health 正常不代表页面资源能完整下载。
+- 发布包统一文件权限 0644；两个 Dockerfile 固定应用代码、知识库和前端资源可读；增量接收同时设文件 0644 和目录 0755。私有 deploy/.env 仍为 0600。
+- 验收必须完整读取首页引用的每个 JS/CSS，不能只检查 HTTP 200 或 health。新增真实 HTTP 的完整文件、Range 和 HEAD 回归验证。
+
+
+### 选图窗口兼容处理
+
+- 相册按钮和取景框均直接覆盖原生 `input type=file`，不再通过脚本点击 `display:none` 的相册输入。
+- 选图后明确显示“已选择”、文件名与照片预览；可重复选择同一文件。保持 JPEG/PNG 和大小校验、分析期间禁用，以及选图后重新征求分析同意。
+- 桌面支持将照片拖入取景框，经过相同的前端校验；选择照片不会自动提交模型。
+- 浏览器验收使用仓库公开的小熊猫测试图，不使用用户私人照片。原按钮已能发出 filechooser 事件，用户未看见对话框的具体原因尚不能仅由该事件确定；需区分网页选图逻辑与内置浏览器窗口显示问题。

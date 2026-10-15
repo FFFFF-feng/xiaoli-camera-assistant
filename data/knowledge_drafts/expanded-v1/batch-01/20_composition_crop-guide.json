@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-crop-guide",
+  "library_id": "composition",
+  "title": "构图辅助线：建议与机内功能要区分",
+  "kind": "guideline",
+  "content": "核心规则：参考线能辅助构图，但具体机内功能须确认。\n建议动作：提供参考位置或裁剪草案，并清楚标记为建议。；提示用户确认相机是否支持该辅助功能。\n适用前提：需要辅助线；实际型号可确认。\n限制与例外：Canon Cropping Guide示例涉及服务安装；不可假定所有机型都有；本条未执行裁剪。",
+  "payload": {
+    "core_claim": "参考线能辅助构图，但具体机内功能须确认。",
+    "goal": "构图辅助线：建议与机内功能要区分",
+    "requires": [
+      "需要辅助线；实际型号可确认。"
+    ],
+    "actions": [
+      "提供参考位置或裁剪草案，并清楚标记为建议。",
+      "提示用户确认相机是否支持该辅助功能。"
+    ],
+    "limitations": [
+      "Canon Cropping Guide示例涉及服务安装；不可假定所有机型都有；本条未执行裁剪。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "canon-crop",
+          "url": "https://www.canon.com.au/get-inspired/cropping-guide",
+          "location": "How It Works / Upgrade your Existing Camera",
+          "supports": "该Cropping Guide功能说明涉及服务安装。"
+        },
+        {
+          "source_id": "apple-tools",
+          "url": "https://support.apple.com/zh-cn/guide/iphone/iph3dc593597/ios",
+          "location": "手动调整对焦和曝光 / 网格和水平 / 宽高比",
+          "supports": "iPhone可开启网格与水平辅助。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "composition",
+    "crop-guide",
+    "构图辅助线",
+    "建议与机内功能要区分",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Canon｜Cropping Guide说明",
+    "url": "https://www.canon.com.au/get-inspired/cropping-guide",
+    "location": "How It Works / Upgrade your Existing Camera",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

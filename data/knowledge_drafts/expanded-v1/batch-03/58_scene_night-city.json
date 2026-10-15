@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-scene-night-city",
+  "library_id": "scene",
+  "title": "夜景街道：先区分静态建筑与移动行人",
+  "kind": "guideline",
+  "content": "核心规则：同一夜景中，建筑和行人的清晰要求可能不同。\n建议动作：询问更在意建筑细节、人物清晰还是车流效果。；分别查看静止区域与移动区域，再改变模式或曝光方案。\n适用前提：确认现场低光；目标对象和支撑条件可说明。\n限制与例外：夜间图不必被提亮成白天；不能套固定夜景ISO。",
+  "payload": {
+    "core_claim": "同一夜景中，建筑和行人的清晰要求可能不同。",
+    "goal": "夜景街道：先区分静态建筑与移动行人",
+    "requires": [
+      "确认现场低光；目标对象和支撑条件可说明。"
+    ],
+    "actions": [
+      "询问更在意建筑细节、人物清晰还是车流效果。",
+      "分别查看静止区域与移动区域，再改变模式或曝光方案。"
+    ],
+    "limitations": [
+      "夜间图不必被提亮成白天；不能套固定夜景ISO。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-night",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/taking-pictures-at-dusk-and-at-night",
+          "location": "Tripod / Long exposure / Light trails",
+          "supports": "夜景可使用支撑和长曝光。"
+        },
+        {
+          "source_id": "google-nightsight-research",
+          "url": "https://research.google/blog/night-sight-seeing-in-the-dark-on-pixel-phones/",
+          "location": "Motion / Alignment and Merging / Footnote 1",
+          "supports": "低光时长与运动需要权衡。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "scene",
+    "night-city",
+    "夜景街道",
+    "先区分静态建筑与移动行人",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon｜黄昏与夜晚摄影",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/taking-pictures-at-dusk-and-at-night",
+    "location": "Tripod / Long exposure / Light trails",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

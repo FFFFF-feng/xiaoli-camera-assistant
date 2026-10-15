@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-equipment-iphone15-2x",
+  "library_id": "equipment",
+  "title": "iPhone 15：2×取景不登记成独立长焦",
+  "kind": "manufacturer_fact",
+  "content": "核心规则：普通iPhone15的2×取景由四合一像素传感器实现。\n建议动作：区分实体镜头切换与主摄传感器实现的2×取景。；不要为该型号生成不存在的独立2×镜头能力。\n适用前提：普通iPhone15，非Pro系列。\n限制与例外：官方光学品质描述不等于新增实体镜头；低光实际画质需实拍。",
+  "payload": {
+    "core_claim": "普通iPhone15的2×取景由四合一像素传感器实现。",
+    "goal": "iPhone 15：2×取景不登记成独立长焦",
+    "requires": [
+      "普通iPhone15，非Pro系列。"
+    ],
+    "actions": [
+      "区分实体镜头切换与主摄传感器实现的2×取景。",
+      "不要为该型号生成不存在的独立2×镜头能力。"
+    ],
+    "limitations": [
+      "官方光学品质描述不等于新增实体镜头；低光实际画质需实拍。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "manufacturer_facts": {
+      "two_x": {
+        "independent_physical_lens": false,
+        "equivalent_focal_length_mm": 52,
+        "advertised_output_megapixels": 12
+      }
+    },
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "apple-iphone15",
+          "url": "https://support.apple.com/zh-cn/111831",
+          "location": "摄像头 / 照片拍摄格式",
+          "supports": "12MP 2×由四合一像素传感器实现，52mm等效。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "equipment",
+    "iphone15-2x",
+    "iPhone 15",
+    "2×取景不登记成独立长焦",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_profile_id": "apple_iphone_15"
+  },
+  "source": {
+    "name": "Apple｜iPhone 15技术规格",
+    "url": "https://support.apple.com/zh-cn/111831",
+    "location": "摄像头 / 照片拍摄格式",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

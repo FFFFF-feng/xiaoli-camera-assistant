@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-night-time-exif",
+  "library_id": "technique",
+  "title": "夜间时长：总拍摄过程与EXIF单帧时长分开",
+  "kind": "guideline",
+  "content": "核心规则：手机夜间模式的拍摄等待时间不宜直接当作单帧曝光参数。\n建议动作：分别记录界面显示时长与原图EXIF中的曝光时间。；解释差异时保留机型和模式，不由EXIF反推合成帧数。\n适用前提：实际为夜间拍摄；有界面信息和原图。\n限制与例外：总时长与单帧区分是跨资料推导；Google脚注仅针对其历史实现。",
+  "payload": {
+    "core_claim": "手机夜间模式的拍摄等待时间不宜直接当作单帧曝光参数。",
+    "goal": "夜间时长：总拍摄过程与EXIF单帧时长分开",
+    "requires": [
+      "实际为夜间拍摄；有界面信息和原图。"
+    ],
+    "actions": [
+      "分别记录界面显示时长与原图EXIF中的曝光时间。",
+      "解释差异时保留机型和模式，不由EXIF反推合成帧数。"
+    ],
+    "limitations": [
+      "总时长与单帧区分是跨资料推导；Google脚注仅针对其历史实现。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "synthesized_guideline",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "apple-night",
+          "url": "https://support.apple.com/zh-cn/102519",
+          "location": "拍摄夜间模式照片 / 调整拍摄时间 / 闪光灯和实况照片",
+          "supports": "界面数字表示夜间照片拍摄所需时长。"
+        },
+        {
+          "source_id": "google-nightsight-research",
+          "url": "https://research.google/blog/night-sight-seeing-in-the-dark-on-pixel-phones/",
+          "location": "Motion / Alignment and Merging / Footnote 1",
+          "supports": "示例EXIF为单帧曝光，合成含多帧。"
+        }
+      ],
+      "inference_note": "这是基于所列原理综合的建议，不声称来源逐字给出或实拍验证该流程。"
+    }
+  },
+  "tags": [
+    "technique",
+    "night-time-exif",
+    "夜间时长",
+    "总拍摄过程与EXIF单帧时长分开",
+    "手机"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "phone_capture_mode": "night"
+  },
+  "source": {
+    "name": "Apple｜iPhone夜间模式",
+    "url": "https://support.apple.com/zh-cn/102519",
+    "location": "拍摄夜间模式照片 / 调整拍摄时间 / 闪光灯和实况照片",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

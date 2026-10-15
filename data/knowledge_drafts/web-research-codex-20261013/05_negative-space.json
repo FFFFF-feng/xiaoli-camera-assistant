@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-negative-space",
+  "library_id": "composition",
+  "title": "留白：不必纯白或纯色，不用面积比例硬评分",
+  "kind": "guideline",
+  "content": "主体周围的空间可用于组织画面并突出主体关系。\n适用前提：用户希望留白或强调主体与环境关系；存在不会抢走主要注意力的候选区域。\n建议动作：比较主体与周围空间的关系，不只检测白色像素；尝试保留有轻微纹理或色彩变化的空间；按用户目标对照不同留白方案。\n限制与例外：不把网页中的面积经验值升级为全场景阈值；不承诺固定留白必然带来孤独、治愈等情绪；背景存在纹理不等于没有留白。",
+  "payload": {
+    "batch_id": "web-research-codex-20261013",
+    "core_claim": "主体周围的空间可用于组织画面并突出主体关系。",
+    "goal": "留白：不必纯白或纯色，不用面积比例硬评分",
+    "requires": [
+      "用户希望留白或强调主体与环境关系",
+      "存在不会抢走主要注意力的候选区域"
+    ],
+    "actions": [
+      "比较主体与周围空间的关系，不只检测白色像素",
+      "尝试保留有轻微纹理或色彩变化的空间",
+      "按用户目标对照不同留白方案"
+    ],
+    "limitations": [
+      "不把网页中的面积经验值升级为全场景阈值",
+      "不承诺固定留白必然带来孤独、治愈等情绪",
+      "背景存在纹理不等于没有留白"
+    ],
+    "suggested_text": "留白不一定是白色或完全没纹理；关键是这片空间与主体的关系是否符合你想表达的感觉。",
+    "numeric_default": null,
+    "automatic_execution": false,
+    "previous_version": 1,
+    "verification": {
+      "checked_at": "2026-10-13",
+      "status": "cross_source_agreement",
+      "scope": "只核对evidence逐项标明的主张，不把相关来源数量当成整卡全部获得交叉认证。",
+      "inference_note": "安全提醒、视觉不确定时处理和结果检查包含整理者归纳，未做真机或实拍测定；不是原文逐字流程。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "adobe-negative",
+          "url": "https://www.adobe.com/creativecloud/photography/type/negative-space-photography.html",
+          "location": "What is negative space photography? / Examples of negative space",
+          "read_status": "body_read",
+          "supports": "支持留白与主体关系，并明确不必纯色或均匀。"
+        },
+        {
+          "source_id": "canon-composition",
+          "url": "https://www.canon.com.au/get-inspired/mastering-photo-composition-ideas",
+          "location": "Negative Space",
+          "read_status": "body_read",
+          "supports": "支持周围空间作为构图选项；非纯色细节由Adobe正文支持。"
+        }
+      ]
+    },
+    "rights": {
+      "retrieval_use": "pending",
+      "public_display": "pending",
+      "redistribution": "pending",
+      "original_media_saved": false
+    }
+  },
+  "tags": [
+    "留白",
+    "负空间",
+    "主体关系",
+    "纹理",
+    "构图",
+    "MCP采集20261013"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Adobe / 文章列出的摄影师｜How negative space can help you use nothing to make something",
+    "url": "https://www.adobe.com/creativecloud/photography/type/negative-space-photography.html",
+    "location": "What is negative space photography? / Examples of negative space",
+    "license": "原创短归纳与出处；未保存或再分发原文和媒体，计划检索及公开用途待独立核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料采集助手（AI整理，待队友独立复核）",
+  "version": 2,
+  "dataset_split": "reference"
+}

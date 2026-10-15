@@ -1,0 +1,147 @@
+{
+  "knowledge_id": "open-eq-v1-lensfun-samyang-14mm-f-2-8-ae-ed-as-if-umc-ed426d8a8294d738",
+  "library_id": "equipment",
+  "title": "[待核验设备档案] Samyang 14mm f/2.8 AE ED AS IF UMC 镜头",
+  "kind": "guideline",
+  "content": "设备：Samyang 14mm f/2.8 AE ED AS IF UMC。Lensfun 记录的卡口：Pentax KAF、Canon EF、Nikon F AI、Fujifilm X、Sony Alpha、Sony E、4/3 System、Micro 4/3 System、Samsung NX、Nikon CX、Canon EF-M；原始裁切系数：1。\n适用规则：完整型号和具体卡口版本一致才可使用；同名多卡口镜头不能直接互换。\nLensfun 的 mount compat 不是原生兼容保证，不据此推荐无需转接环。校正用 cropfactor 不直接视作厂家标称画幅；不从畸变或暗角校正采样点推断完整焦段、最大光圈、自动对焦或防抖能力。",
+  "payload": {
+    "device_type": "camera",
+    "entity_type": "lens",
+    "model": "Samyang 14mm f/2.8 AE ED AS IF UMC",
+    "provenance": {
+      "repository": "https://github.com/lensfun/lensfun",
+      "commit": "43f9e001ab66c4fcdd4f400463f13b72f94b2288",
+      "path": "data/db/slr-samyang.xml",
+      "record_locator": "lens[3]",
+      "file_sha256": "fb1585bea91f5f59e1fae8811dd76c92252ee5d52e3647df2aff4695048443b5",
+      "license": "CC-BY-SA-3.0",
+      "attribution": "Lensfun database, Lensfun contributors; see retained XML notices",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "changes": "提取设备文本字段，转换为项目 JSON 知识卡，补充中文使用边界；未下载媒体。"
+    },
+    "verification": {
+      "level": "upstream_dataset_only",
+      "officially_verified": false
+    },
+    "usage": {
+      "role": "equipment_reference_draft",
+      "controls_hardware_limits": false,
+      "manual_review_required": true,
+      "limitations": [
+        "不能直接覆盖运行时设备档案或生成曝光参数。",
+        "空值是未知，不等于不支持；型号、地区版本和固件须核对。"
+      ]
+    },
+    "brand": "Samyang",
+    "aliases": [
+      "Samyang 14mm f/2.8 AE ED AS IF UMC"
+    ],
+    "mounts": [
+      "Pentax KAF",
+      "Canon EF",
+      "Nikon F AI",
+      "Fujifilm X",
+      "Sony Alpha",
+      "Sony E",
+      "4/3 System",
+      "Micro 4/3 System",
+      "Samsung NX",
+      "Nikon CX",
+      "Canon EF-M"
+    ],
+    "source_metadata": {
+      "maker": [
+        {
+          "text": "Samyang",
+          "attributes": {}
+        }
+      ],
+      "model": [
+        {
+          "text": "Samyang 14mm f/2.8 AE ED AS IF UMC",
+          "attributes": {}
+        }
+      ],
+      "mount": [
+        {
+          "text": "Pentax KAF",
+          "attributes": {}
+        },
+        {
+          "text": "Canon EF",
+          "attributes": {}
+        },
+        {
+          "text": "Nikon F AI",
+          "attributes": {}
+        },
+        {
+          "text": "Fujifilm X",
+          "attributes": {}
+        },
+        {
+          "text": "Sony Alpha",
+          "attributes": {}
+        },
+        {
+          "text": "Sony E",
+          "attributes": {}
+        },
+        {
+          "text": "4/3 System",
+          "attributes": {}
+        },
+        {
+          "text": "Micro 4/3 System",
+          "attributes": {}
+        },
+        {
+          "text": "Samsung NX",
+          "attributes": {}
+        },
+        {
+          "text": "Nikon CX",
+          "attributes": {}
+        },
+        {
+          "text": "Canon EF-M",
+          "attributes": {}
+        }
+      ],
+      "cropfactor": [
+        {
+          "text": "1",
+          "attributes": {}
+        }
+      ]
+    },
+    "calibration_sample_counts": {
+      "distortion": 1,
+      "tca": 1
+    },
+    "derived_data_license": "CC-BY-SA-3.0"
+  },
+  "tags": [
+    "开源设备目录",
+    "待核验",
+    "镜头",
+    "lensfun"
+  ],
+  "conditions": {
+    "device_type": "camera",
+    "lens_model": [
+      "Samyang 14mm f/2.8 AE ED AS IF UMC"
+    ]
+  },
+  "source": {
+    "name": "Lensfun database, Lensfun contributors; see retained XML notices",
+    "url": "https://github.com/lensfun/lensfun/blob/43f9e001ab66c4fcdd4f400463f13b72f94b2288/data/db/slr-samyang.xml",
+    "location": "lens[3]",
+    "license": "CC-BY-SA-3.0",
+    "retrieval_allowed": false
+  },
+  "author": "小栗项目设备资料转换",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

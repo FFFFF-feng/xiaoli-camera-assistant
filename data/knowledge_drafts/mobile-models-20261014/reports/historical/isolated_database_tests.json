@@ -1,0 +1,893 @@
+{
+  "database": "<original-workspace>\\摄影知识草稿-20261014-符梁-手机型号\\.verification-temp\\xiaoli-phone-verification-ea8csqmp\\isolated.db",
+  "initial_revisions": 0,
+  "first_upload_batches": [
+    {
+      "success": true,
+      "total_files": 20,
+      "validated_count": 20,
+      "imported_count": 20,
+      "unchanged_count": 0,
+      "dry_run": false,
+      "validated_only": false,
+      "skipped_files": [],
+      "errors": [],
+      "revisions": [
+        {
+          "knowledge_id": "phone20261014-a57-zoom",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "84b33a04159d28ad26d703137de829c717b6b1684202913e050f8a5e15df3030"
+        },
+        {
+          "knowledge_id": "phone20261014-fold8-variants",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "43e0b823f4f303a061ffb4ef8f8669a39aeb4d8431b49d8cba698c3035e8cb69"
+        },
+        {
+          "knowledge_id": "phone20261014-honor-magic9-variants",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "7417b2a22df5765c32033e7ff9fed6db743b0060a031a3e3eb6e181baec0fa33"
+        },
+        {
+          "knowledge_id": "phone20261014-iphone-air-main",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "b3d76510c872f4871b46de759afa4071c03410467ff4ee37ed0fc44343030986"
+        },
+        {
+          "knowledge_id": "phone20261014-iphone17-dual",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "38593a4d2051df4cb71f373057d4787d8062cde5f85f00aef5bbec4d077bb835"
+        },
+        {
+          "knowledge_id": "phone20261014-iphone17e-main",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "ac6cf197e4bb9ac0a862536db514c3c2f8b84d845b9d374e51efb5c4bba3976c"
+        },
+        {
+          "knowledge_id": "phone20261014-iphone18pro-aperture",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "9bc9180e5661454ec57918b127a186f5f053e9967e07b07c7dce324859c18f39"
+        },
+        {
+          "knowledge_id": "phone20261014-mate80pro-zoom",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "e8445d1754f796d72f5aebb6277f2a0ef01df84713c29986948e1fc22c906841"
+        },
+        {
+          "knowledge_id": "phone20261014-oneplus16",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "738a5a0f7ebdfbd2af7363bde4dc77db52ba49568457a765f8097e31d5c1965d"
+        },
+        {
+          "knowledge_id": "phone20261014-oppo-findx10",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "e27dc48e4858525ca063a5c9353ea6c1017b1e7910d509b70e35165383a34cd6"
+        },
+        {
+          "knowledge_id": "phone20261014-oppo-findx10promax",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "7cfdc2a2ed4f0ca8bde7627816a6884e07c82f6618ce5512f0a6fe62802af510"
+        },
+        {
+          "knowledge_id": "phone20261014-pixel11pro-family",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "635db52ec32cf216e91f3b609143940bebc48a174dc86d845f88fc3f5c398f74"
+        },
+        {
+          "knowledge_id": "phone20261014-pura90pro-zoom",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "64cbb71b7c4cff19d50db74a3568ba2302b91a1d25205ff03a520d9418dd8267"
+        },
+        {
+          "knowledge_id": "phone20261014-redmi-note17pro5g-za",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "db68e5f15c00e52e01aeb29e4dc9ffc1921c34b7c162cf9e0ab7b7379ee496e1"
+        },
+        {
+          "knowledge_id": "phone20261014-s26-base-plus",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "373b985c1c041c8056fa7cb5b4476a864604d7cd45dfb316cbe8e96091145e4b"
+        },
+        {
+          "knowledge_id": "phone20261014-s26ultra-zoom",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "0122692c4f6abf7ac0f163b006880faa152852a33aa78d28584f5e97a42600cd"
+        },
+        {
+          "knowledge_id": "phone20261014-vivo-x500",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "9b7b2a22044ad9565d7ae7b90b5431d35973485d95e4ea3db136b8242c7079cd"
+        },
+        {
+          "knowledge_id": "phone20261014-vivo-x500promax",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "a020e823c847cdb8bc9ecdea2d75394eb4483a26e26188fda82868b4f79ca38a"
+        },
+        {
+          "knowledge_id": "phone20261014-xiaomi17ultra-uk",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "8a7c806603efed420a9def99c5ea551b8d89fce119489e3bbf130108ee5aa233"
+        },
+        {
+          "knowledge_id": "phone20261014-xiaomi18promax",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "1d454d6f2ca164d761bb00cef8914377de41763e44046b12d833cbb05395f654"
+        }
+      ]
+    },
+    {
+      "success": true,
+      "total_files": 2,
+      "validated_count": 2,
+      "imported_count": 2,
+      "unchanged_count": 0,
+      "dry_run": false,
+      "validated_only": false,
+      "skipped_files": [],
+      "errors": [],
+      "revisions": [
+        {
+          "knowledge_id": "phone20261014-oppo-reno16",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "97d3bcba1de7bca2f676b30f4dd96587ceb4e7dd1175c8fb2c04897a63f039b1"
+        },
+        {
+          "knowledge_id": "phone20261014-vivo-s50",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "48e5728575dbcb514e3088bf23bd8af73764205e8b3db025107dee9ccd25f89c"
+        }
+      ]
+    }
+  ],
+  "repeat_upload_batches": [
+    {
+      "success": true,
+      "total_files": 20,
+      "validated_count": 20,
+      "imported_count": 0,
+      "unchanged_count": 20,
+      "dry_run": false,
+      "validated_only": false,
+      "skipped_files": [],
+      "errors": [],
+      "revisions": [
+        {
+          "knowledge_id": "phone20261014-a57-zoom",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "84b33a04159d28ad26d703137de829c717b6b1684202913e050f8a5e15df3030"
+        },
+        {
+          "knowledge_id": "phone20261014-fold8-variants",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "43e0b823f4f303a061ffb4ef8f8669a39aeb4d8431b49d8cba698c3035e8cb69"
+        },
+        {
+          "knowledge_id": "phone20261014-honor-magic9-variants",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "7417b2a22df5765c32033e7ff9fed6db743b0060a031a3e3eb6e181baec0fa33"
+        },
+        {
+          "knowledge_id": "phone20261014-iphone-air-main",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "b3d76510c872f4871b46de759afa4071c03410467ff4ee37ed0fc44343030986"
+        },
+        {
+          "knowledge_id": "phone20261014-iphone17-dual",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "38593a4d2051df4cb71f373057d4787d8062cde5f85f00aef5bbec4d077bb835"
+        },
+        {
+          "knowledge_id": "phone20261014-iphone17e-main",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "ac6cf197e4bb9ac0a862536db514c3c2f8b84d845b9d374e51efb5c4bba3976c"
+        },
+        {
+          "knowledge_id": "phone20261014-iphone18pro-aperture",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "9bc9180e5661454ec57918b127a186f5f053e9967e07b07c7dce324859c18f39"
+        },
+        {
+          "knowledge_id": "phone20261014-mate80pro-zoom",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "e8445d1754f796d72f5aebb6277f2a0ef01df84713c29986948e1fc22c906841"
+        },
+        {
+          "knowledge_id": "phone20261014-oneplus16",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "738a5a0f7ebdfbd2af7363bde4dc77db52ba49568457a765f8097e31d5c1965d"
+        },
+        {
+          "knowledge_id": "phone20261014-oppo-findx10",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "e27dc48e4858525ca063a5c9353ea6c1017b1e7910d509b70e35165383a34cd6"
+        },
+        {
+          "knowledge_id": "phone20261014-oppo-findx10promax",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "7cfdc2a2ed4f0ca8bde7627816a6884e07c82f6618ce5512f0a6fe62802af510"
+        },
+        {
+          "knowledge_id": "phone20261014-pixel11pro-family",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "635db52ec32cf216e91f3b609143940bebc48a174dc86d845f88fc3f5c398f74"
+        },
+        {
+          "knowledge_id": "phone20261014-pura90pro-zoom",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "64cbb71b7c4cff19d50db74a3568ba2302b91a1d25205ff03a520d9418dd8267"
+        },
+        {
+          "knowledge_id": "phone20261014-redmi-note17pro5g-za",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "db68e5f15c00e52e01aeb29e4dc9ffc1921c34b7c162cf9e0ab7b7379ee496e1"
+        },
+        {
+          "knowledge_id": "phone20261014-s26-base-plus",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "373b985c1c041c8056fa7cb5b4476a864604d7cd45dfb316cbe8e96091145e4b"
+        },
+        {
+          "knowledge_id": "phone20261014-s26ultra-zoom",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "0122692c4f6abf7ac0f163b006880faa152852a33aa78d28584f5e97a42600cd"
+        },
+        {
+          "knowledge_id": "phone20261014-vivo-x500",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "9b7b2a22044ad9565d7ae7b90b5431d35973485d95e4ea3db136b8242c7079cd"
+        },
+        {
+          "knowledge_id": "phone20261014-vivo-x500promax",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "a020e823c847cdb8bc9ecdea2d75394eb4483a26e26188fda82868b4f79ca38a"
+        },
+        {
+          "knowledge_id": "phone20261014-xiaomi17ultra-uk",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "8a7c806603efed420a9def99c5ea551b8d89fce119489e3bbf130108ee5aa233"
+        },
+        {
+          "knowledge_id": "phone20261014-xiaomi18promax",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "1d454d6f2ca164d761bb00cef8914377de41763e44046b12d833cbb05395f654"
+        }
+      ]
+    },
+    {
+      "success": true,
+      "total_files": 2,
+      "validated_count": 2,
+      "imported_count": 0,
+      "unchanged_count": 2,
+      "dry_run": false,
+      "validated_only": false,
+      "skipped_files": [],
+      "errors": [],
+      "revisions": [
+        {
+          "knowledge_id": "phone20261014-oppo-reno16",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "97d3bcba1de7bca2f676b30f4dd96587ceb4e7dd1175c8fb2c04897a63f039b1"
+        },
+        {
+          "knowledge_id": "phone20261014-vivo-s50",
+          "library_id": "equipment",
+          "version": 1,
+          "status": "draft",
+          "content_hash": "48e5728575dbcb514e3088bf23bd8af73764205e8b3db025107dee9ccd25f89c"
+        }
+      ]
+    }
+  ],
+  "repeat_directory_import": {
+    "success": true,
+    "total_files": 22,
+    "validated_count": 22,
+    "imported_count": 0,
+    "unchanged_count": 22,
+    "dry_run": false,
+    "validated_only": false,
+    "skipped_files": [],
+    "errors": [],
+    "revisions": [
+      {
+        "knowledge_id": "phone20261014-a57-zoom",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "84b33a04159d28ad26d703137de829c717b6b1684202913e050f8a5e15df3030"
+      },
+      {
+        "knowledge_id": "phone20261014-fold8-variants",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "43e0b823f4f303a061ffb4ef8f8669a39aeb4d8431b49d8cba698c3035e8cb69"
+      },
+      {
+        "knowledge_id": "phone20261014-honor-magic9-variants",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "7417b2a22df5765c32033e7ff9fed6db743b0060a031a3e3eb6e181baec0fa33"
+      },
+      {
+        "knowledge_id": "phone20261014-iphone-air-main",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "b3d76510c872f4871b46de759afa4071c03410467ff4ee37ed0fc44343030986"
+      },
+      {
+        "knowledge_id": "phone20261014-iphone17-dual",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "38593a4d2051df4cb71f373057d4787d8062cde5f85f00aef5bbec4d077bb835"
+      },
+      {
+        "knowledge_id": "phone20261014-iphone17e-main",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "ac6cf197e4bb9ac0a862536db514c3c2f8b84d845b9d374e51efb5c4bba3976c"
+      },
+      {
+        "knowledge_id": "phone20261014-iphone18pro-aperture",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "9bc9180e5661454ec57918b127a186f5f053e9967e07b07c7dce324859c18f39"
+      },
+      {
+        "knowledge_id": "phone20261014-mate80pro-zoom",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "e8445d1754f796d72f5aebb6277f2a0ef01df84713c29986948e1fc22c906841"
+      },
+      {
+        "knowledge_id": "phone20261014-oneplus16",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "738a5a0f7ebdfbd2af7363bde4dc77db52ba49568457a765f8097e31d5c1965d"
+      },
+      {
+        "knowledge_id": "phone20261014-oppo-findx10",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "e27dc48e4858525ca063a5c9353ea6c1017b1e7910d509b70e35165383a34cd6"
+      },
+      {
+        "knowledge_id": "phone20261014-oppo-findx10promax",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "7cfdc2a2ed4f0ca8bde7627816a6884e07c82f6618ce5512f0a6fe62802af510"
+      },
+      {
+        "knowledge_id": "phone20261014-oppo-reno16",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "97d3bcba1de7bca2f676b30f4dd96587ceb4e7dd1175c8fb2c04897a63f039b1"
+      },
+      {
+        "knowledge_id": "phone20261014-pixel11pro-family",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "635db52ec32cf216e91f3b609143940bebc48a174dc86d845f88fc3f5c398f74"
+      },
+      {
+        "knowledge_id": "phone20261014-pura90pro-zoom",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "64cbb71b7c4cff19d50db74a3568ba2302b91a1d25205ff03a520d9418dd8267"
+      },
+      {
+        "knowledge_id": "phone20261014-redmi-note17pro5g-za",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "db68e5f15c00e52e01aeb29e4dc9ffc1921c34b7c162cf9e0ab7b7379ee496e1"
+      },
+      {
+        "knowledge_id": "phone20261014-s26-base-plus",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "373b985c1c041c8056fa7cb5b4476a864604d7cd45dfb316cbe8e96091145e4b"
+      },
+      {
+        "knowledge_id": "phone20261014-s26ultra-zoom",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "0122692c4f6abf7ac0f163b006880faa152852a33aa78d28584f5e97a42600cd"
+      },
+      {
+        "knowledge_id": "phone20261014-vivo-s50",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "48e5728575dbcb514e3088bf23bd8af73764205e8b3db025107dee9ccd25f89c"
+      },
+      {
+        "knowledge_id": "phone20261014-vivo-x500",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "9b7b2a22044ad9565d7ae7b90b5431d35973485d95e4ea3db136b8242c7079cd"
+      },
+      {
+        "knowledge_id": "phone20261014-vivo-x500promax",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "a020e823c847cdb8bc9ecdea2d75394eb4483a26e26188fda82868b4f79ca38a"
+      },
+      {
+        "knowledge_id": "phone20261014-xiaomi17ultra-uk",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "8a7c806603efed420a9def99c5ea551b8d89fce119489e3bbf130108ee5aa233"
+      },
+      {
+        "knowledge_id": "phone20261014-xiaomi18promax",
+        "library_id": "equipment",
+        "version": 1,
+        "status": "draft",
+        "content_hash": "1d454d6f2ca164d761bb00cef8914377de41763e44046b12d833cbb05395f654"
+      }
+    ]
+  },
+  "final_revisions": 22,
+  "audit_entries": 22,
+  "published": 0,
+  "probes": [
+    {
+      "knowledge_id": "phone20261014-a57-zoom",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "爱尔兰SM-A576BZADEUB",
+        "camera_model": "Samsung Galaxy A57 5G"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-fold8-variants",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "全球发布规格；中国版本需核对",
+        "camera_model": "Samsung Galaxy Z Fold8"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-fold8-variants",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "全球发布规格；中国版本需核对",
+        "camera_model": "Samsung Galaxy Z Fold8 Ultra"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-honor-magic9-variants",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "HONOR Magic9"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-honor-magic9-variants",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "HONOR Magic9 Pro Max"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-iphone-air-main",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "Apple iPhone Air"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-iphone17-dual",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "Apple iPhone 17"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-iphone17e-main",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "Apple iPhone 17e"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-iphone18pro-aperture",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "Apple iPhone 18 Pro"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-iphone18pro-aperture",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "Apple iPhone 18 Pro Max"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-mate80pro-zoom",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "HUAWEI Mate 80 Pro"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-oneplus16",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "OnePlus 16"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-oppo-findx10",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆PMW110",
+        "camera_model": "OPPO Find X10"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-oppo-findx10promax",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "OPPO Find X10 Pro Max"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-pixel11pro-family",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "美国Google Store规格",
+        "camera_model": "Google Pixel 11 Pro"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-pixel11pro-family",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "美国Google Store规格",
+        "camera_model": "Google Pixel 11 Pro XL"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-pura90pro-zoom",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "HUAWEI Pura 90 Pro"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-redmi-note17pro5g-za",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "南非版，不能套给中国同名/近名型号",
+        "camera_model": "REDMI Note 17 Pro 5G"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-s26-base-plus",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "全球发布规格；中国配置另需核对",
+        "camera_model": "Samsung Galaxy S26"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-s26-base-plus",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "全球发布规格；中国配置另需核对",
+        "camera_model": "Samsung Galaxy S26+"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-s26ultra-zoom",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "全球发布规格；中国配置另需核对",
+        "camera_model": "Samsung Galaxy S26 Ultra"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-vivo-x500",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆V2609A",
+        "camera_model": "vivo X500"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-vivo-x500promax",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "vivo X500 Pro Max"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-xiaomi17ultra-uk",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "英国版规格",
+        "camera_model": "Xiaomi 17 Ultra"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-xiaomi18promax",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "Xiaomi 18 Pro Max"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-oppo-reno16",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "OPPO Reno16"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    },
+    {
+      "knowledge_id": "phone20261014-vivo-s50",
+      "observed": {
+        "device_type": "phone",
+        "capture_mode": "still_photo",
+        "region_scope": "中国大陆",
+        "camera_model": "vivo S50"
+      },
+      "keyword_hits": 0,
+      "structured_hits": 0,
+      "matching_conditions_accept": true,
+      "wrong_model_region_and_missing_context_reject": true
+    }
+  ],
+  "scope": "27个完整型号的条件匹配和本批draft+检索禁止组合测试；未分别测试状态/许可独立分支，未验证真机或运行时菜单",
+  "temporary_directory_removed": true
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-wb-reference",
+  "library_id": "technique",
+  "title": "中性参考：测量对象须真中性",
+  "kind": "guideline",
+  "content": "核心规则：支持时可用中性参考辅助设置自定义白平衡。\n建议动作：把可靠中性参考放到主体所在光线中。；按实际型号流程设置，再观察样片。\n适用前提：有可靠中性参考及支持的自定义白平衡功能。\n限制与例外：看起来白的墙或纸不一定中性；不得从照片猜精准色温。",
+  "payload": {
+    "core_claim": "支持时可用中性参考辅助设置自定义白平衡。",
+    "goal": "中性参考：测量对象须真中性",
+    "requires": [
+      "有可靠中性参考及支持的自定义白平衡功能。"
+    ],
+    "actions": [
+      "把可靠中性参考放到主体所在光线中。",
+      "按实际型号流程设置，再观察样片。"
+    ],
+    "limitations": [
+      "看起来白的墙或纸不一定中性；不得从照片猜精准色温。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-wb",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+          "location": "AUTO / PRE / Presets",
+          "supports": "PRE与中性参考测量。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "wb-reference",
+    "中性参考",
+    "测量对象须真中性",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon｜设置白平衡",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+    "location": "AUTO / PRE / Presets",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

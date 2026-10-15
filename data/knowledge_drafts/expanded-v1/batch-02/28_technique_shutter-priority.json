@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-shutter-priority",
+  "library_id": "technique",
+  "title": "快门优先：不能假定自动光圈永远足够",
+  "kind": "guideline",
+  "content": "核心规则：S/Tv类模式优先指定曝光时间。\n建议动作：按冻结或拖影目标设定时长，检查光圈是否达到极限。；不足时改变光线条件或确认自动ISO能力。\n适用前提：设备有快门优先；能查看曝光结果。\n限制与例外：亮度不足时自动模式也会欠曝；不套用最高速度。",
+  "payload": {
+    "core_claim": "S/Tv类模式优先指定曝光时间。",
+    "goal": "快门优先：不能假定自动光圈永远足够",
+    "requires": [
+      "设备有快门优先；能查看曝光结果。"
+    ],
+    "actions": [
+      "按冻结或拖影目标设定时长，检查光圈是否达到极限。",
+      "不足时改变光线条件或确认自动ISO能力。"
+    ],
+    "limitations": [
+      "亮度不足时自动模式也会欠曝；不套用最高速度。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-shutter",
+          "url": "https://www.sony.com/electronics/support/articles/00267929",
+          "location": "Shutter Speed / S-Mode",
+          "supports": "S模式指定快门，由相机调整光圈。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "shutter-priority",
+    "快门优先",
+    "不能假定自动光圈永远足够",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Sony｜快门与S模式",
+    "url": "https://www.sony.com/electronics/support/articles/00267929",
+    "location": "Shutter Speed / S-Mode",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

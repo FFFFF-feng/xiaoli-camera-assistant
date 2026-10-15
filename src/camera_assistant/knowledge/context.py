@@ -19,6 +19,8 @@ KNOWLEDGE_CONDITION_KEYS = frozenset(
         "motion",
         "camera_profile_id",
         "camera_format",
+        "camera_mount",
+        "camera_lens_id",
         "device_type",
         "handheld",
         "tripod",
@@ -131,9 +133,12 @@ def build_knowledge_conditions(
             }
         )
     else:
-        conditions.update({"camera_format": camera.sensor_format, "capture_mode": "still_photo"})
+        conditions.update({
+            "camera_format": camera.sensor_format, "capture_mode": "still_photo",
+            "camera_mount": camera.mount, "camera_lens_id": request.camera_lens_id,
+        })
 
-    target_model = (getattr(request, "target_model_name", None) or "").strip()
+    target_model = (request.target_model_name or request.device_model_name or "").strip()
     # 已选具体档案与参数能力必须指向同一设备；自填型号只补充通用档案。
     if not camera.profile_id.startswith("generic_"):
         target_model = camera.display_name

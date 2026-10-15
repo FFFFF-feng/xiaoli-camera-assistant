@@ -30,7 +30,12 @@ def main():
     Path(os.environ["MPLCONFIGDIR"]).mkdir(parents=True, exist_ok=True)
     import torch
 
-    for library in ("torchvision", "transformers", "ultralytics"):
+    libraries = ["torchvision"]
+    if args.detector in ("all", "grounding_dino"):
+        libraries.append("transformers")
+    if args.detector in ("all", "yolo26"):
+        libraries.append("ultralytics")
+    for library in libraries:
         importlib.import_module(library)
 
 

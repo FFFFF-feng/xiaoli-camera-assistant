@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-exposure-stops",
+  "library_id": "technique",
+  "title": "曝光变化：不要把一挡当成任意加一",
+  "kind": "guideline",
+  "content": "核心规则：光圈与曝光时间的变化需考虑实际进光比例。\n建议动作：只改一个变量，使用设备的曝光刻度比较亮度变化。；为保持亮度而联动参数时，再确认ISO是否自动。\n适用前提：光线不变，具备可读的曝光刻度。\n限制与例外：刻度可为1/3挡等；不向未知设备下发数值。",
+  "payload": {
+    "core_claim": "光圈与曝光时间的变化需考虑实际进光比例。",
+    "goal": "曝光变化：不要把一挡当成任意加一",
+    "requires": [
+      "光线不变，具备可读的曝光刻度。"
+    ],
+    "actions": [
+      "只改一个变量，使用设备的曝光刻度比较亮度变化。",
+      "为保持亮度而联动参数时，再确认ISO是否自动。"
+    ],
+    "limitations": [
+      "刻度可为1/3挡等；不向未知设备下发数值。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-aperture",
+          "url": "https://www.sony.com/electronics/support/articles/00267926",
+          "location": "Aperture / A-Mode",
+          "supports": "f值变化与进光量有关。"
+        },
+        {
+          "source_id": "sony-shutter",
+          "url": "https://www.sony.com/electronics/support/articles/00267929",
+          "location": "Shutter Speed / S-Mode",
+          "supports": "曝光时间加倍在其余条件不变时增加进光。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "exposure-stops",
+    "曝光变化",
+    "不要把一挡当成任意加一",
+    "摄影"
+  ],
+  "conditions": {
+    "device_type": "camera"
+  },
+  "source": {
+    "name": "Sony｜光圈与A模式",
+    "url": "https://www.sony.com/electronics/support/articles/00267926",
+    "location": "Aperture / A-Mode",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

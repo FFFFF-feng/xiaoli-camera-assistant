@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-composition-thirds",
+  "library_id": "composition",
+  "title": "三分法：一个可比较的主体位置",
+  "kind": "guideline",
+  "content": "核心规则：三分线与交点可用作安排主体的构图参考。\n建议动作：先选定唯一主要主体，再尝试放在交点附近。；保留一张居中版本，按表达目标比较。\n适用前提：确认主要主体位置；可移动机位或裁剪。\n限制与例外：三分法不是审美判定标准；不能保证更好看。",
+  "payload": {
+    "core_claim": "三分线与交点可用作安排主体的构图参考。",
+    "goal": "三分法：一个可比较的主体位置",
+    "requires": [
+      "确认主要主体位置；可移动机位或裁剪。"
+    ],
+    "actions": [
+      "先选定唯一主要主体，再尝试放在交点附近。",
+      "保留一张居中版本，按表达目标比较。"
+    ],
+    "limitations": [
+      "三分法不是审美判定标准；不能保证更好看。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "cross_source_agreement",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "nikon-composition",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "location": "Rule of Thirds / Horizon / Lean Into the Frame / Leading lines / Patterns",
+          "supports": "三分位置可安排主体，规则有例外。"
+        },
+        {
+          "source_id": "sony-portrait",
+          "url": "https://www.sony.co.uk/electronics/support/articles/00206555",
+          "location": "Considering the composition / Using back light",
+          "supports": "以三分线交点安排面部或眼睛。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "composition",
+    "thirds",
+    "三分法",
+    "一个可比较的主体位置",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Nikon｜5 Easy Composition Guidelines",
+    "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+    "location": "Rule of Thirds / Horizon / Lean Into the Frame / Leading lines / Patterns",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}

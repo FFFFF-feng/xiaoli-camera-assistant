@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "expanded-v1-technique-too-close-focus",
+  "library_id": "technique",
+  "title": "太近无法合焦：先退后，不急着换参数",
+  "kind": "guideline",
+  "content": "核心规则：镜头存在最近可合焦距离，过近可能无法合焦。\n建议动作：轻微退后，重新对准目标细节确认合焦。；需要更大特写时，核实镜头或模式的近摄能力。\n适用前提：近摄失败；确认主体不是单纯运动模糊。\n限制与例外：变焦不同位置能力可能变化；手机微距距离不可跨型号套用。",
+  "payload": {
+    "core_claim": "镜头存在最近可合焦距离，过近可能无法合焦。",
+    "goal": "太近无法合焦：先退后，不急着换参数",
+    "requires": [
+      "近摄失败；确认主体不是单纯运动模糊。"
+    ],
+    "actions": [
+      "轻微退后，重新对准目标细节确认合焦。",
+      "需要更大特写时，核实镜头或模式的近摄能力。"
+    ],
+    "limitations": [
+      "变焦不同位置能力可能变化；手机微距距离不可跨型号套用。"
+    ],
+    "numeric_default": null,
+    "automatic_execution": false,
+    "verification": {
+      "checked_at": "2026-10-11",
+      "status": "primary_source_only",
+      "scope": "仅核对核心主张及证据适用边界；执行步骤含整理者的操作化归纳，未测定效果。",
+      "needs_human_review": true,
+      "human_review_status": "not_performed",
+      "field_test_status": "not_performed",
+      "evidence": [
+        {
+          "source_id": "sony-minfocus",
+          "url": "https://www.sony.com/electronics/support/articles/00267924",
+          "location": "Minimum Focusing Distance",
+          "supports": "过近导致无法对焦及镜头差异。"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "technique",
+    "too-close-focus",
+    "太近无法合焦",
+    "先退后",
+    "不急着换参数",
+    "摄影"
+  ],
+  "conditions": {},
+  "source": {
+    "name": "Sony｜镜头最近对焦距离",
+    "url": "https://www.sony.com/electronics/support/articles/00267924",
+    "location": "Minimum Focusing Distance",
+    "license": "仅保存原创短归纳与出处；原站全文/图片未再分发，检索许可待人工核对。",
+    "retrieval_allowed": false
+  },
+  "author": "小栗资料整理助手（待独立复核）",
+  "version": 1,
+  "dataset_split": "reference"
+}
