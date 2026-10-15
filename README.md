@@ -57,6 +57,8 @@
 
 后续四批共 **121 条 JSON 知识草稿**，加上首批17条，共 **138条草稿**。其中12条修订为v2，收紧设备和拍摄条件，不增加草稿条数。卡片随附来源登记、冲突记录及核验报告；全部未审核或发布，禁止检索，不自动写入主数据库。查看 [合集与审核交接](docs/photography-knowledge-drafts.md) 或 [知识卡目录](data/knowledge_drafts/photography-20261013/upload_cards/)。
 
+新增 [手机型号专项草稿](data/knowledge_drafts/mobile-models-20261014/README.md)：22条型号事实知识卡，覆盖27个完整型号，24项来源登记。仍为待审核草稿，禁止检索；仅提交知识文件、来源和核验材料，不自动导入主数据库或注册运行时型号。
+
 具体机型：Canon EOS R50、Nikon Z50、Sony α6700、Fujifilm X-S20。
 
 通用配置：全画幅、APS-C、M4/3、未知机型。机型资料的厂商链接保存在 [camera_profiles.yaml](knowledge/cameras/camera_profiles.yaml)；保守自动 ISO 上限是本项目策略，不是厂商宣称的画质阈值。

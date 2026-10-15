@@ -1,0 +1,59 @@
+{
+  "direct_numeric_conflicts_found": [],
+  "scope_differences": [
+    {
+      "sources": [
+        "PH-S02"
+      ],
+      "issue": "Apple 17同页‘光学变焦范围’与‘光学品质2倍’措辞并存",
+      "handling": "保留厂商标签；主摄2倍功能不增造第三颗模组"
+    },
+    {
+      "sources": [
+        "PH-S05"
+      ],
+      "issue": "S26 Ultra与S26/S26+长焦、超广角规格不同",
+      "handling": "独立型号行，不能用Ultra参数补基础型号"
+    },
+    {
+      "sources": [
+        "PH-S08"
+      ],
+      "issue": "Fold8与Ultra为不同后置数量；Main Camera栏可能指内屏相机",
+      "handling": "只从Rear栏登记后置，完整型号分别匹配"
+    },
+    {
+      "sources": [
+        "PH-S18",
+        "PH-S19"
+      ],
+      "issue": "Magic9两款主摄光圈与数字变焦上限不同",
+      "handling": "保留各型号依据，不平均或混用"
+    },
+    {
+      "sources": [
+        "PH-S06",
+        "PH-S07"
+      ],
+      "issue": "A57爱尔兰SKU与全球发布表范围不同；后置AF/OIS是整体声明",
+      "handling": "只采用对应列；不由整体声明填每颗AF/OIS，中国版待核"
+    },
+    {
+      "sources": [
+        "PH-S09",
+        "PH-S10",
+        "PH-S11"
+      ],
+      "issue": "中国小米与英国Ultra、南非REDMI地区不同",
+      "handling": "国家范围进入条件；不拼成中国同型号完整能力"
+    },
+    {
+      "sources": [
+        "PH-S23"
+      ],
+      "issue": "Reno16同时列主摄24mm、长焦80mm与照片最高3.5倍光学变焦",
+      "handling": "作为不同标称字段保留原文；本批未核验倍数参考定义，不用焦距求商取代官方倍数，不编造解释"
+    }
+  ],
+  "limits": "没有发现数字冲突仅限已读字段，不代表所有地区、固件或手册没有矛盾；未做真机验证。"
+}

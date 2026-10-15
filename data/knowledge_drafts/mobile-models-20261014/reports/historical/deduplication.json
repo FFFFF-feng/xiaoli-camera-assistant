@@ -1,0 +1,855 @@
+{
+  "read_only_sqlite_uri": true,
+  "main_database_snapshot": {
+    "path": "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge.db",
+    "file_sha256": "81db818ca4ce9992b445753838b614be108a73bc54af37718f4b21a44474f52e",
+    "logical_sha256": "bcf68a21cf8513a179e90614d6aad95492a64b4c1788dbaa1d65f467aae61be1",
+    "revision_count": 112,
+    "audit_count": 112,
+    "statuses": {
+      "draft": 112
+    }
+  },
+  "main_records": 112,
+  "previous_collection_drafts": 29,
+  "prior_collection_total": 141,
+  "starter_records": 17,
+  "complete_record_scan_count": 158,
+  "repository_copy_matches": true,
+  "history_import_records_match": true,
+  "existing_keyword_matches": [
+    {
+      "knowledge_id": "photo20261011-case-city-night",
+      "title": "城市夜景（Jerry Steinfield）",
+      "matched_terms": [
+        "iPhone"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-composition-edges",
+      "title": "边缘干扰：先确定什么需要保护",
+      "matched_terms": [
+        "Pixel"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-composition-food-props",
+      "title": "食物道具：支持主题而非堆满画面",
+      "matched_terms": [
+        "Pixel"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-composition-foreground",
+      "title": "风景前景：低机位属于重拍",
+      "matched_terms": [
+        "Pixel"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-composition-horizon",
+      "title": "地平线位置：按天空与地面主次选择",
+      "matched_terms": [
+        "Pixel"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-composition-leading-lines",
+      "title": "引导线：检查指向和遮挡",
+      "matched_terms": [
+        "Pixel"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-composition-looking-room",
+      "title": "视线留白：先确认人物朝向",
+      "matched_terms": [
+        "Pixel"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-composition-motion-room",
+      "title": "运动留白：动作方向来自观察",
+      "matched_terms": [
+        "Pixel"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-composition-patterns",
+      "title": "重复与破格：确认真正的视觉焦点",
+      "matched_terms": [
+        "Pixel"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-composition-perspective",
+      "title": "建筑垂直线：机位和后期校正分开",
+      "matched_terms": [
+        "Pixel"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-composition-symmetry",
+      "title": "居中对称：保留结构与轴线",
+      "matched_terms": [
+        "Pixel"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-composition-telephoto-detail",
+      "title": "风景局部：比较宽视野与细节",
+      "matched_terms": [
+        "Pixel"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-composition-thirds",
+      "title": "偏置主体：三分线只作为构图候选",
+      "matched_terms": [
+        "Pixel"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-equipment-iphone15",
+      "title": "Apple iPhone 15：规格、条件与未知能力",
+      "matched_terms": [
+        "iPhone"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-equipment-s24ultra",
+      "title": "Samsung Galaxy S24 Ultra：规格、条件与未知能力",
+      "matched_terms": [
+        "Galaxy"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-equipment-xiaomi14",
+      "title": "Xiaomi 14：规格、条件与未知能力",
+      "matched_terms": [
+        "Xiaomi"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-scene-night-handheld",
+      "title": "手持夜景：模糊来源需要分辨",
+      "matched_terms": [
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-technique-depth",
+      "title": "景深控制：光圈、距离和观看条件一起确认",
+      "matched_terms": [
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-technique-diffraction",
+      "title": "小光圈：景深收益与细节损失比较",
+      "matched_terms": [
+        "Pixel"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-technique-raw",
+      "title": "RAW：保留处理余地而非曝光免检",
+      "matched_terms": [
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261011-technique-reciprocal",
+      "title": "倒数经验：只作手持试拍起点",
+      "matched_terms": [
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261013-equipment-iphone16pro-live-max",
+      "title": "iPhone 16 Pro（iOS 18）：Live Photos与ProRAW／HEIF Max不能同开",
+      "matched_terms": [
+        "iPhone",
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261013-equipment-iphone16pro-macro-switch",
+      "title": "iPhone 16 Pro（iOS 18）：控制近摄自动微距切换",
+      "matched_terms": [
+        "iPhone",
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261013b3-equipment-a7iv-manual-steadyshot",
+      "title": "Sony α7 IV：无镜头焦距信息时核对手动防抖焦距",
+      "matched_terms": [
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261013b3-equipment-iphone16pro-crop-revert",
+      "title": "iPhone 16 Pro（iOS 18）：裁剪后可复原编辑，范围以保留的原片为限",
+      "matched_terms": [
+        "iPhone"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261013b3-equipment-iphone16pro-lens-correction",
+      "title": "iPhone 16 Pro（iOS 18）：镜头校正针对前置和超广角照片",
+      "matched_terms": [
+        "iPhone",
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261013b3-equipment-iphone16pro-live-long",
+      "title": "iPhone 16 Pro（iOS 18）：实况长曝光是模拟效果，不能据此填快门秒数",
+      "matched_terms": [
+        "iPhone"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261013b3-equipment-iphone16pro-outside-frame",
+      "title": "iPhone 16 Pro（iOS 18）：超取景框预览不等于当前照片已保存该范围",
+      "matched_terms": [
+        "iPhone",
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261013b3-equipment-iphone16pro-portrait-focus",
+      "title": "iPhone 16 Pro（iOS 18）：人像换焦点先检查新主体本来是否清晰",
+      "matched_terms": [
+        "iPhone"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261013b3-equipment-iphone16pro-style-edit",
+      "title": "iPhone 16 Pro（iOS 18）：拍后改摄影风格要在拍摄时选高效格式",
+      "matched_terms": [
+        "iPhone",
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261013b3-equipment-r6ii-pre-shooting",
+      "title": "Canon R6 Mark II：RAW预拍需要半按快门后才开始准备",
+      "matched_terms": [
+        "iPhone"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261013b3-technique-hdr-moving-ghosts",
+      "title": "多张HDR重影：分别检查帧间运动与图像对齐",
+      "matched_terms": [
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261013b2-equipment-iphone16pro-aeaf-lock",
+      "title": "iPhone 16 Pro（iOS 18）：保持对焦与曝光锁定",
+      "matched_terms": [
+        "iPhone",
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "photo20261013b2-equipment-iphone16pro-burst-button",
+      "title": "iPhone 16 Pro（iOS 18）：用调高音量键启动连拍",
+      "matched_terms": [
+        "iPhone",
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "equipment-iphone15-001",
+      "title": "iPhone 15原生后置相机事实卡",
+      "matched_terms": [
+        "iPhone",
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "equipment-s24ultra-001",
+      "title": "Galaxy S24 Ultra后置相机事实卡",
+      "matched_terms": [
+        "Galaxy",
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "equipment-xiaomi14-001",
+      "title": "小米14全球版后置相机事实卡",
+      "matched_terms": [
+        "Xiaomi",
+        "小米",
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "phone-iphone-focus-exposure-001",
+      "title": "iPhone原生相机点按对焦与曝光操作",
+      "matched_terms": [
+        "iPhone"
+      ]
+    },
+    {
+      "knowledge_id": "phone-iphone-grid-001",
+      "title": "iPhone网格和水平工具用于取景辅助",
+      "matched_terms": [
+        "iPhone"
+      ]
+    },
+    {
+      "knowledge_id": "phone-iphone-night-001",
+      "title": "iPhone夜间模式应保持稳定并核对模式兼容",
+      "matched_terms": [
+        "iPhone"
+      ]
+    },
+    {
+      "knowledge_id": "phone-samsung-pro-001",
+      "title": "Samsung原生Pro控制项需结合机型和当前界面",
+      "matched_terms": [
+        "Galaxy"
+      ]
+    },
+    {
+      "knowledge_id": "phone-xiaomi-pro-001",
+      "title": "小米Pro控制项的通用操作与边界",
+      "matched_terms": [
+        "Xiaomi",
+        "小米"
+      ]
+    },
+    {
+      "knowledge_id": "technique-depth-of-field-001",
+      "title": "物理景深建议必须确认镜头可调光圈",
+      "matched_terms": [
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "technique-digital-crop-001",
+      "title": "裁切和数字放大应检查剩余细节",
+      "matched_terms": [
+        "手机"
+      ]
+    },
+    {
+      "knowledge_id": "technique-shutter-motion-001",
+      "title": "运动清晰度与曝光时间需联合考虑",
+      "matched_terms": [
+        "手机"
+      ]
+    }
+  ],
+  "same_id_count": 0,
+  "same_title_count": 0,
+  "protected_hashes": {
+    "<original-workspace>\\摄影知识草稿-20261013-符梁\\upload_cards\\photo20261013-equipment-iphone16pro-live-max.json": "05908696c111efed5ca4d95c531fbf5b45a8978b1f202f8450ad70e7cb8203ba",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁\\upload_cards\\photo20261013-equipment-iphone16pro-macro-switch.json": "9427d6b7ecc585bd0e9e5632b60206eb38a085fd02d6385e1b263dce5aced4b8",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁\\upload_cards\\photo20261013-technique-flicker-banding.json": "c9371d08c9b66d4c21fd8679905a13326226971a29970ac4a426cd03c383f9ce",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁\\upload_cards\\photo20261013-technique-rolling-shutter-geometry.json": "fe2981362cd4e117b4f328f8cd12b41f31978b47165c9a9d9b8980dd758cc009",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-composition-panorama-projection.json": "11ef28264c9b93454f4fe3c493dd6926a509969f19b4a092b55d54b311d48c07",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-a7iv-af-release.json": "7095db2b01ee3eab18b8095e6aed04dfa63a3394a2cb3fd60adfeb67a5548722",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-a7iv-apsc-size.json": "a47c074a6b92005f984dea7cc2d3f8fb79532d2f7f58c88dc8a11daf989437d2",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-a7iv-awb-lock.json": "a9e78e5a3fc3cb06c0f5daa1abdfca26ab2b0450485b34660ea92926853a42f1",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-a7iv-dual-media.json": "6506d15ad516dae26b8de4fc1efd3565e8a54e0e63d121bfac097f6300c0c886",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-a7iv-interval.json": "81002aa8b4fd9294921e2b936a1655046d55945ef81531432fc5e1f0fb34e1a8",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-a7iv-liveview.json": "eba3449d5595db1c18b2747d01293be8e27cb3bd3698dc36fe33de851c9ee26b",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-a7iv-manual-steadyshot.json": "d6aa19bfcdb3cc595d5eda819fd45bac5648bb6f14844b6dc44875cce5090b20",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-a7iv-zebra.json": "525ca06029b7c326e0f04fbb5c61cf9324566e370c13a90efdec8aff847ba9b1",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-iphone16pro-crop-revert.json": "20dba1dc1283b0c3d179855b597f0e3b05d7bd17cae2b5b4a078e8c7bd4b5842",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-iphone16pro-lens-correction.json": "248c08a8308aa4d94621d9143a5b81f2c4fe2cfbdc79a7e7e76779e31f45c920",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-iphone16pro-live-long.json": "8a7a98fb9e4288f7734d19a560e81fd6a2f353697199bb14da551ab44448f6f8",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-iphone16pro-outside-frame.json": "6fd77f23f63c18775ce3d602592b51f8dcd41c3299086c9c5a89f2521cf29f61",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-iphone16pro-portrait-focus.json": "2725082d3912334afa728210b759aa425411a8f95c6b5241420965d6196d7483",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-iphone16pro-style-edit.json": "f2da5c2651225b7057793d4bdc84a6ee11c17717fca78996db91c00f217e238c",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-r6ii-aeb-drive.json": "bc44458950104f37198c00fdbe801f2edfbcf3f7227ae0156cb6b968e94a9efc",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-r6ii-depth-composite.json": "7afdfcb72188d2949c326c1c435687fa05a1709b68d2697a029a4d0bf5ecaa73",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-r6ii-dof-preview.json": "1e1bdb6673dabeea852dbfbb3f6a1e7da157d320c2bb394586af34f35621df65",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-equipment-r6ii-pre-shooting.json": "4fa03b16622f4ba15d4810954a2774c6cd1ba3a4b61af39ef62d4fad3cf1ed0d",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第三批\\upload_cards\\photo20261013b3-technique-hdr-moving-ghosts.json": "bd29cf93937ed040c646136308940e2dd083a3beb2abe93d2fd818b06009f12e",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第二批\\upload_cards\\photo20261013b2-equipment-a7iv-long-nr.json": "a25612f2403a3847422775516f36cf566029d0282c99fcd66aacfa3786cfa65a",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第二批\\upload_cards\\photo20261013b2-equipment-iphone16pro-aeaf-lock.json": "a5a64a8f7527c0a63f3c10ca91167ae07e43a513ca6cf8201cbfa4b694dd21f0",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第二批\\upload_cards\\photo20261013b2-equipment-iphone16pro-burst-button.json": "25c17713d40ddf2b1bff0a0e3dee4f8a628fa389f8b401ea5010f427385ebd30",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第二批\\upload_cards\\photo20261013b2-technique-efcs-bokeh.json": "326569ff71b8bf4fb579703b18af0dba9022cb6a2abdf6d3aca56cfb612f506a",
+    "<original-workspace>\\摄影知识草稿-20261013-符梁-第二批\\upload_cards\\photo20261013b2-technique-peaking-check.json": "bc7df1a98a0f5ab56b962e5c4a5bddc3b3c4cb753c010da9fa658d76a2f9d7e7",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\composition-horizon-001.md": "adc1a62a2de7aef0f0932de5fcaff57fe700fe09247ccbd05aabc3657d44dd73",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\composition-looking-room-001.md": "6ebb12dc7ea05c4401fba305b1e07012de58d6bef19d611527351bdbb15fa72a",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\composition-thirds-001.md": "b5f86e946ec6e61a8106452e11af7d0cbca980ee5e65ccd77a97392fa3c6aed3",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\equipment-iphone15-001.md": "313a48a889416b87a75e426b41c592254b2ccf17311bdc65fc6084dda7ed306a",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\equipment-s24ultra-001.md": "0b5a23882f742921cdb84ba0eaf3b62a81c8e2d468f03b1639bdd9a3d08ab8f0",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\equipment-xiaomi14-001.md": "d1e09afed877c4bdf7d4d55462857345346004bc6061d7f3a17be171a71e7825",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\phone-iphone-focus-exposure-001.md": "8edf5a31731240c848eb8fe8797eaf7db3ea58615885b7576b7ab12eddd016d2",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\phone-iphone-grid-001.md": "cb8af5f3f7cbf5d9346f6b61112e71515d8fe419abb3162843ba8e916c75ed52",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\phone-iphone-night-001.md": "0b7c86e70b492a2ee2854bde378e5bd297de4f789d58bc3bf5e487e5d5c05449",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\phone-samsung-pro-001.md": "c952b4ab38970a422ec98c898e9c95e1cabf4720dbe61fd35a9a317d0dc98ce8",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\phone-xiaomi-pro-001.md": "1b5a6c9c34d8771c3322bf6120df9c1b020c779ce264777e5bc2d5f53264798a",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\technique-blur-diagnosis-001.md": "4db91cdece33db394688cd40e112152a3f50af7bea022f5e54fbfbb53dcb913c",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\technique-depth-of-field-001.md": "76473bbc2b7385f2e7e4755724856c3575922dc23d3a6f4591dda8517a407da5",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\technique-digital-crop-001.md": "2ec34e8cd9e62f3952693aed08ab8d8294c4238788e62f9852f3aa9f6d9c9d25",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\technique-exposure-clipping-001.md": "074a7954bfa9585a51a1955583f52c4c2747a12cf9be4b8b78fa93625e9f594e",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\technique-shutter-motion-001.md": "13e0d24c682584cfe4b1a84d6353f21f5a4240a4dc8b3462871df10c6af99e6b",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\starter-v1\\technique-white-balance-001.md": "457654c6e3540805e949383bd50485b019ac32d3331c03c92a640ca33f122311",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-case-city-night.json": "c6900128a1b2d1aae189c024520be6b805d2dd394e3a048b87881d033f75e64e",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-case-flower.json": "01d5123fa51b7adaacdc00dea624260d8f820bdebceb4f4ace9fbf51a540615b",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-case-food-sprinkle.json": "2490dcfb217642480788c5b19dda8991ea63addecf1977599f081772c216c0db",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-case-landscape-reshoot.json": "78bd2a5f953b1568de404b7414d3a833da187c68b689f343dce3d91dfbe628e6",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-case-still-life.json": "8f8672779f12cf5f872b72bcce7ee0212bddcb591c6bebc1e6845187bdb9cb4a",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-case-swan-crop.json": "1dcf38885edea41bb32f7ba82acfe569f7662cdd09c1778948808888482f7452",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-composition-edges.json": "40566b308b517dd45211eea51fb6c6214299b79383ec5f6fcce5eb8fb3ed620d",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-composition-food-props.json": "c64fc51a0f81aa40e60841d9cccce2404655798e7a233e0f4da4bfeae5522fcf",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-composition-foreground.json": "379a50cad81ec38761357d92c72738c5fc78b7d3a0440d886cb001308ea4e9aa",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-composition-horizon.json": "39134a8cc3652b40b0f517b0ef0c0c6b40c5b3061d225ef59628575c3bfafb77",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-composition-leading-lines.json": "9ac7f93d38731594a24984ff38ec998149b937fc02296168c65e1686efad79eb",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-composition-looking-room.json": "5d589cd76fa9e2c654c8c5d8953205711eb90f64805bc88d73a64e8b08c3bb65",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-composition-motion-room.json": "9583911d09efb716f46d22ce2b26c75280f085cbd1f27467d6a8f208acd19ff3",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-composition-patterns.json": "eb8662f7a26ab029e04cbb40214d6a7325ea07ed3e9fc957527a0d5f2ce7f720",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-composition-perspective.json": "ade51842c9e7aefeaec5703dcf272c89d3deb44b3d56d6649d9a7bb77942a5e2",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-composition-symmetry.json": "376b07a269ee3dfeff9ae23ab5582b656ccc593684cae6589d148a958b7ae5ce",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-composition-telephoto-detail.json": "4164c05e3adeb734aa2b5bc2dbcd04ea17e4fe7d55b2ed988e8bd0c0fc35b6fd",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-composition-thirds.json": "9657b86bcc0392609df568d5b7a81c9c383766d40c2903588e828a8a883f186f",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-equipment-canon-r6ii.json": "b087770c3786c283b0c9bdbad9f5b2927b41ede5b191f60d3f9ff79712527405",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-equipment-fuji-18-55-pending.json": "f5d63be3eca1dc1c9afd1c540d2cfea9211dacbe294733d0d7d90cb86ac4070e",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-equipment-fuji-xt5.json": "74727f0ca0cb12359508c3b38fe2420595773048e3d500f3be17611a7495b7bc",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-equipment-iphone15.json": "533c1902774effbff906c17f96b1829f05431dd52d64e0d7c78a6acf99a138a6",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-equipment-nikon-z24-70f4.json": "523426ea969e163e1e67919afc9f69378801aa6ddad98401d482c5713dae18a1",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-equipment-nikon-z6iii.json": "96b5aeb395679e53dfdca6107de36bf72a5585281ec8c62d3deb3e74c5a3cc8b",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-equipment-s24ultra.json": "c29f101848f70e7e63195dc9662612fdbd0be093542b29f7e489c4e1a754882a",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-equipment-sony-a7iv.json": "f840fcf18854453e74fb1852e9e7f64fe008ef3299ed06f41fd5d5f0f061f8ff",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-equipment-xiaomi14.json": "a8edf7cbdee4bb3c3a75e9d3f4489660955544f333982b24b81ced948e5f8273",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-scene-backlit-scene.json": "54cad815255b7976a05e919bdcfde4634b5713951b9960b0921289bc461a82d5",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-scene-birds.json": "29da770ceea8b195631f00fa60b77fbbfae80b4b1af9e44fa85cfc9a59744e83",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-scene-daylight-landscape.json": "0c8524a66828f909316996227245e2c57aa4ece7ca914e33677799326ed5f1b1",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-scene-fireworks.json": "6b8b8e16b34eae279fd3cac4ed59dba474c12ded85d33aaa2dc36f50961c7357",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-scene-flowing-water.json": "cba4d82138dd572439530b441d41d1f6e67b0450fe0273ee3749eb7386a03615",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-scene-fog.json": "0286fd7e175565961b72f0e8d29e4199e08eb916cf2900d0b86c016d3d4effe1",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-scene-food.json": "870266cb1f7062e3c37e98e94321640600c656b226aa87232d31c0c22e971749",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-scene-macro.json": "143796bd4ad596a641dbf6939cad4ce57d51961a81f261ea548b322d74f7ea5c",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-scene-night-handheld.json": "dc412a1ca568fc2f640ffa8c90c8a274f94d6e00425cc221613ed0b175158638",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-scene-night-supported.json": "6dad6b293fe3d4a7ab821f0b1c4a761309951cb99cae6e4e573560127a4b7535",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-scene-outdoor-portrait.json": "58eaac9d27a584647ede12bf307fdf9f52fc6bc051f6189682f4cbe09e22a134",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-scene-window-portrait.json": "6748da1bd7edde7efa69444c1a428f3cb41303a34228bc89afc41e6f8235483f",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-style-color-restraint.json": "4c5cf902cbc083e67000dcb4aef158218d473d67328ea0a60bfb186bb5bf28a3",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-style-fog-depth.json": "e6e58e07eb704d8a247c49fff77bf4a038016d1efa23315a71b478b1bab781c5",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-style-high-key.json": "4ffa349f007ffcdbb4101650f70e21a64d9364e246d8e0e4702c2909a1dda9af",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-style-low-key.json": "0190312461418bb4f73322d155cd875832ac33f26d01effe34f4a67b908d2cd5",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-style-monochrome.json": "8da8a8bec699a1ecaae53876ed163cecdb890f15a276e2cdc840130abe34c76e",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-style-moody-food.json": "1ce07f199cac3ed3d50315139ce2bd25bafde264b3462617b8faebe25548979b",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-style-natural-color.json": "f887201178571170e88f8c4a5686ba5e95212c5daa9ef43686f235bbe5721b0e",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-style-silhouette.json": "e0275e97fea0da3034168084912ac32bf477a68b9c23c330cd2fa45e2f2ff3e9",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-style-soft-portrait.json": "90579a17ab39085ca0ee2fc5185c1d636b79e99e9f5336b965b2950c90cb45c4",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-style-water-silk.json": "9bb4d49d7df7245751b18dd12ddae74abc58a61a62169f7d5441d312324fdf9d",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-aperture-priority.json": "956e3801dacf426776502a12ef8034c29fd86a1474936bad787d8b785ee05d7c",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-blur-diagnosis.json": "7aa8ed01fcd681fffdd5446118df9b6f24e278090691235b5e83a128d80fbe4a",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-compensation.json": "c7de4785af1f2f08b7e79bd114473bb73ca789d58b342204ec9ad35b86438392",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-denoise.json": "a4dfb1b399b257595de6b17659b954c0069359bb97974efb2e8d3a011dc8e2df",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-depth.json": "bf52311e304e91008440c118fe76fd27d3bd1dc06d2fe76ab050a96439b3a110",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-diffraction.json": "081b6095058a6d132b7a9e433319ba1d5f093a13fbaf8ba33f72cb776a6cf6b7",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-exposure-tradeoff.json": "d68d99cee203eac37558f715dfb2f8fb6002b21548a37a4cbbfbdb623cb8f85b",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-flare.json": "ef138f4ad9ceabf2633cf58dd2e30b5f5bc7867c508e2f8bae3738bec39ffb15",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-flash-balance.json": "a54ed62a51acc094c04d505c379100c7001859f60a7911f6a0246d0e88e120e3",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-flash-quality.json": "862ed53976f286a015bb060d888bd33c2709180c6902d05a9485d5e035921f87",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-focus-moving.json": "75f49f49e55f15c4dda953629d4dc2117b9c62afa30744b1f095ef003eb44caa",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-focus-stack.json": "2b5fae7c88b077833cfa30fee3e89e65dd2a8839f3fb48ba8e998d09a522718b",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-focus-static.json": "476fec35d5b825655a7a308c6e7bb122922f834ebbe7e52294dae9704566a5d4",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-highlight-recovery.json": "fb3a7116afbb9b57972daa2c6dcc5c240bd239ebc08bf1921dbf48bc520dcb42",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-highlight.json": "faebd5911fae68df4bb16a71b3d48c1709cc5fdc026dd47d3c8cdf9c655da6b1",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-histogram.json": "823b11584fa3052eeedc4732ffc06f5ae7c2bf7d4c4d050ac4f35a006e97c668",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-hyperfocal.json": "5d38541df7d39a3ad5822b9906785cdbbe0ae25de1032411a9c02b11310e2596",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-macro-focus.json": "7fe0dc0c552af1a1cfdf7ef6870336f27bc57b9b34038d343699863cfb0e930e",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-manual-auto-iso.json": "8e0fc9debb7cd800e0906eb6e97675b2c2e9e01cdebd149887df7e28dac9034a",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-motion-freeze.json": "2e3833508294b17dd59bb30293ab76d88a6abf7785426c94b2c4243f8676b94c",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-nd.json": "6baf20df5ccf868878629d17d9bd7e7ac4d3b13b517837b620a2f155a11e2e83",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-panning.json": "1a6e52db81f5ce29ae5f71af1ee79008de9d306233a60278c78d256351a9bbea",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-panorama.json": "11baabd957774fa0352b3691935c0a7bcf5cd473ec120386c020bdd1bb0a41cb",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-perspective-edit.json": "108a81900a57c9047e0230a061365b4317b3613a53e064b92ec24ee50c0ceced",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-polarizer.json": "9cc61b6aff31d6493ea298ef1617974aa5d62db8d47ec1f452101bfd9e1eaa2f",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-raw.json": "c9d3e568f8c035acf8fccac507ecd9596ced8a3cd98898456eed004bbbe04e05",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-reciprocal.json": "60b022714e05cb2eb47c5d726d0a745e6fab9bce77c2171011b69a5ffed38ae1",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-shutter-priority.json": "d2c42cfd66327d71808b9e5c3b3e2b198fe6dd3fd07b5950e9f106bb8e5bb0d8",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-spot-meter.json": "48ff0ffd47d506f799d93a2517d7bd82c37714a5dbf1aa08b5bab462a19e019a",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-tripod.json": "e809f8fdb509c0dabae117a6c0a2667cc68752dae2b11c122982cb433501be8a",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261011-technique-white-balance.json": "2eef32ddbe9fc9f10dba10712970826386ca262f980fc17a2b968e6ceabf08fe",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-case-pet-yawn.json": "84c9dd53fc22004d9379d4d1c007e2f8ec6c2fca7417b7821e5c288eb2573f3f",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-case-shift-stream.json": "0e2a9762ba2dcf70a0cec490250c50af20b55d4f97caaa0c8d8c95ba854308d8",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-case-sports-vertical.json": "81d96ef1f95c00bb9c3273cb30d29f3c8a717bbb65bfcc17bb3823c8c643c07f",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-composition-astro-foreground.json": "c05b6c20a6c2bbbd3e338ac5bdc2af7d086e1439180cf0b7215bfc215f3122cb",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-composition-group-balance.json": "85accb2a4f4743231421f3d35a413ce22700ae5f5ec0f3a3eb99075f14cbbdd9",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-composition-pet-level.json": "cf355c21f227c36cc775609e8bea211068aba773cbdef30ae352f2e40107631c",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-composition-product-props.json": "7bacefcb6aac09da1c22cbe675d0e614aa3a645e304f8bd9fefce09a6feca6ff",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-composition-snow-footprints.json": "57b6576d951cfc9a29320ce34180fd1602a122841042fe8ca119885a36c7193b",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-composition-sports-crop.json": "84b06867fc958a32e9a0f565bea84098e8eca9e1a1531540ba2d7d1bb8584590",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-equipment-rf50.json": "c38462010b49cd087539f10480bf2b094ea3b5dcfaabae12bc28a9d56f94c5dd",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-equipment-z50.json": "6fbd0333e27827f34813bcab7b95bf91d95e9d2931cd0ed2475201e99eb8aa3c",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-scene-astro.json": "a70a4dcbce17fca18cab995d57fb3fd14a0f249061d8097b348e6e4c2576a966",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-scene-concert.json": "f44061654f5d3c04a49af4895ad40e0283a13dae82eff5d63e091ef6d79afbd6",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-scene-group.json": "e20bc3876fed2449681f3418a2e8a2bf279f4655b177448d7a77dfb7f822f8ae",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-scene-indoor-sports.json": "cb1d820d1b6a72843ac7c06dd83f7f9a57f320f336096abd50e1c6e3bebeecc4",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-scene-pet-action.json": "e2087e9ff25ddd3797f3eff0fa5078944b3525a8b1a2f2d4e77225a42cdbda2e",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-scene-pet-portrait.json": "9521fadfbfbdb7316931e99c44eec0dc2fc9a9cc2c659b12bd4a5b4402d5a97a",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-scene-product.json": "546e2d281cb12b785899305e5a4cfb9c13694389b8ab334ba3812df7774cd897",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-scene-snow.json": "8dfc49ba5b518c21bbda5f5c6a7772764cf87f8d0b20d843ca7a6e352ee6968c",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-style-concert-color.json": "0b4c879aefd44d5b8832e8ce3e2f6ffd2fc7fb9d4c794369ddf96446907a4b31",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-style-pet-expression.json": "24bb6b1fe5d6c124428abee63bdaba2419c3c1d00ab2e65205d0b3eba9480131",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-style-product-minimal.json": "d496e393563c9b844c4b3df27b47062f02c39b780b224878d4ca9303efffa7bf",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-style-snow-cool.json": "9a57e0c694239bd743b37807ea3cac18d22a7aeffcf8799276e968da1cb10ae7",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-style-snow-monochrome.json": "846bd6fb466b00424116d7dcea2b8c85a203a1acce8b582f583f4097f6477b6f",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-technique-astro-duration.json": "03c0a233956b620348223abb4a8cb250782a6fce38f88e56ea970cc0d481e2cb",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-technique-group-focus.json": "01e7eb5300bfec5e14ac6b5bcd71b5b8361e57427fe69a67c8218ec28b0918ed",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-technique-group-motion.json": "d067c807f71106561f7c7783f8de8e040ced1c4fbcc8952eb9d190023f1e1666",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-technique-pet-track.json": "5cb918b8bc8dd9083b2a498956e448af21e017066cb6157b0be4e4ba920cdeff",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-technique-product-tether.json": "1d23802375e4d2d20cc50e3e6d1df66a7f09f2a8553d4873343809ac9a75a728",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-technique-shift-panorama.json": "68a431cbfa9cb09278f29a18de41992e84f4fedf1148be098530d745de35015a",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-technique-sports-wb.json": "26cafde02b8ff741a004d771cedf25f845cd7d22754ef5a70c15f2fc4d7f8e76",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261012-technique-tilt-plane.json": "898ae69e048ed4b22ab15732f71667bbb133c442b2cd06b72d9deaa074852106",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261013-equipment-iphone16pro-live-max.json": "05908696c111efed5ca4d95c531fbf5b45a8978b1f202f8450ad70e7cb8203ba",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261013-equipment-iphone16pro-macro-switch.json": "9427d6b7ecc585bd0e9e5632b60206eb38a085fd02d6385e1b263dce5aced4b8",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261013-technique-flicker-banding.json": "c9371d08c9b66d4c21fd8679905a13326226971a29970ac4a426cd03c383f9ce",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261013-technique-rolling-shutter-geometry.json": "fe2981362cd4e117b4f328f8cd12b41f31978b47165c9a9d9b8980dd758cc009",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261013b2-equipment-a7iv-long-nr.json": "a25612f2403a3847422775516f36cf566029d0282c99fcd66aacfa3786cfa65a",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261013b2-equipment-iphone16pro-aeaf-lock.json": "a5a64a8f7527c0a63f3c10ca91167ae07e43a513ca6cf8201cbfa4b694dd21f0",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261013b2-equipment-iphone16pro-burst-button.json": "25c17713d40ddf2b1bff0a0e3dee4f8a628fa389f8b401ea5010f427385ebd30",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261013b2-technique-efcs-bokeh.json": "326569ff71b8bf4fb579703b18af0dba9022cb6a2abdf6d3aca56cfb612f506a",
+    "<original-workspace>\\xiaoli-camera-assistant\\data\\knowledge_drafts\\photography-20261013\\upload_cards\\photo20261013b2-technique-peaking-check.json": "bc7df1a98a0f5ab56b962e5c4a5bddc3b3c4cb753c010da9fa658d76a2f9d7e7",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\case\\photo20261011-case-city-night.json": "c6900128a1b2d1aae189c024520be6b805d2dd394e3a048b87881d033f75e64e",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\case\\photo20261011-case-flower.json": "01d5123fa51b7adaacdc00dea624260d8f820bdebceb4f4ace9fbf51a540615b",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\case\\photo20261011-case-food-sprinkle.json": "2490dcfb217642480788c5b19dda8991ea63addecf1977599f081772c216c0db",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\case\\photo20261011-case-landscape-reshoot.json": "78bd2a5f953b1568de404b7414d3a833da187c68b689f343dce3d91dfbe628e6",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\case\\photo20261011-case-still-life.json": "8f8672779f12cf5f872b72bcce7ee0212bddcb591c6bebc1e6845187bdb9cb4a",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\case\\photo20261011-case-swan-crop.json": "1dcf38885edea41bb32f7ba82acfe569f7662cdd09c1778948808888482f7452",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\composition\\photo20261011-composition-edges.json": "40566b308b517dd45211eea51fb6c6214299b79383ec5f6fcce5eb8fb3ed620d",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\composition\\photo20261011-composition-food-props.json": "c64fc51a0f81aa40e60841d9cccce2404655798e7a233e0f4da4bfeae5522fcf",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\composition\\photo20261011-composition-foreground.json": "379a50cad81ec38761357d92c72738c5fc78b7d3a0440d886cb001308ea4e9aa",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\composition\\photo20261011-composition-horizon.json": "39134a8cc3652b40b0f517b0ef0c0c6b40c5b3061d225ef59628575c3bfafb77",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\composition\\photo20261011-composition-leading-lines.json": "9ac7f93d38731594a24984ff38ec998149b937fc02296168c65e1686efad79eb",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\composition\\photo20261011-composition-looking-room.json": "5d589cd76fa9e2c654c8c5d8953205711eb90f64805bc88d73a64e8b08c3bb65",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\composition\\photo20261011-composition-motion-room.json": "9583911d09efb716f46d22ce2b26c75280f085cbd1f27467d6a8f208acd19ff3",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\composition\\photo20261011-composition-patterns.json": "eb8662f7a26ab029e04cbb40214d6a7325ea07ed3e9fc957527a0d5f2ce7f720",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\composition\\photo20261011-composition-perspective.json": "ade51842c9e7aefeaec5703dcf272c89d3deb44b3d56d6649d9a7bb77942a5e2",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\composition\\photo20261011-composition-symmetry.json": "376b07a269ee3dfeff9ae23ab5582b656ccc593684cae6589d148a958b7ae5ce",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\composition\\photo20261011-composition-telephoto-detail.json": "4164c05e3adeb734aa2b5bc2dbcd04ea17e4fe7d55b2ed988e8bd0c0fc35b6fd",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\composition\\photo20261011-composition-thirds.json": "9657b86bcc0392609df568d5b7a81c9c383766d40c2903588e828a8a883f186f",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\equipment\\photo20261011-equipment-canon-r6ii.json": "b087770c3786c283b0c9bdbad9f5b2927b41ede5b191f60d3f9ff79712527405",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\equipment\\photo20261011-equipment-fuji-18-55-pending.json": "f5d63be3eca1dc1c9afd1c540d2cfea9211dacbe294733d0d7d90cb86ac4070e",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\equipment\\photo20261011-equipment-fuji-xt5.json": "74727f0ca0cb12359508c3b38fe2420595773048e3d500f3be17611a7495b7bc",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\equipment\\photo20261011-equipment-iphone15.json": "533c1902774effbff906c17f96b1829f05431dd52d64e0d7c78a6acf99a138a6",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\equipment\\photo20261011-equipment-nikon-z24-70f4.json": "523426ea969e163e1e67919afc9f69378801aa6ddad98401d482c5713dae18a1",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\equipment\\photo20261011-equipment-nikon-z6iii.json": "96b5aeb395679e53dfdca6107de36bf72a5585281ec8c62d3deb3e74c5a3cc8b",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\equipment\\photo20261011-equipment-s24ultra.json": "c29f101848f70e7e63195dc9662612fdbd0be093542b29f7e489c4e1a754882a",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\equipment\\photo20261011-equipment-sony-a7iv.json": "f840fcf18854453e74fb1852e9e7f64fe008ef3299ed06f41fd5d5f0f061f8ff",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\equipment\\photo20261011-equipment-xiaomi14.json": "a8edf7cbdee4bb3c3a75e9d3f4489660955544f333982b24b81ced948e5f8273",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\scene\\photo20261011-scene-backlit-scene.json": "54cad815255b7976a05e919bdcfde4634b5713951b9960b0921289bc461a82d5",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\scene\\photo20261011-scene-birds.json": "29da770ceea8b195631f00fa60b77fbbfae80b4b1af9e44fa85cfc9a59744e83",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\scene\\photo20261011-scene-daylight-landscape.json": "0c8524a66828f909316996227245e2c57aa4ece7ca914e33677799326ed5f1b1",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\scene\\photo20261011-scene-fireworks.json": "6b8b8e16b34eae279fd3cac4ed59dba474c12ded85d33aaa2dc36f50961c7357",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\scene\\photo20261011-scene-flowing-water.json": "cba4d82138dd572439530b441d41d1f6e67b0450fe0273ee3749eb7386a03615",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\scene\\photo20261011-scene-fog.json": "0286fd7e175565961b72f0e8d29e4199e08eb916cf2900d0b86c016d3d4effe1",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\scene\\photo20261011-scene-food.json": "870266cb1f7062e3c37e98e94321640600c656b226aa87232d31c0c22e971749",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\scene\\photo20261011-scene-macro.json": "143796bd4ad596a641dbf6939cad4ce57d51961a81f261ea548b322d74f7ea5c",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\scene\\photo20261011-scene-night-handheld.json": "dc412a1ca568fc2f640ffa8c90c8a274f94d6e00425cc221613ed0b175158638",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\scene\\photo20261011-scene-night-supported.json": "6dad6b293fe3d4a7ab821f0b1c4a761309951cb99cae6e4e573560127a4b7535",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\scene\\photo20261011-scene-outdoor-portrait.json": "58eaac9d27a584647ede12bf307fdf9f52fc6bc051f6189682f4cbe09e22a134",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\scene\\photo20261011-scene-window-portrait.json": "6748da1bd7edde7efa69444c1a428f3cb41303a34228bc89afc41e6f8235483f",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\style\\photo20261011-style-color-restraint.json": "4c5cf902cbc083e67000dcb4aef158218d473d67328ea0a60bfb186bb5bf28a3",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\style\\photo20261011-style-fog-depth.json": "e6e58e07eb704d8a247c49fff77bf4a038016d1efa23315a71b478b1bab781c5",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\style\\photo20261011-style-high-key.json": "4ffa349f007ffcdbb4101650f70e21a64d9364e246d8e0e4702c2909a1dda9af",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\style\\photo20261011-style-low-key.json": "0190312461418bb4f73322d155cd875832ac33f26d01effe34f4a67b908d2cd5",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\style\\photo20261011-style-monochrome.json": "8da8a8bec699a1ecaae53876ed163cecdb890f15a276e2cdc840130abe34c76e",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\style\\photo20261011-style-moody-food.json": "1ce07f199cac3ed3d50315139ce2bd25bafde264b3462617b8faebe25548979b",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\style\\photo20261011-style-natural-color.json": "f887201178571170e88f8c4a5686ba5e95212c5daa9ef43686f235bbe5721b0e",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\style\\photo20261011-style-silhouette.json": "e0275e97fea0da3034168084912ac32bf477a68b9c23c330cd2fa45e2f2ff3e9",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\style\\photo20261011-style-soft-portrait.json": "90579a17ab39085ca0ee2fc5185c1d636b79e99e9f5336b965b2950c90cb45c4",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\style\\photo20261011-style-water-silk.json": "9bb4d49d7df7245751b18dd12ddae74abc58a61a62169f7d5441d312324fdf9d",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-aperture-priority.json": "956e3801dacf426776502a12ef8034c29fd86a1474936bad787d8b785ee05d7c",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-blur-diagnosis.json": "7aa8ed01fcd681fffdd5446118df9b6f24e278090691235b5e83a128d80fbe4a",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-compensation.json": "c7de4785af1f2f08b7e79bd114473bb73ca789d58b342204ec9ad35b86438392",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-denoise.json": "a4dfb1b399b257595de6b17659b954c0069359bb97974efb2e8d3a011dc8e2df",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-depth.json": "bf52311e304e91008440c118fe76fd27d3bd1dc06d2fe76ab050a96439b3a110",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-diffraction.json": "081b6095058a6d132b7a9e433319ba1d5f093a13fbaf8ba33f72cb776a6cf6b7",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-exposure-tradeoff.json": "d68d99cee203eac37558f715dfb2f8fb6002b21548a37a4cbbfbdb623cb8f85b",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-flare.json": "ef138f4ad9ceabf2633cf58dd2e30b5f5bc7867c508e2f8bae3738bec39ffb15",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-flash-balance.json": "a54ed62a51acc094c04d505c379100c7001859f60a7911f6a0246d0e88e120e3",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-flash-quality.json": "862ed53976f286a015bb060d888bd33c2709180c6902d05a9485d5e035921f87",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-focus-moving.json": "75f49f49e55f15c4dda953629d4dc2117b9c62afa30744b1f095ef003eb44caa",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-focus-stack.json": "2b5fae7c88b077833cfa30fee3e89e65dd2a8839f3fb48ba8e998d09a522718b",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-focus-static.json": "476fec35d5b825655a7a308c6e7bb122922f834ebbe7e52294dae9704566a5d4",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-highlight-recovery.json": "fb3a7116afbb9b57972daa2c6dcc5c240bd239ebc08bf1921dbf48bc520dcb42",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-highlight.json": "faebd5911fae68df4bb16a71b3d48c1709cc5fdc026dd47d3c8cdf9c655da6b1",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-histogram.json": "823b11584fa3052eeedc4732ffc06f5ae7c2bf7d4c4d050ac4f35a006e97c668",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-hyperfocal.json": "5d38541df7d39a3ad5822b9906785cdbbe0ae25de1032411a9c02b11310e2596",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-macro-focus.json": "7fe0dc0c552af1a1cfdf7ef6870336f27bc57b9b34038d343699863cfb0e930e",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-manual-auto-iso.json": "8e0fc9debb7cd800e0906eb6e97675b2c2e9e01cdebd149887df7e28dac9034a",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-motion-freeze.json": "2e3833508294b17dd59bb30293ab76d88a6abf7785426c94b2c4243f8676b94c",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-nd.json": "6baf20df5ccf868878629d17d9bd7e7ac4d3b13b517837b620a2f155a11e2e83",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-panning.json": "1a6e52db81f5ce29ae5f71af1ee79008de9d306233a60278c78d256351a9bbea",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-panorama.json": "11baabd957774fa0352b3691935c0a7bcf5cd473ec120386c020bdd1bb0a41cb",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-perspective-edit.json": "108a81900a57c9047e0230a061365b4317b3613a53e064b92ec24ee50c0ceced",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-polarizer.json": "9cc61b6aff31d6493ea298ef1617974aa5d62db8d47ec1f452101bfd9e1eaa2f",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-raw.json": "c9d3e568f8c035acf8fccac507ecd9596ced8a3cd98898456eed004bbbe04e05",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-reciprocal.json": "60b022714e05cb2eb47c5d726d0a745e6fab9bce77c2171011b69a5ffed38ae1",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-shutter-priority.json": "d2c42cfd66327d71808b9e5c3b3e2b198fe6dd3fd07b5950e9f106bb8e5bb0d8",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-spot-meter.json": "48ff0ffd47d506f799d93a2517d7bd82c37714a5dbf1aa08b5bab462a19e019a",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-tripod.json": "e809f8fdb509c0dabae117a6c0a2667cc68752dae2b11c122982cb433501be8a",
+    "<original-workspace>\\摄影知识库采集-20261011\\import_ready\\technique\\photo20261011-technique-white-balance.json": "2eef32ddbe9fc9f10dba10712970826386ca262f980fc17a2b968e6ceabf08fe",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\case\\photo20261012-case-pet-yawn.json": "84c9dd53fc22004d9379d4d1c007e2f8ec6c2fca7417b7821e5c288eb2573f3f",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\case\\photo20261012-case-shift-stream.json": "0e2a9762ba2dcf70a0cec490250c50af20b55d4f97caaa0c8d8c95ba854308d8",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\case\\photo20261012-case-sports-vertical.json": "81d96ef1f95c00bb9c3273cb30d29f3c8a717bbb65bfcc17bb3823c8c643c07f",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\composition\\photo20261012-composition-astro-foreground.json": "c05b6c20a6c2bbbd3e338ac5bdc2af7d086e1439180cf0b7215bfc215f3122cb",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\composition\\photo20261012-composition-group-balance.json": "85accb2a4f4743231421f3d35a413ce22700ae5f5ec0f3a3eb99075f14cbbdd9",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\composition\\photo20261012-composition-pet-level.json": "cf355c21f227c36cc775609e8bea211068aba773cbdef30ae352f2e40107631c",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\composition\\photo20261012-composition-product-props.json": "7bacefcb6aac09da1c22cbe675d0e614aa3a645e304f8bd9fefce09a6feca6ff",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\composition\\photo20261012-composition-snow-footprints.json": "57b6576d951cfc9a29320ce34180fd1602a122841042fe8ca119885a36c7193b",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\composition\\photo20261012-composition-sports-crop.json": "84b06867fc958a32e9a0f565bea84098e8eca9e1a1531540ba2d7d1bb8584590",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\equipment\\photo20261012-equipment-rf50.json": "c38462010b49cd087539f10480bf2b094ea3b5dcfaabae12bc28a9d56f94c5dd",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\equipment\\photo20261012-equipment-z50.json": "6fbd0333e27827f34813bcab7b95bf91d95e9d2931cd0ed2475201e99eb8aa3c",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\scene\\photo20261012-scene-astro.json": "a70a4dcbce17fca18cab995d57fb3fd14a0f249061d8097b348e6e4c2576a966",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\scene\\photo20261012-scene-concert.json": "f44061654f5d3c04a49af4895ad40e0283a13dae82eff5d63e091ef6d79afbd6",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\scene\\photo20261012-scene-group.json": "e20bc3876fed2449681f3418a2e8a2bf279f4655b177448d7a77dfb7f822f8ae",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\scene\\photo20261012-scene-indoor-sports.json": "cb1d820d1b6a72843ac7c06dd83f7f9a57f320f336096abd50e1c6e3bebeecc4",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\scene\\photo20261012-scene-pet-action.json": "e2087e9ff25ddd3797f3eff0fa5078944b3525a8b1a2f2d4e77225a42cdbda2e",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\scene\\photo20261012-scene-pet-portrait.json": "9521fadfbfbdb7316931e99c44eec0dc2fc9a9cc2c659b12bd4a5b4402d5a97a",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\scene\\photo20261012-scene-product.json": "546e2d281cb12b785899305e5a4cfb9c13694389b8ab334ba3812df7774cd897",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\scene\\photo20261012-scene-snow.json": "8dfc49ba5b518c21bbda5f5c6a7772764cf87f8d0b20d843ca7a6e352ee6968c",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\style\\photo20261012-style-concert-color.json": "0b4c879aefd44d5b8832e8ce3e2f6ffd2fc7fb9d4c794369ddf96446907a4b31",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\style\\photo20261012-style-pet-expression.json": "24bb6b1fe5d6c124428abee63bdaba2419c3c1d00ab2e65205d0b3eba9480131",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\style\\photo20261012-style-product-minimal.json": "d496e393563c9b844c4b3df27b47062f02c39b780b224878d4ca9303efffa7bf",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\style\\photo20261012-style-snow-cool.json": "9a57e0c694239bd743b37807ea3cac18d22a7aeffcf8799276e968da1cb10ae7",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\style\\photo20261012-style-snow-monochrome.json": "846bd6fb466b00424116d7dcea2b8c85a203a1acce8b582f583f4097f6477b6f",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\technique\\photo20261012-technique-astro-duration.json": "03c0a233956b620348223abb4a8cb250782a6fce38f88e56ea970cc0d481e2cb",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\technique\\photo20261012-technique-group-focus.json": "01e7eb5300bfec5e14ac6b5bcd71b5b8361e57427fe69a67c8218ec28b0918ed",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\technique\\photo20261012-technique-group-motion.json": "d067c807f71106561f7c7783f8de8e040ced1c4fbcc8952eb9d190023f1e1666",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\technique\\photo20261012-technique-pet-track.json": "5cb918b8bc8dd9083b2a498956e448af21e017066cb6157b0be4e4ba920cdeff",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\technique\\photo20261012-technique-product-tether.json": "1d23802375e4d2d20cc50e3e6d1df66a7f09f2a8553d4873343809ac9a75a728",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\technique\\photo20261012-technique-shift-panorama.json": "68a431cbfa9cb09278f29a18de41992e84f4fedf1148be098530d745de35015a",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\technique\\photo20261012-technique-sports-wb.json": "26cafde02b8ff741a004d771cedf25f845cd7d22754ef5a70c15f2fc4d7f8e76",
+    "<original-workspace>\\摄影知识库采集-20261012\\import_ready\\technique\\photo20261012-technique-tilt-plane.json": "898ae69e048ed4b22ab15732f71667bbb133c442b2cd06b72d9deaa074852106",
+    "<original-workspace>\\xiaoli-camera-assistant\\knowledge\\basics\\exposure_triangle.md": "675d95e25a9adc1a50428ee32ae93f8ede186689db0e4733a7b08fac6665987a",
+    "<original-workspace>\\xiaoli-camera-assistant\\knowledge\\food\\available_light.md": "3cfb05f0612d6d614575cd631570e0c2d34965a23ed3bc42b9acbea3999c31d4",
+    "<original-workspace>\\xiaoli-camera-assistant\\knowledge\\landscape\\daylight_landscape.md": "d66c7aceecb55edbb19756a565066ef4a48bdcefbf36e882fa97a00e4474ce8f",
+    "<original-workspace>\\xiaoli-camera-assistant\\knowledge\\landscape\\waterfall.md": "64fda0072806af59a6f8d793fd021faf50e5bafe7a6f5c186dcef4dee7ab89c9",
+    "<original-workspace>\\xiaoli-camera-assistant\\knowledge\\motion\\fast_subject.md": "11419453bca6b796270b9116046e82f919f8955ce23dc952d6da6e9d280c102b",
+    "<original-workspace>\\xiaoli-camera-assistant\\knowledge\\night\\handheld_night.md": "923b2de87cdd722cabec74b4d8d7c446f6096a836869fe45632ec81cea3f87fe",
+    "<original-workspace>\\xiaoli-camera-assistant\\knowledge\\night\\tripod_night.md": "492766185281dfae0fc5ddbb0d066730cf8e23f58f4e32494615138f4c3eebc2",
+    "<original-workspace>\\xiaoli-camera-assistant\\knowledge\\portrait\\outdoor_portrait.md": "d8314d274bf4a96899a8fc238519e96ce6ba92eda9671db33ec8342f797eef1f",
+    "<original-workspace>\\xiaoli-camera-assistant\\knowledge\\special\\backlight.md": "162432b6c7445553faf75030176cbec875700e9115adfe97e254eb0df6f3f1a0",
+    "<original-workspace>\\xiaoli-camera-assistant\\knowledge\\troubleshooting\\common_failures.md": "62e4312d2c310a146afa433bf42752f2769bf405034f630e6018e8a1078b7288",
+    "<original-workspace>\\xiaoli-camera-assistant\\knowledge\\cameras\\camera_profiles.yaml": "c17efbdc7c8152855464ecbdfa92f3ce578fca93bc50be6af44405996d3bad5f",
+    "<original-workspace>\\xiaoli-camera-assistant\\knowledge\\devices\\phone_profiles.yaml": "bd37b2fa8be2e494c25c98d11be831bacd6296371c2e3669260f33f3767251f6",
+    "<original-workspace>\\xiaoli-camera-assistant\\knowledge\\recognition\\scene_profiles.yaml": "95502ec8ab3786366afe92d80766b21684ea15f058be2629616184b06ef90006",
+    "<original-workspace>\\xiaoli-camera-assistant\\src\\camera_assistant\\knowledge\\models.py": "3e8e5e2e93bcd08e2b519166bcc725c7321760cf3c1a2b39e88ce28e018b43a7",
+    "<original-workspace>\\xiaoli-camera-assistant\\src\\camera_assistant\\knowledge\\importer.py": "3af4cefa33ad1936b70c0167455e50d99ecd47a1ccc9dc036c23aa504ff5bb7a",
+    "<original-workspace>\\xiaoli-camera-assistant\\src\\camera_assistant\\knowledge\\uploads.py": "c957ff162f5c578e07b509317267d4d989e535470ddabaf72c0e5619085b182f",
+    "<original-workspace>\\xiaoli-camera-assistant\\src\\camera_assistant\\knowledge\\retriever.py": "49eae40263a1662eb372e4ca032cad3a17156c25f494a06957a26f4c13bb355c",
+    "<original-workspace>\\xiaoli-camera-assistant\\src\\camera_assistant\\knowledge\\store.py": "6b3589f637eeee425cc8bf7d73275caf800d2407c2a3374966ac548edd0858bb",
+    "<original-workspace>\\xiaoli-camera-assistant\\src\\camera_assistant\\knowledge\\cli.py": "b51e8acf889ee5a786ccae74291188888725cd238ed6d5b0cee10bd180e4b81d"
+  },
+  "legacy_complete_text_scan": [
+    {
+      "path": "knowledge\\basics\\exposure_triangle.md",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\food\\available_light.md",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\landscape\\daylight_landscape.md",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\landscape\\waterfall.md",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\motion\\fast_subject.md",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\night\\handheld_night.md",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\night\\tripod_night.md",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\portrait\\outdoor_portrait.md",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\special\\backlight.md",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\troubleshooting\\common_failures.md",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\cameras\\camera_profiles.yaml",
+      "matched_terms": []
+    },
+    {
+      "path": "knowledge\\devices\\phone_profiles.yaml",
+      "matched_terms": [
+        "iPhone",
+        "Galaxy",
+        "Xiaomi",
+        "小米",
+        "手机"
+      ]
+    },
+    {
+      "path": "knowledge\\recognition\\scene_profiles.yaml",
+      "matched_terms": []
+    }
+  ],
+  "new_card_comparisons": [
+    {
+      "knowledge_id": "phone20261014-a57-zoom",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-fold8-variants",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-honor-magic9-variants",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-iphone-air-main",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-iphone17-dual",
+      "related_existing_ids": [
+        "photo20261011-equipment-iphone15"
+      ],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-iphone17e-main",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-iphone18pro-aperture",
+      "related_existing_ids": [
+        "photo20261011-equipment-iphone15",
+        "photo20261013b3-equipment-iphone16pro-style-edit"
+      ],
+      "new_problem": "新代际的物理光圈与原生控制能力需要独立核验，旧型号配置不能代表18 Pro。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-mate80pro-zoom",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-oneplus16",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-oppo-findx10",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-oppo-findx10promax",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-pixel11pro-family",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-pura90pro-zoom",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-redmi-note17pro5g-za",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-s26-base-plus",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-s26ultra-zoom",
+      "related_existing_ids": [
+        "photo20261011-equipment-s24ultra"
+      ],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-vivo-x500",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-vivo-x500promax",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-xiaomi17ultra-uk",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-xiaomi18promax",
+      "related_existing_ids": [
+        "photo20261011-equipment-xiaomi14"
+      ],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-oppo-reno16",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    },
+    {
+      "knowledge_id": "phone20261014-vivo-s50",
+      "related_existing_ids": [],
+      "new_problem": "为未收录的完整手机型号建立后置静态摄影能力边界，不复制其他型号的参数或通用摄影建议。",
+      "semantic_review": "整理助手比对，独立人工仍需复查"
+    }
+  ],
+  "semantic_limit": "同一后置能力问题按新完整型号建档是本轮要求；ID/标题和关键词检查不能证明完全无语义重叠，仍须独立人工复查。"
+}
