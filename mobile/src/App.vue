@@ -4,6 +4,7 @@ import { Camera } from '@capacitor/camera';
 import { Capacitor } from '@capacitor/core';
 import mascot from '../../assets/camera-red-panda.png';
 import { normalizeBaseUrl, safeSourceUrl } from './connection.mjs';
+import { readAnalysis } from './analysis-stream.mjs';
 import type { Analysis, CameraLensProfile, CameraProfile, PhoneProfile } from './types';
 import DevicePicker from './components/DevicePicker.vue';
 import CompositionView from './components/CompositionView.vue';
@@ -33,6 +34,16 @@ const connected = ref(false);
 const mode = ref<'cloud' | 'demo'>('demo');
 const maxImageMb = ref(15);
 const busy = ref(false);
+const elapsed = ref(0);
+const statusStartedAt = ref(0);
+const statusElapsed = computed(() => Math.max(0, elapsed.value - statusStartedAt.value));
+const progressMessage = ref('正在上传照片…');
+const progressLog = ref<{ message: string; seconds: number }[]>([]);
+const received = ref<Record<string, number>>({});
+const receivedChars = computed(() => Object.values(received.value).reduce((sum, n) => sum + n, 0));
+const partialScene = ref<Analysis['result']['scene'] | null>(null);
+const partialParameters = ref<Analysis['result']['recommendation'] | null>(null);
+const progressStage = ref(0);
 const connecting = ref(false);
 const error = ref('');
 const connectionMessage = ref('');
@@ -92,12 +103,13 @@ watch([cameraId, cameraManual, cameraModelName], () => { cameraLensId.value = ''
 watch(cameraLensId, () => { focalLength.value = selectedCameraLens.value?.focal_min_mm; maxAperture.value = undefined; });
 watch([deviceType, cameraId, phoneId, cameraManual, phoneManual, cameraModelName, phoneModelName, phoneMode, lensId, proConfirmed, focalLength, maxAperture, cameraLensId, cameraFormat], () => { analysis.value = null; });
 
-async function api(path: string, options: RequestInit = {}) {
+async function api(path: string, options: RequestInit = {}, onEvent?: (event: any) => void) {
   const root = webHosted.value ? window.location.origin : normalizeBaseUrl(baseUrl.value);
   const headers = new Headers(options.headers);
   if (webHosted.value) headers.set('X-Xiaoli-Client', 'web');
   else if (path !== '/health') headers.set('Authorization', `Bearer ${token.value.trim()}`);
   const response = await fetch(root + path, { ...options, headers, credentials: webHosted.value ? 'same-origin' : 'omit' });
+  if (response.ok && onEvent) return readAnalysis(response, onEvent);
   const data = await response.json().catch(() => ({}));
   if (!response.ok) {
     const fallback = response.status === 401 ? (webHosted.value ? '体验会话已过期，请重新输入体验码。' : '连接令牌不正确。') : `服务暂不可用（${response.status}），请稍后重试。`;
@@ -158,6 +170,7 @@ function readableError(e: unknown, fallback: string): string {
 }
 
 function setPhoto(file: File, source: string) {
+  if (busy.value) return;
   error.value = '';
   if (!/\.(jpe?g|png)$/i.test(file.name) || !['image/jpeg', 'image/png'].includes(file.type)) {
     error.value = '请选择 JPEG / PNG。HEIC、RAW 请先在系统相册中导出。'; return;
@@ -211,12 +224,19 @@ async function analyze() {
   } catch (e) { error.value = readableError(e, '请核对设备型号。'); return; }
   if (!consent.value) { error.value = '请先勾选照片上传与分析说明。'; return; }
   busy.value = true;
+  analysis.value = null; partialScene.value = null; partialParameters.value = null;
+  received.value = {}; progressLog.value = []; progressStage.value = 0;
+  progressMessage.value = '正在上传照片…'; elapsed.value = 0; statusStartedAt.value = 0;
+  const started = performance.now();
+  const clock = setInterval(() => { elapsed.value = (performance.now() - started) / 1000; }, 500);
+  const submittedIntent = intent.value.trim();
   const controller = new AbortController(); activeController = controller;
   const timer = setTimeout(() => controller.abort(), 540000);
   try {
     const form = new FormData();
     form.append('file', photo.value); form.append('consent', 'true'); form.append('image_provenance', provenance.value);
     form.append('expected_analysis_mode', mode.value);
+    form.append('stream_events', 'true');
     form.append('user_request', JSON.stringify({
       intent: intent.value.trim(), device_type: deviceType.value, subject_motion: motion.value,
       handheld: !tripod.value, tripod: tripod.value,
@@ -231,10 +251,27 @@ async function analyze() {
       phone_lens_id: phoneManual.value ? 'main' : lensId.value,
       phone_pro_controls_confirmed: !phoneManual.value && proConfirmed.value,
     }));
-    analysis.value = await api('/api/v1/analyze', { method: 'POST', body: form, signal: controller.signal });
-    resultIntent.value = intent.value.trim();
+    analysis.value = await api('/api/v1/analyze', { method: 'POST', body: form, signal: controller.signal }, event => {
+      if (event.type === 'progress' && typeof event.message === 'string') {
+        if (progressMessage.value !== event.message) statusStartedAt.value = (performance.now() - started) / 1000;
+        progressMessage.value = event.message;
+        progressLog.value.push({ message: event.message, seconds: event.elapsed_seconds || 0 });
+        const stage = /生成|校验/.test(event.message) ? 3 : /查阅|检索/.test(event.message) ? 2 : /识别|定位/.test(event.message) ? 1 : 0;
+        progressStage.value = Math.max(progressStage.value, stage);
+      } else if (event.type === 'activity' && typeof event.request_id === 'string' && Number.isFinite(event.chars)) {
+        received.value[event.request_id] = event.chars;
+      } else if (event.type === 'partial') {
+        if (event.kind === 'scene') partialScene.value = event.value;
+        if (event.kind === 'parameters') {
+          partialParameters.value = event.value;
+          progressMessage.value = '拍摄参数已校验，正在整理完整方案…';
+          statusStartedAt.value = (performance.now() - started) / 1000;
+        }
+      } else if (event.type === 'result') { progressStage.value = 4; }
+    });
+    resultIntent.value = submittedIntent;
     try {
-      const item = { id: analysis.value!.request_id, date: new Date().toISOString(), intent: intent.value.trim(), analysis: analysis.value! };
+      const item = { id: analysis.value!.request_id, date: new Date().toISOString(), intent: submittedIntent, analysis: analysis.value! };
       history.value = [item, ...history.value.filter(v => v.id !== item.id)].slice(0, 10);
       localStorage.setItem(archiveKey, JSON.stringify(history.value));
     } catch { /* Analysis still succeeds when local storage is full. */ }
@@ -243,7 +280,7 @@ async function analyze() {
     error.value = readableError(e, '分析未完成：检查电脑服务及网络。不会自动重复提交照片。');
     if (error.value.includes('分析方式已改变')) { connected.value = false; consent.value = false; page.value = 'connect'; }
   }
-  finally { clearTimeout(timer); busy.value = false; activeController = null; }
+  finally { clearTimeout(timer); clearInterval(clock); elapsed.value = (performance.now() - started) / 1000; busy.value = false; activeController = null; }
 }
 async function clearConnection() {
   if (webHosted.value) {
@@ -254,6 +291,7 @@ async function clearConnection() {
   connectionMessage.value = '已清除本机连接信息。';
 }
 function openHistory(item: SavedAdvice) {
+  if (busy.value) return;
   if (preview.value) URL.revokeObjectURL(preview.value);
   preview.value = ''; photo.value = null; consent.value = false;
   intent.value = item.intent; resultIntent.value = item.intent; analysis.value = item.analysis; page.value = 'result';
@@ -328,12 +366,22 @@ onBeforeUnmount(() => { if (preview.value) URL.revokeObjectURL(preview.value); a
             </details><div class="upload-consent"><label class="check-row"><input type="checkbox" v-model="consent" />{{ webHosted ? '同意上传这张照片并进行分析' : '同意将这张照片发送到我配置的电脑服务' }}</label><p>{{ !connected ? '连接后会显示当前分析方式。' : mode === 'cloud' ? '云模型分析：照片副本将发送到配置的图像模型服务。' : '演示模式：使用本地规则与图像指标，不向云模型发送照片，也不代表真实识别准确率。' }} 网关不保存照片；相机拍照可能经过系统处理，EXIF 不保证完整。</p></div>
           </fieldset>
           <button class="primary generate" type="submit" :disabled="busy || connecting"><span>{{ busy ? '小栗正在整理拍摄建议…' : connected ? '生成拍摄建议' : webHosted ? '输入体验码，开始拍摄' : '先连接电脑服务' }}</span><span aria-hidden="true">✦</span></button>
-          <p v-if="busy" class="helper" role="status">请保持页面打开。图像、主体定位与构图分析可能需要数分钟。</p>
+          <section v-if="busy" class="analysis-progress" aria-label="分析进度" aria-live="polite">
+            <div class="progress-heading"><strong>{{ progressMessage }}</strong><span>总用时 {{ elapsed.toFixed(0) }} 秒</span></div>
+            <p class="current-status-time">当前状态已持续 {{ statusElapsed.toFixed(0) }} 秒</p>
+            <progress :value="progressStage" max="4" :aria-label="`已完成 ${progressStage}/4 个环节`"></progress>
+            <p class="helper">图片与设备 → 识别与定位 → 知识检索 → 方案与校验。进度按环节计算。</p>
+            <p v-if="receivedChars" class="helper">已接收 {{ receivedChars.toLocaleString() }} 字符，完整构图校验后显示线稿。</p>
+            <p class="progress-log-heading">进度记录 · 左侧为服务处理开始后的记录时刻，不是步骤耗时</p>
+            <ol class="progress-log"><li v-for="(item, index) in progressLog" :key="index"><time>开始后 {{ item.seconds.toFixed(1) }} 秒</time>{{ item.message }}</li></ol>
+            <div v-if="partialScene" class="partial-result"><span class="result-badge">已完成的画面分析</span><h2>{{ partialScene.scene_label || partialScene.scene_type }}</h2><p>{{ partialScene.subject }} · {{ partialScene.lighting }}</p></div>
+            <div v-if="partialParameters" class="partial-result"><span class="result-badge">参数已校验 · 完整方案仍在整理</span><h2>{{ partialParameters.shooting_mode }}</h2><dl class="settings-list"><div v-for="(value, label) in { '光圈': partialParameters.aperture, '快门': partialParameters.shutter_speed, 'ISO': partialParameters.iso, '对焦': partialParameters.focus_mode }" :key="label"><dt>{{ label }}</dt><dd>{{ value }}</dd></div></dl><p v-for="step in partialParameters.adjustments" :key="step">{{ step }}</p><details v-if="partialParameters.risks?.length || partialParameters.validation_notes?.length"><summary>适用条件与器材说明</summary><p v-for="note in [...partialParameters.risks, ...partialParameters.validation_notes]" :key="note">{{ note }}</p></details><p class="helper">这是当前已完成的部分，完整方案与构图仍需等待；参数是试拍起点。</p></div>
+          </section>
         </form></div>
       </section>
       <section v-else-if="page === 'result'" aria-labelledby="result-title">
         <div class="intro"><h1 id="result-title">你的下一张，已经有了方向。</h1><p>先看构图，再照着走一步，拍一张。</p></div>
-        <div v-if="!result" class="empty-result"><img :src="mascot" alt="小栗等待现场照片" /><h2>建议还在等你的现场</h2><p>选择照片，写下想要的效果，<br />小栗会给你一个拍摄起点。</p><button class="primary" @click="navigate('shoot')">去选照片</button></div>
+        <div v-if="!result" class="empty-result"><img :src="mascot" alt="小栗等待现场照片" /><h2>{{ busy ? '分析正在进行' : '建议还在等你的现场' }}</h2><p>{{ busy ? `${progressMessage} · 已用时 ${elapsed.toFixed(0)} 秒` : '选择照片，写下想要的效果，小栗会给你一个拍摄起点。' }}</p><button class="primary" @click="navigate('shoot')">{{ busy ? '查看当前进度' : '去选照片' }}</button></div>
         <template v-else>
           <div class="notice" :class="{ demo: analysis?.analysis_mode === 'demo' }">{{ analysis?.analysis_mode === 'demo' ? '规则演示结果，不是真实多模态场景识别。' : '云模型分析结果。建议可能有误，以机型能力和试拍为准。' }}</div>
           <div class="scene-summary"><img v-if="preview" :src="preview" alt="本次分析的现场照片" /><div><span>{{ result.camera_profile.display_name }}</span><h2>{{ result.scene.scene_label || result.scene.scene_type }}</h2><p>{{ lightingText }}</p></div></div>

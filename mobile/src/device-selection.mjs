@@ -1,4 +1,4 @@
-/** @typedef {{profile_id: string, display_name: string, model?: string, aliases?: string[]}} DeviceProfile */
+/** @typedef {import('./types').DeviceCatalogProfile} DeviceProfile */
 
 export function normalizeModelName(value) {
   return String(value).normalize('NFKC').toLowerCase().replace(/[\s_-]+/g, '');

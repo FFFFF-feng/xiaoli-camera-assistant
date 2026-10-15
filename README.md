@@ -2,6 +2,8 @@
 
 新增可直接体验的网页版本：`python scripts/start_web.py --demo`，访问 `http://127.0.0.1:8080/`。包含照片上传、器材与镜头联动、拍摄建议、构图参考、本机方案历史与导出；网页自动连接同站服务。阿里云 HTTPS 部署、体验码与可选 DINO 镜像见 [网页体验版与部署](docs/web-experience-deployment.md)。先在 `mobile` 执行 `npm run build`，Python 需安装 `.[mobile]`。
 
+响应流程支持真实阶段进度、持续计时、流式接收活动及已校验场景/参数提前显示，完整方案完成后从原照片提取线稿。云端默认并行生成构图和参数，本地检测模型提前加载。三个开关、本机桌面入口与验证边界见 [线稿流程提速](docs/latency-web-sketch-20261015.md)。
+
 <img src="assets/camera-red-panda.png" alt="拿着相机的小熊猫摄影助手小栗" width="180" align="right">
 
 **面向摄影新手的相机调参助手：上传现场图，描述想要的效果，获得结合场景、摄影知识和具体机型的拍摄建议。**

@@ -64,6 +64,18 @@ def test_health_does_not_expose_credentials(client):
     assert client.get("/docs").status_code == 404
 
 
+def test_png_with_broken_checksum_is_rejected_before_model_execution(client, monkeypatch):
+    image = bytearray(photo("PNG"))
+    position = image.index(b"IDAT")
+    chunk_length = int.from_bytes(image[position - 4:position], "big")
+    image[position + 4 + chunk_length] ^= 1  # Corrupt only the IDAT checksum.
+    monkeypatch.setattr(CameraAssistantPipeline, "run", lambda *args, **kwargs: pytest.fail(
+        "Invalid image must not reach the model pipeline."))
+    response = upload(client, content=bytes(image))
+    assert response.status_code == 422
+    assert "有效 JPEG / PNG" in response.json()["detail"]
+
+
 @pytest.mark.parametrize(
     "headers", [{}, {"Authorization": "Bearer wrong"}, {"Authorization": "Basic " + TOKEN}]
 )
