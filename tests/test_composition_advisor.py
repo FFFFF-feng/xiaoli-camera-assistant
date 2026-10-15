@@ -163,7 +163,7 @@ def test_cloud_payload_preserves_evidence_image_and_only_public_localization(inp
         hits=[evidence],
         captured=captured,
     )
-    assert advice.status == "grounded"
+    assert advice.status == "unverified"
     assert captured["model"] == "GLM-4.6V"
     assert captured["max_tokens"] == 2048
     assert captured["thinking"] == {"type": "disabled"}
@@ -171,9 +171,11 @@ def test_cloud_payload_preserves_evidence_image_and_only_public_localization(inp
     assert content[1]["image_url"]["url"] == inputs[0].model_image_data_url
     prompt = content[0]["text"]
     context = json.loads(prompt.split("上下文数据：\n", 1)[1].split("\n输出 Schema：", 1)[0])
-    assert context["knowledge"][0]["knowledge_id"] == evidence.document_id
-    assert context["knowledge"][0]["source"] == evidence.source
-    assert context["knowledge"][0]["content"] == evidence.content
+    assert context["knowledge"][0]["document_id"] == evidence.document_id
+    assert context["knowledge"][0]["source"]["name"] == evidence.source
+    assert context["knowledge"][0]["body"] == evidence.content
+    assert context["knowledge"][0]["version"] == "unversioned"
+    assert context["knowledge"][0]["conditions"] == {}
     assert context["localization"]["selection"]["selected_ids"] == [
         "left_person", "right_person"
     ]
@@ -183,14 +185,17 @@ def test_cloud_payload_preserves_evidence_image_and_only_public_localization(inp
     assert "fake-test-key" not in prompt
 
 
-def test_unknown_or_wrong_version_knowledge_reference_is_rejected(inputs, monkeypatch):
-    with pytest.raises(ValueError, match="未检索到"):
-        call_advisor(
-            inputs,
-            monkeypatch,
-            response([proposal(citations=["composition/protect_subjects@v2"])]),
-            hits=[hit()],
-        )
+def test_unknown_or_wrong_version_knowledge_reference_is_isolated(inputs, monkeypatch):
+    advice = call_advisor(
+        inputs,
+        monkeypatch,
+        response([proposal(citations=["composition/protect_subjects@v2"]), proposal()]),
+        hits=[hit()],
+    )
+    assert len(advice.proposals) == 2
+    assert advice.proposals[0].knowledge_ids == []
+    assert advice.status == "unverified"
+    assert any("隔离" in note and "引用" in note for note in advice.notes)
 
 
 @pytest.mark.parametrize("hits", [[], [hit()]])
@@ -280,3 +285,56 @@ def test_demo_does_not_invent_image_observations_or_grounded_suggestions(inputs)
     assert advice.observations == []
     assert advice.proposals == []
     assert any("没有生成针对这张照片" in note for note in advice.notes)
+
+
+def test_crop_cannot_claim_complete_frame_protection_without_geometry(inputs, monkeypatch):
+    photo, _, scene, camera, settings = inputs
+    changed_inputs = photo, UserRequest(intent="突出人物，完整保留窗框"), scene, camera, settings
+    advice = call_advisor(changed_inputs, monkeypatch,
+        response([proposal("crop", bbox=[0, 0, 1, 1]), proposal()]), loc=localization())
+    assert [item.action_type for item in advice.proposals] == ["reshoot"]
+    assert any("保护对象" in note for note in advice.notes)
+
+
+def test_crop_geometry_must_contain_separately_protected_frame(inputs, monkeypatch):
+    photo, _, scene, camera, settings = inputs
+    changed_inputs = photo, UserRequest(intent="突出人物，完整保留窗框"), scene, camera, settings
+    loc = localization()
+    frame = loc.candidates[0].model_copy(update={
+        "object_id": "frame", "label_original": "window frame", "label_display": "窗框",
+        "bbox": [0, 0, 1, 1],
+    })
+    loc = loc.model_copy(update={"candidates": [*loc.candidates, frame]})
+    advice = call_advisor(changed_inputs, monkeypatch,
+        response([proposal("crop", bbox=[.05, .05, .95, .95]),
+                  proposal("crop", bbox=[0, 0, 1, 1])]), loc=loc)
+    assert len(advice.proposals) == 1
+    assert advice.proposals[0].crop_bbox == [0, 0, 1, 1]
+
+
+def test_relationship_protection_remains_unverified_in_sound_crop(inputs, monkeypatch):
+    photo, _, scene, camera, settings = inputs
+    changed_inputs = photo, UserRequest(intent="突出人物，保留树林层次"), scene, camera, settings
+    advice = call_advisor(changed_inputs, monkeypatch,
+        response([proposal("crop", bbox=[0, 0, 1, 1])]), loc=localization())
+    assert advice.proposals
+    assert any("保护关系" in text for text in advice.proposals[0].limitations)
+
+
+def test_four_decimal_rounding_is_expanded_to_exact_candidate_boundaries(inputs, monkeypatch):
+    loc = localization()
+    objects = [item.model_copy(update={"bbox": [.100034, .100049, .899994, .900049]})
+               for item in loc.candidates]
+    loc = loc.model_copy(update={"candidates": objects})
+    advice = call_advisor(inputs, monkeypatch,
+        response([proposal("crop", bbox=[.1000, .1000, .9000, .9000])]), loc=loc)
+    assert advice.proposals[0].crop_bbox == [.1, .1, .9, .900049]
+    assert any("舍入" in note for note in advice.notes)
+
+
+def test_visible_bbox_protection_is_not_reported_as_complete_hidden_body(inputs, monkeypatch):
+    raw = proposal("crop", bbox=[0, 0, 1, 1])
+    raw["reasons"] = ["主体身体完整，裁切不会损失任何部位"]
+    advice = call_advisor(inputs, monkeypatch, response([raw]), loc=localization())
+    assert "主体身体完整" not in " ".join(advice.proposals[0].reasons)
+    assert any("可见范围" in text for text in advice.proposals[0].limitations)

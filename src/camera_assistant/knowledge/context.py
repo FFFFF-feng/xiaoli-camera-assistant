@@ -6,9 +6,20 @@ installed OS, shutter readout, drive mode and focus mode are never inferred.
 
 from __future__ import annotations
 
+import base64
+import re
+from io import BytesIO
 from typing import Any
 
-from camera_assistant.models import CameraProfile, PhoneProfile, SceneAnalysis, UserRequest
+from PIL import Image, ImageChops
+
+from camera_assistant.models import (
+    CameraProfile,
+    ImageInspection,
+    PhoneProfile,
+    SceneAnalysis,
+    UserRequest,
+)
 from camera_assistant.services.phone_knowledge import normalized_model_name
 from vision_lab_tool.detector_models import MethodResult
 
@@ -36,6 +47,9 @@ KNOWLEDGE_CONDITION_KEYS = frozenset(
         "shutter_type",
         "drive_mode",
         "focus_mode",
+        "reference_color_mode",
+        "color_adjustment_requested",
+        "color_reshoot_requested",
     }
 )
 
@@ -96,6 +110,8 @@ def build_knowledge_conditions(
     camera: CameraProfile | PhoneProfile,
     canonical_subject: str,
     localization: MethodResult | None = None,
+    *,
+    inspection: ImageInspection | None = None,
 ) -> dict[str, Any]:
     """Preserve legacy context keys and add only reliable exact condition values.
 
@@ -116,6 +132,14 @@ def build_knowledge_conditions(
         "handheld": request.handheld,
         "tripod": request.tripod,
         "subject_confirmed": bool(localization and localization.selection.status == "selected"),
+        "reference_color_mode": _reference_color_mode(inspection),
+        "color_adjustment_requested": bool(re.search(
+            r"白平衡|色偏|偏色|颜色偏|色温|white.balance|colou?r.cast", request.intent, re.IGNORECASE,
+        )),
+        "color_reshoot_requested": bool(re.search(
+            r"彩色.{0,6}(?:重拍|拍摄)|(?:重拍|拍摄).{0,6}彩色|colou?r.reshoot", request.intent,
+            re.IGNORECASE,
+        )),
     }
     is_phone = isinstance(camera, PhoneProfile)
     if is_phone:
@@ -185,3 +209,26 @@ def build_knowledge_conditions(
     if lighting:
         conditions["lighting"] = lighting
     return conditions
+
+
+def _reference_color_mode(inspection: ImageInspection | None) -> str:
+    """Describe near-neutral reference pixels only; never diagnose lighting/cast."""
+    if inspection is None:
+        return "unknown"
+    try:
+        header, encoded = inspection.model_image_data_url.split(",", 1)
+        if not header.startswith("data:image/") or ";base64" not in header:
+            return "unknown"
+        with Image.open(BytesIO(base64.b64decode(encoded, validate=True))) as original:
+            image = original.convert("RGB")
+            image.thumbnail((128, 128))
+            red, green, blue = image.split()
+            differences = ImageChops.lighter(ImageChops.difference(red, green),
+                                            ImageChops.difference(green, blue))
+            histogram = differences.histogram()
+            # JPEG colour noise below a few levels is compatible with a black-
+            # and-white rendering. Colour reshoot intent remains a separate fact.
+            neutral = sum(histogram[:5]) / max(sum(histogram), 1)
+            return "monochrome" if neutral >= .995 else "color"
+    except (ValueError, OSError, TypeError):
+        return "unknown"

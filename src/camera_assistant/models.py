@@ -4,12 +4,63 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
+from camera_assistant.candidate_models import CandidateOperation
 from camera_assistant.composition_models import CompositionAdvice
+from camera_assistant.knowledge_citation_models import KnowledgeCitation, KnowledgeCitationReview
+from camera_assistant.recovery_models import ParameterRecovery
 from vision_lab_tool.detector_models import MethodResult, SemanticObject
 
 MotionLevel = Literal["静止", "缓慢", "快速", "不确定"]
 CameraFormat = Literal["全画幅", "APS-C", "M4/3", "不清楚"]
 PhoneCaptureMode = Literal["auto", "portrait", "night", "pro"]
+ExposureMode = Literal["M", "Av", "Tv", "P", "unknown"]
+ISOControl = Literal["auto", "manual", "unknown"]
+ParameterRole = Literal["manual_setting", "auto_target", "observed", "not_applicable", "unknown"]
+EnvironmentKind = Literal["indoor", "outdoor", "mixed", "unknown"]
+
+
+class EnvironmentContext(BaseModel):
+    """Visible content is separate from the user's actual camera position."""
+
+    shooting_location: Literal["indoor", "outdoor", "unknown"] = "unknown"
+    shooting_location_source: Literal["user", "unknown"] = "unknown"
+    content_environment: EnvironmentKind = "unknown"
+    relationship: Literal[
+        "same_environment", "through_window", "mixed_view", "reflection", "unknown"
+    ] = "unknown"
+    evidence: list[str] = Field(default_factory=list)
+    uncertainties: list[str] = Field(default_factory=list)
+
+
+class CurrentCameraSettings(BaseModel):
+    """Only values explicitly supplied by the user; lens limits are separate."""
+
+    mode: ExposureMode = "unknown"
+    iso_control: ISOControl = "unknown"
+    aperture: str | None = None
+    shutter_speed: str | None = None
+    iso: str | None = None
+    exposure_compensation: str | None = None
+
+
+class ExposureParameter(BaseModel):
+    value: str
+    role: ParameterRole = "unknown"
+    source: Literal["suggestion", "user", "reference_exif", "unknown"] = "suggestion"
+
+
+class ExposureState(BaseModel):
+    """Program-derived controls; model-authored state is overwritten during review."""
+
+    mode: ExposureMode = "unknown"
+    iso_control: ISOControl = "unknown"
+    parameters: dict[str, ExposureParameter] = Field(default_factory=dict)
+    current_settings: CurrentCameraSettings | None = None
+    reference_observations: dict[str, ExposureParameter] = Field(default_factory=dict)
+    lens_max_aperture: float | None = None
+    m_auto_iso_compensation: Literal["supported", "unsupported", "unknown"] = "unknown"
+    capability_source_url: str = ""
+    capability_conditions: list[str] = Field(default_factory=list)
 
 
 class UserRequest(BaseModel):
@@ -34,6 +85,8 @@ class UserRequest(BaseModel):
     drive_mode: Literal["single", "continuous"] | None = None
     focus_mode: Literal["AF-S", "AF-C", "MF"] | None = None
     lighting_type: Literal["natural", "continuous_artificial", "flickering_artificial", "mixed"] | None = None
+    current_settings: CurrentCameraSettings | None = None
+    shooting_location: Literal["indoor", "outdoor", "unknown"] = "unknown"
 
     @field_validator("target_model_name", "target_lens_name", "camera_app")
     @classmethod
@@ -102,6 +155,9 @@ class CameraProfile(BaseModel):
     metering_name: str
     source_url: str = ""
     notes: list[str] = Field(default_factory=list)
+    m_auto_iso_compensation: Literal["supported", "unsupported", "unknown"] = "unknown"
+    m_auto_iso_compensation_source: str = ""
+    m_auto_iso_compensation_conditions: list[str] = Field(default_factory=list)
 
 
 class PhoneLens(BaseModel):
@@ -164,6 +220,7 @@ class SceneAnalysis(BaseModel):
     subject_status: Literal["selected", "ambiguous", "abstained"] = "abstained"
     composition_clues: list[str] = Field(default_factory=list)
     uncertainties: list[str] = Field(default_factory=list)
+    environment_context: EnvironmentContext = Field(default_factory=EnvironmentContext)
 
     @model_validator(mode="after")
     def subject_binding(self) -> SceneAnalysis:
@@ -207,6 +264,10 @@ class CameraRecommendation(BaseModel):
     confidence: float = Field(ge=0, le=1)
     validation_notes: list[str] = Field(default_factory=list)
     safety_notes: list[str] = Field(default_factory=list)
+    exposure_state: ExposureState | None = None
+    candidate_operations: list[CandidateOperation] = Field(default_factory=list)
+    reviewed_operations: list[CandidateOperation] = Field(default_factory=list)
+    knowledge_citations: list[KnowledgeCitation | dict] = Field(default_factory=list)
 
 
 class PipelineResult(BaseModel):
@@ -220,3 +281,5 @@ class PipelineResult(BaseModel):
     localization: MethodResult | None = None
     composition: CompositionAdvice | None = None
     composition_knowledge_hits: list[KnowledgeHit] = Field(default_factory=list)
+    parameter_recovery: ParameterRecovery | None = None
+    knowledge_citation_review: KnowledgeCitationReview | None = None

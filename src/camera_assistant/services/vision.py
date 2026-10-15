@@ -11,6 +11,10 @@ from camera_assistant.models import (
     UserRequest,
 )
 from camera_assistant.services.cloud import request_json
+from camera_assistant.services.environment import (
+    ENVIRONMENT_ANALYSIS_PROMPT,
+    normalize_scene_environment,
+)
 
 
 class VisionAnalyzer(Protocol):
@@ -62,7 +66,7 @@ class DemoVisionAnalyzer:
 
         backlight = any(word in intent for word in ("逆光", "夕阳", "剪影"))
         high_dynamic = inspection.metrics.shadow_ratio > 0.08 and inspection.metrics.highlight_ratio > 0.03
-        return SceneAnalysis(
+        scene = SceneAnalysis(
             scene_type=selected.profile_id,
             scene_label=selected.label,
             subject=selected.subject,
@@ -79,6 +83,7 @@ class DemoVisionAnalyzer:
             candidate_scenes=[candidate.label for candidate in candidates],
             retrieval_terms=selected.retrieval_terms,
         )
+        return normalize_scene_environment(scene, request)
 
 
 class OpenAICompatibleVisionAnalyzer:
@@ -113,6 +118,7 @@ main_subject_ids 必须引用 objects；任务未能唯一指定主目标集合�
 或 abstained 且 main_subject_ids=[]，不能按显眼程度强选。多个明确目标分别保留。
 composition_clues 描述留白、主体位置、边缘截断、背景干扰等画面事实，
 uncertainties 写无法从当前画面确定的信息；尚不输出构图建议或裁切框。
+{ENVIRONMENT_ANALYSIS_PROMPT}
 只输出 schema 对应的 JSON 实例，不复制 $defs/properties 等 schema 元数据。
 
 用户输入：{request.model_dump_json()}
@@ -137,4 +143,5 @@ JSON Schema：{json.dumps(schema, ensure_ascii=False)}
                 }
             ],
         }
-        return SceneAnalysis.model_validate(request_json(self.settings, payload))
+        scene = SceneAnalysis.model_validate(request_json(self.settings, payload))
+        return normalize_scene_environment(scene, request)

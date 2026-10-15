@@ -1,5 +1,6 @@
 import pytest
 
+from camera_assistant.candidate_models import CandidateOperation, FactReference
 from camera_assistant.models import (
     CameraProfile,
     CameraRecommendation,
@@ -50,6 +51,78 @@ def test_validator_respects_lens_max_aperture() -> None:
 
     assert result.aperture == "f/4（镜头最大光圈）"
     assert result.validation_notes
+
+
+def test_invalid_shutter_does_not_authorize_manual_candidate_or_dependent_steps() -> None:
+    operation = CandidateOperation(control="shutter", target="shutter_speed", expected_effect="motion_blur",
+        preconditions=[FactReference(source="user", key="focal_length_mm", evidence="50")])
+    result = RecommendationValidator().validate(
+        recommendation(shooting_mode="M", aperture="f/4", shutter_speed="bad", iso="100",
+                       candidate_operations=[operation]),
+        UserRequest(intent="拍人物", focal_length_mm=50), scene(),
+    )
+    assert result.exposure_state.parameters["shutter_speed"].role == "unknown"
+    assert not result.reviewed_operations
+    assert any("先" in item and "有效曝光时间" in item for item in result.adjustments)
+    assert not any("若过亮，缩短曝光时间" in item for item in result.adjustments)
+
+
+@pytest.mark.parametrize(("aperture", "expected"), [
+    ("4.0", "f/4"), ("f/4", "f/4"), ("F / 4.0", "f/4"),
+    ("f/1.8–2.8", "f/1.8–f/2.8"), ("f/8-f/11", "f/8–f/11"),
+    ("8 - 11", "f/8–f/11"), ("f/11 至 f/8", "f/8–f/11"),
+])
+def test_complete_aperture_values_are_canonical_targets(aperture: str, expected: str) -> None:
+    result = RecommendationValidator().validate(
+        recommendation(aperture=aperture), UserRequest(intent="拍窗景"), scene(),
+    )
+    assert result.aperture == expected
+    assert result.exposure_state.parameters["aperture"].value == expected
+    assert any(expected.split("–")[0] in reason for reason in result.reasons)
+    assert not any("光圈建议 数值未确认" in reason for reason in result.reasons)
+
+
+@pytest.mark.parametrize(("aperture", "expected"), [
+    ("1.8", "f/4（镜头最大光圈）"),
+    ("f/1.8–2.8", "f/4（镜头最大光圈）"),
+    ("f/1.8–5.6", "f/4–f/5.6（镜头最大光圈）"),
+    ("f/8-f/1.8", "f/4–f/8（镜头最大光圈）"),
+])
+def test_lens_max_aperture_limits_every_range_endpoint(aperture: str, expected: str) -> None:
+    result = RecommendationValidator().validate(
+        recommendation(aperture=aperture), UserRequest(intent="拍人像", max_aperture=4), scene(),
+    )
+    assert result.aperture == expected
+    assert not any("f/1.8" in text or "f/2.8" in text
+                   for field in ("reasons", "risks", "adjustments")
+                   for text in getattr(result, field))
+    assert result.exposure_state.current_settings is None
+    assert result.exposure_state.lens_max_aperture == 4
+
+
+@pytest.mark.parametrize("aperture", [
+    "f/4，保证背景虚化", "当前光圈 f/4", "最大光圈f/4，当前f/8",
+    "f/4 (ISO400)", "f/4（保证清晰）", "0", "f/0", "f/4-f/0", "f/-2",
+    "f/4 -", "随现场变化", "", "f/4 或 f/8，视情况选择",
+])
+def test_aperture_prose_or_invalid_numbers_are_explicitly_unverified(aperture: str) -> None:
+    result = RecommendationValidator().validate(
+        recommendation(aperture=aperture), UserRequest(intent="拍人像", max_aperture=4), scene(),
+    )
+    assert "无法校验" in result.aperture
+    assert result.exposure_state.parameters["aperture"].role == "unknown"
+    assert any("无法校验" in warning and "光圈" in warning for warning in result.risks)
+    assert any("光圈建议 数值未确认" in reason for reason in result.reasons)
+    assert not any("保证背景虚化" in reason or "当前f/8" in reason for reason in result.reasons)
+
+
+def test_generated_max_aperture_note_is_idempotent_but_not_current_value() -> None:
+    request = UserRequest(intent="拍人像", max_aperture=4)
+    once = RecommendationValidator().validate(recommendation(), request, scene())
+    twice = RecommendationValidator().validate(once, request, scene())
+    assert twice.aperture == "f/4（镜头最大光圈）"
+    assert twice.exposure_state.current_settings is None
+    assert any("能力边界" in reason for reason in twice.reasons)
 
 
 def test_validator_raises_shutter_for_fast_subject() -> None:

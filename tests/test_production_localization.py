@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import base64
 import hashlib
+import json
 from io import BytesIO
 from pathlib import Path
 
@@ -17,7 +18,11 @@ from camera_assistant.models import (
     SceneAnalysis,
     UserRequest,
 )
-from camera_assistant.services.localization import GroundingDinoLocalizer
+from camera_assistant.services.localization import GroundingDinoLocalizer, _associate_photography
+from camera_assistant.services.photography_targets import (
+    compose_photography_queries,
+    resolve_photography_scope,
+)
 from vision_lab_tool.detector_models import DetectionObject, DetectionResult, SemanticObject
 
 CAT_TASK = "突出猫的双眼，完整保留耳朵和胡须，简化背景并留出视线空间"
@@ -336,3 +341,216 @@ def test_detector_special_entity_claim_prevents_category_identity_selection(insp
     assert result.selection.status != "selected"
     assert result.selection.selected_ids == []
     assert result.candidates[0].entity_kind == "unknown"
+
+
+def test_bird_request_splits_subject_protection_goal_and_output(inspection):
+    task = "突出鸟的主体轮廓，保留完整身体，重拍时怎样与落叶背景分离？"
+    result, _, _ = localize(inspection, task, [semantic("bird_1", "bird")],
+                            [candidate("det_bird", "bird")])
+    assert result.selection.status == "selected"
+    scope = result.queries["task_scope"]
+    assert [unit["query"] for unit in scope["required_units"]] == ["bird"]
+    assert "保留完整身体" in scope["protection_instructions"]
+    assert {item["goal"] for item in scope["imaging_goals"]} >= {
+        "subject_outline", "background_separation"}
+    assert "重拍时怎样与落叶背景分离" in scope["output_instructions"]
+    assert scope["intent_parse_uncertainties"] == []
+    for item in scope["imaging_goals"] + scope["output_requests"]:
+        assert task[item["start"]:item["end"]] == item["text"]
+
+
+@pytest.mark.parametrize("task", [
+    "突出鸟儿的轮廓，保留全身，如何虚化背景？",
+    "拍摄飞鸟，别裁掉头部，给出重拍建议。",
+    "突出鸟，保留身体完整，怎样从草丛背景中分离？",
+])
+def test_unseen_bird_expressions_do_not_turn_goals_into_unknown_subjects(inspection, task):
+    result, _, _ = localize(inspection, task, [semantic("bird_1", "bird")],
+                            [candidate("det_bird", "bird")])
+    assert result.selection.status == "selected"
+    assert result.queries["task_scope"]["intent_parse_uncertainties"] == []
+
+
+@pytest.mark.parametrize("task", [
+    "重新拍摄时凝固骑行人物和自行车的动作",
+    "重新拍摄时定格骑车人和单车的运动，保留全身，如何设置参数？",
+    "冻结人物和自行车的动作，给出重拍建议。",
+    "拍摄骑手与自行车，保留身体完整，提供重拍建议。",
+    "freeze person and bicycle motion, preserve whole body, how framing settings?",
+])
+def test_cycling_motion_goal_keeps_both_required_subjects(inspection, task):
+    result, _, _ = localize(inspection, task,
+        [semantic("person_1", "person"), semantic("bicycle_1", "bicycle")],
+        [candidate("det_person", "person"), candidate("det_bike", "bicycle")],
+        ["person_1", "bicycle_1"])
+    assert result.selection.status == "selected"
+    assert {unit["query"] for unit in result.queries["task_scope"]["required_units"]} == {
+        "person", "bicycle"}
+
+
+def test_window_protection_and_background_goal_keep_original_evidence(inspection):
+    task = "突出猫，别裁掉窗框，怎样让背景虚化？"
+    result, _, _ = localize(inspection, task)
+    scope = result.queries["task_scope"]
+    assert result.selection.status == "selected"
+    assert scope["protection_instructions"] == ["别裁掉窗框"]
+    assert scope["preservation_requirements"][0]["text"] == "别裁掉窗框"
+    assert scope["imaging_goals"][0]["goal"] == "background_separation"
+
+
+@pytest.mark.parametrize("protection", ["保留完整窗框", "别截断窗框", "让窗框保持完整"])
+def test_natural_window_protection_is_separate_from_background_goal(inspection, protection):
+    result, _, _ = localize(inspection, f"突出猫，{protection}，怎样让背景虚化？")
+    scope = result.queries["task_scope"]
+    assert result.selection.status == "selected"
+    assert [unit["query"] for unit in scope["required_units"]] == ["cat"]
+    assert protection in scope["protection_instructions"]
+
+
+@pytest.mark.parametrize("task,fragment", [
+    ("突出猫和螺丝与落叶背景分离", "螺丝"),
+    ("突出猫，怎样给猫和未知物件构图？", "未知物件"),
+    ("突出穿红衣的人物", "穿红衣"),
+    ("定位鸟的身体", "身体"),
+    ("突出猫，保护铭牌", "铭牌"),
+    ("突出猫和身体", "身体"),
+    ("突出猫和轮廓", "轮廓"),
+])
+def test_unknown_subject_part_identity_and_protection_survive_grammar(inspection, task, fragment):
+    objects = [semantic("bird_1", "bird")] if "鸟" in task else (
+        [semantic("person_1", "person")] if "人物" in task else [semantic("cat_1", "cat")])
+    boxes = [candidate("det_subject", objects[0].query)]
+    result, _, _ = localize(inspection, task, objects, boxes)
+    assert result.selection.status == "ambiguous"
+    scope = result.queries["task_scope"]
+    assert any(fragment in item["fragment"] for item in scope["intent_parse_uncertainties"])
+    assert "intent_parse" in scope["selection_uncertainty"]
+    assert all(item["evidence"] in task for item in scope["intent_parse_uncertainties"])
+
+
+def test_explicit_unknown_background_is_retained_as_context_without_becoming_subject(inspection):
+    task = "突出猫，蓝色螺丝仅作背景无需定位"
+    result, _, _ = localize(inspection, task)
+    assert result.selection.status == "selected"
+    scope = result.queries["task_scope"]
+    assert [unit["query"] for unit in scope["required_units"]] == ["cat"]
+    assert any(item["role"] == "context" and "螺丝" in item["text"] for item in scope["clauses"])
+
+
+def test_protected_quantity_cannot_shrink_to_single_main_cat(inspection):
+    result, _, _ = localize(inspection, "突出猫，保留两只猫")
+    assert result.selection.status == "ambiguous"
+    assert result.queries["task_scope"]["required_units"][0]["minimum_count"] == 2
+    assert "semantic_coverage" in result.queries["task_scope"]["selection_uncertainty"]
+
+
+def test_repeated_category_in_conjunction_is_multiple_but_repeat_instruction_is_not():
+    semantics = [semantic("cat_1", "cat")]
+    paired = resolve_photography_scope("突出一只猫和另一只猫", semantics, ["cat_1"])
+    repeated = resolve_photography_scope("拍摄猫，强调猫的轮廓", semantics, ["cat_1"])
+    assert paired["required_units"][0]["minimum_count"] == 2
+    assert repeated["required_units"][0]["minimum_count"] == 1
+    assert repeated["status"] == "known"
+
+
+def test_named_window_subject_and_embedded_quantity_are_not_erased(inspection):
+    result, _, _ = localize(inspection, "突出猫和窗框")
+    assert result.selection.status == "ambiguous"
+    assert "task:window frame" in result.queries["task_scope"]["missing_semantic_units"]
+    scope = resolve_photography_scope("突出两只手", [semantic("hand_1", "hand")], ["hand_1"])
+    assert scope["required_units"][0]["minimum_count"] == 2
+    assert scope["missing_semantic_units"] == ["task:hand"]
+
+
+def test_detection_multiple_candidates_and_intent_uncertainty_are_distinct(inspection):
+    ambiguous, _, _ = localize(inspection, "突出猫", boxes=[candidate("one"), candidate("two")])
+    unresolved, _, _ = localize(inspection, "突出猫和未知物件")
+    detected_scope = ambiguous.queries["task_scope"]
+    assert detected_scope["intent_parse_uncertainties"] == []
+    assert detected_scope["selection_uncertainty"] == ["detector_multiple_candidates"]
+    assert unresolved.queries["task_scope"]["selection_uncertainty"] == ["intent_parse"]
+    assert "检测多候选" in unresolved.selection.reason
+
+
+def test_protecting_subject_reflection_cannot_assume_a_unique_physical_pair(inspection):
+    result, _, _ = localize(inspection, "突出猫，保留猫的倒影")
+    assert result.selection.status == "ambiguous"
+    assert result.queries["task_scope"]["entity_identity_requested"] is True
+    assert "entity_identity" in result.queries["task_scope"]["selection_uncertainty"]
+
+
+def test_protection_only_request_keeps_named_anchor_and_detector_ambiguity(inspection):
+    result, _, _ = localize(inspection, "保留近处人物关系，重拍时怎样取景和曝光",
+        [semantic("person_1", "person")], [candidate("one", "person"), candidate("two", "person")],
+        ["person_1"])
+    scope = result.queries["task_scope"]
+    assert result.selection.status == "ambiguous"
+    assert not scope["intent_parse_uncertainties"]
+    assert "intent_parse" not in scope["selection_uncertainty"]
+    assert "detector_multiple_candidates" in scope["selection_uncertainty"]
+    assert scope["protected_units"][0]["query"] == "person"
+    assert scope["required_units"][0]["source_role"] == "protection_anchor"
+
+
+def test_complete_frame_and_environment_relationship_have_different_protection_contracts():
+    semantics = [semantic("cat_1", "cat")]
+    scope = resolve_photography_scope("突出猫，完整保留窗框并保留树林层次", semantics, ["cat_1"])
+    units = {unit["query"]: unit for unit in scope["protected_units"]}
+    assert units["window frame"]["geometry_requirement"] == "complete_visible_extent"
+    assert units["forest"]["geometry_requirement"] == "relationship_unverified"
+    assert all(unit["user_evidence"][0] in "突出猫，完整保留窗框并保留树林层次" for unit in units.values())
+
+
+@pytest.mark.parametrize("task,location", [
+    ("体现悬崖上的人物与山景的尺度关系", "悬崖上的"),
+    ("保留海岸人物剪影和天空颜色", "海岸"),
+    ("突出螺丝上的猫", "螺丝上的"),
+])
+def test_location_anchor_is_an_unverified_identity_requirement_not_a_new_subject(inspection, task, location):
+    query = "person" if "人物" in task else "cat"
+    objects = [semantic("target", query)]
+    if "山景" in task:
+        objects.append(semantic("mountain", "mountain"))
+    result, _, _ = localize(inspection, task, objects, [candidate("det_target", query)],
+                            [item.object_id for item in objects])
+    scope = result.queries["task_scope"]
+    assert result.selection.status == "ambiguous"
+    assert not scope["intent_parse_uncertainties"]
+    assert scope["location_constraints"][0]["text"] == location
+    assert scope["location_constraints"][0]["verification"] == "unverified"
+    assert "location_identity" in scope["selection_uncertainty"]
+    assert not any(unit.get("unresolved") for unit in scope["required_units"])
+
+
+def test_location_grammar_does_not_hide_separate_subjects_or_part_requirements():
+    cat = semantic("cat_1", "cat")
+    for task in ("突出猫和悬崖", "定位猫头上的徽标", "突出猫中的第三只"):
+        scope = resolve_photography_scope(task, [cat], ["cat_1"])
+        assert scope["status"] == "unknown"
+        assert scope["intent_parse_uncertainties"]
+        assert not scope.get("location_constraints")
+
+
+@pytest.mark.parametrize("sample,expected", [
+    ("P01", "selected"), ("P05", "selected"), ("P07", "selected"),
+    ("P09", "ambiguous"), ("P10", "selected"),
+])
+def test_saved_real_semantics_and_detection_replay_without_external_calls(sample, expected):
+    history = Path(__file__).resolve().parents[1] / "data/history/main-round-20261014-105503"
+    if not (history / "requests.json").is_file():
+        pytest.skip("本地真实测试证据目录未提供")
+    request = json.loads((history / "requests.json").read_text(encoding="utf-8"))[sample]
+    semantic_scene = SceneAnalysis.model_validate(json.loads(
+        (history / f"{sample}-vision-structured.json").read_text(encoding="utf-8")))
+    saved = json.loads((history / f"{sample}-detector-structured.json").read_text(encoding="utf-8"))
+    detection = DetectionResult.model_validate(saved["detection"])
+    result = _associate_photography(detection, semantic_scene,
+        compose_photography_queries(request["intent"], semantic_scene.objects))
+    assert result.selection.status == expected
+    scope = result.queries["task_scope"]
+    assert not any(unit.get("unresolved") for unit in scope["required_units"])
+    if sample == "P09":
+        assert scope["entity_identity_requested"]
+        assert "entity_identity" in scope["selection_uncertainty"]
+    else:
+        assert scope["intent_parse_uncertainties"] == []
