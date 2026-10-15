@@ -72,6 +72,15 @@ export function fitPhotoBox(box, sourceAspect, frameAspect) {
   return [x,y,x+width,y+height];
 }
 
+/** Margin is a proportion of the detected subject, not of the full photograph. */
+export function expandedSourceBox(box, margin = .02) {
+  if (!box) return null;
+  const pad = Number.isFinite(margin) ? Math.max(0, Math.min(.1, margin)) : .02;
+  const dx = (box[2]-box[0])*pad, dy = (box[3]-box[1])*pad;
+  return [Math.max(0,box[0]-dx),Math.max(0,box[1]-dy),
+    Math.min(1,box[2]+dx),Math.min(1,box[3]+dy)];
+}
+
 export function embeddedInMain(element, main) {
   if (element === main || element.role === 'main' || !element.source_bbox || !main.source_bbox) return false;
   const a=element.source_bbox, b=main.source_bbox;

@@ -7,7 +7,7 @@ from typing import Protocol
 
 from pydantic import ValidationError
 
-from camera_assistant.composition_models import CompositionAdvice
+from camera_assistant.composition_models import CompositionAdvice, CompositionProposal
 from camera_assistant.config import Settings
 from camera_assistant.models import (
     CameraProfile,
@@ -19,6 +19,7 @@ from camera_assistant.models import (
 )
 from camera_assistant.services.advice_safety import composition_issue
 from camera_assistant.services.cloud import request_json
+from camera_assistant.services.composition_geometry import resolve_sketch_geometry
 from vision_lab_tool.detector_models import MethodResult
 
 
@@ -99,34 +100,45 @@ def _contains(crop: list[float], subject: list[float]) -> bool:
     )
 
 
-def _resolve_sketch_geometry(advice: CompositionAdvice, inspection: ImageInspection) -> CompositionAdvice:
-    """Compute displayed proportions from the same contained photo boxes as the UI."""
-    if inspection.metrics.width <= 0 or inspection.metrics.height <= 0:
-        return advice
-    photo_aspect = inspection.metrics.width / inspection.metrics.height
-    proposals = []
-    for proposal in advice.proposals:
-        if not proposal.sketch:
-            proposals.append(proposal)
+def _resolve_sketch_geometry(advice: CompositionAdvice, inspection: ImageInspection,
+                             scene: SceneAnalysis | None = None) -> CompositionAdvice:
+    return resolve_sketch_geometry(advice, inspection, scene)
+
+
+def _parse_advice(answer: object, knowledge_hits: list[KnowledgeHit]) -> CompositionAdvice:
+    """A malformed proposal must not erase its independently valid siblings."""
+    error_message = "构图模型返回的方案格式或裁切坐标无效，请重新分析。"
+    if not isinstance(answer, dict) or not isinstance(answer.get("proposals", []), list):
+        raise ValueError(error_message)  # noqa: TRY004 -- public model-response error contract
+    raw_proposals = answer.get("proposals", [])
+    allowed_ids = {hit.document_id for hit in knowledge_hits}
+    # Check provenance before dropping malformed proposals, so a forged citation
+    # cannot hide behind an unrelated bad coordinate.
+    for raw in raw_proposals:
+        ids = raw.get("knowledge_ids", []) if isinstance(raw, dict) else []
+        if isinstance(ids, list) and any(isinstance(value, str) and value not in allowed_ids for value in ids):
+            raise ValueError("构图模型引用了本次未检索到的知识条目。")
+    try:
+        advice = CompositionAdvice.model_validate({**answer, "proposals": []})
+    except (ValidationError, TypeError, ValueError):
+        raise ValueError(error_message) from None
+    proposals, notes = [], []
+    for index, raw in enumerate(raw_proposals, 1):
+        try:
+            proposal = CompositionProposal.model_validate(raw)
+        except (ValidationError, TypeError, ValueError):
+            notes.append(f"第 {index} 份构图方案格式或裁切坐标无效，已跳过；其余有效方案继续显示。")
             continue
-        frame_aspect = {"portrait": 3 / 4, "landscape": 4 / 3, "square": 1}[proposal.sketch.aspect]
-        plan = proposal.framing_plan
-        if plan:
-            main = next(element for element in proposal.sketch.elements if element.role == "main")
-            source = main.source_bbox or [0, 0, 1, 1]
-            ratio = photo_aspect * (source[2] - source[0]) / (source[3] - source[1])
-            x1, y1, x2, y2 = main.bbox
-            width = min(x2 - x1, (y2 - y1) * ratio / frame_aspect)
-            height = width * frame_aspect / ratio
-            x1, y1 = (x1 + x2 - width) / 2, (y1 + y2 - height) / 2
-            x2, y2 = x1 + width, y1 + height
-            plan = plan.model_copy(update={
-                "placement": f"轮廓取材区域中心：横向{(x1 + x2) * 50:.0f}%、纵向{(y1 + y2) * 50:.0f}%（从左上角计）。",
-                "scale": f"建议画幅内，轮廓取材区域宽约{(x2 - x1) * 100:.0f}%、高约{(y2 - y1) * 100:.0f}%；保留原始比例，包含区域内背景。",
-                "negative_space": f"轮廓取材区域四边余量：左{x1 * 100:.0f}%、右{(1 - x2) * 100:.0f}%、上{y1 * 100:.0f}%、下{(1 - y2) * 100:.0f}%。留白用途见手稿说明。",
-            })
-        proposals.append(proposal.model_copy(update={"framing_plan": plan}))
-    return advice.model_copy(update={"proposals": proposals})
+        if isinstance(raw, dict) and raw.get("sketch") is not None and proposal.sketch is None:
+            notes.append(f"第 {index} 份方案的手稿格式或坐标无效，已隐藏手稿并保留文字建议。")
+        if isinstance(raw, dict) and raw.get("framing_plan") is not None and proposal.framing_plan is None:
+            notes.append(f"第 {index} 份方案的取景检查单不完整，已隐藏该检查单。")
+        proposals.append(proposal)
+    if raw_proposals and not proposals:
+        raise ValueError(error_message)
+    # Model notes are not a diagnostic channel. Only fixed, sanitized validation
+    # messages are retained here; raw field values and exception details stay out.
+    return advice.model_copy(update={"proposals": proposals, "notes": notes})
 
 
 def _validate_advice(
@@ -142,7 +154,7 @@ def _validate_advice(
 
     boxes = _selected_boxes(localization)
     proposals = []
-    notes = []
+    notes = list(advice.notes)
     for proposal in advice.proposals:
         # Instructions in the new visual feedback must pass the same checks as actions.
         visual_text = list(proposal.framing_plan.model_dump().values()) if proposal.framing_plan else []
@@ -239,11 +251,21 @@ class OpenAICompatibleCompositionAdvisor:
             "success_check用两项可在取景器直接检查的标准判断调整是否完成。"
             "actions按先机位、再取景、再检查排序，每步有具体观察目标，避免‘更美观/有层次’等空泛指令。\n"
             "每个可执行方案必须附带 sketch 简笔画分镜数据，帮助初学者照着拍。"
-            "这是一张调整后的取景教学图，不是原图描摹、主体检测框或真实效果照片。"
+            "先选择render_mode：连续建筑、走廊、山水、瀑布、倒影、多个主体间有固定空间关系时必须scene，"
+            "scene整体保留原照片比例与透视，不拆开移动裁片，也不预测换机位后才看得见的新视角。"
+            "scene的bbox必须等于对应source_bbox；无可靠source_bbox的元素省略，无法标注时elements=[]。"
+            "scene的space_side=none、source_margin=0、horizon_y=null；caption说明原图标注与现场复核。"
+            "只有可靠的单独人物、宠物或静物可用subject；取材框互相重叠且不能完整包含时也用scene，避免重复搬动画面。"
+            "subject只放一位主角，附可靠source_bbox；不提供空环境框占位。"
+            "space_side只能left/right/top/bottom/none，明确可靠的单侧余量才选择方向；多方向或无法确认用none。"
+            "source_margin为取材宽高各边的额外保护比例，subject默认0.02，最大0.05，不代表分割或新增背景。"
+            "photo_aspect由系统根据原图填写，输出null即可，不猜测。"
+            "构图的caption、留白、占比及检查文字最终由同一几何数据计算，不另行编造比例。"
+            "subject是调整后的取景教学图，scene是在原图上标注的整体示意；两者均不是实拍效果承诺或检测器真值。"
             "aspect 选择适合本方案的横幅 landscape、竖幅 portrait 或 square。"
             "elements 最多6个，画照片中确实可见的主体、前景和必要环境，构成完整教学分镜；"
             "kind 只选 person/tree/pet/building/mountain/flower/object，无法归类用object并写明label。"
-            "至少一个role=main；bbox 是建议构图中从左上到右下的0到1位置，"
+            "subject至少一个role=main；bbox 是建议构图中从左上到右下的0到1位置，scene则与source_bbox保持一致，"
             "应完整位于画幅内，宽高至少0.05，保护头顶、耳朵、尾巴等关键部位并留出余量。"
             "每个可辨认element同时提供source_bbox：它在随附原照片中的归一化xyxy区域，"
             "与建议摆放bbox分开。source_bbox须完整包含可见轮廓、头发/耳朵/肢体/尾巴/道具，"
@@ -304,9 +326,6 @@ class OpenAICompatibleCompositionAdvisor:
         if self.settings.disable_thinking:
             payload["thinking"] = {"type": "disabled"}
         answer = request_json(self.settings, payload)
-        try:
-            advice = CompositionAdvice.model_validate(answer)
-        except ValidationError:
-            raise ValueError("构图模型返回的方案格式或裁切坐标无效，请重新分析。") from None
+        advice = _parse_advice(answer, knowledge_hits)
         checked = _validate_advice(advice, localization, knowledge_hits, request)
-        return _resolve_sketch_geometry(checked, inspection)
+        return _resolve_sketch_geometry(checked, inspection, scene)

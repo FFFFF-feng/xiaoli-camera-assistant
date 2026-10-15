@@ -1,6 +1,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { lineArtPixels, fitPhotoBox, embeddedInMain } from '../src/sketch-trace.mjs';
+import { lineArtPixels, fitPhotoBox, embeddedInMain, expandedSourceBox } from '../src/sketch-trace.mjs';
+
+test('裁框边缘按主体自身宽高同比增加，不按整图平移固定百分比', () => {
+  const source=[.2,.3,.4,.7], expanded=expandedSourceBox(source,.02);
+  const expected=[.196,.292,.404,.708];
+  expanded.forEach((value,index)=>assert.ok(Math.abs(value-expected[index])<1e-12));
+  assert.deepEqual(expandedSourceBox([0,0,1,1],.06),[0,0,1,1]);
+  assert.equal(expandedSourceBox(null),null);
+});
 
 test('主体以原始比例完整放入目标框，宽高都不溢出', () => {
   for (const aspect of [.35,1,3.2]) for (const frame of [.75,1,1.6]) {

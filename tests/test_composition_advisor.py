@@ -293,7 +293,9 @@ def sketch():
 
 
 def test_sketch_is_validated_and_preserved_with_advice(inputs, monkeypatch):
-    item = {**proposal(), "sketch": sketch()}
+    drawing = sketch()
+    drawing["elements"][0]["source_bbox"] = [.1, .1, .8, .95]
+    item = {**proposal(), "sketch": drawing}
     captured = {}
     advice = call_advisor(inputs, monkeypatch, response([item]), captured=captured)
     assert advice.proposals[0].sketch.elements[0].kind == "tree"
@@ -377,6 +379,207 @@ def test_framing_numbers_match_contained_photo_region_instead_of_model_guesses(i
     assert "高约48%" in fixed.framing_plan.scale
     assert "上26%" in fixed.framing_plan.negative_space
     assert "横向50%" in fixed.framing_plan.placement
-    assert fixed.sketch.elements[0].bbox == [.1, .1, .9, .9]
-    assert fixed.framing_plan.diagnosis == plan["diagnosis"]
+    assert fixed.sketch.elements[0].bbox == pytest.approx([.1, .26, .9, .74])
+    assert "99%" not in fixed.framing_plan.diagnosis
     CompositionAdvice.model_validate(resolved.model_dump())
+
+
+def test_bad_sibling_does_not_erase_valid_proposal_or_leak_raw_error(inputs, monkeypatch):
+    bad = proposal("camera_position", bbox=[0, 0, 1, 1])
+    bad["goal"] = "PRIVATE_MODEL_VALUE"
+    answer = {**response([proposal(), bad]), "notes": ["PRIVATE_MODEL_NOTE"]}
+    advice = call_advisor(inputs, monkeypatch, answer)
+    assert len(advice.proposals) == 1
+    assert any("第 2 份" in note for note in advice.notes)
+    assert "PRIVATE_MODEL" not in " ".join(advice.notes)
+
+
+def test_forged_citation_in_invalid_sibling_still_rejects_response(inputs, monkeypatch):
+    bad = proposal("camera_position", citations=["forged@v1"], bbox=[0, 0, 1, 1])
+    with pytest.raises(ValueError, match="未检索到"):
+        call_advisor(inputs, monkeypatch, response([proposal(), bad]))
+
+
+def test_invalid_optional_visuals_report_sanitized_notes(inputs, monkeypatch):
+    bad = sketch()
+    bad["elements"][0]["bbox"] = [0, "PRIVATE_VALUE", 1, 1]
+    advice = call_advisor(inputs, monkeypatch, response([
+        {**proposal(), "sketch": bad, "framing_plan": {"diagnosis": "PRIVATE_VALUE"}}
+    ]))
+    assert len(advice.proposals) == 1
+    assert advice.proposals[0].sketch is None
+    assert advice.proposals[0].framing_plan is None
+    assert any("隐藏手稿" in note for note in advice.notes)
+    assert "PRIVATE_VALUE" not in " ".join(advice.notes)
+
+
+def resolve_drawing(inputs, drawing, actions=None):
+    advice = CompositionAdvice.model_validate(response([
+        {**proposal(), "sketch": drawing, **({"actions": actions} if actions else {})}
+    ]))
+    resolved = composition._resolve_sketch_geometry(advice, inputs[0])
+    # model_copy must never produce a response that cannot be stored/reloaded.
+    CompositionAdvice.model_validate(resolved.model_dump())
+    return resolved
+
+
+def test_subject_missing_source_uses_whole_photo_without_invented_box(inputs):
+    fixed = resolve_drawing(inputs, sketch()).proposals[0].sketch
+    assert fixed.render_mode == "scene"
+    assert fixed.elements == []
+    assert fixed.photo_aspect == 1.25
+    assert fixed.horizon_y is None
+
+
+@pytest.mark.parametrize("kind", ["building", "mountain"])
+def test_connected_scenes_keep_source_coordinates_and_native_aspect(inputs, kind):
+    drawing = sketch()
+    drawing["elements"][0].update(kind=kind, source_bbox=[.05, .1, .95, .9])
+    drawing.update(horizon_y=.7, space_side="right")
+    fixed = resolve_drawing(inputs, drawing).proposals[0].sketch
+    assert fixed.render_mode == "scene"
+    assert fixed.elements[0].bbox == [.05, .1, .95, .9]
+    assert fixed.photo_aspect == 1.25
+    assert fixed.horizon_y is None and fixed.space_side == "none"
+
+
+def test_missing_environment_is_removed_and_embedded_prop_is_not_duplicated(inputs):
+    drawing = sketch()
+    drawing["elements"][0]["source_bbox"] = [.1, .1, .9, .95]
+    context = {"kind": "object", "role": "context", "label": "背景", "bbox": [.1, .1, .8, .8]}
+    drawing["elements"] += [context, {**context, "label": "道具", "source_bbox": [.2, .2, .3, .3]}]
+    fixed = resolve_drawing(inputs, drawing).proposals[0].sketch
+    assert fixed.render_mode == "subject"
+    assert [e.role for e in fixed.elements] == ["main"]
+
+
+def test_partial_overlapping_source_regions_keep_whole_scene(inputs):
+    drawing = sketch()
+    drawing["elements"][0]["source_bbox"] = [.3, .1, .9, .9]
+    drawing["elements"].append({"kind": "object", "role": "context", "label": "环境",
+        "bbox": [.1, .1, .3, .9], "source_bbox": [0, .2, .4, 1]})
+    fixed = resolve_drawing(inputs, drawing).proposals[0].sketch
+    assert fixed.render_mode == "scene"
+    assert all(e.bbox == e.source_bbox for e in fixed.elements)
+
+
+@pytest.mark.parametrize("boxes", [
+    [[.5, .1, .8, .8], [.6, .5, .9, .9]],
+    [[.5, .1, .7, .8], [.705, .1, .9, .8]],
+])
+def test_context_overlap_including_protection_margin_preserves_whole_scene(inputs, boxes):
+    drawing = sketch()
+    drawing["elements"][0]["source_bbox"] = [.01, .1, .2, .5]
+    drawing["elements"] += [{"kind": "object", "role": "context", "label": "环境",
+        "source_bbox": box, "bbox": [.5, .1, .9, .9]} for box in boxes]
+    assert resolve_drawing(inputs, drawing).proposals[0].sketch.render_mode == "scene"
+
+
+def test_very_thin_contained_subject_falls_back_without_invalid_coordinates(inputs):
+    drawing = sketch()
+    drawing["elements"][0].update(bbox=[0, 0, .05, .9], source_bbox=[0, 0, 1, .05])
+    assert resolve_drawing(inputs, drawing).proposals[0].sketch.render_mode == "scene"
+
+
+@pytest.mark.parametrize("note, expected", [("右侧留白", "right"), ("顶部保留余量", "top"),
+    ("上下两侧留白", "none"), ("左侧和右侧都保留", "none")])
+def test_space_direction_is_explicit_or_unambiguous(inputs, note, expected):
+    drawing = sketch()
+    drawing["elements"][0].update(bbox=[.3, .3, .6, .6], source_bbox=[.1, .1, .7, .8])
+    drawing["space_note"] = note
+    fixed = resolve_drawing(inputs, drawing).proposals[0].sketch
+    assert fixed.space_side == expected
+
+
+def test_explicit_no_space_wins_over_old_note_and_arrow_follows_action(inputs):
+    drawing = sketch()
+    drawing.update(space_side="none", space_note="右侧留白", camera_action="left")
+    drawing["elements"][0]["source_bbox"] = [.1, .1, .8, .9]
+    fixed = resolve_drawing(inputs, drawing, ["向右移动机位，再检查主体边缘"]).proposals[0].sketch
+    assert fixed.space_side == "none"
+    assert fixed.camera_action == "right"
+    assert "向右" in fixed.camera_instruction
+
+
+def test_unresolved_move_hides_arrow_instead_of_guessing(inputs):
+    drawing = sketch()
+    drawing["elements"][0]["source_bbox"] = [.1, .1, .8, .9]
+    fixed = resolve_drawing(inputs, drawing, ["横向移动机位并保持主体完整"])
+    assert fixed.proposals[0].sketch is None
+    assert any("方向标记" in note for note in fixed.notes)
+
+
+def test_geometry_prose_cannot_contradict_structured_side_or_size(inputs):
+    drawing = sketch()
+    drawing.update(space_side="right")
+    drawing["elements"][0].update(bbox=[.1, .2, .4, .8], source_bbox=[.1, .1, .6, .9])
+    item = {**proposal(), "sketch": drawing,
+        "actions": ["后退一点，将主体放在画面右侧，左侧留白。"],
+        "reasons": ["让主体宽度达到90%，左侧保留空间。"],
+        "tradeoffs": ["左侧留白会减少背景"], "conditions": ["主体位于右侧"],
+        "limitations": ["宽度90%只是估计"]}
+    resolved = composition._resolve_sketch_geometry(CompositionAdvice.model_validate(response([item])), inputs[0])
+    fixed = resolved.proposals[0]
+    text = " ".join([fixed.goal, *fixed.actions, *fixed.reasons, *fixed.tradeoffs, *fixed.conditions, *fixed.limitations])
+    assert "左侧" not in text and "90%" not in text and "画面右侧" not in text
+    assert fixed.sketch.space_side == "right"
+    assert fixed.sketch.camera_action == "farther"
+    assert "后退" in fixed.actions[0]
+    CompositionAdvice.model_validate(resolved.model_dump())
+
+
+def test_keep_camera_position_wins_over_incorrect_move_arrow(inputs):
+    drawing = sketch()
+    drawing.update(camera_action="closer", camera_instruction="保持当前机位并检查边缘。")
+    drawing["elements"][0]["source_bbox"] = [.1, .1, .8, .9]
+    fixed = resolve_drawing(inputs, drawing, ["不要靠近主体，保持当前机位并检查边缘。"]).proposals[0]
+    assert fixed.sketch.camera_action == "stay"
+    assert "靠近" not in fixed.sketch.camera_instruction
+    assert all("适当靠近" not in value for value in fixed.actions)
+
+
+def test_forbidden_move_cannot_be_reintroduced_from_visual_instruction(inputs):
+    drawing = sketch()
+    drawing.update(camera_action="closer", camera_instruction="适当靠近主体。")
+    drawing["elements"][0]["source_bbox"] = [.1, .1, .8, .9]
+    assert resolve_drawing(inputs, drawing, ["不要靠近主体，检查边缘。"]).proposals[0].sketch is None
+
+
+def test_later_prohibition_vetoes_an_earlier_positive_move(inputs):
+    drawing = sketch()
+    drawing.update(camera_action="closer", camera_instruction="不要靠近主体，保持当前机位。")
+    drawing["elements"][0]["source_bbox"] = [.1, .1, .8, .9]
+    assert resolve_drawing(inputs, drawing, ["靠近主体拍摄。"]).proposals[0].sketch is None
+
+
+def test_motion_space_opposite_to_facing_is_not_drawn_as_a_confident_direction(inputs):
+    drawing = sketch()
+    drawing.update(space_side="right", space_note="为运动方向预留空间")
+    drawing["elements"][0].update(kind="pet", facing="left", source_bbox=[.1, .1, .8, .9])
+    advice = resolve_drawing(inputs, drawing)
+    assert advice.proposals[0].sketch.space_side == "none"
+    assert any("朝向标注矛盾" in note for note in advice.notes)
+
+
+def test_half_percent_rounding_matches_mobile_labels():
+    from camera_assistant.services.composition_geometry import _percent
+    assert _percent(.225) == 23
+    assert _percent(.525) == 53
+
+
+@pytest.mark.parametrize("identifier, kept", [("02", 2), ("06", 1), ("07", 1), ("07-scene", 1)])
+def test_saved_real_model_failures_preserve_useful_siblings(inputs, monkeypatch, identifier, kept):
+    answer = json.loads((Path(__file__).parent / "fixtures/composition_saved" / f"{identifier}.json").read_text("utf-8"))
+    advice = call_advisor(inputs, monkeypatch, answer)
+    assert len(advice.proposals) == kept
+    assert any(p.sketch for p in advice.proposals)
+    CompositionAdvice.model_validate(advice.model_dump())
+
+
+def test_scene_ignores_target_box_but_keeps_source_validation_strict():
+    drawing = sketch()
+    drawing["render_mode"] = "scene"
+    drawing["elements"][0].update(bbox=[0, .6, 1, .4], source_bbox=[0, .6, 1, .95])
+    assert CompositionSketch.model_validate(drawing).elements[0].bbox == [0, .6, 1, .95]
+    drawing["elements"][0]["source_bbox"] = [0, .6, 1, .4]
+    assert CompositionProposal.model_validate({**proposal(), "sketch": drawing}).sketch is None

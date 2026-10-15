@@ -21,6 +21,10 @@ export interface CameraLensProfile {
 }
 export interface CompositionSketchData {
   aspect: 'portrait' | 'landscape' | 'square';
+  render_mode?: 'scene' | 'subject';
+  space_side?: 'left' | 'right' | 'top' | 'bottom' | 'none';
+  source_margin?: number;
+  photo_aspect?: number | null;
   caption: string;
   elements: { kind: 'person' | 'tree' | 'pet' | 'building' | 'mountain' | 'flower' | 'object';
     label: string; role: 'main' | 'context'; bbox: number[];

@@ -50,9 +50,11 @@ class SketchElement(CompositionModel):
 
 
 class CompositionSketch(CompositionModel):
+    render_mode: Literal["scene", "subject"] = "subject"
     aspect: Literal["portrait", "landscape", "square"]
+    photo_aspect: float | None = Field(default=None, gt=0)
     caption: str = Field(min_length=1, max_length=100)
-    elements: list[SketchElement] = Field(min_length=1, max_length=6)
+    elements: list[SketchElement] = Field(default_factory=list, max_length=6)
     horizon_y: float | None = Field(default=None, ge=0, le=1)
     camera_action: Literal["stay", "left", "right", "closer", "farther", "lower", "higher"]
     camera_instruction: str = Field(min_length=1, max_length=100)
@@ -60,10 +62,31 @@ class CompositionSketch(CompositionModel):
     mood: str = Field(default="", max_length=40)
     narration: str = Field(default="", max_length=160)
     space_note: str = Field(default="", max_length=100)
+    space_side: Literal["left", "right", "top", "bottom", "none"] = "none"
+    source_margin: float = Field(default=.02, ge=0, le=.05)
+
+    @model_validator(mode="before")
+    @classmethod
+    def scene_regions_use_source_coordinates(cls, value: object) -> object:
+        # Scene mode draws the entire photograph. Target-placement coordinates
+        # have no meaning here; validate and use the source regions instead.
+        # Invalid source coordinates still fail strictly, including NaN/strings.
+        if isinstance(value, dict) and value.get("render_mode") == "scene" and isinstance(value.get("elements"), list):
+            elements = []
+            for element in value["elements"]:
+                if not isinstance(element, dict):
+                    return value
+                source = element.get("source_bbox")
+                if source is None:
+                    continue
+                SketchElement.drawing_box(source)
+                elements.append({**element, "bbox": list(source)})
+            return {**value, "elements": elements}
+        return value
 
     @model_validator(mode="after")
     def has_subject(self) -> CompositionSketch:
-        if not any(element.role == "main" for element in self.elements):
+        if self.render_mode == "subject" and not any(element.role == "main" for element in self.elements):
             raise ValueError("示意图需要明确的主体。")
         return self
 

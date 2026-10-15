@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed, ref, useId, watch, onBeforeUnmount } from 'vue';
 import type { CompositionSketchData } from '../types';
-import { cameraMove, openSpace, frameAspect } from '../composition-sketch.mjs';
-import { tracePhoto, fitPhotoBox, embeddedInMain } from '../sketch-trace.mjs';
+import { cameraMove, sketchLayout, traceRequests, layoutCaption } from '../composition-sketch.mjs';
+import { tracePhoto } from '../sketch-trace.mjs';
 
 const props = withDefaults(defineProps<{ sketch: CompositionSketchData; goal: string; preview?: string }>(), { preview: '' });
 const sheet = ref<SVGSVGElement>();
 const id = useId().replace(/[^a-zA-Z0-9_-]/g, '');
-const innerHeight = computed(() => 360/frameAspect(props.sketch.aspect));
+const innerHeight = computed(() => 360/layout.value.aspect);
 const height = computed(() => innerHeight.value + 40);
 const move = computed(() => cameraMove(props.sketch.camera_action));
 const sideView = computed(() => ['lower', 'higher'].includes(props.sketch.camera_action));
@@ -20,43 +20,41 @@ const saveMessage = ref('');
 const lessonView = ref<'frame' | 'subject' | 'position'>('frame');
 const showGrid = ref(true);
 const showSpace = ref(true);
-const subject = computed(() => props.sketch.elements.find(e => e.role === 'main') || props.sketch.elements[0]!);
+const subject = computed<CompositionSketchData['elements'][number]>(() =>
+  props.sketch.elements.find(e => e.role === 'main') ||
+  {kind:'object',role:'main',label:'当前画面',bbox:[0,0,1,1]});
 type Trace = { ink: string; wash: string; aspect: number; fullFrame: boolean; sourceBox: number[] };
-const traces = ref<Record<number,Trace>>({});
+const traces = ref<Record<string,Trace>>({});
 const tracing = ref(false), traceError = ref(''), showColor = ref(true), extraMargin = ref(false);
+const layout = computed(() => sketchLayout(props.sketch,traces.value,{extraMargin:extraMargin.value}));
+const isScene = computed(() => layout.value.mode === 'scene');
+const frameLabel = computed(() => isScene.value ? '原图比例 · 整体结构参考'
+  : `${props.sketch.aspect === 'portrait' ? '竖幅' : props.sketch.aspect === 'landscape' ? '横幅' : '方形'} · 教学分镜`);
 let traceVersion = 0;
 onBeforeUnmount(() => { traceVersion++; traces.value = {}; });
-const sourceBox = (box: number[] | null | undefined) => box && extraMargin.value
-  ? [Math.max(0,box[0]!-.04),Math.max(0,box[1]!-.04),Math.min(1,box[2]!+.04),Math.min(1,box[3]!+.04)] : box;
 watch(() => [props.preview,props.sketch,extraMargin.value], async () => {
   const version=++traceVersion;
   traces.value={}; traceError.value=''; tracing.value=false;
   if (!props.preview) return;
   tracing.value=true;
-  for (let index=0; index<props.sketch.elements.length; index++) {
-    const element=props.sketch.elements[index]!;
-    if (embeddedInMain(element,subject.value) || (!element.source_bbox && element !== subject.value)) continue;
+  for (const request of traceRequests(props.sketch,{extraMargin:extraMargin.value})) {
     try {
-      const trace=await tracePhoto(props.preview,sourceBox(element.source_bbox));
+      const trace=await tracePhoto(props.preview,request.sourceBox);
       if (version !== traceVersion) return;
-      traces.value={...traces.value,[index]:trace};
+      traces.value={...traces.value,[request.key]:trace};
     } catch { if (version === traceVersion) traceError.value='照片线稿暂时无法读取，请重新选图分析。'; }
   }
   if (version === traceVersion) tracing.value=false;
 }, {immediate:true});
-const items = computed(() => props.sketch.elements.map((element,index) => ({
-  ...element, index, trace:traces.value[index],
-  drawnBox:fitPhotoBox(element.bbox,traces.value[index]?.aspect || 0,360/innerHeight.value),
-  embedded:embeddedInMain(element,subject.value),
-})));
-const main = computed(() => items.value.find(e => e.role === 'main') || items.value[0]!);
-const mainTrace = computed(() => main.value.trace);
-const placement = computed(() => {
-  const [x1,y1,x2,y2]=main.value.drawnBox as [number,number,number,number];
-  const x=Math.min(2,Math.floor((x1+x2)/2*3)), y=Math.min(2,Math.floor((y1+y2)/2*3));
-  return {cell:['左上','上方中间','右上','左侧中间','中央','右侧中间','左下','下方中间','右下'][y*3+x],width:Math.round((x2-x1)*100),height:Math.round((y2-y1)*100)};
-});
-const space = computed(() => openSpace(items.value.filter(e=>!e.embedded).map(e=>({bbox:e.drawnBox}))));
+const layers = computed(() => layout.value.layers);
+const mainTrace = computed(() => isScene.value ? layout.value.fullTrace : layout.value.main?.trace);
+const placement = computed(() => layout.value.placement);
+const drawingCaption = computed(() => layoutCaption(layout.value));
+const space = computed(() => layout.value.space);
+const spaceReading = computed(() => isScene.value
+  ? '保持原图各部分的空间关系。留白与背景变化请结合现场取景确认。'
+  : space.value.side === 'none' ? '当前没有标出的留白区域，取景时检查主体四周余量与背景干扰。'
+    : `${space.value.label}位于当前轮廓区域外侧；取景时检查该处背景是否干净。`);
 
 function save() {
   if (!sheet.value) return;
@@ -79,38 +77,43 @@ function save() {
       <button type="button" :aria-pressed="lessonView === 'position'" @click="lessonView = 'position'">机位动作</button>
     </div>
     <figure v-show="lessonView === 'frame'" class="sketch-sheet">
-      <div class="sketch-sheet-heading"><strong>取景摆位参考</strong><span>{{ sketch.aspect === 'portrait' ? '竖幅' : sketch.aspect === 'landscape' ? '横幅' : '方形' }} · 教学分镜</span></div>
-      <svg ref="sheet" :viewBox="`0 0 400 ${height}`" role="img" :aria-label="`${goal}的九宫格构图手稿。${sketch.caption}`" font-family="sans-serif">
-        <title>{{ sketch.theme || goal }}</title><desc>{{ sketch.caption }}。{{ sketch.space_note }}。{{ sketch.narration }}。位置与大小为建议示意。</desc>
+      <div class="sketch-sheet-heading"><strong>{{ isScene ? '保留完整画面结构' : '取景摆位参考' }}</strong><span>{{ frameLabel }}</span></div>
+      <svg ref="sheet" :viewBox="`0 0 400 ${height}`" role="img" :aria-label="`${goal}的九宫格构图手稿。${drawingCaption}`" font-family="sans-serif">
+        <title>{{ sketch.theme || goal }}</title><desc>{{ drawingCaption }}。{{ spaceReading }}。{{ sketch.narration }}。{{ isScene ? '完整原图线稿，各区域保持原有空间关系。' : '位置与大小为建议示意。' }}</desc>
         <rect width="400" :height="height" fill="#fcfcfa" />
         <rect x="20" y="20" width="360" :height="innerHeight" fill="#fcfcfa" stroke="#8593a4" stroke-width="1" />
-        <g v-if="showSpace && space.w * space.h > .08">
+        <g v-if="showSpace && space.side !== 'none'">
           <rect :x="20+space.x*360" :y="20+space.y*innerHeight" :width="space.w*360" :height="space.h*innerHeight" fill="#e5edf6" opacity=".65" />
           <text :x="20+(space.x+space.w/2)*360" :y="20+(space.y+space.h/2)*innerHeight" text-anchor="middle" fill="#748ca9" font-size="10" :writing-mode="space.w < .22 ? 'tb' : 'lr'">留白</text>
         </g>
-        <g v-if="showGrid" stroke="#9aaabb" stroke-width=".8" stroke-dasharray="3 5" opacity=".6"><path :d="`M140 20V${height-20}M260 20V${height-20}M20 ${20+innerHeight/3}H380M20 ${20+innerHeight*2/3}H380`" /><circle v-for="point in [[140,20+innerHeight/3],[260,20+innerHeight/3],[140,20+innerHeight*2/3],[260,20+innerHeight*2/3]]" :key="point.join()" :cx="point[0]" :cy="point[1]" r="3" fill="#9aaabb" stroke="none" /></g>
-        <path v-if="sketch.horizon_y != null" :d="`M22 ${20+sketch.horizon_y*innerHeight}H378`" fill="none" stroke="#b9b4a6" stroke-width="1.6" />
-        <g v-for="element in items.filter(e => !e.embedded)" :key="element.index">
-          <svg :x="20+element.drawnBox[0]*360" :y="20+element.drawnBox[1]*innerHeight" :width="(element.drawnBox[2]-element.drawnBox[0])*360" :height="(element.drawnBox[3]-element.drawnBox[1])*innerHeight" :viewBox="`0 0 ${element.trace?.aspect || 1} 1`" preserveAspectRatio="xMidYMid meet">
-            <template v-if="element.trace"><image v-if="showColor" :href="element.trace.wash" :width="element.trace.aspect" height="1" /><image :href="element.trace.ink" :width="element.trace.aspect" height="1" :opacity="element.role === 'main' ? 1 : .65" /></template>
-            <template v-else><rect width="1" height="1" fill="#eaf0f5" fill-opacity=".4" stroke="#a8b9cc" stroke-width=".005" stroke-dasharray=".02 .02" /></template>
+        <svg v-if="isScene && mainTrace" x="20" y="20" width="360" :height="innerHeight" :viewBox="`0 0 ${mainTrace.aspect} 1`" preserveAspectRatio="xMidYMid meet">
+          <image v-if="showColor" :href="mainTrace.wash" :width="mainTrace.aspect" height="1" /><image :href="mainTrace.ink" :width="mainTrace.aspect" height="1" />
+        </svg>
+        <g v-if="!isScene">
+          <svg v-for="element in layers" :key="element.index" :x="20+element.drawnBox[0]*360" :y="20+element.drawnBox[1]*innerHeight" :width="(element.drawnBox[2]-element.drawnBox[0])*360" :height="(element.drawnBox[3]-element.drawnBox[1])*innerHeight" :viewBox="`0 0 ${element.trace.aspect} 1`" preserveAspectRatio="xMidYMid meet">
+            <image v-if="showColor" :href="element.trace.wash" :width="element.trace.aspect" height="1" /><image :href="element.trace.ink" :width="element.trace.aspect" height="1" :opacity="element.role === 'main' ? 1 : .65" />
           </svg>
+        </g>
+        <g v-if="showGrid" stroke="#9aaabb" stroke-width=".8" stroke-dasharray="3 5" opacity=".6"><path :d="`M140 20V${height-20}M260 20V${height-20}M20 ${20+innerHeight/3}H380M20 ${20+innerHeight*2/3}H380`" /><circle v-for="point in [[140,20+innerHeight/3],[260,20+innerHeight/3],[140,20+innerHeight*2/3],[260,20+innerHeight*2/3]]" :key="point.join()" :cx="point[0]" :cy="point[1]" r="3" fill="#9aaabb" stroke="none" /></g>
+        <path v-if="!isScene && sketch.horizon_y != null" :d="`M22 ${20+sketch.horizon_y*innerHeight}H378`" fill="none" stroke="#b9b4a6" stroke-width="1.6" />
+        <g v-for="element in layers" :key="`label-${element.index}`">
+          <rect v-if="isScene" :x="20+element.drawnBox[0]*360" :y="20+element.drawnBox[1]*innerHeight" :width="(element.drawnBox[2]-element.drawnBox[0])*360" :height="(element.drawnBox[3]-element.drawnBox[1])*innerHeight" fill="none" :stroke="element.role === 'main' ? '#355d94' : '#9aa5b2'" stroke-width="1" stroke-dasharray="4 4" />
           <circle :cx="Math.max(30,20+element.drawnBox[0]*360)" :cy="Math.max(30,20+element.drawnBox[1]*innerHeight)" r="8" :fill="element.role === 'main' ? '#355d94' : '#9aa5b2'" />
           <text :x="Math.max(30,20+element.drawnBox[0]*360)" :y="Math.max(30,20+element.drawnBox[1]*innerHeight)+3" text-anchor="middle" fill="white" font-size="9">{{ element.index+1 }}</text>
         </g>
       </svg>
       <div class="sketch-controls"><label><input v-model="showGrid" type="checkbox" />九宫格</label><label><input v-model="showSpace" type="checkbox" />留白</label><label><input v-model="showColor" type="checkbox" />浅色</label><button type="button" @click="save">保存手稿</button></div>
-      <p v-if="tracing" class="trace-note" role="status">正在保留原照片中的轮廓与细节…</p><p v-else-if="!mainTrace" class="trace-note">{{ traceError || '历史记录不保留照片。重新分析原照片，可生成保留主体特征的线稿。' }}</p><p v-else class="trace-note">{{ mainTrace.fullFrame ? '当前使用原图整体线稿。重新分析可细化主体区域。' : '轮廓取自原照片，保持原始比例。取材区域由模型估计，可对照原图检查。' }}</p><figcaption>{{ sketch.caption }}</figcaption>
+      <p v-if="tracing" class="trace-note" role="status">正在保留原照片中的轮廓与细节…</p><p v-else-if="!mainTrace" class="trace-note">{{ traceError || '历史记录不保留照片。重新分析原照片，可生成保留主体特征的线稿。' }}</p><p v-else class="trace-note">{{ isScene ? '整张原图按原始比例提取线稿；虚线框标明原图中的区域，不模拟新机位的画面。' : '轮廓取自原照片，保持原始比例。取材区域由模型估计，可对照原图检查。' }}</p><figcaption>{{ drawingCaption }}</figcaption>
     </figure>
     <figure v-if="lessonView === 'subject'" class="subject-study">
-      <div class="sketch-sheet-heading"><strong>先看懂你的主角</strong><span>原照片提取线稿</span></div>
+      <div class="sketch-sheet-heading"><strong>{{ isScene ? '先看懂整体结构' : '先看懂你的主角' }}</strong><span>原照片提取线稿</span></div>
       <svg viewBox="0 0 400 360" role="img" :aria-label="`${subject.label}的原图轮廓。${subject.description || ''}`">
         <rect width="400" height="360" fill="#fcfcfa" />
         <svg v-if="mainTrace" x="35" y="20" width="330" height="320" :viewBox="`0 0 ${mainTrace.aspect} 1`" preserveAspectRatio="xMidYMid meet"><image v-if="showColor" :href="mainTrace.wash" :width="mainTrace.aspect" height="1"/><image :href="mainTrace.ink" :width="mainTrace.aspect" height="1"/></svg>
         <text v-else x="200" y="180" text-anchor="middle" font-size="13" fill="#8493a5">{{ tracing ? '正在绘制原图轮廓…' : '重新分析原照片，生成主体线稿' }}</text>
       </svg>
-      <div v-if="preview" class="sketch-controls"><label><input v-model="showColor" type="checkbox" />浅色</label><label v-if="subject.source_bbox"><input v-model="extraMargin" type="checkbox" />保留更多边缘</label></div>
-      <figcaption><strong>{{ subject.label }}</strong><p>{{ subject.description || '保留主体完整轮廓，照着九宫格中的大小和位置取景。' }}</p></figcaption>
+      <div v-if="preview" class="sketch-controls"><label><input v-model="showColor" type="checkbox" />浅色</label><label v-if="(!isScene || extraMargin) && subject.source_bbox"><input v-model="extraMargin" type="checkbox" />保留更多边缘</label></div>
+      <figcaption><strong>{{ isScene ? '当前画面' : subject.label }}</strong><p>{{ isScene ? '保持建筑、山水与倒影等连续区域的原有关系。' : subject.description || '保留主体完整轮廓，照着九宫格中的大小和位置取景。' }}</p></figcaption>
       <p class="study-note">保留当前照片的姿态与特征；改变机位后的透视需现场确认。</p>
     </figure>
     <div v-if="lessonView === 'position'" class="sketch-position">
@@ -127,9 +130,9 @@ function save() {
       <p class="sketch-move-label">{{ move.label }}</p><p class="sketch-instruction">{{ sketch.camera_instruction }}</p>
     </div>
     <div class="composition-reading">
-      <p class="placement-line"><span>主体位置<strong>{{ placement.cell }}</strong></span><span>轮廓区域占比<strong>宽 {{ placement.width }}% · 高 {{ placement.height }}%</strong></span></p>
+      <p v-if="placement" class="placement-line"><span>{{ isScene ? '主体在原图的位置' : '主体位置' }}<strong>{{ placement.cell }}</strong></span><span>{{ isScene ? '原图标记区域占比' : '轮廓区域占比' }}<strong>宽 {{ placement.width }}% · 高 {{ placement.height }}%</strong></span><span>四边余量<strong>左 {{ placement.left }}% · 右 {{ placement.right }}% · 上 {{ placement.top }}% · 下 {{ placement.bottom }}%</strong></span></p>
       <div class="sketch-legend"><p v-for="(element, index) in sketch.elements" :key="index"><b>{{ index+1 }}</b><strong>{{ element.label }}</strong><span>{{ element.role === 'main' ? '主角' : '环境' }}</span><small v-if="element.description">{{ element.description }}</small></p></div>
-      <div v-if="subject.identity_features?.length" class="identity-features"><span>这些特征要保留</span><ul><li v-for="feature in subject.identity_features" :key="feature">{{ feature }}</li></ul></div><div class="space-reading"><span>留白的用意</span><p>{{ sketch.space_note || `${space.label}是当前示意中较完整的空间。保留多少背景，请结合现场与拍摄意图判断。` }}</p></div>
+      <div v-if="subject.identity_features?.length" class="identity-features"><span>这些特征要保留</span><ul><li v-for="feature in subject.identity_features" :key="feature">{{ feature }}</li></ul></div><div class="space-reading"><span>{{ isScene ? '原图空间关系' : '留白的用意' }}</span><p>{{ spaceReading }}</p></div>
       <blockquote v-if="sketch.narration" class="shot-narration"><span>这一张，想讲的故事</span><p>{{ sketch.narration }}</p></blockquote>
     </div>
     <div class="sketch-footer"><p>线稿保留原照片的轮廓与姿态，用于理解取景摆位。新机位的透视、遮挡与光线变化需现场试拍确认。</p><span role="status">{{ saveMessage }}</span></div>
