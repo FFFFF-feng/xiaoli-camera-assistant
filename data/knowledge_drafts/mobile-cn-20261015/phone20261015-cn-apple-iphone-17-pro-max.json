@@ -1,0 +1,575 @@
+{
+  "knowledge_id": "phone20261015-cn-apple-iphone-17-pro-max",
+  "library_id": "equipment",
+  "title": "Apple iPhone 17 Pro Max（国行）：硬件与相机参数",
+  "kind": "manufacturer_fact",
+  "content": "# Apple iPhone 17 Pro Max（国行）\n\n资料核验日期：2026-10-15。来源事实按完整型号登记。\n\n型号检索别名：iPhone 17 Pro Max、iPhone17ProMax、苹果17ProMax、苹果 17 Pro Max\n\n- 处理器：A19 Pro。\n- 屏幕对角线（英寸）：6.9。\n- 屏幕类型：OLED。\n- 屏幕分辨率（像素）：[2868, 1320]。\n- 最高刷新率（Hz）：120。\n- 实体RAM选项（GB）：未核验。\n- 存储选项：[\"256GB\", \"512GB\", \"1TB\", \"2TB\"]。\n- 已确认RAM+存储组合：未核验。\n- 电池容量（mAh）：未核验。\n- 官方视频播放最长时长（小时）：未核验。\n- 厂商有线充电标称上限（W）：未核验。\n- 无线充电标称上限（W）：未核验。\n- 官方快充测试适配器最低功率（W，非手机输入峰值）：40。\n- 重量及配色条件：231g。\n- 高×宽×厚（mm）：[163.4, 78, 8.75]。\n\n后置相机规格（按来源列示，不据条目数推断物理传感器数量）：\n\n- 主摄：48 MP；光圈f/1.78；厂商焦距标签24 mm；OIS：支持。\n- 超广角：48 MP；光圈f/2.2；厂商焦距标签13 mm；OIS：未核验。\n- 长焦：48 MP；光圈f/2.8；厂商焦距标签100 mm；OIS：支持。\n\n- 前置主要成像相机标称像素（MP）：18。\n- 视频录制：融合式主摄4K杜比视界最高120fps；ProRes 4K120fps需外置存储；非全部镜头。\n- USB接口：USB-C；USB3最高10Gb/s。\n- 无线局域网：未核验。\n- 蓝牙：6。\n- NFC：未核验。\n- 来源页面列示系统（非当前最高可升级版本）：未核验。\n- 防护等级标签（具体实验条件见来源）：IP68；6米/30分钟实验条件，不是水下使用保证。\n\n型号差异与条件：Apple此页未列出实体RAM和电池mAh，不用拆机或第三方值补齐。 物理长焦按100mm/4倍条目登记；200mm/8倍光学品质功能不新增独立相机条目。\n\n使用边界：本卡仅适用中国大陆销售版本；相同商品名的海外、电商改名及独立卫星版不得自动匹配；标称像素不等于每张成片像素；最高视频规格不承诺全部镜头、HDR或防抖模式同时可用；光圈数值或范围不自动证明当前模式有手动入口；35mm等效/厂商标称焦距不写成EXIF实际焦距；充电功率是厂商标称或测试条件值，需要对应适配器、线材及温度条件，不是持续充电功率；实体RAM与系统扩展内存分开；RAM/存储选项分别列出，不生成所有排列组合；公开参数表不等于真机测试；具体固件、相机App版本、ISO和快门可调范围保持未知。\n\n未确认信息：未核验；不代表不支持，不从相近型号或海外版本补值。\n\n来源：[Apple官方资料](https://support.apple.com/zh-cn/125091)\n\n整理状态：AI整理待审核；未导入主库、未发布，也未注册运行时型号。",
+  "payload": {
+    "brand": "Apple",
+    "model_variant": "Apple iPhone 17 Pro Max",
+    "region_scope": "中国大陆",
+    "aliases": [
+      "iPhone 17 Pro Max",
+      "iPhone17ProMax",
+      "苹果17ProMax",
+      "苹果 17 Pro Max"
+    ],
+    "specifications": {
+      "chipset": "A19 Pro",
+      "display": {
+        "size_inches": 6.9,
+        "panel": "OLED",
+        "resolution_pixels": [
+          2868,
+          1320
+        ],
+        "max_refresh_hz": 120
+      },
+      "memory": {
+        "ram_options_GB": null,
+        "storage_options": [
+          "256GB",
+          "512GB",
+          "1TB",
+          "2TB"
+        ],
+        "sku_combinations": null
+      },
+      "battery": {
+        "capacity_mAh": null,
+        "capacity_basis": null,
+        "video_playback_up_to_hours": null
+      },
+      "charging": {
+        "wired_max_W": null,
+        "wireless_max_W": null,
+        "fast_charge_test_adapter_min_W": 40
+      },
+      "body": {
+        "weight_description": "231g",
+        "dimensions_h_w_t_mm": [
+          163.4,
+          78,
+          8.75
+        ]
+      },
+      "cameras": {
+        "rear_entries": [
+          {
+            "role": "主摄",
+            "declared_megapixels": 48,
+            "aperture_f_number": 1.78,
+            "aperture_f_number_range": null,
+            "manufacturer_focal_label_mm": 24,
+            "declared_ois": true,
+            "actual_exif_focal_mm": null,
+            "manual_aperture_control": null
+          },
+          {
+            "role": "超广角",
+            "declared_megapixels": 48,
+            "aperture_f_number": 2.2,
+            "aperture_f_number_range": null,
+            "manufacturer_focal_label_mm": 13,
+            "declared_ois": null,
+            "actual_exif_focal_mm": null,
+            "manual_aperture_control": null
+          },
+          {
+            "role": "长焦",
+            "declared_megapixels": 48,
+            "aperture_f_number": 2.8,
+            "aperture_f_number_range": null,
+            "manufacturer_focal_label_mm": 100,
+            "declared_ois": true,
+            "actual_exif_focal_mm": null,
+            "manual_aperture_control": null
+          }
+        ],
+        "front_megapixels": 18,
+        "video_recording": "融合式主摄4K杜比视界最高120fps；ProRes 4K120fps需外置存储；非全部镜头",
+        "digital_zoom_photo_max_ratio": null
+      },
+      "connectivity": {
+        "usb": "USB-C；USB3最高10Gb/s",
+        "wifi": null,
+        "bluetooth": "6",
+        "nfc": null
+      },
+      "page_declared_os": null,
+      "protection": "IP68；6米/30分钟实验条件，不是水下使用保证"
+    },
+    "facts": [
+      {
+        "field": "chipset",
+        "value": "A19 Pro",
+        "unit": null,
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "处理器/芯片/CPU",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "display.size_inches",
+        "value": 6.9,
+        "unit": "inch",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "显示屏/屏幕/显示",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "display.panel",
+        "value": "OLED",
+        "unit": null,
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "显示屏/屏幕/显示",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "display.resolution_pixels",
+        "value": [
+          2868,
+          1320
+        ],
+        "unit": "pixel",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "显示屏/屏幕/显示",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "display.max_refresh_hz",
+        "value": 120,
+        "unit": "Hz",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "显示屏/屏幕/显示",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "memory.storage_options",
+        "value": [
+          "256GB",
+          "512GB",
+          "1TB",
+          "2TB"
+        ],
+        "unit": null,
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "容量/存储/版本选择器",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "charging.fast_charge_test_adapter_min_W",
+        "value": 40,
+        "unit": "W",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "充电/电池与充电",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "body.weight_description",
+        "value": "231g",
+        "unit": null,
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "尺寸与重量/物理规格",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "body.dimensions_h_w_t_mm",
+        "value": [
+          163.4,
+          78,
+          8.75
+        ],
+        "unit": "mm",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "尺寸与重量/物理规格",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.0.declared_megapixels",
+        "value": 48,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.0.aperture_f_number",
+        "value": 1.78,
+        "unit": "f_number",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.0.manufacturer_focal_label_mm",
+        "value": 24,
+        "unit": "mm",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.0.declared_ois",
+        "value": true,
+        "unit": null,
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.1.declared_megapixels",
+        "value": 48,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.1.aperture_f_number",
+        "value": 2.2,
+        "unit": "f_number",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.1.manufacturer_focal_label_mm",
+        "value": 13,
+        "unit": "mm",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.2.declared_megapixels",
+        "value": 48,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.2.aperture_f_number",
+        "value": 2.8,
+        "unit": "f_number",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.2.manufacturer_focal_label_mm",
+        "value": 100,
+        "unit": "mm",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.2.declared_ois",
+        "value": true,
+        "unit": null,
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.front_megapixels",
+        "value": 18,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.video_recording",
+        "value": "融合式主摄4K杜比视界最高120fps；ProRes 4K120fps需外置存储；非全部镜头",
+        "unit": null,
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "connectivity.usb",
+        "value": "USB-C；USB3最高10Gb/s",
+        "unit": null,
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "蜂窝网络/数据功能/接口",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "connectivity.bluetooth",
+        "value": "6",
+        "unit": null,
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "蜂窝网络/数据功能/接口",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "protection",
+        "value": "IP68；6米/30分钟实验条件，不是水下使用保证",
+        "unit": null,
+        "conditions": {
+          "model_variant": "Apple iPhone 17 Pro Max",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S011"
+        ],
+        "source_location": "防尘抗水",
+        "verification_status": "source_checked_pending_independent_review"
+      }
+    ],
+    "unknown_fields": [
+      "memory.ram_options_GB",
+      "memory.sku_combinations",
+      "battery.capacity_mAh",
+      "battery.capacity_basis",
+      "battery.video_playback_up_to_hours",
+      "charging.wired_max_W",
+      "charging.wireless_max_W",
+      "cameras.rear_entries.0.aperture_f_number_range",
+      "cameras.rear_entries.0.actual_exif_focal_mm",
+      "cameras.rear_entries.0.manual_aperture_control",
+      "cameras.rear_entries.1.aperture_f_number_range",
+      "cameras.rear_entries.1.declared_ois",
+      "cameras.rear_entries.1.actual_exif_focal_mm",
+      "cameras.rear_entries.1.manual_aperture_control",
+      "cameras.rear_entries.2.aperture_f_number_range",
+      "cameras.rear_entries.2.actual_exif_focal_mm",
+      "cameras.rear_entries.2.manual_aperture_control",
+      "cameras.digital_zoom_photo_max_ratio",
+      "connectivity.wifi",
+      "connectivity.nfc",
+      "page_declared_os"
+    ],
+    "unknown_means": "未核验；不代表不支持，不从相近型号或海外版本补值",
+    "variant_notes": "Apple此页未列出实体RAM和电池mAh，不用拆机或第三方值补齐。 物理长焦按100mm/4倍条目登记；200mm/8倍光学品质功能不新增独立相机条目。",
+    "exceptions": [
+      "本卡仅适用中国大陆销售版本；相同商品名的海外、电商改名及独立卫星版不得自动匹配。",
+      "标称像素不等于每张成片像素；最高视频规格不承诺全部镜头、HDR或防抖模式同时可用。",
+      "光圈数值或范围不自动证明当前模式有手动入口；35mm等效/厂商标称焦距不写成EXIF实际焦距。",
+      "充电功率是厂商标称或测试条件值，需要对应适配器、线材及温度条件，不是持续充电功率。",
+      "实体RAM与系统扩展内存分开；RAM/存储选项分别列出，不生成所有排列组合。",
+      "公开参数表不等于真机测试；具体固件、相机App版本、ISO和快门可调范围保持未知。"
+    ],
+    "sources": [
+      {
+        "source_id": "CN-S011",
+        "publisher": "Apple",
+        "original_url": "https://support.apple.com/zh-cn/125091",
+        "accessed_at": "2026-10-15",
+        "region": "中国大陆",
+        "section": "官方参数表",
+        "actual_read_scope": "仅使用本卡facts中逐项注明章节的已读参数；未声称核验整页或所有脚注",
+        "document_version": "访问日公开网页；页面无固定修订号",
+        "tool": "web__run",
+        "verification": "公开来源已读取；AI提取，未经独立人工复核或真机测试",
+        "retrieval_allowed": false,
+        "rights_status": "仅重组必要规格事实与链接；未收录产品图/整页正文；项目许可待审核"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-15",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "runtime_registration": "未修改phone_profiles.yaml，草稿不自动启用应用型号",
+    "data_scope": "选定官方字段，不代表完整规格、实时在售或销量排名",
+    "editorial_inferences": [
+      "别名、字段名、分组和风险说明由AI整理；没有从宣传最高值推算画质或手动控制能力。"
+    ]
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "20261015",
+    "Apple",
+    "iPhone 17 Pro Max"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "Apple iPhone 17 Pro Max",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "Apple",
+    "url": "https://support.apple.com/zh-cn/125091",
+    "location": "各字段对应章节见payload.facts",
+    "license": "必要规格事实自行整理；来源与项目使用权限待审核",
+    "retrieval_allowed": false
+  },
+  "author": "知识采集助手（AI整理）",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

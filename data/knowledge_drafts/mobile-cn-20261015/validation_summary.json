@@ -1,0 +1,30 @@
+{
+  "scope": "上传前本地校验摘要；不包含本机路径、主库哈希或内部去重报告",
+  "passed": true,
+  "checked_at": "2026-10-15",
+  "cards": 49,
+  "sources": 48,
+  "fact_entries": 1000,
+  "region": "中国大陆",
+  "upload_batch_sizes": [
+    20,
+    20,
+    9
+  ],
+  "schema_version": 1,
+  "strict_model_parsing": true,
+  "per_field_source_binding": true,
+  "mainland_sources_only": true,
+  "id_title_conflicts": 0,
+  "dry_run": true,
+  "upload_bridge_preview": true,
+  "isolated_draft_import": true,
+  "reimport_idempotence": true,
+  "draft_retrieval_isolation": true,
+  "project_files_and_main_database_unchanged": true,
+  "temporary_database_removed": true,
+  "limits": [
+    "格式与来源关联检查不等于每项数值已获独立人工确认",
+    "部分机型仅有官方摘要，详见coverage.json，不宣称完整规格"
+  ]
+}

@@ -1,0 +1,517 @@
+{
+  "knowledge_id": "phone20261015-cn-vivo-x300-pro",
+  "library_id": "equipment",
+  "title": "vivo X300 Pro（国行）：硬件与相机参数",
+  "kind": "manufacturer_fact",
+  "content": "# vivo X300 Pro（国行）\n\n资料核验日期：2026-10-15。来源事实按完整型号登记。\n\n型号检索别名：vivo X300 Pro\n\n- 处理器：天玑9500。\n- 屏幕对角线（英寸）：6.78。\n- 屏幕类型：AMOLED。\n- 屏幕分辨率（像素）：[2800, 1260]。\n- 最高刷新率（Hz）：120。\n- 实体RAM选项（GB）：[12, 16]。\n- 存储选项：[\"256GB\", \"512GB\", \"1TB\"]。\n- 已确认RAM+存储组合：未核验。\n- 电池容量（mAh）：6510。\n- 官方视频播放最长时长（小时）：未核验。\n- 厂商有线充电标称上限（W）：90。\n- 无线充电标称上限（W）：40。\n- 官方快充测试适配器最低功率（W，非手机输入峰值）：未核验。\n- 重量及配色条件：226g。\n- 高×宽×厚（mm）：[161.98, 75.48, 7.99]。\n\n后置相机规格（按来源列示，不据条目数推断物理传感器数量）：\n\n- 主摄：50 MP；光圈f/1.57；厂商焦距标签未核验 mm；OIS：支持。\n- 超广角：50 MP；光圈f/2；厂商焦距标签未核验 mm；OIS：未核验。\n- 长焦：200 MP；光圈f/2.67；厂商焦距标签未核验 mm；OIS：支持。\n\n- 前置主要成像相机标称像素（MP）：50。\n- 视频录制：未核验。\n- USB接口：未核验。\n- 无线局域网：未核验。\n- 蓝牙：未核验。\n- NFC：未核验。\n- 来源页面列示系统（非当前最高可升级版本）：未核验。\n- 防护等级标签（具体实验条件见来源）：未核验。\n\n型号差异与条件：3.5倍光学标签；数字100倍；卫星能力和LPDDR5X Ultra Pro仅指定摄影师套装手机机型，不按全系填写\n\n使用边界：本卡仅适用中国大陆销售版本；相同商品名的海外、电商改名及独立卫星版不得自动匹配；标称像素不等于每张成片像素；最高视频规格不承诺全部镜头、HDR或防抖模式同时可用；光圈数值或范围不自动证明当前模式有手动入口；35mm等效/厂商标称焦距不写成EXIF实际焦距；充电功率是厂商标称或测试条件值，需要对应适配器、线材及温度条件，不是持续充电功率；实体RAM与系统扩展内存分开；RAM/存储选项分别列出，不生成所有排列组合；公开参数表不等于真机测试；具体固件、相机App版本、ISO和快门可调范围保持未知。\n\n未确认信息：未核验；不代表不支持，不从相近型号或海外版本补值。\n\n来源：[vivo官方资料](https://www.vivo.com.cn/vivo/param/x300pro)\n\n整理状态：AI整理待审核；未导入主库、未发布，也未注册运行时型号。",
+  "payload": {
+    "brand": "vivo",
+    "model_variant": "vivo X300 Pro",
+    "region_scope": "中国大陆",
+    "aliases": [
+      "vivo X300 Pro"
+    ],
+    "specifications": {
+      "chipset": "天玑9500",
+      "display": {
+        "size_inches": 6.78,
+        "panel": "AMOLED",
+        "resolution_pixels": [
+          2800,
+          1260
+        ],
+        "max_refresh_hz": 120
+      },
+      "memory": {
+        "ram_options_GB": [
+          12,
+          16
+        ],
+        "storage_options": [
+          "256GB",
+          "512GB",
+          "1TB"
+        ],
+        "sku_combinations": null
+      },
+      "battery": {
+        "capacity_mAh": 6510,
+        "capacity_basis": "典型容量；双电芯时按厂商明确标示的等效容量登记",
+        "video_playback_up_to_hours": null
+      },
+      "charging": {
+        "wired_max_W": 90,
+        "wireless_max_W": 40,
+        "fast_charge_test_adapter_min_W": null
+      },
+      "body": {
+        "weight_description": "226g",
+        "dimensions_h_w_t_mm": [
+          161.98,
+          75.48,
+          7.99
+        ]
+      },
+      "cameras": {
+        "rear_entries": [
+          {
+            "role": "主摄",
+            "declared_megapixels": 50,
+            "aperture_f_number": 1.57,
+            "aperture_f_number_range": null,
+            "manufacturer_focal_label_mm": null,
+            "declared_ois": true,
+            "actual_exif_focal_mm": null,
+            "manual_aperture_control": null
+          },
+          {
+            "role": "超广角",
+            "declared_megapixels": 50,
+            "aperture_f_number": 2,
+            "aperture_f_number_range": null,
+            "manufacturer_focal_label_mm": null,
+            "declared_ois": null,
+            "actual_exif_focal_mm": null,
+            "manual_aperture_control": null
+          },
+          {
+            "role": "长焦",
+            "declared_megapixels": 200,
+            "aperture_f_number": 2.67,
+            "aperture_f_number_range": null,
+            "manufacturer_focal_label_mm": null,
+            "declared_ois": true,
+            "actual_exif_focal_mm": null,
+            "manual_aperture_control": null
+          }
+        ],
+        "front_megapixels": 50,
+        "video_recording": null
+      },
+      "connectivity": {
+        "usb": null,
+        "wifi": null,
+        "bluetooth": null,
+        "nfc": null
+      },
+      "page_declared_os": null,
+      "protection": null
+    },
+    "facts": [
+      {
+        "field": "chipset",
+        "value": "天玑9500",
+        "unit": null,
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "处理器/芯片/CPU",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "display.size_inches",
+        "value": 6.78,
+        "unit": "inch",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "显示屏/屏幕/显示",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "display.panel",
+        "value": "AMOLED",
+        "unit": null,
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "显示屏/屏幕/显示",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "display.resolution_pixels",
+        "value": [
+          2800,
+          1260
+        ],
+        "unit": "pixel",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "显示屏/屏幕/显示",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "display.max_refresh_hz",
+        "value": 120,
+        "unit": "Hz",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "显示屏/屏幕/显示",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "memory.ram_options_GB",
+        "value": [
+          12,
+          16
+        ],
+        "unit": "GB",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "容量/存储/版本选择器",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "memory.storage_options",
+        "value": [
+          "256GB",
+          "512GB",
+          "1TB"
+        ],
+        "unit": null,
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "容量/存储/版本选择器",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "battery.capacity_mAh",
+        "value": 6510,
+        "unit": "mAh",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "电源和电池/电池信息",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "charging.wired_max_W",
+        "value": 90,
+        "unit": "W",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "充电/电池与充电",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "charging.wireless_max_W",
+        "value": 40,
+        "unit": "W",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "充电/电池与充电",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "body.weight_description",
+        "value": "226g",
+        "unit": null,
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "尺寸与重量/物理规格",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "body.dimensions_h_w_t_mm",
+        "value": [
+          161.98,
+          75.48,
+          7.99
+        ],
+        "unit": "mm",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "尺寸与重量/物理规格",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.0.declared_megapixels",
+        "value": 50,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.0.aperture_f_number",
+        "value": 1.57,
+        "unit": "f_number",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.0.declared_ois",
+        "value": true,
+        "unit": null,
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.1.declared_megapixels",
+        "value": 50,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.1.aperture_f_number",
+        "value": 2,
+        "unit": "f_number",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.2.declared_megapixels",
+        "value": 200,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.2.aperture_f_number",
+        "value": 2.67,
+        "unit": "f_number",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.2.declared_ois",
+        "value": true,
+        "unit": null,
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.front_megapixels",
+        "value": 50,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "vivo X300 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S047"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      }
+    ],
+    "unknown_fields": [
+      "memory.sku_combinations",
+      "battery.video_playback_up_to_hours",
+      "charging.fast_charge_test_adapter_min_W",
+      "cameras.rear_entries.0.aperture_f_number_range",
+      "cameras.rear_entries.0.manufacturer_focal_label_mm",
+      "cameras.rear_entries.0.actual_exif_focal_mm",
+      "cameras.rear_entries.0.manual_aperture_control",
+      "cameras.rear_entries.1.aperture_f_number_range",
+      "cameras.rear_entries.1.manufacturer_focal_label_mm",
+      "cameras.rear_entries.1.declared_ois",
+      "cameras.rear_entries.1.actual_exif_focal_mm",
+      "cameras.rear_entries.1.manual_aperture_control",
+      "cameras.rear_entries.2.aperture_f_number_range",
+      "cameras.rear_entries.2.manufacturer_focal_label_mm",
+      "cameras.rear_entries.2.actual_exif_focal_mm",
+      "cameras.rear_entries.2.manual_aperture_control",
+      "cameras.video_recording",
+      "connectivity.usb",
+      "connectivity.wifi",
+      "connectivity.bluetooth",
+      "connectivity.nfc",
+      "page_declared_os",
+      "protection"
+    ],
+    "unknown_means": "未核验；不代表不支持，不从相近型号或海外版本补值",
+    "variant_notes": "3.5倍光学标签；数字100倍；卫星能力和LPDDR5X Ultra Pro仅指定摄影师套装手机机型，不按全系填写",
+    "exceptions": [
+      "本卡仅适用中国大陆销售版本；相同商品名的海外、电商改名及独立卫星版不得自动匹配。",
+      "标称像素不等于每张成片像素；最高视频规格不承诺全部镜头、HDR或防抖模式同时可用。",
+      "光圈数值或范围不自动证明当前模式有手动入口；35mm等效/厂商标称焦距不写成EXIF实际焦距。",
+      "充电功率是厂商标称或测试条件值，需要对应适配器、线材及温度条件，不是持续充电功率。",
+      "实体RAM与系统扩展内存分开；RAM/存储选项分别列出，不生成所有排列组合。",
+      "公开参数表不等于真机测试；具体固件、相机App版本、ISO和快门可调范围保持未知。"
+    ],
+    "sources": [
+      {
+        "source_id": "CN-S047",
+        "publisher": "vivo",
+        "original_url": "https://www.vivo.com.cn/vivo/param/x300pro",
+        "accessed_at": "2026-10-15",
+        "region": "中国大陆",
+        "section": "官方参数表",
+        "actual_read_scope": "仅使用本卡facts中逐项注明章节的已读参数；未声称核验整页或所有脚注",
+        "document_version": "访问日公开网页；页面无固定修订号",
+        "tool": "web__run",
+        "verification": "公开来源已读取；AI提取，未经独立人工复核或真机测试",
+        "retrieval_allowed": false,
+        "rights_status": "仅重组必要规格事实与链接；未收录产品图/整页正文；项目许可待审核"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-15",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "runtime_registration": "未修改phone_profiles.yaml，草稿不自动启用应用型号",
+    "data_scope": "选定官方字段，不代表完整规格、实时在售或销量排名",
+    "editorial_inferences": [
+      "别名、字段名、分组和风险说明由AI整理；没有从宣传最高值推算画质或手动控制能力。"
+    ]
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "20261015",
+    "vivo",
+    "X300 Pro"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "vivo X300 Pro",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "vivo",
+    "url": "https://www.vivo.com.cn/vivo/param/x300pro",
+    "location": "各字段对应章节见payload.facts",
+    "license": "必要规格事实自行整理；来源与项目使用权限待审核",
+    "retrieval_allowed": false
+  },
+  "author": "知识采集助手（AI整理）",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

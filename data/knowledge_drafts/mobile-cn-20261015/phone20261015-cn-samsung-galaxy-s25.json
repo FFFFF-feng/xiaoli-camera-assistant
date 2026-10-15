@@ -1,0 +1,339 @@
+{
+  "knowledge_id": "phone20261015-cn-samsung-galaxy-s25",
+  "library_id": "equipment",
+  "title": "Samsung Galaxy S25（国行）：硬件与相机参数",
+  "kind": "manufacturer_fact",
+  "content": "# Samsung Galaxy S25（国行）\n\n资料核验日期：2026-10-15。来源事实按完整型号登记。\n\n型号检索别名：Samsung Galaxy S25、三星Galaxy S25、三星 Galaxy S25\n\n- 处理器：骁龙8至尊版 for Galaxy。\n- 屏幕对角线（英寸）：6.2。\n- 屏幕类型：未核验。\n- 屏幕分辨率（像素）：未核验。\n- 最高刷新率（Hz）：未核验。\n- 实体RAM选项（GB）：[12]。\n- 存储选项：[\"256GB\", \"512GB\"]。\n- 已确认RAM+存储组合：[\"12GB+256GB\", \"12GB+512GB\"]。\n- 电池容量（mAh）：未核验。\n- 官方视频播放最长时长（小时）：未核验。\n- 厂商有线充电标称上限（W）：未核验。\n- 无线充电标称上限（W）：未核验。\n- 官方快充测试适配器最低功率（W，非手机输入峰值）：未核验。\n- 重量及配色条件：未核验。\n- 高×宽×厚（mm）：未核验。\n\n后置相机规格（按来源列示，不据条目数推断物理传感器数量）：\n\n- 主摄：50 MP；光圈f/未核验；厂商焦距标签未核验 mm；OIS：未核验。\n- 超广角：12 MP；光圈f/未核验；厂商焦距标签未核验 mm；OIS：未核验。\n- 长焦：10 MP；光圈f/未核验；厂商焦距标签未核验 mm；OIS：未核验。\n\n- 前置主要成像相机标称像素（MP）：未核验。\n- 视频录制：未核验。\n- USB接口：未核验。\n- 无线局域网：未核验。\n- 蓝牙：未核验。\n- NFC：未核验。\n- 来源页面列示系统（非当前最高可升级版本）：未核验。\n- 防护等级标签（具体实验条件见来源）：未核验。\n\n型号差异与条件：国行规格页型号选择器12+256/12+512；机身/电池/光圈/防水等全球参数不沿用\n\n使用边界：本卡仅适用中国大陆销售版本；相同商品名的海外、电商改名及独立卫星版不得自动匹配；标称像素不等于每张成片像素；最高视频规格不承诺全部镜头、HDR或防抖模式同时可用；光圈数值或范围不自动证明当前模式有手动入口；35mm等效/厂商标称焦距不写成EXIF实际焦距；充电功率是厂商标称或测试条件值，需要对应适配器、线材及温度条件，不是持续充电功率；实体RAM与系统扩展内存分开；RAM/存储选项分别列出，不生成所有排列组合；公开参数表不等于真机测试；具体固件、相机App版本、ISO和快门可调范围保持未知。\n\n未确认信息：未核验；不代表不支持，不从相近型号或海外版本补值。\n\n来源：[Samsung官方资料](https://www.samsung.com/cn/smartphones/galaxy-s25/compare/)；[Samsung官方资料](https://www.samsung.com/cn/smartphones/galaxy-s25-ultra/specs/)\n\n整理状态：AI整理待审核；未导入主库、未发布，也未注册运行时型号。",
+  "payload": {
+    "brand": "Samsung",
+    "model_variant": "Samsung Galaxy S25",
+    "region_scope": "中国大陆",
+    "aliases": [
+      "Samsung Galaxy S25",
+      "三星Galaxy S25",
+      "三星 Galaxy S25"
+    ],
+    "specifications": {
+      "chipset": "骁龙8至尊版 for Galaxy",
+      "display": {
+        "size_inches": 6.2,
+        "panel": null,
+        "resolution_pixels": null,
+        "max_refresh_hz": null
+      },
+      "memory": {
+        "ram_options_GB": [
+          12
+        ],
+        "storage_options": [
+          "256GB",
+          "512GB"
+        ],
+        "sku_combinations": [
+          "12GB+256GB",
+          "12GB+512GB"
+        ]
+      },
+      "battery": {
+        "capacity_mAh": null,
+        "capacity_basis": "厂商标称，未在本批确认典型/额定口径",
+        "video_playback_up_to_hours": null
+      },
+      "charging": {
+        "wired_max_W": null,
+        "wireless_max_W": null,
+        "fast_charge_test_adapter_min_W": null
+      },
+      "body": {
+        "weight_description": null,
+        "dimensions_h_w_t_mm": null
+      },
+      "cameras": {
+        "rear_entries": [
+          {
+            "role": "主摄",
+            "declared_megapixels": 50,
+            "aperture_f_number": null,
+            "aperture_f_number_range": null,
+            "manufacturer_focal_label_mm": null,
+            "declared_ois": null,
+            "actual_exif_focal_mm": null,
+            "manual_aperture_control": null
+          },
+          {
+            "role": "超广角",
+            "declared_megapixels": 12,
+            "aperture_f_number": null,
+            "aperture_f_number_range": null,
+            "manufacturer_focal_label_mm": null,
+            "declared_ois": null,
+            "actual_exif_focal_mm": null,
+            "manual_aperture_control": null
+          },
+          {
+            "role": "长焦",
+            "declared_megapixels": 10,
+            "aperture_f_number": null,
+            "aperture_f_number_range": null,
+            "manufacturer_focal_label_mm": null,
+            "declared_ois": null,
+            "actual_exif_focal_mm": null,
+            "manual_aperture_control": null
+          }
+        ],
+        "front_megapixels": null,
+        "video_recording": null
+      },
+      "connectivity": {
+        "usb": null,
+        "wifi": null,
+        "bluetooth": null,
+        "nfc": null
+      },
+      "page_declared_os": null,
+      "protection": null
+    },
+    "facts": [
+      {
+        "field": "chipset",
+        "value": "骁龙8至尊版 for Galaxy",
+        "unit": null,
+        "conditions": {
+          "model_variant": "Samsung Galaxy S25",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S046"
+        ],
+        "source_location": "处理器/芯片/CPU",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "display.size_inches",
+        "value": 6.2,
+        "unit": "inch",
+        "conditions": {
+          "model_variant": "Samsung Galaxy S25",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S046"
+        ],
+        "source_location": "显示屏/屏幕/显示",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "memory.ram_options_GB",
+        "value": [
+          12
+        ],
+        "unit": "GB",
+        "conditions": {
+          "model_variant": "Samsung Galaxy S25",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S045"
+        ],
+        "source_location": "国行规格页型号选择器（分别对应三款型号）",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "memory.storage_options",
+        "value": [
+          "256GB",
+          "512GB"
+        ],
+        "unit": null,
+        "conditions": {
+          "model_variant": "Samsung Galaxy S25",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S045"
+        ],
+        "source_location": "国行规格页型号选择器（分别对应三款型号）",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "memory.sku_combinations",
+        "value": [
+          "12GB+256GB",
+          "12GB+512GB"
+        ],
+        "unit": null,
+        "conditions": {
+          "model_variant": "Samsung Galaxy S25",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S045"
+        ],
+        "source_location": "国行规格页型号选择器（分别对应三款型号）",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.0.declared_megapixels",
+        "value": 50,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "Samsung Galaxy S25",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S046"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.1.declared_megapixels",
+        "value": 12,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "Samsung Galaxy S25",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S046"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      },
+      {
+        "field": "cameras.rear_entries.2.declared_megapixels",
+        "value": 10,
+        "unit": "MP",
+        "conditions": {
+          "model_variant": "Samsung Galaxy S25",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification"
+        },
+        "source_ids": [
+          "CN-S046"
+        ],
+        "source_location": "摄像头/拍摄功能",
+        "verification_status": "source_checked_pending_independent_review"
+      }
+    ],
+    "unknown_fields": [
+      "display.panel",
+      "display.resolution_pixels",
+      "display.max_refresh_hz",
+      "battery.capacity_mAh",
+      "battery.video_playback_up_to_hours",
+      "charging.wired_max_W",
+      "charging.wireless_max_W",
+      "charging.fast_charge_test_adapter_min_W",
+      "body.weight_description",
+      "body.dimensions_h_w_t_mm",
+      "cameras.rear_entries.0.aperture_f_number",
+      "cameras.rear_entries.0.aperture_f_number_range",
+      "cameras.rear_entries.0.manufacturer_focal_label_mm",
+      "cameras.rear_entries.0.declared_ois",
+      "cameras.rear_entries.0.actual_exif_focal_mm",
+      "cameras.rear_entries.0.manual_aperture_control",
+      "cameras.rear_entries.1.aperture_f_number",
+      "cameras.rear_entries.1.aperture_f_number_range",
+      "cameras.rear_entries.1.manufacturer_focal_label_mm",
+      "cameras.rear_entries.1.declared_ois",
+      "cameras.rear_entries.1.actual_exif_focal_mm",
+      "cameras.rear_entries.1.manual_aperture_control",
+      "cameras.rear_entries.2.aperture_f_number",
+      "cameras.rear_entries.2.aperture_f_number_range",
+      "cameras.rear_entries.2.manufacturer_focal_label_mm",
+      "cameras.rear_entries.2.declared_ois",
+      "cameras.rear_entries.2.actual_exif_focal_mm",
+      "cameras.rear_entries.2.manual_aperture_control",
+      "cameras.front_megapixels",
+      "cameras.video_recording",
+      "connectivity.usb",
+      "connectivity.wifi",
+      "connectivity.bluetooth",
+      "connectivity.nfc",
+      "page_declared_os",
+      "protection"
+    ],
+    "unknown_means": "未核验；不代表不支持，不从相近型号或海外版本补值",
+    "variant_notes": "国行规格页型号选择器12+256/12+512；机身/电池/光圈/防水等全球参数不沿用",
+    "exceptions": [
+      "本卡仅适用中国大陆销售版本；相同商品名的海外、电商改名及独立卫星版不得自动匹配。",
+      "标称像素不等于每张成片像素；最高视频规格不承诺全部镜头、HDR或防抖模式同时可用。",
+      "光圈数值或范围不自动证明当前模式有手动入口；35mm等效/厂商标称焦距不写成EXIF实际焦距。",
+      "充电功率是厂商标称或测试条件值，需要对应适配器、线材及温度条件，不是持续充电功率。",
+      "实体RAM与系统扩展内存分开；RAM/存储选项分别列出，不生成所有排列组合。",
+      "公开参数表不等于真机测试；具体固件、相机App版本、ISO和快门可调范围保持未知。"
+    ],
+    "sources": [
+      {
+        "source_id": "CN-S046",
+        "publisher": "Samsung",
+        "original_url": "https://www.samsung.com/cn/smartphones/galaxy-s25/compare/",
+        "accessed_at": "2026-10-15",
+        "region": "中国大陆",
+        "section": "官方参数表",
+        "actual_read_scope": "仅使用本卡facts中逐项注明章节的已读参数；未声称核验整页或所有脚注",
+        "document_version": "访问日公开网页；页面无固定修订号",
+        "tool": "web__run",
+        "verification": "公开来源已读取；AI提取，未经独立人工复核或真机测试",
+        "retrieval_allowed": false,
+        "rights_status": "仅重组必要规格事实与链接；未收录产品图/整页正文；项目许可待审核"
+      },
+      {
+        "source_id": "CN-S045",
+        "publisher": "Samsung",
+        "original_url": "https://www.samsung.com/cn/smartphones/galaxy-s25-ultra/specs/",
+        "accessed_at": "2026-10-15",
+        "region": "中国大陆",
+        "section": "中国大陆型号选择器",
+        "actual_read_scope": "仅使用本卡facts中逐项注明章节的已读参数；未声称核验整页或所有脚注",
+        "document_version": "访问日公开网页；页面无固定修订号",
+        "tool": "web__run",
+        "verification": "公开来源已读取；AI提取，未经独立人工复核或真机测试",
+        "retrieval_allowed": false,
+        "rights_status": "仅重组必要规格事实与链接；未收录产品图/整页正文；项目许可待审核"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-15",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "runtime_registration": "未修改phone_profiles.yaml，草稿不自动启用应用型号",
+    "data_scope": "选定官方字段，不代表完整规格、实时在售或销量排名",
+    "editorial_inferences": [
+      "别名、字段名、分组和风险说明由AI整理；没有从宣传最高值推算画质或手动控制能力。"
+    ]
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "20261015",
+    "Samsung",
+    "Galaxy S25"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "Samsung Galaxy S25",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "Samsung",
+    "url": "https://www.samsung.com/cn/smartphones/galaxy-s25/compare/",
+    "location": "各字段对应章节见payload.facts",
+    "license": "必要规格事实自行整理；来源与项目使用权限待审核",
+    "retrieval_allowed": false
+  },
+  "author": "知识采集助手（AI整理）",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

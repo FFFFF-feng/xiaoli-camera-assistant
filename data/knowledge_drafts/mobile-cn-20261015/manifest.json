@@ -1,0 +1,358 @@
+{
+  "collection": "mobile-cn-20261015",
+  "region": "中国大陆",
+  "cards": 49,
+  "sources": 48,
+  "fact_entries": 1000,
+  "batch_sizes": [
+    20,
+    20,
+    9
+  ],
+  "retrieval_allowed": false,
+  "files": [
+    {
+      "path": "phone20261015-cn-apple-iphone-15-plus.json",
+      "sha256": "3c62c1f453091b12ec136e0c57cd446cfec0e1a9b75e5e79b247ebe6a93630af",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-apple-iphone-15-plus",
+      "bytes": 18856
+    },
+    {
+      "path": "phone20261015-cn-apple-iphone-15-pro-max.json",
+      "sha256": "777effa3a7812b96d29468fc4559887a9fccfd9810e7cef4292162ff66b78251",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-apple-iphone-15-pro-max",
+      "bytes": 23117
+    },
+    {
+      "path": "phone20261015-cn-apple-iphone-15-pro.json",
+      "sha256": "eeec2f01a1fa91fc827ae48eb1a7751e0ec433e1af3a242c4f4427b1dde495b6",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-apple-iphone-15-pro",
+      "bytes": 22891
+    },
+    {
+      "path": "phone20261015-cn-apple-iphone-15.json",
+      "sha256": "829800933e76cd4a287535b9662e5b47d05ec7c75f47809128b96a24ff98217e",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-apple-iphone-15",
+      "bytes": 18690
+    },
+    {
+      "path": "phone20261015-cn-apple-iphone-16-plus.json",
+      "sha256": "962fd36c6015d568cdbf3adca9841ce4df45af18665887476d29b6c89b8f0785",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-apple-iphone-16-plus",
+      "bytes": 18402
+    },
+    {
+      "path": "phone20261015-cn-apple-iphone-16-pro-max.json",
+      "sha256": "7b0d3a18efb33a8e7a70cac78755489010b4ae40dd127892ce8e92ad2593a3e7",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-apple-iphone-16-pro-max",
+      "bytes": 20698
+    },
+    {
+      "path": "phone20261015-cn-apple-iphone-16-pro.json",
+      "sha256": "e74f78eb9cb4eda3549d85929ae07ed120007c98404ecc1d249c0751d81f0a3a",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-apple-iphone-16-pro",
+      "bytes": 21573
+    },
+    {
+      "path": "phone20261015-cn-apple-iphone-16.json",
+      "sha256": "dd307238be97b0f7e928ff8ac3eccefee8bd571c039eaba234da21ce1d49fdd7",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-apple-iphone-16",
+      "bytes": 18241
+    },
+    {
+      "path": "phone20261015-cn-apple-iphone-16e.json",
+      "sha256": "bf23ea3952401373c875a3288eadcf97d7ccb42c8edd6d836e351eef75d0c7b5",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-apple-iphone-16e",
+      "bytes": 17091
+    },
+    {
+      "path": "phone20261015-cn-apple-iphone-17-pro-max.json",
+      "sha256": "baa5151727840138c26f4967afef44f317e41285693d18fdede6fff0d89e688c",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-apple-iphone-17-pro-max",
+      "bytes": 22329
+    },
+    {
+      "path": "phone20261015-cn-apple-iphone-17-pro.json",
+      "sha256": "14ffd814f2eb0f30880629861efc974cb6efba693446aeed5316df76700308ae",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-apple-iphone-17-pro",
+      "bytes": 22134
+    },
+    {
+      "path": "phone20261015-cn-iqoo-13.json",
+      "sha256": "02564ef4afc0776d7c9d2a1955edaf14689d55dca8f7c34a2622e5332d379e69",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-iqoo-13",
+      "bytes": 19097
+    },
+    {
+      "path": "phone20261015-cn-iqoo-neo10.json",
+      "sha256": "ea29f5d0d2d60931f34ee970cb80a001dae49ebc618349722a4954d051cd3dde",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-iqoo-neo10",
+      "bytes": 17418
+    },
+    {
+      "path": "phone20261015-cn-oppo-find-x8.json",
+      "sha256": "d90c6157b989c854adf7c20d7c736dc603e803a4dc5f8bed1c6e5e842ab8cec1",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-oppo-find-x8",
+      "bytes": 23059
+    },
+    {
+      "path": "phone20261015-cn-vivo-s20-pro.json",
+      "sha256": "1065f46686cf85db64b64845e5160dbe3ebed141cfda96422b77178c77a1cd56",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-vivo-s20-pro",
+      "bytes": 19074
+    },
+    {
+      "path": "phone20261015-cn-vivo-s20.json",
+      "sha256": "16de1fa67b40811250ec4b0c2f47cde72ab51527b3ba8f304b1b9e2289f784d6",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-vivo-s20",
+      "bytes": 17310
+    },
+    {
+      "path": "phone20261015-cn-vivo-x200-pro-mini.json",
+      "sha256": "58d6ca449bb78bfabc3253f52592671f210f635c11b475590faff2a9e3bb4937",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-vivo-x200-pro-mini",
+      "bytes": 20072
+    },
+    {
+      "path": "phone20261015-cn-vivo-x200-pro.json",
+      "sha256": "2dfca1eaa5af6a503033c1954dc526c2e945e6bb997309264dff5ce798e96870",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-vivo-x200-pro",
+      "bytes": 19533
+    },
+    {
+      "path": "phone20261015-cn-vivo-x200-ultra.json",
+      "sha256": "aba6c484fdc744e7f1f4ff9eb7c1ec665d20497fd41e09573982f1ff326eca65",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-vivo-x200-ultra",
+      "bytes": 21962
+    },
+    {
+      "path": "phone20261015-cn-vivo-x200.json",
+      "sha256": "e9b766f5926da399f7577abb2fbdd9b3447779811058435bacb2a7a36e9ff3f6",
+      "batch": "batch-01",
+      "knowledge_id": "phone20261015-cn-vivo-x200",
+      "bytes": 19485
+    },
+    {
+      "path": "phone20261015-cn-honor-300.json",
+      "sha256": "a84c14e0a2a18437fd67988cbd005532b1573e1a860e447765b363ee1a56418b",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-honor-300",
+      "bytes": 12238
+    },
+    {
+      "path": "phone20261015-cn-honor-magic7-pro.json",
+      "sha256": "341addc9e1d7ed01ab040352d366f90a662d19c9c5b7b560aafbe59f75653777",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-honor-magic7-pro",
+      "bytes": 17239
+    },
+    {
+      "path": "phone20261015-cn-honor-x60.json",
+      "sha256": "51411d7621f4f00c49f681f4e5b9b1ca39760a6160355cd2e0b5f217b12f94ec",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-honor-x60",
+      "bytes": 17400
+    },
+    {
+      "path": "phone20261015-cn-huawei-mate-70-pro-plus.json",
+      "sha256": "5d0ac8f961a2cf10abe436e268c4e0c3320463da837f4cec54cad85563dddd80",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-huawei-mate-70-pro-plus",
+      "bytes": 22899
+    },
+    {
+      "path": "phone20261015-cn-huawei-mate-70-pro.json",
+      "sha256": "a32b8cb6cc406e9e8a09c1496b9b3721420c86ffa4a3fae2855832d9544877ec",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-huawei-mate-70-pro",
+      "bytes": 24296
+    },
+    {
+      "path": "phone20261015-cn-huawei-mate-70.json",
+      "sha256": "4d5b7b674932d7bcc898f4655066dc3df47368bfea010cb7a1809d1c10a6e270",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-huawei-mate-70",
+      "bytes": 22795
+    },
+    {
+      "path": "phone20261015-cn-huawei-nova-14-pro.json",
+      "sha256": "3c3dee2dc854c780a9a44c4575ce5313412560ad34c17fdbcfdc5325e3ccddc5",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-huawei-nova-14-pro",
+      "bytes": 20419
+    },
+    {
+      "path": "phone20261015-cn-huawei-pura-80-pro.json",
+      "sha256": "33ed08a55510af0adc8ee9a88e4471ed1df1609ee35eaf01cca2e7b860933dfd",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-huawei-pura-80-pro",
+      "bytes": 22396
+    },
+    {
+      "path": "phone20261015-cn-huawei-pura-80-ultra.json",
+      "sha256": "24379e3e67d1922cbd159b10f618a9586fe5d7e25fac7c54a4c5e7c35fac883f",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-huawei-pura-80-ultra",
+      "bytes": 25187
+    },
+    {
+      "path": "phone20261015-cn-oneplus-12.json",
+      "sha256": "4b8bcb47b8f0718b636e996926410989faa95f7a0e61277c9484206b74cd8ace",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-oneplus-12",
+      "bytes": 22166
+    },
+    {
+      "path": "phone20261015-cn-oneplus-13.json",
+      "sha256": "d74b0436ff53d4cfd8361d5e03e5bb7181e0d6262673fc6526d24501698dd5ca",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-oneplus-13",
+      "bytes": 21726
+    },
+    {
+      "path": "phone20261015-cn-oneplus-ace-5.json",
+      "sha256": "f3161bb15eab47cdfdd9b6b897cd286d779b15eee92a7a1b9c8785aa963950da",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-oneplus-ace-5",
+      "bytes": 21940
+    },
+    {
+      "path": "phone20261015-cn-oppo-find-x8-pro.json",
+      "sha256": "0e247ead52781cddeef39e29929a499969b2ecea2976c7ff407ed4368c52d61d",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-oppo-find-x8-pro",
+      "bytes": 25803
+    },
+    {
+      "path": "phone20261015-cn-oppo-find-x8-ultra.json",
+      "sha256": "ca2cf0e78de0d3b4c55bb730cf8f276be19a500e3f61cb52723eac605cf2aeb0",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-oppo-find-x8-ultra",
+      "bytes": 28188
+    },
+    {
+      "path": "phone20261015-cn-oppo-reno13-pro.json",
+      "sha256": "81b6f800c09a3977eceae37e639a0a7a4f1bebf7204c21ffeaa8fd9ec244afa2",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-oppo-reno13-pro",
+      "bytes": 23116
+    },
+    {
+      "path": "phone20261015-cn-oppo-reno13.json",
+      "sha256": "cad71e64537b9b1f215a688f6ec1d5294b21bf3f81db9227a28ad6a7f8a2b15a",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-oppo-reno13",
+      "bytes": 19968
+    },
+    {
+      "path": "phone20261015-cn-realme-gt7-pro-racing.json",
+      "sha256": "bca268febcc83c02e811d4fcfd74fd483614a3ca023ac6d34ee87dcd0165c957",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-realme-gt7-pro-racing",
+      "bytes": 18260
+    },
+    {
+      "path": "phone20261015-cn-realme-neo7.json",
+      "sha256": "3b67aa1e4b3e6e716b64c17f192f4c4f77309c4e82a258f3eadd583d11829108",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-realme-neo7",
+      "bytes": 19305
+    },
+    {
+      "path": "phone20261015-cn-xiaomi-15.json",
+      "sha256": "01fceba3818ec865bc0da1402b0dd3f10b7e4e352f7180dbbea47abd993d09aa",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-xiaomi-15",
+      "bytes": 9584
+    },
+    {
+      "path": "phone20261015-cn-xiaomi-17.json",
+      "sha256": "8e3a126c3e3d9f2411ea2d1c643393fd381dec334fab71fc2a1144f295fa51f1",
+      "batch": "batch-02",
+      "knowledge_id": "phone20261015-cn-xiaomi-17",
+      "bytes": 13774
+    },
+    {
+      "path": "phone20261015-cn-oppo-find-x9-pro.json",
+      "sha256": "05ed56b0efa100e40ae7a6f5f43406f1abe6e18a963e4333af5061a6f9aad675",
+      "batch": "batch-03",
+      "knowledge_id": "phone20261015-cn-oppo-find-x9-pro",
+      "bytes": 24177
+    },
+    {
+      "path": "phone20261015-cn-redmi-k100-pro.json",
+      "sha256": "7ff136bd63d74153e10c9b0f9ad9a71a359c6ac059d8b8729f6f2696ed91fec5",
+      "batch": "batch-03",
+      "knowledge_id": "phone20261015-cn-redmi-k100-pro",
+      "bytes": 15303
+    },
+    {
+      "path": "phone20261015-cn-redmi-k80-pro.json",
+      "sha256": "041968bc6a63f7da860d98dbca47310c17fa5558ae031060917ce6fbe26c92c6",
+      "batch": "batch-03",
+      "knowledge_id": "phone20261015-cn-redmi-k80-pro",
+      "bytes": 10518
+    },
+    {
+      "path": "phone20261015-cn-redmi-k80.json",
+      "sha256": "7df0a23d4f5c7c630f1e0dd99455fb1a0bef579aff16ba6096b0ad970cfa0875",
+      "batch": "batch-03",
+      "knowledge_id": "phone20261015-cn-redmi-k80",
+      "bytes": 11915
+    },
+    {
+      "path": "phone20261015-cn-samsung-galaxy-s25-plus.json",
+      "sha256": "d710639f71d1d1b76bb2fd92b07bf96e63c7a6a95dff22ab0a0a0cdfa61de8e2",
+      "batch": "batch-03",
+      "knowledge_id": "phone20261015-cn-samsung-galaxy-s25-plus",
+      "bytes": 14936
+    },
+    {
+      "path": "phone20261015-cn-samsung-galaxy-s25-ultra.json",
+      "sha256": "27686bf7be2791b201479afdf989e2dc6ee38892bc31668d5c72b0e372cd1928",
+      "batch": "batch-03",
+      "knowledge_id": "phone20261015-cn-samsung-galaxy-s25-ultra",
+      "bytes": 16932
+    },
+    {
+      "path": "phone20261015-cn-samsung-galaxy-s25.json",
+      "sha256": "49883c582bedb75d1f6341faea3cb5ff45a8de18d36608d7b6adc0925b779b42",
+      "batch": "batch-03",
+      "knowledge_id": "phone20261015-cn-samsung-galaxy-s25",
+      "bytes": 14936
+    },
+    {
+      "path": "phone20261015-cn-vivo-x300-pro.json",
+      "sha256": "2ac4140d86aaaafe7e75047f59dabbff2ccecc4867a1f10c1a70e3f9344affd3",
+      "batch": "batch-03",
+      "knowledge_id": "phone20261015-cn-vivo-x300-pro",
+      "bytes": 19568
+    },
+    {
+      "path": "phone20261015-cn-xiaomi-18-pro.json",
+      "sha256": "099507a4c82f9564a52537d00a7bfc4d047a10776562441b3abd2940a4ee3123",
+      "batch": "batch-03",
+      "knowledge_id": "phone20261015-cn-xiaomi-18-pro",
+      "bytes": 9867
+    }
+  ]
+}
