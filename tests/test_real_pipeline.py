@@ -245,7 +245,12 @@ def test_managed_pipeline_separates_evidence_and_respects_publication_conditions
     assert composition.calls[0][2] == result.scene
     assert result.camera_profile.profile_id == "canon_eos_r50"
     assert composition.calls[0][1].camera_format == "APS-C"
-    assert result.composition == composition.result
+    # A model-authored grounded flag and retrieved IDs do not establish support.
+    assert result.composition.status == "unverified"
+    assert not result.composition.proposals[0].knowledge_citation_review.accepted
+    assert result.composition.proposals[0].actions == composition.result.proposals[0].actions
+    assert result.composition.proposals[0].knowledge_ids == composition.result.proposals[0].knowledge_ids
+    assert any("最终参数" in condition for condition in result.composition.proposals[0].conditions)
     assert result.recommendation.shutter_speed == "1/800s"
 
 
@@ -401,7 +406,10 @@ def test_composition_failure_preserves_parameter_recommendation(
     assert len(composition.calls) == 1
     assert result.composition.status == "unavailable"
     assert result.composition.proposals == []
-    assert result.recommendation.reasons == ["测试参数建议"]
+    assert result.recommendation.exposure_state.mode == "Tv"
+    assert result.recommendation.shutter_speed == "1/800s"
+    assert result.recommendation.aperture == "f/4"
+    assert result.recommendation.reasons
     assert result.recommendation.shutter_speed == "1/800s"
 
 
@@ -414,7 +422,9 @@ def test_parameter_failure_preserves_composition_and_marks_all_settings_unavaila
         settings, ManagedKnowledgeRetriever(KnowledgeStore(settings.knowledge_db_path)),
         localization(), FakeParameterAdvisor(error_type("synthetic parameter failure")), composition,
     ).run(image_content, user_request)
-    assert result.composition == composition.result
+    assert result.composition.proposals[0].actions == composition.result.proposals[0].actions
+    assert result.composition.proposals[0].knowledge_ids == composition.result.proposals[0].knowledge_ids
+    assert any("参数阶段未完成" in condition for condition in result.composition.proposals[0].conditions)
     assert result.composition.proposals
     assert result.recommendation.confidence == 0
     assert result.recommendation.reasons == []
@@ -456,3 +466,85 @@ def test_demo_mode_never_constructs_or_calls_enabled_detector(
     assert result.localization is None
     assert result.composition.status == "demo"
     assert result.recommendation.shutter_speed == "1/800s"
+
+
+def test_progress_is_reported_before_each_expensive_stage(
+    settings, image_content, user_request, monkeypatch,
+):
+    pipeline = make_pipeline(
+        settings, ManagedKnowledgeRetriever(KnowledgeStore(settings.knowledge_db_path)),
+        localization(),
+    )
+    events = []
+    for service, method, stage in (
+        (pipeline.image_analyzer, "analyze", "图片"),
+        (pipeline.vision_analyzer, "analyze", "识别"),
+        (pipeline.localizer, "localize", "定位"),
+        (pipeline.retriever, "search", "查阅"),
+        (pipeline.composition_advisor, "recommend", "构图"),
+        (pipeline.advisor, "recommend", "拍摄参数"),
+        (pipeline.validator, "validate", "校验"),
+    ):
+        original = getattr(service, method)
+
+        def observed(*args, _original=original, _stage=stage, **kwargs):
+            assert events
+            assert events[-1][0] == "progress"
+            assert _stage in events[-1][1]
+            events.append(("service", _stage))
+            return _original(*args, **kwargs)
+
+        # Composition retrieval shares the search stage until its own progress report.
+        if method == "search":
+            def observed_search(*args, _original=original, **kwargs):
+                assert any(kind == "progress" and "查阅" in value for kind, value in events)
+                return _original(*args, **kwargs)
+
+            monkeypatch.setattr(service, method, observed_search)
+        else:
+            monkeypatch.setattr(service, method, observed)
+
+    result = pipeline.run(
+        image_content, user_request, on_progress=lambda message: events.append(("progress", message)),
+    )
+
+    assert result.recommendation.shutter_speed == "1/800s"
+    assert [value for kind, value in events if kind == "service"] == [
+        "图片", "识别", "定位", "构图", "拍摄参数", "校验",
+    ]
+
+
+def test_demo_progress_skips_local_detector(
+    settings, image_content, user_request,
+):
+    pipeline = CameraAssistantPipeline(replace(
+        settings, demo_mode=True, api_key="", vision_model="", text_model="",
+        composition_enabled=False,
+    ))
+    stages = []
+    result = pipeline.run(image_content, user_request, on_progress=stages.append)
+
+    assert result.localization is None
+    assert result.composition is None
+    assert any("识别" in stage for stage in stages)
+    assert any("拍摄参数" in stage for stage in stages)
+    assert not any("定位" in stage or "构图" in stage for stage in stages)
+
+
+def test_unknown_user_motion_cannot_become_measured_speed_or_exposure_from_one_photo(
+    settings, image_content, user_request, monkeypatch,
+):
+    pipeline = make_pipeline(
+        settings, ManagedKnowledgeRetriever(KnowledgeStore(settings.knowledge_db_path)),
+        localization(),
+    )
+    observed = scene().model_copy(update={
+        "subject_motion": "slow",
+        "recognition_evidence": ["可见柔滑水流", "水流运动通过慢门记录为平滑轨迹。"],
+    })
+    monkeypatch.setattr(pipeline.vision_analyzer, "analyze", lambda *args: observed)
+    result = pipeline.run(image_content, user_request.model_copy(update={"subject_motion": "不确定"}))
+    assert result.scene.subject_motion == "unknown"
+    assert "可见柔滑水流" in result.scene.recognition_evidence
+    assert "水流运动通过慢门记录为平滑轨迹。" not in result.scene.recognition_evidence
+    assert any("速度" in text and "曝光" in text for text in result.scene.uncertainties)

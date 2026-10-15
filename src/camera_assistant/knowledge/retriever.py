@@ -41,6 +41,7 @@ class ManagedKnowledgeRetriever:
             for revision in self._published()
             if revision.record.library_id in selected
             and self._applicable(revision.record.conditions, conditions)
+            and self._topic_applicable(revision.record, query, conditions)
         ]
         if not revisions:
             return []
@@ -84,6 +85,14 @@ class ManagedKnowledgeRetriever:
                         "reviewer": revision.reviewer or "",
                         "content_hash": revision.content_hash,
                         "retrieval_backend": "managed_keyword",
+                        "body": record.content,
+                        "conditions": json.dumps(record.conditions, ensure_ascii=False),
+                        "requires": json.dumps(record.payload.get("requires", []), ensure_ascii=False),
+                        "numeric_defaults": json.dumps(record.payload.get("numeric_defaults")),
+                        "usage_scope": (
+                            "isolated_test" if record.payload.get("software_trial_only")
+                            else "published_reference"
+                        ),
                     },
                 )
             )
@@ -134,6 +143,10 @@ class ManagedKnowledgeRetriever:
             if observed is None or field not in observed:
                 return False
             actual = observed[field]
+            if actual is None or (isinstance(actual, str) and actual.strip().lower() in {
+                "", "unknown", "unconfirmed", "不确定", "未知", "不清楚",
+            }):
+                return False
             if isinstance(allowed, list):
                 if not any(cls._equal(actual, value) for value in allowed):
                     return False
@@ -176,19 +189,44 @@ class ManagedKnowledgeRetriever:
 
     @staticmethod
     def _search_text(record: Any) -> str:
+        # Rights, editorial warnings and generic project boundaries are injected
+        # for provenance, but are not evidence of topic relevance.
+        body = " ".join(
+            line for line in record.content.splitlines()
+            if not line.strip().startswith(("【", "来源", "项目边界", "适用"))
+        )
         return " ".join(
             (
                 record.title,
-                record.content,
+                body,
                 " ".join(record.tags),
-                json.dumps(record.payload, ensure_ascii=False, sort_keys=True, allow_nan=False),
             )
+        )
+
+    @staticmethod
+    def _topic_applicable(record: Any, query: str, observed: Mapping[str, Any] | None) -> bool:
+        topic = " ".join((record.title, " ".join(record.tags)))
+        if not re.search(r"白平衡|white.balance", topic, re.IGNORECASE):
+            return True
+        context = observed or {}
+        # A black-and-white reference cannot establish colour cast. A possible
+        # colour reshoot must be requested, not imagined from an image label.
+        monochrome = context.get("reference_color_mode") == "monochrome" or bool(
+            re.search(r"黑白|单色|monochrome|black.and.white", query, re.IGNORECASE)
+        )
+        if monochrome and context.get("color_reshoot_requested") is not True:
+            return False
+        if "color_adjustment_requested" in context:
+            return context["color_adjustment_requested"] is True
+        return context.get("color_adjustment_requested") is True or bool(
+            re.search(r"白平衡|色偏|偏色|颜色偏|色温|white.balance|colou?r.cast", query, re.IGNORECASE)
         )
 
     @staticmethod
     def _tokenize(text: str) -> list[str]:
         tokens = re.findall(r"[a-z0-9.]+", text.lower())
         for sequence in re.findall(r"[\u4e00-\u9fff]+", text):
-            tokens.extend(sequence)
+            # Single characters such as 光/色/调 match unrelated photography
+            # cards. A one-character coincidence is not topical evidence.
             tokens.extend(sequence[index : index + 2] for index in range(len(sequence) - 1))
         return tokens

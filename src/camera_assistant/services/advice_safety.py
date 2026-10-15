@@ -9,7 +9,8 @@ import math
 import re
 
 from camera_assistant.composition_models import CompositionProposal
-from camera_assistant.models import CameraRecommendation, UserRequest
+from camera_assistant.models import CameraProfile, CameraRecommendation, SceneAnalysis, UserRequest
+from camera_assistant.services.advice_review import review_operations
 
 SUBJECT = r"(?:主体|猫|人物|人像|瀑布|subject)"
 DISTANCE = re.compile(r"\d+(?:\.\d+)?(?:\s*[-–—至]\s*\d+(?:\.\d+)?)?\s*(?:厘米|米|cm|m)(?!m)", re.IGNORECASE)
@@ -94,19 +95,47 @@ def composition_issue(proposal: CompositionProposal, request: UserRequest) -> st
 
 
 def screen_parameter_advice(recommendation: CameraRecommendation,
-                            request: UserRequest) -> CameraRecommendation:
+                            request: UserRequest, *,
+                            scene: SceneAnalysis | None = None,
+                            camera: CameraProfile | None = None) -> CameraRecommendation:
     updates = {}
     removed = 0
     for field in ("reasons", "risks", "adjustments"):
         texts = getattr(recommendation, field)
         kept = [text for text in texts if not _wrong_underexposure_fix(text)
-                and not _unmeasured_distance(text) and not _wrong_stop_count(text, request)]
+                and not _unmeasured_distance(text) and not _wrong_stop_count(text, request)
+                and not _unsupported_physics(text, request)]
         removed += len(texts) - len(kept)
         updates[field] = kept
-    updates["safety_notes"] = []
+    updates["safety_notes"] = list(recommendation.safety_notes)
     if removed:
-        updates["safety_notes"] = [
-            "已移除包含曝光因果矛盾、光圈档数错误或未测量精确距离的模型说明；参数仍须试拍验证。"
-        ]
+        updates["safety_notes"].append(
+            "已移除曝光、景深、防抖、当前设置或未测量距离的无依据说明；未命中筛查不代表文字已验证。"
+        )
         updates["confidence"] = min(recommendation.confidence, .6)
+    reviewed, notes = review_operations(
+        recommendation.candidate_operations, request, scene, camera, recommendation,
+    )
+    updates["reviewed_operations"] = reviewed
+    updates["safety_notes"] = list(dict.fromkeys([*updates["safety_notes"], *notes]))
     return recommendation.model_copy(update=updates)
+
+
+def _unsupported_physics(text: str, request: UserRequest) -> bool:
+    """Extra legacy-prose triage. New operations use the independent rule registry."""
+    if re.search(r"不(?:会|能|直接)|并非|不是|不等于", text):
+        return False
+    if (re.search(r"ISO|快门|曝光时间", text, re.IGNORECASE)
+            and re.search(r"景深.{0,10}(?:减|变|浅)|(?:减小|改变|降低).{0,4}景深", text)
+            and not re.search(r"同时.{0,8}(?:光圈|焦距|距离)", text)):
+        # No optical DOF consequence can be established from only shutter/ISO.
+        return True
+    if re.search(r"电子快门|电子前帘|EFCS", text, re.IGNORECASE) and re.search(r"机身防抖|IBIS|补偿.{0,8}(?:手持|手抖)|手持.{0,8}补偿", text, re.IGNORECASE):
+        return True
+    if re.search(r"当前光圈|目前光圈|现有光圈", text):
+        current = getattr(request, "current_settings", None)
+        if current is None or getattr(current, "aperture", None) is None:
+            return True
+    # Incident light is an optical quantity; ISO cannot change it, whatever its value.
+    return bool(re.search(r"ISO", text, re.IGNORECASE)
+                and re.search(r"(?:降低|减少|增加|提高).{0,8}(?:进光量|入射光量)", text))

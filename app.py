@@ -3,6 +3,7 @@ from __future__ import annotations
 import base64
 import html
 import io
+import json
 from pathlib import Path
 
 import httpx
@@ -26,8 +27,8 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-SESSION_SCHEMA_VERSION = 9
-PIPELINE_RESOURCE_VERSION = 8
+SESSION_SCHEMA_VERSION = 11
+PIPELINE_RESOURCE_VERSION = 14
 
 
 def migrate_session_state() -> None:
@@ -64,6 +65,28 @@ def escaped(value: object) -> str:
 def clear_device_result() -> None:
     st.session_state.pop("last_result", None)
     st.session_state["phone_pro_confirm"] = False
+
+
+def clear_photo_result() -> None:
+    st.session_state.pop("last_result", None)
+
+
+def analyze_with_progress(image_content: bytes, request: UserRequest) -> PipelineResult:
+    with st.status("小栗开始分析现场图…", expanded=True) as status:
+        if settings.cloud_ready:
+            st.write("图片识别和方案生成需要一些时间；下方会显示当前进度。")
+
+        def show_progress(message: str) -> None:
+            status.update(label=message)
+            st.write(message)
+
+        try:
+            result = pipeline.run(image_content, request, on_progress=show_progress)
+        except Exception:
+            status.update(label="这次分析未完成，请查看下方提示", state="error")
+            raise
+        status.update(label="分析完成，请到下方查看拍摄方案", state="complete", expanded=False)
+        return result
 
 
 def render_header(settings: Settings) -> None:
@@ -167,6 +190,8 @@ def render_composition(result: PipelineResult) -> None:
             "detection_only": "当前只有检测候选",
         }
         st.write(selection_labels.get(selection.status, "主体关联待确认"))
+        if selection.reason:
+            st.caption(selection.reason)
         if selection.selected_ids:
             st.caption("模型关联的候选 ID：" + "、".join(selection.selected_ids))
         if localization.candidates:
@@ -192,7 +217,7 @@ def render_composition(result: PipelineResult) -> None:
     if composition is None:
         return
     status_labels = {
-        "grounded": "本次构图方案附有知识库引用",
+        "grounded": "本次构图方案附有待核对支持范围的知识引用",
         "unverified": "本次没有可用的知识库依据，构图建议待验证",
         "unavailable": "本次无法生成构图方案",
         "demo": "演示构图结果，未调用真实模型",
@@ -205,6 +230,7 @@ def render_composition(result: PipelineResult) -> None:
 
     if composition.observations:
         with st.expander("画面观察与不确定项"):
+            st.caption("以下为视觉模型候选观察，仍需核对原图；器材条件来自用户输入，不能当作原图拍摄事实。")
             for observation in composition.observations:
                 st.write(f"- {observation}")
             for uncertainty in composition.uncertainties:
@@ -226,6 +252,25 @@ def render_composition(result: PipelineResult) -> None:
         st.markdown(f"**方案 {index} · {action_label}：{proposal.goal}**")
         for action in proposal.actions:
             st.write(f"- {action}")
+        if getattr(proposal, "action_evidence", []):
+            with st.expander("模型动作原文（未核验）"):
+                for action in proposal.action_evidence:
+                    st.write(action)
+        if getattr(proposal, "trial_actions", []) or getattr(proposal, "field_checks", []):
+            st.caption("程序生成的现场比较说明；原文方向可追溯，改善效果仍需试取景。")
+            for action in getattr(proposal, "trial_actions", []):
+                target_label = {"camera": "相机", "subject": "主体", "light": "光源", "focus": "对焦"}.get(action.target, action.target)
+                kind_label = {"lateral_translation": "横向移动", "depth_translation": "前后移动",
+                              "height_translation": "升降机位", "pitch": "俯仰", "rotation": "旋转相机",
+                              "subject_pose": "主体姿态", "light_position": "光源位置", "focus": "对焦"}.get(action.kind, action.kind)
+                st.write(f"操作对象：{target_label}；动作：{kind_label}；方向：{action.direction}")
+                if action.condition:
+                    st.caption(f"动作条件：{action.condition}")
+            for check in getattr(proposal, "field_checks", []):
+                st.write(f"希望改善：{check.issue}")
+                st.write(f"观察：{check.observe}")
+                st.write(f"采用判据：{check.accept_when}")
+                st.write(f"必须保护：{check.protect}")
         for reason in proposal.reasons:
             st.write(f"依据：{reason}")
         for tradeoff in proposal.tradeoffs:
@@ -239,9 +284,13 @@ def render_composition(result: PipelineResult) -> None:
         for knowledge_id in proposal.knowledge_ids:
             hit = hits_by_id.get(knowledge_id)
             if hit is not None:
-                st.caption(f"引用：{hit.title} · {hit.document_id} · 来源：{hit.source}")
+                st.caption(f"候选引用存在：{hit.title} · {hit.document_id}；尚不能证明内容支持该动作。")
             else:
                 st.caption(f"引用 {knowledge_id} 未匹配本次检索内容，需复核。")
+        report = getattr(proposal, "knowledge_citation_review", None)
+        if report is not None and (report.accepted or report.rejected):
+            st.caption("该方案的知识原则引用；不能据此确认机位几何效果。")
+            render_source_report(report)
 
     for note in composition.notes:
         st.caption(note)
@@ -256,15 +305,57 @@ def render_composition(result: PipelineResult) -> None:
 
 
 def render_result(result: PipelineResult) -> None:
+    from camera_assistant.services.environment import environment_display_lines
+
+    for line in environment_display_lines(result.scene):
+        st.write(line)
+    for uncertainty in result.scene.uncertainties:
+        st.warning("待确认：" + uncertainty)
+    recovery = getattr(result, "parameter_recovery", None)
+    if recovery is not None:
+        parameter_names = {"shooting_mode": "拍摄模式", "aperture": "光圈", "shutter_speed": "快门",
+                           "iso": "ISO控制", "exposure_compensation": "曝光补偿", "focus_mode": "对焦",
+                           "metering_mode": "测光", "drive_mode": "驱动模式", "white_balance": "白平衡"}
+        missing_labels = "、".join(parameter_names.get(name, name) for name in recovery.missing_parameters)
+        if recovery.status == "incomplete":
+            st.warning("模型尚未给出完整参数方案。缺失项：" + missing_labels)
+        elif recovery.status == "needs_confirmation":
+            st.warning("参数方案包含需要用户核对的器材或现场条件。")
+            if recovery.missing_parameters:
+                st.warning("等待现场确认的参数：" + missing_labels)
+        for confirmation in recovery.user_confirmations:
+            st.warning(confirmation)
+        if recovery.issues:
+            with st.expander("参数阶段待处理项"):
+                for issue in recovery.issues:
+                    st.write(issue)
+        if recovery.correction_attempted:
+            st.caption(f"参数阶段已进行一次纠正；实际模型请求 {recovery.api_calls}/{recovery.call_limit} 次（含格式重试）。")
     render_composition(result)
     recommendation = result.recommendation
     camera_profile = getattr(result, "camera_profile", None)
     phone_result = isinstance(camera_profile, PhoneProfile)
     first_label = "镜头 / 景深" if phone_result else "光圈 APERTURE"
+    shutter_label = "快门 SHUTTER"
+    iso_label = "感光度 ISO"
+    exposure_state = getattr(recommendation, "exposure_state", None)
+    if exposure_state is not None and not phone_result:
+        role_labels = {"manual_setting": "用户设置", "auto_target": "自动控制目标",
+                       "observed": "观测值", "not_applicable": "不适用", "unknown": "需确认"}
+        for key, label in (("aperture", first_label), ("shutter_speed", shutter_label),
+                           ("iso", iso_label)):
+            value = exposure_state.parameters.get(key)
+            rendered = label + " · " + role_labels.get(value.role if value else "unknown", "需确认")
+            if key == "aperture":
+                first_label = rendered
+            elif key == "shutter_speed":
+                shutter_label = rendered
+            else:
+                iso_label = rendered
     result_title = (
         "手机操作建议 · 能力保守匹配"
         if phone_result
-        else f"建议设置 · 置信度 {recommendation.confidence:.0%}"
+        else "建议设置 · 待测光和试拍验证"
     )
     scene_label = getattr(result.scene, "scene_label", "") or result.scene.scene_type
     candidate_scenes = getattr(result.scene, "candidate_scenes", [])
@@ -275,8 +366,8 @@ def render_result(result: PipelineResult) -> None:
           <div class="result-title">{escaped(result_title)}</div>
           <div class="lcd">
             <div class="lcd-cell"><div class="lcd-label">{escaped(first_label)}</div><div class="lcd-value">{escaped(recommendation.aperture)}</div></div>
-            <div class="lcd-cell"><div class="lcd-label">快门 SHUTTER</div><div class="lcd-value">{escaped(recommendation.shutter_speed)}</div></div>
-            <div class="lcd-cell"><div class="lcd-label">感光度 ISO</div><div class="lcd-value">{escaped(recommendation.iso)}</div></div>
+            <div class="lcd-cell"><div class="lcd-label">{escaped(shutter_label)}</div><div class="lcd-value">{escaped(recommendation.shutter_speed)}</div></div>
+            <div class="lcd-cell"><div class="lcd-label">{escaped(iso_label)}</div><div class="lcd-value">{escaped(recommendation.iso)}</div></div>
           </div>
           <div class="secondary-readout">
             <div class="readout-row"><small>匹配机型</small><strong>{escaped(camera_profile.display_name if camera_profile else "通用机型")}</strong></div>
@@ -296,7 +387,7 @@ def render_result(result: PipelineResult) -> None:
         f"""
         <div class="scene-note">
           识别为 <strong>{escaped(scene_label)}</strong> · {escaped(result.scene.lighting)} ·
-          主体运动 {escaped(result.scene.subject_motion)} · 场景置信度 {result.scene.confidence:.0%}
+          主体运动 {escaped(result.scene.subject_motion)} · 视觉模型观察，需现场确认
         </div>
         """,
         unsafe_allow_html=True,
@@ -316,8 +407,11 @@ def render_result(result: PipelineResult) -> None:
     for adjustment in recommendation.adjustments:
         st.markdown(f"- {adjustment}")
 
+    render_citation_review(result)
+
     if recommendation.validation_notes:
         with st.expander("参数校验记录"):
+            st.caption("规则校验只核对已知能力与控制关系，不代表建议正确率或实拍效果。")
             for note in recommendation.validation_notes:
                 st.write(f"✓ {note}")
 
@@ -372,6 +466,53 @@ def render_camera_details(camera_profile) -> None:
         st.markdown(f"[厂商资料]({camera_profile.source_url})")
 
 
+def render_citation_review(result: PipelineResult) -> None:
+    st.subheader("知识引用与支持范围")
+    st.caption("未附有效引用的内容属于模型建议或程序规则；规则通过不代表实拍改善。通用原则不能证明具体参数、现场照度或反光效果。")
+    report = getattr(result, "knowledge_citation_review", None)
+    render_source_report(report)
+
+
+def render_source_report(report) -> None:
+    if report is None or not report.accepted:
+        st.write("本次没有通过支持范围核对的知识引用。")
+    if report is not None:
+        for item in report.accepted:
+            data = item.model_dump() if hasattr(item, "model_dump") else item
+            citation = data.get("citation", {})
+            st.write("知识原则：" + citation.get("claim", ""))
+            st.caption(f"对应建议：{citation.get('claim_path', '')} · {citation.get('document_id', '')} · 版本 {citation.get('version', '')}")
+            st.caption("支持范围：仅来源中的通用原则；具体设置仍需现场测光与试拍。")
+            st.caption("适用条件：" + json.dumps(data.get("conditions", {}), ensure_ascii=False))
+            for requirement in data.get("applicability_requires", []):
+                st.caption("仍需现场确认：" + requirement)
+            st.caption("来源：" + data.get("source", "") + " · " + data.get("source_license", ""))
+            if data.get("source_url"):
+                st.markdown(f"[知识来源]({data['source_url']})")
+            st.caption("来源正文：" + citation.get("source_excerpt", ""))
+            if data.get("usage_scope") == "isolated_test":
+                st.warning("隔离测试资料，未经独立人审，未进入正式发布库。")
+        if report.rejected:
+            with st.expander("已隔离的候选引用"):
+                st.caption("这些引用不能作为建议依据；独立参数和构图结果仍保留。")
+                for item in report.rejected:
+                    data = item.model_dump() if hasattr(item, "model_dump") else item
+                    rejection_labels = {
+                        "document_not_in_request": "本次未检索到此文档",
+                        "version_not_in_request": "引用版本与本次资料不符",
+                        "conditions_not_declared_or_invalid": "资料缺少有效适用条件记录",
+                        "conditions_not_met": "适用条件未确认或不满足",
+                        "source_excerpt_not_found": "引用原文未在本次来源正文中找到",
+                        "final_claim_changed_or_unsupported_path": "引用所指的建议文本不一致或位置无效",
+                        "claim_not_standalone_source_principle": "引用未对应来源中的完整独立原则",
+                        "numeric_scene_or_geometry_not_supported": "通用原则不能支持具体参数、现场条件或几何效果",
+                        "malformed_citation": "引用结构不完整",
+                        "malformed_citation_list": "引用列表结构无效",
+                        "citation_limit_exceeded": "引用数量超出检查范围",
+                    }
+                    st.write("引用未采用：" + rejection_labels.get(data.get("reason"), "引用未通过支持范围审核"))
+
+
 def render_knowledge_and_image(result: PipelineResult) -> None:
     with st.expander("本次检索到的摄影知识"):
         for note in getattr(result, "knowledge_notes", []):
@@ -381,12 +522,15 @@ def render_knowledge_and_image(result: PipelineResult) -> None:
         for hit in result.knowledge_hits:
             st.markdown(f"**{hit.title}**　相关度 `{hit.score:.3f}`")
             st.caption(f"来源：{hit.source} · 文档：{hit.document_id}")
-            if hit.metadata.get("retrieval_backend") == "managed_keyword":
+            if hit.metadata.get("usage_scope") == "isolated_test":
+                st.caption("隔离软件测试资料 · 未独立人审 · 不属于正式发布库")
+            elif hit.metadata.get("retrieval_backend") == "managed_keyword":
                 st.caption(
                     f"已发布 · 库：{hit.metadata.get('library_id', '')} · "
                     f"版本：{hit.metadata.get('version', '')} · "
                     f"审核人：{hit.metadata.get('reviewer', '')}"
                 )
+            st.caption("适用范围：" + hit.metadata.get("conditions", "未声明；不能据此认定现场条件满足"))
             st.write(hit.content[:420] + ("…" if len(hit.content) > 420 else ""))
             st.divider()
 
@@ -429,9 +573,12 @@ with st.container(border=True):
         "上传现场原图",
         type=["jpg", "jpeg", "png"],
         help="请上传手机或相机直接生成的图片，不要上传截图。当前版本最大支持 15 MB。",
+        key="scene_photo",
+        on_change=clear_photo_result,
     )
     if uploaded_file:
-        st.image(uploaded_file, caption="小栗正在观察这张现场图", width="stretch")
+        st.image(uploaded_file, caption="现场图已上传", width="stretch")
+        st.info("下一步：填写想拍出的效果，再点击「让小栗帮我配参数」开始分析。")
 
     device_name = st.radio(
         "拍摄设备",
@@ -589,15 +736,12 @@ with st.container(border=True):
 
         submitted = st.form_submit_button("让小栗帮我配参数", type="primary")
 
+    analysis_feedback = st.container()
+
 handheld = capture_mode == "手持"
 tripod = capture_mode == "三脚架"
 
-st.markdown('<div class="section-anchor" id="result"></div>', unsafe_allow_html=True)
-with st.container(border=True):
-    st.markdown(
-        '<div class="panel-heading result-heading"><span>拍摄方案</span><strong>照着设备界面操作</strong></div>',
-        unsafe_allow_html=True,
-    )
+with analysis_feedback:
     if submitted:
         st.session_state.pop("last_result", None)
         if uploaded_file is None:
@@ -629,8 +773,7 @@ with st.container(border=True):
                     focus_mode=focus_mode,
                     lighting_type=lighting_type,
                 )
-                with st.spinner("小栗正在识别场景、定位候选并查阅拍摄知识…"):
-                    result = pipeline.run(uploaded_file.getvalue(), user_request)
+                result = analyze_with_progress(uploaded_file.getvalue(), user_request)
                 st.session_state["last_result"] = result
             except ImageValidationError as exc:
                 st.error(str(exc))
@@ -647,9 +790,16 @@ with st.container(border=True):
             except Exception:  # noqa: BLE001 - 未预见的服务错误也不能回显敏感请求。
                 st.error("这次分析未能完成，请稍后重试或联系项目维护者检查本机运行记录。")
 
+st.markdown('<div class="section-anchor" id="result"></div>', unsafe_allow_html=True)
+with st.container(border=True):
+    st.markdown(
+        '<div class="panel-heading result-heading"><span>拍摄方案</span><strong>照着设备界面操作</strong></div>',
+        unsafe_allow_html=True,
+    )
     if "last_result" in st.session_state:
         render_result(st.session_state["last_result"])
     elif not submitted:
+        empty_title = "等待开始分析" if uploaded_file else "等待一张现场图"
         empty_hint = (
             "填写完成后，小栗会给出模式、镜头与曝光操作指导"
             if device_name == "手机"
@@ -659,7 +809,7 @@ with st.container(border=True):
             f"""
             <div class="empty-viewfinder">
               <div class="viewfinder-reticle" aria-hidden="true"></div>
-              <div class="empty-copy"><b>等待一张现场图</b><span>{empty_hint}</span></div>
+              <div class="empty-copy"><b>{empty_title}</b><span>{empty_hint}</span></div>
             </div>
             """,
             unsafe_allow_html=True,

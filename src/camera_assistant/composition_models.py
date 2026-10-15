@@ -7,6 +7,14 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from camera_assistant.candidate_models import (
+    CandidateOperation,
+    FieldCheck,
+    TrialAction,
+    candidate_list,
+)
+from camera_assistant.knowledge_citation_models import KnowledgeCitation, KnowledgeCitationReview
+
 
 class CompositionModel(BaseModel):
     model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
@@ -21,7 +29,31 @@ class CompositionProposal(CompositionModel):
     conditions: list[str] = Field(min_length=1)
     limitations: list[str] = Field(min_length=1)
     knowledge_ids: list[str] = Field(default_factory=list)
+    knowledge_citations: list[KnowledgeCitation | dict] = Field(default_factory=list)
+    knowledge_citation_review: KnowledgeCitationReview | None = None
     crop_bbox: list[float] | None = None
+    candidate_operations: list[CandidateOperation] = Field(default_factory=list)
+    reviewed_operations: list[CandidateOperation] = Field(default_factory=list)
+    action_evidence: list[str] = Field(default_factory=list)
+    trial_actions: list[TrialAction] = Field(default_factory=list)
+    field_checks: list[FieldCheck] = Field(default_factory=list)
+
+    @field_validator("knowledge_citations", mode="before")
+    @classmethod
+    def isolate_citation_metadata(cls, value: object) -> list[KnowledgeCitation | dict]:
+        from camera_assistant.services.knowledge_citations import citation_candidates
+
+        return citation_candidates(value)
+
+    @field_validator("candidate_operations", mode="before")
+    @classmethod
+    def isolate_candidate_metadata(cls, value: object) -> list[CandidateOperation]:
+        return candidate_list(value)
+
+    @field_validator("reviewed_operations", mode="before")
+    @classmethod
+    def ignore_model_review_claims(cls, value: object) -> list[CandidateOperation]:
+        return []
 
     @field_validator("goal")
     @classmethod

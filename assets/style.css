@@ -21,6 +21,15 @@
 
 html { scroll-behavior: smooth; }
 
+/* Streamlit scrolls this section rather than the document. Keep anchor targets
+   clear of the fixed navigation when moving between the form and results. */
+[data-testid="stMain"] {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scroll-padding-top: 65px;
+  scroll-padding-bottom: calc(7.3rem + env(safe-area-inset-bottom, 0px));
+}
+
 .stApp {
   background:
     radial-gradient(circle at 10% 3%, rgba(255,212,100,.35) 0 90px, transparent 92px),
@@ -31,11 +40,15 @@ html { scroll-behavior: smooth; }
 }
 
 .block-container {
+  /* stMain is a viewport-height flex column. Prevent this child from shrinking
+     to the viewport while its content overflows past the bottom padding. */
+  flex: 0 0 auto;
   width: 100%;
   max-width: 480px;
+  height: auto;
   min-height: 100vh;
   margin: 0 auto;
-  padding: .45rem 14px 7.3rem;
+  padding: .45rem 14px calc(7.3rem + env(safe-area-inset-bottom, 0px));
   background: #f7fbfd;
   box-shadow: 0 0 50px rgba(24,53,77,.16);
 }
@@ -393,7 +406,7 @@ details summary { min-height: 48px; }
   position: fixed;
   z-index: 50;
   left: 50%;
-  bottom: max(12px, env(safe-area-inset-bottom));
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: min(calc(100% - 28px), 440px);
@@ -437,6 +450,6 @@ details summary { min-height: 48px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html, [data-testid="stMain"] { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
 }

@@ -12,6 +12,7 @@ from camera_assistant.models import (
     UserRequest,
 )
 from camera_assistant.services import advisor, composition
+from camera_assistant.services.advice_safety import screen_parameter_advice
 from camera_assistant.services.camera_knowledge import CameraKnowledgeBase
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -145,11 +146,15 @@ def parameter_result(monkeypatch, *, risks, adjustments=None):
         "validation_notes": [],
     }
     monkeypatch.setattr(advisor, "request_json", lambda *args: model_answer)
-    return advisor.OpenAICompatibleRecommendationAdvisor(settings()).recommend(
+    candidate = advisor.OpenAICompatibleRecommendationAdvisor(settings()).recommend(
         UserRequest(intent="三脚架拍瀑布拉丝", focal_length_mm=24, max_aperture=5.6), scene(), [],
         CameraKnowledgeBase(ROOT / "knowledge/cameras/camera_profiles.yaml").resolve(
             "nikon_z50", "APS-C"),
     )
+    # These unit tests exercise legacy prose triage; production invokes this
+    # reviewer after the final validator has resolved all parameter values.
+    return screen_parameter_advice(candidate, UserRequest(
+        intent="三脚架拍瀑布拉丝", focal_length_mm=24, max_aperture=5.6))
 
 
 def test_removes_real_trial_wrong_underexposure_fix(monkeypatch):

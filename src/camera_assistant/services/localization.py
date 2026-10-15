@@ -24,7 +24,7 @@ from vision_lab_tool.detector_queries import canonical, label_components
 from vision_lab_tool.detectors.client import DetectorClient
 from vision_lab_tool.images import PreparedImage
 
-ASSOCIATION_RULE_VERSION = "production-photography-association-v2"
+ASSOCIATION_RULE_VERSION = "production-photography-association-v4"
 
 
 def _associate_photography(detection: DetectionResult, scene: SceneAnalysis,
@@ -80,12 +80,42 @@ def _associate_photography(detection: DetectionResult, scene: SceneAnalysis,
     required = {role["object_id"] for role in scope["object_roles"] if role["required"]}
     omitted_required = required - set(scene.main_subject_ids)
     scope["required_targets_missing_from_main_ids"] = sorted(omitted_required)
+    uncertainty = []
+    if scope["intent_parse_uncertainties"] or not scope["required_units"]:
+        uncertainty.append("intent_parse")
+    if any(unit["unit_id"] in scope["missing_semantic_units"] and not unit.get("unresolved")
+           for unit in scope["required_units"]) or omitted_required:
+        uncertainty.append("semantic_coverage")
+    if scope["all_instances_requested"]:
+        uncertainty.append("instance_count")
+    if scope["location_constraints"]:
+        uncertainty.append("location_identity")
+    required_associations = [item for item in associations if item["vlm_object_id"] in required]
+    if any(len(item["candidate_ids"]) > 1 for item in required_associations):
+        uncertainty.append("detector_multiple_candidates")
+    if any(not item["candidate_ids"] for item in required_associations):
+        uncertainty.append("detector_missing_geometry")
+    if any(len(ids) > 1 for ids in uses.values()):
+        uncertainty.append("shared_candidate")
+    if scope["entity_identity_requested"] or any(
+            sem.object_id in scene.main_subject_ids and sem.entity_kind not in {"physical", "unknown"}
+            for sem in scene.objects):
+        uncertainty.append("entity_identity")
+    if scene.subject_status != "selected":
+        uncertainty.append("vision_subject_uncertain")
+    scope["selection_uncertainty"] = uncertainty
     if detection.status not in {"success", "ok"}:
         state, reason = "abstained", "检测阶段未提供完整可靠坐标，保留候选并弃权"
     elif scene.subject_status in {"abstained", "ambiguous"}:
         state, reason = scene.subject_status, "视觉语义没有可靠主体选择，保留检测候选"
     elif scope["status"] != "known" or scope["missing_semantic_units"] or required - covered:
-        state, reason = "ambiguous", "用户必需目标、数量或层级尚未获得完整唯一证据"
+        state = "ambiguous"
+        reason = ("拍摄意图存在未解析要求；已保留原文，不能等同于检测多候选" if "intent_parse" in uncertainty
+                  else "同类目标存在多个检测候选；禁止按分数或面积强行选择" if
+                  "detector_multiple_candidates" in uncertainty else
+                  "用户位置或环境约束尚未核验，类别框不能证明对应身份" if
+                  "location_identity" in uncertainty else
+                  "用户必需目标、数量或层级尚未获得完整唯一证据")
     elif omitted_required:
         state, reason = "ambiguous", "VLM主体集合遗漏用户明确必需目标；完整保护集无法成立"
     elif any(len(ids) > 1 for ids in uses.values()):

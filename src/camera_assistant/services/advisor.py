@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from typing import Protocol
 
+from camera_assistant.candidate_models import candidate_list
 from camera_assistant.config import Settings
 from camera_assistant.models import (
     CameraProfile,
@@ -12,8 +13,13 @@ from camera_assistant.models import (
     SceneAnalysis,
     UserRequest,
 )
-from camera_assistant.services.advice_safety import screen_parameter_advice
 from camera_assistant.services.cloud import request_json
+from camera_assistant.services.environment import environment_advice_constraints
+from camera_assistant.services.knowledge_citations import (
+    citation_candidates,
+    knowledge_evidence_text,
+    model_output_schema,
+)
 from camera_assistant.services.phone_advisor import DemoPhoneRecommendationAdvisor
 
 
@@ -187,13 +193,17 @@ class OpenAICompatibleRecommendationAdvisor:
         knowledge_hits: list[KnowledgeHit],
         camera: CameraProfile | PhoneProfile,
     ) -> CameraRecommendation:
+        return self._recommend(request, scene, knowledge_hits, camera)
+
+    def correct_parameters(self, request, scene, knowledge_hits, camera, feedback):
+        return self._recommend(request, scene, knowledge_hits, camera, feedback)
+
+    def _recommend(self, request, scene, knowledge_hits, camera, feedback=""):
+        from camera_assistant.services.camera_knowledge import verified_exposure_capability
         if isinstance(camera, PhoneProfile):
             # 手机首版仅云端分析场景；使用本地受控指导，不支付无用的文本生成调用。
             return DemoPhoneRecommendationAdvisor().recommend(request, scene, camera)
-        evidence = "\n\n".join(
-            f"[资料 {index}: {hit.title}]\n{hit.content}"
-            for index, hit in enumerate(knowledge_hits, start=1)
-        )
+        evidence = knowledge_evidence_text(knowledge_hits)
         prompt = f"""
 你是面向摄影新手的相机参数助手。只依据提供的场景分析与检索资料提出建议。
 建议应是可执行的参数范围；无法从参考图判断现场绝对照度时必须说明。
@@ -204,25 +214,55 @@ class OpenAICompatibleRecommendationAdvisor:
 优先使用当前器材；焦距或镜头最近对焦距离未知时，不指定精确拍摄距离，也不强制更换镜头。
 提高ISO或正补偿通常提高记录亮度，降低ISO或负补偿不能作为解决欠曝的动作。
 S/Tv档只直接控制快门，光圈由相机测光决定；Av/A档只直接控制光圈。
+M档固定ISO时曝光补偿不是改变实际曝光的操作，过亮/过暗需调整快门、光圈或ISO。
+M档Auto ISO仅在目标机型的已核验能力允许时用补偿改变自动ISO；未知机型不猜。
+用户max_aperture是镜头能力，不是当前光圈；参考照片EXIF不是用户当前设备设置。
+ISO和快门不直接改变光学景深；电子快门/电子前帘减少内部震动不等于机身防抖或手持补偿。
+candidate_operations为候选操作：control使用aperture/shutter/iso/exposure_compensation/focus等；
+expected_effect使用depth_of_field/motion_blur/recorded_brightness/noise/focus_plane等，
+target明确操作对象，preconditions逐条列source、key和原文evidence，未知前提写unknown。
+字段仅供程序核对，不能把模型自报依据当事实证明。
 要同时固定光圈和快门需选择M档；所给曝光起点仍需测光、直方图和试拍，不保证现场曝光。
 无ND时若目标慢门导致过曝，提供缩短曝光/等待更暗光线的替代，不声称负补偿必定解决硬件极限。
-validation_notes和safety_notes必须为空数组；系统自行记录校验，不宣称已验证机身能力。
+系统自行记录校验，不返回程序内部审核字段或宣称已验证机身能力。
 shutter_speed仅写带秒单位的曝光时间或范围，例如1/125s或1-2秒；模式控制与试拍条件放reasons/risks/adjustments，不混入数值字段。
+knowledge_citations只引用本次JSON资料中的document_id和整数version，必须包含claim_path、claim、source_excerpt。
+引用原则时将资料body中的一个完整通用原理句逐字单独写入reasons的一项；claim与source_excerpt必须相同，claim_path使用reasons.0等实际下标。
+具体数值起点、现场照度、器材能力和眼镜反光几何效果不能借通用原理获得支持；它们应独立标明需要试拍或确认，不附该原则引用。
+资料中的conditions必须满足；applicability_requires是尚需现场核对的文字前提，检索命中不代表这些前提已满足。
+usage_scope=isolated_test的资料未经独立人审，只用于隔离软件测试；无适用依据时knowledge_citations返回空数组。
 只返回符合 JSON Schema 的 JSON，不输出 Markdown。
+
+{'参数纠正反馈（仅重新生成参数阶段）：' + feedback if feedback else ''}
+明确选择一个推荐模式和一个ISO控制方式，不写“自动或手动”。
+Av的快门、Tv的光圈以及P的光圈/快门是自动控制目标；给出可校验数值目标，
+并在操作步骤中要求半按快门检查实际值，无法满足时给出可执行的调整条件。
+建议值不是现场实测值。现场照度、实际镜头能力及未确认机身功能缺失时保留未知，不能猜测。
 
 用户请求：{request.model_dump_json()}
 场景分析：{scene.model_dump_json()}
+{environment_advice_constraints(scene)}
 目标相机能力：{camera.model_dump_json()}
+程序独立核验的曝光控制能力：{json.dumps(verified_exposure_capability(camera), ensure_ascii=False)}
 检索资料：
 {evidence}
 
 JSON Schema：
-{json.dumps(CameraRecommendation.model_json_schema(), ensure_ascii=False)}
+{json.dumps(model_output_schema(CameraRecommendation.model_json_schema()), ensure_ascii=False)}
 """.strip()
         payload = {
             "model": self.settings.text_model,
             "temperature": 0.2,
             "messages": [{"role": "user", "content": prompt}],
         }
-        recommendation = CameraRecommendation.model_validate(request_json(self.settings, payload))
-        return screen_parameter_advice(recommendation, request)
+        answer = request_json(self.settings, payload)
+        answer.update({
+            "validation_notes": [], "safety_notes": [], "reviewed_operations": [],
+            "exposure_state": None,
+        })
+        if "candidate_operations" in answer:
+            answer["candidate_operations"] = candidate_list(answer["candidate_operations"])
+        answer["knowledge_citations"] = citation_candidates(answer.get("knowledge_citations"))
+        recommendation = CameraRecommendation.model_validate(answer)
+        # Final authority is the validator after numeric and joint exposure correction.
+        return recommendation

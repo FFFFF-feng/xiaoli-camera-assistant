@@ -272,6 +272,11 @@ def test_source_version_review_and_hash_are_preserved(
         "reviewer": "测试审核员",
         "content_hash": revision.content_hash,
         "retrieval_backend": "managed_keyword",
+        "body": revision.record.content,
+        "conditions": "{}",
+        "requires": "[]",
+        "numeric_defaults": "null",
+        "usage_scope": "published_reference",
     }
 
 
