@@ -232,6 +232,14 @@ def valid_port(value: str) -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
+    arguments = list(sys.argv[1:] if argv is None else argv)
+    if "--web" in arguments:
+        arguments.remove("--web")
+        if "--legacy" in arguments:
+            arguments.remove("--legacy")
+            argv = arguments
+        else:
+            return subprocess.call([sys.executable, "-u", str(ROOT / "scripts/launch_web.py"), *arguments])
     parser = argparse.ArgumentParser(description="启动摄影助手与知识库导入页面")
     parser.add_argument("--no-browser", action="store_true", help="仅启动服务，不打开浏览器")
     parser.add_argument("--check", action="store_true", help="仅检查依赖，不启动服务")

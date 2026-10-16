@@ -62,3 +62,18 @@ test('退出手填不发送残留名称，空名称及控制字符被拒绝', ()
     assert.throws(() => deviceSelection('phone', 'iphone15', true, name));
   }
 });
+
+test('跨品牌相同短型号只展示候选，不擅自选第一个', () => {
+  const ambiguous = [
+    { profile_id: 'a', display_name: 'Brand A X1', aliases: ['X1'] },
+    { profile_id: 'b', display_name: 'Brand B X1', aliases: ['X1'] },
+  ];
+  assert.equal(exactDeviceMatch(ambiguous, 'X1'), undefined);
+  assert.equal(searchDevices(ambiguous, 'X1').length, 2);
+  assert.equal(exactDeviceMatch(ambiguous, 'Brand A X1').profile_id, 'a');
+});
+
+test('基础目录不能据未核验卡口提供镜头或虚构裁切系数', () => {
+  assert.deepEqual(compatibleLenses({ capability_level: 'catalog', mount: 'canon_ef', sensor_format: 'APS-C' }, lenses), []);
+  assert.equal(linkedCameraSettings({ crop_factor: null }, lenses[0], 55).equivalent_focal_length_mm, null);
+});

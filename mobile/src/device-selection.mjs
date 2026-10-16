@@ -10,6 +10,36 @@ function names(profile) {
     .filter(Boolean).map(normalizeModelName);
 }
 
+/** 构建当前目录快照；在 Vue computed 中调用可跟踪型号与别名的原地更新。 @param {DeviceProfile[]} profiles */
+export function createDeviceSearchIndex(profiles) {
+  const entries = profiles.map(profile => ({ profile, keys: [...new Set(names(profile))] }));
+  /** @type {Map<string, DeviceProfile[]>} */
+  const exactMatches = new Map();
+  for (const { profile, keys } of entries) {
+    for (const key of keys) {
+      const matches = exactMatches.get(key);
+      if (matches) matches.push(profile);
+      else exactMatches.set(key, [profile]);
+    }
+  }
+  return {
+    /** @param {string} query */
+    exact(query) {
+      const key = normalizeModelName(query);
+      const matches = key ? exactMatches.get(key) : undefined;
+      return matches?.length === 1 ? matches[0] : undefined;
+    },
+    /** @param {string} query */
+    search(query) {
+      const key = normalizeModelName(query);
+      if (!key) return profiles;
+      const exact = exactMatches.get(key);
+      if (exact?.length) return exact.slice();
+      return entries.filter(({ keys }) => keys.some(name => name.includes(key))).map(({ profile }) => profile);
+    },
+  };
+}
+
 /** @param {DeviceProfile[]} profiles */
 export function exactDeviceMatch(profiles, query) {
   const key = normalizeModelName(query);
@@ -45,7 +75,7 @@ export const mountNames = {
 };
 export function sensorLabel(value) { return value === 'APS-C' ? 'APS-C（半画幅）' : (value || '不清楚'); }
 
-/** @param {{mount?: string, sensor_format?: string} | undefined} camera
+/** @param {{mount?: string, sensor_format?: string, capability_level?: string} | undefined} camera
  * @param {import('./types').CameraLensProfile[]} lenses */
 export function compatibleLenses(camera, lenses) {
   if (camera?.capability_level === 'catalog') return [];

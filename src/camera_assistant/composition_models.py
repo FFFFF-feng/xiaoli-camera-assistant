@@ -12,6 +12,21 @@ class CompositionModel(BaseModel):
     model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
 
 
+def validate_target_paths(value, outline: bool):
+    paths = [value] if outline else value
+    if not isinstance(paths, list) or (not outline and len(paths) > 10):
+        raise ValueError("几何图形必须为点序列")
+    for points in paths:
+        if not isinstance(points, list) or not (3 if outline else 2) <= len(points) <= 32:
+            raise ValueError("线条长度无效")
+        for point in points:
+            if (not isinstance(point, list) or len(point) != 2
+                    or any(isinstance(n, bool) or not isinstance(n, (int, float))
+                           or not math.isfinite(n) or not 0 <= n <= 1 for n in point)):
+                raise ValueError("轮廓点须为0到1的数值坐标")
+    return value
+
+
 class SketchElement(CompositionModel):
     kind: Literal["person", "tree", "pet", "building", "mountain", "flower", "object"]
     label: str = Field(min_length=1, max_length=18)
@@ -86,6 +101,69 @@ class FramingPlan(CompositionModel):
         return value.strip()
 
 
+class TargetLayer(CompositionModel):
+    label: str = Field(min_length=1, max_length=30)
+    kind: Literal["person", "tree", "pet", "building", "mountain", "flower", "object", "background"]
+    role: Literal["main", "foreground", "background", "prop"]
+    depth: int = Field(ge=0, le=9)
+    bbox: list[float]
+    color: Literal["slate", "blue", "ochre", "sage", "rose"] = "slate"
+    outline: list[list[float]] = Field(min_length=3, max_length=32)
+    details: list[list[list[float]]] = Field(default_factory=list, max_length=10)
+    identity_features: list[str] = Field(default_factory=list, max_length=6)
+    evidence_photo_ids: list[Literal["photo1", "photo2", "photo3", "photo4", "photo5", "photo6"]] = Field(min_length=1, max_length=6)
+    certainty: Literal["observed", "approximate"] = "observed"
+
+    @field_validator("bbox", mode="before")
+    @classmethod
+    def valid_box(cls, value):
+        if (not isinstance(value, list) or len(value) != 4 or any(
+            isinstance(n, bool) or not isinstance(n, (int, float))
+            or not math.isfinite(n) or not 0 <= n <= 1 for n in value
+        ) or value[2]-value[0] < .005 or value[3]-value[1] < .005):
+            raise ValueError("目标对象位置需要有效的0到1包围盒")
+        return value
+
+    @field_validator("outline", "details", mode="before")
+    @classmethod
+    def numeric_geometry(cls, value, info):
+        return validate_target_paths(value, info.field_name == "outline")
+
+    @model_validator(mode="after")
+    def meaningful_outline(self):
+        if self.kind == "background" and self.role != "background":
+            raise ValueError("背景色块不能代替主体或前景")
+        area = abs(sum(a[0]*b[1] - b[0]*a[1]
+                       for a, b in zip(self.outline, self.outline[1:] + self.outline[:1]))) / 2
+        if area < .01:
+            raise ValueError("主体轮廓不能退化为一条线")
+        return self
+
+
+class CompositionChange(CompositionModel):
+    problem: str = Field(min_length=1, max_length=140)
+    adjustment: str = Field(min_length=1, max_length=140)
+    benefit: str = Field(min_length=1, max_length=140)
+
+
+class TargetBoard(CompositionModel):
+    aspect: Literal["portrait", "landscape", "square"]
+    reference_photo_id: Literal["photo1", "photo2", "photo3", "photo4", "photo5", "photo6"]
+    intent: str = Field(min_length=1, max_length=100)
+    narration: str = Field(default="", max_length=160)
+    distance_relation: Literal["closer", "farther", "similar", "unknown"]
+    distance_instruction: str = Field(min_length=1, max_length=160)
+    layers: list[TargetLayer] = Field(min_length=1, max_length=6)
+    changes: list[CompositionChange] = Field(min_length=1, max_length=3)
+    limitations: list[str] = Field(min_length=1, max_length=5)
+
+    @model_validator(mode="after")
+    def contains_main(self):
+        if not any(layer.role == "main" for layer in self.layers):
+            raise ValueError("推荐分镜必须包含主体")
+        return self
+
+
 class CompositionProposal(CompositionModel):
     action_type: Literal["crop", "camera_position", "focal_length", "reshoot"]
     goal: str = Field(min_length=1)
@@ -98,6 +176,17 @@ class CompositionProposal(CompositionModel):
     crop_bbox: list[float] | None = None
     sketch: CompositionSketch | None = None
     framing_plan: FramingPlan | None = None
+    storyboard: TargetBoard | None = None
+
+    @field_validator("storyboard", mode="before")
+    @classmethod
+    def optional_board(cls, value):
+        if value is None:
+            return None
+        try:
+            return TargetBoard.model_validate(value)
+        except (ValidationError, ValueError, TypeError):
+            return None
 
     @field_validator("framing_plan", mode="before")
     @classmethod

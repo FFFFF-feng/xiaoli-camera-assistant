@@ -145,8 +145,9 @@ def test_parallel_and_serial_keep_identical_validated_line_art(
 
     assert parallel.model_dump(mode="json") == serial.model_dump(mode="json")
     assert_complete_line_art(parallel.model_dump(mode="json"), model_advice)
-    assert [event["kind"] for event in partials] == ["scene", "parameters"]
-    assert partials[1]["value"] == parallel.recommendation
+    assert partials[0]["kind"] == "scene"
+    assert {event["kind"] for event in partials} == {"scene", "parameters", "composition"}
+    assert next(event["value"] for event in partials if event["kind"] == "parameters") == parallel.recommendation
     assert parallel.recommendation.shutter_speed == "1/500s 或更快"
     assert parallel.recommendation.aperture == "f/4（镜头最大光圈）"
     assert parallel.recommendation.validation_notes
@@ -160,21 +161,27 @@ def test_stream_publishes_validated_snapshots_and_only_final_line_art(
     events = decoded(response)
     assert response.headers["content-type"].startswith("application/x-ndjson")
     partials = [event for event in events if event["type"] == "partial"]
-    assert [event["kind"] for event in partials] == ["scene", "parameters"]
+    assert partials[0]["kind"] == "scene"
+    assert {event["kind"] for event in partials} == {"scene", "parameters", "composition"}
     assert events[-1]["type"] == "result"
     assert sum(event["type"] == "result" for event in events) == 1
     result = events[-1]["result"]
     assert partials[0]["value"] == result["scene"]
-    assert partials[1]["value"] == result["recommendation"]
-    assert partials[1]["value"]["shutter_speed"] == "1/500s 或更快"
-    assert partials[1]["value"]["aperture"] == "f/4（镜头最大光圈）"
-    assert partials[1]["value"]["validation_notes"]
-    # Partial events never provide drawing instructions. Complete validated
-    # composition remains available on the final result for existing renderers.
+    parameters = next(event["value"] for event in partials if event["kind"] == "parameters")
+    assert parameters == result["recommendation"]
+    assert parameters["shutter_speed"] == "1/500s 或更快"
+    assert parameters["aperture"] == "f/4（镜头最大光圈）"
+    assert parameters["validation_notes"]
+    layout = next(event["value"] for event in partials if event["kind"] == "composition")
+    assert layout["proposals"][0]["framing_plan"] == result["composition"]["proposals"][0]["framing_plan"]
+    assert layout["proposals"][0]["sketch"] is None
+    assert layout["proposals"][0]["storyboard"] is None
+    assert layout["proposals"][0]["crop_bbox"] is None
+    # Text may arrive early, while geometry remains exclusive to the final result.
     for event in events[:-1]:
         serialized = json.dumps(event, ensure_ascii=False)
         assert all(field not in serialized for field in (
-            '"sketch"', '"framing_plan"', '"source_bbox"', '"identity_features"',
+            '"source_bbox"', '"identity_features"',
         ))
     assert "未校验的模型" not in response.text
     assert "1/30s" not in response.text and "f/1.8" not in response.text
@@ -195,7 +202,8 @@ def test_default_and_explicit_json_preserve_the_same_line_art_payload(
     assert response.status_code == 200, response.text
     assert response.headers["content-type"].startswith("application/json")
     envelope = response.json()
-    assert set(envelope) == {"request_id", "analysis_mode", "image_provenance", "result"}
+    assert {"request_id", "analysis_mode", "image_provenance", "result"} <= envelope.keys()
+    assert envelope["scene_photo_count"] == 1 and envelope["timings"]
     assert envelope["analysis_mode"] == "cloud"
     assert envelope["result"] == expected
     assert_complete_line_art(envelope["result"], model_advice)

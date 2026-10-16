@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from pathlib import Path
 import json
 from collections import defaultdict
+from pathlib import Path
 
 import yaml
 

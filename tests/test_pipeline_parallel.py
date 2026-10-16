@@ -20,7 +20,8 @@ from test_real_pipeline import (
 from camera_assistant.knowledge.retriever import ManagedKnowledgeRetriever
 from camera_assistant.knowledge.store import KnowledgeStore
 from camera_assistant.models import CameraRecommendation, SceneAnalysis, UserRequest
-from camera_assistant.services import cloud
+from camera_assistant.services import cloud, timing
+from camera_assistant.services import composition as composition_service
 
 settings = fixtures.settings
 image_content = fixtures.image_content
@@ -341,3 +342,107 @@ def test_parallel_flag_without_composition_preserves_parameter_only_path(
     assert result.composition is None
     assert result.recommendation.shutter_speed == "1/800s"
     assert [event["kind"] for event in partials] == ["scene", "parameters"]
+
+
+def test_validated_composition_text_is_published_before_target_drawing_finishes(
+    settings, image_content, user_request, monkeypatch,
+):
+    from test_composition_advisor import proposal, response, target_board
+
+    layout_published = Event()
+    pipeline = make_pipeline(settings, retriever(settings), localization())
+    pipeline.composition_advisor = composition_service.OpenAICompatibleCompositionAdvisor(settings)
+    monkeypatch.setattr(composition_service, "request_json", lambda *args:
+        response([{**proposal(), "storyboard": target_board()}]))
+    partials = []
+
+    def drawing(config, advice, inspection):
+        assert layout_published.wait(1), "validated layout text was not published before drawing"
+        assert advice.proposals[0].storyboard is not None
+        return advice
+
+    monkeypatch.setattr(composition_service, "refine_target_drawings", drawing)
+
+    def partial(event):
+        partials.append(event)
+        if event["kind"] == "composition":
+            value = event["value"]
+            assert value.proposals[0].goal == "减少边缘干扰"
+            assert value.proposals[0].storyboard is None
+            assert value.proposals[0].sketch is None
+            assert value.proposals[0].crop_bbox is None
+            value.proposals[0].goal = "consumer edit"
+            layout_published.set()
+
+    result = pipeline.run(
+        image_content, user_request, parallel_advice=True, on_partial=partial,
+    )
+
+    assert layout_published.is_set()
+    assert {event["kind"] for event in partials} == {"scene", "parameters", "composition"}
+    assert result.composition.proposals[0].goal == "减少边缘干扰"
+    assert result.composition.proposals[0].storyboard is not None
+
+
+@pytest.mark.parametrize("parallel", [False, True])
+def test_stage_timings_cover_services_and_propagate_into_advice_workers(
+    settings, image_content, user_request, monkeypatch, parallel,
+):
+    pipeline = make_pipeline(settings, retriever(settings), localization())
+    measured = []
+    for service, method, stage in (
+        (pipeline.image_analyzer, "analyze", "image_preprocessing"),
+        (pipeline.vision_analyzer, "analyze", "vision"),
+        (pipeline.localizer, "localize", "localization"),
+        (pipeline.composition_advisor, "recommend", "composition"),
+        (pipeline.advisor, "recommend", "parameters"),
+        (pipeline.validator, "validate", "parameter_validation"),
+    ):
+        original = getattr(service, method)
+
+        def observed(*args, _original=original, _stage=stage):
+            assert timing.current_stage() == _stage
+            return _original(*args)
+
+        monkeypatch.setattr(service, method, observed)
+
+    search = pipeline.retriever.search
+
+    def observed_search(*args, **kwargs):
+        expected = ("composition_retrieval" if "composition" in kwargs["libraries"]
+                    else "parameter_retrieval")
+        assert timing.current_stage() == expected
+        return search(*args, **kwargs)
+
+    monkeypatch.setattr(pipeline.retriever, "search", observed_search)
+    with timing.observe_timings(measured.append):
+        result = pipeline.run(image_content, user_request, parallel_advice=parallel)
+
+    assert result.recommendation.shutter_speed == "1/800s"
+    assert {event["stage"] for event in measured} == {
+        "image_preprocessing", "vision", "localization", "parameter_retrieval",
+        "composition_retrieval", "composition", "parameters", "parameter_validation", "total",
+    }
+    assert measured[-1]["stage"] == "total"
+    assert all(event["status"] == "complete" for event in measured)
+    assert all(event["duration_seconds"] >= 0 for event in measured)
+    assert timing.current_stage() is None
+
+
+def test_parameter_failure_is_measured_without_marking_fallback_result_as_failed(
+    settings, image_content, user_request,
+):
+    pipeline = make_pipeline(
+        settings, retriever(settings), localization(),
+        FakeParameterAdvisor(ValueError("synthetic parameter failure")),
+    )
+    measured = []
+
+    with timing.observe_timings(measured.append):
+        result = pipeline.run(image_content, user_request, parallel_advice=True)
+
+    assert result.recommendation.confidence == 0
+    statuses = {event["stage"]: event["status"] for event in measured}
+    assert statuses["parameters"] == "failed"
+    assert "parameter_validation" not in statuses
+    assert statuses["composition"] == statuses["total"] == "complete"

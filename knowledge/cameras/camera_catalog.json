@@ -2,6 +2,8 @@
   "schema_version": 1,
   "kind": "camera_directory",
   "release_date": "2026-10-15",
+  "license": "CC-BY-SA-3.0",
+  "license_notice": "catalog_licenses/NOTICE.txt",
   "catalog_only_count": 4331,
   "profiles": [
     {

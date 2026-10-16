@@ -3,6 +3,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { Camera } from '@capacitor/camera';
 import { Capacitor } from '@capacitor/core';
 import mascot from '../../assets/camera-red-panda.png';
+import { selectSceneFiles } from './scene-files.mjs';
 import { normalizeBaseUrl, safeSourceUrl } from './connection.mjs';
 import { readAnalysis } from './analysis-stream.mjs';
 import type { Analysis, CameraLensProfile, CameraProfile, PhoneProfile } from './types';
@@ -33,6 +34,9 @@ const token = ref(saved.token || '');
 const connected = ref(false);
 const mode = ref<'cloud' | 'demo'>('demo');
 const maxImageMb = ref(15);
+const maxSceneImages = ref(6), maxSceneMb = ref(30);
+const scenePhotos = ref<{id:string;file:File;url:string;source:string}[]>([]);
+const resultPhotos = ref<{id:string;url:string}[]>([]);
 const busy = ref(false);
 const elapsed = ref(0);
 const statusStartedAt = ref(0);
@@ -43,6 +47,15 @@ const received = ref<Record<string, number>>({});
 const receivedChars = computed(() => Object.values(received.value).reduce((sum, n) => sum + n, 0));
 const partialScene = ref<Analysis['result']['scene'] | null>(null);
 const partialParameters = ref<Analysis['result']['recommendation'] | null>(null);
+const partialComposition = ref<Analysis['result']['composition'] | null>(null);
+const phaseTimings = ref<NonNullable<Analysis['timings']>>([]);
+const timingNames: Record<string, string> = {
+  upload: '照片上传', upload_validation: '照片检查', queue: '等待处理',
+  image_preprocessing: '照片准备', vision: '画面识别', localization: '主体定位',
+  parameter_retrieval: '拍摄资料检索', composition_retrieval: '构图资料检索',
+  composition_layout: '构图方案', target_drawing: '推荐图线条', composition: '完整构图',
+  parameters: '拍摄建议', parameter_validation: '参数校验', total: '分析全程',
+};
 const progressStage = ref(0);
 const connecting = ref(false);
 const error = ref('');
@@ -137,6 +150,7 @@ async function connect() {
     if (!cameras.value.some(p => p.profile_id === cameraId.value)) cameraId.value = 'generic_unknown';
     if (!phones.value.some(p => p.profile_id === phoneId.value)) phoneId.value = 'generic_phone';
     mode.value = health.analysis_mode; maxImageMb.value = health.max_image_mb;
+    maxSceneImages.value = health.max_scene_images || 1; maxSceneMb.value = health.max_scene_mb || health.max_image_mb;
     connected.value = true;
     if (!webHosted.value) localStorage.setItem(storedKey, JSON.stringify({ baseUrl: normalizeBaseUrl(baseUrl.value), token: token.value.trim() }));
     accessCode.value = '';
@@ -158,7 +172,8 @@ onMounted(async () => {
     try {
       const [health, devices] = await Promise.all([api('/health'), api('/api/v1/devices')]);
       cameras.value = devices.cameras; phones.value = devices.phones; cameraLenses.value = devices.camera_lenses;
-      mode.value = health.analysis_mode; maxImageMb.value = health.max_image_mb; connected.value = true;
+      mode.value = health.analysis_mode; maxImageMb.value = health.max_image_mb;
+      maxSceneImages.value = health.max_scene_images || 1; maxSceneMb.value = health.max_scene_mb || health.max_image_mb; connected.value = true;
     } catch { error.value = ''; page.value = 'connect'; }
   } catch { /* A standalone Android/LAN client has no web gateway. */ }
 });
@@ -169,29 +184,45 @@ function readableError(e: unknown, fallback: string): string {
   return e instanceof Error ? e.message : fallback;
 }
 
-function setPhoto(file: File, source: string) {
+function chooseMain(id: string) {
   if (busy.value) return;
-  error.value = '';
-  if (!/\.(jpe?g|png)$/i.test(file.name) || !['image/jpeg', 'image/png'].includes(file.type)) {
-    error.value = '请选择 JPEG / PNG。HEIC、RAW 请先在系统相册中导出。'; return;
-  }
-  if (file.size > maxImageMb.value * 1024 * 1024) {
-    error.value = `照片超过 ${maxImageMb.value} MB，请换一张。`; return;
-  }
-  if (preview.value) URL.revokeObjectURL(preview.value);
-  photo.value = file; preview.value = URL.createObjectURL(file); provenance.value = source;
-  consent.value = false; analysis.value = null;
+  const selected=scenePhotos.value.find(item=>item.id===id);
+  if (selected) scenePhotos.value=[selected,...scenePhotos.value.filter(item=>item.id!==id)];
+  photo.value=selected?.file || null; preview.value=selected?.url || ''; provenance.value=selected?.source || 'original_upload';
+  consent.value=false; analysis.value=null; resultPhotos.value=[];
+}
+function addPhotos(files: File[], source: string) {
+  if (busy.value) return;
+  error.value='';
+  try {
+    const added=selectSceneFiles(scenePhotos.value.map(item=>item.file),files,maxSceneImages.value,maxImageMb.value,maxSceneMb.value);
+    const hadMain=photo.value;
+    scenePhotos.value.push(...added.map(file=>({id:crypto.randomUUID(),file,url:URL.createObjectURL(file),source})));
+    if (!hadMain && scenePhotos.value[0]) chooseMain(scenePhotos.value[0].id);
+    if (added.length) { consent.value=false; analysis.value=null; resultPhotos.value=[]; }
+  } catch(e) { error.value=readableError(e,'选图失败，请重试。'); }
+}
+function setPhoto(file: File, source: string) { addPhotos([file],source); }
+function removePhoto(id: string) {
+  if (busy.value) return;
+  const selected=scenePhotos.value.find(item=>item.id===id);
+  if (!selected) return;
+  const wasMain=selected.file===photo.value;
+  URL.revokeObjectURL(selected.url); scenePhotos.value=scenePhotos.value.filter(item=>item.id!==id);
+  if(wasMain) chooseMain(scenePhotos.value[0]?.id || '');
+  consent.value=false; analysis.value=null; resultPhotos.value=[];
+}
+function clearScene() {
+  scenePhotos.value.forEach(item=>URL.revokeObjectURL(item.url));scenePhotos.value=[];
+  photo.value=null; preview.value=''; resultPhotos.value=[];
 }
 function fileChosen(event: Event, source: string) {
-  const input = event.target as HTMLInputElement;
-  const file = input.files?.[0];
-  if (file) setPhoto(file, source);
-  input.value = '';
+  const input=event.target as HTMLInputElement;
+  addPhotos(Array.from(input.files || []),source); input.value='';
 }
 function photoDropped(event: DragEvent) {
   if (busy.value) return;
-  const file = event.dataTransfer?.files[0];
-  if (file) setPhoto(file, 'original_upload');
+  addPhotos(Array.from(event.dataTransfer?.files || []),'original_upload');
 }
 async function takePhoto() {
   if (!Capacitor.isNativePlatform()) { cameraInput.value?.click(); return; }
@@ -225,6 +256,7 @@ async function analyze() {
   if (!consent.value) { error.value = '请先勾选照片上传与分析说明。'; return; }
   busy.value = true;
   analysis.value = null; partialScene.value = null; partialParameters.value = null;
+  partialComposition.value = null; phaseTimings.value = [];
   received.value = {}; progressLog.value = []; progressStage.value = 0;
   progressMessage.value = '正在上传照片…'; elapsed.value = 0; statusStartedAt.value = 0;
   const started = performance.now();
@@ -233,7 +265,10 @@ async function analyze() {
   const controller = new AbortController(); activeController = controller;
   const timer = setTimeout(() => controller.abort(), 540000);
   try {
+    const ordered=[scenePhotos.value.find(item=>item.file===photo.value)!,...scenePhotos.value.filter(item=>item.file!==photo.value)];
+    selectSceneFiles([],ordered.map(item=>item.file),maxSceneImages.value,maxImageMb.value,maxSceneMb.value);
     const form = new FormData();
+    ordered.slice(1).forEach(item=>form.append('reference_files',item.file));
     form.append('file', photo.value); form.append('consent', 'true'); form.append('image_provenance', provenance.value);
     form.append('expected_analysis_mode', mode.value);
     form.append('stream_events', 'true');
@@ -251,7 +286,7 @@ async function analyze() {
       phone_lens_id: phoneManual.value ? 'main' : lensId.value,
       phone_pro_controls_confirmed: !phoneManual.value && proConfirmed.value,
     }));
-    analysis.value = await api('/api/v1/analyze', { method: 'POST', body: form, signal: controller.signal }, event => {
+    analysis.value = await api(ordered.length > 1 ? '/api/v1/analyze-scene' : '/api/v1/analyze', { method: 'POST', body: form, signal: controller.signal }, event => {
       if (event.type === 'progress' && typeof event.message === 'string') {
         if (progressMessage.value !== event.message) statusStartedAt.value = (performance.now() - started) / 1000;
         progressMessage.value = event.message;
@@ -262,14 +297,23 @@ async function analyze() {
         received.value[event.request_id] = event.chars;
       } else if (event.type === 'partial') {
         if (event.kind === 'scene') partialScene.value = event.value;
+        if (event.kind === 'composition') {
+          partialComposition.value = event.value;
+          progressMessage.value = '构图文字已完成，正在绘制推荐画面…';
+          statusStartedAt.value = (performance.now() - started) / 1000;
+        }
         if (event.kind === 'parameters') {
           partialParameters.value = event.value;
           progressMessage.value = '拍摄参数已校验，正在整理完整方案…';
           statusStartedAt.value = (performance.now() - started) / 1000;
         }
+      } else if (event.type === 'timing' && timingNames[event.stage]
+                 && Number.isFinite(event.duration_seconds) && event.duration_seconds >= 0) {
+        phaseTimings.value.push(event);
       } else if (event.type === 'result') { progressStage.value = 4; }
     });
     resultIntent.value = submittedIntent;
+    resultPhotos.value=ordered.map((item,index)=>({id:`photo${index+1}`,url:item.url}));
     try {
       const item = { id: analysis.value!.request_id, date: new Date().toISOString(), intent: submittedIntent, analysis: analysis.value! };
       history.value = [item, ...history.value.filter(v => v.id !== item.id)].slice(0, 10);
@@ -292,8 +336,7 @@ async function clearConnection() {
 }
 function openHistory(item: SavedAdvice) {
   if (busy.value) return;
-  if (preview.value) URL.revokeObjectURL(preview.value);
-  preview.value = ''; photo.value = null; consent.value = false;
+  clearScene(); consent.value = false;
   intent.value = item.intent; resultIntent.value = item.intent; analysis.value = item.analysis; page.value = 'result';
 }
 function clearHistory() { history.value = []; localStorage.removeItem(archiveKey); }
@@ -310,7 +353,7 @@ function exportAdvice() {
   setTimeout(() => URL.revokeObjectURL(url), 1000); exportMessage.value = '拍摄方案已导出。';
 }
 function navigate(value: 'shoot' | 'result' | 'history' | 'connect') { page.value = value; error.value = ''; exportMessage.value = ''; scrollToTop(); }
-onBeforeUnmount(() => { if (preview.value) URL.revokeObjectURL(preview.value); activeController?.abort(); });
+onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
 </script>
 
 <template>
@@ -322,16 +365,23 @@ onBeforeUnmount(() => { if (preview.value) URL.revokeObjectURL(preview.value); a
     <main ref="mainContent">
       <div v-if="error" class="notice error" role="alert">{{ error }}</div>
       <section v-if="page === 'shoot'" aria-labelledby="shoot-title">
-        <div class="intro"><h1 id="shoot-title">把眼前，拍成心里的画面。</h1><p>从一张现场照片开始，找到主体、留白与光的关系。</p></div>
+        <div class="intro"><h1 id="shoot-title">把眼前，拍成心里的画面。</h1><p>上传同一场景的全景、不同角度和细节，比较主体、前景与取景方式。</p></div>
         <div class="shoot-layout"><div class="shoot-visual"><div class="viewfinder" :class="{ 'has-photo': photo }" @dragover.prevent @drop.prevent="photoDropped">
           <img v-if="photo" :src="preview" alt="已选择的现场照片" class="photo-preview" />
-          <div v-else class="empty-photo"><img :src="mascot" alt="抱着相机的小熊猫小栗" /><strong>点击这里，选择现场照片</strong><span>也可以把 JPEG / PNG 拖到这里</span></div>
+          <div v-else class="empty-photo"><img :src="mascot" alt="抱着相机的小熊猫小栗" /><strong>点击这里，选择现场照片</strong><span>也可一次拖入多张同一场景照片</span></div>
           <span class="frame-corner top-left"></span><span class="frame-corner top-right"></span><span class="frame-corner bottom-left"></span><span class="frame-corner bottom-right"></span>
-          <input class="photo-select-input" type="file" accept="image/jpeg,image/png,.jpg,.jpeg,.png" aria-label="点击取景框选择现场照片" aria-describedby="photo-help" :disabled="busy" @change="fileChosen($event, 'original_upload')" />
+          <input class="photo-select-input" type="file" multiple accept="image/jpeg,image/png,.jpg,.jpeg,.png" aria-label="点击取景框选择现场照片" aria-describedby="photo-help" :disabled="busy" @change="fileChosen($event, 'original_upload')" />
         </div>
-        <div class="photo-actions"><button class="camera-button" type="button" :disabled="busy" @click="takePhoto">◎ 拍一张</button><label class="secondary file-action" :class="{ disabled: busy }"><span>{{ photo ? '换一张照片' : '从相册选择' }}</span><input class="photo-select-input" type="file" accept="image/jpeg,image/png,.jpg,.jpeg,.png" aria-label="从相册选择现场照片" aria-describedby="photo-help" :disabled="busy" @change="fileChosen($event, 'original_upload')" /></label></div>
+        <div class="photo-actions"><button class="camera-button" type="button" :disabled="busy" @click="takePhoto">◎ 拍一张</button><label class="secondary file-action" :class="{ disabled: busy }"><span>{{ photo ? '补充场景照片' : '从相册选择' }}</span><input class="photo-select-input" type="file" multiple accept="image/jpeg,image/png,.jpg,.jpeg,.png" aria-label="从相册选择现场照片" aria-describedby="photo-help" :disabled="busy" @change="fileChosen($event, 'original_upload')" /></label></div>
         <input ref="cameraInput" class="file-input" type="file" accept="image/jpeg,image/png" capture="environment" aria-label="使用系统相机" @change="fileChosen($event, 'device_camera')" />
-        <p id="photo-help" class="photo-caption" aria-live="polite">{{ photo ? `已选择：${photo.name} · ${(photo.size / 1024 / 1024).toFixed(1)} MB` : `JPEG / PNG，最大 ${maxImageMb} MB。选图后会在上方预览。` }}</p>
+        <p id="photo-help" class="photo-caption" aria-live="polite">同一场景 {{ scenePhotos.length }} / {{ maxSceneImages }} 张；每张最大 {{ maxImageMb }} MB，合计 {{ maxSceneMb }} MB。选图后不会自动上传。</p>
+        <div v-if="scenePhotos.length" class="scene-photo-strip" aria-label="本组场景照片">
+          <article v-for="(item,index) in scenePhotos" :key="item.id" :class="{'is-main':item.file===photo}">
+            <button type="button" :disabled="busy" :aria-label="`将第${index+1}张设为主图`" :aria-pressed="item.file===photo" @click="chooseMain(item.id)"><img :src="item.url" :alt="`场景照片${index+1}`"/><span>{{ item.file===photo ? '主图 · 想优化的画面' : `参考图 ${index+1}` }}</span></button>
+            <button type="button" class="remove-scene-photo" :disabled="busy" :aria-label="`移除第${index+1}张照片`" @click="removePhoto(item.id)">×</button>
+          </article>
+        </div>
+        <p v-if="scenePhotos.length" class="helper">点击缩略图选择主图。补充左右视角、远景或主体细节；多图有助于比较环境，但不能直接测得拍摄距离。</p>
         </div><form class="shoot-form" @submit.prevent="analyze">
           <fieldset :disabled="busy">
             <label class="field-label" for="intent">想拍出什么感觉？</label>
@@ -348,11 +398,26 @@ onBeforeUnmount(() => { if (preview.value) URL.revokeObjectURL(preview.value); a
             </template>
             <template v-else>
               <DevicePicker :profiles="cameras" v-model="cameraId" v-model:manual="cameraManual" v-model:manual-model-name="cameraModelName" :catalog-loaded="connected" device-label="相机" generic-id="generic_unknown" input-id="camera" />
-              <div v-if="selectedCamera?.capability_level === 'catalog'" class="equipment-summary" role="status"><strong>基础目录已匹配，硬件能力待核验</strong><span v-if="selectedCamera.catalog_sensor_label">来源传感器记录：{{ selectedCamera.catalog_sensor_label }}（仅供复核）</span><span>不自动套用 ISO、快门、防抖或镜头兼容；下面的画幅可按实际设备手填。</span><a v-for="source in selectedCamera.catalog_sources" :key="source.url" :href="source.url" target="_blank" rel="noopener noreferrer">资料来源 · {{ source.license }}</a></div>
+              <div v-if="selectedCamera?.capability_level === 'catalog'" class="device-note">
+                <p role="status">规格待确认，请按实际设备填写。</p>
+                <details class="device-reference" :key="selectedCamera.profile_id">
+                  <summary>资料说明</summary>
+                  <div class="device-reference-body">
+                    <p>该型号尚未完成规格核验，画幅、卡口与曝光范围以实际设备为准。</p>
+                    <p v-if="selectedCamera.catalog_sensor_label">来源中的传感器记录：{{ selectedCamera.catalog_sensor_label }}（待核实）。</p>
+                    <ul class="device-source-list">
+                      <li v-for="source in selectedCamera.catalog_sources" :key="source.url">
+                        <a v-if="safeSourceUrl(source.url)" :href="safeSourceUrl(source.url)!" target="_blank" rel="noopener noreferrer">{{ source.license === 'MIT' ? 'CameraDatabase' : 'Lensfun' }}<span class="no-break">（{{ source.license }}）</span></a>
+                        <span>{{ source.attribution }}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </details>
+              </div>
               <div v-if="knownCamera" class="equipment-summary"><strong>{{ sensorLabel(selectedCamera?.sensor_format) }} · 自动匹配</strong><span>{{ selectedMountName }} 原生卡口</span><span v-if="selectedCamera?.capability_level === 'basic'">本次已核验画幅与卡口；曝光边界仍待补充。</span></div>
               <template v-else><label for="camera-format" class="field-label">相机画幅（可选）</label><select id="camera-format" v-model="cameraFormat"><option>不清楚</option><option>全画幅</option><option value="APS-C">APS-C（半画幅）</option><option>M4/3</option></select></template>
               <label for="camera-lens" class="field-label lens-label">实际安装的镜头</label><select id="camera-lens" v-model="cameraLensId"><option value="">未选择 / 自定义镜头</option><option v-for="lens in availableCameraLenses" :key="lens.lens_id" :value="lens.lens_id">{{ lens.display_name }}</option></select>
-              <p class="helper">{{ selectedCamera?.capability_level === 'catalog' ? '此型号的卡口和镜头兼容尚未核验，不自动匹配镜头；可填写实际镜头资料。' : '只列原生卡口、原生画幅兼容镜头。请选实际安装的镜头，不默认套头；转接和裁切模式暂未适配。' }}</p>
+              <p class="helper">{{ selectedCamera?.capability_level === 'catalog' ? '镜头兼容信息待确认，可填写实际焦距和光圈。' : '请选择实际安装的原生镜头；转接或裁切模式暂未适配。' }}</p>
               <template v-if="selectedCameraLens && linkedSettings">
                 <label for="lens-focal" class="field-label">当前实际焦距 · {{ linkedSettings.focal_length_mm }}mm</label>
                 <input v-if="selectedCameraLens.focal_min_mm !== selectedCameraLens.focal_max_mm" id="lens-focal" type="range" v-model.number="focalLength" :min="selectedCameraLens.focal_min_mm" :max="selectedCameraLens.focal_max_mm" step="1" />
@@ -363,7 +428,7 @@ onBeforeUnmount(() => { if (preview.value) URL.revokeObjectURL(preview.value); a
               <div v-else class="two-fields"><div><label for="focal">实际焦距 / mm</label><input id="focal" type="number" v-model="focalLength" min="8" max="1200" placeholder="可不填" /></div><div><label for="aperture">最大光圈 / f</label><input id="aperture" type="number" v-model="maxAperture" min="0.7" max="32" step="0.1" placeholder="可不填" /></div></div>
             </template>
             <div class="two-fields"><div><label for="motion">主体动作</label><select id="motion" v-model="motion"><option>不确定</option><option>静止</option><option>缓慢</option><option>快速</option></select></div><label class="check-row tripod"><input type="checkbox" v-model="tripod" />使用三脚架</label></div>
-            </details><div class="upload-consent"><label class="check-row"><input type="checkbox" v-model="consent" />{{ webHosted ? '同意上传这张照片并进行分析' : '同意将这张照片发送到我配置的电脑服务' }}</label><p>{{ !connected ? '连接后会显示当前分析方式。' : mode === 'cloud' ? '云模型分析：照片副本将发送到配置的图像模型服务。' : '演示模式：使用本地规则与图像指标，不向云模型发送照片，也不代表真实识别准确率。' }} 网关不保存照片；相机拍照可能经过系统处理，EXIF 不保证完整。</p></div>
+            </details><div class="upload-consent"><label class="check-row"><input type="checkbox" v-model="consent" />{{ webHosted ? '同意上传本组照片并进行分析' : '同意将这张照片发送到我配置的电脑服务' }}</label><p>{{ !connected ? '连接后会显示当前分析方式。' : mode === 'cloud' ? '云模型分析：本组全部照片的副本将发送到配置的图像模型服务。' : '演示模式：使用本地规则与图像指标，不向云模型发送照片，也不代表真实识别准确率。' }} 网关不保存照片；相机拍照可能经过系统处理，EXIF 不保证完整。</p></div>
           </fieldset>
           <button class="primary generate" type="submit" :disabled="busy || connecting"><span>{{ busy ? '小栗正在整理拍摄建议…' : connected ? '生成拍摄建议' : webHosted ? '输入体验码，开始拍摄' : '先连接电脑服务' }}</span><span aria-hidden="true">✦</span></button>
           <section v-if="busy" class="analysis-progress" aria-label="分析进度" aria-live="polite">
@@ -375,7 +440,9 @@ onBeforeUnmount(() => { if (preview.value) URL.revokeObjectURL(preview.value); a
             <p class="progress-log-heading">进度记录 · 左侧为服务处理开始后的记录时刻，不是步骤耗时</p>
             <ol class="progress-log"><li v-for="(item, index) in progressLog" :key="index"><time>开始后 {{ item.seconds.toFixed(1) }} 秒</time>{{ item.message }}</li></ol>
             <div v-if="partialScene" class="partial-result"><span class="result-badge">已完成的画面分析</span><h2>{{ partialScene.scene_label || partialScene.scene_type }}</h2><p>{{ partialScene.subject }} · {{ partialScene.lighting }}</p></div>
+            <div v-if="partialComposition?.proposals?.length" class="partial-result partial-composition"><span class="result-badge">构图文字已校验 · 推荐图仍在绘制</span><article v-for="(proposal, index) in partialComposition.proposals" :key="index"><h2>{{ proposal.goal }}</h2><ul><li v-for="action in proposal.actions" :key="action">{{ action }}</li></ul><p v-if="proposal.framing_plan">{{ proposal.framing_plan.diagnosis }}</p><details v-if="proposal.conditions.length || proposal.tradeoffs.length || proposal.limitations.length"><summary>适用条件与限制</summary><p v-for="note in [...proposal.conditions, ...proposal.tradeoffs, ...proposal.limitations]" :key="note">{{ note }}</p></details></article><p v-for="note in partialComposition.uncertainties" :key="note">{{ note }}</p></div>
             <div v-if="partialParameters" class="partial-result"><span class="result-badge">参数已校验 · 完整方案仍在整理</span><h2>{{ partialParameters.shooting_mode }}</h2><dl class="settings-list"><div v-for="(value, label) in { '光圈': partialParameters.aperture, '快门': partialParameters.shutter_speed, 'ISO': partialParameters.iso, '对焦': partialParameters.focus_mode }" :key="label"><dt>{{ label }}</dt><dd>{{ value }}</dd></div></dl><p v-for="step in partialParameters.adjustments" :key="step">{{ step }}</p><details v-if="partialParameters.risks?.length || partialParameters.validation_notes?.length"><summary>适用条件与器材说明</summary><p v-for="note in [...partialParameters.risks, ...partialParameters.validation_notes]" :key="note">{{ note }}</p></details><p class="helper">这是当前已完成的部分，完整方案与构图仍需等待；参数是试拍起点。</p></div>
+            <details v-if="phaseTimings.length" class="phase-timings"><summary>已完成环节用时</summary><p v-for="(item, index) in phaseTimings" :key="index">{{ timingNames[item.stage] }}：{{ item.duration_seconds.toFixed(1) }} 秒{{ item.status === 'failed' ? '（未完成）' : '' }}</p><p class="helper">环节可能并行，用时不能直接相加。</p></details>
           </section>
         </form></div>
       </section>
@@ -386,7 +453,8 @@ onBeforeUnmount(() => { if (preview.value) URL.revokeObjectURL(preview.value); a
           <div class="notice" :class="{ demo: analysis?.analysis_mode === 'demo' }">{{ analysis?.analysis_mode === 'demo' ? '规则演示结果，不是真实多模态场景识别。' : '云模型分析结果。建议可能有误，以机型能力和试拍为准。' }}</div>
           <div class="scene-summary"><img v-if="preview" :src="preview" alt="本次分析的现场照片" /><div><span>{{ result.camera_profile.display_name }}</span><h2>{{ result.scene.scene_label || result.scene.scene_type }}</h2><p>{{ lightingText }}</p></div></div>
           <div v-if="result.equipment_settings" class="equipment-summary"><strong>{{ sensorLabel(result.camera_profile.sensor_format) }} · {{ result.equipment_settings.camera_lens?.display_name || '未指定镜头' }}</strong><span v-if="result.equipment_settings.focal_length_mm">实际 {{ result.equipment_settings.focal_length_mm }}mm · {{ result.equipment_settings.equivalent_focal_length_mm ? `约 ${result.equipment_settings.equivalent_focal_length_mm}mm 等效` : '等效待核验' }}</span></div>
-          <CompositionView :key="analysis?.request_id" :result="result" :preview="preview" />
+          <CompositionView :key="analysis?.request_id" :result="result" :preview="preview" :photos="resultPhotos" />
+          <details v-if="analysis?.timings?.length" class="phase-timings"><summary>本次处理用时</summary><p v-for="(item, index) in analysis.timings.filter(t => timingNames[t.stage])" :key="index">{{ timingNames[item.stage] }}：{{ item.duration_seconds.toFixed(1) }} 秒{{ item.status === 'failed' ? '（未完成）' : '' }}</p><p class="helper">环节可能并行，用时不能直接相加；照片上传时间不含浏览器本地选图。</p></details>
           <details class="parameter-drawer"><summary>拍摄参数与试拍调整<span>按需要展开</span></summary><div class="shooting-mode"><span>建议拍摄模式</span><strong>{{ result.recommendation.shooting_mode }}</strong></div>
           <dl class="exposure" :class="{ 'phone-exposure': result.camera_profile.device_type === 'phone' }"><div><dt>光圈</dt><dd>{{ result.recommendation.aperture }}</dd></div><div><dt>快门</dt><dd>{{ result.recommendation.shutter_speed }}</dd></div><div><dt>ISO</dt><dd>{{ result.recommendation.iso }}</dd></div></dl>
           <dl class="settings-list"><div v-for="(value, label) in { '曝光补偿': result.recommendation.exposure_compensation, '对焦': result.recommendation.focus_mode, '测光': result.recommendation.metering_mode, '白平衡': result.recommendation.white_balance, '驱动模式': result.recommendation.drive_mode }" :key="label"><dt>{{ label }}</dt><dd>{{ value }}</dd></div></dl>

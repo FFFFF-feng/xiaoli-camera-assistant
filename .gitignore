@@ -38,6 +38,7 @@ output/playwright/
 .launcher/
 .android-tools/
 mobile/node_modules/
+mobile/.catalog-release-*/
 mobile/android/.gradle/
 mobile/android/local.properties
 mobile/android/**/build/

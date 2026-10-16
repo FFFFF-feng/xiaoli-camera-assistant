@@ -5,11 +5,11 @@ from pathlib import Path
 
 import pytest
 from pydantic import ValidationError
+from test_device_selection import photo, pipeline
 
 from camera_assistant.models import CameraProfile, UserRequest
 from camera_assistant.services.camera_knowledge import CameraKnowledgeBase
 from camera_assistant.services.lens_knowledge import EquipmentSelectionError, LensKnowledgeBase
-from test_device_selection import photo, pipeline
 
 ROOT = Path(__file__).resolve().parents[1]
 

@@ -15,6 +15,7 @@ from fastapi.testclient import TestClient
 from PIL import Image
 from pydantic import BaseModel
 from starlette.datastructures import UploadFile
+from starlette.requests import Request
 
 from camera_assistant import mobile_api
 from camera_assistant.config import Settings
@@ -103,7 +104,8 @@ def test_default_json_envelope_and_cloud_parallel_setting_are_compatible():
         response = upload(client, streaming=False, mode="cloud")
     assert response.status_code == 200
     assert response.headers["content-type"].startswith("application/json")
-    assert set(response.json()) == {"request_id", "analysis_mode", "image_provenance", "result"}
+    assert {"request_id", "analysis_mode", "image_provenance", "result"} <= response.json().keys()
+    assert response.json()["scene_photo_count"] == 1
     assert pipeline.calls == [{"parallel_advice": False}]
 
 
@@ -306,7 +308,8 @@ def test_two_disconnected_workers_keep_slots_and_third_waits_until_completion():
     endpoint = next(route.endpoint for route in app.routes if route.path == "/api/v1/analyze")
 
     async def invoke():
-        return await endpoint(file=UploadFile(BytesIO(photo()), filename="scene.jpg"),
+        return await endpoint(web_request=Request({"type": "http", "path": "/api/v1/analyze"}),
+                              file=UploadFile(BytesIO(photo()), filename="scene.jpg"),
                               user_request=json.dumps({"intent": "窗边静物"}), consent=True,
                               expected_analysis_mode="demo", image_provenance="original_upload",
                               stream_events=True)
@@ -349,6 +352,7 @@ def test_cancelled_json_response_does_not_cancel_background_worker():
 
     async def exercise():
         response = asyncio.create_task(endpoint(
+            web_request=Request({"type": "http", "path": "/api/v1/analyze"}),
             file=UploadFile(BytesIO(photo()), filename="scene.jpg"),
             user_request=json.dumps({"intent": "窗边静物"}), consent=True,
             expected_analysis_mode="demo", image_provenance="original_upload", stream_events=False,

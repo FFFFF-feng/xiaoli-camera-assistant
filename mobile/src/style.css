@@ -93,3 +93,41 @@ main > section { max-width: 740px; margin: auto; }
 .progress-log-heading { margin: 16px 0 8px; font-size: 11px; line-height: 1.7; color: var(--muted); }
 .partial-result { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 18px; }
 .partial-result h2 { font-size: 17px; margin-top: 12px; }.partial-result p { font-size: 13px; line-height: 1.8; }
+.partial-composition li { font-size: 13px; line-height: 1.9; }
+.phase-timings { margin: 20px 0; padding: 12px 0; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); }
+.phase-timings p { margin: 7px 0; font-variant-numeric: tabular-nums; }
+
+/* Keep prose readable without splitting short controls or Latin model names. */
+.app-shell :is(p, li, dd, h1, h2, h3, summary, a, .equipment-summary, .device-missing, .photo-caption) {
+  min-width: 0;
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-break: strict;
+  text-wrap: pretty;
+}
+.prompt-chips button, .segmented button, .photo-actions :is(button, .file-action),
+.bottom-nav button, .no-break { white-space: nowrap; }
+.section-heading { gap: 12px; flex-wrap: wrap; }
+.section-heading h2, .segmented { flex-shrink: 0; }
+.device-note { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 10px 0 16px; }
+.device-note > p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
+.device-reference { font-size: 12px; color: var(--muted); }
+.device-reference[open] { flex-basis: 100%; }
+.device-reference > summary { cursor: pointer; color: var(--green); white-space: nowrap; }
+.device-reference-body { padding-top: 10px; max-width: 60ch; }
+.device-reference-body p { font-size: 12px; line-height: 1.8; margin: 0 0 8px; }
+.device-source-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.device-source-list li { display: grid; gap: 3px; font-size: 11px; line-height: 1.7; }
+.device-source-list a { color: var(--green); font-size: 12px; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.device-source-list li > span { color: var(--muted); }
+.settings-list > div, .two-fields > *, .exposure > div { min-width: 0; }
+@media (max-width: 600px) {
+  .exposure:not(.phone-exposure) { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .exposure:not(.phone-exposure) > div { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; align-items: baseline; padding: 9px 0; }
+  .exposure:not(.phone-exposure) dd { margin: 0; line-height: 1.75; }
+  .settings-list > div { grid-template-columns: 60px minmax(0, 1fr); }
+  .focal-range > span { white-space: nowrap; }
+}
+
+/* One scene, multiple references: thumbnails support the main photograph. */
+.scene-photo-strip{display:flex;gap:10px;overflow-x:auto;padding:8px 1px 12px}.scene-photo-strip article{flex:0 0 128px;position:relative;border:1px solid #dae4ee;background:#f5f8fb;border-radius:5px;overflow:hidden}.scene-photo-strip article.is-main{border:2px solid #315b9c}.scene-photo-strip article>button:first-child{display:block;border:0;padding:0;width:100%;background:transparent;text-align:left}.scene-photo-strip img{display:block;width:100%;height:86px;object-fit:cover}.scene-photo-strip span{display:block;padding:7px 8px;font-size:10px;color:#667f98;line-height:1.5}.scene-photo-strip .is-main span{color:#315b9c}.scene-photo-strip .remove-scene-photo{position:absolute;right:4px;top:4px;width:25px;height:25px;border:1px solid #c8d4df;background:#ffffffec;color:#516d86;border-radius:50%;font-size:17px;line-height:1;padding:0}

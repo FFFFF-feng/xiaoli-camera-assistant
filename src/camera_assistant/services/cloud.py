@@ -7,23 +7,100 @@ import time
 from collections.abc import Callable
 from contextlib import contextmanager
 from contextvars import ContextVar
+from threading import Condition
 from uuid import uuid4
 
 import httpx
 
 from camera_assistant.config import Settings
+from camera_assistant.services.timing import current_stage
 
 
 class ModelServiceError(ValueError):
     """A fixed, user-readable message with no remote content or credential data."""
 
 
+class _CloudSession:
+    """Own a shared client until all already-started model operations have finished."""
+
+    def __init__(self, client: httpx.Client):
+        self.client = client
+        self._condition = Condition()
+        self._active_requests = 0
+        self._closing = False
+
+    def acquire(self) -> bool:
+        with self._condition:
+            if self._closing:
+                return False
+            self._active_requests += 1
+            return True
+
+    def release(self) -> None:
+        with self._condition:
+            self._active_requests -= 1
+            self._condition.notify_all()
+
+    def close(self) -> None:
+        with self._condition:
+            self._closing = True
+            self._condition.wait_for(lambda: self._active_requests == 0)
+        self.client.close()
+
+
+_session: ContextVar[_CloudSession | None] = ContextVar("analysis_cloud_session", default=None)
 _response_observer: ContextVar[Callable[[dict], None] | None] = ContextVar(
     "model_response_observer", default=None,
 )
 _stream_observer: ContextVar[Callable[[dict], None] | None] = ContextVar(
     "model_stream_observer", default=None,
 )
+
+
+@contextmanager
+def cloud_session(settings: Settings):
+    """Reuse one credential-free client within an analysis, including copied contexts.
+
+    The caller should keep this around the complete synchronous analysis task. On
+    exit, any in-flight request_json operations, including format retries, finish
+    before the client closes. Auth and timeout remain request-specific.
+    """
+    session = _CloudSession(httpx.Client(timeout=settings.timeout_seconds))
+    token = _session.set(session)
+    try:
+        yield
+    finally:
+        _session.reset(token)
+        session.close()
+
+
+@contextmanager
+def _retain_session():
+    session = _session.get()
+    if session is None:
+        yield
+    elif session.acquire():
+        try:
+            yield
+        finally:
+            session.release()
+    else:
+        # A copied context may outlive its owner. Never use the owner's closed client.
+        token = _session.set(None)
+        try:
+            yield
+        finally:
+            _session.reset(token)
+
+
+@contextmanager
+def _request_client(settings: Settings):
+    session = _session.get()
+    if session is not None:
+        yield session.client
+    else:
+        with httpx.Client(timeout=settings.timeout_seconds) as client:
+            yield client
 
 
 @contextmanager
@@ -79,6 +156,11 @@ def extract_json(content: str) -> dict[str, object]:
 
 
 def request_json(settings: Settings, payload: dict[str, object]) -> dict[str, object]:
+    with _retain_session():
+        return _request_json(settings, payload)
+
+
+def _request_json(settings: Settings, payload: dict[str, object]) -> dict[str, object]:
     body = {"stream": False, "max_tokens": settings.max_output_tokens, **payload}
     if _stream_observer.get() is not None:
         body["stream"] = True
@@ -114,6 +196,8 @@ def _request_content(settings: Settings, body: dict[str, object]) -> str:
              "max_output_tokens": body.get("max_tokens"), "finish_reason": None,
              "usage": None, "response_content": None, "http_status": None,
              "request_id": request_id, "streamed": False, "first_content_seconds": None}
+    if current_stage() is not None:
+        event["stage"] = current_stage()
     _emit_stream(stream_observer, {
         "phase": "request_started", "request_id": request_id, "chars": 0, "seconds": 0.0,
     })
@@ -147,6 +231,9 @@ def _request_content(settings: Settings, body: dict[str, object]) -> str:
 
 def _emit_stream(observer: Callable[[dict], None] | None, event: dict) -> None:
     if observer is not None:
+        stage = current_stage()
+        if stage is not None:
+            event = {**event, "stage": stage}
         try:
             observer(event)
         except Exception:  # noqa: BLE001 - an optional display must not abort a paid request
@@ -158,11 +245,12 @@ def _request_content_observed(
     settings: Settings, body: dict[str, object], event: dict, started: float,
 ) -> str:
     try:
-        with httpx.Client(timeout=settings.timeout_seconds) as client:
+        with _request_client(settings) as client:
             url = f"{settings.base_url}/chat/completions"
             headers = {"Authorization": f"Bearer {settings.api_key}"}
             if body.get("stream") is True:
-                with client.stream("POST", url, headers=headers, json=body) as response:
+                with client.stream("POST", url, headers=headers, json=body,
+                                   timeout=settings.timeout_seconds) as response:
                     event["http_status"] = response.status_code
                     response.raise_for_status()
                     if response.headers.get("content-type", "").split(";", 1)[0].strip().lower() == (
@@ -175,7 +263,8 @@ def _request_content_observed(
                         event["streamed"] = True
                         return _read_stream_content(response, event, started)
             else:
-                response = client.post(url, headers=headers, json=body)
+                response = client.post(url, headers=headers, json=body,
+                                       timeout=settings.timeout_seconds)
                 event["http_status"] = response.status_code
                 response.raise_for_status()
                 data = response.json()

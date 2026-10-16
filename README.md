@@ -2,7 +2,7 @@
 
 新增可直接体验的网页版本：`python scripts/start_web.py --demo`，访问 `http://127.0.0.1:8080/`。包含照片上传、器材与镜头联动、拍摄建议、构图参考、本机方案历史与导出；网页自动连接同站服务。阿里云 HTTPS 部署、体验码与可选 DINO 镜像见 [网页体验版与部署](docs/web-experience-deployment.md)。先在 `mobile` 执行 `npm run build`，Python 需安装 `.[mobile]`。
 
-响应流程支持真实阶段进度、持续计时、流式接收活动及已校验场景/参数提前显示，完整方案完成后从原照片提取线稿。云端默认并行生成构图和参数，本地检测模型提前加载。三个开关、本机桌面入口与验证边界见 [线稿流程提速](docs/latency-web-sketch-20261015.md)。
+单图和多图分析支持持续计时、流式进度，以及已校验场景、参数和构图文字提前显示；推荐图在目标线条绘制完成后显示。云端并行生成构图和参数，本地检测模型提前加载；同次分析复用模型服务连接，并记录各阶段用时。开关、接口与验证边界见 [多图与推荐构图流程提速](docs/latency-scene-20261016.md)。
 
 <img src="assets/camera-red-panda.png" alt="拿着相机的小熊猫摄影助手小栗" width="180" align="right">
 
@@ -10,7 +10,7 @@
 
 这个学生项目围绕一个常见问题展开：新手知道想拍什么，却不知道怎样设置光圈、快门、ISO 和对焦。小栗尝试把“现场环境 + 拍摄意图 + 器材能力”转换成可执行、可解释、可以继续调整的拍摄方案。
 
-当前版本为 `0.1.0`：Vue 单栏网页与 Capacitor Android 客户端共用 FastAPI 分析接口，保留原 Streamlit 摄影助手、知识工作台及视觉实验页。默认演示模式无需密钥；真实模式可配置 GLM-4.6V，Grounding DINO 为可选的本机检测器。构图反馈提供主体画像、九宫格位置与大小、留白说明、意境旁白和机位动作。
+当前版本为 `0.1.0`：Vue 单栏网页与 Capacitor Android 客户端共用 FastAPI 分析接口，保留原 Streamlit 摄影助手、知识工作台及视觉实验页。默认演示模式无需密钥；真实模式可配置 GLM-4.6V，Grounding DINO 为可选的本机检测器。支持同一场景一次上传1到6张照片，选择主图，综合比较主体、前景与相对距离。构图反馈先设计目标布局，再根据可见特征重绘浅色推荐分镜，展示位置、宽高占比与调整理由；原图对照单独查看。照片不能直接提供实测距离，新机位的透视与遮挡仍需现场试拍核对。
 
 **队友开发入口：** [当前版本交接与启动说明](docs/team-handoff-20261015.md)。先运行网页演示，再按需配置模型和部署环境。
 
@@ -104,18 +104,26 @@ python -m streamlit run knowledge_app.py --server.address 127.0.0.1 --server.por
 
 ### Windows一键启动（已安装依赖后）
 
-双击项目根目录的 [启动项目.cmd](启动项目.cmd)，会后台启动两个Streamlit服务，并用默认浏览器分别打开：
+双击项目根目录的 [启动项目.cmd](启动项目.cmd)，默认启动当前新版网页，不再打开旧版 Streamlit 拍摄助手。
 
-- 拍摄助手：通常为 http://localhost:8501/
-- 知识库导入工作台：通常为 http://localhost:8502/
+- 启动前自动执行 `npm run build`，使用当前 `mobile/src/` 源码；构建失败会停止，不打开旧构建。
+- 默认访问 `http://127.0.0.1:8080/`；若被其他程序占用则选择附近空闲端口，以启动窗口显示的地址为准。
+- 再次双击会重启已确认属于本项目的网页服务，让后端代码更新生效；不关闭旧版或无法确认归属的进程。
+- 仅监听本机，不发布或更新阿里云。页面和接口共用地址，无需另开手机服务。
 
-启动器优先使用`.venv`，其次`venv`，最后系统`python`或`py -3`。首次使用仍需按下方步骤安装依赖；启动器不会自动安装软件、覆盖`.env`、导入知识或修改检索模式。
+启动器优先使用 `.venv`，其次 `venv`，最后系统 `python` 或 `py -3`。首次安装 Python 的 `.[mobile,dev]` 依赖和 Node.js，再运行 `npm --prefix mobile ci`。启动器不自动安装软件、不覆盖私有配置、不导入知识。
 
-已确认属于本项目且健康的服务会被复用；若端口被其他程序占用或无法确认归属，则选择附近空闲端口，不关闭其他进程。只监听本机127.0.0.1，不开放局域网/公网。浏览器可能按自身设置打开两个窗口或标签页。服务就绪仅表示HTTP健康检查通过，页面内容与模型配置由原应用负责加载。
+沿用本机 `.env`；本机已有 `.env.zhipu-deploy` 的智谱密钥和体验码时也可直接使用，密钥不会显示或进入前端。没有模型配置时运行规则演示；`--demo` 可强制规则演示。网页服务日志为 `.launcher/web.log`，本机地址和 PID 为 `.launcher/web-service.json`，均不提交 Git。
 
-服务日志保存在`.launcher/assistant.log`和`.launcher/knowledge.log`，不提交Git；失败时启动窗口保留提示。关闭浏览器不会停止后台Python服务，若需结束服务，可在任务管理器按启动时显示的PID确认后结束对应Python进程。电脑重启后需再次双击，不设置开机自启。
+```powershell
+启动项目.cmd --check        # 检查新版运行依赖
+启动项目.cmd --no-browser   # 构建并启动，不自动打开浏览器
+启动项目.cmd --demo         # 仅本地规则演示
+启动项目.cmd --port 8090    # 指定首选端口
+启动项目.cmd --legacy       # 可选：启动旧版 Streamlit 助手和知识工作台
+```
 
-可在终端执行`python scripts/launch_apps.py --check`只检查依赖；`启动项目.cmd --no-browser`仅启动服务、不打开网页。命令从项目根目录运行。
+关闭浏览器不会停止后台服务；电脑重启后需再次双击，不设置开机自启。旧版的两个服务和日志仍由 `scripts/launch_apps.py` 管理，新版由 `scripts/launch_web.py` 管理。
 
 桌面启动请创建**快捷方式**，不要把根目录CMD单独复制到桌面。复制后的`%~dp0`会变为桌面路径，找不到项目里的`scripts/launch_apps.py`。可以右键项目CMD创建快捷方式，或在项目根目录执行：
 
@@ -125,7 +133,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/create_desktop_s
 
 这会在Windows配置的桌面生成“小栗摄影助手（双页面）”快捷方式，目标指向原项目CMD，工作目录设为项目目录。不会修改系统执行策略或覆盖设置不同的同名快捷方式。项目移动到其他路径后需重新创建快捷方式；不把本机绝对路径写入仓库里的通用CMD。
 
-### Windows / PowerShell
+### 旧版 Streamlit 手动启动：Windows / PowerShell
 
 ```powershell
 py -m venv .venv
@@ -136,7 +144,7 @@ Copy-Item .env.example .env
 
 如果已有 `.env`，保留已有配置，跳过复制步骤。以上命令直接调用虚拟环境内的 Python，不需要修改 PowerShell 执行策略。
 
-### macOS / Linux
+### 旧版 Streamlit 手动启动：macOS / Linux
 
 ```bash
 python3 -m venv .venv
@@ -153,7 +161,7 @@ cp .env.example .env
 
 ### GLM-4.6V + Grounding DINO 实拍试用
 
-日常拍摄网站和实验页面是独立入口，目前都使用 Streamlit：
+新版日常拍摄入口为 `启动项目.cmd`（同站网页与 API，默认 8080）；下表保留旧版和实验工具入口：
 
 | 用途 | 页面 / 启动方式 | 默认端口 |
 | --- | --- | --- |
@@ -163,7 +171,7 @@ cp .env.example .env
 
 本地 `.env` 设置 `APP_DEMO_MODE=false`、`CAMERA_AI_PRESET=glm-dino`、`KNOWLEDGE_RETRIEVAL_MODE=managed`。填写智谱密钥（也可复用本机实验窗口保存的加密智谱密钥），准备独立 DINO 环境后运行 `start_app.ps1`。主页面会显示定位候选、主体关联状态、构图方案和资料来源。知识库尚未发布时，建议明确标记缺少知识依据。完整准备、手机局域网使用与知识上传流程见 [真实环境接入说明](docs/real-environment.md)。
 
-主应用使用 Chat Completions，`glm-dino` 默认启用 `json_object` 输出约束，最多4096输出 token，保留服务默认思考设置；`custom` 默认只用提示词约束JSON。场景与对象合并为一次视觉请求，随后 DINO 本地定位，再分别调用构图和参数建议。只有最终模型文本不是合法JSON时，默认额外重试一次；可设 `CAMERA_AI_FORMAT_RETRY_COUNT=0` 关闭。401、超时、输出截断等失败不重试，也不自动降级为演示模式。
+主应用使用 Chat Completions，`glm-dino` 默认启用 `json_object` 输出约束，最多4096输出 token，保留服务默认思考设置；`custom` 默认只用提示词约束JSON。场景与对象合并为一次视觉请求，随后 DINO 本地定位，再分别调用构图和参数建议。有有效目标布局时，增加一次同提供商的绘图精化请求，锁定布局，只细化主体轮廓与内部结构；精化失败保留文字方案并说明推荐图不可用。多图会增加处理时间和模型用量。只有最终模型文本不是合法JSON时，默认额外重试一次；可设 `CAMERA_AI_FORMAT_RETRY_COUNT=0` 关闭。401、超时、输出截断等失败不重试，也不自动降级为演示模式。
 
 主应用的目标关联与实验工具分开实现：要求“突出猫眼、完整保留耳朵和胡须”时，以猫整体为目标，细节作为取景保护要求，不要求每个部件都有独立检测框。多个同类候选无法唯一关联时仍保守弃权，不按分数强选；静止宠物使用 `pet_portrait`，快速运动才使用 `fast_pet`。主应用提示词与实验提示词不同，效果仍需实拍验证。DINO默认沿用CPU float32、box 0.35、text 0.25，不代表已证明最优阈值。
 

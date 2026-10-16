@@ -104,6 +104,18 @@ def test_devices(client):
     assert camera["sensor_format"] == "APS-C" and camera["mount"] == "canon_ef"
 
 
+def test_catalog_compression_preserves_content_and_auth(client):
+    compressed = client.get("/api/v1/devices", headers={**AUTH, "Accept-Encoding": "gzip"})
+    plain = client.get("/api/v1/devices", headers={**AUTH, "Accept-Encoding": "identity"})
+    assert compressed.headers["content-encoding"] == "gzip"
+    assert "accept-encoding" in compressed.headers["vary"].lower()
+    assert "content-encoding" not in plain.headers
+    assert compressed.json() == plain.json()
+    assert int(compressed.headers["content-length"]) < int(plain.headers["content-length"]) / 3
+    assert client.get("/api/v1/devices", headers={"Accept-Encoding": "gzip"}).status_code == 401
+    assert "content-encoding" not in client.get("/health").headers
+
+
 def test_camera_lens_api_linkage_and_incompatible_lens(client):
     payload = {
         "intent": "拍人像",

@@ -51,6 +51,15 @@ def _wrong_stop_count(text: str, request: UserRequest) -> bool:
                for value in claims)
 
 
+def unconfirmed_phone_controls(text: str, request: UserRequest) -> bool:
+    if request.device_type != "phone" or (
+        request.phone_capture_mode == "pro" and request.phone_pro_controls_confirmed
+    ):
+        return False
+    return bool(re.search(r"(?:快门.{0,8}\d+\s*/\s*\d+|ISO\s*\d+|f\s*/\s*\d)", text, re.IGNORECASE)
+                and not re.search(r"不(?:要|能|应)|不可|未确认", text))
+
+
 def composition_issue(proposal: CompositionProposal, request: UserRequest) -> str | None:
     instructions = " ".join(proposal.actions)
     statements = [*proposal.actions, *proposal.reasons, *proposal.tradeoffs,
@@ -84,6 +93,13 @@ def composition_issue(proposal: CompositionProposal, request: UserRequest) -> st
         return "曝光调整方向解释冲突，已移除该方案。"
     if any(_unmeasured_distance(text) for text in proposal.actions):
         return "缺少距离测量与最近对焦条件，已移除给定精确距离的方案。"
+    if any(re.search(r"(?:机位|身体|向左|向右|侧移|后退|靠近).{0,15}(?:移动|移|退|进).{0,12}(?:画面|画幅).{0,8}(?:宽|高|%|分之)", text)
+           or re.search(r"(?:机位|身体).{0,10}(?:移动|侧移).{0,12}(?:\d+\s*/\s*\d+|\d+%|[一二三]分之[一二]).{0,6}(?:画面|画幅)", text)
+           or re.search(r"(?:侧移|移动|后退|靠近).{0,16}(?:画面|画幅)(?:宽|高).{0,10}\d+\s*%", text)
+           for text in statements):
+        return "不能用画面尺寸代替身体移动距离，已移除该方案。"
+    if any(unconfirmed_phone_controls(text, request) for text in statements):
+        return "当前手机模式未确认手动曝光能力，已移除指定手动参数的构图方案。"
     if request.max_aperture and any(
         float(value) < request.max_aperture
         for text in proposal.actions if not re.search(r"不(?:要|得|应)|不能", text)

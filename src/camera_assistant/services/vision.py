@@ -11,6 +11,7 @@ from camera_assistant.models import (
     UserRequest,
 )
 from camera_assistant.services.cloud import request_json
+from camera_assistant.services.scene_images import image_messages
 
 
 class VisionAnalyzer(Protocol):
@@ -113,10 +114,19 @@ main_subject_ids 必须引用 objects；任务未能唯一指定主目标集合�
 或 abstained 且 main_subject_ids=[]，不能按显眼程度强选。多个明确目标分别保留。
 composition_clues 描述留白、主体位置、边缘截断、背景干扰等画面事实，
 uncertainties 写无法从当前画面确定的信息；尚不输出构图建议或裁切框。
+第一张为主图 photo1，之后依次是 photo2..photo6。objects、主体ID和主图画面事实只针对photo1，
+参考图用于补充同一场景的可见信息，不把参考图中的物体误报成主图可见。
+提供多图时必须输出scene_survey，逐图说明contribution和viewpoint_hint；核对是否同一场景，
+不能确认时status=uncertain，不同场景status=mixed，不强行融合。推荐最有依据的起点图号，
+比较主体和实际可见的前景/装饰，区分已有场景元素与可移动的小道具，不建议搬动建筑或树木。
+relative_distance只描述相对远近和可执行取景检查；多张无标定照片仍不能推导米/厘米距离、
+真实相机轨迹或精确三维坐标。同图不同裁片不能声称是不同机位或更近的拍摄距离。
+只有一张图时scene_survey=null。所有结论标明依据的图号；不以照片数量代替证据质量。
 只输出 schema 对应的 JSON 实例，不复制 $defs/properties 等 schema 元数据。
 
 用户输入：{request.model_dump_json()}
 图像统计：{inspection.metrics.model_dump_json()}
+本组照片数：{1 + len(inspection.reference_images)}，第一张为主图photo1
 原图 EXIF：{inspection.exif.model_dump_json()}
 内部场景候选：{json.dumps(candidate_payload, ensure_ascii=False)}
 JSON Schema：{json.dumps(schema, ensure_ascii=False)}
@@ -129,10 +139,7 @@ JSON Schema：{json.dumps(schema, ensure_ascii=False)}
                     "role": "user",
                     "content": [
                         {"type": "text", "text": prompt},
-                        {
-                            "type": "image_url",
-                            "image_url": {"url": inspection.model_image_data_url},
-                        },
+                        *image_messages(inspection),
                     ],
                 }
             ],

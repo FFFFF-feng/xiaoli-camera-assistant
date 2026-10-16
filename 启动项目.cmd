@@ -38,7 +38,8 @@ pause
 exit /b 1
 
 :launch
-"%APP_LAUNCH_PYTHON%" %APP_LAUNCH_ARGS% -u "%~dp0scripts\launch_apps.py" %*
+echo Starting the current local web app. No server deployment.
+"%APP_LAUNCH_PYTHON%" %APP_LAUNCH_ARGS% -u "%~dp0scripts\launch_apps.py" --web %*
 if errorlevel 1 (
     echo.
     echo [ERROR] Startup failed. Please read the message above.

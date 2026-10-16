@@ -78,6 +78,35 @@ export function embeddedInMain(element, main) {
   return a[0]>=b[0] && a[1]>=b[1] && a[2]<=b[2] && a[3]<=b[3];
 }
 
+/** One camera transform for the entire photograph: never rearrange scene fragments. */
+export function sceneLayout(photoAspect, frameAspect, elements, reframe = false) {
+  const imageRatio = photoAspect/frameAspect;
+  const main=elements.find(e=>e.role==='main');
+  const known=elements.filter(e=>e.source_bbox);
+  let scale=Math.min(1,1/imageRatio), x=(1-imageRatio*scale)/2, y=(1-scale)/2;
+  if (reframe && main?.source_bbox && known.length===elements.length) {
+    const source=main.source_bbox, target=main.bbox;
+    const union=[Math.min(...known.map(e=>e.source_bbox[0])),Math.min(...known.map(e=>e.source_bbox[1])),
+      Math.max(...known.map(e=>e.source_bbox[2])),Math.max(...known.map(e=>e.source_bbox[3]))];
+    scale=Math.min((target[2]-target[0])/((source[2]-source[0])*imageRatio),
+      (target[3]-target[1])/(source[3]-source[1]),
+      1/((union[2]-union[0])*imageRatio),1/(union[3]-union[1]));
+    x=(target[0]+target[2])/2-(source[0]+source[2])/2*imageRatio*scale;
+    y=(target[1]+target[3])/2-(source[1]+source[3])/2*scale;
+    // Protect every marked scene element using the same translation and scale.
+    x=Math.max(-union[0]*imageRatio*scale,Math.min(1-union[2]*imageRatio*scale,x));
+    y=Math.max(-union[1]*scale,Math.min(1-union[3]*scale,y));
+  }
+  const imageBox=[x,y,x+imageRatio*scale,y+scale];
+  const boxes=elements.map(e=>e.source_bbox ? [x+e.source_bbox[0]*imageRatio*scale,
+    y+e.source_bbox[1]*scale,x+e.source_bbox[2]*imageRatio*scale,y+e.source_bbox[3]*scale] : null);
+  const left=Math.max(0,Math.min(1,imageBox[0])),right=Math.max(0,Math.min(1,imageBox[2]));
+  const top=Math.max(0,Math.min(1,imageBox[1])),bottom=Math.max(0,Math.min(1,imageBox[3]));
+  const uncovered=[[0,0,left,1],[right,0,1,1],[left,0,right,top],[left,bottom,right,1]]
+    .filter(b=>(b[2]-b[0])*(b[3]-b[1])>1e-8);
+  return {imageBox,boxes,uncovered};
+}
+
 function imageFromUrl(url) {
   const resolved = new URL(url,window.location.href);
   if (!['blob:','data:'].includes(resolved.protocol) && resolved.origin !== window.location.origin) {
