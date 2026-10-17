@@ -2,7 +2,11 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { Camera } from '@capacitor/camera';
 import { Capacitor } from '@capacitor/core';
-import mascot from '../../assets/camera-red-panda.png';
+import mascot from '../../assets/mascot/shoot.webp';
+import MascotArt from './components/MascotArt.vue';
+import UiIcon from './components/UiIcon.vue';
+import ApertureMark from './components/ApertureMark.vue';
+import { createSceneTransition, useTactileSurfaces } from './interaction';
 import { selectSceneFiles } from './scene-files.mjs';
 import { normalizeBaseUrl, safeSourceUrl } from './connection.mjs';
 import { readAnalysis } from './analysis-stream.mjs';
@@ -24,7 +28,15 @@ try {
 } catch { /* local storage may be unavailable */ }
 const exportMessage = ref('');
 const mainContent = ref<HTMLElement>();
-function scrollToTop() { void nextTick(() => mainContent.value?.scrollTo({ top: 0 })); }
+const appSurface = ref<HTMLElement>();
+useTactileSurfaces(appSurface);
+const changeScene = createSceneTransition();
+function scrollToTop() {
+  void nextTick(() => {
+    mainContent.value?.scrollTo({ top: 0, behavior: 'instant' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  });
+}
 watch(page, scrollToTop);
 const storedKey = 'xiaoli-mobile-connection-v1';
 let saved: { baseUrl?: string; token?: string } = {};
@@ -319,7 +331,7 @@ async function analyze() {
       history.value = [item, ...history.value.filter(v => v.id !== item.id)].slice(0, 10);
       localStorage.setItem(archiveKey, JSON.stringify(history.value));
     } catch { /* Analysis still succeeds when local storage is full. */ }
-    page.value = 'result'; scrollToTop();
+    showPage('result');
   } catch (e) {
     error.value = readableError(e, '分析未完成：检查电脑服务及网络。不会自动重复提交照片。');
     if (error.value.includes('分析方式已改变')) { connected.value = false; consent.value = false; page.value = 'connect'; }
@@ -337,7 +349,7 @@ async function clearConnection() {
 function openHistory(item: SavedAdvice) {
   if (busy.value) return;
   clearScene(); consent.value = false;
-  intent.value = item.intent; resultIntent.value = item.intent; analysis.value = item.analysis; page.value = 'result';
+  intent.value = item.intent; resultIntent.value = item.intent; analysis.value = item.analysis; showPage('result');
 }
 function clearHistory() { history.value = []; localStorage.removeItem(archiveKey); }
 function exportAdvice() {
@@ -352,27 +364,45 @@ function exportAdvice() {
   const link = document.createElement('a'); link.href = url; link.download = '小栗拍摄方案.txt'; link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000); exportMessage.value = '拍摄方案已导出。';
 }
-function navigate(value: 'shoot' | 'result' | 'history' | 'connect') { page.value = value; error.value = ''; exportMessage.value = ''; scrollToTop(); }
+let requestedPage = page.value;
+function showPage(value: 'shoot' | 'result' | 'history' | 'connect') {
+  if (page.value === value && requestedPage === value) { scrollToTop(); return; }
+  requestedPage = value;
+  changeScene(async () => {
+    page.value = value;
+    await nextTick();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    // Give keyboard and screen-reader users the same clear page boundary.
+    const title = mainContent.value?.querySelector('h1');
+    title?.setAttribute('tabindex', '-1');
+    title?.focus({ preventScroll: true });
+  }, () => mainContent.value);
+}
+function navigate(value: 'shoot' | 'result' | 'history' | 'connect') { error.value = ''; exportMessage.value = ''; showPage(value); }
 onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
 </script>
 
 <template>
-  <div class="app-shell">
+  <div ref="appSurface" class="app-shell" :class="{ 'is-analyzing': busy }">
     <header class="app-header">
-      <div class="brand"><span class="brand-mark" aria-hidden="true">◎</span><div><strong>小栗摄影助手</strong><span>看见值得拍的日常</span></div></div>
+      <div class="brand"><span class="brand-mark" aria-hidden="true"><img :src="mascot" alt="" /></span><div><strong>小栗<span class="brand-divider"> / </span>取景参谋</strong><span>YOUR EVERYDAY PHOTO COMPANION</span></div></div>
       <button class="status" :class="{ online: connected }" @click="navigate('connect')"><i aria-hidden="true"></i>{{ statusText }}</button>
     </header>
-    <main ref="mainContent">
+    <main ref="mainContent" :data-scene="page">
       <div v-if="error" class="notice error" role="alert">{{ error }}</div>
       <section v-if="page === 'shoot'" aria-labelledby="shoot-title">
-        <div class="intro"><h1 id="shoot-title">把眼前，拍成心里的画面。</h1><p>上传同一场景的全景、不同角度和细节，比较主体、前景与取景方式。</p></div>
-        <div class="shoot-layout"><div class="shoot-visual"><div class="viewfinder" :class="{ 'has-photo': photo }" @dragover.prevent @drop.prevent="photoDropped">
-          <img v-if="photo" :src="preview" alt="已选择的现场照片" class="photo-preview" />
-          <div v-else class="empty-photo"><img :src="mascot" alt="抱着相机的小熊猫小栗" /><strong>点击这里，选择现场照片</strong><span>也可一次拖入多张同一场景照片</span></div>
+        <div class="shoot-hero">
+          <div class="hero-copy"><span class="eyebrow"><span></span> 和小栗一起，发现日常的好看</span><h1 id="shoot-title">你负责心动，<br />小栗陪你<span>拍好。</span></h1><p>把眼前的风景，拍成心里的画面。<br />从构图到参数，让每一次按下快门都有方向。</p><a class="hero-link" href="#shoot-workspace"><ApertureMark /><span>开始这一张<small>LET'S MAKE A FRAME</small></span><UiIcon name="arrow" /></a></div>
+          <div class="hero-portrait"><span class="portrait-caption">XIAOLI / 摄影搭子</span><MascotArt pose="shoot" priority /><span class="portrait-note">今天，也有值得记录的瞬间。</span></div>
+        </div>
+        <ol class="workflow" aria-label="拍摄建议流程"><li :class="{ complete: photo }"><b>01</b><span>放入现场照片</span></li><li :class="{ complete: intent.trim() }"><b>02</b><span>说说想要的感觉</span></li><li><b>03</b><span>带着建议去拍摄</span></li></ol>
+        <div id="shoot-workspace" class="shoot-layout"><div class="shoot-visual"><div class="workspace-heading"><h2><span>01</span> 先看看你的现场</h2><span>一张照片，就是起点</span></div><div class="viewfinder" :class="{ 'has-photo': photo }" @dragover.prevent @drop.prevent="photoDropped">
+          <Transition name="photo-develop"><img v-if="photo" :key="preview" :src="preview" alt="已选择的现场照片" class="photo-preview" /></Transition>
+          <div v-if="!photo" class="empty-photo"><span class="upload-symbol"><UiIcon name="image" /><span><UiIcon name="plus" /></span></span><strong>把你的现场，放进取景框</strong><span>选择或拖放同一场景的多张照片</span><small>自然光、人像、街角，都可以是好开始。</small></div>
           <span class="frame-corner top-left"></span><span class="frame-corner top-right"></span><span class="frame-corner bottom-left"></span><span class="frame-corner bottom-right"></span>
           <input class="photo-select-input" type="file" multiple accept="image/jpeg,image/png,.jpg,.jpeg,.png" aria-label="点击取景框选择现场照片" aria-describedby="photo-help" :disabled="busy" @change="fileChosen($event, 'original_upload')" />
         </div>
-        <div class="photo-actions"><button class="camera-button" type="button" :disabled="busy" @click="takePhoto">◎ 拍一张</button><label class="secondary file-action" :class="{ disabled: busy }"><span>{{ photo ? '补充场景照片' : '从相册选择' }}</span><input class="photo-select-input" type="file" multiple accept="image/jpeg,image/png,.jpg,.jpeg,.png" aria-label="从相册选择现场照片" aria-describedby="photo-help" :disabled="busy" @change="fileChosen($event, 'original_upload')" /></label></div>
+        <div class="photo-actions"><button class="camera-button" type="button" :disabled="busy" @click="takePhoto"><UiIcon name="camera" /> 拍一张</button><label class="secondary file-action" :class="{ disabled: busy }"><UiIcon name="image" /><span>{{ photo ? '补充场景照片' : '从相册选择' }}</span><input class="photo-select-input" type="file" multiple accept="image/jpeg,image/png,.jpg,.jpeg,.png" aria-label="从相册选择现场照片" aria-describedby="photo-help" :disabled="busy" @change="fileChosen($event, 'original_upload')" /></label></div>
         <input ref="cameraInput" class="file-input" type="file" accept="image/jpeg,image/png" capture="environment" aria-label="使用系统相机" @change="fileChosen($event, 'device_camera')" />
         <p id="photo-help" class="photo-caption" aria-live="polite">同一场景 {{ scenePhotos.length }} / {{ maxSceneImages }} 张；每张最大 {{ maxImageMb }} MB，合计 {{ maxSceneMb }} MB。选图后不会自动上传。</p>
         <div v-if="scenePhotos.length" class="scene-photo-strip" aria-label="本组场景照片">
@@ -384,9 +414,9 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
         <p v-if="scenePhotos.length" class="helper">点击缩略图选择主图。补充左右视角、远景或主体细节；多图有助于比较环境，但不能直接测得拍摄距离。</p>
         </div><form class="shoot-form" @submit.prevent="analyze">
           <fieldset :disabled="busy">
-            <label class="field-label" for="intent">想拍出什么感觉？</label>
+            <div class="workspace-heading"><label class="field-label" for="intent"><span>02</span> 想拍出什么感觉？</label><span>用自己的话说就好</span></div>
             <textarea id="intent" v-model="intent" rows="3" maxlength="500" placeholder="比如：傍晚给朋友拍人像，想要温柔的光线和虚化背景"></textarea>
-            <div class="prompt-chips"><button v-for="chip in chips" :key="chip" type="button" @click="intent = chip">{{ chip }}</button></div>
+            <div class="prompt-chips"><button v-for="chip in chips" :key="chip" type="button" :class="{ chosen: intent === chip }" :aria-pressed="intent === chip" @click="intent = chip">{{ chip }}</button></div>
             <details class="equipment-drawer"><summary>拍摄设备与现场设置<span>{{ deviceType === 'phone' ? '手机' : '相机' }} · 点击调整</span></summary><div class="section-heading"><h2>用什么拍</h2><div class="segmented"><button type="button" :class="{ selected: deviceType === 'phone' }" :aria-pressed="deviceType === 'phone'" @click="deviceType = 'phone'">手机</button><button type="button" :class="{ selected: deviceType === 'camera' }" :aria-pressed="deviceType === 'camera'" @click="deviceType = 'camera'">相机</button></div></div>
             <template v-if="deviceType === 'phone'">
               <DevicePicker :profiles="phones" v-model="phoneId" v-model:manual="phoneManual" v-model:manual-model-name="phoneModelName" :catalog-loaded="connected" device-label="手机" generic-id="generic_phone" input-id="phone" />
@@ -428,9 +458,9 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
               <div v-else class="two-fields"><div><label for="focal">实际焦距 / mm</label><input id="focal" type="number" v-model="focalLength" min="8" max="1200" placeholder="可不填" /></div><div><label for="aperture">最大光圈 / f</label><input id="aperture" type="number" v-model="maxAperture" min="0.7" max="32" step="0.1" placeholder="可不填" /></div></div>
             </template>
             <div class="two-fields"><div><label for="motion">主体动作</label><select id="motion" v-model="motion"><option>不确定</option><option>静止</option><option>缓慢</option><option>快速</option></select></div><label class="check-row tripod"><input type="checkbox" v-model="tripod" />使用三脚架</label></div>
-            </details><div class="upload-consent"><label class="check-row"><input type="checkbox" v-model="consent" />{{ webHosted ? '同意上传本组照片并进行分析' : '同意将这张照片发送到我配置的电脑服务' }}</label><p>{{ !connected ? '连接后会显示当前分析方式。' : mode === 'cloud' ? '云模型分析：本组全部照片的副本将发送到配置的图像模型服务。' : '演示模式：使用本地规则与图像指标，不向云模型发送照片，也不代表真实识别准确率。' }} 网关不保存照片；相机拍照可能经过系统处理，EXIF 不保证完整。</p></div>
+            </details><div class="upload-consent"><label class="check-row"><input type="checkbox" v-model="consent" />{{ webHosted ? '同意上传本组照片并进行分析' : '同意将本组照片发送到我配置的电脑服务' }}</label><p>{{ !connected ? '连接后会显示当前分析方式。' : mode === 'cloud' ? '云模型分析：本组全部照片的副本将发送到配置的图像模型服务。' : '演示模式：使用本地规则与图像指标，不向云模型发送照片，也不代表真实识别准确率。' }} 网关不保存照片；相机拍照可能经过系统处理，EXIF 不保证完整。</p></div>
           </fieldset>
-          <button class="primary generate" type="submit" :disabled="busy || connecting"><span>{{ busy ? '小栗正在整理拍摄建议…' : connected ? '生成拍摄建议' : webHosted ? '输入体验码，开始拍摄' : '先连接电脑服务' }}</span><span aria-hidden="true">✦</span></button>
+          <button class="primary generate" type="submit" :disabled="busy || connecting" :aria-busy="busy"><ApertureMark /><span>{{ busy ? '小栗正在整理拍摄建议…' : connected ? '让小栗给点拍摄灵感' : webHosted ? '输入体验码，开始拍摄' : '先连接电脑服务' }}</span><UiIcon name="arrow" /></button>
           <section v-if="busy" class="analysis-progress" aria-label="分析进度" aria-live="polite">
             <div class="progress-heading"><strong>{{ progressMessage }}</strong><span>总用时 {{ elapsed.toFixed(0) }} 秒</span></div>
             <p class="current-status-time">当前状态已持续 {{ statusElapsed.toFixed(0) }} 秒</p>
@@ -447,8 +477,8 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
         </form></div>
       </section>
       <section v-else-if="page === 'result'" aria-labelledby="result-title">
-        <div class="intro"><h1 id="result-title">你的下一张，已经有了方向。</h1><p>先看构图，再照着走一步，拍一张。</p></div>
-        <div v-if="!result" class="empty-result"><img :src="mascot" alt="小栗等待现场照片" /><h2>{{ busy ? '分析正在进行' : '建议还在等你的现场' }}</h2><p>{{ busy ? `${progressMessage} · 已用时 ${elapsed.toFixed(0)} 秒` : '选择照片，写下想要的效果，小栗会给你一个拍摄起点。' }}</p><button class="primary" @click="navigate('shoot')">{{ busy ? '查看当前进度' : '去选照片' }}</button></div>
+        <div class="intro module-intro"><div><h1 id="result-title">你的下一张，已经有了方向。</h1><p>先看构图，再照着走一步，拍一张。</p></div><MascotArt v-if="result" pose="advice" class="module-guide" /></div>
+        <div v-if="!result" class="empty-result"><MascotArt pose="advice" class="empty-mascot" priority /><h2>{{ busy ? '分析正在进行' : '建议还在等你的现场' }}</h2><p>{{ busy ? `${progressMessage} · 已用时 ${elapsed.toFixed(0)} 秒` : '选择照片，写下想要的效果，小栗会给你一个拍摄起点。' }}</p><button class="primary" @click="navigate('shoot')">{{ busy ? '查看当前进度' : '去选照片' }}</button></div>
         <template v-else>
           <div class="notice" :class="{ demo: analysis?.analysis_mode === 'demo' }">{{ analysis?.analysis_mode === 'demo' ? '规则演示结果，不是真实多模态场景识别。' : '云模型分析结果。建议可能有误，以机型能力和试拍为准。' }}</div>
           <div class="scene-summary"><img v-if="preview" :src="preview" alt="本次分析的现场照片" /><div><span>{{ result.camera_profile.display_name }}</span><h2>{{ result.scene.scene_label || result.scene.scene_type }}</h2><p>{{ lightingText }}</p></div></div>
@@ -466,14 +496,14 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
         </template>
       </section>
       <section v-else-if="page === 'history'" aria-labelledby="history-title">
-        <div class="intro"><h1 id="history-title">留住拍摄的灵感</h1><p>最近 10 次方案保存在这台设备，照片不会存入历史。</p></div>
-        <div v-if="!history.length" class="empty-result"><img :src="mascot" alt="小栗等待新的拍摄灵感" /><h2>从你的第一张照片开始</h2><p>生成的方案会出现在这里，下次拍摄时可以再看看。</p><button class="primary" @click="navigate('shoot')">去拍一张</button></div>
+        <div class="intro module-intro"><div><h1 id="history-title">留住拍摄的灵感</h1><p>最近 10 次方案保存在这台设备，照片不会存入历史。</p></div><MascotArt v-if="history.length" pose="history" class="module-guide" /></div>
+        <div v-if="!history.length" class="empty-result"><MascotArt pose="history" class="empty-mascot" priority /><h2>从你的第一张照片开始</h2><p>生成的方案会出现在这里，下次拍摄时可以再看看。</p><button class="primary" @click="navigate('shoot')">去拍一张</button></div>
         <div v-else class="history-list"><button v-for="item in history" :key="item.id" class="history-item" @click="openHistory(item)"><time>{{ new Date(item.date).toLocaleString('zh-CN') }}</time><strong>{{ item.intent }}</strong><span>{{ item.analysis.result.camera_profile.display_name }} · {{ item.analysis.analysis_mode === 'demo' ? '规则演示' : '云模型' }}</span></button></div>
         <button v-if="history.length" class="text-button" @click="clearHistory">清空本机方案历史</button>
       </section>
       <section v-else-if="webHosted" aria-labelledby="web-connect-title">
         <div class="intro"><h1 id="web-connect-title">让每一次取景，都更有想法。</h1><p>照片、构图手稿、一点拍摄灵感。现在开始。</p></div>
-        <div class="web-welcome"><img :src="mascot" alt="小栗摄影助手" /><div><h2>从看见，到拍好</h2><p>读懂现场，用一张构图手稿告诉你，下一张可以怎么拍。</p></div></div>
+        <div class="web-welcome"><MascotArt pose="connect" priority /><div><h2>让灵感，连接现场</h2><p>准备好你的照片，小栗会和你一起找到下一张的拍摄方向。</p></div></div>
         <form v-if="!connected" @submit.prevent="connect"><label v-if="inviteRequired" for="access-code" class="field-label">体验码</label><input v-if="inviteRequired" id="access-code" v-model="accessCode" type="password" maxlength="160" placeholder="填写邀请人提供的体验码" autocomplete="off" /><p class="helper">{{ inviteRequired ? '体验码由项目维护者提供。' : '点击下方按钮连接拍摄服务。' }} 你不需要配置模型密钥。</p><button class="primary" :disabled="connecting">{{ connecting ? '正在准备…' : '开启拍摄体验' }}</button></form>
         <div v-else class="notice" role="status">已连接。{{ mode === 'demo' ? '当前为规则演示，可体验完整拍摄流程。' : '已开启云模型照片分析。' }}</div>
         <div v-if="connectionMessage" class="notice" role="status">{{ connectionMessage }}</div><button v-if="connected" class="primary" @click="navigate('shoot')">开始拍摄</button>
@@ -481,7 +511,7 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
       </section>
       <section v-else aria-labelledby="connect-title">
         <div class="intro"><h1 id="connect-title">让小栗连接你的电脑</h1><p>第一版使用电脑里的模型与知识库。</p></div>
-        <div class="connection-illustration" aria-hidden="true"><span>手机</span><span class="connection-line"></span><span>你的电脑</span></div>
+        <div class="connection-companion"><MascotArt pose="connect" priority /><div><span class="eyebrow">和小栗一起，准备出发</span><h2>手机里的现场，<br />交给电脑里的小栗。</h2><p>连接你的拍摄服务，让照片与灵感在这里相遇。</p></div></div>
         <ol class="setup-steps"><li>电脑上双击 <strong>启动手机服务.cmd</strong>，保持运行。</li><li>手机与电脑连接同一个可信 Wi-Fi。</li><li>填写电脑 IPv4 地址和手机连接令牌。</li></ol>
         <form @submit.prevent="connect">
           <fieldset :disabled="connecting || busy">
@@ -497,6 +527,6 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
         <div class="privacy-note"><h2>照片与你的连接信息</h2><p>地址和令牌仅保存在本机 WebView 存储中（演示版未加密），不写进安装包。照片不保存到分析网关；云模型的数据政策取决于你选择的提供商。</p><p>HTTP 连接只适合可信局域网演示，不要开放到公网。正式部署需要 HTTPS 和更完善的登录机制。</p><p>本版提供拍摄建议，不自动设置手机 ISO / 快门；暂不包含实时构图线或自动裁剪。知识库仍在电脑端管理。</p><button class="text-button" @click="clearConnection" :disabled="busy || connecting">清除本机连接信息</button></div>
       </section>
     </main>
-    <nav class="bottom-nav" aria-label="主导航"><button :class="{ active: page === 'shoot' }" :aria-current="page === 'shoot' ? 'page' : undefined" @click="navigate('shoot')"><span aria-hidden="true">◎</span>拍摄</button><button :class="{ active: page === 'result' }" :aria-current="page === 'result' ? 'page' : undefined" @click="navigate('result')"><span aria-hidden="true">✦</span>建议</button><button :class="{ active: page === 'history' }" :aria-current="page === 'history' ? 'page' : undefined" @click="navigate('history')"><span aria-hidden="true">▤</span>记录</button><button :class="{ active: page === 'connect' }" :aria-current="page === 'connect' ? 'page' : undefined" @click="navigate('connect')"><span aria-hidden="true">⌁</span>{{ webHosted ? '体验' : '连接' }}</button></nav>
+    <nav class="bottom-nav" aria-label="主导航"><button :class="{ active: page === 'shoot' }" :aria-current="page === 'shoot' ? 'page' : undefined" @click="navigate('shoot')"><UiIcon name="camera" />拍摄</button><button :class="{ active: page === 'result' }" :aria-current="page === 'result' ? 'page' : undefined" @click="navigate('result')"><UiIcon name="sparkles" />建议</button><button :class="{ active: page === 'history' }" :aria-current="page === 'history' ? 'page' : undefined" @click="navigate('history')"><UiIcon name="bookmark" />记录</button><button :class="{ active: page === 'connect' }" :aria-current="page === 'connect' ? 'page' : undefined" @click="navigate('connect')"><UiIcon name="connect" />{{ webHosted ? '体验' : '连接' }}</button></nav>
   </div>
 </template>

@@ -1,0 +1,406 @@
+{
+  "knowledge_id": "phone20261017-cn-oppo-find-n5",
+  "library_id": "equipment",
+  "title": "OPPO Find N5（国行）：扩充硬件与相机参数",
+  "kind": "manufacturer_fact",
+  "content": "# OPPO Find N5（国行）\n\n整理日期：2026-10-17；AI提取，尚未独立人工复核或真机验证。\n\n- 处理器：高通骁龙®8 至尊版移动平台，7 核心，最高主频 4.32GHz。\n- 屏幕尺寸：主屏：8.12 英寸；副屏：6.62 英寸。\n- 屏幕分辨率：主屏：QXGA+ 2480×2248 像素，412 PPI；副屏：FHD+ 2616×1140 像素，431 PPI。\n- 刷新率及条件：最高支持 120Hz 刷新率。\n- 屏幕类型：主屏：。\n- 官方列示存储组合：16GB+512GB，12GB+256GB。\n- 电池容量及版本条件：3085+2515 mAh/11.91+9.71 Wh（典型值），等效 5600 mAh 电池能量；3015+2460 mAh/11.64+9.50 Wh（额定值），等效 5475 mAh 电池能量。\n- 充电标称及条件：80 W 超级闪充。兼容 60 W 超级闪充，50 W 超级闪充，33 W 超级闪充，33 W 融合快充，33 W PPS，13.5 W PD；50 W 无线闪充。\n- 长度/高度：展开：约 160.87 毫米；折叠：约 160.87 毫米。\n- 宽度：展开：约 146.58 毫米；折叠：约 74.42 毫米。\n- 厚度：展开：约 4.36 毫米（暮紫），约 4.21 毫米（玉白，缎黑）；折叠：约 9.35 毫米（暮紫），约 8.93 毫米（玉白，缎黑）。\n- 重量及版本条件：约 234 克（暮紫）；约 229 克（玉白，缎黑）。\n- 后置镜头及辅助传感器（按来源列示）：5000 万像素广角摄像头：ƒ/1.8，等效焦距 21 毫米，支持 AF 自动对焦，支持两轴 OIS 防抖；800 万像素超广角摄像头：ƒ/2.2，等效焦距 15 毫米，支持 AF 自动对焦，116° 广视角；5000 万像素长焦摄像头：ƒ/2.7，等效焦距 70 毫米，支持 AF 自动对焦，支持两轴 OIS 防抖；照片支持最高 3 倍光学变焦，最高 120 倍数码变焦。\n- 前置摄像头：主屏：；800 万像素摄像头：ƒ/2.4，等效焦距 21 毫米，四镜式镜头；副屏：；800 万像素摄像头：ƒ/2.4，等效焦距 21 毫米，四镜式镜头。\n- 视频录制摘要：4K 视频拍摄：60 fps，30 fps；1080P 视频拍摄：60 fps，30 fps。\n- USB：USB Type-C，支持 USB 3.1 Gen 2。\n- WLAN：Wi-Fi 7、Wi-Fi 6、Wi-Fi 5、Wi-Fi 2。\n- 蓝牙：蓝牙 5.4，低功耗蓝牙，BLE Audio。\n- 来源列示系统：ColorOS 15.0。\n\n未核验字段：实体RAM选项、存储选项、防抖、变焦功能、NFC、上市月份。\n\n差异与待复核事项：以完整型号及字段内条件为准。\n\n使用边界：\n- 仅适用中国大陆销售版本；Pro、Plus、Ultra、mini和卫星通信版本不自动互相继承。\n- 公开参数为厂商声明，未经独立人工复核和真机验证；最高规格不代表所有模式与镜头同时可用。\n- 标称像素不等于每张成片像素；等效焦距不等于EXIF实际焦距；光学品质裁切不新增物理镜头。\n- 光圈标签不保证当前相机App可手动调节；ISO、快门范围、各镜头模式组合及固件兼容性本批未核验。\n- 电池保留典型值、额定值、等效容量及SKU差异；充电标称需对应适配器、线材与环境，不是持续功率。\n- 存储选项不生成未列出的RAM+ROM排列；动态内存扩展不计入实体RAM。\n- 源页面系统为页面列示版本，不代表当前系统或最高可升级版本。\n- 折叠屏保留内外屏、展开/折叠尺寸；色彩/多光谱辅助传感器不按独立成像镜头计数。\n\n来源：[OPPO中国官网规格](https://www.oppo.com/cn/smartphones/series-find-n/find-n5/specs/)\n\n状态：待审核草稿；禁止检索；参数资料未注册应用型号。",
+  "payload": {
+    "brand": "OPPO",
+    "model_variant": "OPPO Find N5",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "高通骁龙®8 至尊版移动平台，7 核心，最高主频 4.32GHz",
+      "display_size": "主屏：8.12 英寸\n副屏：6.62 英寸",
+      "display_resolution": "主屏：QXGA+ 2480×2248 像素，412 PPI\n副屏：FHD+ 2616×1140 像素，431 PPI",
+      "display_refresh": "最高支持 120Hz 刷新率",
+      "display_panel": "主屏：",
+      "ram": null,
+      "storage": null,
+      "sku": "16GB+512GB，12GB+256GB",
+      "battery": "3085+2515 mAh/11.91+9.71 Wh（典型值），等效 5600 mAh 电池能量\n3015+2460 mAh/11.64+9.50 Wh（额定值），等效 5475 mAh 电池能量",
+      "charging": "80 W 超级闪充。兼容 60 W 超级闪充，50 W 超级闪充，33 W 超级闪充，33 W 融合快充，33 W PPS，13.5 W PD\n50 W 无线闪充",
+      "height": "展开：约 160.87 毫米\n折叠：约 160.87 毫米",
+      "width": "展开：约 146.58 毫米\n折叠：约 74.42 毫米",
+      "thickness": "展开：约 4.36 毫米（暮紫），约 4.21 毫米（玉白，缎黑）\n折叠：约 9.35 毫米（暮紫），约 8.93 毫米（玉白，缎黑）",
+      "weight": "约 234 克（暮紫）\n约 229 克（玉白，缎黑）",
+      "rear": "5000 万像素广角摄像头：ƒ/1.8，等效焦距 21 毫米，支持 AF 自动对焦，支持两轴 OIS 防抖\n800 万像素超广角摄像头：ƒ/2.2，等效焦距 15 毫米，支持 AF 自动对焦，116° 广视角\n5000 万像素长焦摄像头：ƒ/2.7，等效焦距 70 毫米，支持 AF 自动对焦，支持两轴 OIS 防抖\n照片支持最高 3 倍光学变焦，最高 120 倍数码变焦",
+      "front": "主屏：\n800 万像素摄像头：ƒ/2.4，等效焦距 21 毫米，四镜式镜头\n副屏：\n800 万像素摄像头：ƒ/2.4，等效焦距 21 毫米，四镜式镜头",
+      "stabilization": null,
+      "zoom": null,
+      "video": "4K 视频拍摄：60 fps，30 fps；1080P 视频拍摄：60 fps，30 fps",
+      "usb": "USB Type-C，支持 USB 3.1 Gen 2",
+      "wifi": "Wi-Fi 7、Wi-Fi 6、Wi-Fi 5、Wi-Fi 2",
+      "bluetooth": "蓝牙 5.4，低功耗蓝牙，BLE Audio",
+      "nfc": null,
+      "os": "ColorOS 15.0",
+      "launch": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "高通骁龙®8 至尊版移动平台，7 核心，最高主频 4.32GHz",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "移动平台",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "主屏：8.12 英寸\n副屏：6.62 英寸",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "尺寸",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "主屏：QXGA+ 2480×2248 像素，412 PPI\n副屏：FHD+ 2616×1140 像素，431 PPI",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "分辨率",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "最高支持 120Hz 刷新率",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "显示/类型",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "主屏：",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "类型",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.sku",
+        "value": "16GB+512GB，12GB+256GB",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "运行内存容量 + 机身存储容量",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "3085+2515 mAh/11.91+9.71 Wh（典型值），等效 5600 mAh 电池能量\n3015+2460 mAh/11.64+9.50 Wh（额定值），等效 5475 mAh 电池能量",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "电池容量",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "80 W 超级闪充。兼容 60 W 超级闪充，50 W 超级闪充，33 W 超级闪充，33 W 融合快充，33 W PPS，13.5 W PD\n50 W 无线闪充",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "快速充电",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "展开：约 160.87 毫米\n折叠：约 160.87 毫米",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "高",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "展开：约 146.58 毫米\n折叠：约 74.42 毫米",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "宽",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "展开：约 4.36 毫米（暮紫），约 4.21 毫米（玉白，缎黑）\n折叠：约 9.35 毫米（暮紫），约 8.93 毫米（玉白，缎黑）",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "厚",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "约 234 克（暮紫）\n约 229 克（玉白，缎黑）",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "重量",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "5000 万像素广角摄像头：ƒ/1.8，等效焦距 21 毫米，支持 AF 自动对焦，支持两轴 OIS 防抖\n800 万像素超广角摄像头：ƒ/2.2，等效焦距 15 毫米，支持 AF 自动对焦，116° 广视角\n5000 万像素长焦摄像头：ƒ/2.7，等效焦距 70 毫米，支持 AF 自动对焦，支持两轴 OIS 防抖\n照片支持最高 3 倍光学变焦，最高 120 倍数码变焦",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "后置",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "主屏：\n800 万像素摄像头：ƒ/2.4，等效焦距 21 毫米，四镜式镜头\n副屏：\n800 万像素摄像头：ƒ/2.4，等效焦距 21 毫米，四镜式镜头",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "前置",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "4K 视频拍摄：60 fps，30 fps；1080P 视频拍摄：60 fps，30 fps",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "视频拍摄/后置",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.usb",
+        "value": "USB Type-C，支持 USB 3.1 Gen 2",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "数据接口",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.wifi",
+        "value": "Wi-Fi 7、Wi-Fi 6、Wi-Fi 5、Wi-Fi 2",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "WLAN 功能",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "蓝牙 5.4，低功耗蓝牙，BLE Audio",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "蓝牙",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "ColorOS 15.0",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-031e8223b202"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "OPPO Find N5",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      }
+    ],
+    "unknown_fields": [
+      "ram",
+      "storage",
+      "stabilization",
+      "zoom",
+      "nfc",
+      "launch"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外版或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "cn20261017-031e8223b202",
+        "publisher": "OPPO",
+        "title": "OPPO Find N5 产品参数 | OPPO 官方网站",
+        "url": "https://www.oppo.com/cn/smartphones/series-find-n/find-n5/specs/",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "access_method": "web",
+        "retrieval_allowed": false,
+        "rights_status": "必要参数事实整理与链接；不再分发整页、评论、图片或用户资料；使用许可待审核"
+      }
+    ],
+    "discovery": {
+      "site": "酷安",
+      "url": "https://coolapk.com/officialEvaluation",
+      "usage": "公开搜索索引中的机型线索；参数实际核验来源为中国官网",
+      "indexed_model_seen": false,
+      "direct_product_selector_access": "blocked_by_site_security_policy_567",
+      "direct_review_page_access": "blocked_by_site_security_policy_567"
+    },
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "runtime_registration": "未修改phone_profiles.yaml；草稿文件不会自动增加应用型号",
+    "data_scope": "选定可公开核验字段；不是完整参数库、实时在售状态、销量排名或实测结论"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "20261017",
+    "OPPO"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "OPPO Find N5",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "OPPO中国官网",
+    "url": "https://www.oppo.com/cn/smartphones/series-find-n/find-n5/specs/",
+    "location": "各字段章节见payload.facts",
+    "license": "必要参数事实自行整理，许可与项目使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

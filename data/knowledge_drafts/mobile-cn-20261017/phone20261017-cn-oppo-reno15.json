@@ -1,0 +1,421 @@
+{
+  "knowledge_id": "phone20261017-cn-oppo-reno15",
+  "library_id": "equipment",
+  "title": "OPPO Reno15（国行）：扩充硬件与相机参数",
+  "kind": "manufacturer_fact",
+  "content": "# OPPO Reno15（国行）\n\n整理日期：2026-10-17；AI提取，尚未独立人工复核或真机验证。\n\n- 处理器：MediaTek 天玑8450，8 核心，最高主频 3.25GHz。\n- 屏幕尺寸：6.32 英寸。\n- 屏幕分辨率：FHD+ 2640×1216 像素，460 PPI。\n- 刷新率及条件：最高支持 120Hz 刷新率。\n- 屏幕类型：直面屏。\n- 官方列示存储组合：12GB+256GB，12GB+512GB，16GB+256GB，16GB+512GB，16GB+1TB。\n- 电池容量及版本条件：6200 mAh/24.31 Wh（典型值）；6035 mAh/23.66 Wh（额定值）。\n- 充电标称及条件：最大支持：80 W 超级闪充，80 W UFCS 融合快充；兼容：67 W 及以下超级闪充，44 W 三方 UFCS 融合快充，55 W PPS，13.5 W PD。\n- 长度/高度：约 151.21 毫米。\n- 宽度：约 72.42 毫米。\n- 厚度：约 7.99 毫米（可露丽棕，星光蝴蝶结）；约 8.13 毫米（星星粉，极光蓝）。\n- 重量及版本条件：约 187 克（可露丽棕，星光蝴蝶结）；约 188 克（星星粉，极光蓝）。\n- 后置镜头及辅助传感器（按来源列示）：2 亿像素广角摄像头：f/1.8，等效焦距 24 毫米，支持 AF 自动对焦，支持两轴 OIS 防抖；5000 万像素超广角摄像头：f/2.0，等效焦距 16 毫米，支持 AF 自动对焦，116° 广视角；5000 万像素长焦摄像头：f/2.8，等效焦距 80 毫米，支持 AF 自动对焦，支持两轴 OIS 防抖。\n- 前置摄像头：5000 万像素摄像头：f/2.0，等效焦距 18 毫米，支持 AF 自动对焦。\n- 变焦功能：照片拍摄最高支持 3.5 倍光学变焦，最高支持 120 倍数码变焦。\n- 视频录制摘要：4K 基础拍摄：60 fps，30 fps；1080P 基础拍摄：60 fps，30 fps。\n- USB：USB Type-C。\n- WLAN：Wi-Fi 6、Wi-Fi 5。\n- 蓝牙：蓝牙 5.4，低功耗蓝牙，BLE Audio。\n- 来源列示系统：ColorOS 16.0。\n\n未核验字段：实体RAM选项、存储选项、防抖、NFC、上市月份。\n\n差异与待复核事项：以完整型号及字段内条件为准。\n\n使用边界：\n- 仅适用中国大陆销售版本；Pro、Plus、Ultra、mini和卫星通信版本不自动互相继承。\n- 公开参数为厂商声明，未经独立人工复核和真机验证；最高规格不代表所有模式与镜头同时可用。\n- 标称像素不等于每张成片像素；等效焦距不等于EXIF实际焦距；光学品质裁切不新增物理镜头。\n- 光圈标签不保证当前相机App可手动调节；ISO、快门范围、各镜头模式组合及固件兼容性本批未核验。\n- 电池保留典型值、额定值、等效容量及SKU差异；充电标称需对应适配器、线材与环境，不是持续功率。\n- 存储选项不生成未列出的RAM+ROM排列；动态内存扩展不计入实体RAM。\n- 源页面系统为页面列示版本，不代表当前系统或最高可升级版本。\n- 折叠屏保留内外屏、展开/折叠尺寸；色彩/多光谱辅助传感器不按独立成像镜头计数。\n\n来源：[OPPO中国官网规格](https://www.oppo.com/cn/smartphones/series-reno/reno15/specs/)\n\n状态：待审核草稿；禁止检索；参数资料未注册应用型号。",
+  "payload": {
+    "brand": "OPPO",
+    "model_variant": "OPPO Reno15",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "MediaTek 天玑8450，8 核心，最高主频 3.25GHz",
+      "display_size": "6.32 英寸",
+      "display_resolution": "FHD+ 2640×1216 像素，460 PPI",
+      "display_refresh": "最高支持 120Hz 刷新率",
+      "display_panel": "直面屏",
+      "ram": null,
+      "storage": null,
+      "sku": "12GB+256GB，12GB+512GB，16GB+256GB，16GB+512GB，16GB+1TB",
+      "battery": "6200 mAh/24.31 Wh（典型值）\n6035 mAh/23.66 Wh（额定值）",
+      "charging": "最大支持：80 W 超级闪充，80 W UFCS 融合快充\n兼容：67 W 及以下超级闪充，44 W 三方 UFCS 融合快充，55 W PPS，13.5 W PD",
+      "height": "约 151.21 毫米",
+      "width": "约 72.42 毫米",
+      "thickness": "约 7.99 毫米（可露丽棕，星光蝴蝶结）\n约 8.13 毫米（星星粉，极光蓝）",
+      "weight": "约 187 克（可露丽棕，星光蝴蝶结）\n约 188 克（星星粉，极光蓝）",
+      "rear": "2 亿像素广角摄像头：f/1.8，等效焦距 24 毫米，支持 AF 自动对焦，支持两轴 OIS 防抖\n5000 万像素超广角摄像头：f/2.0，等效焦距 16 毫米，支持 AF 自动对焦，116° 广视角\n5000 万像素长焦摄像头：f/2.8，等效焦距 80 毫米，支持 AF 自动对焦，支持两轴 OIS 防抖",
+      "front": "5000 万像素摄像头：f/2.0，等效焦距 18 毫米，支持 AF 自动对焦",
+      "stabilization": null,
+      "zoom": "照片拍摄最高支持 3.5 倍光学变焦，最高支持 120 倍数码变焦",
+      "video": "4K 基础拍摄：60 fps，30 fps；1080P 基础拍摄：60 fps，30 fps",
+      "usb": "USB Type-C",
+      "wifi": "Wi-Fi 6、Wi-Fi 5",
+      "bluetooth": "蓝牙 5.4，低功耗蓝牙，BLE Audio",
+      "nfc": null,
+      "os": "ColorOS 16.0",
+      "launch": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "MediaTek 天玑8450，8 核心，最高主频 3.25GHz",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "移动平台",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "6.32 英寸",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "尺寸",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "FHD+ 2640×1216 像素，460 PPI",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "分辨率",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "最高支持 120Hz 刷新率",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "显示/类型",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "直面屏",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "类型",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.sku",
+        "value": "12GB+256GB，12GB+512GB，16GB+256GB，16GB+512GB，16GB+1TB",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "运行内存容量 + 机身存储容量",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "6200 mAh/24.31 Wh（典型值）\n6035 mAh/23.66 Wh（额定值）",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "电池容量",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "最大支持：80 W 超级闪充，80 W UFCS 融合快充\n兼容：67 W 及以下超级闪充，44 W 三方 UFCS 融合快充，55 W PPS，13.5 W PD",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "快速充电",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "约 151.21 毫米",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "高",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "约 72.42 毫米",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "宽",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "约 7.99 毫米（可露丽棕，星光蝴蝶结）\n约 8.13 毫米（星星粉，极光蓝）",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "厚",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "约 187 克（可露丽棕，星光蝴蝶结）\n约 188 克（星星粉，极光蓝）",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "重量",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "2 亿像素广角摄像头：f/1.8，等效焦距 24 毫米，支持 AF 自动对焦，支持两轴 OIS 防抖\n5000 万像素超广角摄像头：f/2.0，等效焦距 16 毫米，支持 AF 自动对焦，116° 广视角\n5000 万像素长焦摄像头：f/2.8，等效焦距 80 毫米，支持 AF 自动对焦，支持两轴 OIS 防抖",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "后置",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "5000 万像素摄像头：f/2.0，等效焦距 18 毫米，支持 AF 自动对焦",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "前置",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.zoom",
+        "value": "照片拍摄最高支持 3.5 倍光学变焦，最高支持 120 倍数码变焦",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "摄像头/后置",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "4K 基础拍摄：60 fps，30 fps；1080P 基础拍摄：60 fps，30 fps",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "视频拍摄/后置",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.usb",
+        "value": "USB Type-C",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "数据接口",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.wifi",
+        "value": "Wi-Fi 6、Wi-Fi 5",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "WLAN 功能",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "蓝牙 5.4，低功耗蓝牙，BLE Audio",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "蓝牙",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "ColorOS 16.0",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-2e7eea85996f"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "OPPO Reno15",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      }
+    ],
+    "unknown_fields": [
+      "ram",
+      "storage",
+      "stabilization",
+      "nfc",
+      "launch"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外版或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "cn20261017-2e7eea85996f",
+        "publisher": "OPPO",
+        "title": "OPPO Reno15 产品参数 | OPPO 官方网站",
+        "url": "https://www.oppo.com/cn/smartphones/series-reno/reno15/specs/",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "access_method": "web",
+        "retrieval_allowed": false,
+        "rights_status": "必要参数事实整理与链接；不再分发整页、评论、图片或用户资料；使用许可待审核"
+      }
+    ],
+    "discovery": {
+      "site": "酷安",
+      "url": "https://coolapk.com/officialEvaluation",
+      "usage": "公开搜索索引中的机型线索；参数实际核验来源为中国官网",
+      "indexed_model_seen": false,
+      "direct_product_selector_access": "blocked_by_site_security_policy_567",
+      "direct_review_page_access": "blocked_by_site_security_policy_567"
+    },
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "runtime_registration": "未修改phone_profiles.yaml；草稿文件不会自动增加应用型号",
+    "data_scope": "选定可公开核验字段；不是完整参数库、实时在售状态、销量排名或实测结论"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "20261017",
+    "OPPO"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "OPPO Reno15",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "OPPO中国官网",
+    "url": "https://www.oppo.com/cn/smartphones/series-reno/reno15/specs/",
+    "location": "各字段章节见payload.facts",
+    "license": "必要参数事实自行整理，许可与项目使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

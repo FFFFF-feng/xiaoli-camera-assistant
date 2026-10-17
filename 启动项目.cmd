@@ -44,6 +44,7 @@ exit /b 1
 
 :launch
 echo 每次启动会自动构建当前代码，并重启本项目的新版网页服务。
+echo 已整合新版相机工坊前端，保留多图分析、推荐线稿和三分线。
 echo 推荐线稿使用 CPU 轮廓提取，无需本地生图模型。
 echo 图片编辑预演默认关闭，只有独立配置并手动确认后才会调用。
 "%APP_LAUNCH_PYTHON%" %APP_LAUNCH_ARGS% -u "%~dp0scripts\launch_apps.py" --web %*

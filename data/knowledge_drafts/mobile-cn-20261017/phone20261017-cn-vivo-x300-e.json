@@ -1,0 +1,481 @@
+{
+  "knowledge_id": "phone20261017-cn-vivo-x300-e",
+  "library_id": "equipment",
+  "title": "vivo X300 E（国行）：扩充硬件与相机参数",
+  "kind": "manufacturer_fact",
+  "content": "# vivo X300 E（国行）\n\n整理日期：2026-10-17；AI提取，尚未独立人工复核或真机验证。\n\n- 处理器：第五代骁龙8移动平台。\n- 屏幕尺寸：6.59英寸。\n- 屏幕分辨率：2750 x 1260。\n- 刷新率及条件：60Hz、90Hz、120Hz、144Hz。\n- 屏幕类型：AMOLED。\n- 实体RAM选项：12GB。\n- 存储选项：256GB/512GB。\n- 电池容量及版本条件：*本产品采用单电芯设计：；典型容量：7200mAh（3.74V）。；额定容量：7015mAh（3.74V）。。\n- 充电标称及条件：手机支持的充电器最大输出功率90W。\n- 长度/高度：157.52mm。\n- 宽度：74.33mm。\n- 厚度：月光白：7.99mm；辰夜黑、日光橙：7.79mm。\n- 重量及版本条件：月光白：203g；辰夜黑、日光橙：199.5g。\n- 后置镜头及辅助传感器（按来源列示）：5000万像素蔡司超感光大底主摄；5000万像素蔡司超级长焦；800万像素超视野超广角镜头；光圈按厂商顺序：f/1.88（5000万蔡司超感光大底主摄）；f/2.65（5000万蔡司超级长焦）；f/2.2（超视野超广角镜头）。\n- 前置摄像头：5000万像素；f/2.0。\n- 防抖：后置主摄像头和长焦摄像头支持OIS防抖，前后置摄像头均支持视频防抖。\n- 变焦功能：后置长焦摄像头最大支持100x数字变焦；前后置摄像头均支持数字变焦。\n- 视频录制摘要：最高支持4K超高清视频拍摄；慢镜头最高支持4K拍摄。\n- USB：USB2.0。\n- WLAN：Wi-Fi 6、Wi-Fi 7。\n- 蓝牙：支持蓝牙5.4。\n- NFC：支持。\n- 来源列示系统：基于Android 16 开发的OriginOS 6。\n- 上市月份：2026年7月。\n\n未核验字段：官方列示存储组合。\n\n差异与待复核事项：以完整型号及字段内条件为准。\n\n使用边界：\n- 仅适用中国大陆销售版本；Pro、Plus、Ultra、mini和卫星通信版本不自动互相继承。\n- 公开参数为厂商声明，未经独立人工复核和真机验证；最高规格不代表所有模式与镜头同时可用。\n- 标称像素不等于每张成片像素；等效焦距不等于EXIF实际焦距；光学品质裁切不新增物理镜头。\n- 光圈标签不保证当前相机App可手动调节；ISO、快门范围、各镜头模式组合及固件兼容性本批未核验。\n- 电池保留典型值、额定值、等效容量及SKU差异；充电标称需对应适配器、线材与环境，不是持续功率。\n- 存储选项不生成未列出的RAM+ROM排列；动态内存扩展不计入实体RAM。\n- 源页面系统为页面列示版本，不代表当前系统或最高可升级版本。\n- 折叠屏保留内外屏、展开/折叠尺寸；色彩/多光谱辅助传感器不按独立成像镜头计数。\n\n来源：[vivo中国官网规格](https://www.vivo.com.cn/vivo/param/x300e)\n\n状态：待审核草稿；禁止检索；参数资料未注册应用型号。",
+  "payload": {
+    "brand": "vivo",
+    "model_variant": "vivo X300 E",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "第五代骁龙8移动平台",
+      "display_size": "6.59英寸",
+      "display_resolution": "2750 x 1260",
+      "display_refresh": "60Hz、90Hz、120Hz、144Hz",
+      "display_panel": "AMOLED",
+      "ram": "12GB",
+      "storage": "256GB/512GB",
+      "sku": null,
+      "battery": "*本产品采用单电芯设计：；典型容量：7200mAh（3.74V）。；额定容量：7015mAh（3.74V）。",
+      "charging": "手机支持的充电器最大输出功率90W",
+      "height": "157.52mm",
+      "width": "74.33mm",
+      "thickness": "月光白：7.99mm\n辰夜黑、日光橙：7.79mm",
+      "weight": "月光白：203g\n辰夜黑、日光橙：199.5g",
+      "rear": "5000万像素蔡司超感光大底主摄；5000万像素蔡司超级长焦；800万像素超视野超广角镜头；光圈按厂商顺序：f/1.88（5000万蔡司超感光大底主摄）；f/2.65（5000万蔡司超级长焦）；f/2.2（超视野超广角镜头）",
+      "front": "5000万像素；f/2.0",
+      "stabilization": "后置主摄像头和长焦摄像头支持OIS防抖，前后置摄像头均支持视频防抖",
+      "zoom": "后置长焦摄像头最大支持100x数字变焦；前后置摄像头均支持数字变焦",
+      "video": "最高支持4K超高清视频拍摄\n慢镜头最高支持4K拍摄",
+      "usb": "USB2.0",
+      "wifi": "Wi-Fi 6、Wi-Fi 7",
+      "bluetooth": "支持蓝牙5.4",
+      "nfc": "支持",
+      "os": "基于Android 16 开发的OriginOS 6",
+      "launch": "2026年7月"
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "第五代骁龙8移动平台",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "CPU型号",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "6.59英寸",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "尺寸（英寸）",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "2750 x 1260",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "分辨率",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "60Hz、90Hz、120Hz、144Hz",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "刷新率",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "AMOLED",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "屏幕材质",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.ram",
+        "value": "12GB",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "运行内存（RAM）",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.storage",
+        "value": "256GB/512GB",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "机身存储（ROM）",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "*本产品采用单电芯设计：；典型容量：7200mAh（3.74V）。；额定容量：7015mAh（3.74V）。",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "电池容量",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "手机支持的充电器最大输出功率90W",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "充电规格",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "157.52mm",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "高度",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "74.33mm",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "宽度",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "月光白：7.99mm\n辰夜黑、日光橙：7.79mm",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "厚度",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "月光白：203g\n辰夜黑、日光橙：199.5g",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "重量",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "5000万像素蔡司超感光大底主摄；5000万像素蔡司超级长焦；800万像素超视野超广角镜头；光圈按厂商顺序：f/1.88（5000万蔡司超感光大底主摄）；f/2.65（5000万蔡司超级长焦）；f/2.2（超视野超广角镜头）",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "后置摄像头像素",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "5000万像素；f/2.0",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "前置摄像头像素",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.stabilization",
+        "value": "后置主摄像头和长焦摄像头支持OIS防抖，前后置摄像头均支持视频防抖",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "防抖类型",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.zoom",
+        "value": "后置长焦摄像头最大支持100x数字变焦；前后置摄像头均支持数字变焦",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "变焦模式",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "最高支持4K超高清视频拍摄\n慢镜头最高支持4K拍摄",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "视频录制",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.usb",
+        "value": "USB2.0",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "USB版本",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.wifi",
+        "value": "Wi-Fi 6、Wi-Fi 7",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "WLAN",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "支持蓝牙5.4",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "蓝牙传输",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.nfc",
+        "value": "支持",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "NFC",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "基于Android 16 开发的OriginOS 6",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.launch",
+        "value": "2026年7月",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-22a1b1f13b5a"
+        ],
+        "source_location": "上市时间",
+        "conditions": {
+          "model_variant": "vivo X300 E",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      }
+    ],
+    "unknown_fields": [
+      "sku"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外版或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "cn20261017-22a1b1f13b5a",
+        "publisher": "vivo",
+        "title": "vivo X300 E 影像旗舰 - vivo官方网站",
+        "url": "https://www.vivo.com.cn/vivo/param/x300e",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "access_method": "web",
+        "retrieval_allowed": false,
+        "rights_status": "必要参数事实整理与链接；不再分发整页、评论、图片或用户资料；使用许可待审核"
+      }
+    ],
+    "discovery": {
+      "site": "酷安",
+      "url": "https://coolapk.com/officialEvaluation",
+      "usage": "公开搜索索引中的机型线索；参数实际核验来源为中国官网",
+      "indexed_model_seen": false,
+      "direct_product_selector_access": "blocked_by_site_security_policy_567",
+      "direct_review_page_access": "blocked_by_site_security_policy_567"
+    },
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "runtime_registration": "未修改phone_profiles.yaml；草稿文件不会自动增加应用型号",
+    "data_scope": "选定可公开核验字段；不是完整参数库、实时在售状态、销量排名或实测结论"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "20261017",
+    "vivo"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "vivo X300 E",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "vivo中国官网",
+    "url": "https://www.vivo.com.cn/vivo/param/x300e",
+    "location": "各字段章节见payload.facts",
+    "license": "必要参数事实自行整理，许可与项目使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}
