@@ -111,6 +111,29 @@ def gpu_memory():
     return {}
 
 
+def persist_manifest(path, manifest):
+    temporary = path.with_suffix(".json.tmp")
+    temporary.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+    temporary.replace(path)
+
+
+def record_attempt(ledger, manifest, record, prefix, rgb, mask):
+    # Commit the denominator BEFORE optional PNG/topology work can fail.
+    manifest["attempts"].append(record)
+    record["evidence_status"] = "pending" if mask is not None else "not_applicable"
+    persist_manifest(ledger, manifest)
+    if mask is not None:
+        try:
+            record["mask_metrics"] = topology(mask)
+            save_visuals(prefix, rgb, mask)
+            record["mask_file"] = f"{prefix.name}-mask.png"
+            record["evidence_status"] = "saved"
+        except Exception as error:  # noqa: BLE001 -- evidence failure preserves inference record
+            record["evidence_status"] = "failed"
+            record["evidence_error"] = type(error).__name__
+        persist_manifest(ledger, manifest)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--photos", type=Path, required=True)
@@ -140,7 +163,7 @@ def main():
     ledger = args.output / "manifest.json"
 
     def persist():
-        ledger.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+        persist_manifest(ledger, manifest)
 
     persist()
     try:
@@ -178,12 +201,7 @@ def main():
                                           timings={"total": time.perf_counter()-start})
                         record["wall_seconds"] = time.perf_counter()-start
                         record["memory_after"] = {**memory(), **gpu_memory()}
-                        if mask is not None:
-                            record["mask_metrics"] = topology(mask)
-                            record["mask_file"] = f"{prefix.name}-mask.png"
-                            save_visuals(prefix, rgb, mask)
-                        manifest["attempts"].append(record)
-                        persist()
+                        record_attempt(ledger, manifest, record, prefix, rgb, mask)
                         print(case_id, edge, backend, repeat, record["code"],
                               round(record["wall_seconds"], 4), flush=True)
     finally:

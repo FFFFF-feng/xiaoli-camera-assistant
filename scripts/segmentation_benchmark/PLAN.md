@@ -16,17 +16,17 @@ Review focus: caller mutation and stale embeddings; simultaneous requests and cl
 - [x] Commit only module and independent tests, plus this B-owned plan (`d8ec3ed`).
 
 ## Task 2 — optional model backend
-- [ ] Test lazy import, missing/corrupt weights, truthful metadata and safe device failures before implementation.
+- [x] Initial RED includes missing-weight lazy loading; supplementary corrupt/hash/device tests now actually pass in the independent model environment. Supplementary tests were added after backend implementation, not claimed as RED-first.
 - [x] Implement MobileSAM vit_t, local weights SHA-256 and one-image multi-prompt reuse; document exact preprocessing and native timeout boundary.
-- [ ] Use isolated environment only; record actual versions, hardware, startup/installation costs and weight hash. At most two candidates; begin with MobileSAM, SAM 2 is deferred unless justified.
-- [ ] Commit backend, tests and integration example.
+- [x] Use isolated environment only; record actual versions, hardware, startup/installation costs and weight hash. One candidate run; SAM 2 deferred with rationale.
+- [x] Backend/tests committed in task 1; integration example in `7a71a9e`.
 
 ## Task 3 — offline comparison and handoff
 - [x] Test reproducible GrabCut extraction/visualization before implementation (2 RED then 2 GREEN). Ledger durability inspected in real 32-attempt run.
-- [ ] Compare old/checkpoint GrabCut and MobileSAM on identical RGB/boxes at 720 and 1280, using frozen manual boxes for dog/cup; scene masks are applicability observations only.
-- [ ] Save all attempts, raw masks, overlays, contour-only previews, focused dog/cup crops, timing stages, process/GPU memory and no invented IoU.
-- [ ] Run independent tests, relevant existing pixel tests and whole Python suite offline; inspect launch check without restarting services.
-- [ ] Review complete diff, record all ordered SHAs and evidence in `reports/B-交付报告.md`; copy B report to coordination package. Release inference resources. Commit.
+- [x] Compare old/checkpoint GrabCut and MobileSAM on identical RGB/boxes at 720 and 1280, using frozen manual boxes for dog/cup; scene masks are applicability observations only.
+- [x] Save all attempts, raw masks, overlays, contour-only previews, focused dog/cup crops, timing stages, process RSS; GPU not tested and no invented IoU.
+- [x] Independent tests, existing pixel tests and whole Python suite executed offline; launch check executed, no shared service restart. Sole environment failure documented.
+- [x] Final report and full-range handoff prepared; final commit and coordination-package copy executed as the closing transaction. Inference/download processes checked: none remain; no GPU inference used.
 
 ## Execution ledger
 - Initial evidence: original repository clean at checkpoint; native worktree tool failed to resolve ref in calling chat repository; verified CLI worktree created at the explicit checkpoint.
@@ -36,3 +36,9 @@ Review focus: caller mutation and stale embeddings; simultaneous requests and cl
 - Lifecycle follow-up: cleanup exception and failed candidate denominator tests RED (2 failures), GREEN after implementation; close-during-inference protection passed as an additional test.
 - Environment ruling: discontinue the 3.46 GB CUDA dependency download, install CPU-only Torch (619 MB) in the same independent environment. GPU hardware is detected but no GPU performance claim will be made.
 - Contract boundary: official continuous-logit interpolation is retained and disclosed; B binary-mask resizing uses nearest-neighbor. A must resolve if its frozen wording intended to prohibit interpolation of continuous logits too.
+- Whole-branch read-only review (`b_segmentation_review`): 3 Important runtime issues fixed together using 7 failing regressions then GREEN (42 passed, 1 optional dependency skip); one review Minor (lost attempt on PNG failure) regraded Important because denominator integrity is required, fixed with a real filesystem failure test. GPU memory reporting on non-default CUDA device remains deferred; this run is CPU only.
+- Review rulings: native hard cancellation and product geometry remain outside B implementation as explicitly frozen; actual model quality is judged only after real benchmark; logits interpolation boundary remains explicitly handed to A.
+- Full-suite blocker: Windows asyncio `_fallback_socketpair -> accept` hangs entering existing `test_api_streaming.py::test_complete_composition_partial_is_forwarded_before_final[False]`. Three full-suite diagnostics retained; stopped own processes, no product edit. 18 preceding physics tests passed; full suite must not be reported green. First targeted collection contained 1480 items before later B additions.
+- Final environment: discovered existing detector venv has Torch 2.10.0+cpu / torchvision 0.25.0+cpu. Copied explicit dependency RECORD files into B venv (535,665,981 bytes / 33.19s for initial Torch closure); local OpenCV/pytest/HF dependency copies followed. No system-site-packages or shared source imports. Installed timm 0.9.12 and local MobileSAM 1.0. All earlier wheel downloads were stopped; no fabricated GPU timings.
+- Final verification: isolated model environment 43 passed (24 upstream warnings), related shared-dependency regression 117 passed/1 optional-backend skip. Approved unsandboxed full pytest resolves socketpair obstruction: 1485 passed, 3 skipped, 1 failed in 122.32s. Sole failure is `test_launch_apps.py::test_forwarding_cmd_works_from_a_unicode_desktop_folder` because this isolated worktree has no mobile/node_modules; same reason for launcher --check. Do not edit A launchers or install frontend for B's mask work; report the environmental failure.
+- Real evidence: 32 preliminary GrabCut masks + 48 final single-region comparisons + 4 model outputs in 2 multi-object batches = 84 mask-region attempts; 20 actual MobileSAM outputs in 18 calls. Zero cloud calls. No model masks failed contract checks; quality is separately limited by cup bottom 2/3-row losses and rim holes, unresolved dog identity details, and scene structures.

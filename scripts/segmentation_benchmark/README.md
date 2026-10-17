@@ -17,8 +17,8 @@ $env:TMP=$env:TEMP
 $env:PYTHONUTF8='1'
 python -m venv .tmp/B-segmentation/venv
 $bPython=(Resolve-Path .tmp/B-segmentation/venv/Scripts/python.exe).Path
-& $bPython -m pip install torch==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cpu
-& $bPython -m pip install numpy==2.5.4 Pillow==12.3.0 opencv-python-headless==4.14.0.94 timm==0.9.12 psutil==7.2.2 pytest==9.1.1 setuptools
+& $bPython -m pip install torch==2.10.0+cpu torchvision==0.25.0+cpu --index-url https://download.pytorch.org/whl/cpu
+& $bPython -m pip install numpy==2.5.2 Pillow==12.3.0 opencv-python-headless==4.14.0.94 timm==0.9.12 psutil==7.2.2 pytest==9.1.1 setuptools==78.1.0
 git clone --depth 1 --filter=blob:none --sparse https://github.com/ChaoningZhang/MobileSAM.git .tmp/B-segmentation/MobileSAM
 git -C .tmp/B-segmentation/MobileSAM fetch --depth 1 origin f706ad9c4eb7f219c00d9050e46328518ffb65d2
 git -C .tmp/B-segmentation/MobileSAM checkout --detach f706ad9c4eb7f219c00d9050e46328518ffb65d2
@@ -27,6 +27,8 @@ git -C .tmp/B-segmentation/MobileSAM sparse-checkout set mobile_sam weights
 ```
 
 以上安装显式联网获取开源依赖/权重，与真实云推理请求不同。正常 `segment_many` 无网络路径。不要把共享 `.launcher` 加入模型环境的 PYTHONPATH；只加本工作树 `src`。
+
+本机实际为避免大包下载，按各发行包 RECORD 清单只读复制已有 Torch 2.10.0+cpu 等第三方依赖到新 venv；没有共享 site-packages 引用、pth 注入或共享源码路径，所有导入仍在新 venv。复制清单、字节数、耗时与最终 `freeze.txt` 在忽略证据目录。上面的 pip 步骤是相同版本的常规安装复现方式；首次安装失败、已停止的下载和最终采用路径均见交付报告。
 
 ## 输入、输出、资源与超时
 
@@ -45,7 +47,7 @@ git -C .tmp/B-segmentation/MobileSAM sparse-checkout set mobile_sam weights
 ```powershell
 $env:PYTHONPATH=(Resolve-Path src).Path
 & $bPython scripts/segmentation_benchmark/benchmark.py --photos '../知识库测试图片-20261014/images' --weights '.tmp/B-segmentation/MobileSAM/weights/mobile_sam.pt' --device cpu --output '.tmp/B-segmentation/model-run1'
-& $bPython -m pytest -q tests/test_segmentation_*.py --basetemp .tmp/B-segmentation/pytest
+& $bPython -m pytest -q tests/test_segmentation_runtime.py tests/test_segmentation_mobile_sam.py tests/test_segmentation_benchmark.py --basetemp .tmp/B-segmentation/pytest
 ```
 
 输出目录必须不存在，禁止覆盖旧失败。每次尝试立即写 manifest；四图各 720/1280、旧 GrabCut/检查点 GrabCut/单个候选、每条件两次。没有真值，因此无 IoU。狗/杯框来自 A 保存的人工冻结区域；山湖/走廊为 B 人工适用性观察框。两次模型调用中第二次是编码缓存命中，应单列，不能称完整热编码速度。

@@ -1,5 +1,6 @@
 """Synthetic backend tests; these never claim pretrained-model quality."""
 import time
+import warnings
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import FrozenInstanceError
 from threading import Event
@@ -255,3 +256,55 @@ def test_close_waits_for_active_call_and_releases_predictor_exactly_once():
         assert first.result()[0].status == "success"
         closing.result()
     assert backend.closes == 1 and backend.last_rgb is None
+
+
+def test_caller_shape_and_mutable_box_cannot_change_owned_request_snapshot():
+    runtime, backend, rgb, _ = setup()
+    box = [0., 0., 1., 1.]
+    regions = [api().SegmentationRegion("object1", box)]
+    original_encode = backend.encode
+
+    def mutate_caller_after_encoding(snapshot):
+        original_encode(snapshot)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", DeprecationWarning)
+            rgb.shape = (40, 32, 3)  # exercise legacy caller mutation intentionally
+        box[:] = [2., 2., 3., 3.]
+
+    backend.encode = mutate_caller_after_encoding
+    original_predict = backend.predict
+    seen = []
+
+    def capture_box(prompt):
+        seen.append(prompt.copy())
+        return original_predict(prompt)
+
+    backend.predict = capture_box
+    result, = runtime.segment_many(rgb, regions)
+    assert result.code == "mask_extracted" and result.mask.shape == (32, 40)
+    assert np.array_equal(seen[0], [0, 0, 40, 32])
+
+
+@pytest.mark.parametrize("identifier", [[], {}, None, 4])
+def test_nonstring_object_id_returns_fixed_failure_without_counter_exception(identifier):
+    runtime, backend, rgb, _ = setup()
+    result, = runtime.segment_many(rgb, [api().SegmentationRegion(identifier, (0, 0, 1, 1))])
+    assert result.code == "invalid_bbox" and result.mask is None and backend.loads == 0
+
+
+@pytest.mark.parametrize("state", ["load_failure", "closed", "timeout"])
+def test_batch_failure_preserves_prevalidated_region_error(state):
+    class Missing(SyntheticBackend):
+        def load(self):
+            raise api().BackendError("weights_missing")
+    runtime, _, rgb, regions = setup(Missing())
+    regions += [api().SegmentationRegion("object2", (1, 0, 0, 1))]
+    options = {}
+    if state == "closed":
+        runtime.close()
+    elif state == "timeout":
+        options["timeout_seconds"] = 0
+    results = runtime.segment_many(rgb, regions, **options)
+    assert results[1].code == "invalid_bbox"
+    assert results[0].code == {"load_failure": "weights_missing", "closed": "backend_unavailable",
+                               "timeout": "inference_timeout"}[state]

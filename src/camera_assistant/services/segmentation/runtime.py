@@ -33,6 +33,12 @@ def _bbox_error(region, shape):
     return None
 
 
+def _valid_image(rgb):
+    return (isinstance(rgb, np.ndarray) and rgb.dtype == np.uint8 and rgb.ndim == 3
+            and rgb.shape[2] == 3 and min(rgb.shape[:2]) >= 8
+            and rgb.shape[0]*rgb.shape[1] <= 4_000_000)
+
+
 def _select(candidates, shape):
     masks, scores = candidates.masks, candidates.scores
     if (not isinstance(masks, np.ndarray) or masks.dtype != np.bool_
@@ -115,25 +121,30 @@ class SegmentationRuntime:
                      timeout_seconds: float = 10.0) -> list[SegmentationResult]:
         started = time.perf_counter()
         timings = dict.fromkeys(("queue", "load", "encode", "decode", "postprocess", "total"), 0.)
-        regions = list(regions)
+        # Own all prompt parameters before queueing or invoking native code.
+        regions = [SegmentationRegion(
+            r.object_id if isinstance(r.object_id, str) else "",
+            tuple(r.bbox) if isinstance(r.bbox, (tuple, list)) else r.bbox,
+        ) for r in regions]
         if not regions:
             return []
+        errors = [None] * len(regions)
 
         def finish(results):
             elapsed = time.perf_counter() - started
             return [replace(r, timings={**r.timings, "total": elapsed}) for r in results]
 
         def failed_all(code):
-            return finish([self._result(r, timings, code) for r in regions])
+            return finish([self._result(r, timings, error or code)
+                           for r, error in zip(regions, errors)])
 
-        if (not isinstance(rgb, np.ndarray) or rgb.dtype != np.uint8 or rgb.ndim != 3
-                or rgb.shape[2] != 3 or min(rgb.shape[:2]) < 8
-                or rgb.shape[0]*rgb.shape[1] > 4_000_000):
+        if not _valid_image(rgb):
             return failed_all("invalid_image")
         if len(regions) > 4:
             return failed_all("object_limit_exceeded")
-        counts = Counter(r.object_id for r in regions)
-        errors = ["duplicate_object_id" if counts[r.object_id] > 1
+        counts = Counter(r.object_id for r in regions if r.object_id in {
+            f"object{i}" for i in range(1, 7)})
+        errors = ["duplicate_object_id" if counts.get(r.object_id, 0) > 1
                   else _bbox_error(r, rgb.shape) for r in regions]
         if all(errors):
             return finish([self._result(r, timings, e) for r, e in zip(regions, errors)])
@@ -165,6 +176,11 @@ class SegmentationRuntime:
             check_deadline()
             # Snapshot only after owning the slot: at most one retained image.
             snapshot = np.array(rgb, copy=True, order="C")
+            if not _valid_image(snapshot):
+                return failed_all("invalid_image")
+            shape = snapshot.shape[:2]
+            # Shape may have changed while queued; validate against owned pixels.
+            errors = [error or _bbox_error(r, shape) for r, error in zip(regions, errors)]
             if not self._loaded:
                 stage("load", self._backend.load)
                 self._loaded = True
@@ -194,13 +210,13 @@ class SegmentationRuntime:
                     continue
                 try:
                     box = np.array(region.bbox, dtype=np.float32) * (
-                        [rgb.shape[1], rgb.shape[0]] * 2)
+                        [shape[1], shape[0]] * 2)
                     candidates = stage("decode", lambda box=box: self._backend.predict(box))
                     if isinstance(candidates.masks, np.ndarray) and candidates.masks.ndim == 3:
                         count = len(candidates.masks)
                     check_deadline()
                     mask, count, basis = stage("postprocess", lambda candidates=candidates: _select(
-                        candidates, rgb.shape[:2]))
+                        candidates, shape))
                     check_deadline()
                     results.append(self._result(region, timings, "mask_extracted", mask, count, basis))
                 except Exception as error:  # noqa: BLE001 -- frozen failure boundary

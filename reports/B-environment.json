@@ -1,0 +1,45 @@
+{
+  "cpu": "Intel(R) Core(TM) i7-14650HX (read-only registry query)",
+  "logical_cpus": 24,
+  "ram_bytes": 16944848896,
+  "gpu_detected_by_nvidia_smi": {
+    "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "memory_MiB": 8188,
+    "driver": "595.97"
+  },
+  "inference_device": "cpu",
+  "gpu_inference_tested": false,
+  "torch_threads": 16,
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:05:56) [MSC v.1942 64 bit (AMD64)]",
+  "executable": "C:\\Users\\丁铭哲\\Documents\\ChatGPT\\摄影\\xiaoli-segmentation-adapter\\.tmp\\B-segmentation\\venv\\Scripts\\python.exe",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "versions": {
+    "torch": "2.10.0+cpu",
+    "torchvision": "0.25.0+cpu",
+    "numpy": "2.5.2",
+    "Pillow": "12.3.0",
+    "opencv-python-headless": "4.14.0.94",
+    "timm": "0.9.12",
+    "mobile_sam": "1.0",
+    "psutil": "7.2.2",
+    "pytest": "9.1.1",
+    "setuptools": "78.1.0"
+  },
+  "imports": {
+    "torch": "C:\\Users\\丁铭哲\\Documents\\ChatGPT\\摄影\\xiaoli-segmentation-adapter\\.tmp\\B-segmentation\\venv\\Lib\\site-packages\\torch\\__init__.py",
+    "cv2": "C:\\Users\\丁铭哲\\Documents\\ChatGPT\\摄影\\xiaoli-segmentation-adapter\\.tmp\\B-segmentation\\venv\\Lib\\site-packages\\cv2\\__init__.py",
+    "numpy": "C:\\Users\\丁铭哲\\Documents\\ChatGPT\\摄影\\xiaoli-segmentation-adapter\\.tmp\\B-segmentation\\venv\\Lib\\site-packages\\numpy\\__init__.py"
+  },
+  "weight": {
+    "source": "https://github.com/ChaoningZhang/MobileSAM/blob/f706ad9c4eb7f219c00d9050e46328518ffb65d2/weights/mobile_sam.pt",
+    "bytes": 40728226,
+    "sha256": "6dbb90523a35330fedd7f1d3dfc66f995213d81b29a5ca8108dbcdd4e37d6c2f"
+  },
+  "backend_source_commit": "f706ad9c4eb7f219c00d9050e46328518ffb65d2",
+  "benchmark_source_commit": "986fd0594150dce96b3255c8cc77ff54e8174620",
+  "environment_method": "independent venv; explicit local RECORD dependency copies plus timm/local MobileSAM installation; no shared-site path",
+  "venv_file_bytes": 753810680,
+  "total_B_ignored_file_bytes": 1760901910,
+  "cloud_gateway_calls": 0,
+  "cloud_internal_requests": 0
+}

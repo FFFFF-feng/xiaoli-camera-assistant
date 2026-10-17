@@ -43,3 +43,17 @@ def test_topology_and_visible_comparison_keep_hole_and_disconnected_region(tmp_p
     assert (tmp_path / "sample-mask.png").is_file()
     assert (tmp_path / "sample-overlay.png").is_file()
     assert (tmp_path / "sample-contours.png").is_file()
+
+
+def test_visualization_failure_does_not_remove_completed_attempt_from_ledger(tmp_path):
+    import json
+    bench = module()
+    prefix = tmp_path / "attempt"
+    (tmp_path / "attempt-mask.png").mkdir()  # real filesystem write failure
+    record = {"status": "success", "code": "mask_extracted"}
+    manifest = {"attempts": []}
+    bench.record_attempt(tmp_path / "manifest.json", manifest, record, prefix,
+                         np.zeros((8, 8, 3), np.uint8), np.zeros((8, 8), bool))
+    saved = json.loads((tmp_path / "manifest.json").read_text(encoding="utf-8"))
+    assert saved["attempts"][0]["status"] == "success"
+    assert saved["attempts"][0]["evidence_status"] == "failed"
