@@ -67,10 +67,31 @@ def test_local_cloud_config_preserves_invite_and_never_uses_remote_origin(tmp_pa
     assert mode == "cloud" and environment["CAMERA_AI_PRESET"] == "glm-dino"
     assert environment["WEB_ORIGIN"] == "http://127.0.0.1:8081"
     assert environment["WEB_ACCESS_CODE"] == "test-invite"
+    assert environment["CAMERA_AI_TRUST_ENV"] == "false"
     assert len(environment["WEB_SESSION_SECRET"]) >= 32
     demo, mode = web.local_environment(8081, demo=True)
     assert mode == "demo" and demo["WEB_ACCESS_CODE"] == ""
     assert demo["WEB_SESSION_SECRET"] == environment["WEB_SESSION_SECRET"]
+
+
+@pytest.mark.parametrize("host,explicit,expected", [
+    ("https://open.bigmodel.cn/api/paas/v4", None, "false"),
+    ("https://open.bigmodel.cn/api/paas/v4", "true", "true"),
+    ("https://example.invalid/v1", None, None),
+    ("https://example.invalid/v1", "false", "false"),
+])
+def test_local_proxy_choice_is_provider_scoped_and_respects_user_config(tmp_path, monkeypatch, host, explicit, expected):
+    monkeypatch.setattr(web, "ROOT", tmp_path)
+    monkeypatch.setattr(web, "RUNTIME", tmp_path / ".launcher")
+    configured = {"CAMERA_AI_API_KEY": "test-only-key", "WEB_ACCESS_CODE": "test-only-invite",
+                  "CAMERA_AI_PRESET": "glm-dino", "CAMERA_AI_BASE_URL": host}
+    if explicit is not None:
+        configured["CAMERA_AI_TRUST_ENV"] = explicit
+    monkeypatch.setattr(web.os, "environ", configured)
+    environment, mode = web.local_environment(8080)
+    assert mode == "cloud"
+    assert environment.get("CAMERA_AI_TRUST_ENV") == expected
+    assert configured.get("CAMERA_AI_TRUST_ENV") == explicit
 
 
 def test_optional_image_editor_check_is_disabled_by_default_and_never_reuses_vision_key(tmp_path, monkeypatch):

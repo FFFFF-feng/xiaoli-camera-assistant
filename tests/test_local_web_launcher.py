@@ -20,7 +20,7 @@ def configured():
 
 
 @pytest.mark.parametrize("updates", [
-    {"demo_mode": True}, {"stream_output": False}, {"parallel_advice": False},
+    {"demo_mode": True}, {"stream_output": False}, {"parallel_advice": False}, {"trust_env": False},
     {"detector_warmup": False}, {"composition_enabled": True}, {"detector_enabled": True},
     {"vision_model": "another-vision"}, {"text_model": "another-text"},
     {"timeout_seconds": 60}, {"api_key": "rotated-private-key"},

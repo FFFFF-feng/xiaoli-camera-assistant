@@ -48,6 +48,7 @@ class Settings:
     parallel_advice: bool = True
     detector_warmup: bool = True
     image_edit: ImageEditSettings = field(default_factory=ImageEditSettings)
+    trust_env: bool = True
 
     def __post_init__(self) -> None:
         if self.knowledge_mode not in {"legacy", "managed"}:
@@ -130,6 +131,7 @@ class Settings:
             parallel_advice=_as_bool(os.getenv("CAMERA_AI_PARALLEL_ADVICE"), True),
             detector_warmup=_as_bool(os.getenv("CAMERA_AI_DETECTOR_WARMUP"), True),
             image_edit=ImageEditSettings.from_env(),
+            trust_env=_as_bool(os.getenv("CAMERA_AI_TRUST_ENV"), True),
         )
 
     @staticmethod

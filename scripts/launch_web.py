@@ -89,6 +89,13 @@ def local_environment(port: int, demo: bool = False) -> tuple[dict[str, str], st
     if not cloud:
         environment["WEB_ACCESS_CODE"] = ""
     environment.setdefault("CAMERA_AI_PRESET", "glm-dino" if cloud else "custom")
+    # Windows registry proxies are inherited by HTTPX even without *_PROXY env vars.
+    # Local Zhipu calls work directly; retain explicit user choices and other providers.
+    provider_host = urlsplit(environment.get("CAMERA_AI_BASE_URL") or (
+        "https://open.bigmodel.cn" if environment["CAMERA_AI_PRESET"] == "glm-dino" else ""
+    )).hostname
+    if cloud and provider_host == "open.bigmodel.cn":
+        environment.setdefault("CAMERA_AI_TRUST_ENV", "false")
     environment.setdefault("CAMERA_AI_DETECTOR_ENABLED", "false")
     environment.setdefault("CAMERA_AI_COMPOSITION_ENABLED", "true")
     environment.setdefault("CAMERA_AI_MAX_OUTPUT_TOKENS", "8192")

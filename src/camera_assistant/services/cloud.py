@@ -65,7 +65,7 @@ def cloud_session(settings: Settings):
     exit, any in-flight request_json operations, including format retries, finish
     before the client closes. Auth and timeout remain request-specific.
     """
-    session = _CloudSession(httpx.Client(timeout=settings.timeout_seconds))
+    session = _CloudSession(httpx.Client(timeout=settings.timeout_seconds, trust_env=settings.trust_env))
     token = _session.set(session)
     try:
         yield
@@ -99,7 +99,7 @@ def _request_client(settings: Settings):
     if session is not None:
         yield session.client
     else:
-        with httpx.Client(timeout=settings.timeout_seconds) as client:
+        with httpx.Client(timeout=settings.timeout_seconds, trust_env=settings.trust_env) as client:
             yield client
 
 
