@@ -68,6 +68,10 @@ function insideRing(point,path) {
   return inside;
 }
 const ringContains=(outer,inner)=>inner.every(p=>insideRing(p,outer))&&!ringsTouch(outer,inner);
+const coversBothAxes=paths=>{
+  const xs=paths.flatMap(path=>path.map(p=>p[0])),ys=paths.flatMap(path=>path.map(p=>p[1]));
+  return xs.length>0&&Math.max(...xs)-Math.min(...xs)>=.5&&Math.max(...ys)-Math.min(...ys)>=.5;
+};
 
 export function usableTargetBoard(value) {
   if(!value||!['portrait','landscape','square'].includes(value.aspect)||!photo(value.reference_photo_id)
@@ -109,12 +113,14 @@ export function usableTargetBoard(value) {
     const area=Math.abs(p.reduce((a,v,i)=>{const n=p[(i+1)%p.length];return a+v[0]*n[1]-n[0]*v[1]},0))/2;
     if(!open&&(area<.01||!simpleOutline(p)))return null;
     if(open&&(!layer.details.length||layer.contours?.length))return null;
+    if(structure&&(layer.mobility!=='fixed'||layer.details.length<4||!coversBothAxes(layer.details)))return null;
     if(layer.source_details!==undefined&&layer.source_details!==null&&(
       !Array.isArray(layer.source_details)||layer.source_details.length>96||!layer.source_details.every(p=>points(p,2))))return null;
     if(layer.contours!==undefined&&(!Array.isArray(layer.contours)||layer.contours.length>12
       ||!layer.contours.every(path=>points(path,3)&&simpleOutline(path))))return null;
     if(layer.holes!==undefined&&(!Array.isArray(layer.holes)||layer.holes.length>12
       ||!layer.holes.every(path=>points(path,3)&&simpleOutline(path))))return null;
+    if(layer.holes?.length&&layer.contours?.length)return null;
     if(layer.holes?.length) {
       if(open)return null;
       const outlines=layer.contours?.length?layer.contours:[layer.outline];
@@ -124,6 +130,7 @@ export function usableTargetBoard(value) {
     }
     if(value.render_basis==='source_geometry') {
       if(open&&(!Array.isArray(layer.source_details)||!layer.source_details.length))return null;
+      if(structure&&(layer.source_details.length<4||!coversBothAxes(layer.source_details)))return null;
       const b=layer.source_bbox;
       if(!/^object[1-6]$/.test(layer.source_object_id)||sourceIds.has(layer.source_object_id)
         ||!Array.isArray(b)||b.length!==4||!point(b.slice(0,2))||!point(b.slice(2))
@@ -152,7 +159,7 @@ export function projectedPoints(layer, path, width, height) {
 }
 
 export function silhouetteLayers(layer) {
-  if(openStructure(layer))return [];
+  if(openStructure(layer)||(layer.holes?.length&&layer.contours?.length))return [];
   return layer.contours?.length ? layer.contours.map(outline=>({...layer,outline,
     holes:(layer.holes||[]).filter(hole=>ringContains(outline,hole))})) : [layer];
 }
