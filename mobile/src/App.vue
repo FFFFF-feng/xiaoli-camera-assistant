@@ -380,7 +380,7 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
       <button class="status" :class="{ online: connected }" @click="navigate('connect')"><i aria-hidden="true"></i>{{ statusText }}</button>
     </header>
     <main ref="mainContent" :data-scene="page">
-      <div v-if="error" class="notice error" role="alert">{{ error }}</div>
+      <div v-if="error && page !== 'shoot'" class="notice error" role="alert">{{ error }}</div>
       <section v-if="page === 'shoot'" aria-labelledby="shoot-title">
         <div class="shoot-hero">
           <div class="hero-copy"><span class="eyebrow"><span></span> 和小栗一起，发现日常的好看</span><h1 id="shoot-title">你负责心动，<br />小栗陪你<span>拍好。</span></h1><p>把眼前的风景，拍成心里的画面。<br />从构图到参数，让每一次按下快门都有方向。</p><a class="hero-link" href="#shoot-workspace"><ApertureMark /><span>开始这一张<small>LET'S MAKE A FRAME</small></span><UiIcon name="arrow" /></a></div>
@@ -405,8 +405,8 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
         <p v-if="scenePhotos.length" class="helper">点击缩略图选择主图。补充左右视角、远景或主体细节；多图有助于比较环境，但不能直接测得拍摄距离。</p>
         </div><form class="shoot-form" @submit.prevent="analyze">
           <fieldset :disabled="busy">
-            <div class="workspace-heading"><label class="field-label" for="intent"><span>02</span> 想拍出什么感觉？</label><span>用自己的话说就好</span></div>
-            <textarea id="intent" v-model="intent" rows="3" maxlength="500" placeholder="比如：傍晚给朋友拍人像，想要温柔的光线和虚化背景"></textarea>
+            <div class="workspace-heading"><label class="field-label" for="intent"><span>02</span> 想拍出什么感觉？</label><span>必填，至少两个字</span></div>
+            <textarea id="intent" v-model="intent" aria-required="true" rows="3" maxlength="500" placeholder="比如：傍晚给朋友拍人像，想要温柔的光线和虚化背景"></textarea>
             <div class="prompt-chips"><button v-for="chip in chips" :key="chip" type="button" :class="{ chosen: intent === chip }" :aria-pressed="intent === chip" @click="intent = chip">{{ chip }}</button></div>
             <details class="equipment-drawer"><summary>拍摄设备与现场设置<span>{{ deviceType === 'phone' ? '手机' : '相机' }} · 点击调整</span></summary><div class="section-heading"><h2>用什么拍</h2><div class="segmented"><button type="button" :class="{ selected: deviceType === 'phone' }" :aria-pressed="deviceType === 'phone'" @click="deviceType = 'phone'">手机</button><button type="button" :class="{ selected: deviceType === 'camera' }" :aria-pressed="deviceType === 'camera'" @click="deviceType = 'camera'">相机</button></div></div>
             <template v-if="deviceType === 'phone'">
@@ -451,7 +451,8 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
             <div class="two-fields"><div><label for="motion">主体动作</label><select id="motion" v-model="motion"><option>不确定</option><option>静止</option><option>缓慢</option><option>快速</option></select></div><label class="check-row tripod"><input type="checkbox" v-model="tripod" />使用三脚架</label></div>
             </details><div class="upload-consent"><label class="check-row"><input type="checkbox" v-model="consent" />{{ webHosted ? '同意上传本组照片并进行分析' : '同意将本组照片发送到我配置的电脑服务' }}</label><p>{{ !connected ? '连接后会显示当前分析方式。' : mode === 'cloud' ? '云模型分析：本组全部照片的副本将发送到配置的图像模型服务。' : '演示模式：使用本地规则与图像指标，不向云模型发送照片，也不代表真实识别准确率。' }} 网关不保存照片；相机拍照可能经过系统处理，EXIF 不保证完整。</p></div>
           </fieldset>
-          <button class="primary generate" type="submit" :disabled="busy || connecting" :aria-busy="busy"><ApertureMark /><span>{{ busy ? '小栗正在整理拍摄建议…' : connected ? '让小栗给点拍摄灵感' : webHosted ? '连接拍摄服务，开始拍摄' : '先连接电脑服务' }}</span><UiIcon name="arrow" /></button>
+          <div v-if="error" id="shoot-error" class="notice error" role="alert">{{ error }}</div>
+          <button class="primary generate" type="submit" :disabled="busy || connecting" :aria-busy="busy" :aria-describedby="error ? 'shoot-error' : undefined"><ApertureMark /><span>{{ busy ? '小栗正在整理拍摄建议…' : connected ? '让小栗给点拍摄灵感' : webHosted ? '连接拍摄服务，开始拍摄' : '先连接电脑服务' }}</span><UiIcon name="arrow" /></button>
           <section v-if="busy" class="analysis-progress" aria-label="分析进度" aria-live="polite">
             <div class="progress-heading"><strong>{{ progressMessage }}</strong><span>总用时 {{ elapsed.toFixed(0) }} 秒</span></div>
             <p class="current-status-time">当前状态已持续 {{ statusElapsed.toFixed(0) }} 秒</p>
