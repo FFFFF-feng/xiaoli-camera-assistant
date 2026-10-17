@@ -1,0 +1,272 @@
+{
+  "knowledge_id": "phone20261017x-cn-8spro-2209d538",
+  "library_id": "equipment",
+  "title": "红魔8SPro（国行）：手机硬件与相机参数补充",
+  "kind": "manufacturer_fact",
+  "content": "# 红魔8SPro（国行）\n\n整理日期：2026-10-17；待独立审核的厂商参数草稿。\n\n- 处理器：第二代骁龙 8 移动平台高频版\n- 屏幕尺寸：6.8 英寸\n- 电池容量及版本条件：6000mAh 双电芯大电池\n- 充电标称及条件：80W 魔闪快充 标配 80W 快充充电器\n- 后置摄像头及辅助传感器：后置 5000W 主摄+200W 微距+800W 广角相机\n- 前置摄像头：前置屏下 1600W\n- 来源列示上市时间：2023/7/5\n- 散热系统：ICE 12 魔冷散热系统\n- 触控肩键：独立 IC 触控双肩键(520Hz 触控采样率)\n- 指纹识别：第七代超薄屏下指纹(心率检测功能)\n\n未核验字段：屏幕分辨率、刷新率及条件、屏幕类型、实体RAM选项、存储选项、官网列示存储组合、高度、宽度、厚度、重量及版本条件、防抖、变焦、视频录制摘要、USB接口、WLAN、蓝牙、NFC、来源列示系统\n\n版本与提取备注：\n- 对比表以data机型键绑定列，不按列位置猜测；原表相机W为像素缩写，不能理解为充电功率。\n\n使用边界：\n- 只适用对应完整型号的中国大陆销售版本，不能用于海外版、相近型号或未注明的卫星通信版。\n- 厂商公开规格由AI提取，未经独立人工审核或真机验证；全部为草稿，禁止受管检索。\n- 保留内外屏、折叠状态、配色材质和RAM/存储版本条件。未列出的组合不能通过排列生成。\n- 电池保留典型值、额定值、双电芯等效值；不同数值不能无条件相加或替换。\n- 快充标称需相应适配器、线材与测试条件，不是持续功率；无线充电与有线充电分开理解。\n- 镜头像素不等于输出照片像素；等效焦距不等于实际焦距；光学品质变焦不增加物理镜头。\n- 来源中的辅助感光、色彩及深度传感器按原表保留，不据此增加独立可拍摄镜头。\n- 原生/第三方App手动ISO、快门、可调光圈与逐镜头模式组合未核验，不能由硬件参数推断。\n- 系统为来源列示版本；官网页面保留不代表当前在售，未核验实时库存、价格、销量或软件支持期限。\n- 未知字段为null，不代表不支持。字段条目数不是完整度评分。\n\n来源：[REDMAGIC中国官网参数](https://shop.nubia.com/active/params.html)",
+  "payload": {
+    "brand": "REDMAGIC",
+    "model_variant": "红魔8SPro",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "第二代骁龙 8 移动平台高频版",
+      "display_size": "6.8 英寸",
+      "display_resolution": null,
+      "display_refresh": null,
+      "display_panel": null,
+      "ram": null,
+      "storage": null,
+      "sku": null,
+      "battery": "6000mAh 双电芯大电池",
+      "charging": "80W 魔闪快充 标配 80W 快充充电器",
+      "height": null,
+      "width": null,
+      "thickness": null,
+      "weight": null,
+      "rear": "后置 5000W 主摄+200W 微距+800W 广角相机",
+      "front": "前置屏下 1600W",
+      "stabilization": null,
+      "zoom": null,
+      "video": null,
+      "usb": null,
+      "wifi": null,
+      "bluetooth": null,
+      "nfc": null,
+      "os": null,
+      "launch": "2023/7/5",
+      "cooling": "ICE 12 魔冷散热系统",
+      "shoulder_buttons": "独立 IC 触控双肩键(520Hz 触控采样率)",
+      "fingerprint": "第七代超薄屏下指纹(心率检测功能)"
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "第二代骁龙 8 移动平台高频版",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-433245cb77c406c9"
+        ],
+        "source_location": "对比表/红魔8SPro/处理器",
+        "conditions": {
+          "model_variant": "红魔8SPro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "6.8 英寸",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-433245cb77c406c9"
+        ],
+        "source_location": "对比表/红魔8SPro/屏幕尺寸",
+        "conditions": {
+          "model_variant": "红魔8SPro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "6000mAh 双电芯大电池",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-433245cb77c406c9"
+        ],
+        "source_location": "对比表/红魔8SPro/续航",
+        "conditions": {
+          "model_variant": "红魔8SPro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "80W 魔闪快充 标配 80W 快充充电器",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-433245cb77c406c9"
+        ],
+        "source_location": "对比表/红魔8SPro/快充",
+        "conditions": {
+          "model_variant": "红魔8SPro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "后置 5000W 主摄+200W 微距+800W 广角相机",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-433245cb77c406c9"
+        ],
+        "source_location": "对比表/红魔8SPro/相机（后置部分，来源W为像素缩写）",
+        "conditions": {
+          "model_variant": "红魔8SPro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "前置屏下 1600W",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-433245cb77c406c9"
+        ],
+        "source_location": "对比表/红魔8SPro/相机（前置部分）",
+        "conditions": {
+          "model_variant": "红魔8SPro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.launch",
+        "value": "2023/7/5",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-433245cb77c406c9"
+        ],
+        "source_location": "对比表/红魔8SPro/上市时间",
+        "conditions": {
+          "model_variant": "红魔8SPro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.cooling",
+        "value": "ICE 12 魔冷散热系统",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-433245cb77c406c9"
+        ],
+        "source_location": "对比表/红魔8SPro/散热",
+        "conditions": {
+          "model_variant": "红魔8SPro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.shoulder_buttons",
+        "value": "独立 IC 触控双肩键(520Hz 触控采样率)",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-433245cb77c406c9"
+        ],
+        "source_location": "对比表/红魔8SPro/触控肩键",
+        "conditions": {
+          "model_variant": "红魔8SPro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.fingerprint",
+        "value": "第七代超薄屏下指纹(心率检测功能)",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-433245cb77c406c9"
+        ],
+        "source_location": "对比表/红魔8SPro/指纹识别",
+        "conditions": {
+          "model_variant": "红魔8SPro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      }
+    ],
+    "unknown_fields": [
+      "display_resolution",
+      "display_refresh",
+      "display_panel",
+      "ram",
+      "storage",
+      "sku",
+      "height",
+      "width",
+      "thickness",
+      "weight",
+      "stabilization",
+      "zoom",
+      "video",
+      "usb",
+      "wifi",
+      "bluetooth",
+      "nfc",
+      "os"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外或相邻型号补值。",
+    "variant_notes": [
+      "对比表以data机型键绑定列，不按列位置猜测；原表相机W为像素缩写，不能理解为充电功率。"
+    ],
+    "sources": [
+      {
+        "source_id": "CN400-433245cb77c406c9",
+        "publisher": "REDMAGIC",
+        "title": "红魔参数对比：红魔8SPro",
+        "url": "https://shop.nubia.com/active/params.html",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "method": "品牌中国官网公开HTML参数表提取；未访问登录数据或私有接口",
+        "source_content_sha256": "0530d6627c96aa324bba117001cef2b536047c3884e419125c0187470e13007a",
+        "retrieval_allowed": false,
+        "rights_status": "必要规格事实重组与链接，未收录图片/整页；许可及项目使用待审核"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "data_scope": "选定硬件参数，包含保留的历史机型；不是完整规格库或实时在售清单",
+    "runtime_registration": "只生成知识文件，不修改phone_profiles.yaml，不写主数据库"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "400款扩充",
+    "REDMAGIC"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "红魔8SPro",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "REDMAGIC中国官网",
+    "url": "https://shop.nubia.com/active/params.html",
+    "location": "各字段位置见payload.facts",
+    "license": "必要规格事实重组，许可与使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,330 @@
+{
+  "knowledge_id": "phone20261017x-cn-honor-30-plus-58bc6a0a",
+  "library_id": "equipment",
+  "title": "HONOR 畅玩30 Plus（国行）：手机硬件与相机参数补充",
+  "kind": "manufacturer_fact",
+  "content": "# HONOR 畅玩30 Plus（国行）\n\n整理日期：2026-10-17；待独立审核的厂商参数草稿。\n\n- 处理器：天玑700\n- 屏幕尺寸：6.74英寸；备注：显示屏采用圆角设计，按照标准矩形测量时，屏幕的对角线长度是 6.74 英寸（实际可视区域略小）\n- 屏幕分辨率：1600x720像素\n- 屏幕类型：TFT LCD\n- 官网列示存储组合：存储；4GB+128GB 全网通 6GB+128GB 全网通 8GB+128GB 全网通\n- 电池容量及版本条件：5000mAh（典型值）；备注：电池额定容量为4900mAh。（内置不可拆卸）\n- 高度：167.59mm\n- 宽度：77.19mm\n- 厚度：8.62mm\n- 重量及版本条件：约198克（含电池）；备注：实际尺寸/重量依配置、制造工艺、测量方法的不同可能有所差异。\n- 后置摄像头及辅助传感器：1300万像素（主摄，f/1.8光圈）+200万感光（景深，f/2.4光圈）；备注：不同拍照模式的照片像素可能有差异，请以实际为准。\n- 前置摄像头：500万像素（f/2.2光圈）；备注：不同拍照模式的照片像素可能有差异，请以实际为准。\n- 蓝牙：蓝牙5.1\n- 来源列示系统：Magic UI 5.0 （基于Android 11）\n\n未核验字段：刷新率及条件、实体RAM选项、存储选项、充电标称及条件、防抖、变焦、视频录制摘要、USB接口、WLAN、NFC、来源列示上市时间、散热系统、触控肩键、指纹识别\n\n\n使用边界：\n- 只适用对应完整型号的中国大陆销售版本，不能用于海外版、相近型号或未注明的卫星通信版。\n- 厂商公开规格由AI提取，未经独立人工审核或真机验证；全部为草稿，禁止受管检索。\n- 保留内外屏、折叠状态、配色材质和RAM/存储版本条件。未列出的组合不能通过排列生成。\n- 电池保留典型值、额定值、双电芯等效值；不同数值不能无条件相加或替换。\n- 快充标称需相应适配器、线材与测试条件，不是持续功率；无线充电与有线充电分开理解。\n- 镜头像素不等于输出照片像素；等效焦距不等于实际焦距；光学品质变焦不增加物理镜头。\n- 来源中的辅助感光、色彩及深度传感器按原表保留，不据此增加独立可拍摄镜头。\n- 原生/第三方App手动ISO、快门、可调光圈与逐镜头模式组合未核验，不能由硬件参数推断。\n- 系统为来源列示版本；官网页面保留不代表当前在售，未核验实时库存、价格、销量或软件支持期限。\n- 未知字段为null，不代表不支持。字段条目数不是完整度评分。\n\n来源：[HONOR中国官网参数](https://www.honor.com/cn/phones/honor-changwan30-plus/spec/)",
+  "payload": {
+    "brand": "HONOR",
+    "model_variant": "HONOR 畅玩30 Plus",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "天玑700",
+      "display_size": "6.74英寸；备注：显示屏采用圆角设计，按照标准矩形测量时，屏幕的对角线长度是 6.74 英寸（实际可视区域略小）",
+      "display_resolution": "1600x720像素",
+      "display_refresh": null,
+      "display_panel": "TFT LCD",
+      "ram": null,
+      "storage": null,
+      "sku": "存储；4GB+128GB 全网通 6GB+128GB 全网通 8GB+128GB 全网通",
+      "battery": "5000mAh（典型值）；备注：电池额定容量为4900mAh。（内置不可拆卸）",
+      "charging": null,
+      "height": "167.59mm",
+      "width": "77.19mm",
+      "thickness": "8.62mm",
+      "weight": "约198克（含电池）；备注：实际尺寸/重量依配置、制造工艺、测量方法的不同可能有所差异。",
+      "rear": "1300万像素（主摄，f/1.8光圈）+200万感光（景深，f/2.4光圈）；备注：不同拍照模式的照片像素可能有差异，请以实际为准。",
+      "front": "500万像素（f/2.2光圈）；备注：不同拍照模式的照片像素可能有差异，请以实际为准。",
+      "stabilization": null,
+      "zoom": null,
+      "video": null,
+      "usb": null,
+      "wifi": null,
+      "bluetooth": "蓝牙5.1",
+      "nfc": null,
+      "os": "Magic UI 5.0 （基于Android 11）",
+      "launch": null,
+      "cooling": null,
+      "shoulder_buttons": null,
+      "fingerprint": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "天玑700",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "CPU型号",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "6.74英寸；备注：显示屏采用圆角设计，按照标准矩形测量时，屏幕的对角线长度是 6.74 英寸（实际可视区域略小）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "屏幕尺寸",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "1600x720像素",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "屏幕分辨率",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "TFT LCD",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "屏幕类型",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.sku",
+        "value": "存储；4GB+128GB 全网通 6GB+128GB 全网通 8GB+128GB 全网通",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "存储",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "5000mAh（典型值）；备注：电池额定容量为4900mAh。（内置不可拆卸）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "电池容量",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "167.59mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "长度",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "77.19mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "宽度",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "8.62mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "厚度",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "约198克（含电池）；备注：实际尺寸/重量依配置、制造工艺、测量方法的不同可能有所差异。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "重量",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "1300万像素（主摄，f/1.8光圈）+200万感光（景深，f/2.4光圈）；备注：不同拍照模式的照片像素可能有差异，请以实际为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "后置摄像头",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "500万像素（f/2.2光圈）；备注：不同拍照模式的照片像素可能有差异，请以实际为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "前置摄像头",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "蓝牙5.1",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "蓝牙",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "Magic UI 5.0 （基于Android 11）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-329d5d2b70696a57"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "HONOR 畅玩30 Plus",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      }
+    ],
+    "unknown_fields": [
+      "display_refresh",
+      "ram",
+      "storage",
+      "charging",
+      "stabilization",
+      "zoom",
+      "video",
+      "usb",
+      "wifi",
+      "nfc",
+      "launch",
+      "cooling",
+      "shoulder_buttons",
+      "fingerprint"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "CN400-329d5d2b70696a57",
+        "publisher": "HONOR",
+        "title": "荣耀畅玩30 Plus-参数-芯片-外观-屏幕 | 荣耀官方网站",
+        "url": "https://www.honor.com/cn/phones/honor-changwan30-plus/spec/",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "method": "品牌中国官网公开HTML参数表提取；未访问登录数据或私有接口",
+        "source_content_sha256": "d0bbdc7e176f372ea0a40c800c957a9dea81b72d748ad4da05b123651c647128",
+        "retrieval_allowed": false,
+        "rights_status": "必要规格事实重组与链接，未收录图片/整页；许可及项目使用待审核"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "data_scope": "选定硬件参数，包含保留的历史机型；不是完整规格库或实时在售清单",
+    "runtime_registration": "只生成知识文件，不修改phone_profiles.yaml，不写主数据库"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "400款扩充",
+    "HONOR"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "HONOR 畅玩30 Plus",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "HONOR中国官网",
+    "url": "https://www.honor.com/cn/phones/honor-changwan30-plus/spec/",
+    "location": "各字段位置见payload.facts",
+    "license": "必要规格事实重组，许可与使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

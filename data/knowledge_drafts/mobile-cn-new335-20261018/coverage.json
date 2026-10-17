@@ -1,0 +1,5453 @@
+{
+  "models": 335,
+  "records": [
+    {
+      "model": "HONOR 100",
+      "knowledge_id": "phone20261017x-cn-honor-100-203ca438",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 100 Pro",
+      "knowledge_id": "phone20261017x-cn-honor-100-pro-d16f00ef",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 200 Pro",
+      "knowledge_id": "phone20261017x-cn-honor-200-pro-1b3da35a",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 200焕新版",
+      "knowledge_id": "phone20261017x-cn-honor-200-b01fa84e",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 300 Pro",
+      "knowledge_id": "phone20261017x-cn-honor-300-pro-86caf628",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 300 Ultra",
+      "knowledge_id": "phone20261017x-cn-honor-300-ultra-a3b88c90",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 600 Pro",
+      "knowledge_id": "phone20261017x-cn-honor-600-pro-c5c2e689",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 600 元气版",
+      "knowledge_id": "phone20261017x-cn-honor-600-77740eb7",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 600 超级版",
+      "knowledge_id": "phone20261017x-cn-honor-600-8d09926d",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 70",
+      "knowledge_id": "phone20261017x-cn-honor-70-07f84d26",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 70 Pro",
+      "knowledge_id": "phone20261017x-cn-honor-70-pro-728a12f7",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 70 Pro+",
+      "knowledge_id": "phone20261017x-cn-honor-70-pro-plus-72b1ae5e",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 80",
+      "knowledge_id": "phone20261017x-cn-honor-80-bde4cc5b",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 80 GT",
+      "knowledge_id": "phone20261017x-cn-honor-80-gt-b67474b7",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 80 Pro",
+      "knowledge_id": "phone20261017x-cn-honor-80-pro-8d84241e",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 80 Pro 直屏版",
+      "knowledge_id": "phone20261017x-cn-honor-80-pro-4e881927",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 80 SE",
+      "knowledge_id": "phone20261017x-cn-honor-80-se-15e3b2eb",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 90",
+      "knowledge_id": "phone20261017x-cn-honor-90-b7b2664e",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 90 GT",
+      "knowledge_id": "phone20261017x-cn-honor-90-gt-e9bf8c3b",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 90 Pro",
+      "knowledge_id": "phone20261017x-cn-honor-90-pro-d77c3f09",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR GT",
+      "knowledge_id": "phone20261017x-cn-honor-gt-d5470d2a",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR GT Pro",
+      "knowledge_id": "phone20261017x-cn-honor-gt-pro-f149e685",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic V",
+      "knowledge_id": "phone20261017x-cn-honor-magic-v-7cd8dc33",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic V Flip",
+      "knowledge_id": "phone20261017x-cn-honor-magic-v-flip-3d4b7f0b",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic V Flip2",
+      "knowledge_id": "phone20261017x-cn-honor-magic-v-flip2-9ee5f43a",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic V2",
+      "knowledge_id": "phone20261017x-cn-honor-magic-v2-b28f0d63",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic V2 RSR | 保时捷设计",
+      "knowledge_id": "phone20261017x-cn-honor-magic-v2-rsr-88f19246",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic V3",
+      "knowledge_id": "phone20261017x-cn-honor-magic-v3-3185e76d",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic Vs",
+      "knowledge_id": "phone20261017x-cn-honor-magic-vs-3b392eb7",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic Vs 至臻版",
+      "knowledge_id": "phone20261017x-cn-honor-magic-vs-9426fd55",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic Vs2",
+      "knowledge_id": "phone20261017x-cn-honor-magic-vs2-c9ec943b",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic Vs3",
+      "knowledge_id": "phone20261017x-cn-honor-magic-vs3-4a7a4bab",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic4",
+      "knowledge_id": "phone20261017x-cn-honor-magic4-9a9b4aef",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic4 Pro",
+      "knowledge_id": "phone20261017x-cn-honor-magic4-pro-8d87fa16",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic4 至臻版",
+      "knowledge_id": "phone20261017x-cn-honor-magic4-0d493a11",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic5",
+      "knowledge_id": "phone20261017x-cn-honor-magic5-4cc69535",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic5 Pro",
+      "knowledge_id": "phone20261017x-cn-honor-magic5-pro-31802749",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic5 至臻版",
+      "knowledge_id": "phone20261017x-cn-honor-magic5-bc2ab4a6",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic6",
+      "knowledge_id": "phone20261017x-cn-honor-magic6-5be31c00",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic6 Pro",
+      "knowledge_id": "phone20261017x-cn-honor-magic6-pro-3251f081",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic6 RSR | 保时捷设计",
+      "knowledge_id": "phone20261017x-cn-honor-magic6-rsr-103f0abf",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic6 至臻版",
+      "knowledge_id": "phone20261017x-cn-honor-magic6-10c761f9",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic7",
+      "knowledge_id": "phone20261017x-cn-honor-magic7-4770de05",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic7 RSR | 保时捷设计",
+      "knowledge_id": "phone20261017x-cn-honor-magic7-rsr-ec314894",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic8 Pro Air",
+      "knowledge_id": "phone20261017x-cn-honor-magic8-pro-air-0ace3110",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic8 RSR | 保时捷设计",
+      "knowledge_id": "phone20261017x-cn-honor-magic8-rsr-9f3ecb48",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic9",
+      "knowledge_id": "phone20261017x-cn-honor-magic9-9752917c",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic9 Pro Max",
+      "knowledge_id": "phone20261017x-cn-honor-magic9-pro-max-9eaf5531",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Magic9 超能版",
+      "knowledge_id": "phone20261017x-cn-honor-magic9-35ef01a8",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play10",
+      "knowledge_id": "phone20261017x-cn-honor-play10-ad6db3f4",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play10A",
+      "knowledge_id": "phone20261017x-cn-honor-play10a-34363199",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play10C",
+      "knowledge_id": "phone20261017x-cn-honor-play10c-81a937a3",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play10T",
+      "knowledge_id": "phone20261017x-cn-honor-play10t-d9df8315",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play11",
+      "knowledge_id": "phone20261017x-cn-honor-play11-4596fe07",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play11 Plus",
+      "knowledge_id": "phone20261017x-cn-honor-play11-plus-0d456db5",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play11C",
+      "knowledge_id": "phone20261017x-cn-honor-play11c-4fc572b2",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play11T",
+      "knowledge_id": "phone20261017x-cn-honor-play11t-f61a782f",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play6C",
+      "knowledge_id": "phone20261017x-cn-honor-play6c-7a0fc414",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play6T",
+      "knowledge_id": "phone20261017x-cn-honor-play6t-92a76a7b",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play6T Pro",
+      "knowledge_id": "phone20261017x-cn-honor-play6t-pro-30d15501",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play7T",
+      "knowledge_id": "phone20261017x-cn-honor-play7t-272a4455",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play7T Pro",
+      "knowledge_id": "phone20261017x-cn-honor-play7t-pro-2c9e4841",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play8T",
+      "knowledge_id": "phone20261017x-cn-honor-play8t-e0e2fda4",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play9C",
+      "knowledge_id": "phone20261017x-cn-honor-play9c-50d4514e",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play9T",
+      "knowledge_id": "phone20261017x-cn-honor-play9t-8e4b773b",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Play9T Pro",
+      "knowledge_id": "phone20261017x-cn-honor-play9t-pro-c3b52971",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Power2",
+      "knowledge_id": "phone20261017x-cn-honor-power2-d3657244",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR Robot Phone",
+      "knowledge_id": "phone20261017x-cn-honor-robot-phone-6e21ddbc",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR V Purse",
+      "knowledge_id": "phone20261017x-cn-honor-v-purse-da80c0e9",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR WIN",
+      "knowledge_id": "phone20261017x-cn-honor-win-26557902",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR WIN RT",
+      "knowledge_id": "phone20261017x-cn-honor-win-rt-e9bafdc5",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR WIN Turbo",
+      "knowledge_id": "phone20261017x-cn-honor-win-turbo-7078c1e4",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X40",
+      "knowledge_id": "phone20261017x-cn-honor-x40-b8911183",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X40 GT",
+      "knowledge_id": "phone20261017x-cn-honor-x40-gt-72672da0",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X40 GT竞速版",
+      "knowledge_id": "phone20261017x-cn-honor-x40-gt-c0f015c7",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X40i",
+      "knowledge_id": "phone20261017x-cn-honor-x40i-cb6ad624",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X50",
+      "knowledge_id": "phone20261017x-cn-honor-x50-48888286",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X50 GT",
+      "knowledge_id": "phone20261017x-cn-honor-x50-gt-d4e05c57",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X50 Pro",
+      "knowledge_id": "phone20261017x-cn-honor-x50-pro-8d35d8f2",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X50i",
+      "knowledge_id": "phone20261017x-cn-honor-x50i-b65678e5",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X50i+",
+      "knowledge_id": "phone20261017x-cn-honor-x50i-plus-e46930c1",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X60 GT",
+      "knowledge_id": "phone20261017x-cn-honor-x60-gt-7240478c",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X60 Pro",
+      "knowledge_id": "phone20261017x-cn-honor-x60-pro-982d6a0c",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X60i",
+      "knowledge_id": "phone20261017x-cn-honor-x60i-4175faf3",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X70 Pro Max",
+      "knowledge_id": "phone20261017x-cn-honor-x70-pro-max-a9b70927",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X70 焕新版",
+      "knowledge_id": "phone20261017x-cn-honor-x70-ed78cc2d",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X70i",
+      "knowledge_id": "phone20261017x-cn-honor-x70i-7cefb02c",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X80 Pro Max",
+      "knowledge_id": "phone20261017x-cn-honor-x80-pro-max-128ba637",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR X80i",
+      "knowledge_id": "phone20261017x-cn-honor-x80i-7552eba2",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩30",
+      "knowledge_id": "phone20261017x-cn-honor-30-eee7426b",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩30 Plus",
+      "knowledge_id": "phone20261017x-cn-honor-30-plus-58bc6a0a",
+      "fields": 14,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩30M",
+      "knowledge_id": "phone20261017x-cn-honor-30m-ddcfc9a0",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩40",
+      "knowledge_id": "phone20261017x-cn-honor-40-256faca3",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩40 Plus",
+      "knowledge_id": "phone20261017x-cn-honor-40-plus-8903b815",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩40C",
+      "knowledge_id": "phone20261017x-cn-honor-40c-eb333d13",
+      "fields": 15,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "front",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩40S",
+      "knowledge_id": "phone20261017x-cn-honor-40s-ec44da93",
+      "fields": 15,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "front",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩50",
+      "knowledge_id": "phone20261017x-cn-honor-50-1ae34ccb",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩50 Plus",
+      "knowledge_id": "phone20261017x-cn-honor-50-plus-08c5ce8c",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩50m",
+      "knowledge_id": "phone20261017x-cn-honor-50m-5b82eed5",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩60",
+      "knowledge_id": "phone20261017x-cn-honor-60-ce233035",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩60 Plus",
+      "knowledge_id": "phone20261017x-cn-honor-60-plus-9f06da52",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩60A",
+      "knowledge_id": "phone20261017x-cn-honor-60a-f0be4c28",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩60m",
+      "knowledge_id": "phone20261017x-cn-honor-60m-c638e12d",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩70 Plus",
+      "knowledge_id": "phone20261017x-cn-honor-70-plus-0fe60450",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩70C",
+      "knowledge_id": "phone20261017x-cn-honor-70c-045c35dd",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩70m Plus",
+      "knowledge_id": "phone20261017x-cn-honor-70m-plus-ec5b9df4",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩80",
+      "knowledge_id": "phone20261017x-cn-honor-80-6a17fc14",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩80 Plus",
+      "knowledge_id": "phone20261017x-cn-honor-80-plus-568965c7",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩80 Pro",
+      "knowledge_id": "phone20261017x-cn-honor-80-pro-2e1fe556",
+      "fields": 17,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HONOR 畅玩80m",
+      "knowledge_id": "phone20261017x-cn-honor-80m-4928389d",
+      "fields": 16,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "usb",
+        "wifi",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI Mate 70 RS 非凡大师",
+      "knowledge_id": "phone20261017x-cn-huawei-mate-70-rs-715e14d6",
+      "fields": 19,
+      "unknown_fields": [
+        "chipset",
+        "display_refresh",
+        "sku",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI Mate 80 Pro",
+      "knowledge_id": "phone20261017x-cn-huawei-mate-80-pro-10000ba5",
+      "fields": 20,
+      "unknown_fields": [
+        "display_refresh",
+        "sku",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI Mate 80 Pro Max",
+      "knowledge_id": "phone20261017x-cn-huawei-mate-80-pro-max-9da185bc",
+      "fields": 20,
+      "unknown_fields": [
+        "display_refresh",
+        "sku",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI Mate 80 RS 非凡大师",
+      "knowledge_id": "phone20261017x-cn-huawei-mate-80-rs-a8ec6233",
+      "fields": 20,
+      "unknown_fields": [
+        "display_refresh",
+        "sku",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI Mate 90",
+      "knowledge_id": "phone20261017x-cn-huawei-mate-90-7a8ff279",
+      "fields": 20,
+      "unknown_fields": [
+        "display_refresh",
+        "sku",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI Mate 90 Pro",
+      "knowledge_id": "phone20261017x-cn-huawei-mate-90-pro-579efc75",
+      "fields": 20,
+      "unknown_fields": [
+        "display_refresh",
+        "sku",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI Mate 90 RS 非凡大师",
+      "knowledge_id": "phone20261017x-cn-huawei-mate-90-rs-9c59e7e1",
+      "fields": 20,
+      "unknown_fields": [
+        "display_refresh",
+        "sku",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI Mate XT 非凡大师",
+      "knowledge_id": "phone20261017x-cn-huawei-mate-xt-b7f5818e",
+      "fields": 19,
+      "unknown_fields": [
+        "chipset",
+        "display_refresh",
+        "sku",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI Mate XTs 非凡大师",
+      "knowledge_id": "phone20261017x-cn-huawei-mate-xts-dfb52093",
+      "fields": 20,
+      "unknown_fields": [
+        "display_refresh",
+        "sku",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI Pura 90 Pro",
+      "knowledge_id": "phone20261017x-cn-huawei-pura-90-pro-e1491fb0",
+      "fields": 20,
+      "unknown_fields": [
+        "display_refresh",
+        "sku",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI Pura 90 Pro Max",
+      "knowledge_id": "phone20261017x-cn-huawei-pura-90-pro-max-27dc8594",
+      "fields": 20,
+      "unknown_fields": [
+        "display_refresh",
+        "sku",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI Pura X Max",
+      "knowledge_id": "phone20261017x-cn-huawei-pura-x-max-11451a65",
+      "fields": 17,
+      "unknown_fields": [
+        "chipset",
+        "display_refresh",
+        "ram",
+        "storage",
+        "sku",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI nova 15",
+      "knowledge_id": "phone20261017x-cn-huawei-nova-15-245d5e76",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "sku",
+        "front",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI nova 15 Pro",
+      "knowledge_id": "phone20261017x-cn-huawei-nova-15-pro-d522512d",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "sku",
+        "front",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI nova 15 Ultra",
+      "knowledge_id": "phone20261017x-cn-huawei-nova-15-ultra-0b026b9e",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "sku",
+        "front",
+        "stabilization",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI 畅享 70S",
+      "knowledge_id": "phone20261017x-cn-huawei-70s-4047f49b",
+      "fields": 20,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "sku",
+        "stabilization",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "HUAWEI 畅享 80",
+      "knowledge_id": "phone20261017x-cn-huawei-80-5e69c2d6",
+      "fields": 19,
+      "unknown_fields": [
+        "chipset",
+        "display_refresh",
+        "ram",
+        "sku",
+        "stabilization",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "MEIZU 20",
+      "knowledge_id": "phone20261017x-cn-meizu-20-f5235e47",
+      "fields": 13,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "MEIZU 20 INFINITY 无界版",
+      "knowledge_id": "phone20261017x-cn-meizu-20-infinity-047b8286",
+      "fields": 12,
+      "unknown_fields": [
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "MEIZU 20 PRO",
+      "knowledge_id": "phone20261017x-cn-meizu-20-pro-16b77fc8",
+      "fields": 13,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "MEIZU 21",
+      "knowledge_id": "phone20261017x-cn-meizu-21-cae98aa3",
+      "fields": 11,
+      "unknown_fields": [
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "MEIZU 21 Note",
+      "knowledge_id": "phone20261017x-cn-meizu-21-note-46871139",
+      "fields": 12,
+      "unknown_fields": [
+        "display_panel",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "MEIZU 21 PRO 开放式 AI 终端",
+      "knowledge_id": "phone20261017x-cn-meizu-21-pro-ai-e6b32ad1",
+      "fields": 13,
+      "unknown_fields": [
+        "display_panel",
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "MEIZU 22",
+      "knowledge_id": "phone20261017x-cn-meizu-22-7581eaaf",
+      "fields": 14,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "MEIZU Lucky 08",
+      "knowledge_id": "phone20261017x-cn-meizu-lucky-08-099287a8",
+      "fields": 12,
+      "unknown_fields": [
+        "display_panel",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "MEIZU Note 16 Pro",
+      "knowledge_id": "phone20261017x-cn-meizu-note-16-pro-7de3c875",
+      "fields": 12,
+      "unknown_fields": [
+        "display_panel",
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "MEIZU Note16",
+      "knowledge_id": "phone20261017x-cn-meizu-note16-a579775e",
+      "fields": 13,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "charging",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "moto S30 Pro",
+      "knowledge_id": "phone20261017x-cn-moto-s30-pro-31e6352b",
+      "fields": 17,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "moto S50",
+      "knowledge_id": "phone20261017x-cn-moto-s50-7308cb16",
+      "fields": 17,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "moto S50 Neo",
+      "knowledge_id": "phone20261017x-cn-moto-s50-neo-30d68863",
+      "fields": 16,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "moto X40",
+      "knowledge_id": "phone20261017x-cn-moto-x40-06902542",
+      "fields": 17,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "moto edge 60 Pro",
+      "knowledge_id": "phone20261017x-cn-moto-edge-60-pro-813b2050",
+      "fields": 17,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "moto razr 40",
+      "knowledge_id": "phone20261017x-cn-moto-razr-40-85416958",
+      "fields": 18,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "moto razr 40 Ultra",
+      "knowledge_id": "phone20261017x-cn-moto-razr-40-ultra-3cffb000",
+      "fields": 16,
+      "unknown_fields": [
+        "sku",
+        "weight",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "moto razr 50",
+      "knowledge_id": "phone20261017x-cn-moto-razr-50-fec5bc62",
+      "fields": 18,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "moto razr 50 Ultra",
+      "knowledge_id": "phone20261017x-cn-moto-razr-50-ultra-6c008fef",
+      "fields": 17,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "moto razr 60",
+      "knowledge_id": "phone20261017x-cn-moto-razr-60-8505d475",
+      "fields": 17,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "moto razr 60 Ultra",
+      "knowledge_id": "phone20261017x-cn-moto-razr-60-ultra-0d175f27",
+      "fields": 17,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A1 5G",
+      "knowledge_id": "phone20261017x-cn-oppo-a1-5g-9d920038",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A1 Pro",
+      "knowledge_id": "phone20261017x-cn-oppo-a1-pro-66a6d3f2",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A1 活力版",
+      "knowledge_id": "phone20261017x-cn-oppo-a1-a5cb707b",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A1x",
+      "knowledge_id": "phone20261017x-cn-oppo-a1x-2f5a2d62",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A2",
+      "knowledge_id": "phone20261017x-cn-oppo-a2-d5e3f622",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A2 Pro",
+      "knowledge_id": "phone20261017x-cn-oppo-a2-pro-92e94c8a",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A2m",
+      "knowledge_id": "phone20261017x-cn-oppo-a2m-48c5cfb2",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A2x",
+      "knowledge_id": "phone20261017x-cn-oppo-a2x-00044b9a",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A3",
+      "knowledge_id": "phone20261017x-cn-oppo-a3-fc31a8cf",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A3 Pro",
+      "knowledge_id": "phone20261017x-cn-oppo-a3-pro-7b36b504",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A3 活力版",
+      "knowledge_id": "phone20261017x-cn-oppo-a3-71aff7c5",
+      "fields": 18,
+      "unknown_fields": [
+        "chipset",
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A36",
+      "knowledge_id": "phone20261017x-cn-oppo-a36-16a17d81",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A3x",
+      "knowledge_id": "phone20261017x-cn-oppo-a3x-fbee4aef",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A5",
+      "knowledge_id": "phone20261017x-cn-oppo-a5-7bdfe2d3",
+      "fields": 18,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A5 Pro",
+      "knowledge_id": "phone20261017x-cn-oppo-a5-pro-1c7d0c3d",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A5 活力版",
+      "knowledge_id": "phone20261017x-cn-oppo-a5-25e959db",
+      "fields": 18,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A57",
+      "knowledge_id": "phone20261017x-cn-oppo-a57-86bfaf3c",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A58",
+      "knowledge_id": "phone20261017x-cn-oppo-a58-829bb9fb",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A58x",
+      "knowledge_id": "phone20261017x-cn-oppo-a58x-a6b22f8e",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A5m",
+      "knowledge_id": "phone20261017x-cn-oppo-a5m-8737253f",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A5x",
+      "knowledge_id": "phone20261017x-cn-oppo-a5x-154cff06",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A6 5G ( PLS120 )",
+      "knowledge_id": "phone20261017x-cn-oppo-a6-5g-pls120-05f9c861",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A6k",
+      "knowledge_id": "phone20261017x-cn-oppo-a6k-f04e73e3",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A6m",
+      "knowledge_id": "phone20261017x-cn-oppo-a6m-0be9f9b8",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A6t",
+      "knowledge_id": "phone20261017x-cn-oppo-a6t-8e2525c0",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A6t+",
+      "knowledge_id": "phone20261017x-cn-oppo-a6t-plus-c9adb4eb",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A6x",
+      "knowledge_id": "phone20261017x-cn-oppo-a6x-97cb7c50",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A7 Pro",
+      "knowledge_id": "phone20261017x-cn-oppo-a7-pro-3160593b",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A7 Pro Max",
+      "knowledge_id": "phone20261017x-cn-oppo-a7-pro-max-9af56627",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A96",
+      "knowledge_id": "phone20261017x-cn-oppo-a96-a2fc9dc3",
+      "fields": 18,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO A97",
+      "knowledge_id": "phone20261017x-cn-oppo-a97-c054fdbe",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Find N2",
+      "knowledge_id": "phone20261017x-cn-oppo-find-n2-d2d0767b",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Find N2 Flip",
+      "knowledge_id": "phone20261017x-cn-oppo-find-n2-flip-4646e602",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Find X10",
+      "knowledge_id": "phone20261017x-cn-oppo-find-x10-7532f7fc",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Find X10 E",
+      "knowledge_id": "phone20261017x-cn-oppo-find-x10-e-6bcc884b",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Find X10 Pro Max",
+      "knowledge_id": "phone20261017x-cn-oppo-find-x10-pro-max-ac4a7c19",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Find X5",
+      "knowledge_id": "phone20261017x-cn-oppo-find-x5-22e88217",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Find X5 Pro 天玑版",
+      "knowledge_id": "phone20261017x-cn-oppo-find-x5-pro-97ffdb53",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Find X6",
+      "knowledge_id": "phone20261017x-cn-oppo-find-x6-6813e1a2",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Find X6 Pro",
+      "knowledge_id": "phone20261017x-cn-oppo-find-x6-pro-265d3214",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Find X7",
+      "knowledge_id": "phone20261017x-cn-oppo-find-x7-70fd2c94",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Find X7 Ultra",
+      "knowledge_id": "phone20261017x-cn-oppo-find-x7-ultra-310e7ec5",
+      "fields": 18,
+      "unknown_fields": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Find X8 Pro 卫星通信版",
+      "knowledge_id": "phone20261017x-cn-oppo-find-x8-pro-fed98444",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Find X9 Pro 卫星通信版",
+      "knowledge_id": "phone20261017x-cn-oppo-find-x9-pro-164120d2",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO K10",
+      "knowledge_id": "phone20261017x-cn-oppo-k10-823d889b",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO K10 Pro",
+      "knowledge_id": "phone20261017x-cn-oppo-k10-pro-de7cc72d",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO K10x",
+      "knowledge_id": "phone20261017x-cn-oppo-k10x-b4b33ee9",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO K11",
+      "knowledge_id": "phone20261017x-cn-oppo-k11-c89e5575",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO K11x",
+      "knowledge_id": "phone20261017x-cn-oppo-k11x-ed06dde1",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO K12",
+      "knowledge_id": "phone20261017x-cn-oppo-k12-334eca2b",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO K12 Plus",
+      "knowledge_id": "phone20261017x-cn-oppo-k12-plus-29fff6b3",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO K12s",
+      "knowledge_id": "phone20261017x-cn-oppo-k12s-6fd00d02",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO K12x",
+      "knowledge_id": "phone20261017x-cn-oppo-k12x-4add4d26",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Reno10",
+      "knowledge_id": "phone20261017x-cn-oppo-reno10-9fcc05cd",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Reno10 Pro",
+      "knowledge_id": "phone20261017x-cn-oppo-reno10-pro-929b794f",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Reno10 Pro+",
+      "knowledge_id": "phone20261017x-cn-oppo-reno10-pro-plus-01fb941e",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Reno11",
+      "knowledge_id": "phone20261017x-cn-oppo-reno11-7099ed30",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Reno11 Pro",
+      "knowledge_id": "phone20261017x-cn-oppo-reno11-pro-7dcc5231",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Reno12",
+      "knowledge_id": "phone20261017x-cn-oppo-reno12-f24b1be0",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Reno12 Pro",
+      "knowledge_id": "phone20261017x-cn-oppo-reno12-pro-2e122f72",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Reno16",
+      "knowledge_id": "phone20261017x-cn-oppo-reno16-5853a248",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Reno8",
+      "knowledge_id": "phone20261017x-cn-oppo-reno8-aa4e75d6",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Reno8 Pro",
+      "knowledge_id": "phone20261017x-cn-oppo-reno8-pro-91617456",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Reno8 Pro+",
+      "knowledge_id": "phone20261017x-cn-oppo-reno8-pro-plus-27df9ca7",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OPPO Reno9 Pro+ 5G",
+      "knowledge_id": "phone20261017x-cn-oppo-reno9-pro-plus-5g-15e02304",
+      "fields": 19,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OnePlus 11",
+      "knowledge_id": "phone20261017x-cn-oneplus-11-07d6fd92",
+      "fields": 15,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OnePlus Ace 2V",
+      "knowledge_id": "phone20261017x-cn-oneplus-ace-2v-043720d1",
+      "fields": 15,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OnePlus Ace 3",
+      "knowledge_id": "phone20261017x-cn-oneplus-ace-3-91852c19",
+      "fields": 15,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OnePlus Ace 3 Pro",
+      "knowledge_id": "phone20261017x-cn-oneplus-ace-3-pro-21ff0681",
+      "fields": 15,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OnePlus Ace 3V",
+      "knowledge_id": "phone20261017x-cn-oneplus-ace-3v-77968c92",
+      "fields": 15,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OnePlus Ace 5 Pro",
+      "knowledge_id": "phone20261017x-cn-oneplus-ace-5-pro-0ea15954",
+      "fields": 14,
+      "unknown_fields": [
+        "ram",
+        "storage",
+        "front",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "OnePlus Ace Pro",
+      "knowledge_id": "phone20261017x-cn-oneplus-ace-pro-d13a164b",
+      "fields": 13,
+      "unknown_fields": [
+        "chipset",
+        "ram",
+        "storage",
+        "front",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "红魔7SPro",
+      "knowledge_id": "phone20261017x-cn-7spro-0c23bbe2",
+      "fields": 10,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "sku",
+        "height",
+        "width",
+        "thickness",
+        "weight",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os"
+      ]
+    },
+    {
+      "model": "红魔8Pro",
+      "knowledge_id": "phone20261017x-cn-8pro-d82e6ff4",
+      "fields": 10,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "sku",
+        "height",
+        "width",
+        "thickness",
+        "weight",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os"
+      ]
+    },
+    {
+      "model": "红魔8Pro+",
+      "knowledge_id": "phone20261017x-cn-8pro-plus-e830889a",
+      "fields": 10,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "sku",
+        "height",
+        "width",
+        "thickness",
+        "weight",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os"
+      ]
+    },
+    {
+      "model": "红魔8SPro",
+      "knowledge_id": "phone20261017x-cn-8spro-2209d538",
+      "fields": 10,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "sku",
+        "height",
+        "width",
+        "thickness",
+        "weight",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os"
+      ]
+    },
+    {
+      "model": "红魔8SPro+",
+      "knowledge_id": "phone20261017x-cn-8spro-plus-45b58680",
+      "fields": 10,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "sku",
+        "height",
+        "width",
+        "thickness",
+        "weight",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os"
+      ]
+    },
+    {
+      "model": "红魔9Pro",
+      "knowledge_id": "phone20261017x-cn-9pro-835aeab7",
+      "fields": 10,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "sku",
+        "height",
+        "width",
+        "thickness",
+        "weight",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os"
+      ]
+    },
+    {
+      "model": "红魔9Pro+",
+      "knowledge_id": "phone20261017x-cn-9pro-plus-178f68d8",
+      "fields": 10,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "sku",
+        "height",
+        "width",
+        "thickness",
+        "weight",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os"
+      ]
+    },
+    {
+      "model": "红魔9SPro",
+      "knowledge_id": "phone20261017x-cn-9spro-02b916cb",
+      "fields": 9,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "sku",
+        "charging",
+        "height",
+        "width",
+        "thickness",
+        "weight",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os"
+      ]
+    },
+    {
+      "model": "红魔9SPro+",
+      "knowledge_id": "phone20261017x-cn-9spro-plus-a71b04d2",
+      "fields": 10,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "sku",
+        "height",
+        "width",
+        "thickness",
+        "weight",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os"
+      ]
+    },
+    {
+      "model": "中兴Axon 40 Ultra",
+      "knowledge_id": "phone20261017x-cn-axon-40-ultra-7a87e788",
+      "fields": 9,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "charging",
+        "height",
+        "width",
+        "thickness",
+        "weight",
+        "stabilization",
+        "zoom",
+        "video",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "中兴Axon 60 Ultra",
+      "knowledge_id": "phone20261017x-cn-axon-60-ultra-5c40e5ec",
+      "fields": 10,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "height",
+        "width",
+        "thickness",
+        "weight",
+        "stabilization",
+        "zoom",
+        "video",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "中兴小鲜50",
+      "knowledge_id": "phone20261017x-cn-50-43f4b84a",
+      "fields": 11,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "height",
+        "width",
+        "thickness",
+        "stabilization",
+        "zoom",
+        "video",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "中兴远航 3D",
+      "knowledge_id": "phone20261017x-cn-3d-aaff1f36",
+      "fields": 10,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "charging",
+        "height",
+        "width",
+        "thickness",
+        "stabilization",
+        "zoom",
+        "video",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO 10",
+      "knowledge_id": "phone20261017x-cn-iqoo-10-80a1652e",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO 10 Pro",
+      "knowledge_id": "phone20261017x-cn-iqoo-10-pro-1274d5bb",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO 11",
+      "knowledge_id": "phone20261017x-cn-iqoo-11-dfd96f50",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO 11 Pro",
+      "knowledge_id": "phone20261017x-cn-iqoo-11-pro-c6e3b2c5",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO 11S",
+      "knowledge_id": "phone20261017x-cn-iqoo-11s-db797c8c",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO 12",
+      "knowledge_id": "phone20261017x-cn-iqoo-12-117747ba",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO 12 Pro",
+      "knowledge_id": "phone20261017x-cn-iqoo-12-pro-221ce82a",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO 9",
+      "knowledge_id": "phone20261017x-cn-iqoo-9-6623963b",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO 9 Pro",
+      "knowledge_id": "phone20261017x-cn-iqoo-9-pro-b46e0778",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Neo6",
+      "knowledge_id": "phone20261017x-cn-iqoo-neo6-11e14793",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Neo6 SE",
+      "knowledge_id": "phone20261017x-cn-iqoo-neo6-se-9df10c97",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Neo7",
+      "knowledge_id": "phone20261017x-cn-iqoo-neo7-28a6efc6",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Neo7 SE",
+      "knowledge_id": "phone20261017x-cn-iqoo-neo7-se-935d2902",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Neo8",
+      "knowledge_id": "phone20261017x-cn-iqoo-neo8-cbe6c668",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Neo8 Pro",
+      "knowledge_id": "phone20261017x-cn-iqoo-neo8-pro-5fc9d78d",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Neo9",
+      "knowledge_id": "phone20261017x-cn-iqoo-neo9-9e09d5a2",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Neo9 Pro",
+      "knowledge_id": "phone20261017x-cn-iqoo-neo9-pro-075e97c9",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Neo9S Pro",
+      "knowledge_id": "phone20261017x-cn-iqoo-neo9s-pro-1bc99f67",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Neo9S Pro+",
+      "knowledge_id": "phone20261017x-cn-iqoo-neo9s-pro-plus-3661af1e",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO U5",
+      "knowledge_id": "phone20261017x-cn-iqoo-u5-a617b0e8",
+      "fields": 21,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO U5x",
+      "knowledge_id": "phone20261017x-cn-iqoo-u5x-505fe36e",
+      "fields": 21,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Z10 Turbo+",
+      "knowledge_id": "phone20261017x-cn-iqoo-z10-turbo-plus-b5a7e074",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Z10x",
+      "knowledge_id": "phone20261017x-cn-iqoo-z10x-62f91d71",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Z6",
+      "knowledge_id": "phone20261017x-cn-iqoo-z6-1b811d49",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Z6x",
+      "knowledge_id": "phone20261017x-cn-iqoo-z6x-5be540a8",
+      "fields": 21,
+      "unknown_fields": [
+        "display_refresh",
+        "sku",
+        "stabilization",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Z7",
+      "knowledge_id": "phone20261017x-cn-iqoo-z7-cf991d8f",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Z7i",
+      "knowledge_id": "phone20261017x-cn-iqoo-z7i-549634c5",
+      "fields": 21,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Z7x",
+      "knowledge_id": "phone20261017x-cn-iqoo-z7x-4db24275",
+      "fields": 22,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Z8",
+      "knowledge_id": "phone20261017x-cn-iqoo-z8-22aed82b",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Z8x",
+      "knowledge_id": "phone20261017x-cn-iqoo-z8x-96b35328",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Z9",
+      "knowledge_id": "phone20261017x-cn-iqoo-z9-cb36c5c5",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Z9 Turbo",
+      "knowledge_id": "phone20261017x-cn-iqoo-z9-turbo-081a340b",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Z9 Turbo+",
+      "knowledge_id": "phone20261017x-cn-iqoo-z9-turbo-plus-660fea8f",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "iQOO Z9x",
+      "knowledge_id": "phone20261017x-cn-iqoo-z9x-55d768ba",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "努比亚Flip",
+      "knowledge_id": "phone20261017x-cn-flip-f20332bc",
+      "fields": 11,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "height",
+        "width",
+        "thickness",
+        "stabilization",
+        "zoom",
+        "video",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "努比亚Z60 Ultra",
+      "knowledge_id": "phone20261017x-cn-z60-ultra-31e17818",
+      "fields": 11,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "height",
+        "width",
+        "thickness",
+        "stabilization",
+        "zoom",
+        "video",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "努比亚Z60 Ultra领先版",
+      "knowledge_id": "phone20261017x-cn-z60-ultra-a647757f",
+      "fields": 11,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "height",
+        "width",
+        "thickness",
+        "stabilization",
+        "zoom",
+        "video",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "努比亚Z60S Pro",
+      "knowledge_id": "phone20261017x-cn-z60s-pro-8f67a2c0",
+      "fields": 11,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "height",
+        "width",
+        "thickness",
+        "stabilization",
+        "zoom",
+        "video",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "努比亚Z70 Ultra",
+      "knowledge_id": "phone20261017x-cn-z70-ultra-f7a35353",
+      "fields": 11,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "height",
+        "width",
+        "thickness",
+        "stabilization",
+        "zoom",
+        "video",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "努比亚Z80 Ultra",
+      "knowledge_id": "phone20261017x-cn-z80-ultra-75da411d",
+      "fields": 11,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "height",
+        "width",
+        "thickness",
+        "stabilization",
+        "zoom",
+        "video",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "努比亚小牛",
+      "knowledge_id": "phone20261017x-cn--4d732c02",
+      "fields": 10,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "ram",
+        "storage",
+        "charging",
+        "height",
+        "width",
+        "thickness",
+        "stabilization",
+        "zoom",
+        "video",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "realme 13 Pro",
+      "knowledge_id": "phone20261017x-cn-realme-13-pro-3e334b62",
+      "fields": 9,
+      "unknown_fields": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "sku",
+        "height",
+        "width",
+        "thickness",
+        "front",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S15",
+      "knowledge_id": "phone20261017x-cn-vivo-s15-30f39c4a",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S15 Pro",
+      "knowledge_id": "phone20261017x-cn-vivo-s15-pro-075eff5d",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S15e",
+      "knowledge_id": "phone20261017x-cn-vivo-s15e-58af01fb",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S16 ",
+      "knowledge_id": "phone20261017x-cn-vivo-s16-9e52065f",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S16 Pro",
+      "knowledge_id": "phone20261017x-cn-vivo-s16-pro-6f41c498",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S16e",
+      "knowledge_id": "phone20261017x-cn-vivo-s16e-3170f487",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S17",
+      "knowledge_id": "phone20261017x-cn-vivo-s17-aaf30b95",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S17 Pro",
+      "knowledge_id": "phone20261017x-cn-vivo-s17-pro-4d206624",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S17e",
+      "knowledge_id": "phone20261017x-cn-vivo-s17e-f7af7ee4",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S18",
+      "knowledge_id": "phone20261017x-cn-vivo-s18-3d9b0df7",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S18 Pro",
+      "knowledge_id": "phone20261017x-cn-vivo-s18-pro-925fcad4",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S18e",
+      "knowledge_id": "phone20261017x-cn-vivo-s18e-760d044d",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S19 ",
+      "knowledge_id": "phone20261017x-cn-vivo-s19-49e4d469",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S19 Pro",
+      "knowledge_id": "phone20261017x-cn-vivo-s19-pro-0c028653",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo S50",
+      "knowledge_id": "phone20261017x-cn-vivo-s50-525a27c5",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X Flip",
+      "knowledge_id": "phone20261017x-cn-vivo-x-flip-ecc9347e",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X Fold",
+      "knowledge_id": "phone20261017x-cn-vivo-x-fold-905d9ca9",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X Fold+",
+      "knowledge_id": "phone20261017x-cn-vivo-x-fold-plus-e35c6cbf",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X Fold2",
+      "knowledge_id": "phone20261017x-cn-vivo-x-fold2-668922d3",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X Fold3",
+      "knowledge_id": "phone20261017x-cn-vivo-x-fold3-04cc858b",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X Fold3 Pro",
+      "knowledge_id": "phone20261017x-cn-vivo-x-fold3-pro-e98e27ba",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X Note",
+      "knowledge_id": "phone20261017x-cn-vivo-x-note-b9541ff9",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X100",
+      "knowledge_id": "phone20261017x-cn-vivo-x100-650172ff",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X100 Pro",
+      "knowledge_id": "phone20261017x-cn-vivo-x100-pro-93a05cc8",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X100 Ultra",
+      "knowledge_id": "phone20261017x-cn-vivo-x100-ultra-41dd3a70",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X100s",
+      "knowledge_id": "phone20261017x-cn-vivo-x100s-447d71b1",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X100s Pro",
+      "knowledge_id": "phone20261017x-cn-vivo-x100s-pro-2ca811df",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X80",
+      "knowledge_id": "phone20261017x-cn-vivo-x80-3b9a9db2",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X80 Pro",
+      "knowledge_id": "phone20261017x-cn-vivo-x80-pro-9261d925",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X90",
+      "knowledge_id": "phone20261017x-cn-vivo-x90-2ff0d255",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X90 Pro",
+      "knowledge_id": "phone20261017x-cn-vivo-x90-pro-00a16077",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X90 Pro+",
+      "knowledge_id": "phone20261017x-cn-vivo-x90-pro-plus-daaab366",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo X90s",
+      "knowledge_id": "phone20261017x-cn-vivo-x90s-787e28e1",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y100",
+      "knowledge_id": "phone20261017x-cn-vivo-y100-cb1162a6",
+      "fields": 22,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y100i",
+      "knowledge_id": "phone20261017x-cn-vivo-y100i-a2ca48d5",
+      "fields": 22,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y200",
+      "knowledge_id": "phone20261017x-cn-vivo-y200-64ca1ac0",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y200i",
+      "knowledge_id": "phone20261017x-cn-vivo-y200i-7eca5741",
+      "fields": 22,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y200t",
+      "knowledge_id": "phone20261017x-cn-vivo-y200t-d3c5e3f1",
+      "fields": 22,
+      "unknown_fields": [
+        "sku",
+        "zoom",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y300",
+      "knowledge_id": "phone20261017x-cn-vivo-y300-17228310",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y300 Pro",
+      "knowledge_id": "phone20261017x-cn-vivo-y300-pro-805ccf9d",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y300 Pro+",
+      "knowledge_id": "phone20261017x-cn-vivo-y300-pro-plus-4f3db114",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y300i",
+      "knowledge_id": "phone20261017x-cn-vivo-y300i-75f107a7",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y300t",
+      "knowledge_id": "phone20261017x-cn-vivo-y300t-e9999e09",
+      "fields": 24,
+      "unknown_fields": [
+        "sku",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y33s",
+      "knowledge_id": "phone20261017x-cn-vivo-y33s-c78ef582",
+      "fields": 22,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y35",
+      "knowledge_id": "phone20261017x-cn-vivo-y35-4a393324",
+      "fields": 21,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y35+",
+      "knowledge_id": "phone20261017x-cn-vivo-y35-plus-c8df9968",
+      "fields": 22,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y35m",
+      "knowledge_id": "phone20261017x-cn-vivo-y35m-fb8ee7ef",
+      "fields": 21,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y36",
+      "knowledge_id": "phone20261017x-cn-vivo-y36-0e68567c",
+      "fields": 21,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y36i",
+      "knowledge_id": "phone20261017x-cn-vivo-y36i-d8f2f6c5",
+      "fields": 21,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y36m",
+      "knowledge_id": "phone20261017x-cn-vivo-y36m-f1971009",
+      "fields": 21,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y37",
+      "knowledge_id": "phone20261017x-cn-vivo-y37-93755fc8",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y37 Pro",
+      "knowledge_id": "phone20261017x-cn-vivo-y37-pro-c1293d88",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y37m",
+      "knowledge_id": "phone20261017x-cn-vivo-y37m-7d715576",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y500i",
+      "knowledge_id": "phone20261017x-cn-vivo-y500i-c3be0dfe",
+      "fields": 23,
+      "unknown_fields": [
+        "sku",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y77",
+      "knowledge_id": "phone20261017x-cn-vivo-y77-9c30362d",
+      "fields": 22,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y77e",
+      "knowledge_id": "phone20261017x-cn-vivo-y77e-553050ac",
+      "fields": 22,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y78",
+      "knowledge_id": "phone20261017x-cn-vivo-y78-843fb325",
+      "fields": 22,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y78+",
+      "knowledge_id": "phone20261017x-cn-vivo-y78-plus-3882ee27",
+      "fields": 22,
+      "unknown_fields": [
+        "sku",
+        "usb",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y78m",
+      "knowledge_id": "phone20261017x-cn-vivo-y78m-acd6cd95",
+      "fields": 22,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    },
+    {
+      "model": "vivo Y78t",
+      "knowledge_id": "phone20261017x-cn-vivo-y78t-1f81acdf",
+      "fields": 22,
+      "unknown_fields": [
+        "sku",
+        "stabilization",
+        "nfc",
+        "cooling",
+        "shoulder_buttons",
+        "fingerprint"
+      ]
+    }
+  ]
+}

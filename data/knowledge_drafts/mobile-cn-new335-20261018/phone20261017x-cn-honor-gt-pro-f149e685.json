@@ -1,0 +1,390 @@
+{
+  "knowledge_id": "phone20261017x-cn-honor-gt-pro-f149e685",
+  "library_id": "equipment",
+  "title": "HONOR GT Pro（国行）：手机硬件与相机参数补充",
+  "kind": "manufacturer_fact",
+  "content": "# HONOR GT Pro（国行）\n\n整理日期：2026-10-17；待独立审核的厂商参数草稿。\n\n- 处理器：骁龙8至尊领先版移动平台\n- 屏幕尺寸：6.78英寸；备注：显示屏采用圆角设计，按照标准矩形测量时，屏幕的对角线长度是6.80英寸（实际可视区域略小）。\n- 屏幕分辨率：FHD+ 1264x2800像素；备注：该分辨率对应标准矩形，实际屏幕有效像素略少。\n- 屏幕类型：OLED\n- 官网列示存储组合：存储；12GB+256GB 12GB+512GB 16GB+512GB 16GB+1TB；备注：可使用的内存容量小于此值，因为手机软件占用部分空间。\n- 电池容量及版本条件：7200mAh（典型值）；备注：电池额定容量为7030mAh（内置不可拆卸）。\n- 充电标称及条件：90W荣耀超级快充；备注：此功率为支持的最大充电功率，有线超级快充需搭配原装有线超级快充充电器与充电线使用。实际充电功率会随不同场景智能变化，请以实际使用情况为准。\n- 高度：162.1mm\n- 宽度：75.7mm\n- 厚度：8.58mm\n- 重量及版本条件：约212g（含电池）；备注：实际尺寸/重量依配置、制造工艺、测量方法的不同可能有所差异。\n- 后置摄像头及辅助传感器：5000万像素广角摄像头：1/1.56英寸大底感光元件、ƒ/1.95光圈、支持OIS光学防抖 5000万像素超广角摄像头：ƒ/2.0光圈、最大122°超广视角、2.5cm高清微距摄影 5000万像素长焦摄像头：3x光学变焦、ƒ/2.4光圈、支持OIS光学防抖、最高可达50倍数字变焦；备注：相机参数来源于荣耀实验室，不同模式及场景下可能存有差异，请以实际为准。最高像素需进入“高像素”拍照模式体验，请以实际体验为准。\n- 前置摄像头：5000万像素摄像头：ƒ/2.0光圈、最大90°视角；备注：相机参数来源于荣耀实验室，不同模式及场景下可能存有差异，请以实际为准。最高像素需进入“高像素”拍照模式体验，请以实际体验为准。\n- 防抖：电子防抖、光学防抖\n- 变焦：最大50倍数字变焦；备注：不同模式下可能有差异，请以实际为准。\n- 视频录制摘要：4K视频拍摄：30/60 FPS 1080P视频拍摄：30/60 FPS 720P视频拍摄：30/60 FPS 4K夜景录像模式：24FPS 1080P夜景录像模式：24FPS 1080P慢动作视频：120/240FPS 视频录制编码格式包括H.264和HEVC 变焦范围最高可达0.5x-10x 广角主摄像头支持OIS视频防抖 长焦摄像头支持OIS视频防抖 超广角摄像头支持EIS视频防抖 支持视频美肤 支持立体声收音 支持蓝牙耳机收音 电影模式：HDR Vivid最高可达4K 30FPS 延时摄影模式最高可达4K\n- 蓝牙：BT5.4 支持低功耗蓝牙(BLE) 支持SBC、AAC、LDAC、aptX、aptX HD、aptX Adaptive\n- 来源列示系统：MagicOS 9.0（基于Android 15）\n\n未核验字段：刷新率及条件、实体RAM选项、存储选项、USB接口、WLAN、NFC、来源列示上市时间、散热系统、触控肩键、指纹识别\n\n\n使用边界：\n- 只适用对应完整型号的中国大陆销售版本，不能用于海外版、相近型号或未注明的卫星通信版。\n- 厂商公开规格由AI提取，未经独立人工审核或真机验证；全部为草稿，禁止受管检索。\n- 保留内外屏、折叠状态、配色材质和RAM/存储版本条件。未列出的组合不能通过排列生成。\n- 电池保留典型值、额定值、双电芯等效值；不同数值不能无条件相加或替换。\n- 快充标称需相应适配器、线材与测试条件，不是持续功率；无线充电与有线充电分开理解。\n- 镜头像素不等于输出照片像素；等效焦距不等于实际焦距；光学品质变焦不增加物理镜头。\n- 来源中的辅助感光、色彩及深度传感器按原表保留，不据此增加独立可拍摄镜头。\n- 原生/第三方App手动ISO、快门、可调光圈与逐镜头模式组合未核验，不能由硬件参数推断。\n- 系统为来源列示版本；官网页面保留不代表当前在售，未核验实时库存、价格、销量或软件支持期限。\n- 未知字段为null，不代表不支持。字段条目数不是完整度评分。\n\n来源：[HONOR中国官网参数](https://www.honor.com/cn/phones/honor-gt-pro/spec/)",
+  "payload": {
+    "brand": "HONOR",
+    "model_variant": "HONOR GT Pro",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "骁龙8至尊领先版移动平台",
+      "display_size": "6.78英寸；备注：显示屏采用圆角设计，按照标准矩形测量时，屏幕的对角线长度是6.80英寸（实际可视区域略小）。",
+      "display_resolution": "FHD+ 1264x2800像素；备注：该分辨率对应标准矩形，实际屏幕有效像素略少。",
+      "display_refresh": null,
+      "display_panel": "OLED",
+      "ram": null,
+      "storage": null,
+      "sku": "存储；12GB+256GB 12GB+512GB 16GB+512GB 16GB+1TB；备注：可使用的内存容量小于此值，因为手机软件占用部分空间。",
+      "battery": "7200mAh（典型值）；备注：电池额定容量为7030mAh（内置不可拆卸）。",
+      "charging": "90W荣耀超级快充；备注：此功率为支持的最大充电功率，有线超级快充需搭配原装有线超级快充充电器与充电线使用。实际充电功率会随不同场景智能变化，请以实际使用情况为准。",
+      "height": "162.1mm",
+      "width": "75.7mm",
+      "thickness": "8.58mm",
+      "weight": "约212g（含电池）；备注：实际尺寸/重量依配置、制造工艺、测量方法的不同可能有所差异。",
+      "rear": "5000万像素广角摄像头：1/1.56英寸大底感光元件、ƒ/1.95光圈、支持OIS光学防抖 5000万像素超广角摄像头：ƒ/2.0光圈、最大122°超广视角、2.5cm高清微距摄影 5000万像素长焦摄像头：3x光学变焦、ƒ/2.4光圈、支持OIS光学防抖、最高可达50倍数字变焦；备注：相机参数来源于荣耀实验室，不同模式及场景下可能存有差异，请以实际为准。最高像素需进入“高像素”拍照模式体验，请以实际体验为准。",
+      "front": "5000万像素摄像头：ƒ/2.0光圈、最大90°视角；备注：相机参数来源于荣耀实验室，不同模式及场景下可能存有差异，请以实际为准。最高像素需进入“高像素”拍照模式体验，请以实际体验为准。",
+      "stabilization": "电子防抖、光学防抖",
+      "zoom": "最大50倍数字变焦；备注：不同模式下可能有差异，请以实际为准。",
+      "video": "4K视频拍摄：30/60 FPS 1080P视频拍摄：30/60 FPS 720P视频拍摄：30/60 FPS 4K夜景录像模式：24FPS 1080P夜景录像模式：24FPS 1080P慢动作视频：120/240FPS 视频录制编码格式包括H.264和HEVC 变焦范围最高可达0.5x-10x 广角主摄像头支持OIS视频防抖 长焦摄像头支持OIS视频防抖 超广角摄像头支持EIS视频防抖 支持视频美肤 支持立体声收音 支持蓝牙耳机收音 电影模式：HDR Vivid最高可达4K 30FPS 延时摄影模式最高可达4K",
+      "usb": null,
+      "wifi": null,
+      "bluetooth": "BT5.4 支持低功耗蓝牙(BLE) 支持SBC、AAC、LDAC、aptX、aptX HD、aptX Adaptive",
+      "nfc": null,
+      "os": "MagicOS 9.0（基于Android 15）",
+      "launch": null,
+      "cooling": null,
+      "shoulder_buttons": null,
+      "fingerprint": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "骁龙8至尊领先版移动平台",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "CPU型号",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "6.78英寸；备注：显示屏采用圆角设计，按照标准矩形测量时，屏幕的对角线长度是6.80英寸（实际可视区域略小）。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "屏幕尺寸",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "FHD+ 1264x2800像素；备注：该分辨率对应标准矩形，实际屏幕有效像素略少。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "屏幕分辨率",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "OLED",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "屏幕类型",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.sku",
+        "value": "存储；12GB+256GB 12GB+512GB 16GB+512GB 16GB+1TB；备注：可使用的内存容量小于此值，因为手机软件占用部分空间。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "存储",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "7200mAh（典型值）；备注：电池额定容量为7030mAh（内置不可拆卸）。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "电池容量",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "90W荣耀超级快充；备注：此功率为支持的最大充电功率，有线超级快充需搭配原装有线超级快充充电器与充电线使用。实际充电功率会随不同场景智能变化，请以实际使用情况为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "有线快充",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "162.1mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "长度",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "75.7mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "宽度",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "8.58mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "厚度",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "约212g（含电池）；备注：实际尺寸/重量依配置、制造工艺、测量方法的不同可能有所差异。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "重量",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "5000万像素广角摄像头：1/1.56英寸大底感光元件、ƒ/1.95光圈、支持OIS光学防抖 5000万像素超广角摄像头：ƒ/2.0光圈、最大122°超广视角、2.5cm高清微距摄影 5000万像素长焦摄像头：3x光学变焦、ƒ/2.4光圈、支持OIS光学防抖、最高可达50倍数字变焦；备注：相机参数来源于荣耀实验室，不同模式及场景下可能存有差异，请以实际为准。最高像素需进入“高像素”拍照模式体验，请以实际体验为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "后置摄像头",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "5000万像素摄像头：ƒ/2.0光圈、最大90°视角；备注：相机参数来源于荣耀实验室，不同模式及场景下可能存有差异，请以实际为准。最高像素需进入“高像素”拍照模式体验，请以实际体验为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "前置摄像头",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.stabilization",
+        "value": "电子防抖、光学防抖",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "防抖模式",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.zoom",
+        "value": "最大50倍数字变焦；备注：不同模式下可能有差异，请以实际为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "后置摄像头变焦模式",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "4K视频拍摄：30/60 FPS 1080P视频拍摄：30/60 FPS 720P视频拍摄：30/60 FPS 4K夜景录像模式：24FPS 1080P夜景录像模式：24FPS 1080P慢动作视频：120/240FPS 视频录制编码格式包括H.264和HEVC 变焦范围最高可达0.5x-10x 广角主摄像头支持OIS视频防抖 长焦摄像头支持OIS视频防抖 超广角摄像头支持EIS视频防抖 支持视频美肤 支持立体声收音 支持蓝牙耳机收音 电影模式：HDR Vivid最高可达4K 30FPS 延时摄影模式最高可达4K",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "后置摄像头视频拍摄",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "BT5.4 支持低功耗蓝牙(BLE) 支持SBC、AAC、LDAC、aptX、aptX HD、aptX Adaptive",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "蓝牙",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "MagicOS 9.0（基于Android 15）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-e5145955f4f83226"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "HONOR GT Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      }
+    ],
+    "unknown_fields": [
+      "display_refresh",
+      "ram",
+      "storage",
+      "usb",
+      "wifi",
+      "nfc",
+      "launch",
+      "cooling",
+      "shoulder_buttons",
+      "fingerprint"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "CN400-e5145955f4f83226",
+        "publisher": "HONOR",
+        "title": "荣耀GT Pro-参数规格-功能介绍 | 荣耀官方网站",
+        "url": "https://www.honor.com/cn/phones/honor-gt-pro/spec/",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "method": "品牌中国官网公开HTML参数表提取；未访问登录数据或私有接口",
+        "source_content_sha256": "e94bf776ba453fa021610b5e44a402ae8839c849bb610310044eb92082c5c131",
+        "retrieval_allowed": false,
+        "rights_status": "必要规格事实重组与链接，未收录图片/整页；许可及项目使用待审核"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "data_scope": "选定硬件参数，包含保留的历史机型；不是完整规格库或实时在售清单",
+    "runtime_registration": "只生成知识文件，不修改phone_profiles.yaml，不写主数据库"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "400款扩充",
+    "HONOR"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "HONOR GT Pro",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "HONOR中国官网",
+    "url": "https://www.honor.com/cn/phones/honor-gt-pro/spec/",
+    "location": "各字段位置见payload.facts",
+    "license": "必要规格事实重组，许可与使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}
