@@ -99,6 +99,24 @@ class DetectorClient:
         if config.detector == "grounding_dino" and not queries:
             return DetectionResult(config=config, status="query_missing",
                                    diagnostics=["Grounding DINO 需要英文类别查询。"])
+        return self._exchange(config, operation="detect", image=image, queries=queries)
+
+    def warmup(self, config: DetectorConfig) -> dict:
+        """Load the unchanged local model without supplying an image or running inference."""
+        prepared = self.readiness(config)
+        if not prepared["ready"]:
+            return prepared
+        result = self._exchange(config, operation="warmup")
+        return {"ready": result.status == "ready", "status": result.status,
+                "diagnostics": result.diagnostics, "timings": result.timings,
+                "metadata": result.metadata}
+
+    def _exchange(self, config: DetectorConfig, *, operation: str,
+                  image: PreparedImage | None = None,
+                  queries: list[str] | None = None) -> DetectionResult:
+        # Both operations share the lock for the complete IPC exchange. A real
+        # detection queued during model loading waits for the warm model, rather
+        # than interleaving writes or consuming another request's response.
         with self._lock:
             started = time.perf_counter()
             generation = self._generation
@@ -107,11 +125,14 @@ class DetectorClient:
             try:
                 worker = self._start()
                 with tempfile.TemporaryDirectory(prefix="request-", dir=temp_root) as folder:
-                    image_path, output_path = Path(folder) / "sent.jpg", Path(folder) / "result.json"
-                    image_path.write_bytes(image.sent_bytes)
-                    request = {"image_path": str(image_path), "output_path": str(output_path),
-                               "config": config.model_dump(mode="json"), "queries": queries,
-                               "image_metadata": image.metadata()}
+                    output_path = Path(folder) / "result.json"
+                    request = {"operation": operation, "output_path": str(output_path),
+                               "config": config.model_dump(mode="json")}
+                    if image is not None:
+                        image_path = Path(folder) / "sent.jpg"
+                        image_path.write_bytes(image.sent_bytes)
+                        request.update(image_path=str(image_path), queries=queries,
+                                       image_metadata=image.metadata())
                     worker.stdin.write(json.dumps(request, ensure_ascii=True) + "\n")
                     worker.stdin.flush()
                     while not output_path.exists():
@@ -134,7 +155,12 @@ class DetectorClient:
                     result.timings["wall_total"] = time.perf_counter() - started
                     result.timings["worker_and_ipc_overhead"] = max(
                         0.0, result.timings["wall_total"] - result.timings.get("total", 0))
-                    result.metadata["sent_sha256"] = hashlib.sha256(image.sent_bytes).hexdigest()
+                    if image is not None:
+                        result.metadata["sent_sha256"] = hashlib.sha256(image.sent_bytes).hexdigest()
+                    if operation == "warmup" and result.status != "ready":
+                        # A failed speculative load must never leave a partly
+                        # initialized worker for the real detection to reuse.
+                        self.stop_worker()
                     return result
             except (OSError, ValueError) as exc:
                 if self._generation != generation:

@@ -15,7 +15,6 @@ from http.cookies import CookieError, SimpleCookie
 from pathlib import Path
 
 from fastapi import HTTPException, Request
-from pydantic import BaseModel, Field
 from starlette.datastructures import MutableHeaders
 from starlette.responses import FileResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
@@ -28,12 +27,8 @@ COOKIE = "xiaoli_session"
 SESSION_SECONDS = 12 * 60 * 60
 
 
-class SessionRequest(BaseModel):
-    access_code: str = Field(default="", max_length=160)
-
-
 class WebSessions:
-    def __init__(self, secret: str, origin: str, access_code: str = "", require_invite: bool = True):
+    def __init__(self, secret: str, origin: str):
         if len(secret) < 32:
             raise ValueError("WEB_SESSION_SECRET 至少需要 32 个字符。")
         from urllib.parse import urlsplit
@@ -44,13 +39,10 @@ class WebSessions:
         self.secure = url.scheme == "https"
         if not self.secure and url.hostname not in {"localhost", "127.0.0.1"}:
             raise ValueError("公网体验版需要 HTTPS，请配置 WEB_ORIGIN。")
-        if self.secure and require_invite and len(access_code) < 8:
-            raise ValueError("公网体验版请设置至少 8 个字符的 WEB_ACCESS_CODE。")
-        if self.secure and (secret.startswith("replace-") or access_code.startswith("replace-")):
-            raise ValueError("请生成真实会话密钥与体验码，不能使用示例占位值。")
+        if self.secure and secret.startswith("replace-"):
+            raise ValueError("请生成真实会话密钥，不能使用示例占位值。")
         self.secret = secret.encode()
         self.origin = origin
-        self.access_code = access_code
         self.trusted_proxy = os.getenv("WEB_TRUSTED_PROXY_IP", "")
         self.attempts: dict[str, deque] = defaultdict(deque)
         self.analyses: dict[str, deque] = defaultdict(deque)
@@ -129,7 +121,7 @@ class WebGuard:
             or request.headers.get("x-xiaoli-client") != "web"
         ):
             rejected = JSONResponse({"detail": "请在小栗网页内操作。"}, 403)
-        elif path in {"/api/v1/analyze", "/api/v1/analyze-scene"} and sessions.auth(request.scope):
+        elif path in {"/api/v1/analyze", "/api/v1/analyze-scene", "/api/v1/composition-preview"} and sessions.auth(request.scope):
             peer = sessions.peer(request)
             cookie = request.cookies.get(COOKIE, "")
             if not sessions.allow(sessions.analyses, peer, 20, 3600):
@@ -155,22 +147,18 @@ class WebGuard:
 
 
 def create_web_app(settings: Settings, sessions: WebSessions, frontend: Path, pipeline=None):
-    if not settings.demo_mode and len(sessions.access_code) < 8:
-        raise ValueError("真实模型模式必须配置体验码，不能开放免费演示会话。")
     app = create_app(settings, secrets.token_urlsafe(48), pipeline, session_auth=sessions.auth)
     app.add_middleware(WebGuard, sessions=sessions)
 
     @app.get("/web-config")
     def web_config():
-        return {"web_client": True, "invite_required": bool(sessions.access_code)}
+        return {"web_client": True}
 
     @app.post("/session")
-    def login(body: SessionRequest, request: Request):
+    def start_session(request: Request):
         peer = sessions.peer(request)
         if not sessions.allow(sessions.attempts, peer, 10, 300):
             raise HTTPException(429, "尝试过于频繁，请五分钟后重试。")
-        if not secrets.compare_digest(body.access_code.encode(), sessions.access_code.encode()):
-            raise HTTPException(401, "体验码不正确，请向邀请你的人确认。")
         response = JSONResponse({"status": "ok"})
         response.set_cookie(COOKIE, sessions.issue(), httponly=True, secure=sessions.secure,
                             samesite="strict", max_age=SESSION_SECONDS, path="/")
@@ -199,7 +187,5 @@ def from_env():
     origin = os.getenv("WEB_ORIGIN", "http://127.0.0.1:8080").rstrip("/")
     if not secret and origin.startswith("http://127.0.0.1:"):
         secret = secrets.token_urlsafe(48)
-    public_demo = os.getenv("WEB_PUBLIC_DEMO", "false").strip().lower() in {"1", "true", "yes"}
-    sessions = WebSessions(secret, origin, os.getenv("WEB_ACCESS_CODE", ""),
-                           require_invite=not (public_demo and settings.demo_mode))
+    sessions = WebSessions(secret, origin)
     return create_web_app(settings, sessions, PROJECT_ROOT / "mobile" / "dist")

@@ -1,5 +1,10 @@
 from __future__ import annotations
 
+from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor
+from contextvars import copy_context
+from threading import Thread
+
 from camera_assistant.composition_models import CompositionAdvice
 from camera_assistant.config import PROJECT_ROOT, Settings
 from camera_assistant.knowledge.context import build_knowledge_conditions
@@ -24,6 +29,7 @@ from camera_assistant.services.composition import (
     CompositionAdvisor,
     DemoCompositionAdvisor,
     OpenAICompatibleCompositionAdvisor,
+    observe_composition,
 )
 from camera_assistant.services.image_analyzer import ImageAnalyzer
 from camera_assistant.services.lens_knowledge import LensKnowledgeBase
@@ -31,6 +37,7 @@ from camera_assistant.services.localization import GroundingDinoLocalizer
 from camera_assistant.services.phone_knowledge import PhoneKnowledgeBase
 from camera_assistant.services.retriever import LocalKnowledgeRetriever
 from camera_assistant.services.scene_knowledge import SceneKnowledgeBase
+from camera_assistant.services.timing import measure_stage
 from camera_assistant.services.validator import RecommendationValidator
 from camera_assistant.services.vision import (
     DemoVisionAnalyzer,
@@ -99,12 +106,40 @@ class CameraAssistantPipeline:
                 else DemoCompositionAdvisor()
             )
 
-    def run(self, image_content: bytes, request: UserRequest,
-            reference_images: list[bytes] | None = None) -> PipelineResult:
+    @measure_stage("total")
+    def run(
+        self,
+        image_content: bytes,
+        request: UserRequest,
+        reference_images: list[bytes] | None = None,
+        *,
+        parallel_advice: bool = False,
+        on_progress: Callable[[str], None] | None = None,
+        on_partial: Callable[[dict[str, object]], None] | None = None,
+    ) -> PipelineResult:
         if reference_images and len(reference_images) > 5:
             raise ValueError("同一场景最多6张照片。")
-        inspection = self.image_analyzer.analyze(image_content)
-        inspection.reference_images = [self.image_analyzer.analyze(image) for image in (reference_images or [])]
+
+        def report(message: str) -> None:
+            if on_progress is not None:
+                on_progress(message)
+
+        def publish_partial(
+            kind: str, value: SceneAnalysis | CameraRecommendation | CompositionAdvice,
+        ) -> None:
+            if on_partial is not None:
+                # A consumer may serialize or edit its snapshot without changing
+                # the inputs or the complete result still being assembled.
+                on_partial({
+                    "kind": kind, "stage": "intermediate", "value": value.model_copy(deep=True),
+                })
+
+        report("正在检查图片与拍摄设备…")
+        with measure_stage("image_preprocessing"):
+            inspection = self.image_analyzer.analyze(image_content)
+            inspection.reference_images = [
+                self.image_analyzer.analyze(image) for image in (reference_images or [])
+            ]
         device_notes: list[str] = []
         equipment_settings = None
         if request.device_type == "phone":
@@ -177,7 +212,26 @@ class CameraAssistantPipeline:
             if request.device_type == "camera":
                 device_notes.append("通用参数是试拍起点或演示约束，不是该型号已核实的硬件规格。")
         candidates = self.scene_knowledge.find_candidates(effective_request, inspection)
-        scene = self.vision_analyzer.analyze(inspection, effective_request, candidates)
+        warmup = getattr(self.localizer, "warmup", None)
+        if (
+            self.settings.detector_enabled and self.settings.cloud_ready
+            and not self.settings.demo_mode and getattr(self.settings, "detector_warmup", True)
+            and callable(warmup)
+        ):
+            def warm_localizer() -> None:
+                try:
+                    warmup()
+                except Exception:  # noqa: BLE001 - optional preload must not stop localization
+                    # Preloading is optional; localization retains its usual
+                    # initialization, retry and error handling if it fails.
+                    return
+
+            report("正在预热主体定位模型…")
+            warmup_context = copy_context()
+            Thread(target=warmup_context.run, args=(warm_localizer,), daemon=True).start()
+        report("正在识别画面中的主体和光线…")
+        with measure_stage("vision"):
+            scene = self.vision_analyzer.analyze(inspection, effective_request, candidates)
         if scene.scene_survey:
             available = {f"photo{i+1}" for i in range(1 + len(inspection.reference_images))}
             survey = scene.scene_survey
@@ -195,9 +249,16 @@ class CameraAssistantPipeline:
             scene = scene.model_copy(update={"subject_motion": {
                 "静止": "static", "缓慢": "slow", "快速": "fast",
             }[effective_request.subject_motion]})
+        if inspection.reference_images and self.settings.demo_mode:
+            scene = scene.model_copy(update={"uncertainties": [*scene.uncertainties,
+                "规则演示不识别多图空间关系；真实模式才会联合分析所有参考图。"]})
+        publish_partial("scene", scene)
         localization = None
         if self.localizer is not None and not self.settings.demo_mode:
-            localization = self.localizer.localize(inspection, effective_request, scene)
+            report("正在定位主体，首次运行可能较慢…")
+            with measure_stage("localization"):
+                localization = self.localizer.localize(inspection, effective_request, scene)
+        report("正在查阅适用的拍摄知识…")
         query = self._build_query(effective_request, scene)
         query += f" 设备 {camera.display_name} {request.device_type}"
         canonical_subject = next(
@@ -212,18 +273,19 @@ class CameraAssistantPipeline:
         ))
         if equipment_settings and equipment_settings.camera_lens:
             query += f" 镜头 {equipment_settings.camera_lens.display_name} 实际焦距 {effective_request.focal_length_mm}mm"
-        if isinstance(self.retriever, ManagedKnowledgeRetriever):
-            hits = self.retriever.search(
-                query,
-                top_k=4,
-                libraries=["scene", "technique", "equipment"],
-                conditions=conditions,
-            )
-        elif isinstance(camera, PhoneProfile):
-            # 旧库没有设备适用性过滤，不能把相机手动参数当作手机依据。
-            hits = []
-        else:
-            hits = self.retriever.search(query, top_k=4)
+        with measure_stage("parameter_retrieval"):
+            if isinstance(self.retriever, ManagedKnowledgeRetriever):
+                hits = self.retriever.search(
+                    query,
+                    top_k=4,
+                    libraries=["scene", "technique", "equipment"],
+                    conditions=conditions,
+                )
+            elif isinstance(camera, PhoneProfile):
+                # 旧库没有设备适用性过滤，不能把相机手动参数当作手机依据。
+                hits = []
+            else:
+                hits = self.retriever.search(query, top_k=4)
         notes = self._knowledge_notes(hits)
         notes.extend(device_notes)
         if isinstance(camera, PhoneProfile):
@@ -234,57 +296,92 @@ class CameraAssistantPipeline:
                 notes[0] = "手机分支未检索旧相机Markdown库；启用managed并发布手机资料后才可检索。"
         composition_hits = []
         composition = None
-        if inspection.reference_images and self.settings.demo_mode:
-            scene = scene.model_copy(update={"uncertainties": [*scene.uncertainties,
-                "规则演示不识别多图空间关系；真实模式才会联合分析所有参考图。"]})
-        if scene.scene_survey and scene.scene_survey.status == "mixed":
+        mixed_scene = scene.scene_survey is not None and scene.scene_survey.status == "mixed"
+        if mixed_scene:
             composition = CompositionAdvice(status="unavailable", notes=[
                 "这些照片可能来自不同场景，未将它们拼成推荐构图。请移除无关照片后再分析。"])
         elif self.composition_advisor is not None:
             composition_query = query + " 构图 留白 背景 主体位置 " + " ".join(scene.composition_clues)
-            if isinstance(self.retriever, ManagedKnowledgeRetriever):
-                composition_hits = self.retriever.search(
-                    composition_query, top_k=4, libraries=["composition", "style", "case"],
-                    conditions=conditions,
-                )
-            elif isinstance(camera, PhoneProfile):
-                # Legacy cards do not carry phone applicability conditions.
-                composition_hits = []
-            else:
-                # Legacy exposure cards must not be presented as a composition knowledge base.
-                composition_hits = LocalKnowledgeRetriever(
-                    self.settings.knowledge_dir / "composition"
-                ).search(composition_query, top_k=4)
+            with measure_stage("composition_retrieval"):
+                if isinstance(self.retriever, ManagedKnowledgeRetriever):
+                    composition_hits = self.retriever.search(
+                        composition_query, top_k=4, libraries=["composition", "style", "case"],
+                        conditions=conditions,
+                    )
+                elif isinstance(camera, PhoneProfile):
+                    # Legacy cards do not carry phone applicability conditions.
+                    composition_hits = []
+                else:
+                    # Legacy exposure cards must not be presented as a composition knowledge base.
+                    composition_hits = LocalKnowledgeRetriever(
+                        self.settings.knowledge_dir / "composition"
+                    ).search(composition_query, top_k=4)
+
+        def generate_composition() -> CompositionAdvice | None:
+            if self.composition_advisor is None or mixed_scene:
+                return composition
             try:
-                composition = self.composition_advisor.recommend(
-                    inspection, effective_request, scene, localization, composition_hits, camera
-                )
+                report("正在生成构图建议…")
+                with measure_stage("composition"), observe_composition(
+                    lambda advice: publish_partial("composition", advice),
+                    on_ready=lambda advice: publish_partial("composition_ready", advice),
+                ):
+                    return self.composition_advisor.recommend(
+                        inspection, effective_request, scene, localization, composition_hits, camera
+                    )
             except (ValueError, KeyError, TypeError) as exc:
-                composition = CompositionAdvice(
+                return CompositionAdvice(
                     status="unavailable", proposals=[],
                     notes=[str(exc) if isinstance(exc, ModelServiceError)
                            else "构图模型本次未生成可校验的建议，请重新分析。"],
                 )
-        try:
-            recommendation = self.advisor.recommend(effective_request, scene, hits, camera)
-            recommendation = self.validator.validate(
-                recommendation, effective_request, scene, camera
+
+        def generate_parameters() -> CameraRecommendation:
+            validated = False
+            try:
+                report("正在生成拍摄参数与操作建议…")
+                with measure_stage("parameters"):
+                    recommendation = self.advisor.recommend(effective_request, scene, hits, camera)
+                report("正在校验拍摄建议…")
+                with measure_stage("parameter_validation"):
+                    recommendation = self.validator.validate(
+                        recommendation, effective_request, scene, camera
+                    )
+                validated = True
+            except (ValueError, KeyError, TypeError) as exc:
+                if self.composition_advisor is None:
+                    raise
+                # Preserve successful composition when the separate parameter stage fails.
+                recommendation = CameraRecommendation(
+                    shooting_mode="未生成", aperture="未生成", shutter_speed="未生成", iso="未生成",
+                    exposure_compensation="未生成", focus_mode="未生成", metering_mode="未生成",
+                    drive_mode="未生成", white_balance="未生成", reasons=[], adjustments=[],
+                    risks=[str(exc) if isinstance(exc, ModelServiceError)
+                           else "参数模型本次未返回可校验的设置，请重新分析。"], confidence=0,
+                )
+            recommendation.validation_notes = list(
+                dict.fromkeys([*recommendation.validation_notes, *device_notes])
             )
-        except (ValueError, KeyError, TypeError) as exc:
-            if self.composition_advisor is None:
-                raise
-            # Preserve successful composition when the separate parameter stage fails.
-            recommendation = CameraRecommendation(
-                shooting_mode="未生成", aperture="未生成", shutter_speed="未生成", iso="未生成",
-                exposure_compensation="未生成", focus_mode="未生成", metering_mode="未生成",
-                drive_mode="未生成", white_balance="未生成", reasons=[], adjustments=[],
-                risks=[str(exc) if isinstance(exc, ModelServiceError)
-                       else "参数模型本次未返回可校验的设置，请重新分析。"], confidence=0,
-            )
-        recommendation.validation_notes = list(
-            dict.fromkeys([*recommendation.validation_notes, *device_notes])
-        )
-        return PipelineResult(
+            if validated:
+                publish_partial("parameters", recommendation)
+            return recommendation
+
+        if parallel_advice and self.composition_advisor is not None and not mixed_scene:
+            # A Context cannot be entered by two threads at once. Independent
+            # copies carry request observers to both otherwise separate stages.
+            composition_context = copy_context()
+            parameter_context = copy_context()
+            with ThreadPoolExecutor(max_workers=2) as executor:
+                composition_future = executor.submit(
+                    composition_context.run, generate_composition,
+                )
+                parameter_future = executor.submit(parameter_context.run, generate_parameters)
+                composition = composition_future.result()
+                recommendation = parameter_future.result()
+        else:
+            composition = generate_composition()
+            recommendation = generate_parameters()
+        result = PipelineResult(
             inspection=inspection,
             camera_profile=camera,
             equipment_settings=equipment_settings,
@@ -299,6 +396,8 @@ class CameraAssistantPipeline:
             composition=composition,
             composition_knowledge_hits=composition_hits,
         )
+        report("分析完成。")
+        return result
 
     def _knowledge_notes(self, hits: list[KnowledgeHit]) -> list[str]:
         if isinstance(self.retriever, ManagedKnowledgeRetriever):

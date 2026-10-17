@@ -8,6 +8,11 @@ if not exist "%~dp0scripts\launch_apps.py" (
     pause
     exit /b 1
 )
+if not exist "%~dp0scripts\launch_web.py" (
+    echo [ERROR] The current web launcher is missing. Please restore the complete project.
+    pause
+    exit /b 1
+)
 cd /d "%~dp0"
 set "PYTHONUTF8=1"
 set "PYTHONIOENCODING=utf-8"
@@ -38,7 +43,11 @@ pause
 exit /b 1
 
 :launch
-echo Starting the current local web app. No server deployment.
+echo 每次启动会自动构建当前代码，并重启本项目的新版网页服务。
+echo 新版相机工坊：主体清晰平涂，画框边缘沿可见轮廓方向延伸背景。
+echo 推荐线稿使用 CPU 轮廓提取，无需本地生图模型。
+echo 本地智谱默认直连；可用 CAMERA_AI_TRUST_ENV 显式选择代理继承。
+echo 图片编辑预演默认关闭，只有独立配置并手动确认后才会调用。
 "%APP_LAUNCH_PYTHON%" %APP_LAUNCH_ARGS% -u "%~dp0scripts\launch_apps.py" --web %*
 if errorlevel 1 (
     echo.

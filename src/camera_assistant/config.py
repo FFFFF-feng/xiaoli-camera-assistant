@@ -7,6 +7,8 @@ from urllib.parse import urlsplit
 
 from dotenv import load_dotenv
 
+from camera_assistant.image_edit_config import ImageEditSettings
+
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -42,6 +44,11 @@ class Settings:
     disable_thinking: bool = False
     response_format: str = "prompt"
     format_retry_count: int = 1
+    stream_output: bool = True
+    parallel_advice: bool = True
+    detector_warmup: bool = True
+    image_edit: ImageEditSettings = field(default_factory=ImageEditSettings)
+    trust_env: bool = True
 
     def __post_init__(self) -> None:
         if self.knowledge_mode not in {"legacy", "managed"}:
@@ -120,6 +127,11 @@ class Settings:
                 "json_object" if selected else "prompt"
             ),
             format_retry_count=int(os.getenv("CAMERA_AI_FORMAT_RETRY_COUNT", "1")),
+            stream_output=_as_bool(os.getenv("CAMERA_AI_STREAM_OUTPUT"), True),
+            parallel_advice=_as_bool(os.getenv("CAMERA_AI_PARALLEL_ADVICE"), True),
+            detector_warmup=_as_bool(os.getenv("CAMERA_AI_DETECTOR_WARMUP"), True),
+            image_edit=ImageEditSettings.from_env(),
+            trust_env=_as_bool(os.getenv("CAMERA_AI_TRUST_ENV"), True),
         )
 
     @staticmethod

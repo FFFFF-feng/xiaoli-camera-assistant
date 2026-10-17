@@ -25,7 +25,8 @@ def test_unknown_port_is_skipped_and_only_absolute_python_entry_is_owned(monkeyp
     assert not web.command_matches(f'python.exe -c "{entry}" --port 8081', 8081)
 
 
-def test_build_failure_does_not_reuse_or_restart_a_stale_server(monkeypatch):
+def test_build_failure_does_not_reuse_or_restart_a_stale_server(tmp_path, monkeypatch):
+    monkeypatch.setattr(web, "RUNTIME", tmp_path / ".launcher")
     monkeypatch.setattr(web, "build_frontend", Mock(side_effect=web.LaunchError("构建失败")))
     selected = Mock()
     monkeypatch.setattr(web, "select_port", selected)
@@ -57,16 +58,46 @@ def test_readiness_rejects_old_frontend_and_wrong_mode(monkeypatch):
         assert web.ready(8080, b"latest", "cloud") is expected
 
 
-def test_local_cloud_config_preserves_invite_and_never_uses_remote_origin(tmp_path, monkeypatch):
+def test_local_cloud_config_needs_only_model_key_and_never_uses_remote_origin(tmp_path, monkeypatch):
     monkeypatch.setattr(web, "ROOT", tmp_path)
     monkeypatch.setattr(web, "RUNTIME", tmp_path / ".launcher")
     monkeypatch.setattr(web.os, "environ", {})
-    (tmp_path / ".env.zhipu-deploy").write_text("CAMERA_AI_API_KEY=test-only-key\nWEB_ACCESS_CODE=test-invite\n")
+    (tmp_path / ".env.zhipu-deploy").write_text("CAMERA_AI_API_KEY=test-only-key\n")
     environment, mode = web.local_environment(8081)
     assert mode == "cloud" and environment["CAMERA_AI_PRESET"] == "glm-dino"
     assert environment["WEB_ORIGIN"] == "http://127.0.0.1:8081"
-    assert environment["WEB_ACCESS_CODE"] == "test-invite"
+    assert environment["CAMERA_AI_TRUST_ENV"] == "false"
     assert len(environment["WEB_SESSION_SECRET"]) >= 32
     demo, mode = web.local_environment(8081, demo=True)
-    assert mode == "demo" and demo["WEB_ACCESS_CODE"] == ""
+    assert mode == "demo"
     assert demo["WEB_SESSION_SECRET"] == environment["WEB_SESSION_SECRET"]
+
+
+@pytest.mark.parametrize("host,explicit,expected", [
+    ("https://open.bigmodel.cn/api/paas/v4", None, "false"),
+    ("https://open.bigmodel.cn/api/paas/v4", "true", "true"),
+    ("https://example.invalid/v1", None, None),
+    ("https://example.invalid/v1", "false", "false"),
+])
+def test_local_proxy_choice_is_provider_scoped_and_respects_user_config(tmp_path, monkeypatch, host, explicit, expected):
+    monkeypatch.setattr(web, "ROOT", tmp_path)
+    monkeypatch.setattr(web, "RUNTIME", tmp_path / ".launcher")
+    configured = {"CAMERA_AI_API_KEY": "test-only-key",
+                  "CAMERA_AI_PRESET": "glm-dino", "CAMERA_AI_BASE_URL": host}
+    if explicit is not None:
+        configured["CAMERA_AI_TRUST_ENV"] = explicit
+    monkeypatch.setattr(web.os, "environ", configured)
+    environment, mode = web.local_environment(8080)
+    assert mode == "cloud"
+    assert environment.get("CAMERA_AI_TRUST_ENV") == expected
+    assert configured.get("CAMERA_AI_TRUST_ENV") == explicit
+
+
+def test_optional_image_editor_check_is_disabled_by_default_and_never_reuses_vision_key(tmp_path, monkeypatch):
+    monkeypatch.setattr(web, "ROOT", tmp_path)
+    monkeypatch.setattr(web.os, "environ", {"CAMERA_AI_API_KEY": "test-vision-secret"})
+    web.check_image_editor()
+    (tmp_path / ".env").write_text("CAMERA_IMAGE_EDIT_ENABLED=true\nCAMERA_IMAGE_EDIT_BASE_URL=https://edit.invalid/v1\nCAMERA_IMAGE_EDIT_MODEL=image-model\n")
+    with pytest.raises(web.LaunchError, match="独立") as error:
+        web.check_image_editor()
+    assert "test-vision-secret" not in str(error.value)

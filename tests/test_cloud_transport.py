@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from contextlib import nullcontext
 from dataclasses import replace
 from pathlib import Path
 
@@ -8,7 +9,12 @@ import httpx
 import pytest
 
 from camera_assistant.config import Settings
-from camera_assistant.services.cloud import ModelServiceError, extract_json, request_json
+from camera_assistant.services.cloud import (
+    ModelServiceError,
+    cloud_session,
+    extract_json,
+    request_json,
+)
 
 
 def settings(**updates) -> Settings:
@@ -79,6 +85,33 @@ def test_http_error_does_not_expose_body_credentials_or_url(monkeypatch):
 
 def test_settings_repr_hides_key():
     assert "secret-test-only" not in repr(settings())
+
+
+@pytest.mark.parametrize("trust_env", [True, False])
+@pytest.mark.parametrize("shared", [True, False])
+def test_proxy_choice_is_applied_to_shared_and_independent_clients(monkeypatch, trust_env, shared):
+    real_client, choices = httpx.Client, []
+
+    def client(**kwargs):
+        choices.append(kwargs["trust_env"])
+        return real_client(transport=httpx.MockTransport(lambda _: httpx.Response(200, json={"choices": [{
+            "finish_reason": "stop", "message": {"content": '{"ok":true}'},
+        }]})), **kwargs)
+
+    monkeypatch.setattr(httpx, "Client", client)
+    configured = settings(trust_env=trust_env)
+    with cloud_session(configured) if shared else nullcontext():
+        assert request_json(configured, {}) == {"ok": True}
+    assert choices == [trust_env]
+
+
+def test_proxy_choice_loads_from_env_without_changing_default(monkeypatch, tmp_path):
+    import camera_assistant.config as module
+    monkeypatch.setattr(module, "PROJECT_ROOT", tmp_path)
+    monkeypatch.setattr(module.os, "environ", {})
+    assert Settings.from_env().trust_env is True
+    monkeypatch.setenv("CAMERA_AI_TRUST_ENV", "false")
+    assert Settings.from_env().trust_env is False
 
 
 def test_glm_preset_resolves_only_named_provider_vault(monkeypatch, tmp_path):

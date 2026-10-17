@@ -20,7 +20,7 @@ from camera_assistant.models import (
     SceneAnalysis,
     UserRequest,
 )
-from camera_assistant.services import composition, target_drawing
+from camera_assistant.services import composition, observed_composition, target_drawing
 from camera_assistant.services.camera_knowledge import CameraKnowledgeBase
 from vision_lab_tool.detector_models import (
     DetectionObject,
@@ -157,10 +157,80 @@ def call_advisor(inputs, monkeypatch, answer, loc=None, hits=None, captured=None
 
     monkeypatch.setattr(composition, "request_json", fake_request)
     monkeypatch.setattr(target_drawing, "request_json", fake_request)
+    def observed_request(*_):
+        board = next((item.get("storyboard") for item in answer.get("proposals", [])
+                      if item.get("storyboard")), None)
+        if not board:
+            return {"objects": []}
+        return {"objects": [{**layer, "object_id": layer.get("source_object_id", f"object{i+1}")}
+                            for i, layer in enumerate(board["layers"])],
+                "limitations": ["测试轮廓非实拍分割"]}
+    monkeypatch.setattr(observed_composition, "request_json", observed_request)
+    monkeypatch.setattr(observed_composition, "trace_observed_scene",
+                        lambda answer, _: observed_composition.parse_observed_scene(answer))
     inspection, request, scene, camera, settings = inputs
     return composition.OpenAICompatibleCompositionAdvisor(settings).recommend(
         inspection, request, scene, loc, hits or [], camera
     )
+
+
+def test_unknown_background_reference_keeps_grounded_subject_drawing(inputs, monkeypatch):
+    value = response([proposal()])
+    from test_observed_composition import advice, observed
+    source = observed_composition.parse_observed_scene(observed())
+    monkeypatch.setattr(composition, "observe_objects", lambda *_: source)
+    board = advice().proposals[0].storyboard.model_dump()
+    value["proposals"][0]["storyboard"] = board
+    board["layers"] = [
+        {"source_object_id": "object1", "bbox": [.1, .1, .6, .8], "role": "main", "color": "rose"},
+        {"source_object_id": "tree_branch", "bbox": [.7, .1, .9, .8], "role": "background"},
+    ]
+    monkeypatch.setattr(composition, "request_json", lambda *_: value)
+    result = composition.OpenAICompatibleCompositionAdvisor(inputs[4]).recommend(
+        inputs[0], inputs[1], inputs[2], None, [], inputs[3])
+    target = result.proposals[0].storyboard
+    assert target is not None
+    assert [layer.source_object_id for layer in target.layers] == ["object1"]
+    assert target.layers[0].outline == source.objects[0].outline
+    assert any("未确认的环境物体" in note for note in target.limitations)
+
+
+@pytest.mark.parametrize("failure, expected", [
+    ("missing_board", "模型未提供有效的构图意图"),
+    ("missing_aspect", "画幅（缺少必填项）"),
+    ("bad_bbox", "位置与大小"),
+    ("unknown_subject", "引用的主体不在已识别物体中"),
+])
+def test_failed_layout_reports_reason_and_keeps_text(inputs, monkeypatch, failure, expected):
+    from test_observed_composition import advice, observed
+
+    source = observed_composition.parse_observed_scene(observed())
+    monkeypatch.setattr(composition, "observe_objects", lambda *_: source)
+    board = advice().proposals[0].storyboard.model_dump()
+    board["layers"] = [{"source_object_id": "object1", "bbox": [.1, .1, .6, .8], "role": "main"}]
+    if failure == "missing_board":
+        board = None
+    elif failure == "missing_aspect":
+        del board["aspect"]
+    elif failure == "bad_bbox":
+        board["layers"][0]["bbox"] = [.8, .1, .2, .9]
+    else:
+        board["layers"][0]["source_object_id"] = "not-a-source"
+    monkeypatch.setattr(composition, "request_json", lambda *_: response([{**proposal(), "storyboard": board}]))
+    result = composition.OpenAICompatibleCompositionAdvisor(inputs[4]).recommend(
+        inputs[0], inputs[1], inputs[2], None, [], inputs[3])
+    assert result.proposals[0].storyboard is None
+    assert result.proposals[0].actions
+    assert any(expected in note for note in result.notes)
+
+
+def test_layout_diagnostics_do_not_echo_provider_values_or_unknown_field_names():
+    board = target_board()
+    board["aspect"] = "provider-private-value"
+    board["provider-private-key"] = "provider-private-input"
+    issue = composition._layout_format_issue(board)
+    assert "画幅" in issue
+    assert "provider-private" not in issue
 
 
 def test_cloud_payload_preserves_evidence_image_and_only_public_localization(inputs, monkeypatch):
@@ -276,9 +346,10 @@ def test_crop_bbox_cannot_be_disguised_as_reshoot():
 
 def test_cloud_schema_errors_do_not_display_raw_model_values(inputs, monkeypatch):
     invalid_proposal = proposal("crop", bbox=[0, 0, "private model response", 1])
-    with pytest.raises(ValueError, match="格式或裁切坐标无效") as error:
-        call_advisor(inputs, monkeypatch, response([invalid_proposal]), loc=localization())
-    assert "private model response" not in str(error.value)
+    result = call_advisor(inputs, monkeypatch, response([invalid_proposal]), loc=localization())
+    assert result.status == "unavailable" and not result.proposals
+    assert "private model response" not in result.model_dump_json()
+    assert any(d.code == "advice_invalid" for d in result.diagnostics)
 
 
 def test_demo_does_not_invent_image_observations_or_grounded_suggestions(inputs):
@@ -304,7 +375,7 @@ def test_sketch_is_validated_and_preserved_with_advice(inputs, monkeypatch):
     captured = {}
     advice = call_advisor(inputs, monkeypatch, response([item]), captured=captured)
     assert advice.proposals[0].sketch.elements[0].kind == "tree"
-    assert "简笔画分镜数据" in captured["messages"][0]["content"][0]["text"]
+    assert "不绘图、不返回坐标" in captured["messages"][0]["content"][0]["text"]
 
 
 @pytest.mark.parametrize("box", [[0, 0, 2, 1], [False, 0, 1, 1], [0, 0, float("nan"), 1], [.5, 0, .4, 1]])
@@ -413,6 +484,7 @@ def target_board():
     return {"aspect": "landscape", "reference_photo_id": "photo1", "intent": "突出横向连廊与立柱",
             "distance_relation": "similar", "distance_instruction": "保持相近距离，横向试移并检查树木遮挡",
             "layers": [{"kind": "building", "label": "橙色建筑", "role": "main", "depth": 1,
+                        "source_object_id": "object1",
                         "bbox": [.12, .2, .88, .8], "color": "ochre", "outline": [[0, 0], [1, 0], [1, 1], [0, 1]],
                         "details": [[[.15, .2], [.85, .2]], [[.2, .2], [.2, 1]]],
                         "identity_features": ["横向连廊", "立柱"], "evidence_photo_ids": ["photo1"], "certainty": "approximate"}],
@@ -513,7 +585,7 @@ def test_layout_stage_does_not_require_geometry_and_background_is_not_a_subject(
     board = target_board()
     original = board["layers"][0]
     background = {**original, "kind": "background", "role": "background", "label": "天空",
-                  "depth": 0, "bbox": [0, 0, 1, .2]}
+                  "depth": 0, "bbox": [0, 0, 1, .2], "source_object_id": "object2"}
     board["layers"].append(background)
     for layer in board["layers"]:
         layer.pop("outline")
@@ -522,24 +594,28 @@ def test_layout_stage_does_not_require_geometry_and_background_is_not_a_subject(
 
     def fake(settings, payload):
         prompt = payload["messages"][0]["content"][0]["text"]
-        if prompt.startswith("[TARGET_GEOMETRY_V1]"):
-            targets = json.loads(prompt.split("需要绘制的独立对象：\n")[1])
-            assert len(targets) == 1 and "bbox" not in targets[0]
-            stages.append("drawing")
-            return {"layers": [{"proposal_index": 0, "layer_index": 0,
-                                "outline": [[0, 0], [1, 0], [1, 1], [0, 1]],
-                                "details": [[[.1, .3], [.9, .3]], [[.2, .3], [.2, 1]]]}]}
+        if prompt.startswith("[OBSERVED_OBJECTS_V1]"):
+            stages.append("observation")
+            return {"objects": [{**layer, "object_id": layer["source_object_id"],
+                                  "outline": [[0, 0], [1, 0], [1, 1], [0, 1]],
+                                  "details": [[[.1, .3], [.9, .3]], [[.2, .3], [.2, 1]]]}
+                                 for layer in board["layers"]], "limitations": ["模型估计"]}
         schema = json.loads(prompt.split("输出 Schema：\n")[1])
-        assert "outline" not in schema["$defs"]["TargetLayer"]["properties"]
+        assert "TargetLayer" not in schema["$defs"]
+        assert "storyboard" not in schema["$defs"]["CompositionProposal"]["properties"]
+        assert schema["$defs"]["CompositionIntent"]["properties"]["focus_object_id"]["enum"] == ["object1"]
+        assert "crop" not in schema["$defs"]["CompositionProposal"]["properties"]["action_type"]["enum"]
         stages.append("layout")
         return response([{**proposal(), "storyboard": board}])
 
     monkeypatch.setattr(composition, "request_json", fake)
-    monkeypatch.setattr(target_drawing, "request_json", fake)
+    monkeypatch.setattr(observed_composition, "request_json", fake)
+    monkeypatch.setattr(observed_composition, "trace_observed_scene",
+                        lambda answer, _: observed_composition.parse_observed_scene(answer))
     inspection, request, scene, camera, settings = inputs
     result = composition.OpenAICompatibleCompositionAdvisor(settings).recommend(
         inspection, request, scene, None, [], camera)
-    assert stages == ["layout", "drawing"]
+    assert stages == ["observation", "layout"]
     assert len(result.proposals[0].storyboard.layers) == 2
     assert result.proposals[0].storyboard.layers[0].details
 
@@ -565,3 +641,106 @@ def test_lower_viewpoint_is_not_mistaken_for_a_measured_forward_move(inputs, mon
     advice = call_advisor(inputs, monkeypatch, response([{**proposal(), "storyboard": board}]))
     assert advice.proposals[0].storyboard.distance_relation == "unknown"
     assert any("机位高度" in note for note in advice.proposals[0].storyboard.limitations)
+
+
+def test_actual_subject_categories_are_not_limited_to_legacy_glyphs(inputs, monkeypatch):
+    board = target_board()
+    board["layers"][0]["kind"] = "light"
+    advice = call_advisor(inputs, monkeypatch, response([{**proposal(), "storyboard": board}]))
+    assert advice.proposals[0].storyboard.layers[0].kind == "light"
+
+
+def test_drawing_repairs_structure_once_and_never_retries_transport_failure(inputs, monkeypatch):
+    from camera_assistant.services.cloud import ModelServiceError
+    advice = CompositionAdvice.model_validate(response([{**proposal(), "storyboard": target_board()}]))
+    calls = []
+
+    def repair(settings, payload):
+        calls.append(len(payload["messages"]))
+        if len(calls) == 1:
+            return {"layers": []}
+        return {"layers": [{"proposal_index": 0, "layer_index": 0, "label": "可忽略的说明",
+                            "outline": [[0, 0], [1000, 0], [1000, 1000], [0, 1000]],
+                            "details": [[[100, 200], [900, 200]], [[200, 200], [200, 900]]]}]}
+
+    monkeypatch.setattr(target_drawing, "request_json", repair)
+    result = target_drawing.refine_target_drawings(inputs[4], advice, inputs[0])
+    assert calls == [1, 3]
+    assert result.proposals[0].storyboard
+    assert result.proposals[0].storyboard.layers[0].bbox == advice.proposals[0].storyboard.layers[0].bbox
+    calls.clear()
+
+    def failure(*_):
+        calls.append(1)
+        raise ModelServiceError("模型服务请求超时，请稍后重试或增加超时设置。")
+
+    monkeypatch.setattr(target_drawing, "request_json", failure)
+    assert target_drawing.refine_target_drawings(inputs[4], advice, inputs[0]).proposals[0].storyboard is None
+    assert calls == [1]
+
+
+@pytest.mark.parametrize("outline", [
+    [[0, 0], [1, 1], [0, 1], [1, .4], [.8, 0]],  # crossing with nonzero area
+    [[0, 0], [1, 0], [.5, 0], [1, 1], [0, 1]],  # folds back along an edge
+    [[0, 0], [1, 0], [1, 1], [0, 0], [0, 1]],  # repeated internal vertex
+])
+def test_target_outline_rejects_crossings_and_foldbacks(outline):
+    from camera_assistant.composition_models import TargetLayer
+    with pytest.raises(ValueError):
+        TargetLayer.model_validate({**target_board()["layers"][0], "outline": outline})
+
+
+def test_target_curves_and_explicit_closed_outline_remain_compatible():
+    from camera_assistant.composition_models import TargetLayer
+    layer = target_board()["layers"][0]
+    old = TargetLayer.model_validate(layer)
+    assert old.outline_style == "angular"
+    new = TargetLayer.model_validate({**layer, "outline_style": "curved",
+                                     "outline": [*layer["outline"], layer["outline"][0]]})
+    assert new.outline_style == "curved"
+
+
+def test_complex_subject_cannot_be_a_triangle_but_simple_real_buildings_are_valid():
+    from camera_assistant.composition_models import TargetLayer
+    layer = TargetLayer.model_validate(target_board()["layers"][0])
+    geometry = {"outline": [[0, 0], [1, 0], [1, 1], [0, 1]],
+                "details": [[[.2, .2], [.8, .2]], [[.2, .2], [.2, .8]]]}
+    assert target_drawing._local_geometry(layer, geometry)
+    for kind in ("person", "pet", "tree", "rocket"):
+        with pytest.raises(ValueError, match="过度简化"):
+            target_drawing._local_geometry(layer.model_copy(update={"kind": kind}), geometry)
+
+
+def test_detail_outliers_cannot_flatten_subject_and_curves_survive_normalization():
+    from camera_assistant.composition_models import TargetLayer
+    layer = TargetLayer.model_validate(target_board()["layers"][0])
+    geometry = {"outline": [[200, 0], [800, 0], [800, 1000], [200, 1000]],
+                "outline_style": "curved",
+                "details": [[[300, 300], [700, 300]], [[300, 300], [300, 800]]]}
+    fixed = target_drawing._local_geometry(layer, geometry)
+    assert fixed.outline_style == "curved"
+    assert fixed.details[0] == [[.16667, .3], [.83333, .3]]
+    geometry["details"][0][0] = [0, 300]
+    with pytest.raises(ValueError, match="超出"):
+        target_drawing._local_geometry(layer, geometry)
+
+
+def test_drawing_uses_visual_model_and_repair_hint_is_specific_but_not_raw(inputs, monkeypatch):
+    from dataclasses import replace
+    advice = CompositionAdvice.model_validate(response([{**proposal(), "storyboard": target_board()}]))
+    calls = []
+
+    def fake(settings, payload):
+        assert payload["model"] == inputs[4].vision_model
+        calls.append(len(payload["messages"]))
+        if len(calls) == 2:
+            assert "外轮廓自交" in payload["messages"][-1]["content"]
+            assert "[1, 0.2]" not in payload["messages"][-1]["content"]
+        return {"layers": [{"proposal_index": 0, "layer_index": 0,
+                            "outline": [[0, 0], [1, 1], [0, 1], [1, .4], [.8, 0]], "details": []}]}
+
+    monkeypatch.setattr(target_drawing, "request_json", fake)
+    result = target_drawing.refine_target_drawings(
+        replace(inputs[4], text_model="text-only-model"), advice, inputs[0])
+    assert result.proposals[0].storyboard is None
+    assert calls == [1, 3]
