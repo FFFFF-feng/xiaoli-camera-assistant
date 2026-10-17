@@ -1,0 +1,405 @@
+{
+  "knowledge_id": "phone20261017x-cn-oppo-a58x-a6b22f8e",
+  "library_id": "equipment",
+  "title": "OPPO A58x（国行）：手机硬件与相机参数补充",
+  "kind": "manufacturer_fact",
+  "content": "# OPPO A58x（国行）\n\n整理日期：2026-10-17；待独立审核的厂商参数草稿。\n\n- 处理器：天玑700，8 核心，最高主频 2.2GHz\n- 屏幕尺寸：6.56 英寸（对角线）\n- 屏幕分辨率：1612×720 像素，269 PPI\n- 刷新率及条件：最高支持 90Hz 刷新率\n- 屏幕类型：最高支持 90Hz 刷新率 最高支持 90Hz 触控采样率\n- 官网列示存储组合：6GB+128GB，8GB+128GB\n- 电池容量及版本条件：额定容量：4890 mAh 典型容量：5000 mAh\n- 充电标称及条件：10 W 充电\n- 高度：163.8 毫米\n- 宽度：75.1 毫米\n- 厚度：7.99 毫米\n- 重量及版本条件：186 克\n- 后置摄像头及辅助传感器：1300 万像素主摄像头：ƒ/2.2，五镜式镜头，支持 AF 自动对焦 200 万像素人像摄像头：ƒ/2.4，三镜式镜头\n- 前置摄像头：800 万像素摄像头：ƒ/2.0，四镜式镜头\n- 视频录制摘要：1080P 视频拍摄：30 fps ；720P 视频拍摄：30 fps\n- USB接口：USB Type-C\n- WLAN：支持 Wi-Fi 5 (802.11ac)，802.11a/b/g/n 支持 WLAN 2.4G，WLAN 5.1G，WLAN 5.8G 支持 WLAN Display，WLAN 网络分享\n- 蓝牙：蓝牙 5.3\n- 来源列示系统：ColorOS 12.1\n\n未核验字段：实体RAM选项、存储选项、防抖、变焦、NFC、来源列示上市时间、散热系统、触控肩键、指纹识别\n\n\n使用边界：\n- 只适用对应完整型号的中国大陆销售版本，不能用于海外版、相近型号或未注明的卫星通信版。\n- 厂商公开规格由AI提取，未经独立人工审核或真机验证；全部为草稿，禁止受管检索。\n- 保留内外屏、折叠状态、配色材质和RAM/存储版本条件。未列出的组合不能通过排列生成。\n- 电池保留典型值、额定值、双电芯等效值；不同数值不能无条件相加或替换。\n- 快充标称需相应适配器、线材与测试条件，不是持续功率；无线充电与有线充电分开理解。\n- 镜头像素不等于输出照片像素；等效焦距不等于实际焦距；光学品质变焦不增加物理镜头。\n- 来源中的辅助感光、色彩及深度传感器按原表保留，不据此增加独立可拍摄镜头。\n- 原生/第三方App手动ISO、快门、可调光圈与逐镜头模式组合未核验，不能由硬件参数推断。\n- 系统为来源列示版本；官网页面保留不代表当前在售，未核验实时库存、价格、销量或软件支持期限。\n- 未知字段为null，不代表不支持。字段条目数不是完整度评分。\n\n来源：[OPPO中国官网参数](https://www.oppo.com/cn/smartphones/series-a/a58x/specs/)",
+  "payload": {
+    "brand": "OPPO",
+    "model_variant": "OPPO A58x",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "天玑700，8 核心，最高主频 2.2GHz",
+      "display_size": "6.56 英寸（对角线）",
+      "display_resolution": "1612×720 像素，269 PPI",
+      "display_refresh": "最高支持 90Hz 刷新率",
+      "display_panel": "最高支持 90Hz 刷新率 最高支持 90Hz 触控采样率",
+      "ram": null,
+      "storage": null,
+      "sku": "6GB+128GB，8GB+128GB",
+      "battery": "额定容量：4890 mAh 典型容量：5000 mAh",
+      "charging": "10 W 充电",
+      "height": "163.8 毫米",
+      "width": "75.1 毫米",
+      "thickness": "7.99 毫米",
+      "weight": "186 克",
+      "rear": "1300 万像素主摄像头：ƒ/2.2，五镜式镜头，支持 AF 自动对焦 200 万像素人像摄像头：ƒ/2.4，三镜式镜头",
+      "front": "800 万像素摄像头：ƒ/2.0，四镜式镜头",
+      "stabilization": null,
+      "zoom": null,
+      "video": "1080P 视频拍摄：30 fps ；720P 视频拍摄：30 fps",
+      "usb": "USB Type-C",
+      "wifi": "支持 Wi-Fi 5 (802.11ac)，802.11a/b/g/n 支持 WLAN 2.4G，WLAN 5.1G，WLAN 5.8G 支持 WLAN Display，WLAN 网络分享",
+      "bluetooth": "蓝牙 5.3",
+      "nfc": null,
+      "os": "ColorOS 12.1",
+      "launch": null,
+      "cooling": null,
+      "shoulder_buttons": null,
+      "fingerprint": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "天玑700，8 核心，最高主频 2.2GHz",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "芯片/移动平台",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "6.56 英寸（对角线）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "显示/尺寸",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "1612×720 像素，269 PPI",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "显示/分辨率",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "最高支持 90Hz 刷新率",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "显示/类型",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "最高支持 90Hz 刷新率 最高支持 90Hz 触控采样率",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "显示/类型",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.sku",
+        "value": "6GB+128GB，8GB+128GB",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "存储/运行内存容量 + 机身存储容量",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "额定容量：4890 mAh 典型容量：5000 mAh",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "电池/电池容量",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "10 W 充电",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "电池/快速充电",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "163.8 毫米",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "尺寸与重量/高",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "75.1 毫米",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "尺寸与重量/宽",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "7.99 毫米",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "尺寸与重量/厚",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "186 克",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "尺寸与重量/重量",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "1300 万像素主摄像头：ƒ/2.2，五镜式镜头，支持 AF 自动对焦 200 万像素人像摄像头：ƒ/2.4，三镜式镜头",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "摄像头/后置",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "800 万像素摄像头：ƒ/2.0，四镜式镜头",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "摄像头/前置",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "1080P 视频拍摄：30 fps ；720P 视频拍摄：30 fps",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "视频拍摄/后置（最高录制不代表全镜头可用）",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.usb",
+        "value": "USB Type-C",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "数据功能/数据接口",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.wifi",
+        "value": "支持 Wi-Fi 5 (802.11ac)，802.11a/b/g/n 支持 WLAN 2.4G，WLAN 5.1G，WLAN 5.8G 支持 WLAN Display，WLAN 网络分享",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "数据功能/WLAN 功能",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "蓝牙 5.3",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "数据功能/蓝牙",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "ColorOS 12.1",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-960fb4fa96f09cd0"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "OPPO A58x",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      }
+    ],
+    "unknown_fields": [
+      "ram",
+      "storage",
+      "stabilization",
+      "zoom",
+      "nfc",
+      "launch",
+      "cooling",
+      "shoulder_buttons",
+      "fingerprint"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "CN400-960fb4fa96f09cd0",
+        "publisher": "OPPO",
+        "title": "OPPO A58x 5G 产品参数 | OPPO 官方网站",
+        "url": "https://www.oppo.com/cn/smartphones/series-a/a58x/specs/",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "method": "品牌中国官网公开HTML参数表提取；未访问登录数据或私有接口",
+        "source_content_sha256": "ab04cda726db5573726d45891c55ea3195b0cbe29d25b4cf95368a54c1f1128e",
+        "retrieval_allowed": false,
+        "rights_status": "必要规格事实重组与链接，未收录图片/整页；许可及项目使用待审核"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "data_scope": "选定硬件参数，包含保留的历史机型；不是完整规格库或实时在售清单",
+    "runtime_registration": "只生成知识文件，不修改phone_profiles.yaml，不写主数据库"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "400款扩充",
+    "OPPO"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "OPPO A58x",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "OPPO中国官网",
+    "url": "https://www.oppo.com/cn/smartphones/series-a/a58x/specs/",
+    "location": "各字段位置见payload.facts",
+    "license": "必要规格事实重组，许可与使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,405 @@
+{
+  "knowledge_id": "phone20261017x-cn-oppo-find-x5-pro-97ffdb53",
+  "library_id": "equipment",
+  "title": "OPPO Find X5 Pro 天玑版（国行）：手机硬件与相机参数补充",
+  "kind": "manufacturer_fact",
+  "content": "# OPPO Find X5 Pro 天玑版（国行）\n\n整理日期：2026-10-17；待独立审核的厂商参数草稿。\n\n- 处理器：天玑9000+ 移动 5G 平台，8 核心，最高主频 3.05GHz\n- 屏幕尺寸：6.70 英寸（对角线）\n- 屏幕分辨率：3216×1440 像素，525 PPI\n- 刷新率及条件：最高支持 120Hz 刷新率\n- 屏幕类型：AMOLED 柔性屏 最高支持 120Hz 刷新率 最高支持 240Hz 触控采样率 覆盖康宁大猩猩玻璃 Victus™\n- 官网列示存储组合：12GB+256GB\n- 电池容量及版本条件：额定容量：2440 mAh（双电芯串联设计，等效于 4880 mAh） 典型容量：2500 mAh（双电芯串联设计，等效于 5000 mAh）\n- 充电标称及条件：80 W 超级闪充。兼容 65 W 超级闪充，50 W 超级闪充，33 W 超级闪充，18 W PD 50 W 无线闪充。兼容 Qi 无线快充协议，支持 10 W 反向充电\n- 高度：163.7 毫米\n- 宽度：73.9 毫米\n- 厚度：8.50 毫米\n- 重量及版本条件：216 克\n- 后置摄像头及辅助传感器：5000 万像素广角摄像头：ƒ/1.8，等效焦距 24 毫米，六镜式镜头，支持 AF 自动对焦，支持 OIS 光学防抖 5000 万像素超广角摄像头：ƒ/2.2，FOV 110°，七镜式镜头，支持 AF 自动对焦，支持 4 厘米微距拍摄 1300 万像素长焦摄像头：ƒ/2.4，等效焦距 52 毫米，五镜式镜头，支持 AF 自动对焦\n- 前置摄像头：3200 万像素摄像头：ƒ/2.4，等效焦距 21 毫米，五镜式镜头\n- 视频录制摘要：4K 视频拍摄：60 fps，30 fps ；1080P 视频拍摄：60 fps，30 fps ；720P 视频拍摄：60 fps，30 fps\n- USB接口：USB Type-C\n- WLAN：支持 Wi-Fi 6，Wi-Fi 5（802.11ac），802.11a/b/g/n 支持 WLAN 2.4G，WLAN 5G 支持 2×2 MIMO，MU-MIMO 支持 WLAN Display，WLAN 网络分享\n- 蓝牙：蓝牙 5.3\n- 来源列示系统：ColorOS 12.1\n\n未核验字段：实体RAM选项、存储选项、防抖、变焦、NFC、来源列示上市时间、散热系统、触控肩键、指纹识别\n\n\n使用边界：\n- 只适用对应完整型号的中国大陆销售版本，不能用于海外版、相近型号或未注明的卫星通信版。\n- 厂商公开规格由AI提取，未经独立人工审核或真机验证；全部为草稿，禁止受管检索。\n- 保留内外屏、折叠状态、配色材质和RAM/存储版本条件。未列出的组合不能通过排列生成。\n- 电池保留典型值、额定值、双电芯等效值；不同数值不能无条件相加或替换。\n- 快充标称需相应适配器、线材与测试条件，不是持续功率；无线充电与有线充电分开理解。\n- 镜头像素不等于输出照片像素；等效焦距不等于实际焦距；光学品质变焦不增加物理镜头。\n- 来源中的辅助感光、色彩及深度传感器按原表保留，不据此增加独立可拍摄镜头。\n- 原生/第三方App手动ISO、快门、可调光圈与逐镜头模式组合未核验，不能由硬件参数推断。\n- 系统为来源列示版本；官网页面保留不代表当前在售，未核验实时库存、价格、销量或软件支持期限。\n- 未知字段为null，不代表不支持。字段条目数不是完整度评分。\n\n来源：[OPPO中国官网参数](https://www.oppo.com/cn/smartphones/series-find-x/find-x5-pro-dimensity/specs/)",
+  "payload": {
+    "brand": "OPPO",
+    "model_variant": "OPPO Find X5 Pro 天玑版",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "天玑9000+ 移动 5G 平台，8 核心，最高主频 3.05GHz",
+      "display_size": "6.70 英寸（对角线）",
+      "display_resolution": "3216×1440 像素，525 PPI",
+      "display_refresh": "最高支持 120Hz 刷新率",
+      "display_panel": "AMOLED 柔性屏 最高支持 120Hz 刷新率 最高支持 240Hz 触控采样率 覆盖康宁大猩猩玻璃 Victus™",
+      "ram": null,
+      "storage": null,
+      "sku": "12GB+256GB",
+      "battery": "额定容量：2440 mAh（双电芯串联设计，等效于 4880 mAh） 典型容量：2500 mAh（双电芯串联设计，等效于 5000 mAh）",
+      "charging": "80 W 超级闪充。兼容 65 W 超级闪充，50 W 超级闪充，33 W 超级闪充，18 W PD 50 W 无线闪充。兼容 Qi 无线快充协议，支持 10 W 反向充电",
+      "height": "163.7 毫米",
+      "width": "73.9 毫米",
+      "thickness": "8.50 毫米",
+      "weight": "216 克",
+      "rear": "5000 万像素广角摄像头：ƒ/1.8，等效焦距 24 毫米，六镜式镜头，支持 AF 自动对焦，支持 OIS 光学防抖 5000 万像素超广角摄像头：ƒ/2.2，FOV 110°，七镜式镜头，支持 AF 自动对焦，支持 4 厘米微距拍摄 1300 万像素长焦摄像头：ƒ/2.4，等效焦距 52 毫米，五镜式镜头，支持 AF 自动对焦",
+      "front": "3200 万像素摄像头：ƒ/2.4，等效焦距 21 毫米，五镜式镜头",
+      "stabilization": null,
+      "zoom": null,
+      "video": "4K 视频拍摄：60 fps，30 fps ；1080P 视频拍摄：60 fps，30 fps ；720P 视频拍摄：60 fps，30 fps",
+      "usb": "USB Type-C",
+      "wifi": "支持 Wi-Fi 6，Wi-Fi 5（802.11ac），802.11a/b/g/n 支持 WLAN 2.4G，WLAN 5G 支持 2×2 MIMO，MU-MIMO 支持 WLAN Display，WLAN 网络分享",
+      "bluetooth": "蓝牙 5.3",
+      "nfc": null,
+      "os": "ColorOS 12.1",
+      "launch": null,
+      "cooling": null,
+      "shoulder_buttons": null,
+      "fingerprint": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "天玑9000+ 移动 5G 平台，8 核心，最高主频 3.05GHz",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "芯片/移动平台",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "6.70 英寸（对角线）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "显示/尺寸",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "3216×1440 像素，525 PPI",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "显示/分辨率",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "最高支持 120Hz 刷新率",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "显示/类型",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "AMOLED 柔性屏 最高支持 120Hz 刷新率 最高支持 240Hz 触控采样率 覆盖康宁大猩猩玻璃 Victus™",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "显示/类型",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.sku",
+        "value": "12GB+256GB",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "存储/运行内存容量 + 机身存储容量",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "额定容量：2440 mAh（双电芯串联设计，等效于 4880 mAh） 典型容量：2500 mAh（双电芯串联设计，等效于 5000 mAh）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "电池/电池容量",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "80 W 超级闪充。兼容 65 W 超级闪充，50 W 超级闪充，33 W 超级闪充，18 W PD 50 W 无线闪充。兼容 Qi 无线快充协议，支持 10 W 反向充电",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "电池/快速充电",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "163.7 毫米",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "尺寸与重量/高",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "73.9 毫米",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "尺寸与重量/宽",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "8.50 毫米",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "尺寸与重量/厚",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "216 克",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "尺寸与重量/重量",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "5000 万像素广角摄像头：ƒ/1.8，等效焦距 24 毫米，六镜式镜头，支持 AF 自动对焦，支持 OIS 光学防抖 5000 万像素超广角摄像头：ƒ/2.2，FOV 110°，七镜式镜头，支持 AF 自动对焦，支持 4 厘米微距拍摄 1300 万像素长焦摄像头：ƒ/2.4，等效焦距 52 毫米，五镜式镜头，支持 AF 自动对焦",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "摄像头/后置",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "3200 万像素摄像头：ƒ/2.4，等效焦距 21 毫米，五镜式镜头",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "摄像头/前置",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "4K 视频拍摄：60 fps，30 fps ；1080P 视频拍摄：60 fps，30 fps ；720P 视频拍摄：60 fps，30 fps",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "视频拍摄/后置（最高录制不代表全镜头可用）",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.usb",
+        "value": "USB Type-C",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "数据功能/数据接口",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.wifi",
+        "value": "支持 Wi-Fi 6，Wi-Fi 5（802.11ac），802.11a/b/g/n 支持 WLAN 2.4G，WLAN 5G 支持 2×2 MIMO，MU-MIMO 支持 WLAN Display，WLAN 网络分享",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "数据功能/WLAN 功能",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "蓝牙 5.3",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "数据功能/蓝牙",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "ColorOS 12.1",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-22782afe9faec5b8"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "OPPO Find X5 Pro 天玑版",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      }
+    ],
+    "unknown_fields": [
+      "ram",
+      "storage",
+      "stabilization",
+      "zoom",
+      "nfc",
+      "launch",
+      "cooling",
+      "shoulder_buttons",
+      "fingerprint"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "CN400-22782afe9faec5b8",
+        "publisher": "OPPO",
+        "title": "OPPO Find X5 Pro 天玑版 参数 | OPPO 官方网站",
+        "url": "https://www.oppo.com/cn/smartphones/series-find-x/find-x5-pro-dimensity/specs/",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "method": "品牌中国官网公开HTML参数表提取；未访问登录数据或私有接口",
+        "source_content_sha256": "2da340906dd8a38c0b940d57334000bf3c24228ec7599cb36df009f5f09eba61",
+        "retrieval_allowed": false,
+        "rights_status": "必要规格事实重组与链接，未收录图片/整页；许可及项目使用待审核"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "data_scope": "选定硬件参数，包含保留的历史机型；不是完整规格库或实时在售清单",
+    "runtime_registration": "只生成知识文件，不修改phone_profiles.yaml，不写主数据库"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "400款扩充",
+    "OPPO"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "OPPO Find X5 Pro 天玑版",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "OPPO中国官网",
+    "url": "https://www.oppo.com/cn/smartphones/series-find-x/find-x5-pro-dimensity/specs/",
+    "location": "各字段位置见payload.facts",
+    "license": "必要规格事实重组，许可与使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}
