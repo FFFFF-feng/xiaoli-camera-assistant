@@ -2,20 +2,28 @@
 from pathlib import Path
 
 import pytest
-
+import test_real_pipeline as pipeline_fixtures
 from test_composition_advisor import proposal, response
 from test_validator import recommendation, scene
-from test_real_pipeline import settings as pipeline_settings, image_content as pipeline_image_content
 
 from camera_assistant.composition_models import CompositionAdvice
 from camera_assistant.models import UserRequest
 from camera_assistant.services.camera_knowledge import CameraKnowledgeBase
 from camera_assistant.services.composition import _validate_advice
-from camera_assistant.services.validator import RecommendationValidator
 from camera_assistant.services.photography_facts import (
-    build_photography_facts, photography_facts, reconcile_composition_facts,
-    preserve_continuous_framing, semantic_issues, use_photography_facts,
+    build_photography_facts,
+    photography_facts,
+    preserve_continuous_framing,
+    reconcile_composition_facts,
+    semantic_issues,
+    use_photography_facts,
 )
+from camera_assistant.services.validator import RecommendationValidator
+
+# pytest discovers fixture objects bound in this module, including aliases.
+# Keep the actual fixture objects; deleting the old F401 imports breaks setup.
+pipeline_settings = pipeline_fixtures.settings
+pipeline_image_content = pipeline_fixtures.image_content
 
 
 def camera(identifier="canon_eos_r50"):
@@ -213,13 +221,19 @@ def test_continuous_filter_keeps_required_lists_and_serializes_after_repeated_ch
 
 
 def test_parallel_branches_receive_the_same_precomputed_fact_instance(tmp_path, monkeypatch):
+    from io import BytesIO
     from threading import Barrier
-    from test_real_pipeline import (FakeCompositionAdvisor, FakeParameterAdvisor,
-        make_pipeline, localization)
+
+    from PIL import Image
+    from test_real_pipeline import (
+        FakeCompositionAdvisor,
+        FakeParameterAdvisor,
+        localization,
+        make_pipeline,
+    )
+
     from camera_assistant.config import PROJECT_ROOT, Settings
     from camera_assistant.services.retriever import LocalKnowledgeRetriever
-    from PIL import Image
-    from io import BytesIO
 
     settings = Settings(demo_mode=False, api_key="test", base_url="https://example.invalid/v1",
         vision_model="test", text_model="test", knowledge_dir=PROJECT_ROOT / "knowledge",
@@ -247,8 +261,10 @@ def test_parallel_branches_receive_the_same_precomputed_fact_instance(tmp_path, 
 def test_warm_white_balance_ready_snapshot_matches_final_after_join(
         pipeline_settings, pipeline_image_content, monkeypatch):
     from copy import deepcopy
-    from test_real_pipeline import FakeParameterAdvisor, make_pipeline
+
     from test_observed_composition import observed
+    from test_real_pipeline import FakeParameterAdvisor, make_pipeline
+
     from camera_assistant.knowledge.retriever import ManagedKnowledgeRetriever
     from camera_assistant.knowledge.store import KnowledgeStore
     from camera_assistant.services import composition, observed_composition
@@ -299,3 +315,239 @@ def test_visible_nested_prose_cannot_bypass_equipment_and_parallax_guards(field)
     assert result.proposals[0].storyboard.layers == advice.proposals[0].storyboard.layers
     CompositionAdvice.model_validate(result.model_dump())
     assert reconcile_composition_facts(result, facts) == result
+
+
+@pytest.mark.parametrize("text", [
+    "若机身支持 IBIS，可开启机身防抖后试拍。",
+    "如果已经确认该机具备机身防抖，可以配合 IBIS 稳定手持。",
+    "不能确认机身是否支持 IBIS，请先核对菜单。",
+    "不能说高速快门会降低取景稳定性。",
+    "不要声称提高快门速度会增加相机抖动。",
+    "在钨丝灯下用自动白平衡的氛围优先保留暖色。",
+    "钨丝灯预设不保证保留暖色氛围。",
+    "如果现场光源是钨丝灯，可试拍核对白平衡。",
+])
+def test_supported_conditions_and_scoped_negatives_survive(text):
+    facts = build_photography_facts(UserRequest(intent="保留暖色"), scene(), camera("generic_unknown"))
+    assert semantic_issues(text, facts) == set()
+
+
+@pytest.mark.parametrize(("text", "code"), [
+    ("若镜头支持 IS，可开启机身防抖。", "ibis_capability_conflict"),
+    ("不能降低 ISO，但可以开启 IBIS。", "ibis_capability_conflict"),
+    ("若机身支持 IBIS，可开启防抖；本机已经具备 IBIS。", "ibis_capability_conflict"),
+    ("IBIS 已开启。", "ibis_capability_conflict"),
+    ("可以开启镜头防抖。", "lens_is_unconfirmed"),
+    ("镜头防抖能够凝固主体运动。", "ibis_subject_motion_causality"),
+])
+def test_unknown_capability_conditions_do_not_license_other_claims(text, code):
+    facts = build_photography_facts(UserRequest(intent="拍摄清晰主体"), scene(), camera("generic_unknown"))
+    assert code in semantic_issues(text, facts)
+
+
+@pytest.mark.parametrize("light", [None, "natural", "continuous_artificial", "mixed", "flickering_artificial"])
+def test_broad_lighting_category_never_confirms_a_specific_bulb(light):
+    facts = build_photography_facts(UserRequest(intent="拍照", lighting_type=light), scene(), camera())
+    assert "light_source_unconfirmed" in semantic_issues("现场光源是钨丝灯。", facts)
+    assert "light_source_unconfirmed" in semantic_issues("照片偏暖说明现场使用钨丝灯。", facts)
+    assert semantic_issues("若现场光源是钨丝灯，可试拍检查颜色。", facts) == set()
+
+
+@pytest.mark.parametrize(("intent", "goal"), [
+    ("不要中和暖色，保留温暖氛围", "preserve_warmth"),
+    ("无需去除偏黄，保持暖调", "preserve_warmth"),
+    ("不想保留暖色，要还原中性颜色", "neutralize"),
+    ("比较保留暖色与中和偏黄的效果", "unspecified"),
+])
+def test_white_balance_goal_respects_negation_and_unselected_alternatives(intent, goal):
+    assert build_photography_facts(UserRequest(intent=intent), scene(), camera()).white_balance_goal == goal
+
+
+def test_warm_goal_correction_keeps_focus_and_risk_context():
+    from camera_assistant.services.photography_facts import reconcile_parameter_facts
+    facts = build_photography_facts(UserRequest(intent="保留暖色"), scene(), camera())
+    result = reconcile_parameter_facts(recommendation(
+        reasons=["单点对焦奶泡，钨丝灯白平衡可保留暖色。"],
+        adjustments=["检查杯沿，白平衡向冷调整以中和暖色。"]), facts)
+    assert "单点对焦奶泡" in " ".join(result.reasons)
+    assert "检查杯沿" in " ".join(result.adjustments)
+    assert "向冷调整以中和暖色" not in " ".join(result.adjustments)
+    assert result.white_balance == facts.white_balance_instruction
+    assert reconcile_parameter_facts(result, facts) == result
+
+
+def test_nested_white_balance_correction_keeps_focus_instruction():
+    value = proposal()
+    value["composition_intent"] = {"focus_object_id": "object1", "diagnosis": "对焦奶泡，白平衡设为钨丝灯保留暖色。"}
+    facts = build_photography_facts(UserRequest(intent="保留暖色"), scene(), camera())
+    result = reconcile_composition_facts(CompositionAdvice.model_validate(response([value])), facts)
+    assert "对焦奶泡" in result.proposals[0].composition_intent.diagnosis
+    assert facts.white_balance_instruction in result.proposals[0].composition_intent.diagnosis
+
+
+@pytest.mark.parametrize("text", [
+    "方案一居中保持左右对称，方案二采用右侧三分强调方向。",
+    "主体放在右侧三分线，主体自身左右对称。",
+    "无需强行三分，检查左右中轴对称。",
+])
+def test_alternatives_local_symmetry_and_negative_thirds_do_not_reset_layout(text):
+    value = proposal()
+    value["reasons"] = [text]
+    facts = build_photography_facts(UserRequest(intent="比较居中与三分构图"), scene(), camera())
+    result = reconcile_composition_facts(CompositionAdvice.model_validate(response([value])), facts)
+    assert result.proposals[0].reasons == [text]
+
+
+def test_explicit_motion_overrides_scene_guess_and_unknown_stays_unknown():
+    request = UserRequest(intent="拍摄静物", subject_motion="静止")
+    assert build_photography_facts(request, scene("fast"), camera()).motion == "static"
+    assert build_photography_facts(UserRequest(intent="拍摄主体"), scene("fast"), camera()).motion == "unknown"
+
+
+def test_motion_estimate_only_gets_conditional_parameter_guidance():
+    request = UserRequest(intent="拍摄静物", subject_motion="静止")
+    result = RecommendationValidator().validate(recommendation(shutter_speed="1/125s"), request, scene("fast"), camera())
+    assert result.shutter_speed == "1/125s"
+    uncertain = RecommendationValidator().validate(recommendation(), UserRequest(intent="拍摄主体"), scene("fast"), camera())
+    assert any("若" in text and "快速" in text for text in uncertain.validation_notes)
+
+
+@pytest.mark.parametrize("text", [
+    "若主体正在快速运动，试用较快快门。",
+    "静态照片不能确认主体正在高速奔跑。",
+])
+def test_motion_conditions_and_uncertainty_are_not_facts(text):
+    facts = build_photography_facts(UserRequest(intent="拍摄主体"), scene("fast"), camera())
+    assert semantic_issues(text, facts) == set()
+
+
+def test_unknown_motion_cannot_be_promoted_to_affirmative_fact():
+    facts = build_photography_facts(UserRequest(intent="拍摄主体"), scene("fast"), camera())
+    assert "motion_unconfirmed" in semantic_issues("主体正在高速奔跑。", facts)
+
+
+@pytest.mark.parametrize("text", [
+    "推荐图已改善透视并减少遮挡。",
+    "示意图已恢复未拍到的杯底。",
+    "向右侧移 2 米消除遮挡。",
+])
+def test_visible_prose_never_promises_unmeasured_geometry(text):
+    value = proposal()
+    value["actions"] = [text]
+    facts = build_photography_facts(UserRequest(intent="检查可见杯沿"), scene(), camera())
+    result = reconcile_composition_facts(CompositionAdvice.model_validate(response([value])), facts)
+    assert text not in result.proposals[0].actions
+    assert any("现场" in item or "画外" in item for item in result.proposals[0].actions)
+
+
+@pytest.mark.parametrize("text", [
+    "若机身支持 IBIS，可开启机身防抖，本机已具备 IBIS。",
+    "开启机身防抖可能提高拍摄成功率。",
+    "机身防抖可开启。",
+])
+def test_conditions_and_hedged_benefits_do_not_confirm_unknown_hardware(text):
+    facts = build_photography_facts(UserRequest(intent="拍摄主体"), scene(), camera("generic_unknown"))
+    assert "ibis_capability_conflict" in semantic_issues(text, facts)
+
+
+def test_comparison_does_not_license_an_independent_simultaneous_directive():
+    value = proposal()
+    value.update(actions=["拱门置于右侧三分线，同时保持画面左右中轴对称。"],
+                 reasons=["方案一居中保持左右对称，方案二右侧三分。"],
+                 composition_intent={"focus_object_id": "object1", "diagnosis": "偏置", "placement": "right"})
+    facts = build_photography_facts(UserRequest(intent="比较居中与三分"), scene(), camera())
+    result = reconcile_composition_facts(CompositionAdvice.model_validate(response([value])), facts)
+    assert result.proposals[0].composition_intent.placement == "keep"
+
+
+def test_continuous_framing_keeps_negative_boundaries_and_corrects_nested_claims():
+    from test_composition_advisor import target_board
+    value = proposal()
+    value.update(actions=["不要靠近，以免截断杯沿。"], reasons=["不必强行三分，保留原取景。"],
+                 composition_intent={"focus_object_id": "object1", "diagnosis": "调整", "placement": "right"},
+                 storyboard=target_board())
+    value["storyboard"]["distance_instruction"] = "向右侧移后，推荐图已消除遮挡。"
+    facts = build_photography_facts(UserRequest(intent="保留原构图"), scene(), camera())
+    result = preserve_continuous_framing(CompositionAdvice.model_validate(response([value])), facts)
+    assert "不要靠近，以免截断杯沿。" in result.proposals[0].actions
+    assert "不必强行三分，保留原取景。" in result.proposals[0].reasons
+    assert "已消除遮挡" not in result.model_dump_json()
+    assert result.proposals[0].storyboard.layers == CompositionAdvice.model_validate(response([value])).proposals[0].storyboard.layers
+    assert preserve_continuous_framing(result, facts) == result
+
+
+def test_demo_respects_explicit_static_motion_and_warm_goal():
+    from camera_assistant.services.advisor import DemoRecommendationAdvisor
+    request = UserRequest(intent="保留咖啡暖色", subject_motion="静止")
+    facts = build_photography_facts(request, scene("fast"), camera())
+    result = DemoRecommendationAdvisor().recommend(request, scene("fast"), [], camera())
+    assert result.shooting_mode != camera().shutter_priority_name
+    assert result.white_balance == facts.white_balance_instruction
+
+
+@pytest.mark.parametrize("text", [
+    "若机身不支持 IBIS，可开启机身防抖。",
+    "如果机身支持 IBIS，可开启镜头防抖。",
+])
+def test_review_negative_or_other_hardware_condition_never_licenses_activation(text):
+    facts = build_photography_facts(UserRequest(intent="拍摄主体"), scene(), camera("generic_unknown"))
+    assert semantic_issues(text, facts)
+
+
+def test_review_comparison_does_not_license_separate_conflicting_actions():
+    value = proposal()
+    value.update(actions=["拱门置于右侧三分线。", "保持画面左右中轴对称。"],
+                 reasons=["方案一居中保持左右对称，方案二右侧三分。"],
+                 composition_intent={"focus_object_id": "object1", "diagnosis": "偏置", "placement": "right"})
+    facts = build_photography_facts(UserRequest(intent="比较居中与三分"), scene(), camera())
+    result = reconcile_composition_facts(CompositionAdvice.model_validate(response([value])), facts)
+    assert result.proposals[0].composition_intent.placement == "keep"
+
+
+@pytest.mark.parametrize("intent", ["我不想保留暖色，要还原中性颜色", "不要中和暖色而是保留暖色氛围"])
+def test_review_embedded_goal_negation_is_scoped_to_the_rejected_goal(intent):
+    facts = build_photography_facts(UserRequest(intent=intent), scene(), camera())
+    assert facts.white_balance_goal == ("neutralize" if "中性" in intent else "preserve_warmth")
+
+
+def test_review_food_demo_uses_one_color_goal_in_parameters_and_adjustments():
+    from camera_assistant.services.advisor import DemoRecommendationAdvisor
+    request = UserRequest(intent="保留咖啡馆暖色氛围", subject_motion="静止")
+    source = scene().model_copy(update={"scene_type": "food_closeup"})
+    result = DemoRecommendationAdvisor().recommend(request, source, [], camera())
+    assert not any("钨丝灯" in text for text in result.adjustments)
+    assert any("保留暖色" in text for text in result.adjustments)
+
+
+def test_review_correcting_a_separate_error_preserves_the_condition_scope():
+    from camera_assistant.services.photography_facts import reconcile_parameter_facts
+    facts = build_photography_facts(UserRequest(intent="拍摄主体"), scene(), camera("generic_unknown"))
+    source = recommendation(adjustments=["若机身支持 IBIS，可开启机身防抖；高速快门会降低取景稳定性。"])
+    first = reconcile_parameter_facts(source, facts)
+    assert "可开启机身防抖" in first.adjustments[0]
+    assert reconcile_parameter_facts(first, facts) == first
+
+
+def test_review_negative_effect_does_not_negate_positive_ibis_activation():
+    facts = build_photography_facts(UserRequest(intent="拍摄主体"), scene(), camera())
+    text = "开启机身防抖不能替代高速快门，但有助于稳定机身。"
+    assert "ibis_capability_conflict" in semantic_issues(text, facts)
+
+
+@pytest.mark.parametrize("intent", ["现场光源是钨丝灯，保留暖色", "现场使用白炽灯，保留暖色"])
+def test_user_declared_specific_light_is_evidence_but_scene_guess_is_not(intent):
+    facts = build_photography_facts(UserRequest(intent=intent), scene(), camera())
+    assert semantic_issues("现场光源是钨丝灯。", facts) == set()
+    assert "light_source_unconfirmed" in semantic_issues("现场光源是 LED。", facts)
+
+
+@pytest.mark.parametrize("intent", ["如果现场光源是钨丝灯怎样保暖", "现场光源是钨丝灯吗？", "现场并不是钨丝灯，想保暖"])
+def test_question_condition_or_negative_is_not_a_light_declaration(intent):
+    facts = build_photography_facts(UserRequest(intent=intent), scene(), camera())
+    assert "light_source_unconfirmed" in semantic_issues("现场光源是钨丝灯。", facts)
+
+
+def test_user_explicit_motion_sentence_is_evidence_with_structured_status_priority():
+    request = UserRequest(intent="狗正在快速奔跑，我想凝固动作")
+    assert build_photography_facts(request, scene("static"), camera()).motion == "fast"
+    assert build_photography_facts(request.model_copy(update={"subject_motion": "静止"}), scene("fast"), camera()).motion == "static"
