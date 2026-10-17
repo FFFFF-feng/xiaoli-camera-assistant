@@ -85,6 +85,7 @@ def pipeline_factory(settings, monkeypatch, model_advice):
     monkeypatch.setattr(
         composition_service, "request_json", lambda *_: deepcopy(model_advice),
     )
+    monkeypatch.setattr(composition_service, "observe_objects", lambda *_: None)
     located_subject = localization()
 
     def make():

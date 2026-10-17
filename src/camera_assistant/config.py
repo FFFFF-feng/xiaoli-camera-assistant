@@ -7,6 +7,8 @@ from urllib.parse import urlsplit
 
 from dotenv import load_dotenv
 
+from camera_assistant.image_edit_config import ImageEditSettings
+
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -45,6 +47,7 @@ class Settings:
     stream_output: bool = True
     parallel_advice: bool = True
     detector_warmup: bool = True
+    image_edit: ImageEditSettings = field(default_factory=ImageEditSettings)
 
     def __post_init__(self) -> None:
         if self.knowledge_mode not in {"legacy", "managed"}:
@@ -126,6 +129,7 @@ class Settings:
             stream_output=_as_bool(os.getenv("CAMERA_AI_STREAM_OUTPUT"), True),
             parallel_advice=_as_bool(os.getenv("CAMERA_AI_PARALLEL_ADVICE"), True),
             detector_warmup=_as_bool(os.getenv("CAMERA_AI_DETECTOR_WARMUP"), True),
+            image_edit=ImageEditSettings.from_env(),
         )
 
     @staticmethod

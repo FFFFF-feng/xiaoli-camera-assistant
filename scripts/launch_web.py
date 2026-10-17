@@ -31,7 +31,7 @@ class LaunchError(RuntimeError):
 def check_runtime() -> str:
     if sys.version_info < (3, 11):  # noqa: UP036 - launcher can be invoked by an old Python
         raise LaunchError("需要 Python 3.11 或更新版本。")
-    for module in ("uvicorn", "fastapi", "multipart", "httpx", "numpy", "PIL", "pydantic", "dotenv", "yaml"):
+    for module in ("uvicorn", "fastapi", "multipart", "httpx", "numpy", "cv2", "PIL", "pydantic", "dotenv", "yaml"):
         try:
             importlib.import_module(module)
         except (ImportError, OSError):
@@ -41,7 +41,22 @@ def check_runtime() -> str:
         raise LaunchError("未找到 Node.js/npm，请安装 Node.js 后重新启动。")
     if not (ROOT / "mobile/node_modules/vite").is_dir():
         raise LaunchError("前端依赖尚未安装，请执行：npm --prefix mobile ci")
+    check_image_editor()
     return npm
+
+
+def check_image_editor() -> None:
+    from dotenv import dotenv_values
+
+    from camera_assistant.image_edit_config import ImageEditSettings
+
+    environment = {key: value for key, value in dotenv_values(ROOT / ".env").items()
+                   if value is not None}
+    environment.update(os.environ)
+    try:
+        ImageEditSettings.from_env(environment)
+    except ValueError as error:
+        raise LaunchError(f"可选图片编辑配置无效：{error}") from None
 
 
 def local_environment(port: int, demo: bool = False) -> tuple[dict[str, str], str]:

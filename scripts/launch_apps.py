@@ -20,7 +20,7 @@ from urllib.request import ProxyHandler, build_opener
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / ".launcher"
-DEPENDENCIES = ("streamlit", "httpx", "numpy", "PIL", "pydantic", "dotenv", "yaml")
+DEPENDENCIES = ("streamlit", "httpx", "numpy", "cv2", "PIL", "pydantic", "dotenv", "yaml")
 HTTP = build_opener(ProxyHandler({}))  # 本地健康检查不经过用户代理。
 
 

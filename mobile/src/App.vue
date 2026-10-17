@@ -53,7 +53,7 @@ const timingNames: Record<string, string> = {
   upload: '照片上传', upload_validation: '照片检查', queue: '等待处理',
   image_preprocessing: '照片准备', vision: '画面识别', localization: '主体定位',
   parameter_retrieval: '拍摄资料检索', composition_retrieval: '构图资料检索',
-  composition_layout: '构图方案', target_drawing: '推荐图线条', composition: '完整构图',
+  composition_observation: '物体与空间识别', composition_contours: '提取物体轮廓', composition_layout: '目标构图规划', target_drawing: '推荐图线条', composition: '完整构图',
   parameters: '拍摄建议', parameter_validation: '参数校验', total: '分析全程',
 };
 const progressStage = ref(0);
@@ -453,7 +453,7 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
           <div class="notice" :class="{ demo: analysis?.analysis_mode === 'demo' }">{{ analysis?.analysis_mode === 'demo' ? '规则演示结果，不是真实多模态场景识别。' : '云模型分析结果。建议可能有误，以机型能力和试拍为准。' }}</div>
           <div class="scene-summary"><img v-if="preview" :src="preview" alt="本次分析的现场照片" /><div><span>{{ result.camera_profile.display_name }}</span><h2>{{ result.scene.scene_label || result.scene.scene_type }}</h2><p>{{ lightingText }}</p></div></div>
           <div v-if="result.equipment_settings" class="equipment-summary"><strong>{{ sensorLabel(result.camera_profile.sensor_format) }} · {{ result.equipment_settings.camera_lens?.display_name || '未指定镜头' }}</strong><span v-if="result.equipment_settings.focal_length_mm">实际 {{ result.equipment_settings.focal_length_mm }}mm · {{ result.equipment_settings.equivalent_focal_length_mm ? `约 ${result.equipment_settings.equivalent_focal_length_mm}mm 等效` : '等效待核验' }}</span></div>
-          <CompositionView :key="analysis?.request_id" :result="result" :preview="preview" :photos="resultPhotos" />
+          <CompositionView :key="analysis?.request_id" :result="result" :preview="preview" :photos="resultPhotos" :preview-api="api" />
           <details v-if="analysis?.timings?.length" class="phase-timings"><summary>本次处理用时</summary><p v-for="(item, index) in analysis.timings.filter(t => timingNames[t.stage])" :key="index">{{ timingNames[item.stage] }}：{{ item.duration_seconds.toFixed(1) }} 秒{{ item.status === 'failed' ? '（未完成）' : '' }}</p><p class="helper">环节可能并行，用时不能直接相加；照片上传时间不含浏览器本地选图。</p></details>
           <details class="parameter-drawer"><summary>拍摄参数与试拍调整<span>按需要展开</span></summary><div class="shooting-mode"><span>建议拍摄模式</span><strong>{{ result.recommendation.shooting_mode }}</strong></div>
           <dl class="exposure" :class="{ 'phone-exposure': result.camera_profile.device_type === 'phone' }"><div><dt>光圈</dt><dd>{{ result.recommendation.aperture }}</dd></div><div><dt>快门</dt><dd>{{ result.recommendation.shutter_speed }}</dd></div><div><dt>ISO</dt><dd>{{ result.recommendation.iso }}</dd></div></dl>

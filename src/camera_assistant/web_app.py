@@ -129,7 +129,7 @@ class WebGuard:
             or request.headers.get("x-xiaoli-client") != "web"
         ):
             rejected = JSONResponse({"detail": "请在小栗网页内操作。"}, 403)
-        elif path in {"/api/v1/analyze", "/api/v1/analyze-scene"} and sessions.auth(request.scope):
+        elif path in {"/api/v1/analyze", "/api/v1/analyze-scene", "/api/v1/composition-preview"} and sessions.auth(request.scope):
             peer = sessions.peer(request)
             cookie = request.cookies.get(COOKIE, "")
             if not sessions.allow(sessions.analyses, peer, 20, 3600):

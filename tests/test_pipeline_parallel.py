@@ -344,7 +344,7 @@ def test_parallel_flag_without_composition_preserves_parameter_only_path(
     assert [event["kind"] for event in partials] == ["scene", "parameters"]
 
 
-def test_validated_composition_text_is_published_before_target_drawing_finishes(
+def test_validated_composition_text_is_published_before_final_result(
     settings, image_content, user_request, monkeypatch,
 ):
     from test_composition_advisor import proposal, response, target_board
@@ -356,12 +356,20 @@ def test_validated_composition_text_is_published_before_target_drawing_finishes(
         response([{**proposal(), "storyboard": target_board()}]))
     partials = []
 
-    def drawing(config, advice, inspection):
-        assert layout_published.wait(1), "validated layout text was not published before drawing"
-        assert advice.proposals[0].storyboard is not None
-        return advice
+    from camera_assistant.composition_models import ObservedScene
+    source = ObservedScene.model_validate({
+        "objects": [{**target_board()["layers"][0], "object_id": "object1"}],
+        "limitations": ["合成轮廓，仅验证流程"],
+    })
+    monkeypatch.setattr(composition_service, "observe_objects", lambda *_: source)
+    original_projection = composition_service.apply_observed_layout
 
-    monkeypatch.setattr(composition_service, "refine_target_drawings", drawing)
+    def drawing(advice, source, inspection):
+        assert not layout_published.is_set(), "unresolved proportions must not be published"
+        assert advice.proposals[0].storyboard is not None
+        return original_projection(advice, source, inspection)
+
+    monkeypatch.setattr(composition_service, "apply_observed_layout", drawing)
 
     def partial(event):
         partials.append(event)

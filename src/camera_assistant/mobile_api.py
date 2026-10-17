@@ -24,6 +24,7 @@ from starlette.middleware.gzip import GZipMiddleware
 from starlette.responses import JSONResponse, StreamingResponse
 
 from camera_assistant.config import Settings
+from camera_assistant.image_preview_api import register_image_preview
 from camera_assistant.models import UserRequest
 from camera_assistant.pipeline import CameraAssistantPipeline
 from camera_assistant.services.cloud import cloud_session, observe_stream
@@ -150,6 +151,7 @@ def create_app(
     # Keep paid work alive independently of the HTTP response/consumer lifetime.
     analysis_tasks: set[asyncio.Task] = set()
     app.state.analysis_tasks = analysis_tasks
+    register_image_preview(app, settings, access_token)
 
     @app.get("/health")
     def health():

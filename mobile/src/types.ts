@@ -2,6 +2,7 @@ export interface DeviceCatalogProfile {
   profile_id: string; display_name: string; brand?: string; model?: string; aliases?: string[];
   capability_level?: string;
 }
+export type PreviewApi = (path:string,options?:RequestInit)=>Promise<any>;
 export interface PhoneProfile extends DeviceCatalogProfile {
   modes: string[];
   pro_controls?: string[];
@@ -38,9 +39,11 @@ export interface FramingPlan {
 export interface TargetBoard {
   aspect:'portrait'|'landscape'|'square'; reference_photo_id:string; intent:string;narration?:string;
   distance_relation:'closer'|'farther'|'similar'|'unknown'; distance_instruction:string;
+  render_basis?:'legacy'|'source_geometry';layout_mode?:'schematic'|'crop_projection';source_photo_aspect?:number|null;
   layers:{label:string;kind:string;role:'main'|'foreground'|'background'|'prop';depth:number;bbox:number[];
-    color:'slate'|'blue'|'ochre'|'sage'|'rose';outline:number[][];details:number[][][];
-    identity_features:string[];evidence_photo_ids:string[];certainty:'observed'|'approximate'}[];
+    color:'slate'|'blue'|'ochre'|'sage'|'rose';representation?:'silhouette'|'context_lines';outline:number[][];contours?:number[][][];outline_style?:'angular'|'curved';details:number[][][];source_details?:number[][][]|null;
+    identity_features:string[];evidence_photo_ids:string[];certainty:'observed'|'approximate';
+    source_object_id?:string|null;source_bbox?:number[]|null;mobility?:'fixed'|'movable'|'unknown'}[];
   changes:{problem:string;adjustment:string;benefit:string}[];limitations:string[];
 }
 export interface SceneSurvey {

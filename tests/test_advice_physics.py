@@ -44,6 +44,7 @@ def proposal(actions, reasons=None, limitations=None, action_type="camera_positi
 
 
 def composition_result(monkeypatch, proposals, max_aperture=4):
+    monkeypatch.setattr(composition, "observe_objects", lambda *_: None)
     monkeypatch.setattr(composition, "request_json", lambda *args: {
         "status": "unverified", "observations": [], "uncertainties": [], "proposals": proposals, "notes": [],
     })
@@ -119,6 +120,7 @@ def test_negated_retreat_contradiction_is_preserved(monkeypatch):
 
 
 def test_current_equipment_prompt_contains_measured_constraints_not_guessed_distance(monkeypatch):
+    monkeypatch.setattr(composition, "observe_objects", lambda *_: None)
     captured = {}
     def reply(_settings, payload):
         captured.update(payload)
