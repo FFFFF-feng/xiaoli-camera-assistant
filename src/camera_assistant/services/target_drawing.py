@@ -12,6 +12,7 @@ from camera_assistant.config import Settings
 from camera_assistant.models import ImageInspection
 from camera_assistant.services.cloud import request_json
 from camera_assistant.services.scene_images import image_messages
+from camera_assistant.services.timing import measure_stage
 
 
 def _local_geometry(layer: TargetLayer, geometry: dict) -> TargetLayer:
@@ -98,7 +99,8 @@ def refine_target_drawings(settings: Settings, advice: CompositionAdvice,
         # spending GLM's output budget on a second long reasoning pass.
         payload["thinking"] = {"type": "disabled"}
     try:
-        answer = request_json(settings, payload)
+        with measure_stage("target_drawing"):
+            answer = request_json(settings, payload)
         rows = answer.get("layers")
         if not isinstance(rows, list) or not 1 <= len(rows) <= 12:
             raise ValueError("绘图结果缺少图层")

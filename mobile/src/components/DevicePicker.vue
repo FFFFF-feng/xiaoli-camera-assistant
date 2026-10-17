@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { exactDeviceMatch, searchDevices } from '../device-selection.mjs';
+import { createDeviceSearchIndex } from '../device-selection.mjs';
 import type { DeviceCatalogProfile } from '../types';
 
 const props = defineProps<{
@@ -17,7 +17,8 @@ const brand = ref('');
 const brands = computed(() => [...new Set(props.profiles.filter(p => !p.profile_id.startsWith('generic_')).map(p => p.brand).filter(Boolean))] as string[]);
 const brandNames: Record<string, string> = { Canon: '佳能 Canon', Nikon: '尼康 Nikon', Sony: '索尼 Sony', Fujifilm: '富士 Fujifilm', Panasonic: '松下 Panasonic', Apple: '苹果 Apple', Samsung: '三星 Samsung', Xiaomi: '小米 Xiaomi', Huawei: '华为 Huawei', HONOR: '荣耀 HONOR' };
 const brandProfiles = computed(() => props.profiles.filter(p => !brand.value || p.brand === brand.value || p.profile_id.startsWith('generic_')));
-const matches = computed(() => searchDevices(brandProfiles.value, query.value));
+const searchIndex = computed(() => createDeviceSearchIndex(brandProfiles.value));
+const matches = computed(() => searchIndex.value.search(query.value));
 const options = computed(() => {
   const generic = props.profiles.find(p => p.profile_id === props.genericId);
   const visible = matches.value.slice(0, 100);
@@ -28,7 +29,7 @@ const options = computed(() => {
 });
 const knownCount = computed(() => props.profiles.filter(p => !p.profile_id.startsWith('generic_')).length);
 watch(query, () => {
-  const exact = exactDeviceMatch(brandProfiles.value, query.value);
+  const exact = searchIndex.value.exact(query.value);
   if (exact) emit('update:modelValue', exact.profile_id);
   else if (!options.value.some(p => p.profile_id === props.modelValue)) emit('update:modelValue', props.genericId);
 });

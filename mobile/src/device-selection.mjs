@@ -1,4 +1,4 @@
-/** @typedef {{profile_id: string, display_name: string, model?: string, aliases?: string[], capability_level?: string}} DeviceProfile */
+/** @typedef {import('./types').DeviceCatalogProfile} DeviceProfile */
 
 export function normalizeModelName(value) {
   return String(value).normalize('NFKC').toLowerCase().replace(/[\s_-]+/g, '');
@@ -8,6 +8,36 @@ export function normalizeModelName(value) {
 function names(profile) {
   return [profile.profile_id, profile.display_name, profile.model || '', ...(profile.aliases || [])]
     .filter(Boolean).map(normalizeModelName);
+}
+
+/** 构建当前目录快照；在 Vue computed 中调用可跟踪型号与别名的原地更新。 @param {DeviceProfile[]} profiles */
+export function createDeviceSearchIndex(profiles) {
+  const entries = profiles.map(profile => ({ profile, keys: [...new Set(names(profile))] }));
+  /** @type {Map<string, DeviceProfile[]>} */
+  const exactMatches = new Map();
+  for (const { profile, keys } of entries) {
+    for (const key of keys) {
+      const matches = exactMatches.get(key);
+      if (matches) matches.push(profile);
+      else exactMatches.set(key, [profile]);
+    }
+  }
+  return {
+    /** @param {string} query */
+    exact(query) {
+      const key = normalizeModelName(query);
+      const matches = key ? exactMatches.get(key) : undefined;
+      return matches?.length === 1 ? matches[0] : undefined;
+    },
+    /** @param {string} query */
+    search(query) {
+      const key = normalizeModelName(query);
+      if (!key) return profiles;
+      const exact = exactMatches.get(key);
+      if (exact?.length) return exact.slice();
+      return entries.filter(({ keys }) => keys.some(name => name.includes(key))).map(({ profile }) => profile);
+    },
+  };
 }
 
 /** @param {DeviceProfile[]} profiles */

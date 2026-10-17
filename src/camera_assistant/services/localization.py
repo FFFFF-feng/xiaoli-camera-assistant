@@ -120,6 +120,10 @@ class GroundingDinoLocalizer:
             timeout_seconds=settings.detector_timeout_seconds,
         )
 
+    def warmup(self) -> dict:
+        """Prepare local weights while vision runs; do not guess detection queries."""
+        return self.client.warmup(self.config)
+
     def localize(self, inspection: ImageInspection, request: UserRequest,
                  scene: SceneAnalysis) -> MethodResult:
         sent_bytes = base64.b64decode(inspection.model_image_data_url.split(",", 1)[1], validate=True)

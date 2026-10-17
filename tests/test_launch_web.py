@@ -57,16 +57,15 @@ def test_readiness_rejects_old_frontend_and_wrong_mode(monkeypatch):
         assert web.ready(8080, b"latest", "cloud") is expected
 
 
-def test_local_cloud_config_preserves_invite_and_never_uses_remote_origin(tmp_path, monkeypatch):
+def test_local_cloud_config_needs_only_model_key_and_never_uses_remote_origin(tmp_path, monkeypatch):
     monkeypatch.setattr(web, "ROOT", tmp_path)
     monkeypatch.setattr(web, "RUNTIME", tmp_path / ".launcher")
     monkeypatch.setattr(web.os, "environ", {})
-    (tmp_path / ".env.zhipu-deploy").write_text("CAMERA_AI_API_KEY=test-only-key\nWEB_ACCESS_CODE=test-invite\n")
+    (tmp_path / ".env.zhipu-deploy").write_text("CAMERA_AI_API_KEY=test-only-key\n")
     environment, mode = web.local_environment(8081)
     assert mode == "cloud" and environment["CAMERA_AI_PRESET"] == "glm-dino"
     assert environment["WEB_ORIGIN"] == "http://127.0.0.1:8081"
-    assert environment["WEB_ACCESS_CODE"] == "test-invite"
     assert len(environment["WEB_SESSION_SECRET"]) >= 32
     demo, mode = web.local_environment(8081, demo=True)
-    assert mode == "demo" and demo["WEB_ACCESS_CODE"] == ""
+    assert mode == "demo"
     assert demo["WEB_SESSION_SECRET"] == environment["WEB_SESSION_SECRET"]

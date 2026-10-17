@@ -4,6 +4,9 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Callable
+from contextlib import contextmanager
+from contextvars import ContextVar
 from copy import deepcopy
 from typing import Protocol
 
@@ -23,7 +26,38 @@ from camera_assistant.services.advice_safety import composition_issue, unconfirm
 from camera_assistant.services.cloud import request_json
 from camera_assistant.services.scene_images import image_messages
 from camera_assistant.services.target_drawing import refine_target_drawings
+from camera_assistant.services.timing import measure_stage
 from vision_lab_tool.detector_models import MethodResult
+
+_composition_observer: ContextVar[Callable[[CompositionAdvice], None] | None] = ContextVar(
+    "composition_layout_observer", default=None,
+)
+
+
+@contextmanager
+def observe_composition(observer: Callable[[CompositionAdvice], None]):
+    """Publish validated text while the geometry stage continues independently."""
+    token = _composition_observer.set(observer)
+    try:
+        yield
+    finally:
+        _composition_observer.reset(token)
+
+
+def _publish_layout(advice: CompositionAdvice) -> None:
+    observer = _composition_observer.get()
+    if observer is None:
+        return
+    snapshot = advice.model_copy(deep=True)
+    for proposal in snapshot.proposals:
+        # Temporary geometry is only for internal layout validation, never display.
+        proposal.storyboard = None
+        proposal.sketch = None
+        proposal.crop_bbox = None
+    try:
+        observer(snapshot)
+    except Exception:  # noqa: BLE001 -- UI callbacks must not interrupt paid work
+        return
 
 
 class CompositionAdvisor(Protocol):
@@ -372,7 +406,8 @@ class OpenAICompatibleCompositionAdvisor:
         }
         if self.settings.disable_thinking:
             payload["thinking"] = {"type": "disabled"}
-        answer = request_json(self.settings, payload)
+        with measure_stage("composition_layout"):
+            answer = request_json(self.settings, payload)
         # Temporary local geometry allows validating shared layout metadata. It is
         # always replaced by the drawing stage, or the entire board is removed.
         answer = deepcopy(answer)
@@ -389,4 +424,5 @@ class OpenAICompatibleCompositionAdvisor:
             raise ValueError("构图模型返回的方案格式或裁切坐标无效，请重新分析。") from None
         checked = _validate_advice(advice, localization, knowledge_hits, request)
         resolved = _resolve_sketch_geometry(checked, inspection)
+        _publish_layout(resolved)
         return refine_target_drawings(self.settings, resolved, inspection)

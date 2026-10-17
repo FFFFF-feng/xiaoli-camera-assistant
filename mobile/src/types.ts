@@ -49,6 +49,7 @@ export interface SceneSurvey {
   relative_distance:string;subject_options:string[];foreground_options:string[];limitations:string[];
 }
 export interface Analysis {
+  timings?: { stage: string; duration_seconds: number; status: 'complete' | 'failed' }[];
   analysis_mode: 'cloud' | 'demo'; request_id: string;
   scene_photo_count?:number;
   result: {
