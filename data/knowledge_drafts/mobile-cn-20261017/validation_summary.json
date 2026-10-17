@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-17",
+  "cards": 80,
+  "sources": 80,
+  "field_entries": 1600,
+  "region": "中国大陆",
+  "batch_sizes": [
+    20,
+    20,
+    20,
+    20
+  ],
+  "strict_project_schema": true,
+  "per_field_source_binding": true,
+  "core_camera_display_battery_present": true,
+  "complete_model_deduplication": true,
+  "no_existing_card_id_or_title_collision": true,
+  "variant_edge_cases_checked": true,
+  "upload_preview_and_isolated_draft_import": true,
+  "repeat_import_idempotent": true,
+  "draft_retrieval_isolation": true,
+  "runtime_catalogue_and_main_db_unchanged": true,
+  "limits": [
+    "格式和来源绑定校验不替代独立事实审核。",
+    "原始参数源不代表真机测试。",
+    "只导入隔离临时库，未写主库。",
+    "字段数量不代表完整参数覆盖。"
+  ]
+}
