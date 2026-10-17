@@ -85,7 +85,7 @@ def main() -> None:
         print(json.dumps(identity, ensure_ascii=True))
         return
     origin = f"http://127.0.0.1:{args.port}"
-    sessions = WebSessions(secrets.token_urlsafe(48), origin, secrets.token_urlsafe(24))
+    sessions = WebSessions(secrets.token_urlsafe(48), origin)
     app = create_web_app(settings, sessions, ROOT / "mobile/dist")
     launch_token = secrets.token_urlsafe(40)
 
@@ -112,7 +112,7 @@ def main() -> None:
         **identity, "url": origin, "launch_url": f"{origin}/local-start/{launch_token}",
     }, ensure_ascii=False), encoding="utf-8")
     state_file.replace(runtime / "web-start.json")
-    # Do not log the private local launch URL, cookie, invite code or model key.
+    # Do not log the private local launch URL, cookie or model key.
     uvicorn.run(app, host="127.0.0.1", port=args.port, access_log=False,
                 proxy_headers=False, log_level="warning")
 

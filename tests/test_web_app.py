@@ -12,7 +12,6 @@ from camera_assistant.web_app import COOKIE, WebSessions, create_web_app
 
 ORIGIN = "https://xiaoli.example.com"
 HEADERS = {"Origin": ORIGIN, "X-Xiaoli-Client": "web"}
-CODE = "test-invite-code"
 
 
 @pytest.fixture
@@ -23,38 +22,41 @@ def client(tmp_path):
     (frontend / "assets" / "app.js").write_text("console.log('app')")
     settings = Settings(True, "", "https://example.invalid", "", "", 5, 1,
                         Path(__file__).resolve().parents[1] / "knowledge")
-    sessions = WebSessions("s" * 48, ORIGIN, CODE)
+    sessions = WebSessions("s" * 48, ORIGIN)
     with TestClient(create_web_app(replace(settings, composition_enabled=True), sessions, frontend),
                     base_url=ORIGIN) as instance:
         yield instance
 
 
-def login(client):
-    return client.post("/session", json={"access_code": CODE}, headers=HEADERS)
+def start_session(client):
+    return client.post("/session", headers=HEADERS)
 
 
 def test_expiring_signed_session_cannot_be_forged():
     import base64
-    sessions = WebSessions("s" * 48, ORIGIN, CODE)
+    sessions = WebSessions("s" * 48, ORIGIN)
     token = sessions.issue()
     assert sessions.valid(token)
     assert not sessions.valid(token[:-5] + "abcde")
     assert not sessions.valid(base64.urlsafe_b64encode(b"0.nonce.signature").decode())
-    assert not WebSessions("different" * 8, ORIGIN, CODE).valid(token)
+    assert not WebSessions("different" * 8, ORIGIN).valid(token)
 
 
-def test_web_requires_https_and_invitation_on_public_origin():
+def test_web_requires_https_and_real_session_secret_on_public_origin():
     with pytest.raises(ValueError):
-        WebSessions("s" * 48, "http://xiaoli.example.com", CODE)
+        WebSessions("s" * 48, "http://xiaoli.example.com")
     with pytest.raises(ValueError):
-        WebSessions("s" * 48, ORIGIN)
+        WebSessions("replace-with-at-least-32-random-characters", ORIGIN)
+    with pytest.raises(ValueError):
+        WebSessions("short", ORIGIN)
+    assert WebSessions("s" * 48, ORIGIN).secure
     assert not WebSessions("s" * 48, "http://127.0.0.1:8080").secure
 
 
 def test_static_client_and_private_routes(client):
     assert "小栗" in client.get("/").text
     assert client.get("/assets/app.js").status_code == 200
-    assert client.get("/web-config").json()["invite_required"] is True
+    assert client.get("/web-config").json() == {"web_client": True}
     assert client.get("/api/v1/devices", headers=HEADERS).status_code == 401
     for path in ["/.env", "/knowledge_app.py", "/vision_lab.py", "/data/knowledge.db"]:
         assert client.get(path).status_code == 404
@@ -77,7 +79,7 @@ def test_static_assets_transfer_completely_over_real_http(tmp_path):
         (frontend / "assets" / name).write_bytes(content)
     settings = Settings(True, "", "https://example.invalid", "", "", 5, 1,
                         Path(__file__).resolve().parents[1] / "knowledge")
-    app = create_web_app(settings, WebSessions("s" * 48, ORIGIN, CODE), frontend)
+    app = create_web_app(settings, WebSessions("s" * 48, ORIGIN), frontend)
     with socket.socket() as listener:
         listener.bind(("127.0.0.1", 0))
         listener.listen()
@@ -107,9 +109,10 @@ def test_static_assets_transfer_completely_over_real_http(tmp_path):
 
 
 def test_cookie_security_csrf_and_logout(client):
-    assert client.post("/session", json={"access_code": CODE}).status_code == 403
-    assert client.post("/session", json={"access_code": "wrong"}, headers=HEADERS).status_code == 401
-    response = login(client)
+    assert client.post("/session").status_code == 403
+    assert client.post("/session", headers={**HEADERS, "Origin": "https://attacker.invalid"}).status_code == 403
+    assert client.post("/session", headers={"Origin": ORIGIN}).status_code == 403
+    response = start_session(client)
     assert response.status_code == 200
     assert all(v in response.headers["set-cookie"] for v in ["HttpOnly", "Secure", "SameSite=strict"])
     assert client.get("/api/v1/devices", headers=HEADERS).status_code == 200
@@ -121,7 +124,7 @@ def test_cookie_security_csrf_and_logout(client):
 
 
 def test_complete_web_photo_analysis(client):
-    login(client)
+    start_session(client)
     image = BytesIO()
     Image.new("RGB", (100, 80), (100, 120, 90)).save(image, format="JPEG")
     def upload(headers):
@@ -140,14 +143,14 @@ def test_complete_web_photo_analysis(client):
     assert upload(HEADERS).status_code == 429
 
 
-def test_login_brute_force_limit(client):
+def test_session_creation_rate_limit(client):
     for _ in range(10):
-        assert client.post("/session", json={"access_code": "wrong"}, headers=HEADERS).status_code == 401
-    assert login(client).status_code == 429
+        assert start_session(client).status_code == 200
+    assert start_session(client).status_code == 429
 
 
-def test_public_demo_sessions_still_require_signed_cookie_and_same_origin(tmp_path):
-    sessions = WebSessions("s" * 48, ORIGIN, require_invite=False)
+def test_web_sessions_still_require_signed_cookie_and_same_origin():
+    sessions = WebSessions("s" * 48, ORIGIN)
     scope = {"method": "POST", "headers": [(b"origin", ORIGIN.encode()), (b"x-xiaoli-client", b"web")]}
     assert not sessions.auth(scope)
     scope["headers"].append((b"cookie", f"{COOKIE}={sessions.issue()}".encode()))
@@ -156,9 +159,14 @@ def test_public_demo_sessions_still_require_signed_cookie_and_same_origin(tmp_pa
     assert not sessions.auth(scope)
 
 
-def test_cloud_cannot_reuse_open_demo_session_policy(tmp_path):
+def test_cloud_starts_and_issues_session_without_credentials(tmp_path):
+    (tmp_path / "assets").mkdir()
+    (tmp_path / "index.html").write_text("<html>小栗</html>", encoding="utf-8")
     settings = Settings(False, "test-key", "https://example.invalid", "vision", "text", 5, 1,
                         Path(__file__).resolve().parents[1] / "knowledge")
-    sessions = WebSessions("s" * 48, ORIGIN, require_invite=False)
-    with pytest.raises(ValueError, match="真实模型模式"):
-        create_web_app(settings, sessions, tmp_path)
+    sessions = WebSessions("s" * 48, ORIGIN)
+    with TestClient(create_web_app(settings, sessions, tmp_path), base_url=ORIGIN) as client:
+        assert client.get("/health").json()["analysis_mode"] == "cloud"
+        assert client.get("/api/v1/devices", headers=HEADERS).status_code == 401
+        assert start_session(client).status_code == 200
+        assert client.get("/api/v1/devices", headers=HEADERS).status_code == 200

@@ -17,8 +17,6 @@ import { compatibleLenses, deviceSelection, linkedCameraSettings, mountNames, se
 
 const page = ref<'shoot' | 'result' | 'history' | 'connect'>('shoot');
 const webHosted = ref(false);
-const inviteRequired = ref(false);
-const accessCode = ref('');
 const archiveKey = 'xiaoli-advice-history-v1';
 type SavedAdvice = { id: string; date: string; intent: string; analysis: Analysis };
 const history = ref<SavedAdvice[]>([]);
@@ -137,8 +135,11 @@ async function api(path: string, options: RequestInit = {}, onEvent?: (event: an
   if (response.ok && onEvent) return readAnalysis(response, onEvent);
   const data = await response.json().catch(() => ({}));
   if (!response.ok) {
-    const fallback = response.status === 401 ? (webHosted.value ? '体验会话已过期，请重新输入体验码。' : '连接令牌不正确。') : `服务暂不可用（${response.status}），请稍后重试。`;
-    if (webHosted.value && response.status === 401) { connected.value = false; consent.value = false; page.value = 'connect'; }
+    const fallback = response.status === 401 ? (webHosted.value ? '拍摄会话已过期，请重新连接后继续。' : '连接令牌不正确。') : `服务暂不可用（${response.status}），请稍后重试。`;
+    if (webHosted.value && response.status === 401) {
+      connected.value = false; consent.value = false; page.value = 'connect';
+      throw new Error(fallback);
+    }
     throw new Error(typeof data.detail === 'string' ? data.detail : fallback);
   }
   return data;
@@ -151,7 +152,7 @@ async function connect() {
   const timer = setTimeout(() => controller.abort(), 10000);
   try {
     if (!webHosted.value && token.value.trim().length < 24) throw new Error('请输入电脑端生成的连接令牌，不是云模型 API Key。');
-    if (webHosted.value) await api('/session', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ access_code: accessCode.value }), signal: controller.signal });
+    if (webHosted.value) await api('/session', { method: 'POST', signal: controller.signal });
     const health = await api('/health', { signal: controller.signal });
     if (health.service !== 'xiaoli-mobile-api' || health.api_version !== '1') throw new Error('这不是小栗手机服务，请检查端口（默认 8000）。');
     const devices = await api('/api/v1/devices', { signal: controller.signal });
@@ -165,10 +166,10 @@ async function connect() {
     maxSceneImages.value = health.max_scene_images || 1; maxSceneMb.value = health.max_scene_mb || health.max_image_mb;
     connected.value = true;
     if (!webHosted.value) localStorage.setItem(storedKey, JSON.stringify({ baseUrl: normalizeBaseUrl(baseUrl.value), token: token.value.trim() }));
-    accessCode.value = '';
     connectionMessage.value = mode.value === 'demo' ? '连接成功。当前为规则演示，不是真实多模态识别。' : '连接成功。照片副本将发送给电脑端配置的云模型。';
   } catch (e) {
-    error.value = readableError(e, '连接失败：确认同一 Wi-Fi、电脑服务已启动，且防火墙允许 8000 端口。');
+    if (webHosted.value) page.value = 'connect';
+    error.value = readableError(e, webHosted.value ? '连接拍摄服务失败，请检查网络后重试。' : '连接失败：确认同一 Wi-Fi、电脑服务已启动，且防火墙允许 8000 端口。');
   } finally { clearTimeout(timer); connecting.value = false; }
 }
 
@@ -179,19 +180,13 @@ onMounted(async () => {
     if (!response.ok) return;
     const config = await response.json();
     if (config.web_client !== true) return;
-    webHosted.value = true; inviteRequired.value = config.invite_required;
-    if (!inviteRequired.value) { await connect(); return; }
-    try {
-      const [health, devices] = await Promise.all([api('/health'), api('/api/v1/devices')]);
-      cameras.value = devices.cameras; phones.value = devices.phones; cameraLenses.value = devices.camera_lenses;
-      mode.value = health.analysis_mode; maxImageMb.value = health.max_image_mb;
-      maxSceneImages.value = health.max_scene_images || 1; maxSceneMb.value = health.max_scene_mb || health.max_image_mb; connected.value = true;
-    } catch { error.value = ''; page.value = 'connect'; }
+    webHosted.value = true;
+    await connect();
   } catch { /* A standalone Android/LAN client has no web gateway. */ }
 });
 
 function readableError(e: unknown, fallback: string): string {
-  if (e instanceof Error && e.name === 'AbortError') return '请求超时，检查电脑服务和网络后重试。';
+  if (e instanceof Error && e.name === 'AbortError') return webHosted.value ? '请求超时，请检查网络后重试。' : '请求超时，检查电脑服务和网络后重试。';
   if (e instanceof TypeError) return fallback;
   return e instanceof Error ? e.message : fallback;
 }
@@ -256,7 +251,7 @@ async function takePhoto() {
 async function analyze() {
   if (busy.value) return;
   error.value = '';
-  if (!connected.value) { page.value = 'connect'; error.value = webHosted.value ? '请输入体验码，开启本次拍摄。' : '先连接电脑端手机服务。'; return; }
+  if (!connected.value) { page.value = 'connect'; error.value = webHosted.value ? '请先连接拍摄服务。' : '先连接电脑端手机服务。'; return; }
   if (!photo.value) { error.value = '先拍照或选择一张现场照片。'; return; }
   if (intent.value.trim().length < 2) { error.value = '写一下想拍的主体和效果，至少两个字。'; return; }
   let selection;
@@ -338,11 +333,7 @@ async function analyze() {
   }
   finally { clearTimeout(timer); clearInterval(clock); elapsed.value = (performance.now() - started) / 1000; busy.value = false; activeController = null; }
 }
-async function clearConnection() {
-  if (webHosted.value) {
-    try { await api('/session', { method: 'DELETE' }); connected.value = false; consent.value = false; connectionMessage.value = '已退出本次体验。'; } catch (e) { error.value = readableError(e, '退出失败，请重试。'); }
-    return;
-  }
+function clearConnection() {
   localStorage.removeItem(storedKey); baseUrl.value = ''; token.value = ''; connected.value = false;
   connectionMessage.value = '已清除本机连接信息。';
 }
@@ -460,7 +451,7 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
             <div class="two-fields"><div><label for="motion">主体动作</label><select id="motion" v-model="motion"><option>不确定</option><option>静止</option><option>缓慢</option><option>快速</option></select></div><label class="check-row tripod"><input type="checkbox" v-model="tripod" />使用三脚架</label></div>
             </details><div class="upload-consent"><label class="check-row"><input type="checkbox" v-model="consent" />{{ webHosted ? '同意上传本组照片并进行分析' : '同意将本组照片发送到我配置的电脑服务' }}</label><p>{{ !connected ? '连接后会显示当前分析方式。' : mode === 'cloud' ? '云模型分析：本组全部照片的副本将发送到配置的图像模型服务。' : '演示模式：使用本地规则与图像指标，不向云模型发送照片，也不代表真实识别准确率。' }} 网关不保存照片；相机拍照可能经过系统处理，EXIF 不保证完整。</p></div>
           </fieldset>
-          <button class="primary generate" type="submit" :disabled="busy || connecting" :aria-busy="busy"><ApertureMark /><span>{{ busy ? '小栗正在整理拍摄建议…' : connected ? '让小栗给点拍摄灵感' : webHosted ? '输入体验码，开始拍摄' : '先连接电脑服务' }}</span><UiIcon name="arrow" /></button>
+          <button class="primary generate" type="submit" :disabled="busy || connecting" :aria-busy="busy"><ApertureMark /><span>{{ busy ? '小栗正在整理拍摄建议…' : connected ? '让小栗给点拍摄灵感' : webHosted ? '连接拍摄服务，开始拍摄' : '先连接电脑服务' }}</span><UiIcon name="arrow" /></button>
           <section v-if="busy" class="analysis-progress" aria-label="分析进度" aria-live="polite">
             <div class="progress-heading"><strong>{{ progressMessage }}</strong><span>总用时 {{ elapsed.toFixed(0) }} 秒</span></div>
             <p class="current-status-time">当前状态已持续 {{ statusElapsed.toFixed(0) }} 秒</p>
@@ -504,10 +495,10 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
       <section v-else-if="webHosted" aria-labelledby="web-connect-title">
         <div class="intro"><h1 id="web-connect-title">让每一次取景，都更有想法。</h1><p>照片、构图手稿、一点拍摄灵感。现在开始。</p></div>
         <div class="web-welcome"><MascotArt pose="connect" priority /><div><h2>让灵感，连接现场</h2><p>准备好你的照片，小栗会和你一起找到下一张的拍摄方向。</p></div></div>
-        <form v-if="!connected" @submit.prevent="connect"><label v-if="inviteRequired" for="access-code" class="field-label">体验码</label><input v-if="inviteRequired" id="access-code" v-model="accessCode" type="password" maxlength="160" placeholder="填写邀请人提供的体验码" autocomplete="off" /><p class="helper">{{ inviteRequired ? '体验码由项目维护者提供。' : '点击下方按钮连接拍摄服务。' }} 你不需要配置模型密钥。</p><button class="primary" :disabled="connecting">{{ connecting ? '正在准备…' : '开启拍摄体验' }}</button></form>
+        <form v-if="!connected" @submit.prevent="connect"><p class="helper">点击下方按钮重新连接拍摄服务，连接后即可开始拍摄。</p><button class="primary" :disabled="connecting || busy">{{ connecting ? '正在连接…' : '连接拍摄服务' }}</button></form>
         <div v-else class="notice" role="status">已连接。{{ mode === 'demo' ? '当前为规则演示，可体验完整拍摄流程。' : '已开启云模型照片分析。' }}</div>
         <div v-if="connectionMessage" class="notice" role="status">{{ connectionMessage }}</div><button v-if="connected" class="primary" @click="navigate('shoot')">开始拍摄</button>
-        <div class="privacy-note"><h2>关于照片与建议</h2><p>服务不保存上传照片。云模型模式会把照片副本发送给维护者配置的模型提供商；规则演示不会调用云模型。</p><p>方案历史只保存在当前浏览器，最多 10 条且不包含照片。参数与构图建议都需要结合现场试拍。</p><button v-if="connected && inviteRequired" class="text-button" @click="clearConnection">退出本次体验</button></div>
+        <div class="privacy-note"><h2>关于照片与建议</h2><p>服务不保存上传照片。云模型模式会把照片副本发送给维护者配置的模型提供商；规则演示不会调用云模型。</p><p>方案历史只保存在当前浏览器，最多 10 条且不包含照片。参数与构图建议都需要结合现场试拍。</p></div>
       </section>
       <section v-else aria-labelledby="connect-title">
         <div class="intro"><h1 id="connect-title">让小栗连接你的电脑</h1><p>第一版使用电脑里的模型与知识库。</p></div>
