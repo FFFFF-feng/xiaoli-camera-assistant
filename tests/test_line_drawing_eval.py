@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from line_drawing_eval.acceptance import PRIORITY, budget_plan, build_matrix
+from line_drawing_eval.cli import main
 from line_drawing_eval.evidence import RunLayout, discover_runs, index_run
 from line_drawing_eval.gallery import build_gallery, render_board_svg
 from line_drawing_eval.ledger import BudgetError, GateError, Ledger
@@ -117,6 +118,19 @@ def test_index_flags_unrecorded_model_and_mask(tmp_path: Path) -> None:
     assert record["masks"]["raw_mask_saved"] is False
     assert record["original"]["sha256_matches"] is False
     assert discover_runs(tmp_path)[0].case_id == "02"
+
+
+def test_index_writes_one_directory_per_attempt(tmp_path: Path) -> None:
+    _run_fixture(tmp_path / "evidence")
+    out = tmp_path / "records"
+    assert main(["index", "--evidence", str(tmp_path / "evidence"), "--out", str(out)]) == 0
+    record = json.loads(
+        (out / "runs" / "live-run-1-02" / "run-record.json").read_text(encoding="utf-8")
+    )
+    assert record["offline"] is True
+    assert record["generated_model_requests"] == 0
+    assert record["timing"]["critical_branch"] == "parameters"
+    assert "raw boolean mask" in record["masks"]["note"]
 
 
 def test_ledger_counts_before_sending_and_refuses_overdraft(tmp_path: Path) -> None:

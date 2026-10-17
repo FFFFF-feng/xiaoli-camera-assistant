@@ -10,7 +10,7 @@ from .acceptance import budget_plan, build_matrix
 from .evidence import discover_runs, index_root, load_json, write_json
 from .gallery import build_gallery
 from .ledger import Ledger
-from .timing import analyze_layouts
+from .timing import analyze_layouts, analyze_run
 
 
 def _print(payload: object) -> None:
@@ -20,6 +20,21 @@ def _print(payload: object) -> None:
 def command_index(args: argparse.Namespace) -> int:
     payload = index_root(args.evidence)
     write_json(args.out / "index.json", payload)
+    layouts = {(layout.run, layout.case_id): layout for layout in discover_runs(args.evidence)}
+    for record in payload["runs"]:
+        layout = layouts[(record["run"], record["case_id"])]
+        run_dir = args.out / "runs" / f"{layout.run}-{layout.case_id}"
+        write_json(
+            run_dir / "run-record.json",
+            {
+                **record,
+                "timing": analyze_run(layout.root, run=layout.run, case_id=layout.case_id),
+                "record_policy": (
+                    "Read-only index of a stored attempt. Missing facts (model id, dirty state, "
+                    "raw mask) stay marked unknown; nothing is regenerated or inferred."
+                ),
+            },
+        )
     _print({"runs": payload["run_count"], "gateway_posts": payload["gateway_posts_represented"],
             "out": str(args.out / "index.json")})
     return 0
