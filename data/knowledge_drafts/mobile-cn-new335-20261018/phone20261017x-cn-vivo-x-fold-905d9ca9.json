@@ -1,0 +1,482 @@
+{
+  "knowledge_id": "phone20261017x-cn-vivo-x-fold-905d9ca9",
+  "library_id": "equipment",
+  "title": "vivo X Fold（国行）：手机硬件与相机参数补充",
+  "kind": "manufacturer_fact",
+  "content": "# vivo X Fold（国行）\n\n整理日期：2026-10-17；待独立审核的厂商参数草稿。\n\n- 处理器：全新一代骁龙8移动平台\n- 屏幕尺寸：内屏：8.03英寸 / 外屏：6.53英寸\n- 屏幕分辨率：内屏：2160 ×1916 / 外屏：2520 ×1080\n- 刷新率及条件：内屏：1-120Hz 自适应刷新率 外屏：120/60Hz\n- 屏幕类型：AMOLED\n- 实体RAM选项：12GB\n- 存储选项：256GB/512GB\n- 电池容量及版本条件：双电池，典型容量：2×2300mAh（3.89V），等效于4600mAh（3.89V）典型能量：17.88Wh 双电池，额定容量：2×2255mAh（3.89V），等效于4510mAh（3.89V）额定能量：17.54Wh\n- 充电标称及条件：66W闪充&50W无线充电\n- 高度：162.01mm\n- 宽度：74.47mm（折叠） 144.87mm（展开）\n- 厚度：14.57~14.91mm（折叠） 6.28~7.40mm（展开）\n- 重量及版本条件：约311g\n- 后置摄像头及辅助传感器：5000万像素OIS 超大底主摄 （OIS防抖，f/1.75光圈） 4800万像素114°超广角主摄 （114度超低畸变设计 ，f/2.2光圈） 1200万像素专业人像摄像头（47mm等效焦段，f/1.98光圈） 800万像素OIS 潜望式超远摄 （5倍光学变焦，60倍超级变焦 ，OIS防抖）；光圈按厂商顺序：f/1.75（5000万像素OIS 超大底主摄），f/2.2（4800万像素114°超广角主摄 ），f/1.98（1200万像素专业人像摄像头），f/3.4（800万像素OIS 潜望式超远摄）\n- 前置摄像头：1600万像素；光圈：f/2.45\n- 防抖：后置超大底主摄像和潜望式超远摄均支持OIS防抖，后置所有镜头均支持视频防抖。\n- 变焦：后置支持5倍光学变焦、60倍超级变焦\n- 视频录制摘要：最高支持8K超高清视频拍摄 慢镜头最高支持1080P拍摄\n- USB接口：USB3.2 Gen1\n- WLAN：支持频段WLAN 2.4G、WLAN 5G；支持功能包括2*2 MIMO、WiFi6、2.4G&5G双路并发、MU-MIMO、WiFi Display。\n- 蓝牙：支持蓝牙5.2\n- NFC：支持\n- 来源列示系统：操作系统 基于Android 12.0开发的OriginOS Ocean Jovi 支持语音、Jovi主页、智慧视觉、Jovi InCar（智能车载）等功能\n- 来源列示上市时间：2022年4月\n\n未核验字段：官网列示存储组合、散热系统、触控肩键、指纹识别\n\n版本与提取备注：\n- 折叠机若来源只列一个屏幕值，则不擅自认定另一屏的尺寸、分辨率和刷新率相同。\n\n使用边界：\n- 只适用对应完整型号的中国大陆销售版本，不能用于海外版、相近型号或未注明的卫星通信版。\n- 厂商公开规格由AI提取，未经独立人工审核或真机验证；全部为草稿，禁止受管检索。\n- 保留内外屏、折叠状态、配色材质和RAM/存储版本条件。未列出的组合不能通过排列生成。\n- 电池保留典型值、额定值、双电芯等效值；不同数值不能无条件相加或替换。\n- 快充标称需相应适配器、线材与测试条件，不是持续功率；无线充电与有线充电分开理解。\n- 镜头像素不等于输出照片像素；等效焦距不等于实际焦距；光学品质变焦不增加物理镜头。\n- 来源中的辅助感光、色彩及深度传感器按原表保留，不据此增加独立可拍摄镜头。\n- 原生/第三方App手动ISO、快门、可调光圈与逐镜头模式组合未核验，不能由硬件参数推断。\n- 系统为来源列示版本；官网页面保留不代表当前在售，未核验实时库存、价格、销量或软件支持期限。\n- 未知字段为null，不代表不支持。字段条目数不是完整度评分。\n\n来源：[vivo中国官网参数](https://www.vivo.com.cn/vivo/param/xfold)",
+  "payload": {
+    "brand": "vivo",
+    "model_variant": "vivo X Fold",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "全新一代骁龙8移动平台",
+      "display_size": "内屏：8.03英寸 / 外屏：6.53英寸",
+      "display_resolution": "内屏：2160 ×1916 / 外屏：2520 ×1080",
+      "display_refresh": "内屏：1-120Hz 自适应刷新率 外屏：120/60Hz",
+      "display_panel": "AMOLED",
+      "ram": "12GB",
+      "storage": "256GB/512GB",
+      "sku": null,
+      "battery": "双电池，典型容量：2×2300mAh（3.89V），等效于4600mAh（3.89V）典型能量：17.88Wh 双电池，额定容量：2×2255mAh（3.89V），等效于4510mAh（3.89V）额定能量：17.54Wh",
+      "charging": "66W闪充&50W无线充电",
+      "height": "162.01mm",
+      "width": "74.47mm（折叠） 144.87mm（展开）",
+      "thickness": "14.57~14.91mm（折叠） 6.28~7.40mm（展开）",
+      "weight": "约311g",
+      "rear": "5000万像素OIS 超大底主摄 （OIS防抖，f/1.75光圈） 4800万像素114°超广角主摄 （114度超低畸变设计 ，f/2.2光圈） 1200万像素专业人像摄像头（47mm等效焦段，f/1.98光圈） 800万像素OIS 潜望式超远摄 （5倍光学变焦，60倍超级变焦 ，OIS防抖）；光圈按厂商顺序：f/1.75（5000万像素OIS 超大底主摄），f/2.2（4800万像素114°超广角主摄 ），f/1.98（1200万像素专业人像摄像头），f/3.4（800万像素OIS 潜望式超远摄）",
+      "front": "1600万像素；光圈：f/2.45",
+      "stabilization": "后置超大底主摄像和潜望式超远摄均支持OIS防抖，后置所有镜头均支持视频防抖。",
+      "zoom": "后置支持5倍光学变焦、60倍超级变焦",
+      "video": "最高支持8K超高清视频拍摄 慢镜头最高支持1080P拍摄",
+      "usb": "USB3.2 Gen1",
+      "wifi": "支持频段WLAN 2.4G、WLAN 5G；支持功能包括2*2 MIMO、WiFi6、2.4G&5G双路并发、MU-MIMO、WiFi Display。",
+      "bluetooth": "支持蓝牙5.2",
+      "nfc": "支持",
+      "os": "操作系统 基于Android 12.0开发的OriginOS Ocean Jovi 支持语音、Jovi主页、智慧视觉、Jovi InCar（智能车载）等功能",
+      "launch": "2022年4月",
+      "cooling": null,
+      "shoulder_buttons": null,
+      "fingerprint": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "全新一代骁龙8移动平台",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "CPU型号",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "内屏：8.03英寸 / 外屏：6.53英寸",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "尺寸（英寸）",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "内屏：2160 ×1916 / 外屏：2520 ×1080",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "分辨率",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "内屏：1-120Hz 自适应刷新率 外屏：120/60Hz",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "刷新率",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "AMOLED",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "屏幕材质",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.ram",
+        "value": "12GB",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "运行内存（RAM）",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.storage",
+        "value": "256GB/512GB",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "机身存储（ROM）",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "双电池，典型容量：2×2300mAh（3.89V），等效于4600mAh（3.89V）典型能量：17.88Wh 双电池，额定容量：2×2255mAh（3.89V），等效于4510mAh（3.89V）额定能量：17.54Wh",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "电池容量",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "66W闪充&50W无线充电",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "充电规格",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "162.01mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "高度",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "74.47mm（折叠） 144.87mm（展开）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "宽度",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "14.57~14.91mm（折叠） 6.28~7.40mm（展开）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "厚度",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "约311g",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "重量",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "5000万像素OIS 超大底主摄 （OIS防抖，f/1.75光圈） 4800万像素114°超广角主摄 （114度超低畸变设计 ，f/2.2光圈） 1200万像素专业人像摄像头（47mm等效焦段，f/1.98光圈） 800万像素OIS 潜望式超远摄 （5倍光学变焦，60倍超级变焦 ，OIS防抖）；光圈按厂商顺序：f/1.75（5000万像素OIS 超大底主摄），f/2.2（4800万像素114°超广角主摄 ），f/1.98（1200万像素专业人像摄像头），f/3.4（800万像素OIS 潜望式超远摄）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "后置摄像头像素",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "1600万像素；光圈：f/2.45",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "前置摄像头像素",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.stabilization",
+        "value": "后置超大底主摄像和潜望式超远摄均支持OIS防抖，后置所有镜头均支持视频防抖。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "防抖类型",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.zoom",
+        "value": "后置支持5倍光学变焦、60倍超级变焦",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "变焦模式",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "最高支持8K超高清视频拍摄 慢镜头最高支持1080P拍摄",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "视频录制",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.usb",
+        "value": "USB3.2 Gen1",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "USB版本",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.wifi",
+        "value": "支持频段WLAN 2.4G、WLAN 5G；支持功能包括2*2 MIMO、WiFi6、2.4G&5G双路并发、MU-MIMO、WiFi Display。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "WLAN",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "支持蓝牙5.2",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "蓝牙传输",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.nfc",
+        "value": "支持",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "NFC",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "操作系统 基于Android 12.0开发的OriginOS Ocean Jovi 支持语音、Jovi主页、智慧视觉、Jovi InCar（智能车载）等功能",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.launch",
+        "value": "2022年4月",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-1b86775273353127"
+        ],
+        "source_location": "上市时间",
+        "conditions": {
+          "model_variant": "vivo X Fold",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      }
+    ],
+    "unknown_fields": [
+      "sku",
+      "cooling",
+      "shoulder_buttons",
+      "fingerprint"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外或相邻型号补值。",
+    "variant_notes": [
+      "折叠机若来源只列一个屏幕值，则不擅自认定另一屏的尺寸、分辨率和刷新率相同。"
+    ],
+    "sources": [
+      {
+        "source_id": "CN400-1b86775273353127",
+        "publisher": "vivo",
+        "title": "vivo X Fold 专业折叠旗舰 - vivo智能手机官方网站",
+        "url": "https://www.vivo.com.cn/vivo/param/xfold",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "method": "品牌中国官网公开HTML参数表提取；未访问登录数据或私有接口",
+        "source_content_sha256": "860bae5054a8e892d8621a103e9d834a7fad80ffa55da0543117ad169c549a44",
+        "retrieval_allowed": false,
+        "rights_status": "必要规格事实重组与链接，未收录图片/整页；许可及项目使用待审核"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "data_scope": "选定硬件参数，包含保留的历史机型；不是完整规格库或实时在售清单",
+    "runtime_registration": "只生成知识文件，不修改phone_profiles.yaml，不写主数据库"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "400款扩充",
+    "vivo"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "vivo X Fold",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "vivo中国官网",
+    "url": "https://www.vivo.com.cn/vivo/param/xfold",
+    "location": "各字段位置见payload.facts",
+    "license": "必要规格事实重组，许可与使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

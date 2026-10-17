@@ -1,0 +1,450 @@
+{
+  "knowledge_id": "phone20261017x-cn-vivo-y100i-a2ca48d5",
+  "library_id": "equipment",
+  "title": "vivo Y100i（国行）：手机硬件与相机参数补充",
+  "kind": "manufacturer_fact",
+  "content": "# vivo Y100i（国行）\n\n整理日期：2026-10-17；待独立审核的厂商参数草稿。\n\n- 处理器：天玑 6020\n- 屏幕尺寸：6.64英寸\n- 屏幕分辨率：2388×1080\n- 刷新率及条件：60Hz\n- 屏幕类型：LCD\n- 实体RAM选项：12GB/8GB\n- 存储选项：512GB/256GB/128GB\n- 电池容量及版本条件：*本产品采用单电芯设计： 典型容量：5000mAh(3.89V) 典型能量：19.45Wh 额定容量：4900mAh(3.89V) 额定能量：19.06Wh\n- 充电标称及条件：44W\n- 高度：164.06mm\n- 宽度：76.17mm\n- 厚度：8.07mm(晴空蓝、祥云粉)、 7.98mm(皓夜黑)\n- 重量及版本条件：190g\n- 后置摄像头及辅助传感器：后置5000万像素主摄像头+后置200万像素虚化摄像头；光圈按厂商顺序：f/1.8（主摄）+f/2.4（虚化）\n- 前置摄像头：800万像素；光圈：f/2.0\n- 防抖：NA\n- 变焦：后置主摄支持10倍数字变焦 前置支持2倍数字变焦\n- 视频录制摘要：录制像素：1080P、720P\n- WLAN：WLAN 2.4G、WLAN 5.G\n- 蓝牙：支持蓝牙5.1\n- 来源列示系统：基于Android 13.0开发的OriginOS 3\n- 来源列示上市时间：2023年11月\n\n未核验字段：官网列示存储组合、USB接口、NFC、散热系统、触控肩键、指纹识别\n\n\n使用边界：\n- 只适用对应完整型号的中国大陆销售版本，不能用于海外版、相近型号或未注明的卫星通信版。\n- 厂商公开规格由AI提取，未经独立人工审核或真机验证；全部为草稿，禁止受管检索。\n- 保留内外屏、折叠状态、配色材质和RAM/存储版本条件。未列出的组合不能通过排列生成。\n- 电池保留典型值、额定值、双电芯等效值；不同数值不能无条件相加或替换。\n- 快充标称需相应适配器、线材与测试条件，不是持续功率；无线充电与有线充电分开理解。\n- 镜头像素不等于输出照片像素；等效焦距不等于实际焦距；光学品质变焦不增加物理镜头。\n- 来源中的辅助感光、色彩及深度传感器按原表保留，不据此增加独立可拍摄镜头。\n- 原生/第三方App手动ISO、快门、可调光圈与逐镜头模式组合未核验，不能由硬件参数推断。\n- 系统为来源列示版本；官网页面保留不代表当前在售，未核验实时库存、价格、销量或软件支持期限。\n- 未知字段为null，不代表不支持。字段条目数不是完整度评分。\n\n来源：[vivo中国官网参数](https://www.vivo.com.cn/vivo/param/y100i)",
+  "payload": {
+    "brand": "vivo",
+    "model_variant": "vivo Y100i",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "天玑 6020",
+      "display_size": "6.64英寸",
+      "display_resolution": "2388×1080",
+      "display_refresh": "60Hz",
+      "display_panel": "LCD",
+      "ram": "12GB/8GB",
+      "storage": "512GB/256GB/128GB",
+      "sku": null,
+      "battery": "*本产品采用单电芯设计： 典型容量：5000mAh(3.89V) 典型能量：19.45Wh 额定容量：4900mAh(3.89V) 额定能量：19.06Wh",
+      "charging": "44W",
+      "height": "164.06mm",
+      "width": "76.17mm",
+      "thickness": "8.07mm(晴空蓝、祥云粉)、 7.98mm(皓夜黑)",
+      "weight": "190g",
+      "rear": "后置5000万像素主摄像头+后置200万像素虚化摄像头；光圈按厂商顺序：f/1.8（主摄）+f/2.4（虚化）",
+      "front": "800万像素；光圈：f/2.0",
+      "stabilization": "NA",
+      "zoom": "后置主摄支持10倍数字变焦 前置支持2倍数字变焦",
+      "video": "录制像素：1080P、720P",
+      "usb": null,
+      "wifi": "WLAN 2.4G、WLAN 5.G",
+      "bluetooth": "支持蓝牙5.1",
+      "nfc": null,
+      "os": "基于Android 13.0开发的OriginOS 3",
+      "launch": "2023年11月",
+      "cooling": null,
+      "shoulder_buttons": null,
+      "fingerprint": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "天玑 6020",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "CPU型号",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "6.64英寸",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "尺寸（英寸）",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "2388×1080",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "分辨率",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "60Hz",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "刷新率",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "LCD",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "屏幕材质",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.ram",
+        "value": "12GB/8GB",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "运行内存（RAM）",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.storage",
+        "value": "512GB/256GB/128GB",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "机身存储（ROM）",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "*本产品采用单电芯设计： 典型容量：5000mAh(3.89V) 典型能量：19.45Wh 额定容量：4900mAh(3.89V) 额定能量：19.06Wh",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "电池容量",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "44W",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "充电规格",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "164.06mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "高度",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "76.17mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "宽度",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "8.07mm(晴空蓝、祥云粉)、 7.98mm(皓夜黑)",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "厚度",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "190g",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "重量",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "后置5000万像素主摄像头+后置200万像素虚化摄像头；光圈按厂商顺序：f/1.8（主摄）+f/2.4（虚化）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "后置摄像头像素",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "800万像素；光圈：f/2.0",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "前置摄像头像素",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.stabilization",
+        "value": "NA",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "防抖类型",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.zoom",
+        "value": "后置主摄支持10倍数字变焦 前置支持2倍数字变焦",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "变焦模式",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "录制像素：1080P、720P",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "视频录制",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.wifi",
+        "value": "WLAN 2.4G、WLAN 5.G",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "WLAN",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "支持蓝牙5.1",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "蓝牙传输",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "基于Android 13.0开发的OriginOS 3",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.launch",
+        "value": "2023年11月",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-53d17e8a1d152a59"
+        ],
+        "source_location": "上市时间",
+        "conditions": {
+          "model_variant": "vivo Y100i",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      }
+    ],
+    "unknown_fields": [
+      "sku",
+      "usb",
+      "nfc",
+      "cooling",
+      "shoulder_buttons",
+      "fingerprint"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "CN400-53d17e8a1d152a59",
+        "publisher": "vivo",
+        "title": "vivo Y100i - vivo智能手机官方网站",
+        "url": "https://www.vivo.com.cn/vivo/param/y100i",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "method": "品牌中国官网公开HTML参数表提取；未访问登录数据或私有接口",
+        "source_content_sha256": "5f15fe9345db00610626ebe578b6e0503e96e79691827036f4dedb3139dad056",
+        "retrieval_allowed": false,
+        "rights_status": "必要规格事实重组与链接，未收录图片/整页；许可及项目使用待审核"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "data_scope": "选定硬件参数，包含保留的历史机型；不是完整规格库或实时在售清单",
+    "runtime_registration": "只生成知识文件，不修改phone_profiles.yaml，不写主数据库"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "400款扩充",
+    "vivo"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "vivo Y100i",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "vivo中国官网",
+    "url": "https://www.vivo.com.cn/vivo/param/y100i",
+    "location": "各字段位置见payload.facts",
+    "license": "必要规格事实重组，许可与使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

@@ -1,0 +1,450 @@
+{
+  "knowledge_id": "phone20261017x-cn-vivo-y77e-553050ac",
+  "library_id": "equipment",
+  "title": "vivo Y77e（国行）：手机硬件与相机参数补充",
+  "kind": "manufacturer_fact",
+  "content": "# vivo Y77e（国行）\n\n整理日期：2026-10-17；待独立审核的厂商参数草稿。\n\n- 处理器：天玑810\n- 屏幕尺寸：6.58英寸（16.72cm）\n- 屏幕分辨率：2408×1080\n- 刷新率及条件：60Hz\n- 屏幕类型：LCD\n- 实体RAM选项：8GB/6GB\n- 存储选项：256GB/128GB\n- 电池容量及版本条件：5000mAh（典型值） 4910mAh（额定值）\n- 充电标称及条件：18W闪充（备注：实际充电功率最高可达18W，包装盒中随机配备18W或33W充电器，均可兼容18W闪充）\n- 高度：164mm\n- 宽度：75.84mm\n- 厚度：8.25mm\n- 重量及版本条件：约194g\n- 后置摄像头及辅助传感器：后置1300万像素主摄像头+后置200万像素微距摄像头；光圈按厂商顺序：f/2.2（主摄）+f/2.4（微距）\n- 前置摄像头：800万像素；光圈：f/2.0\n- 防抖：NA\n- 变焦：后置主摄支持10倍数字变焦 前置支持2倍数字变焦\n- 视频录制摘要：录制像素：1080P、720P\n- WLAN：WLAN 2.4G、WLAN 5.1G、WLAN 5.8G\n- 蓝牙：支持蓝牙5.1\n- 来源列示系统：基于Android 12开发的OriginOS Ocean\n- 来源列示上市时间：2022年8月\n\n未核验字段：官网列示存储组合、USB接口、NFC、散热系统、触控肩键、指纹识别\n\n\n使用边界：\n- 只适用对应完整型号的中国大陆销售版本，不能用于海外版、相近型号或未注明的卫星通信版。\n- 厂商公开规格由AI提取，未经独立人工审核或真机验证；全部为草稿，禁止受管检索。\n- 保留内外屏、折叠状态、配色材质和RAM/存储版本条件。未列出的组合不能通过排列生成。\n- 电池保留典型值、额定值、双电芯等效值；不同数值不能无条件相加或替换。\n- 快充标称需相应适配器、线材与测试条件，不是持续功率；无线充电与有线充电分开理解。\n- 镜头像素不等于输出照片像素；等效焦距不等于实际焦距；光学品质变焦不增加物理镜头。\n- 来源中的辅助感光、色彩及深度传感器按原表保留，不据此增加独立可拍摄镜头。\n- 原生/第三方App手动ISO、快门、可调光圈与逐镜头模式组合未核验，不能由硬件参数推断。\n- 系统为来源列示版本；官网页面保留不代表当前在售，未核验实时库存、价格、销量或软件支持期限。\n- 未知字段为null，不代表不支持。字段条目数不是完整度评分。\n\n来源：[vivo中国官网参数](https://www.vivo.com.cn/vivo/param/y77e)",
+  "payload": {
+    "brand": "vivo",
+    "model_variant": "vivo Y77e",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "天玑810",
+      "display_size": "6.58英寸（16.72cm）",
+      "display_resolution": "2408×1080",
+      "display_refresh": "60Hz",
+      "display_panel": "LCD",
+      "ram": "8GB/6GB",
+      "storage": "256GB/128GB",
+      "sku": null,
+      "battery": "5000mAh（典型值） 4910mAh（额定值）",
+      "charging": "18W闪充（备注：实际充电功率最高可达18W，包装盒中随机配备18W或33W充电器，均可兼容18W闪充）",
+      "height": "164mm",
+      "width": "75.84mm",
+      "thickness": "8.25mm",
+      "weight": "约194g",
+      "rear": "后置1300万像素主摄像头+后置200万像素微距摄像头；光圈按厂商顺序：f/2.2（主摄）+f/2.4（微距）",
+      "front": "800万像素；光圈：f/2.0",
+      "stabilization": "NA",
+      "zoom": "后置主摄支持10倍数字变焦 前置支持2倍数字变焦",
+      "video": "录制像素：1080P、720P",
+      "usb": null,
+      "wifi": "WLAN 2.4G、WLAN 5.1G、WLAN 5.8G",
+      "bluetooth": "支持蓝牙5.1",
+      "nfc": null,
+      "os": "基于Android 12开发的OriginOS Ocean",
+      "launch": "2022年8月",
+      "cooling": null,
+      "shoulder_buttons": null,
+      "fingerprint": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "天玑810",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "CPU型号",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "6.58英寸（16.72cm）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "尺寸（英寸）",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "2408×1080",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "分辨率",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "60Hz",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "刷新率",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "LCD",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "屏幕材质",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.ram",
+        "value": "8GB/6GB",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "运行内存（RAM）",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.storage",
+        "value": "256GB/128GB",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "机身存储（ROM）",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "5000mAh（典型值） 4910mAh（额定值）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "电池容量",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "18W闪充（备注：实际充电功率最高可达18W，包装盒中随机配备18W或33W充电器，均可兼容18W闪充）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "充电规格",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "164mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "高度",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "75.84mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "宽度",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "8.25mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "厚度",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "约194g",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "重量",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "后置1300万像素主摄像头+后置200万像素微距摄像头；光圈按厂商顺序：f/2.2（主摄）+f/2.4（微距）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "后置摄像头像素",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "800万像素；光圈：f/2.0",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "前置摄像头像素",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.stabilization",
+        "value": "NA",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "防抖类型",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.zoom",
+        "value": "后置主摄支持10倍数字变焦 前置支持2倍数字变焦",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "变焦模式",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "录制像素：1080P、720P",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "视频录制",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.wifi",
+        "value": "WLAN 2.4G、WLAN 5.1G、WLAN 5.8G",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "WLAN",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "支持蓝牙5.1",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "蓝牙传输",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "基于Android 12开发的OriginOS Ocean",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.launch",
+        "value": "2022年8月",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-17d98b593ec50ed0"
+        ],
+        "source_location": "上市时间",
+        "conditions": {
+          "model_variant": "vivo Y77e",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      }
+    ],
+    "unknown_fields": [
+      "sku",
+      "usb",
+      "nfc",
+      "cooling",
+      "shoulder_buttons",
+      "fingerprint"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "CN400-17d98b593ec50ed0",
+        "publisher": "vivo",
+        "title": "vivo Y77e - vivo智能手机官方网站",
+        "url": "https://www.vivo.com.cn/vivo/param/y77e",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "method": "品牌中国官网公开HTML参数表提取；未访问登录数据或私有接口",
+        "source_content_sha256": "21c41aedcc3ba40829895ff4aacfc3a48c4264b6ca69ea7824b8ee3a814ca71c",
+        "retrieval_allowed": false,
+        "rights_status": "必要规格事实重组与链接，未收录图片/整页；许可及项目使用待审核"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "data_scope": "选定硬件参数，包含保留的历史机型；不是完整规格库或实时在售清单",
+    "runtime_registration": "只生成知识文件，不修改phone_profiles.yaml，不写主数据库"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "400款扩充",
+    "vivo"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "vivo Y77e",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "vivo中国官网",
+    "url": "https://www.vivo.com.cn/vivo/param/y77e",
+    "location": "各字段位置见payload.facts",
+    "license": "必要规格事实重组，许可与使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

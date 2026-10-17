@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "prepared_at": "2026-10-18",
+  "models": 335,
+  "previous_129_cards_excluded": true,
+  "new_card_bytes_match_validated_464_package": true,
+  "all_new_models_have_8_fields_and_core_specs": true,
+  "source_binding_checked": true,
+  "actual_project_import_preview_and_isolated_import_passed": true,
+  "repeat_import_idempotent": true,
+  "draft_retrieval_isolation": true,
+  "runtime_and_main_database_unchanged": true,
+  "limitations": [
+    "原导入校验在464款隔离库中覆盖本次335款；本次只重新验证上传范围与文件哈希。",
+    "参数未经独立人工审核或真机验证。"
+  ]
+}
