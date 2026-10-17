@@ -105,7 +105,7 @@ MOUNT_NAMES = {
 
 def render_header(settings: Settings) -> None:
     mode = "演示模式" if not settings.cloud_ready else "多模态模式"
-    mascot_uri = asset_data_uri(ROOT / "assets" / "camera-red-panda.png")
+    mascot_uri = asset_data_uri(ROOT / "assets" / "xiaoli-mascot.png")
     st.markdown(
         f"""
         <header class="app-topbar">
@@ -114,16 +114,15 @@ def render_header(settings: Settings) -> None:
         </header>
         <section class="mobile-hero" id="home">
           <div class="mobile-hero-copy">
-            <span class="hello-chip">嗨，我是你的摄影搭子</span>
-            <h1>拍之前，<br>先问问小栗</h1>
-            <p>看懂现场，也看懂你的相机和手机。</p>
+            <span class="hello-chip">和小栗一起，发现日常的好看</span>
+            <h1>你负责心动，<br>小栗陪你拍好。</h1>
+            <p>从构图到参数，让每次快门都有方向。</p>
             <div class="quick-flow" aria-label="使用流程">
               <span>现场图</span><i></i><span>想要的效果</span><i></i><b>拍摄参数</b>
             </div>
           </div>
           <div class="mobile-mascot">
-            <div class="mascot-bubble">交给我吧！</div>
-            <img src="{mascot_uri}" alt="拿着相机的小熊猫摄影助手小栗">
+            <img src="{mascot_uri}" alt="新吉祥物小栗：手持相机的橙发兽耳摄影搭子">
           </div>
         </section>
         """,

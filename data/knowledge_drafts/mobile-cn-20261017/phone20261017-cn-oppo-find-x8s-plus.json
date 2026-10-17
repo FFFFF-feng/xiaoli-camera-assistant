@@ -1,0 +1,406 @@
+{
+  "knowledge_id": "phone20261017-cn-oppo-find-x8s-plus",
+  "library_id": "equipment",
+  "title": "OPPO Find X8s+（国行）：扩充硬件与相机参数",
+  "kind": "manufacturer_fact",
+  "content": "# OPPO Find X8s+（国行）\n\n整理日期：2026-10-17；AI提取，尚未独立人工复核或真机验证。\n\n- 处理器：MediaTek 天玑 9400+，8 核心，最高主频 3.73GHz。\n- 屏幕尺寸：6.59 英寸。\n- 屏幕分辨率：FHD+ 2760 × 1256 像素，460 PPI。\n- 刷新率及条件：最高支持 120Hz 刷新率。\n- 屏幕类型：AMOLED 柔性屏。\n- 官方列示存储组合：16GB + 1TB（月光白，星野黑）；16GB + 512GB（月光白，星野黑，风信紫）；12GB + 512GB（月光白，星野黑，风信紫）；12GB + 256GB （月光白，星野黑，风信紫）。\n- 电池容量及版本条件：5850mAh/22.41Wh（额定值）；6000mAh/22.98Wh（典型值）。\n- 充电标称及条件：80W 超级闪充，兼容 67W 超级闪充、65W 超级闪充、50W 超级闪充、33W 超级闪充，33W PPS（11V/3A），44W 融合快充，11.7W PD（9V/1.3A）；50W 无线闪充；10W 无线反向充电。\n- 长度/高度：约 157.53 毫米。\n- 宽度：约 74.51 毫米。\n- 厚度：约 7.95 毫米。\n- 重量及版本条件：约 198 克。\n- 后置镜头及辅助传感器（按来源列示）：5000 万像素广角摄像头：f/1.8，等效焦距 24 毫米，6P 镜头，支持 AF 自动对焦，支持两轴 OIS 防抖；5000 万像素超广角摄像头：f/2.0，等效焦距 15 毫米，6P 镜头，支持 AF 自动对焦，120° 广视角；5000 万像素长焦摄像头：f/2.6，等效焦距 73 毫米，1G3P 镜头，支持 AF 自动对焦，支持两轴 OIS 防抖。\n- 前置摄像头：3200 万像素摄像头，f/2.4，等效焦距 21 毫米，5P 镜头，不支持 AF 自动对焦。\n- 视频录制摘要：4K 视频拍摄：30fps，60fps；1080P 视频拍摄：30fps，60fps。\n- USB：USB Type-C。\n- WLAN：Wi-Fi 7、Wi-Fi 6、Wi-Fi 5、Wi-Fi 2。\n- 蓝牙：蓝牙 5.4，低功耗蓝牙，BLE Audio。\n- 来源列示系统：ColorOS 15.0。\n\n未核验字段：实体RAM选项、存储选项、防抖、变焦功能、NFC、上市月份。\n\n差异与待复核事项：以完整型号及字段内条件为准。\n\n使用边界：\n- 仅适用中国大陆销售版本；Pro、Plus、Ultra、mini和卫星通信版本不自动互相继承。\n- 公开参数为厂商声明，未经独立人工复核和真机验证；最高规格不代表所有模式与镜头同时可用。\n- 标称像素不等于每张成片像素；等效焦距不等于EXIF实际焦距；光学品质裁切不新增物理镜头。\n- 光圈标签不保证当前相机App可手动调节；ISO、快门范围、各镜头模式组合及固件兼容性本批未核验。\n- 电池保留典型值、额定值、等效容量及SKU差异；充电标称需对应适配器、线材与环境，不是持续功率。\n- 存储选项不生成未列出的RAM+ROM排列；动态内存扩展不计入实体RAM。\n- 源页面系统为页面列示版本，不代表当前系统或最高可升级版本。\n- 折叠屏保留内外屏、展开/折叠尺寸；色彩/多光谱辅助传感器不按独立成像镜头计数。\n\n来源：[OPPO中国官网规格](https://www.oppo.com/cn/smartphones/series-find-x/find-x8s-plus/specs/)\n\n状态：待审核草稿；禁止检索；参数资料未注册应用型号。",
+  "payload": {
+    "brand": "OPPO",
+    "model_variant": "OPPO Find X8s+",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "MediaTek 天玑 9400+，8 核心，最高主频 3.73GHz",
+      "display_size": "6.59 英寸",
+      "display_resolution": "FHD+ 2760 × 1256 像素，460 PPI",
+      "display_refresh": "最高支持 120Hz 刷新率",
+      "display_panel": "AMOLED 柔性屏",
+      "ram": null,
+      "storage": null,
+      "sku": "16GB + 1TB（月光白，星野黑）\n16GB + 512GB（月光白，星野黑，风信紫）\n12GB + 512GB（月光白，星野黑，风信紫）\n12GB + 256GB （月光白，星野黑，风信紫）",
+      "battery": "5850mAh/22.41Wh（额定值）\n6000mAh/22.98Wh（典型值）",
+      "charging": "80W 超级闪充，兼容 67W 超级闪充、65W 超级闪充、50W 超级闪充、33W 超级闪充，33W PPS（11V/3A），44W 融合快充，11.7W PD（9V/1.3A）\n50W 无线闪充\n10W 无线反向充电",
+      "height": "约 157.53 毫米",
+      "width": "约 74.51 毫米",
+      "thickness": "约 7.95 毫米",
+      "weight": "约 198 克",
+      "rear": "5000 万像素广角摄像头：f/1.8，等效焦距 24 毫米，6P 镜头，支持 AF 自动对焦，支持两轴 OIS 防抖\n5000 万像素超广角摄像头：f/2.0，等效焦距 15 毫米，6P 镜头，支持 AF 自动对焦，120° 广视角\n5000 万像素长焦摄像头：f/2.6，等效焦距 73 毫米，1G3P 镜头，支持 AF 自动对焦，支持两轴 OIS 防抖",
+      "front": "3200 万像素摄像头，f/2.4，等效焦距 21 毫米，5P 镜头，不支持 AF 自动对焦",
+      "stabilization": null,
+      "zoom": null,
+      "video": "4K 视频拍摄：30fps，60fps；1080P 视频拍摄：30fps，60fps",
+      "usb": "USB Type-C",
+      "wifi": "Wi-Fi 7、Wi-Fi 6、Wi-Fi 5、Wi-Fi 2",
+      "bluetooth": "蓝牙 5.4，低功耗蓝牙，BLE Audio",
+      "nfc": null,
+      "os": "ColorOS 15.0",
+      "launch": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "MediaTek 天玑 9400+，8 核心，最高主频 3.73GHz",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "移动平台",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "6.59 英寸",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "尺寸",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "FHD+ 2760 × 1256 像素，460 PPI",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "分辨率",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "最高支持 120Hz 刷新率",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "显示/类型",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "AMOLED 柔性屏",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "类型",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.sku",
+        "value": "16GB + 1TB（月光白，星野黑）\n16GB + 512GB（月光白，星野黑，风信紫）\n12GB + 512GB（月光白，星野黑，风信紫）\n12GB + 256GB （月光白，星野黑，风信紫）",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "运行内存容量 + 机身存储容量",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "5850mAh/22.41Wh（额定值）\n6000mAh/22.98Wh（典型值）",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "电池容量",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "80W 超级闪充，兼容 67W 超级闪充、65W 超级闪充、50W 超级闪充、33W 超级闪充，33W PPS（11V/3A），44W 融合快充，11.7W PD（9V/1.3A）\n50W 无线闪充\n10W 无线反向充电",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "快速充电",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "约 157.53 毫米",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "高",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "约 74.51 毫米",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "宽",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "约 7.95 毫米",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "厚",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "约 198 克",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "重量",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "5000 万像素广角摄像头：f/1.8，等效焦距 24 毫米，6P 镜头，支持 AF 自动对焦，支持两轴 OIS 防抖\n5000 万像素超广角摄像头：f/2.0，等效焦距 15 毫米，6P 镜头，支持 AF 自动对焦，120° 广视角\n5000 万像素长焦摄像头：f/2.6，等效焦距 73 毫米，1G3P 镜头，支持 AF 自动对焦，支持两轴 OIS 防抖",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "后置",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "3200 万像素摄像头，f/2.4，等效焦距 21 毫米，5P 镜头，不支持 AF 自动对焦",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "前置",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "4K 视频拍摄：30fps，60fps；1080P 视频拍摄：30fps，60fps",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "视频拍摄/后置",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.usb",
+        "value": "USB Type-C",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "数据接口",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.wifi",
+        "value": "Wi-Fi 7、Wi-Fi 6、Wi-Fi 5、Wi-Fi 2",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "WLAN 功能",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "蓝牙 5.4，低功耗蓝牙，BLE Audio",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "蓝牙",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "ColorOS 15.0",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-7a5d0d69ba75"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "OPPO Find X8s+",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      }
+    ],
+    "unknown_fields": [
+      "ram",
+      "storage",
+      "stabilization",
+      "zoom",
+      "nfc",
+      "launch"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外版或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "cn20261017-7a5d0d69ba75",
+        "publisher": "OPPO",
+        "title": "OPPO Find X8s+ 产品参数 | OPPO 官方网站",
+        "url": "https://www.oppo.com/cn/smartphones/series-find-x/find-x8s-plus/specs/",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "access_method": "web",
+        "retrieval_allowed": false,
+        "rights_status": "必要参数事实整理与链接；不再分发整页、评论、图片或用户资料；使用许可待审核"
+      }
+    ],
+    "discovery": {
+      "site": "酷安",
+      "url": "https://coolapk.com/officialEvaluation",
+      "usage": "公开搜索索引中的机型线索；参数实际核验来源为中国官网",
+      "indexed_model_seen": false,
+      "direct_product_selector_access": "blocked_by_site_security_policy_567",
+      "direct_review_page_access": "blocked_by_site_security_policy_567"
+    },
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "runtime_registration": "未修改phone_profiles.yaml；草稿文件不会自动增加应用型号",
+    "data_scope": "选定可公开核验字段；不是完整参数库、实时在售状态、销量排名或实测结论"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "20261017",
+    "OPPO"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "OPPO Find X8s+",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "OPPO中国官网",
+    "url": "https://www.oppo.com/cn/smartphones/series-find-x/find-x8s-plus/specs/",
+    "location": "各字段章节见payload.facts",
+    "license": "必要参数事实自行整理，许可与项目使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

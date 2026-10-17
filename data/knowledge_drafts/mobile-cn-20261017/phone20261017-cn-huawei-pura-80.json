@@ -1,0 +1,376 @@
+{
+  "knowledge_id": "phone20261017-cn-huawei-pura-80",
+  "library_id": "equipment",
+  "title": "HUAWEI Pura 80（国行）：扩充硬件与相机参数",
+  "kind": "manufacturer_fact",
+  "content": "# HUAWEI Pura 80（国行）\n\n整理日期：2026-10-17；AI提取，尚未独立人工复核或真机验证。\n\n- 屏幕尺寸：6.6 英寸。\n- 屏幕分辨率：FHD+ 2760 × 1256 像素。\n- 刷新率及条件：1-120 Hz LTPO 自适应刷新率。\n- 屏幕类型：OLED，支持 1-120 Hz LTPO 自适应刷新率，1440 Hz 高频 PWM 调光，300 Hz 触控采样率。\n- 实体RAM选项：12 GB RAM。\n- 存储选项：256 GB / 512 GB / 1 TB ROM。\n- 电池容量及版本条件：5600 mAh（典型值）；*电池额定容量为 5480 mAh。。\n- 充电标称及条件：有线充电：手机支持最大超级快充 66 W (11V/6A)；无线充电：支持 50 W 华为无线超级快充。\n- 长度/高度：157.7 mm。\n- 宽度：74.4 mm。\n- 厚度：8.2 mm。\n- 重量及版本条件：约 211 克（含电池）。\n- 后置镜头及辅助传感器（按来源列示）：5000 万像素超聚光摄像头（F1.4-F4.0 光圈，OIS 光学防抖）；1200 万像素潜望式长焦摄像头（F3.4 光圈，OIS 光学防抖）；1300 万像素超广角摄像头（F2.2 光圈）；150 万多光谱通道红枫原色摄像头。\n- 前置摄像头：1300 万像素超广角摄像头（F2.0 光圈，自动对焦）。\n- 变焦功能：支持 5.5 倍光学变焦（5.5 倍变焦为近似值，镜头焦段分别为 13 mm，24 mm，125 mm）、50 倍数字变焦。\n- 视频录制摘要：最大支持 4K（3840 × 2160）视频录制，支持 AIS 防抖；支持 1080p@480fps 超级慢动作视频。\n- 来源列示系统：HarmonyOS 5.1。\n\n未核验字段：处理器、官方列示存储组合、防抖、USB、WLAN、蓝牙、NFC、上市月份。\n\n差异与待复核事项：以完整型号及字段内条件为准。\n\n使用边界：\n- 仅适用中国大陆销售版本；Pro、Plus、Ultra、mini和卫星通信版本不自动互相继承。\n- 公开参数为厂商声明，未经独立人工复核和真机验证；最高规格不代表所有模式与镜头同时可用。\n- 标称像素不等于每张成片像素；等效焦距不等于EXIF实际焦距；光学品质裁切不新增物理镜头。\n- 光圈标签不保证当前相机App可手动调节；ISO、快门范围、各镜头模式组合及固件兼容性本批未核验。\n- 电池保留典型值、额定值、等效容量及SKU差异；充电标称需对应适配器、线材与环境，不是持续功率。\n- 存储选项不生成未列出的RAM+ROM排列；动态内存扩展不计入实体RAM。\n- 源页面系统为页面列示版本，不代表当前系统或最高可升级版本。\n- 折叠屏保留内外屏、展开/折叠尺寸；色彩/多光谱辅助传感器不按独立成像镜头计数。\n\n来源：[HUAWEI中国官网规格](https://consumer.huawei.com/cn/phones/pura80/specs/)\n\n状态：待审核草稿；禁止检索；参数资料未注册应用型号。",
+  "payload": {
+    "brand": "HUAWEI",
+    "model_variant": "HUAWEI Pura 80",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": null,
+      "display_size": "6.6 英寸",
+      "display_resolution": "FHD+ 2760 × 1256 像素",
+      "display_refresh": "1-120 Hz LTPO 自适应刷新率",
+      "display_panel": "OLED，支持 1-120 Hz LTPO 自适应刷新率，1440 Hz 高频 PWM 调光，300 Hz 触控采样率",
+      "ram": "12 GB RAM",
+      "storage": "256 GB / 512 GB / 1 TB ROM",
+      "sku": null,
+      "battery": "5600 mAh（典型值）；*电池额定容量为 5480 mAh。",
+      "charging": "有线充电：手机支持最大超级快充 66 W (11V/6A)；无线充电：支持 50 W 华为无线超级快充",
+      "height": "157.7 mm",
+      "width": "74.4 mm",
+      "thickness": "8.2 mm",
+      "weight": "约 211 克（含电池）",
+      "rear": "5000 万像素超聚光摄像头（F1.4-F4.0 光圈，OIS 光学防抖）；1200 万像素潜望式长焦摄像头（F3.4 光圈，OIS 光学防抖）；1300 万像素超广角摄像头（F2.2 光圈）；150 万多光谱通道红枫原色摄像头",
+      "front": "1300 万像素超广角摄像头（F2.0 光圈，自动对焦）",
+      "stabilization": null,
+      "zoom": "支持 5.5 倍光学变焦（5.5 倍变焦为近似值，镜头焦段分别为 13 mm，24 mm，125 mm）、50 倍数字变焦",
+      "video": "最大支持 4K（3840 × 2160）视频录制，支持 AIS 防抖；支持 1080p@480fps 超级慢动作视频",
+      "usb": null,
+      "wifi": null,
+      "bluetooth": null,
+      "nfc": null,
+      "os": "HarmonyOS 5.1",
+      "launch": null
+    },
+    "facts": [
+      {
+        "field": "specifications.display_size",
+        "value": "6.6 英寸",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "屏幕",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "FHD+ 2760 × 1256 像素",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "屏幕",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "1-120 Hz LTPO 自适应刷新率",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "屏幕/类型",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "OLED，支持 1-120 Hz LTPO 自适应刷新率，1440 Hz 高频 PWM 调光，300 Hz 触控采样率",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "屏幕",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.ram",
+        "value": "12 GB RAM",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "运行内存",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.storage",
+        "value": "256 GB / 512 GB / 1 TB ROM",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "机身内存",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "5600 mAh（典型值）；*电池额定容量为 5480 mAh。",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "电池",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "有线充电：手机支持最大超级快充 66 W (11V/6A)；无线充电：支持 50 W 华为无线超级快充",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "充电",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "157.7 mm",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "尺寸与重量/长度",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "74.4 mm",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "尺寸与重量/宽度",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "8.2 mm",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "尺寸与重量/厚度",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "约 211 克（含电池）",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "尺寸与重量/重量",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "5000 万像素超聚光摄像头（F1.4-F4.0 光圈，OIS 光学防抖）；1200 万像素潜望式长焦摄像头（F3.4 光圈，OIS 光学防抖）；1300 万像素超广角摄像头（F2.2 光圈）；150 万多光谱通道红枫原色摄像头",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "后置摄像头",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "1300 万像素超广角摄像头（F2.0 光圈，自动对焦）",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "前置摄像头",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.zoom",
+        "value": "支持 5.5 倍光学变焦（5.5 倍变焦为近似值，镜头焦段分别为 13 mm，24 mm，125 mm）、50 倍数字变焦",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "后置摄像头变焦模式",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "最大支持 4K（3840 × 2160）视频录制，支持 AIS 防抖；支持 1080p@480fps 超级慢动作视频",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "后置摄像头摄像分辨率",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "HarmonyOS 5.1",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6b0bf6786b33"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "HUAWEI Pura 80",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      }
+    ],
+    "unknown_fields": [
+      "chipset",
+      "sku",
+      "stabilization",
+      "usb",
+      "wifi",
+      "bluetooth",
+      "nfc",
+      "launch"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外版或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "cn20261017-6b0bf6786b33",
+        "publisher": "HUAWEI",
+        "title": "HUAWEI Pura 80 规格参数 - 华为官网",
+        "url": "https://consumer.huawei.com/cn/phones/pura80/specs/",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "access_method": "web",
+        "retrieval_allowed": false,
+        "rights_status": "必要参数事实整理与链接；不再分发整页、评论、图片或用户资料；使用许可待审核"
+      }
+    ],
+    "discovery": {
+      "site": "酷安",
+      "url": "https://coolapk.com/officialEvaluation",
+      "usage": "公开搜索索引中的机型线索；参数实际核验来源为中国官网",
+      "indexed_model_seen": false,
+      "direct_product_selector_access": "blocked_by_site_security_policy_567",
+      "direct_review_page_access": "blocked_by_site_security_policy_567"
+    },
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "runtime_registration": "未修改phone_profiles.yaml；草稿文件不会自动增加应用型号",
+    "data_scope": "选定可公开核验字段；不是完整参数库、实时在售状态、销量排名或实测结论"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "20261017",
+    "HUAWEI"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "HUAWEI Pura 80",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "HUAWEI中国官网",
+    "url": "https://consumer.huawei.com/cn/phones/pura80/specs/",
+    "location": "各字段章节见payload.facts",
+    "license": "必要参数事实自行整理，许可与项目使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

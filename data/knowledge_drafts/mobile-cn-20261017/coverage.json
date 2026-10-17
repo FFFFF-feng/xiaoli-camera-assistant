@@ -1,0 +1,967 @@
+{
+  "cards": 80,
+  "field_entries": 1600,
+  "definition": "一个带出处的规格字段为一个条目；字段可包含多个带条件参数，不等于独立数字总数",
+  "models": [
+    {
+      "model": "HONOR 400",
+      "fields": 19,
+      "missing": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "wifi",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-9e08cb64149c"
+    },
+    {
+      "model": "HONOR 400 Pro",
+      "fields": 19,
+      "missing": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "wifi",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-ed4bd789d90e"
+    },
+    {
+      "model": "HONOR 500",
+      "fields": 19,
+      "missing": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "wifi",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-f324e2553521"
+    },
+    {
+      "model": "HONOR 500 Pro",
+      "fields": 19,
+      "missing": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "wifi",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-8530027d12b8"
+    },
+    {
+      "model": "HONOR Magic V5",
+      "fields": 19,
+      "missing": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "wifi",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-0ede3a78807d"
+    },
+    {
+      "model": "HONOR Magic V6",
+      "fields": 19,
+      "missing": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "wifi",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-e50615dc60c8"
+    },
+    {
+      "model": "HONOR Magic8",
+      "fields": 19,
+      "missing": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "wifi",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-190c42a6fe41"
+    },
+    {
+      "model": "HONOR Magic8 Pro",
+      "fields": 19,
+      "missing": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "wifi",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-f02ac0e5d2bc"
+    },
+    {
+      "model": "HONOR Power",
+      "fields": 19,
+      "missing": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "wifi",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-ba7edb34e94b"
+    },
+    {
+      "model": "HONOR X70",
+      "fields": 19,
+      "missing": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "wifi",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-0cafee846f01"
+    },
+    {
+      "model": "HUAWEI Mate 70 Air",
+      "fields": 15,
+      "missing": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "sku",
+        "stabilization",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-3ca89cdd8837"
+    },
+    {
+      "model": "HUAWEI Mate 80",
+      "fields": 16,
+      "missing": [
+        "ram",
+        "storage",
+        "sku",
+        "stabilization",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-1473054d596d"
+    },
+    {
+      "model": "HUAWEI Mate X6",
+      "fields": 15,
+      "missing": [
+        "chipset",
+        "ram",
+        "storage",
+        "sku",
+        "stabilization",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-d4cc7068c0c0"
+    },
+    {
+      "model": "HUAWEI Mate X7",
+      "fields": 15,
+      "missing": [
+        "ram",
+        "storage",
+        "sku",
+        "stabilization",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-c361622cd8d6"
+    },
+    {
+      "model": "HUAWEI Pura 80",
+      "fields": 17,
+      "missing": [
+        "chipset",
+        "sku",
+        "stabilization",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-6b0bf6786b33"
+    },
+    {
+      "model": "HUAWEI Pura 80 Pro+",
+      "fields": 17,
+      "missing": [
+        "chipset",
+        "sku",
+        "stabilization",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-5195a4915bee"
+    },
+    {
+      "model": "HUAWEI Pura 90",
+      "fields": 18,
+      "missing": [
+        "sku",
+        "stabilization",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-6108eed1d49c"
+    },
+    {
+      "model": "HUAWEI Pura X",
+      "fields": 15,
+      "missing": [
+        "chipset",
+        "ram",
+        "storage",
+        "sku",
+        "stabilization",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-83a6cd145ab0"
+    },
+    {
+      "model": "HUAWEI nova 14",
+      "fields": 16,
+      "missing": [
+        "chipset",
+        "ram",
+        "sku",
+        "stabilization",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-d3ce9efca748"
+    },
+    {
+      "model": "HUAWEI nova 14 Ultra",
+      "fields": 16,
+      "missing": [
+        "chipset",
+        "ram",
+        "sku",
+        "stabilization",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-70f8c0e13459"
+    },
+    {
+      "model": "OPPO A6 Pro",
+      "fields": 19,
+      "missing": [
+        "display_panel",
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-1fdb3f6fe756"
+    },
+    {
+      "model": "OPPO A6s Pro",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-79bb18e28ed9"
+    },
+    {
+      "model": "OPPO Find N5",
+      "fields": 19,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-031e8223b202"
+    },
+    {
+      "model": "OPPO Find N6",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-05f3cf04f4a2"
+    },
+    {
+      "model": "OPPO Find X8s",
+      "fields": 19,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-76509c64f7e3"
+    },
+    {
+      "model": "OPPO Find X8s+",
+      "fields": 19,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-7a5d0d69ba75"
+    },
+    {
+      "model": "OPPO Find X9",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-64f20cdeb57d"
+    },
+    {
+      "model": "OPPO Find X9 Ultra",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-c25b9cc36534"
+    },
+    {
+      "model": "OPPO Find X9s Pro",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-f7c6dbbd7c89"
+    },
+    {
+      "model": "OPPO K13 Turbo",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-94e9746f7a35"
+    },
+    {
+      "model": "OPPO K13 Turbo Pro",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-267777b0656b"
+    },
+    {
+      "model": "OPPO K15 Pro",
+      "fields": 19,
+      "missing": [
+        "display_refresh",
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-51554e3d9116"
+    },
+    {
+      "model": "OPPO K15 Pro+",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-68df73f53bc1"
+    },
+    {
+      "model": "OPPO Reno14",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-6e075ec4fa2e"
+    },
+    {
+      "model": "OPPO Reno14 Pro",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-d45c6b4e94bf"
+    },
+    {
+      "model": "OPPO Reno15",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-2e7eea85996f"
+    },
+    {
+      "model": "OPPO Reno15 Pro",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-8352217c8049"
+    },
+    {
+      "model": "OPPO Reno15c",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-d95229d9f015"
+    },
+    {
+      "model": "OPPO Reno16 Pro",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-94e3f149ca7e"
+    },
+    {
+      "model": "OnePlus 13T",
+      "fields": 15,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "video",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-6ff02d90140d"
+    },
+    {
+      "model": "OnePlus 15",
+      "fields": 16,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-79879ff6160f"
+    },
+    {
+      "model": "OnePlus 15T",
+      "fields": 16,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-6f5e79354861"
+    },
+    {
+      "model": "OnePlus Ace 6",
+      "fields": 16,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-264325bd6d9e"
+    },
+    {
+      "model": "OnePlus Ace 6T",
+      "fields": 16,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "zoom",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-66f83e845fc9"
+    },
+    {
+      "model": "iQOO 15",
+      "fields": 23,
+      "missing": [
+        "sku",
+        "wifi"
+      ],
+      "source_id": "cn20261017-a4d140e1ac2e"
+    },
+    {
+      "model": "iQOO 15 Ultra",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-7a423e162acc"
+    },
+    {
+      "model": "iQOO 15T",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-a27b7a10ad08"
+    },
+    {
+      "model": "iQOO 16",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-90ab731ba5ce"
+    },
+    {
+      "model": "iQOO Neo10 Pro",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-5be71385848b"
+    },
+    {
+      "model": "iQOO Neo11",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-ecbbb6496b8d"
+    },
+    {
+      "model": "iQOO Z10 Turbo",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-b4212668ebe2"
+    },
+    {
+      "model": "iQOO Z10 Turbo Pro",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-27192aa641a2"
+    },
+    {
+      "model": "iQOO Z11",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-bbf28c1d6d32"
+    },
+    {
+      "model": "iQOO Z11S",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-06c087e7d0d3"
+    },
+    {
+      "model": "iQOO Z11i",
+      "fields": 23,
+      "missing": [
+        "sku",
+        "wifi"
+      ],
+      "source_id": "cn20261017-97ccb0832dfd"
+    },
+    {
+      "model": "realme GT7",
+      "fields": 11,
+      "missing": [
+        "display_panel",
+        "sku",
+        "height",
+        "width",
+        "thickness",
+        "weight",
+        "stabilization",
+        "zoom",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch"
+      ],
+      "source_id": "cn20261017-b4c573fe1847"
+    },
+    {
+      "model": "realme GT7 Pro",
+      "fields": 13,
+      "missing": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "sku",
+        "stabilization",
+        "zoom",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch"
+      ],
+      "source_id": "cn20261017-b71de0e765e4"
+    },
+    {
+      "model": "realme GT8",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-8a68abda0d7c"
+    },
+    {
+      "model": "realme GT8 Pro",
+      "fields": 20,
+      "missing": [
+        "ram",
+        "storage",
+        "stabilization",
+        "nfc",
+        "launch"
+      ],
+      "source_id": "cn20261017-5ec722eb9ca5"
+    },
+    {
+      "model": "realme Neo7 SE",
+      "fields": 13,
+      "missing": [
+        "display_resolution",
+        "display_refresh",
+        "display_panel",
+        "sku",
+        "stabilization",
+        "zoom",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch"
+      ],
+      "source_id": "cn20261017-48e42148594b"
+    },
+    {
+      "model": "realme Neo7 Turbo",
+      "fields": 11,
+      "missing": [
+        "display_panel",
+        "sku",
+        "height",
+        "width",
+        "thickness",
+        "weight",
+        "stabilization",
+        "zoom",
+        "usb",
+        "wifi",
+        "bluetooth",
+        "nfc",
+        "os",
+        "launch"
+      ],
+      "source_id": "cn20261017-10cc20484228"
+    },
+    {
+      "model": "vivo S30",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-330b1c5b4840"
+    },
+    {
+      "model": "vivo S30 Pro mini",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-73074ee9f2d7"
+    },
+    {
+      "model": "vivo S50 Pro mini",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-ecbaa54db941"
+    },
+    {
+      "model": "vivo S60",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-eab3cc2acf73"
+    },
+    {
+      "model": "vivo S60 元气版",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-f9a9d2482476"
+    },
+    {
+      "model": "vivo X Fold5",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-02c1915b34ad"
+    },
+    {
+      "model": "vivo X Fold6",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-86c7befcd02a"
+    },
+    {
+      "model": "vivo X200s",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-4005f63c8352"
+    },
+    {
+      "model": "vivo X300",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-14bc1d382d31"
+    },
+    {
+      "model": "vivo X300 E",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-22a1b1f13b5a"
+    },
+    {
+      "model": "vivo X300 Ultra",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-9d5fe1cb7fe1"
+    },
+    {
+      "model": "vivo X300s",
+      "fields": 22,
+      "missing": [
+        "sku",
+        "usb",
+        "nfc"
+      ],
+      "source_id": "cn20261017-c94f0286746d"
+    },
+    {
+      "model": "vivo Y500",
+      "fields": 23,
+      "missing": [
+        "sku",
+        "wifi"
+      ],
+      "source_id": "cn20261017-5bf68d0826c9"
+    },
+    {
+      "model": "vivo Y500 Pro",
+      "fields": 23,
+      "missing": [
+        "sku",
+        "wifi"
+      ],
+      "source_id": "cn20261017-546ae13ff90b"
+    },
+    {
+      "model": "vivo Y6",
+      "fields": 22,
+      "missing": [
+        "sku",
+        "wifi",
+        "nfc"
+      ],
+      "source_id": "cn20261017-8e91de8a7e25"
+    },
+    {
+      "model": "vivo Y60",
+      "fields": 22,
+      "missing": [
+        "sku",
+        "wifi",
+        "nfc"
+      ],
+      "source_id": "cn20261017-a87f6e8f6ca5"
+    },
+    {
+      "model": "vivo Y600 Pro",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-fe21fbef0418"
+    },
+    {
+      "model": "vivo Y600 Turbo",
+      "fields": 24,
+      "missing": [
+        "sku"
+      ],
+      "source_id": "cn20261017-b3666750cd4a"
+    },
+    {
+      "model": "vivo Y600i",
+      "fields": 22,
+      "missing": [
+        "sku",
+        "wifi",
+        "nfc"
+      ],
+      "source_id": "cn20261017-ba8d2fdfa5fb"
+    }
+  ]
+}

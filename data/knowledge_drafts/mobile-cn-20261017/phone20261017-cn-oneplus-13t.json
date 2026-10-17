@@ -1,0 +1,346 @@
+{
+  "knowledge_id": "phone20261017-cn-oneplus-13t",
+  "library_id": "equipment",
+  "title": "OnePlus 13T（国行）：扩充硬件与相机参数",
+  "kind": "manufacturer_fact",
+  "content": "# OnePlus 13T（国行）\n\n整理日期：2026-10-17；AI提取，尚未独立人工复核或真机验证。\n\n- 处理器：骁龙®8至尊版移动平台。\n- 屏幕尺寸：6.32 英寸。\n- 屏幕分辨率：FHD+ 2640×1216像素。\n- 刷新率及条件：1-120Hz 智能切换，最高支持 120Hz。\n- 屏幕类型：直面屏。\n- 官方列示存储组合：12GB+256GB，12GB+512GB，16GB+256GB，16GB+512GB，16GB+1TB。\n- 电池容量及版本条件：6260 mAh/23.98 Wh(典型值)；6145 mAh/23.54 Wh(额定值)（不可拆卸）。\n- 充电标称及条件：80W超级闪充。\n- 长度/高度：150.81mm。\n- 宽度：71.70mm。\n- 厚度：8.15mm。\n- 重量及版本条件：约185g。\n- 后置镜头及辅助传感器（按来源列示）：广角（主摄）：5000 万像素，f/1.8，等效焦距 24mm，支持 AF 自动对焦，支持两轴OIS；长焦摄像头: 5000 万像素，f/2.0，支持 2 倍光学长焦，支持 AF 自动对焦。\n- 前置摄像头：前置摄像头：1600万摄像头：f/2.4，等效焦距 24mm，不支持 AF 自动对焦。\n- 来源列示系统：ColorOS 15.0 基于 Android（安卓）系统。\n\n未核验字段：实体RAM选项、存储选项、防抖、变焦功能、视频录制摘要、USB、WLAN、蓝牙、NFC、上市月份。\n\n差异与待复核事项：以完整型号及字段内条件为准。\n\n使用边界：\n- 仅适用中国大陆销售版本；Pro、Plus、Ultra、mini和卫星通信版本不自动互相继承。\n- 公开参数为厂商声明，未经独立人工复核和真机验证；最高规格不代表所有模式与镜头同时可用。\n- 标称像素不等于每张成片像素；等效焦距不等于EXIF实际焦距；光学品质裁切不新增物理镜头。\n- 光圈标签不保证当前相机App可手动调节；ISO、快门范围、各镜头模式组合及固件兼容性本批未核验。\n- 电池保留典型值、额定值、等效容量及SKU差异；充电标称需对应适配器、线材与环境，不是持续功率。\n- 存储选项不生成未列出的RAM+ROM排列；动态内存扩展不计入实体RAM。\n- 源页面系统为页面列示版本，不代表当前系统或最高可升级版本。\n- 折叠屏保留内外屏、展开/折叠尺寸；色彩/多光谱辅助传感器不按独立成像镜头计数。\n\n来源：[OnePlus中国官网规格](https://www.oneplus.com/cn/13t/specs)\n\n状态：待审核草稿；禁止检索；参数资料未注册应用型号。",
+  "payload": {
+    "brand": "OnePlus",
+    "model_variant": "OnePlus 13T",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "骁龙®8至尊版移动平台",
+      "display_size": "6.32 英寸",
+      "display_resolution": "FHD+ 2640×1216像素",
+      "display_refresh": "1-120Hz 智能切换，最高支持 120Hz",
+      "display_panel": "直面屏",
+      "ram": null,
+      "storage": null,
+      "sku": "12GB+256GB，12GB+512GB，16GB+256GB，16GB+512GB，16GB+1TB",
+      "battery": "6260 mAh/23.98 Wh(典型值)\n6145 mAh/23.54 Wh(额定值)（不可拆卸）",
+      "charging": "80W超级闪充",
+      "height": "150.81mm",
+      "width": "71.70mm",
+      "thickness": "8.15mm",
+      "weight": "约185g",
+      "rear": "广角（主摄）：5000 万像素，f/1.8，等效焦距 24mm，支持 AF 自动对焦，支持两轴OIS；长焦摄像头: 5000 万像素，f/2.0，支持 2 倍光学长焦，支持 AF 自动对焦",
+      "front": "前置摄像头：1600万摄像头：f/2.4，等效焦距 24mm，不支持 AF 自动对焦",
+      "stabilization": null,
+      "zoom": null,
+      "video": null,
+      "usb": null,
+      "wifi": null,
+      "bluetooth": null,
+      "nfc": null,
+      "os": "ColorOS 15.0 基于 Android（安卓）系统",
+      "launch": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "骁龙®8至尊版移动平台",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "处理平台/平台",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "6.32 英寸",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "屏幕/尺寸",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "FHD+ 2640×1216像素",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "屏幕/分辨率",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "1-120Hz 智能切换，最高支持 120Hz",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "屏幕/刷新率",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "直面屏",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "屏幕/屏幕类型",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.sku",
+        "value": "12GB+256GB，12GB+512GB，16GB+256GB，16GB+512GB，16GB+1TB",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "存储/配置组合",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "6260 mAh/23.98 Wh(典型值)\n6145 mAh/23.54 Wh(额定值)（不可拆卸）",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "电池/电池",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "80W超级闪充",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "电池/充电",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "150.81mm",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "外观尺寸/高度",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "71.70mm",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "外观尺寸/宽度",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "8.15mm",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "外观尺寸/厚度",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "约185g",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "外观尺寸/重量",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "广角（主摄）：5000 万像素，f/1.8，等效焦距 24mm，支持 AF 自动对焦，支持两轴OIS；长焦摄像头: 5000 万像素，f/2.0，支持 2 倍光学长焦，支持 AF 自动对焦",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "相机/后置",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "前置摄像头：1600万摄像头：f/2.4，等效焦距 24mm，不支持 AF 自动对焦",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "相机/前置",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "ColorOS 15.0 基于 Android（安卓）系统",
+        "unit": "包含在原规格标签内；按字段保留，不用于无条件数值计算",
+        "source_ids": [
+          "cn20261017-6ff02d90140d"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "OnePlus 13T",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "值中的配色、存储、折叠状态及测试条件为本事实的一部分"
+        },
+        "verification_status": "AI_extracted_source_checked_pending_independent_review"
+      }
+    ],
+    "unknown_fields": [
+      "ram",
+      "storage",
+      "stabilization",
+      "zoom",
+      "video",
+      "usb",
+      "wifi",
+      "bluetooth",
+      "nfc",
+      "launch"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外版或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "cn20261017-6ff02d90140d",
+        "publisher": "OnePlus",
+        "title": "一加 13T 参数规格",
+        "url": "https://www.oneplus.com/cn/13t/specs",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "access_method": "browser_rendered",
+        "retrieval_allowed": false,
+        "rights_status": "必要参数事实整理与链接；不再分发整页、评论、图片或用户资料；使用许可待审核"
+      }
+    ],
+    "discovery": {
+      "site": "酷安",
+      "url": "https://coolapk.com/officialEvaluation",
+      "usage": "公开搜索索引中的机型线索；参数实际核验来源为中国官网",
+      "indexed_model_seen": false,
+      "direct_product_selector_access": "blocked_by_site_security_policy_567",
+      "direct_review_page_access": "blocked_by_site_security_policy_567"
+    },
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "runtime_registration": "未修改phone_profiles.yaml；草稿文件不会自动增加应用型号",
+    "data_scope": "选定可公开核验字段；不是完整参数库、实时在售状态、销量排名或实测结论"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "20261017",
+    "OnePlus"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "OnePlus 13T",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "OnePlus中国官网",
+    "url": "https://www.oneplus.com/cn/13t/specs",
+    "location": "各字段章节见payload.facts",
+    "license": "必要参数事实自行整理，许可与项目使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}
