@@ -222,3 +222,36 @@ def test_missing_weights_lazy_import_and_optional_backend():
     result, = runtime.segment_many(rgb, [api().SegmentationRegion("object1", (0, 0, 1, 1))])
     assert result.code == "weights_missing" and result.weights_sha256 is None
     runtime.close()
+
+
+def test_backend_cleanup_exception_is_sanitized_and_never_reuses_embedding():
+    class BrokenCleanup(SyntheticBackend):
+        def reset_image(self):
+            raise RuntimeError("private cleanup text")
+    runtime, _, rgb, regions = setup(BrokenCleanup())
+    result, = runtime.segment_many(rgb, regions)
+    assert result.code == "inference_failed" and result.mask is None
+    assert "private" not in str(result)
+    runtime.close()
+
+
+def test_invalid_mask_records_actual_candidate_denominator():
+    runtime, _, rgb, regions = setup(SyntheticBackend(np.zeros((3, 32, 40), bool),
+                                                      np.array([.5, .6, .7])))
+    result, = runtime.segment_many(rgb, regions)
+    assert result.code == "mask_empty" and result.candidate_count == 3
+
+
+def test_close_waits_for_active_call_and_releases_predictor_exactly_once():
+    backend = SyntheticBackend()
+    backend.release = Event()
+    runtime, _, rgb, regions = setup(backend)
+    with ThreadPoolExecutor(2) as pool:
+        first = pool.submit(runtime.segment_many, rgb, regions)
+        assert backend.entered.wait(1)
+        closing = pool.submit(runtime.close)
+        assert not closing.done()
+        backend.release.set()
+        assert first.result()[0].status == "success"
+        closing.result()
+    assert backend.closes == 1 and backend.last_rgb is None

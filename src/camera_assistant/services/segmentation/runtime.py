@@ -91,6 +91,7 @@ class SegmentationRuntime:
         self._slot = Lock()
         self._loaded = False
         self._closed = False
+        self._unhealthy = False
         self._embedding_key = None
 
     def _result(self, region, timings, code, mask=None, count=0, basis="none"):
@@ -103,7 +104,12 @@ class SegmentationRuntime:
 
     def _reset(self):
         self._embedding_key = None
-        self._backend.reset_image()
+        try:
+            self._backend.reset_image()
+        except Exception:  # noqa: BLE001 -- cleanup failures cannot expose native exception text
+            self._unhealthy = True
+            return False
+        return True
 
     def segment_many(self, rgb: np.ndarray, regions: Sequence[SegmentationRegion], *,
                      timeout_seconds: float = 10.0) -> list[SegmentationResult]:
@@ -154,7 +160,7 @@ class SegmentationRuntime:
                 timings[name] = time.perf_counter() - before
 
         try:
-            if self._closed:
+            if self._closed or self._unhealthy:
                 return failed_all("backend_unavailable")
             check_deadline()
             # Snapshot only after owning the slot: at most one retained image.
@@ -172,7 +178,8 @@ class SegmentationRuntime:
             ], separators=(",", ":")).encode())
             key = digest.digest()
             if key != self._embedding_key:
-                self._reset()
+                if not self._reset():
+                    raise BackendError("inference_failed")
                 stage("encode", lambda: self._backend.encode(snapshot))
                 check_deadline()
                 self._embedding_key = key
@@ -180,6 +187,7 @@ class SegmentationRuntime:
             any_failed = False
             for region, error in zip(regions, errors):
                 timings["decode"] = timings["postprocess"] = 0.
+                count = 0
                 if error:
                     results.append(self._result(region, timings, error))
                     any_failed = True
@@ -188,6 +196,8 @@ class SegmentationRuntime:
                     box = np.array(region.bbox, dtype=np.float32) * (
                         [rgb.shape[1], rgb.shape[0]] * 2)
                     candidates = stage("decode", lambda box=box: self._backend.predict(box))
+                    if isinstance(candidates.masks, np.ndarray) and candidates.masks.ndim == 3:
+                        count = len(candidates.masks)
                     check_deadline()
                     mask, count, basis = stage("postprocess", lambda candidates=candidates: _select(
                         candidates, rgb.shape[:2]))
@@ -195,7 +205,8 @@ class SegmentationRuntime:
                     results.append(self._result(region, timings, "mask_extracted", mask, count, basis))
                 except Exception as error:  # noqa: BLE001 -- frozen failure boundary
                     code = error.code if isinstance(error, BackendError) else "inference_failed"
-                    results.append(self._result(region, timings, code))
+                    results.append(self._result(region, timings, code, count=count,
+                                                basis="selection_failed" if count else "none"))
                     any_failed = True
             if any_failed:
                 self._reset()
@@ -212,7 +223,10 @@ class SegmentationRuntime:
             if not self._closed:
                 self._closed = True
                 self._embedding_key = None
-                self._backend.close()
+                try:
+                    self._backend.close()
+                except Exception:  # noqa: BLE001 -- close is idempotent and sanitized
+                    self._unhealthy = True
                 self._loaded = False
 
     def __enter__(self):
