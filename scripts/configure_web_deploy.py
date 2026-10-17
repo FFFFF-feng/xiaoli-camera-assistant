@@ -21,12 +21,11 @@ def main():
         parser.error("deploy/.env 已存在；请手工编辑已有配置，不会覆盖密钥。")
     content = (ROOT / "deploy/production.env.example").read_text(encoding="utf-8")
     content = content.replace("photo.example.com", domain)
-    content = content.replace("replace-with-private-invite-code", secrets.token_urlsafe(12))
     content = content.replace("replace-with-at-least-32-random-characters", secrets.token_urlsafe(48))
     with path.open("x", encoding="utf-8", newline="\n") as stream:
         stream.write(content)
     path.chmod(0o600)
-    print("已生成 deploy/.env。体验码保存在 WEB_ACCESS_CODE；请在本机查看，不要提交 Git。")
+    print("已生成 deploy/.env 和随机会话签名密钥；请在本机配置模型密钥，不要提交 Git。")
 
 
 if __name__ == "__main__":

@@ -67,27 +67,21 @@ def local_environment(port: int, demo: bool = False) -> tuple[dict[str, str], st
         if value is not None:
             environment.setdefault(key, value)
     # Reuse the user's existing local cloud configuration; never print or edit it.
-    for filename in (".env.zhipu-deploy", ".env.web-invite"):
-        for key, value in dotenv_values(ROOT / filename).items():
-            if key in {"CAMERA_AI_API_KEY", "WEB_ACCESS_CODE"} and value:
-                if key == "CAMERA_AI_API_KEY" and (
-                    (environment.get("CAMERA_AI_PRESET") or "glm-dino").strip().lower() != "glm-dino"
-                    or urlsplit(environment.get("CAMERA_AI_BASE_URL") or "https://open.bigmodel.cn/")
-                    .hostname != "open.bigmodel.cn"
-                ):
-                    continue
-                environment.setdefault(key, value)
+    for key, value in dotenv_values(ROOT / ".env.zhipu-deploy").items():
+        if key == "CAMERA_AI_API_KEY" and value:
+            if (
+                (environment.get("CAMERA_AI_PRESET") or "glm-dino").strip().lower() != "glm-dino"
+                or urlsplit(environment.get("CAMERA_AI_BASE_URL") or "https://open.bigmodel.cn/")
+                .hostname != "open.bigmodel.cn"
+            ):
+                continue
+            environment.setdefault(key, value)
     cloud = bool(environment.get("CAMERA_AI_API_KEY", "").strip()) and not demo
     if environment.get("APP_DEMO_MODE", "").lower() in {"true", "1", "yes"}:
         cloud = False
-    if cloud and len(environment.get("WEB_ACCESS_CODE", "")) < 8:
-        raise LaunchError("真实分析需要本地体验码配置 WEB_ACCESS_CODE；也可用 --demo 预览。")
     environment["APP_DEMO_MODE"] = "false" if cloud else "true"
     environment["WEB_ORIGIN"] = f"http://127.0.0.1:{port}"
-    environment["WEB_PUBLIC_DEMO"] = "false" if cloud else "true"
     environment["WEB_TRUSTED_PROXY_IP"] = ""
-    if not cloud:
-        environment["WEB_ACCESS_CODE"] = ""
     environment.setdefault("CAMERA_AI_PRESET", "glm-dino" if cloud else "custom")
     # Windows registry proxies are inherited by HTTPX even without *_PROXY env vars.
     # Local Zhipu calls work directly; retain explicit user choices and other providers.
@@ -217,7 +211,7 @@ def launch(npm: str, preferred: int, *, demo: bool = False, no_browser: bool = F
     print(f"当前项目：{ROOT}\n新版网页已启动（{'云模型' if mode == 'cloud' else '规则演示'}）：{url}", flush=True)
     print("本次仅在本机运行，没有上传或更新服务器。日志：.launcher/web.log", flush=True)
     if mode == "cloud":
-        print("使用本机已有模型配置；体验码沿用本机私有配置，密钥不会显示。", flush=True)
+        print("使用本机已有模型配置，密钥不会显示。", flush=True)
     if not no_browser:
         webbrowser.open(url, new=1)
     return url

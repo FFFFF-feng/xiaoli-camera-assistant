@@ -61,7 +61,7 @@ def main(argv=None):
         return 0
     from launch_web import local_environment
 
-    environment, mode = local_environment(urlsplit(args.url).port or 80)
+    _, mode = local_environment(urlsplit(args.url).port or 80)
     if mode != "cloud":
         raise SystemExit("当前本机配置不是云模型模式，未执行真实模型验收。")
     content = args.image.read_bytes()
@@ -69,7 +69,7 @@ def main(argv=None):
     headers = {"Origin": args.url, "X-Xiaoli-Client": "web"}
     rows = []
     with httpx.Client(base_url=args.url, headers=headers, timeout=540, trust_env=False) as client:
-        client.post("/session", json={"access_code": environment.get("WEB_ACCESS_CODE", "")}).raise_for_status()
+        client.post("/session").raise_for_status()
         for index in range(args.repeat):
             print(f"真实上传分析 {index+1}/{args.repeat}；不自动重试失败请求。", flush=True)
             started = time.monotonic()

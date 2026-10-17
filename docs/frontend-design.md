@@ -35,7 +35,7 @@
 
 前端开发预览：在 `mobile` 目录执行 `npm run dev`。默认端口被占用时，可使用 `npm run dev -- --port 5174`。
 
-完整规则演示：先在 `mobile` 目录执行 `npm run build`，再从项目目录运行 `scripts/start_web.py --demo`。已有体验码与网关配置仍按项目原有流程使用。
+完整规则演示：先在 `mobile` 目录执行 `npm run build`，再从项目目录运行 `scripts/start_web.py --demo`。同站网页在演示和真实模型模式均自动建立签名会话，无需输入体验码；独立 Android 客户端仍沿用手机网关连接令牌。
 
 ## 2026-10-17 本地构图版本整合
 
