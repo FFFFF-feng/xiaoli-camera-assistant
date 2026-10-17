@@ -73,6 +73,25 @@ class FakePipeline:
         return Value()
 
 
+@pytest.mark.parametrize("scene_route", [False, True])
+def test_complete_composition_partial_is_forwarded_before_final(scene_route):
+    def run(content, request, **options):
+        options["on_partial"]({"kind": "composition_ready", "value": Value(label="完整构图已校验")})
+        return Value(label="完整方案")
+
+    with TestClient(mobile_api.create_app(configured(), TOKEN, FakePipeline(run))) as client:
+        files = [("file", ("main.jpg", photo(), "image/jpeg"))]
+        if scene_route:
+            files.append(("reference_files", ("reference.jpg", photo(), "image/jpeg")))
+        response = client.post("/api/v1/analyze-scene" if scene_route else "/api/v1/analyze",
+                               headers=AUTH, files=files, data=form())
+    events = decoded(response)
+    ready = [event for event in events if event.get("kind") == "composition_ready"]
+    assert len(ready) == 1 and ready[0]["value"] == {"label": "完整构图已校验"}
+    assert events.index(ready[0]) < len(events) - 1
+    assert events[-1]["type"] == "result"
+
+
 def test_demo_stream_orders_progress_validated_partial_and_final_without_cloud(monkeypatch):
     monkeypatch.setattr(mobile_api, "observe_stream", lambda _: pytest.fail("demo cloud call"))
     pipeline = FakePipeline()

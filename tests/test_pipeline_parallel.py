@@ -28,6 +28,52 @@ image_content = fixtures.image_content
 user_request = fixtures.user_request
 
 
+@pytest.mark.parametrize("parameter_fails", [False, True])
+def test_completed_local_board_is_published_while_camera_parameters_are_pending(
+    settings, image_content, user_request, monkeypatch, parameter_fails,
+):
+    from copy import deepcopy
+
+    from test_composition_advisor import proposal
+    from test_observed_composition import observed
+
+    from camera_assistant.services.observed_composition import parse_observed_scene
+
+    ready, parameter_finished = Event(), Event()
+    source = parse_observed_scene(observed())
+    monkeypatch.setattr(composition_service, "observe_objects", lambda *_: source)
+    value = {"proposals": [{**proposal(), "composition_intent": {
+        "focus_object_id": "object1", "diagnosis": "完整保护建筑边缘", "placement": "left",
+    }}]}
+    monkeypatch.setattr(composition_service, "request_json", lambda *_: deepcopy(value))
+    parameter = FakeParameterAdvisor()
+    original = parameter.recommend
+
+    def slow_parameters(*args):
+        assert ready.wait(5), "validated board was blocked by the unfinished parameter branch"
+        parameter_finished.set()
+        if parameter_fails:
+            raise cloud.ModelServiceError("参数暂不可用")
+        return original(*args)
+
+    monkeypatch.setattr(parameter, "recommend", slow_parameters)
+    pipeline = make_pipeline(settings, retriever(settings), None, parameter,
+        composition_service.OpenAICompatibleCompositionAdvisor(settings))
+    snapshots = []
+
+    def partial(event):
+        if event["kind"] == "composition_ready":
+            assert not parameter_finished.is_set()
+            snapshots.append(event["value"].model_dump())
+            assert event["value"].proposals[0].storyboard.layout_engine == "local_v1"
+            event["value"].proposals[0].goal = "consumer edit"
+            ready.set()
+
+    result = pipeline.run(image_content, user_request, parallel_advice=True, on_partial=partial)
+    assert ready.is_set() and parameter_finished.is_set()
+    assert snapshots == [result.composition.model_dump()]
+
+
 def retriever(settings):
     return ManagedKnowledgeRetriever(KnowledgeStore(settings.knowledge_db_path))
 

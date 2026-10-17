@@ -10,9 +10,11 @@ import { createSceneTransition, useTactileSurfaces } from './interaction';
 import { selectSceneFiles } from './scene-files.mjs';
 import { normalizeBaseUrl, safeSourceUrl } from './connection.mjs';
 import { readAnalysis } from './analysis-stream.mjs';
+import { completedComposition } from './completed-composition.mjs';
 import type { Analysis, CameraLensProfile, CameraProfile, PhoneProfile } from './types';
 import DevicePicker from './components/DevicePicker.vue';
 import CompositionView from './components/CompositionView.vue';
+import TargetComposition from './components/TargetComposition.vue';
 import { compatibleLenses, deviceSelection, linkedCameraSettings, mountNames, sensorLabel } from './device-selection.mjs';
 
 const page = ref<'shoot' | 'result' | 'history' | 'connect'>('shoot');
@@ -58,6 +60,8 @@ const receivedChars = computed(() => Object.values(received.value).reduce((sum, 
 const partialScene = ref<Analysis['result']['scene'] | null>(null);
 const partialParameters = ref<Analysis['result']['recommendation'] | null>(null);
 const partialComposition = ref<Analysis['result']['composition'] | null>(null);
+const partialReady = ref<Analysis['result']['composition'] | null>(null);
+const pendingPhotos = ref<{id:string;url:string}[]>([]);
 const phaseTimings = ref<NonNullable<Analysis['timings']>>([]);
 const timingNames: Record<string, string> = {
   upload: '照片上传', upload_validation: '照片检查', queue: '等待处理',
@@ -263,7 +267,7 @@ async function analyze() {
   if (!consent.value) { error.value = '请先勾选照片上传与分析说明。'; return; }
   busy.value = true;
   analysis.value = null; partialScene.value = null; partialParameters.value = null;
-  partialComposition.value = null; phaseTimings.value = [];
+  partialComposition.value = null; partialReady.value = null; pendingPhotos.value = []; phaseTimings.value = [];
   received.value = {}; progressLog.value = []; progressStage.value = 0;
   progressMessage.value = '正在上传照片…'; elapsed.value = 0; statusStartedAt.value = 0;
   const started = performance.now();
@@ -293,6 +297,7 @@ async function analyze() {
       phone_lens_id: phoneManual.value ? 'main' : lensId.value,
       phone_pro_controls_confirmed: !phoneManual.value && proConfirmed.value,
     }));
+    pendingPhotos.value=ordered.map((item,index)=>({id:`photo${index+1}`,url:item.url}));
     analysis.value = await api(ordered.length > 1 ? '/api/v1/analyze-scene' : '/api/v1/analyze', { method: 'POST', body: form, signal: controller.signal }, event => {
       if (event.type === 'progress' && typeof event.message === 'string') {
         if (progressMessage.value !== event.message) statusStartedAt.value = (performance.now() - started) / 1000;
@@ -306,12 +311,20 @@ async function analyze() {
         if (event.kind === 'scene') partialScene.value = event.value;
         if (event.kind === 'composition') {
           partialComposition.value = event.value;
-          progressMessage.value = '构图文字已完成，正在绘制推荐画面…';
+          progressMessage.value = partialReady.value ? '构图已完成，正在整理其余拍摄建议…' : '构图文字已校验，正在整理推荐画面…';
           statusStartedAt.value = (performance.now() - started) / 1000;
+        }
+        if (event.kind === 'composition_ready') {
+          const ready=completedComposition(event.value,pendingPhotos.value.map(item=>item.id));
+          if(ready) {
+            partialReady.value=ready;
+            progressMessage.value='构图已完成，正在整理其余拍摄建议…';
+            statusStartedAt.value=(performance.now()-started)/1000;
+          }
         }
         if (event.kind === 'parameters') {
           partialParameters.value = event.value;
-          progressMessage.value = '拍摄参数已校验，正在整理完整方案…';
+          progressMessage.value = partialReady.value ? '构图与参数已完成，正在汇总方案…' : '拍摄参数已校验，正在整理完整方案…';
           statusStartedAt.value = (performance.now() - started) / 1000;
         }
       } else if (event.type === 'timing' && timingNames[event.stage]
@@ -462,7 +475,16 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
             <p class="progress-log-heading">进度记录 · 左侧为服务处理开始后的记录时刻，不是步骤耗时</p>
             <ol class="progress-log"><li v-for="(item, index) in progressLog" :key="index"><time>开始后 {{ item.seconds.toFixed(1) }} 秒</time>{{ item.message }}</li></ol>
             <div v-if="partialScene" class="partial-result"><span class="result-badge">已完成的画面分析</span><h2>{{ partialScene.scene_label || partialScene.scene_type }}</h2><p>{{ partialScene.subject }} · {{ partialScene.lighting }}</p></div>
-            <div v-if="partialComposition?.proposals?.length" class="partial-result partial-composition"><span class="result-badge">构图文字已校验 · 推荐图仍在绘制</span><article v-for="(proposal, index) in partialComposition.proposals" :key="index"><h2>{{ proposal.goal }}</h2><ul><li v-for="action in proposal.actions" :key="action">{{ action }}</li></ul><p v-if="proposal.framing_plan">{{ proposal.framing_plan.diagnosis }}</p><details v-if="proposal.conditions.length || proposal.tradeoffs.length || proposal.limitations.length"><summary>适用条件与限制</summary><p v-for="note in [...proposal.conditions, ...proposal.tradeoffs, ...proposal.limitations]" :key="note">{{ note }}</p></details></article><p v-for="note in partialComposition.uncertainties" :key="note">{{ note }}</p></div>
+            <div v-if="partialReady?.proposals?.length" class="partial-result completed-composition">
+              <span class="result-badge">推荐构图已完成 · 完整拍摄方案仍在整理</span>
+              <article v-for="(proposal,index) in partialReady.proposals" :key="index">
+                <TargetComposition v-if="proposal.storyboard" :board="proposal.storyboard" :reference="pendingPhotos.find(item=>item.id===proposal.storyboard?.reference_photo_id)?.url || ''" />
+                <h2>{{ proposal.goal }}</h2><ul><li v-for="action in proposal.actions" :key="action">{{ action }}</li></ul>
+                <details v-if="proposal.conditions.length || proposal.tradeoffs.length || proposal.limitations.length"><summary>适用条件与限制</summary><p v-for="note in [...proposal.conditions,...proposal.tradeoffs,...proposal.limitations]" :key="note">{{ note }}</p></details>
+              </article>
+              <p v-for="note in partialReady.uncertainties" :key="note">{{ note }}</p><p v-for="note in partialReady.notes" :key="note">{{ note }}</p>
+            </div>
+            <div v-else-if="partialComposition?.proposals?.length" class="partial-result partial-composition"><span class="result-badge">构图文字已校验 · 推荐画面正在整理</span><article v-for="(proposal, index) in partialComposition.proposals" :key="index"><h2>{{ proposal.goal }}</h2><ul><li v-for="action in proposal.actions" :key="action">{{ action }}</li></ul><p v-if="proposal.framing_plan">{{ proposal.framing_plan.diagnosis }}</p><details v-if="proposal.conditions.length || proposal.tradeoffs.length || proposal.limitations.length"><summary>适用条件与限制</summary><p v-for="note in [...proposal.conditions, ...proposal.tradeoffs, ...proposal.limitations]" :key="note">{{ note }}</p></details></article><p v-for="note in partialComposition.uncertainties" :key="note">{{ note }}</p></div>
             <div v-if="partialParameters" class="partial-result"><span class="result-badge">参数已校验 · 完整方案仍在整理</span><h2>{{ partialParameters.shooting_mode }}</h2><dl class="settings-list"><div v-for="(value, label) in { '光圈': partialParameters.aperture, '快门': partialParameters.shutter_speed, 'ISO': partialParameters.iso, '对焦': partialParameters.focus_mode }" :key="label"><dt>{{ label }}</dt><dd>{{ value }}</dd></div></dl><p v-for="step in partialParameters.adjustments" :key="step">{{ step }}</p><details v-if="partialParameters.risks?.length || partialParameters.validation_notes?.length"><summary>适用条件与器材说明</summary><p v-for="note in [...partialParameters.risks, ...partialParameters.validation_notes]" :key="note">{{ note }}</p></details><p class="helper">这是当前已完成的部分，完整方案与构图仍需等待；参数是试拍起点。</p></div>
             <details v-if="phaseTimings.length" class="phase-timings"><summary>已完成环节用时</summary><p v-for="(item, index) in phaseTimings" :key="index">{{ timingNames[item.stage] }}：{{ item.duration_seconds.toFixed(1) }} 秒{{ item.status === 'failed' ? '（未完成）' : '' }}</p><p class="helper">环节可能并行，用时不能直接相加。</p></details>
           </section>

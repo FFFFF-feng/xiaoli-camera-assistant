@@ -324,6 +324,7 @@ class CameraAssistantPipeline:
                 report("正在生成构图建议…")
                 with measure_stage("composition"), observe_composition(
                     lambda advice: publish_partial("composition", advice),
+                    on_ready=lambda advice: publish_partial("composition_ready", advice),
                 ):
                     return self.composition_advisor.recommend(
                         inspection, effective_request, scene, localization, composition_hits, camera

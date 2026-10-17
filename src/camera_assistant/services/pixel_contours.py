@@ -6,6 +6,7 @@ still produce wrong boundaries. Never turn a failed mask into a rectangle.
 from __future__ import annotations
 
 import base64
+import hashlib
 import io
 from threading import BoundedSemaphore
 
@@ -15,6 +16,7 @@ from PIL import Image
 
 from camera_assistant.composition_models import ObservedObject, ObservedScene
 from camera_assistant.models import ImageInspection
+from camera_assistant.services.contour_cache import MemoryContourCache
 from camera_assistant.services.drawing_geometry import simple_outline
 from camera_assistant.services.pixel_strokes import structural_strokes
 from camera_assistant.services.scene_context import context_mask, scene_remainder, trace_context
@@ -23,6 +25,8 @@ _SLOT = BoundedSemaphore(1)
 cv2.setNumThreads(1)
 MAX_EDGE = 720
 DETAIL_EDGE = 1280
+_ALGORITHM_VERSION = "pixel-contours-v1"
+_CACHE = MemoryContourCache()
 
 
 def _simplify(contour, closed=True, detail=False):
@@ -151,18 +155,37 @@ def observed_metadata(answer: dict) -> ObservedScene:
 def trace_observed_scene(answer: dict, inspection: ImageInspection) -> ObservedScene:
     """Ignore any model-generated paths; only use its checked object metadata."""
     metadata = observed_metadata(answer)
-    if len(metadata.objects) > 4 or not _SLOT.acquire(timeout=.5):
+    if len(metadata.objects) > 4:
+        raise ValueError("轮廓提取任务繁忙或对象数量过多")
+    raw = base64.b64decode(inspection.model_image_data_url.split(",", 1)[1], validate=True)
+    if len(raw) > 8*1024*1024:
+        raise ValueError("内部参考图过大")
+    # Parse the actual image header before accepting a hit. Inspection metrics,
+    # data-URL labels and discarded provider paths cannot select cached pixels.
+    with Image.open(io.BytesIO(raw)) as image:
+        if image.width*image.height > 4_000_000:
+            raise ValueError("内部参考图像素过大")
+    digest = hashlib.sha256(
+        f"{_ALGORITHM_VERSION}:{MAX_EDGE}:{DETAIL_EDGE}:{cv2.__version__}\0".encode()
+    )
+    digest.update(hashlib.sha256(raw).digest())
+    digest.update(metadata.model_dump_json().encode("utf-8"))
+    key = digest.digest()
+    cached = _CACHE.get(key)
+    if cached is not None:
+        return ObservedScene.model_validate_json(cached)
+    if not _SLOT.acquire(timeout=.5):
         raise ValueError("轮廓提取任务繁忙或对象数量过多")
     try:
+        # A concurrent caller may have completed while this one waited for the
+        # existing CPU slot. Recheck to avoid segmenting identical pixels twice.
+        cached = _CACHE.get(key)
+        if cached is not None:
+            return ObservedScene.model_validate_json(cached)
         # GrabCut initializes colour clusters randomly. A fixed seed under this
         # process-wide slot makes identical pixels/boxes reproducible.
         cv2.setRNGSeed(0)
-        raw = base64.b64decode(inspection.model_image_data_url.split(",", 1)[1], validate=True)
-        if len(raw) > 8*1024*1024:
-            raise ValueError("内部参考图过大")
         with Image.open(io.BytesIO(raw)) as image:
-            if image.width*image.height > 4_000_000:
-                raise ValueError("内部参考图像素过大")
             image.thumbnail((DETAIL_EDGE, DETAIL_EDGE))
             detailed_rgb = np.asarray(image.convert("RGB"))
             if max(image.size) > MAX_EDGE:
@@ -215,9 +238,11 @@ def trace_observed_scene(answer: dict, inspection: ImageInspection) -> ObservedS
         remainder = scene_remainder(rgb, objects, identifier)
         if remainder:
             objects.append(remainder)
-        return ObservedScene.model_validate({**metadata.model_dump(), "objects": [o.model_dump() for o in objects],
+        result = ObservedScene.model_validate({**metadata.model_dump(), "objects": [o.model_dump() for o in objects],
             "limitations": ["物体区域来自视觉识别，轮廓由CPU像素分割提取；复杂背景、遮挡与细小部件可能提取不准。",
                             "环境线条来自区域内实际边界，可能含邻近景物，不是逐物体语义分割；低纹理背景不补画。",
                             *part_notes, *omitted, *metadata.limitations][:5]})
+        _CACHE.put(key, result.model_dump_json().encode("utf-8"))
+        return result
     finally:
         _SLOT.release()

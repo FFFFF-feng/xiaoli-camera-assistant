@@ -125,7 +125,7 @@ export function sceneColorTransform(board,showSource=false) {
   return {x,y,width,height};
 }
 
-export async function loadSceneColors(source,board) {
+export async function scenePhotoPixels(source) {
   const image=new Image();image.crossOrigin='anonymous';image.src=source;
   await image.decode();
   const aspect=image.naturalWidth/image.naturalHeight;
@@ -137,11 +137,16 @@ export async function loadSceneColors(source,board) {
   if(!context)throw new Error('无法准备场景配色');
   context.drawImage(image,0,0,canvas.width,canvas.height);
   const original=context.getImageData(0,0,canvas.width,canvas.height);
+  return {aspect,pixels:{data:original.data,width:original.width,height:original.height}};
+}
+
+// The same masks and palette run on either Canvas or OffscreenCanvas.
+export function colorizeScenePixels(original,board,createCanvas=()=>document.createElement('canvas')) {
   const woody=board.layers.some(l=>['tree','branch','tree_branch'].includes(l.kind));
   const flat=flatSceneColors(original,6,{woody});
   // Sample only within each observed, closed subject outline, then paint it cleanly.
   // Do not close open environmental lines or infer a new object mask from a bounding box.
-  const mask=document.createElement('canvas');mask.width=canvas.width;mask.height=canvas.height;
+  const mask=createCanvas();mask.width=original.width;mask.height=original.height;
   const maskContext=mask.getContext('2d',{willReadFrequently:true});
   if(!maskContext)throw new Error('无法准备主体配色');
   const fills=board.layers.map(layer=>{
@@ -158,6 +163,19 @@ export async function loadSceneColors(source,board) {
       return counts.size?subjectIllustrationColor(layer,counts):null;
     });
   });
-  context.putImageData(new ImageData(flat.data,canvas.width,canvas.height),0,0);
-  return {url:canvas.toDataURL('image/png'),aspect,fills,pixels:{data:flat.data,width:canvas.width,height:canvas.height}};
+  return {fills,pixels:{data:flat.data,width:original.width,height:original.height}};
+}
+
+export function scenePixelsUrl(pixels) {
+  const canvas=document.createElement('canvas');canvas.width=pixels.width;canvas.height=pixels.height;
+  const context=canvas.getContext('2d');
+  if(!context)throw new Error('无法准备场景配色');
+  context.putImageData(new ImageData(pixels.data,pixels.width,pixels.height),0,0);
+  return canvas.toDataURL('image/png');
+}
+
+export async function loadSceneColors(source,board) {
+  const {aspect,pixels}=await scenePhotoPixels(source);
+  const result=colorizeScenePixels(pixels,board);
+  return {...result,aspect,url:scenePixelsUrl(result.pixels)};
 }

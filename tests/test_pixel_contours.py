@@ -12,6 +12,15 @@ from camera_assistant.models import ExifInfo, ImageInspection, ImageMetrics
 from camera_assistant.services import pixel_contours as tracing
 
 
+@pytest.fixture(autouse=True)
+def empty_contour_cache():
+    # Every invariant test exercises segmentation, even when its fixture pixels
+    # happen to match an earlier test. Cache reuse has its own dedicated tests.
+    tracing._CACHE.clear()
+    yield
+    tracing._CACHE.clear()
+
+
 def inspection(image):
     stream = io.BytesIO()
     image.save(stream, format="PNG")

@@ -327,7 +327,7 @@ def create_app(
             }})
 
         def partial(event):
-            if event.get("kind") not in {"scene", "parameters", "composition"}:
+            if event.get("kind") not in {"scene", "parameters", "composition", "composition_ready"}:
                 return
             value = event["value"]
             if isinstance(value, BaseModel):

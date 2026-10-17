@@ -3,8 +3,9 @@ import { computed,onBeforeUnmount,ref,useId,watch } from 'vue';
 import type { TargetBoard } from '../types';
 import { DEFAULT_TARGET_COLOR, DEFAULT_TARGET_GRID, detailPath, outlinePath, sourceLayout, silhouetteLayers, targetLayerPaint, thirdsGuide } from '../target-board.mjs';
 import { frameAspect } from '../composition-sketch.mjs';
-import { loadSceneColors,sceneColorTransform } from '../scene-colors.mjs';
-import { sceneEdgeDirections,sceneExtensionImage,sceneContinuationPaths } from '../scene-extension.mjs';
+import { sceneColorTransform } from '../scene-colors.mjs';
+import { sceneEdgeDirections,sceneContinuationPaths } from '../scene-extension.mjs';
+import { sceneRenderer,createLatestTask } from '../scene-render.mjs';
 const props=defineProps<{board:TargetBoard;reference?:string}>();
 const sheet=ref<SVGSVGElement>();
 const grid=ref(DEFAULT_TARGET_GRID),labels=ref(true),color=ref(DEFAULT_TARGET_COLOR),environment=ref(true),extendBackground=ref(true),saved=ref(''),showSource=ref(false);
@@ -19,25 +20,28 @@ const visibleLayers=computed(()=>layers.value.filter(layer=>environment.value||l
 const visibleMarks=computed(()=>markedLayers.value.filter(layer=>environment.value||layer.representation!=='context_lines'));
 const distanceNames={closer:'适当靠近',farther:'适当退后',similar:'保持相近距离',unknown:'距离需现场判断'};
 const main=computed(()=>props.board.layers.find(layer=>layer.role==='main')!);
-const sceneColor=ref<{url:string;aspect:number;fills:(string|null)[][];pixels:{data:Uint8ClampedArray;width:number;height:number}}|null>(null),colorBusy=ref(false),colorFailed=ref(false);
+const sceneColor=ref<{key:string;url:string;aspect:number;fills:(string|null)[][];pixels:{data:Uint8ClampedArray;width:number;height:number}}|null>(null),colorBusy=ref(false),colorFailed=ref(false);
 const colorClip=`scene-color-${useId()}`;
-let colorRequest=0;
-watch([()=>props.reference,()=>props.board],async ([source,board])=>{
-  const request=++colorRequest;sceneColor.value=null;colorFailed.value=false;colorBusy.value=!!source;
+const colorsTask=createLatestTask(),extensionTask=createLatestTask();
+watch([()=>props.reference,()=>props.board],([source,board])=>{
+  colorsTask.cancel();sceneColor.value=null;colorFailed.value=false;colorBusy.value=!!source;
   if(!source)return;
-  try {const result=await loadSceneColors(source,board);if(request===colorRequest)sceneColor.value=result;}
-  catch {if(request===colorRequest)colorFailed.value=true;}
-  finally {if(request===colorRequest)colorBusy.value=false;}
+  void colorsTask.run(()=>sceneRenderer.colors(source,board),(result:NonNullable<typeof sceneColor.value>)=>{sceneColor.value=result;},
+    ()=>{colorFailed.value=true;},()=>{colorBusy.value=false;});
 },{immediate:true});
-onBeforeUnmount(()=>{colorRequest++;});
+onBeforeUnmount(()=>{colorsTask.cancel();extensionTask.cancel();});
 const colorTransform=computed(()=>sceneColorTransform(props.board,showSource.value));
 const hasSceneColor=computed(()=>color.value&&sceneColor.value&&colorTransform.value
   &&Math.abs(sceneColor.value.aspect/(props.board.source_photo_aspect||0)-1)<.02);
 const edgeDirections=computed(()=>sceneColor.value?sceneEdgeDirections(props.board,sceneColor.value.pixels.width,sceneColor.value.pixels.height):[]);
-const extensionImage=computed(()=>{
-  if(!hasSceneColor.value||!extendBackground.value||showSource.value||!sceneColor.value||!colorTransform.value)return null;
-  return sceneExtensionImage(sceneColor.value.pixels,colorTransform.value,frameAspect(props.board.aspect),edgeDirections.value);
-});
+const extensionImage=ref<string|null>(null);
+watch(()=>({enabled:hasSceneColor.value&&extendBackground.value&&!showSource.value,scene:sceneColor.value,
+  transform:colorTransform.value,aspect:frameAspect(props.board.aspect),directions:edgeDirections.value}),state=>{
+  extensionTask.cancel();extensionImage.value=null;
+  if(!state.enabled||!state.scene||!state.transform)return;
+  void extensionTask.run(()=>sceneRenderer.extension(state.scene!,state.transform!,state.aspect,state.directions),
+    (result:string|null)=>{extensionImage.value=result;});
+},{immediate:true});
 const continuedLines=computed(()=>extensionImage.value&&colorTransform.value&&sceneColor.value
   ?sceneContinuationPaths(edgeDirections.value,colorTransform.value,sceneColor.value.pixels.width,sceneColor.value.pixels.height,width,height.value):[]);
 const mainFills=computed(()=>sceneColor.value?.fills[props.board.layers.indexOf(main.value)]||[]);

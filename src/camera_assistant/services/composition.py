@@ -43,15 +43,23 @@ from vision_lab_tool.detector_models import MethodResult
 _composition_observer: ContextVar[Callable[[CompositionAdvice], None] | None] = ContextVar(
     "composition_layout_observer", default=None,
 )
+_ready_observer: ContextVar[Callable[[CompositionAdvice], None] | None] = ContextVar(
+    "composition_ready_observer", default=None,
+)
 
 
 @contextmanager
-def observe_composition(observer: Callable[[CompositionAdvice], None]):
-    """Publish validated text while the geometry stage continues independently."""
+def observe_composition(
+    observer: Callable[[CompositionAdvice], None],
+    *, on_ready: Callable[[CompositionAdvice], None] | None = None,
+):
+    """Keep text snapshots separate from fully validated local geometry."""
     token = _composition_observer.set(observer)
+    ready_token = _ready_observer.set(on_ready)
     try:
         yield
     finally:
+        _ready_observer.reset(ready_token)
         _composition_observer.reset(token)
 
 
@@ -68,6 +76,20 @@ def _publish_layout(advice: CompositionAdvice) -> None:
     try:
         observer(snapshot)
     except Exception:  # noqa: BLE001 -- UI callbacks must not interrupt paid work
+        return
+
+
+def _publish_ready(advice: CompositionAdvice) -> None:
+    """Only the completed local-intent path may publish a drawable snapshot."""
+    observer = _ready_observer.get()
+    boards = [proposal.storyboard for proposal in advice.proposals if proposal.storyboard]
+    if (observer is None or not boards
+            or any(board.layout_engine != "local_v1" or board.render_basis != "source_geometry"
+                   for board in boards)):
+        return
+    try:
+        observer(advice.model_copy(deep=True))
+    except Exception:  # noqa: BLE001 -- a closed display must not discard the final result
         return
 
 
@@ -372,6 +394,7 @@ class OpenAICompatibleCompositionAdvisor:
         resolved = rechecked.model_copy(update={"trace_id": trace_id, "diagnostics": diagnostics,
             "notes": list(dict.fromkeys([*notes, *rechecked.notes]))})
         _publish_layout(resolved)
+        _publish_ready(resolved)
         return resolved
 
     def recommend(
