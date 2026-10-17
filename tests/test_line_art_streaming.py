@@ -144,7 +144,9 @@ def test_parallel_and_serial_keep_identical_validated_line_art(
         image_content, user_request, parallel_advice=True, on_partial=partials.append,
     )
 
-    assert parallel.model_dump(mode="json") == serial.model_dump(mode="json")
+    assert parallel.composition.trace_id != serial.composition.trace_id
+    assert parallel.model_dump(mode="json", exclude={"composition": {"trace_id"}}) == serial.model_dump(
+        mode="json", exclude={"composition": {"trace_id"}})
     assert_complete_line_art(parallel.model_dump(mode="json"), model_advice)
     assert partials[0]["kind"] == "scene"
     assert {event["kind"] for event in partials} == {"scene", "parameters", "composition"}
@@ -206,5 +208,33 @@ def test_default_and_explicit_json_preserve_the_same_line_art_payload(
     assert {"request_id", "analysis_mode", "image_provenance", "result"} <= envelope.keys()
     assert envelope["scene_photo_count"] == 1 and envelope["timings"]
     assert envelope["analysis_mode"] == "cloud"
+    assert envelope["result"]["composition"].pop("trace_id") != expected["composition"].pop("trace_id")
     assert envelope["result"] == expected
     assert_complete_line_art(envelope["result"], model_advice)
+
+
+@pytest.mark.parametrize("stream", [True, False])
+def test_minimal_intent_goes_through_upload_pipeline_and_only_final_geometry_is_displayable(
+    settings, pipeline_factory, image_content, user_request, monkeypatch, stream,
+):
+    from test_composition_advisor import proposal
+    from test_observed_composition import observed
+
+    from camera_assistant.composition_models import ObservedScene
+
+    pipeline = pipeline_factory()
+    monkeypatch.setattr(composition_service, "observe_objects", lambda *_: ObservedScene.model_validate(observed()))
+    monkeypatch.setattr(composition_service, "request_json", lambda *_: {"proposals": [{
+        **proposal(), "composition_intent": {"focus_object_id": "object1", "diagnosis": "主体完整优先",
+                                            "placement": "left", "subject_scale": "larger"}}]})
+    with TestClient(mobile_api.create_app(settings, TOKEN, pipeline)) as client:
+        result = post_photo(client, image_content, user_request, stream_events=stream)
+    assert result.status_code == 200
+    events = decoded(result) if stream else []
+    final = events[-1]["result"] if stream else result.json()["result"]
+    board = final["composition"]["proposals"][0]["storyboard"]
+    assert board["render_basis"] == "source_geometry" and board["layout_engine"] == "local_v1"
+    assert any(d["code"] == "local_layout_solved" for d in final["composition"]["diagnostics"])
+    for event in events[:-1]:
+        if event.get("type") == "partial" and event.get("kind") == "composition":
+            assert event["value"]["proposals"][0]["storyboard"] is None

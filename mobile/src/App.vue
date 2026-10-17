@@ -65,7 +65,7 @@ const timingNames: Record<string, string> = {
   upload: '照片上传', upload_validation: '照片检查', queue: '等待处理',
   image_preprocessing: '照片准备', vision: '画面识别', localization: '主体定位',
   parameter_retrieval: '拍摄资料检索', composition_retrieval: '构图资料检索',
-  composition_observation: '物体与空间识别', composition_contours: '提取物体轮廓', composition_layout: '目标构图规划', target_drawing: '推荐图线条', composition: '完整构图',
+  composition_observation: '物体与空间识别', composition_contours: '提取物体轮廓', composition_layout: '构图意图分析', composition_local_layout: '本地布局计算', target_drawing: '推荐图线条', composition: '完整构图',
   parameters: '拍摄建议', parameter_validation: '参数校验', total: '分析全程',
 };
 const progressStage = ref(0);

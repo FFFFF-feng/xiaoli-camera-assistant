@@ -71,7 +71,9 @@ def test_unvalidated_layout_is_never_published(inputs, monkeypatch):
     monkeypatch.setattr(observed_composition, "request_json", lambda *_: {"objects": []})
     monkeypatch.setattr(composition, "apply_observed_layout", lambda *_: pytest.fail("invalid layout drawn"))
     inspection, request, scene, camera, settings = inputs
-    with composition.observe_composition(observed.append), pytest.raises(ValueError):
-        composition.OpenAICompatibleCompositionAdvisor(settings).recommend(
+    with composition.observe_composition(observed.append):
+        result = composition.OpenAICompatibleCompositionAdvisor(settings).recommend(
             inspection, request, scene, None, [], camera)
+    assert result.status == "unavailable" and not result.proposals
+    assert any(d.code == "advice_invalid" for d in result.diagnostics)
     assert observed == []

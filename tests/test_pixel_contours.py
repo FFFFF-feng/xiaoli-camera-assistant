@@ -194,6 +194,36 @@ def test_disconnected_flower_units_keep_both_shapes_and_their_relative_positions
     assert data == frozen
 
 
+def test_failed_optional_leaf_keeps_flower_but_failed_flower_is_never_silently_erased(monkeypatch):
+    data = metadata()
+    data["objects"][0].update(kind="flower", parts=[
+        {"label": "花", "kind": "flower", "bbox": [.25, .25, .5, .5]},
+        {"label": "叶", "kind": "leaf", "bbox": [.3, .3, .55, .55]}])
+    parent = tracing.observed_metadata(data).objects[0]
+    def extraction(_rgb, obj, **_):
+        if obj.kind == "leaf":
+            raise ValueError("no leaf edge")
+        return obj
+    monkeypatch.setattr(tracing, "_trace_single", extraction)
+    result = tracing._trace(np.zeros((100, 100, 3), np.uint8), parent)
+    assert len(result.contours) == 1
+    def bad_flower(*_, **__):
+        raise ValueError("flower failed")
+    monkeypatch.setattr(tracing, "_trace_single", bad_flower)
+    with pytest.raises(ValueError, match="flower failed"):
+        tracing._trace(np.zeros((100, 100, 3), np.uint8), parent)
+
+
+def test_same_pixels_and_observation_produce_identical_contours_across_requests():
+    photo = inspection(building())
+    first = tracing.trace_observed_scene(metadata(), photo)
+    # Other callers may have advanced OpenCV's global generator in between.
+    tracing.cv2.setRNGSeed(741)
+    tracing.cv2.randn(np.zeros((8, 8), np.float32), 0, 1)
+    second = tracing.trace_observed_scene(metadata(), photo)
+    assert first == second
+
+
 @pytest.mark.parametrize("parts", [
     [{"label": "越界", "bbox": [0, 0, .5, .5]}],
     [{"label": "重复", "bbox": [.2, .2, .4, .4]}]*2,

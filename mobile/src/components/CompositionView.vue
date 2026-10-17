@@ -18,6 +18,8 @@ watch(()=>props.preview,()=>{selected.value=0;selectedPhoto.value='';selectedCro
 const proposals = computed(() => props.result.composition?.proposals || []);
 const current = computed(() => proposals.value[selected.value] || proposals.value[0]);
 const board = computed(() => usableTargetBoard(current.value?.storyboard) as TargetBoard | null);
+const diagnosticNames={recognition:'物体识别',contours:'主体轮廓',intent:'构图意图',layout:'布局计算'};
+const diagnosticStatus={complete:'完成',failed:'未完成',skipped:'未执行'};
 const boardReference = computed(() => props.photos.find(p=>p.id===board.value?.reference_photo_id)?.url
   || (board.value?.reference_photo_id==='photo1'?props.preview:''));
 const editReferenceId=computed(()=>board.value?.reference_photo_id||'photo1');
@@ -52,8 +54,9 @@ const shadePath = computed(() => {
     <template v-if="view === 'sketch' || !preview">
       <p v-if="board" class="helper">{{ board.render_basis==='source_geometry'?'轮廓来自原图物体解析，位置和大小表达推荐取景；换机位的透视与遮挡仍需试拍核对。':'这是旧版布局草图，尚未关联原始物体轮廓；建议重新分析获取新版线稿。' }}</p>
       <TargetComposition v-if="board" :board="board" :reference="boardReference" />
-      <div v-else-if="proposals.length" class="sketch-unavailable" role="status"><strong>推荐线稿未完成</strong><p>文字建议已生成，但这次未获得可展示的主体轮廓或目标布局。</p><p v-for="note in result.composition?.notes" :key="note">{{ note }}</p><p>可以切换到原图对照继续检查取景；重新分析会再次调用模型。</p></div>
+      <div v-else-if="proposals.length" class="sketch-unavailable" role="status"><strong>推荐线稿未完成</strong><p>{{ current?.storyboard?'布局已返回，但前端未通过绘图数据检查。':'文字建议已生成，但这次未获得可展示的主体轮廓或目标布局。' }}</p><p v-for="note in result.composition?.notes" :key="note">{{ note }}</p><p>可以切换到原图对照继续检查取景；重新分析会再次调用模型。</p></div>
     </template>
+    <details v-if="result.composition?.diagnostics?.length" class="photo-inspection"><summary>查看生成环节</summary><p v-for="(item,index) in result.composition.diagnostics" :key="index">{{ diagnosticNames[item.stage] }}：{{ diagnosticStatus[item.status] }}</p><p v-if="current?.storyboard&&!board">画面展示：绘图数据检查未通过。</p><p v-if="result.composition.trace_id">排查编号：{{ result.composition.trace_id }}</p></details>
     <details v-if="preview && view === 'photo'" class="photo-inspection" :open="selectedCrop!==null"><summary>检查原图主体与裁切边界</summary>
       <div v-if="photos.length>1" class="reference-photo-switch" aria-label="原图参考选择"><button v-for="item in photos" :key="item.id" type="button" :aria-pressed="compareId===item.id" @click="selectedPhoto=item.id; selectedCrop=null">第 {{ item.id.slice(5) }} 张</button></div><div class="composition-image">
         <img :src="comparePreview" alt="现场照片与构图参考线" />

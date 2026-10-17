@@ -108,7 +108,9 @@ def test_cannot_demote_main_to_a_prop(inspection):
     scene = ObservedScene.model_validate(observed())
     value = advice()
     value.proposals[0].storyboard.layers[0].role = "prop"
-    assert service.apply_observed_layout(value, scene, inspection).proposals[0].storyboard is None
+    result = service.apply_observed_layout(value, scene, inspection)
+    assert result.proposals[0].storyboard is None
+    assert any("原始主体不能变为陪体" in note for note in result.notes)
 
 
 def test_cannot_reverse_fixed_buildings(inspection):

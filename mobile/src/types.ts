@@ -40,6 +40,7 @@ export interface TargetBoard {
   aspect:'portrait'|'landscape'|'square'; reference_photo_id:string; intent:string;narration?:string;
   distance_relation:'closer'|'farther'|'similar'|'unknown'; distance_instruction:string;
   render_basis?:'legacy'|'source_geometry';layout_mode?:'schematic'|'crop_projection';source_photo_aspect?:number|null;
+  layout_engine?:'legacy'|'local_v1';
   layers:{label:string;kind:string;role:'main'|'foreground'|'background'|'prop';depth:number;bbox:number[];
     color:'slate'|'blue'|'ochre'|'sage'|'rose';representation?:'silhouette'|'context_lines';outline:number[][];contours?:number[][][];outline_style?:'angular'|'curved';details:number[][][];source_details?:number[][][]|null;
     identity_features:string[];evidence_photo_ids:string[];certainty:'observed'|'approximate';
@@ -63,6 +64,8 @@ export interface Analysis {
     composition?: {
       status: 'grounded' | 'unverified' | 'unavailable' | 'demo';
       observations: string[]; uncertainties: string[]; notes: string[];
+      trace_id?:string|null;
+      diagnostics?:{stage:'recognition'|'contours'|'intent'|'layout';status:'complete'|'failed'|'skipped';code:string}[];
       proposals: { action_type: string; goal: string; actions: string[]; reasons: string[];
         tradeoffs: string[]; conditions: string[]; limitations: string[]; knowledge_ids: string[];
         crop_bbox?: number[] | null; sketch?: CompositionSketchData | null; framing_plan?: FramingPlan | null;storyboard?:TargetBoard|null }[];

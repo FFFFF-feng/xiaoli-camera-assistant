@@ -195,6 +195,44 @@ def test_unknown_background_reference_keeps_grounded_subject_drawing(inputs, mon
     assert any("未确认的环境物体" in note for note in target.limitations)
 
 
+@pytest.mark.parametrize("failure, expected", [
+    ("missing_board", "模型未提供有效的构图意图"),
+    ("missing_aspect", "画幅（缺少必填项）"),
+    ("bad_bbox", "位置与大小"),
+    ("unknown_subject", "引用的主体不在已识别物体中"),
+])
+def test_failed_layout_reports_reason_and_keeps_text(inputs, monkeypatch, failure, expected):
+    from test_observed_composition import advice, observed
+
+    source = observed_composition.parse_observed_scene(observed())
+    monkeypatch.setattr(composition, "observe_objects", lambda *_: source)
+    board = advice().proposals[0].storyboard.model_dump()
+    board["layers"] = [{"source_object_id": "object1", "bbox": [.1, .1, .6, .8], "role": "main"}]
+    if failure == "missing_board":
+        board = None
+    elif failure == "missing_aspect":
+        del board["aspect"]
+    elif failure == "bad_bbox":
+        board["layers"][0]["bbox"] = [.8, .1, .2, .9]
+    else:
+        board["layers"][0]["source_object_id"] = "not-a-source"
+    monkeypatch.setattr(composition, "request_json", lambda *_: response([{**proposal(), "storyboard": board}]))
+    result = composition.OpenAICompatibleCompositionAdvisor(inputs[4]).recommend(
+        inputs[0], inputs[1], inputs[2], None, [], inputs[3])
+    assert result.proposals[0].storyboard is None
+    assert result.proposals[0].actions
+    assert any(expected in note for note in result.notes)
+
+
+def test_layout_diagnostics_do_not_echo_provider_values_or_unknown_field_names():
+    board = target_board()
+    board["aspect"] = "provider-private-value"
+    board["provider-private-key"] = "provider-private-input"
+    issue = composition._layout_format_issue(board)
+    assert "画幅" in issue
+    assert "provider-private" not in issue
+
+
 def test_cloud_payload_preserves_evidence_image_and_only_public_localization(inputs, monkeypatch):
     evidence = hit()
     captured = {}
@@ -308,9 +346,10 @@ def test_crop_bbox_cannot_be_disguised_as_reshoot():
 
 def test_cloud_schema_errors_do_not_display_raw_model_values(inputs, monkeypatch):
     invalid_proposal = proposal("crop", bbox=[0, 0, "private model response", 1])
-    with pytest.raises(ValueError, match="格式或裁切坐标无效") as error:
-        call_advisor(inputs, monkeypatch, response([invalid_proposal]), loc=localization())
-    assert "private model response" not in str(error.value)
+    result = call_advisor(inputs, monkeypatch, response([invalid_proposal]), loc=localization())
+    assert result.status == "unavailable" and not result.proposals
+    assert "private model response" not in result.model_dump_json()
+    assert any(d.code == "advice_invalid" for d in result.diagnostics)
 
 
 def test_demo_does_not_invent_image_observations_or_grounded_suggestions(inputs):
@@ -336,7 +375,7 @@ def test_sketch_is_validated_and_preserved_with_advice(inputs, monkeypatch):
     captured = {}
     advice = call_advisor(inputs, monkeypatch, response([item]), captured=captured)
     assert advice.proposals[0].sketch.elements[0].kind == "tree"
-    assert "简笔画分镜数据" in captured["messages"][0]["content"][0]["text"]
+    assert "不绘图、不返回坐标" in captured["messages"][0]["content"][0]["text"]
 
 
 @pytest.mark.parametrize("box", [[0, 0, 2, 1], [False, 0, 1, 1], [0, 0, float("nan"), 1], [.5, 0, .4, 1]])
@@ -562,9 +601,9 @@ def test_layout_stage_does_not_require_geometry_and_background_is_not_a_subject(
                                   "details": [[[.1, .3], [.9, .3]], [[.2, .3], [.2, 1]]]}
                                  for layer in board["layers"]], "limitations": ["模型估计"]}
         schema = json.loads(prompt.split("输出 Schema：\n")[1])
-        assert "outline" not in schema["$defs"]["TargetLayer"]["properties"]
-        assert set(schema["$defs"]["TargetLayer"]["properties"]) == {"source_object_id", "bbox", "role", "color"}
-        assert schema["$defs"]["TargetLayer"]["properties"]["source_object_id"]["enum"] == ["object1", "object2"]
+        assert "TargetLayer" not in schema["$defs"]
+        assert "storyboard" not in schema["$defs"]["CompositionProposal"]["properties"]
+        assert schema["$defs"]["CompositionIntent"]["properties"]["focus_object_id"]["enum"] == ["object1"]
         assert "crop" not in schema["$defs"]["CompositionProposal"]["properties"]["action_type"]["enum"]
         stages.append("layout")
         return response([{**proposal(), "storyboard": board}])

@@ -255,12 +255,38 @@ class TargetBoard(CompositionModel):
     render_basis: Literal["legacy", "source_geometry"] = "legacy"
     layout_mode: Literal["schematic", "crop_projection"] = "schematic"
     source_photo_aspect: float | None = Field(default=None, gt=0, le=100)
+    layout_engine: Literal["legacy", "local_v1"] = "legacy"
 
     @model_validator(mode="after")
     def contains_main(self):
         if not any(layer.role == "main" for layer in self.layers):
             raise ValueError("推荐分镜必须包含主体")
         return self
+
+
+class CompositionIntent(CompositionModel):
+    """Small, versioned planning contract; coordinates belong to the local solver."""
+
+    version: Literal[1] = 1
+    focus_object_id: str = Field(pattern=r"^object[1-6]$")
+    diagnosis: str = Field(min_length=1, max_length=140)
+    placement: Literal["keep", "left", "center", "right"] = "keep"
+    vertical_placement: Literal["keep", "upper", "center", "lower"] = "keep"
+    subject_scale: Literal["keep", "larger", "smaller"] = "keep"
+    aspect: Literal["keep", "portrait", "landscape", "square"] = "keep"
+
+    @field_validator("diagnosis")
+    @classmethod
+    def nonblank_diagnosis(cls, value):
+        if not value.strip():
+            raise ValueError("构图诊断不能为空白")
+        return value.strip()
+
+
+class CompositionDiagnostic(CompositionModel):
+    stage: Literal["recognition", "contours", "intent", "layout"]
+    status: Literal["complete", "failed", "skipped"]
+    code: str = Field(pattern=r"^[a-z_]{1,48}$")
 
 
 class CompositionProposal(CompositionModel):
@@ -276,6 +302,17 @@ class CompositionProposal(CompositionModel):
     sketch: CompositionSketch | None = None
     framing_plan: FramingPlan | None = None
     storyboard: TargetBoard | None = None
+    composition_intent: CompositionIntent | None = None
+
+    @field_validator("composition_intent", mode="before")
+    @classmethod
+    def optional_intent(cls, value):
+        if value is None:
+            return None
+        try:
+            return CompositionIntent.model_validate(value)
+        except (ValidationError, ValueError, TypeError):
+            return None  # Keep independently valid text; advisor records the reason.
 
     @field_validator("storyboard", mode="before")
     @classmethod
@@ -357,3 +394,5 @@ class CompositionAdvice(CompositionModel):
     uncertainties: list[str] = Field(default_factory=list)
     proposals: list[CompositionProposal] = Field(default_factory=list)
     notes: list[str] = Field(default_factory=list)
+    trace_id: str | None = Field(default=None, pattern=r"^[a-f0-9]{32}$")
+    diagnostics: list[CompositionDiagnostic] = Field(default_factory=list, max_length=12)

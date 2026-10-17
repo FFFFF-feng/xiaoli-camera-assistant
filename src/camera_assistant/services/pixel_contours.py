@@ -109,7 +109,14 @@ def _trace(rgb: np.ndarray, obj: ObservedObject) -> ObservedObject:
         })
         # Each center belongs to a visually identified flower/feature, rather
         # than an arbitrary seed in the middle of the entire disconnected group.
-        parts.append(_trace_single(rgb, observed, seeded=part.kind == "flower"))
+        try:
+            parts.append(_trace_single(rgb, observed, seeded=part.kind == "flower"))
+        except (ValueError, cv2.error):
+            if part.kind != "leaf":
+                raise  # A failed flower must not be silently erased from its cluster.
+            # Optional leaves may lack a separable boundary; keep real flowers.
+    if not parts:
+        return _trace_single(rgb, obj.model_copy(update={"parts": []}))
     box = [min(p.bbox[0] for p in parts), min(p.bbox[1] for p in parts),
            max(p.bbox[2] for p in parts), max(p.bbox[3] for p in parts)]
     def project(part, path):
@@ -147,6 +154,9 @@ def trace_observed_scene(answer: dict, inspection: ImageInspection) -> ObservedS
     if len(metadata.objects) > 4 or not _SLOT.acquire(timeout=.5):
         raise ValueError("轮廓提取任务繁忙或对象数量过多")
     try:
+        # GrabCut initializes colour clusters randomly. A fixed seed under this
+        # process-wide slot makes identical pixels/boxes reproducible.
+        cv2.setRNGSeed(0)
         raw = base64.b64decode(inspection.model_image_data_url.split(",", 1)[1], validate=True)
         if len(raw) > 8*1024*1024:
             raise ValueError("内部参考图过大")
@@ -185,9 +195,11 @@ def trace_observed_scene(answer: dict, inspection: ImageInspection) -> ObservedS
                 continue
             try:
                 pixels = detailed_rgb if obj.kind == "flower" and obj.parts else rgb
-                objects.append(_trace(pixels, obj))
+                traced = _trace(pixels, obj)
+                objects.append(traced)
                 if obj.parts and obj.kind == "flower":
-                    part_notes.append(f"“{obj.label}”按{len(obj.parts)}处已识别分部绘制，未逐一识别的细小部件未完整表达。")
+                    count = len(traced.contours)
+                    part_notes.append(f"“{obj.label}”保留{count}处可分离分部轮廓；识别到{len(obj.parts)}处分部，未分离的叶片或细小部件未完整表达。")
             except (ValueError, cv2.error):
                 if obj.role == "main":
                     raise ValueError("主要物体轮廓提取失败，请补充清晰的主体照片") from None
