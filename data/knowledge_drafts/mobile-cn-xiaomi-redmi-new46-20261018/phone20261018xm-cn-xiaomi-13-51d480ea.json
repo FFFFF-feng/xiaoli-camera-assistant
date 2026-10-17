@@ -1,0 +1,468 @@
+{
+  "knowledge_id": "phone20261018xm-cn-xiaomi-13-51d480ea",
+  "library_id": "equipment",
+  "title": "Xiaomi 13（国行）：手机硬件与相机参数补充",
+  "kind": "manufacturer_fact",
+  "content": "# Xiaomi 13（国行）\n\n整理日期：2026-10-18；待独立审核的厂商参数草稿。\n\n- 处理器：第二代骁龙®8移动平台；SoC 工艺：台积电4nm工艺制程；CPU 主频：八核处理器，最高主频可达3.19GHz；GPU ：Adreno™ GPU 图形处理器\n- 屏幕尺寸：尺寸 ：6.36″专业旗舰屏\n- 屏幕分辨率：分辨率：2400 x 1080\n- 刷新率及条件：显示帧率：最高 120Hz\n- 屏幕类型：类型：OLED 柔性直屏\n- 实体RAM选项：WiFi 6 增强版 + LPDDR5X 满血版 + UFS 4.0；运行内存：8GB / 12GB LPDDR5X 高速内存（8533 Mbps）\n- 存储选项：官网列示容量128GB / 256GB / 512GB，笼统列示UFS 4.0；未分别绑定容量版本，各容量对应闪存类型待核验，不能据此认定128GB版为UFS 4.0。\n- 官网列示存储组合：12GB+512GB 最高可选\n- 电池容量及版本条件：4500mAh（typ） / 4400mAh（min）；内置单电芯高能量密度电池，不可拆卸\n- 充电标称及条件：小米澎湃电池管理系统｜67W 小米澎湃有线秒充｜；50W 小米澎湃无线秒充｜10W 无线反充；67W 小米澎湃有线秒充 / 50W 小米澎湃无线秒充 / 10W 无线反充\n- 高度：长度：152.8mm\n- 宽度：宽度：71.5mm\n- 厚度：厚度：7.98mm（玻璃）丨 8.1mm（科技纳米皮）\n- 重量及版本条件：重量：189g（玻璃）丨185g（科技纳米皮）\n- 后置摄像头及辅助传感器：徕卡主摄：54MP / 50MP （total / effective）传感器丨1/1.49 inch，2.0μm融合大像素丨；徕卡长焦：10MP 传感器*丨1/3.75 inch，1.0μm单像素丨75mm等效焦距丨f/2.0丨OIS光学防抖；徕卡超广角：12MP 传感器丨1/3.06 inch，1.12μm单像素丨15mm等效焦距丨f/2.2\n- 前置摄像头：前置3200万像素高清镜头\n- 防抖：23mm等效焦距丨 f/1.8丨HyperOIS 超级光学防抖；徕卡长焦：10MP 传感器*丨1/3.75 inch，1.0μm单像素丨75mm等效焦距丨f/2.0丨OIS光学防抖\n- 视频录制摘要：官网列示片段（未核验逐镜头及前后摄模式对应，不可视为任一镜头全部支持）：8K 视频拍摄： 24fps；720P 视频拍摄： 30fps；1080P 120 / 240 / 480 / 960 / 1920fps；720P 120 / 240 / 480 / 960 / 1920fps；1080P 视频拍摄：30fps；720P 视频拍摄：30fps\n- USB接口：USB Type-C；USB Type-C 双面充电接口\n- WLAN：WLAN 协议： WiFi 7，WiFi 6 增强版，WiFi 5，WiFi 4 以及 802.11a / b / g；WLAN 频率： 2.4G WiFi | 5G WiFi\n- 蓝牙：蓝牙：Bluetooth 5.3；Dual-Bluetooth\n- NFC：官网参数页明确列有NFC；具体服务、城市、卡片和车型以钱包及运营方支持为准。\n- 来源列示系统：MIUI 14\n\n未核验字段：变焦、来源列示上市时间、散热系统、触控肩键、指纹识别\n\n\n使用边界：\n- 只适用对应完整型号的中国大陆销售版本，不能用于海外版、相近型号或未注明的卫星通信版。\n- 厂商公开规格由AI提取，未经独立人工审核或真机验证；全部为草稿，禁止受管检索。\n- 保留内外屏、折叠状态、配色材质和RAM/存储版本条件。未列出的组合不能通过排列生成。\n- 电池保留典型值、额定值、双电芯等效值；不同数值不能无条件相加或替换。\n- 快充标称需相应适配器、线材与测试条件，不是持续功率；无线充电与有线充电分开理解。\n- 镜头像素不等于输出照片像素；等效焦距不等于实际焦距；光学品质变焦不增加物理镜头。\n- 来源中的辅助感光、色彩及深度传感器按原表保留，不据此增加独立可拍摄镜头。\n- 原生/第三方App手动ISO、快门、可调光圈与逐镜头模式组合未核验，不能由硬件参数推断。\n- 系统为来源列示版本；官网页面保留不代表当前在售，未核验实时库存、价格、销量或软件支持期限。\n- 未知字段为null，不代表不支持。字段条目数不是完整度评分。\n\n来源：[Xiaomi中国官网参数](https://www.mi.com/xiaomi-13/specs)",
+  "payload": {
+    "brand": "Xiaomi",
+    "model_variant": "Xiaomi 13",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "第二代骁龙®8移动平台；SoC 工艺：台积电4nm工艺制程；CPU 主频：八核处理器，最高主频可达3.19GHz；GPU ：Adreno™ GPU 图形处理器",
+      "display_size": "尺寸 ：6.36″专业旗舰屏",
+      "display_resolution": "分辨率：2400 x 1080",
+      "display_refresh": "显示帧率：最高 120Hz",
+      "display_panel": "类型：OLED 柔性直屏",
+      "ram": "WiFi 6 增强版 + LPDDR5X 满血版 + UFS 4.0；运行内存：8GB / 12GB LPDDR5X 高速内存（8533 Mbps）",
+      "storage": "官网列示容量128GB / 256GB / 512GB，笼统列示UFS 4.0；未分别绑定容量版本，各容量对应闪存类型待核验，不能据此认定128GB版为UFS 4.0。",
+      "sku": "12GB+512GB 最高可选",
+      "battery": "4500mAh（typ） / 4400mAh（min）；内置单电芯高能量密度电池，不可拆卸",
+      "charging": "小米澎湃电池管理系统｜67W 小米澎湃有线秒充｜；50W 小米澎湃无线秒充｜10W 无线反充；67W 小米澎湃有线秒充 / 50W 小米澎湃无线秒充 / 10W 无线反充",
+      "height": "长度：152.8mm",
+      "width": "宽度：71.5mm",
+      "thickness": "厚度：7.98mm（玻璃）丨 8.1mm（科技纳米皮）",
+      "weight": "重量：189g（玻璃）丨185g（科技纳米皮）",
+      "rear": "徕卡主摄：54MP / 50MP （total / effective）传感器丨1/1.49 inch，2.0μm融合大像素丨；徕卡长焦：10MP 传感器*丨1/3.75 inch，1.0μm单像素丨75mm等效焦距丨f/2.0丨OIS光学防抖；徕卡超广角：12MP 传感器丨1/3.06 inch，1.12μm单像素丨15mm等效焦距丨f/2.2",
+      "front": "前置3200万像素高清镜头",
+      "stabilization": "23mm等效焦距丨 f/1.8丨HyperOIS 超级光学防抖；徕卡长焦：10MP 传感器*丨1/3.75 inch，1.0μm单像素丨75mm等效焦距丨f/2.0丨OIS光学防抖",
+      "zoom": null,
+      "video": "官网列示片段（未核验逐镜头及前后摄模式对应，不可视为任一镜头全部支持）：8K 视频拍摄： 24fps；720P 视频拍摄： 30fps；1080P 120 / 240 / 480 / 960 / 1920fps；720P 120 / 240 / 480 / 960 / 1920fps；1080P 视频拍摄：30fps；720P 视频拍摄：30fps",
+      "usb": "USB Type-C；USB Type-C 双面充电接口",
+      "wifi": "WLAN 协议： WiFi 7，WiFi 6 增强版，WiFi 5，WiFi 4 以及 802.11a / b / g；WLAN 频率： 2.4G WiFi | 5G WiFi",
+      "bluetooth": "蓝牙：Bluetooth 5.3；Dual-Bluetooth",
+      "nfc": "官网参数页明确列有NFC；具体服务、城市、卡片和车型以钱包及运营方支持为准。",
+      "os": "MIUI 14",
+      "launch": null,
+      "cooling": null,
+      "shoulder_buttons": null,
+      "fingerprint": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "第二代骁龙®8移动平台；SoC 工艺：台积电4nm工艺制程；CPU 主频：八核处理器，最高主频可达3.19GHz；GPU ：Adreno™ GPU 图形处理器",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 处理器/移动平台",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "尺寸 ：6.36″专业旗舰屏",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 屏幕显示（内外屏按原文）",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "分辨率：2400 x 1080",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 屏幕显示/分辨率",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "显示帧率：最高 120Hz",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 屏幕显示/刷新率",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "类型：OLED 柔性直屏",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 屏幕显示/类型",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.ram",
+        "value": "WiFi 6 增强版 + LPDDR5X 满血版 + UFS 4.0；运行内存：8GB / 12GB LPDDR5X 高速内存（8533 Mbps）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 内存容量",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.storage",
+        "value": "官网列示容量128GB / 256GB / 512GB，笼统列示UFS 4.0；未分别绑定容量版本，各容量对应闪存类型待核验，不能据此认定128GB版为UFS 4.0。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 官网参数表及相邻镜头/版本注释逐项复核",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.sku",
+        "value": "12GB+512GB 最高可选",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 内存容量（只列原文组合，不生成排列）",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "4500mAh（typ） / 4400mAh（min）；内置单电芯高能量密度电池，不可拆卸",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 续航与充电/电池（典型、额定及电芯口径）",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "小米澎湃电池管理系统｜67W 小米澎湃有线秒充｜；50W 小米澎湃无线秒充｜10W 无线反充；67W 小米澎湃有线秒充 / 50W 小米澎湃无线秒充 / 10W 无线反充",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 续航与充电（有线、无线、反充及来源条件）",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "长度：152.8mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 外观尺寸（保留材质/折叠状态）",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "宽度：71.5mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 外观尺寸（保留材质/折叠状态）",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "厚度：7.98mm（玻璃）丨 8.1mm（科技纳米皮）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 外观尺寸（保留材质/折叠状态）",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "重量：189g（玻璃）丨185g（科技纳米皮）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 外观尺寸（保留材质/折叠状态）",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "徕卡主摄：54MP / 50MP （total / effective）传感器丨1/1.49 inch，2.0μm融合大像素丨；徕卡长焦：10MP 传感器*丨1/3.75 inch，1.0μm单像素丨75mm等效焦距丨f/2.0丨OIS光学防抖；徕卡超广角：12MP 传感器丨1/3.06 inch，1.12μm单像素丨15mm等效焦距丨f/2.2",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 影像系统/后置镜头（只列明确镜头，不合并像素）",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "前置3200万像素高清镜头",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 影像系统/前置镜头",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.stabilization",
+        "value": "23mm等效焦距丨 f/1.8丨HyperOIS 超级光学防抖；徕卡长焦：10MP 传感器*丨1/3.75 inch，1.0μm单像素丨75mm等效焦距丨f/2.0丨OIS光学防抖",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 影像系统/防抖（镜头条件见原文）",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "官网列示片段（未核验逐镜头及前后摄模式对应，不可视为任一镜头全部支持）：8K 视频拍摄： 24fps；720P 视频拍摄： 30fps；1080P 120 / 240 / 480 / 960 / 1920fps；720P 120 / 240 / 480 / 960 / 1920fps；1080P 视频拍摄：30fps；720P 视频拍摄：30fps",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 影像系统/视频规格片段；逐镜头及前后摄对应待复核",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.usb",
+        "value": "USB Type-C；USB Type-C 双面充电接口",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 数据传输/充电接口（接口形态不等于速率）",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.wifi",
+        "value": "WLAN 协议： WiFi 7，WiFi 6 增强版，WiFi 5，WiFi 4 以及 802.11a / b / g；WLAN 频率： 2.4G WiFi | 5G WiFi",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 数据连接/WLAN",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "蓝牙：Bluetooth 5.3；Dual-Bluetooth",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 数据连接/蓝牙",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.nfc",
+        "value": "官网参数页明确列有NFC；具体服务、城市、卡片和车型以钱包及运营方支持为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 多功能NFC",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "MIUI 14",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-42be1d1f235eb0fe"
+        ],
+        "source_location": "中国官网参数页 / 操作系统（来源列示，不代表当前系统）",
+        "conditions": {
+          "model_variant": "Xiaomi 13",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      }
+    ],
+    "unknown_fields": [
+      "zoom",
+      "launch",
+      "cooling",
+      "shoulder_buttons",
+      "fingerprint"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外或相邻型号补值。",
+    "variant_notes": [
+      "处理器、存储、镜头和充电均保留来源写法；未列出的容量组合、ISO/快门范围及镜头模式保持未知。"
+    ],
+    "sources": [
+      {
+        "source_id": "CN400-42be1d1f235eb0fe",
+        "publisher": "Xiaomi",
+        "title": "Xiaomi 13 国行参数页",
+        "url": "https://www.mi.com/xiaomi-13/specs",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-18",
+        "method": "小米中国官网公开参数页及页面明确引用的静态产品文字提取；未执行下载代码",
+        "source_content_sha256": "ae96b24655acef1eb7eedd594c353ef583d9160be09f6a3806cbba61c0dfd275",
+        "retrieval_allowed": false,
+        "rights_status": "必要规格事实重组与链接，未收录图片/整页；许可及项目使用待审核",
+        "evidence_resource_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi.com-assets/shop/pro/js/product/xiaomi-13/specs.646410a7.js",
+        "evidence_resource_sha256": "b140f411c39f2f4777b4bb503f09e51f0dcdfb30803d508b60925e945976cb56"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-18",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "data_scope": "小米与REDMI国行新增参数草稿；选定规格，不代表当前在售或完整参数",
+    "runtime_registration": "只生成知识文件，不修改phone_profiles.yaml，不写主数据库"
+  },
+  "tags": [
+    "国行手机",
+    "小米REDMI补充",
+    "Xiaomi"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "Xiaomi 13",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "Xiaomi中国官网",
+    "url": "https://www.mi.com/xiaomi-13/specs",
+    "location": "各字段位置见payload.facts",
+    "license": "必要规格事实重组，许可与使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

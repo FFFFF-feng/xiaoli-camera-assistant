@@ -1,0 +1,438 @@
+{
+  "knowledge_id": "phone20261018xm-cn-xiaomi-civi-4-pro-7b4f0583",
+  "library_id": "equipment",
+  "title": "Xiaomi Civi 4 Pro（国行）：手机硬件与相机参数补充",
+  "kind": "manufacturer_fact",
+  "content": "# Xiaomi Civi 4 Pro（国行）\n\n整理日期：2026-10-18；待独立审核的厂商参数草稿。\n\n- 处理器：第三代骁龙  8s移动平台；SoC 工艺：台积电 4nm 工艺制程；CPU 主频：八核处理器，最高主频可达：3.0GHz；GPU：Adreno GPU\n- 屏幕尺寸：尺寸：6.55″\n- 屏幕分辨率：分辨率：2750 x 1236\n- 刷新率及条件：显示帧率：最高120Hz\n- 屏幕类型：类型：AMOLED全等深微曲屏\n- 实体RAM选项：运行内存：LPDDR5X 高速内存\n- 存储选项：机身存储：256GB / 512GB UFS 4.0高速存储\n- 官网列示存储组合：12GB+256GB / 12GB+512GB / 16GB+512GB\n- 电池容量及版本条件：1. 4700mAh(typ)/4600mAh(min)\n- 充电标称及条件：4700mAh 大电池｜67W 疾速秒充；5. 67W 疾速秒充 | 40 分钟充 100%\n- 高度：长度：157.2mm\n- 宽度：宽度：72.77mm\n- 厚度：厚度：柔雾粉、微风蓝、星空黑7.45mm；春野绿7.75mm；限量定制色7.75mm\n- 重量及版本条件：重量：柔雾粉、微风蓝、星空黑179.3g；春野绿177.6g；限量定制色180.9g\n- 后置摄像头及辅助传感器：5000万徕卡光学Summilux镜头；5000万徕卡专业人像镜头；后置5000万徕卡光学Summilux镜头；后置5000万徕卡专业人像镜头；后置1200万徕卡超广角镜头；120°超大广角｜\n- 前置摄像头：前置32MP像素 78°美人镜主摄；等效焦距26mm｜f/2.0超大光圈｜1.6μm 融合大像素｜2X人像特写｜AF自动对焦｜ALD超低反镀膜；前置32MP像素 100°超广角主摄\n- 视频录制摘要：官网列示片段（未核验逐镜头及前后摄模式对应，不可视为任一镜头全部支持）：4K 30fps；1080p 30fps/60fps；720p 30fps；4K 24/30/60fps；1080p 30/60fps；1080p 120/240/960fps；720p 120/240/480/960/1920fps\n- WLAN：WLAN 协议：WiFi 6，WiFi 5，WiFi 4 以及 802.11a / b / g；WLAN 频率：2.4G WiFi | 5G WiFi\n- 蓝牙：蓝牙：Bluetooth 5.4\n- NFC：官网参数页明确列有NFC；具体服务、城市、卡片和车型以钱包及运营方支持为准。\n- 来源列示系统：Xiaomi HyperOS\n\n未核验字段：防抖、变焦、USB接口、来源列示上市时间、散热系统、触控肩键、指纹识别\n\n\n使用边界：\n- 只适用对应完整型号的中国大陆销售版本，不能用于海外版、相近型号或未注明的卫星通信版。\n- 厂商公开规格由AI提取，未经独立人工审核或真机验证；全部为草稿，禁止受管检索。\n- 保留内外屏、折叠状态、配色材质和RAM/存储版本条件。未列出的组合不能通过排列生成。\n- 电池保留典型值、额定值、双电芯等效值；不同数值不能无条件相加或替换。\n- 快充标称需相应适配器、线材与测试条件，不是持续功率；无线充电与有线充电分开理解。\n- 镜头像素不等于输出照片像素；等效焦距不等于实际焦距；光学品质变焦不增加物理镜头。\n- 来源中的辅助感光、色彩及深度传感器按原表保留，不据此增加独立可拍摄镜头。\n- 原生/第三方App手动ISO、快门、可调光圈与逐镜头模式组合未核验，不能由硬件参数推断。\n- 系统为来源列示版本；官网页面保留不代表当前在售，未核验实时库存、价格、销量或软件支持期限。\n- 未知字段为null，不代表不支持。字段条目数不是完整度评分。\n\n来源：[Xiaomi中国官网参数](https://www.mi.com/prod/xiaomi-civi-4-pro/specs)",
+  "payload": {
+    "brand": "Xiaomi",
+    "model_variant": "Xiaomi Civi 4 Pro",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "第三代骁龙  8s移动平台；SoC 工艺：台积电 4nm 工艺制程；CPU 主频：八核处理器，最高主频可达：3.0GHz；GPU：Adreno GPU",
+      "display_size": "尺寸：6.55″",
+      "display_resolution": "分辨率：2750 x 1236",
+      "display_refresh": "显示帧率：最高120Hz",
+      "display_panel": "类型：AMOLED全等深微曲屏",
+      "ram": "运行内存：LPDDR5X 高速内存",
+      "storage": "机身存储：256GB / 512GB UFS 4.0高速存储",
+      "sku": "12GB+256GB / 12GB+512GB / 16GB+512GB",
+      "battery": "1. 4700mAh(typ)/4600mAh(min)",
+      "charging": "4700mAh 大电池｜67W 疾速秒充；5. 67W 疾速秒充 | 40 分钟充 100%",
+      "height": "长度：157.2mm",
+      "width": "宽度：72.77mm",
+      "thickness": "厚度：柔雾粉、微风蓝、星空黑7.45mm；春野绿7.75mm；限量定制色7.75mm",
+      "weight": "重量：柔雾粉、微风蓝、星空黑179.3g；春野绿177.6g；限量定制色180.9g",
+      "rear": "5000万徕卡光学Summilux镜头；5000万徕卡专业人像镜头；后置5000万徕卡光学Summilux镜头；后置5000万徕卡专业人像镜头；后置1200万徕卡超广角镜头；120°超大广角｜",
+      "front": "前置32MP像素 78°美人镜主摄；等效焦距26mm｜f/2.0超大光圈｜1.6μm 融合大像素｜2X人像特写｜AF自动对焦｜ALD超低反镀膜；前置32MP像素 100°超广角主摄",
+      "stabilization": null,
+      "zoom": null,
+      "video": "官网列示片段（未核验逐镜头及前后摄模式对应，不可视为任一镜头全部支持）：4K 30fps；1080p 30fps/60fps；720p 30fps；4K 24/30/60fps；1080p 30/60fps；1080p 120/240/960fps；720p 120/240/480/960/1920fps",
+      "usb": null,
+      "wifi": "WLAN 协议：WiFi 6，WiFi 5，WiFi 4 以及 802.11a / b / g；WLAN 频率：2.4G WiFi | 5G WiFi",
+      "bluetooth": "蓝牙：Bluetooth 5.4",
+      "nfc": "官网参数页明确列有NFC；具体服务、城市、卡片和车型以钱包及运营方支持为准。",
+      "os": "Xiaomi HyperOS",
+      "launch": null,
+      "cooling": null,
+      "shoulder_buttons": null,
+      "fingerprint": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "第三代骁龙  8s移动平台；SoC 工艺：台积电 4nm 工艺制程；CPU 主频：八核处理器，最高主频可达：3.0GHz；GPU：Adreno GPU",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 处理器/移动平台",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "尺寸：6.55″",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 屏幕显示（内外屏按原文）",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "分辨率：2750 x 1236",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 屏幕显示/分辨率",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "显示帧率：最高120Hz",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 屏幕显示/刷新率",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "类型：AMOLED全等深微曲屏",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 屏幕显示/类型",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.ram",
+        "value": "运行内存：LPDDR5X 高速内存",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 内存容量",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.storage",
+        "value": "机身存储：256GB / 512GB UFS 4.0高速存储",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 内存容量",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.sku",
+        "value": "12GB+256GB / 12GB+512GB / 16GB+512GB",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 内存容量（只列原文组合，不生成排列）",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "1. 4700mAh(typ)/4600mAh(min)",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 续航与充电/电池（典型、额定及电芯口径）",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "4700mAh 大电池｜67W 疾速秒充；5. 67W 疾速秒充 | 40 分钟充 100%",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 续航与充电（有线、无线、反充及来源条件）",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "长度：157.2mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 外观尺寸（保留材质/折叠状态）",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "宽度：72.77mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 外观尺寸（保留材质/折叠状态）",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "厚度：柔雾粉、微风蓝、星空黑7.45mm；春野绿7.75mm；限量定制色7.75mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 外观尺寸（保留材质/折叠状态）",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "重量：柔雾粉、微风蓝、星空黑179.3g；春野绿177.6g；限量定制色180.9g",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 外观尺寸（保留材质/折叠状态）",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "5000万徕卡光学Summilux镜头；5000万徕卡专业人像镜头；后置5000万徕卡光学Summilux镜头；后置5000万徕卡专业人像镜头；后置1200万徕卡超广角镜头；120°超大广角｜",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 影像系统/后置镜头（只列明确镜头，不合并像素）",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "前置32MP像素 78°美人镜主摄；等效焦距26mm｜f/2.0超大光圈｜1.6μm 融合大像素｜2X人像特写｜AF自动对焦｜ALD超低反镀膜；前置32MP像素 100°超广角主摄",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 影像系统/前置镜头",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "官网列示片段（未核验逐镜头及前后摄模式对应，不可视为任一镜头全部支持）：4K 30fps；1080p 30fps/60fps；720p 30fps；4K 24/30/60fps；1080p 30/60fps；1080p 120/240/960fps；720p 120/240/480/960/1920fps",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 影像系统/视频规格片段；逐镜头及前后摄对应待复核",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.wifi",
+        "value": "WLAN 协议：WiFi 6，WiFi 5，WiFi 4 以及 802.11a / b / g；WLAN 频率：2.4G WiFi | 5G WiFi",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 数据连接/WLAN",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "蓝牙：Bluetooth 5.4",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 数据连接/蓝牙",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.nfc",
+        "value": "官网参数页明确列有NFC；具体服务、城市、卡片和车型以钱包及运营方支持为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 多功能NFC",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "Xiaomi HyperOS",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-2594f110918e468a"
+        ],
+        "source_location": "中国官网参数页 / 操作系统（来源列示，不代表当前系统）",
+        "conditions": {
+          "model_variant": "Xiaomi Civi 4 Pro",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      }
+    ],
+    "unknown_fields": [
+      "stabilization",
+      "zoom",
+      "usb",
+      "launch",
+      "cooling",
+      "shoulder_buttons",
+      "fingerprint"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外或相邻型号补值。",
+    "variant_notes": [
+      "处理器、存储、镜头和充电均保留来源写法；未列出的容量组合、ISO/快门范围及镜头模式保持未知。"
+    ],
+    "sources": [
+      {
+        "source_id": "CN400-2594f110918e468a",
+        "publisher": "Xiaomi",
+        "title": "Xiaomi Civi 4 Pro 国行参数页",
+        "url": "https://www.mi.com/prod/xiaomi-civi-4-pro/specs",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-18",
+        "method": "小米中国官网公开参数页及页面明确引用的静态产品文字提取；未执行下载代码",
+        "source_content_sha256": "47b288c7b6507a3fad6e6c1d53def0e907892754e29ae7795dc48e0fa2ed951a",
+        "retrieval_allowed": false,
+        "rights_status": "必要规格事实重组与链接，未收录图片/整页；许可及项目使用待审核",
+        "evidence_resource_url": "https://mishop-pc.cnbj1.mi-fds.com/mishop-pc/production/mishop_pc/xiaomi-civi-4-pro/specs/entry-1772437774389.js",
+        "evidence_resource_sha256": "6e9fdab144cef02ee24dfc44549078507be777142ca115d07473b9a5623b45f5"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-18",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "data_scope": "小米与REDMI国行新增参数草稿；选定规格，不代表当前在售或完整参数",
+    "runtime_registration": "只生成知识文件，不修改phone_profiles.yaml，不写主数据库"
+  },
+  "tags": [
+    "国行手机",
+    "小米REDMI补充",
+    "Xiaomi"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "Xiaomi Civi 4 Pro",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "Xiaomi中国官网",
+    "url": "https://www.mi.com/prod/xiaomi-civi-4-pro/specs",
+    "location": "各字段位置见payload.facts",
+    "license": "必要规格事实重组，许可与使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

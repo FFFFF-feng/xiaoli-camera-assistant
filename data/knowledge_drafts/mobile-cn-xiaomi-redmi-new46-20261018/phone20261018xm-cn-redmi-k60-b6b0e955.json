@@ -1,0 +1,438 @@
+{
+  "knowledge_id": "phone20261018xm-cn-redmi-k60-b6b0e955",
+  "library_id": "equipment",
+  "title": "REDMI K60（国行）：手机硬件与相机参数补充",
+  "kind": "manufacturer_fact",
+  "content": "# REDMI K60（国行）\n\n整理日期：2026-10-18；待独立审核的厂商参数草稿。\n\n- 处理器：第一代骁龙 8+；工艺制程：台积电 4nm；CPU：八核处理器，最高主频 3.0GHz；GPU：Adreno GPU 图形处理器\n- 屏幕尺寸：尺寸：6.67 英寸\n- 屏幕分辨率：分辨率：3200*1440\n- 刷新率及条件：显示帧率：最高 120Hz\n- 实体RAM选项：自研「狂暴引擎」+ LPDDR5 + UFS 3.1；内存：8GB / 12GB / 16GB；LPDDR5 高速内存（6400Mbps ）\n- 存储选项：自研「狂暴引擎」+ LPDDR5 + UFS 3.1；存储：128GB / 256GB / 512GB / 1TB；UFS 3.1 高速存储\n- 官网列示存储组合：16GB + 1TB 最高可选\n- 电池容量及版本条件：5500mAh（typ）；内置锂离子聚合物电池，不可拆卸\n- 充电标称及条件：67W 闪充 + 30W 无线秒充；67W 有线快充；30W 无线秒充\n- 高度：长度：162.78mm\n- 宽度：宽度：75.44mm\n- 厚度：厚度：8.59mm*\n- 重量及版本条件：重量：204g*\n- 后置摄像头及辅助传感器：后置 6400万 像素超清三摄；6400万 像素超清主摄：OIS 光学防抖｜支持 4in1 1.4μm 融合像素｜6P 镜头｜f/1.79 光圈；800万 像素超广角镜头：120° FOV；200万 像素微距镜头\n- 前置摄像头：前置 1600万 像素高清人像相机\n- 防抖：OIS 光学防抖；6400万 像素超清主摄：OIS 光学防抖｜支持 4in1 1.4μm 融合像素｜6P 镜头｜f/1.79 光圈；EIS 电子防抖｜全链路 P3｜万物追焦｜胶片相机｜胶片画框｜萌拍 3.0｜实时文本提取｜文档模式 4.0｜\n- 视频录制摘要：官网列示片段（未核验逐镜头及前后摄模式对应，不可视为任一镜头全部支持）：8K 视频拍摄：24fps；4K 视频拍摄：30/60fps；1080p 视频拍摄：30/60fps；1080p 慢动作视频拍摄：120fps/240fps/960fps；720p 视频拍摄：30fps；720p 慢动作视频拍摄：120fps/240fps/480fps/960fps/1920fps；720p 慢动作视频拍摄：120fps\n- USB接口：USB Type-C 双面充电接口\n- WLAN：WLAN 协议：Wi-Fi 6 增强版、Wi-Fi 5、Wi-Fi 4 以及 802.11a/b/g；WLAN 频率： 2.4G Wi-Fi | 5G Wi-Fi\n- 蓝牙：蓝牙 Bluetooth 5.3\n- 来源列示系统：MIUI 14\n\n未核验字段：屏幕类型、变焦、NFC、来源列示上市时间、散热系统、触控肩键、指纹识别\n\n\n使用边界：\n- 只适用对应完整型号的中国大陆销售版本，不能用于海外版、相近型号或未注明的卫星通信版。\n- 厂商公开规格由AI提取，未经独立人工审核或真机验证；全部为草稿，禁止受管检索。\n- 保留内外屏、折叠状态、配色材质和RAM/存储版本条件。未列出的组合不能通过排列生成。\n- 电池保留典型值、额定值、双电芯等效值；不同数值不能无条件相加或替换。\n- 快充标称需相应适配器、线材与测试条件，不是持续功率；无线充电与有线充电分开理解。\n- 镜头像素不等于输出照片像素；等效焦距不等于实际焦距；光学品质变焦不增加物理镜头。\n- 来源中的辅助感光、色彩及深度传感器按原表保留，不据此增加独立可拍摄镜头。\n- 原生/第三方App手动ISO、快门、可调光圈与逐镜头模式组合未核验，不能由硬件参数推断。\n- 系统为来源列示版本；官网页面保留不代表当前在售，未核验实时库存、价格、销量或软件支持期限。\n- 未知字段为null，不代表不支持。字段条目数不是完整度评分。\n\n来源：[REDMI中国官网参数](https://www.mi.com/redmi-k60/specs)",
+  "payload": {
+    "brand": "REDMI",
+    "model_variant": "REDMI K60",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "第一代骁龙 8+；工艺制程：台积电 4nm；CPU：八核处理器，最高主频 3.0GHz；GPU：Adreno GPU 图形处理器",
+      "display_size": "尺寸：6.67 英寸",
+      "display_resolution": "分辨率：3200*1440",
+      "display_refresh": "显示帧率：最高 120Hz",
+      "display_panel": null,
+      "ram": "自研「狂暴引擎」+ LPDDR5 + UFS 3.1；内存：8GB / 12GB / 16GB；LPDDR5 高速内存（6400Mbps ）",
+      "storage": "自研「狂暴引擎」+ LPDDR5 + UFS 3.1；存储：128GB / 256GB / 512GB / 1TB；UFS 3.1 高速存储",
+      "sku": "16GB + 1TB 最高可选",
+      "battery": "5500mAh（typ）；内置锂离子聚合物电池，不可拆卸",
+      "charging": "67W 闪充 + 30W 无线秒充；67W 有线快充；30W 无线秒充",
+      "height": "长度：162.78mm",
+      "width": "宽度：75.44mm",
+      "thickness": "厚度：8.59mm*",
+      "weight": "重量：204g*",
+      "rear": "后置 6400万 像素超清三摄；6400万 像素超清主摄：OIS 光学防抖｜支持 4in1 1.4μm 融合像素｜6P 镜头｜f/1.79 光圈；800万 像素超广角镜头：120° FOV；200万 像素微距镜头",
+      "front": "前置 1600万 像素高清人像相机",
+      "stabilization": "OIS 光学防抖；6400万 像素超清主摄：OIS 光学防抖｜支持 4in1 1.4μm 融合像素｜6P 镜头｜f/1.79 光圈；EIS 电子防抖｜全链路 P3｜万物追焦｜胶片相机｜胶片画框｜萌拍 3.0｜实时文本提取｜文档模式 4.0｜",
+      "zoom": null,
+      "video": "官网列示片段（未核验逐镜头及前后摄模式对应，不可视为任一镜头全部支持）：8K 视频拍摄：24fps；4K 视频拍摄：30/60fps；1080p 视频拍摄：30/60fps；1080p 慢动作视频拍摄：120fps/240fps/960fps；720p 视频拍摄：30fps；720p 慢动作视频拍摄：120fps/240fps/480fps/960fps/1920fps；720p 慢动作视频拍摄：120fps",
+      "usb": "USB Type-C 双面充电接口",
+      "wifi": "WLAN 协议：Wi-Fi 6 增强版、Wi-Fi 5、Wi-Fi 4 以及 802.11a/b/g；WLAN 频率： 2.4G Wi-Fi | 5G Wi-Fi",
+      "bluetooth": "蓝牙 Bluetooth 5.3",
+      "nfc": null,
+      "os": "MIUI 14",
+      "launch": null,
+      "cooling": null,
+      "shoulder_buttons": null,
+      "fingerprint": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "第一代骁龙 8+；工艺制程：台积电 4nm；CPU：八核处理器，最高主频 3.0GHz；GPU：Adreno GPU 图形处理器",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 处理器/移动平台",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "尺寸：6.67 英寸",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 屏幕显示（内外屏按原文）",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "分辨率：3200*1440",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 屏幕显示/分辨率",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_refresh",
+        "value": "显示帧率：最高 120Hz",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 屏幕显示/刷新率",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.ram",
+        "value": "自研「狂暴引擎」+ LPDDR5 + UFS 3.1；内存：8GB / 12GB / 16GB；LPDDR5 高速内存（6400Mbps ）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 内存容量",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.storage",
+        "value": "自研「狂暴引擎」+ LPDDR5 + UFS 3.1；存储：128GB / 256GB / 512GB / 1TB；UFS 3.1 高速存储",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 内存容量",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.sku",
+        "value": "16GB + 1TB 最高可选",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 内存容量（只列原文组合，不生成排列）",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "5500mAh（typ）；内置锂离子聚合物电池，不可拆卸",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 续航与充电/电池（典型、额定及电芯口径）",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "67W 闪充 + 30W 无线秒充；67W 有线快充；30W 无线秒充",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 续航与充电（有线、无线、反充及来源条件）",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "长度：162.78mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 外观尺寸（保留材质/折叠状态）",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "宽度：75.44mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 外观尺寸（保留材质/折叠状态）",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "厚度：8.59mm*",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 外观尺寸（保留材质/折叠状态）",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "重量：204g*",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 外观尺寸（保留材质/折叠状态）",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "后置 6400万 像素超清三摄；6400万 像素超清主摄：OIS 光学防抖｜支持 4in1 1.4μm 融合像素｜6P 镜头｜f/1.79 光圈；800万 像素超广角镜头：120° FOV；200万 像素微距镜头",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 影像系统/后置镜头（只列明确镜头，不合并像素）",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "前置 1600万 像素高清人像相机",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 影像系统/前置镜头",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.stabilization",
+        "value": "OIS 光学防抖；6400万 像素超清主摄：OIS 光学防抖｜支持 4in1 1.4μm 融合像素｜6P 镜头｜f/1.79 光圈；EIS 电子防抖｜全链路 P3｜万物追焦｜胶片相机｜胶片画框｜萌拍 3.0｜实时文本提取｜文档模式 4.0｜",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 影像系统/防抖（镜头条件见原文）",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "官网列示片段（未核验逐镜头及前后摄模式对应，不可视为任一镜头全部支持）：8K 视频拍摄：24fps；4K 视频拍摄：30/60fps；1080p 视频拍摄：30/60fps；1080p 慢动作视频拍摄：120fps/240fps/960fps；720p 视频拍摄：30fps；720p 慢动作视频拍摄：120fps/240fps/480fps/960fps/1920fps；720p 慢动作视频拍摄：120fps",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 影像系统/视频规格片段；逐镜头及前后摄对应待复核",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.usb",
+        "value": "USB Type-C 双面充电接口",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 数据传输/充电接口（接口形态不等于速率）",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.wifi",
+        "value": "WLAN 协议：Wi-Fi 6 增强版、Wi-Fi 5、Wi-Fi 4 以及 802.11a/b/g；WLAN 频率： 2.4G Wi-Fi | 5G Wi-Fi",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 数据连接/WLAN",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "蓝牙 Bluetooth 5.3",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 数据连接/蓝牙",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "MIUI 14",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-8c67d85dfb7c7c23"
+        ],
+        "source_location": "中国官网参数页 / 操作系统（来源列示，不代表当前系统）",
+        "conditions": {
+          "model_variant": "REDMI K60",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      }
+    ],
+    "unknown_fields": [
+      "display_panel",
+      "zoom",
+      "nfc",
+      "launch",
+      "cooling",
+      "shoulder_buttons",
+      "fingerprint"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外或相邻型号补值。",
+    "variant_notes": [
+      "处理器、存储、镜头和充电均保留来源写法；未列出的容量组合、ISO/快门范围及镜头模式保持未知。"
+    ],
+    "sources": [
+      {
+        "source_id": "CN400-8c67d85dfb7c7c23",
+        "publisher": "REDMI",
+        "title": "REDMI K60 国行参数页",
+        "url": "https://www.mi.com/redmi-k60/specs",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-18",
+        "method": "小米中国官网公开参数页及页面明确引用的静态产品文字提取；未执行下载代码",
+        "source_content_sha256": "e8ec44df18e5c40250a88b6d265859177437ebeda3c7a2a379a934a3fe995da0",
+        "retrieval_allowed": false,
+        "rights_status": "必要规格事实重组与链接，未收录图片/整页；许可及项目使用待审核",
+        "evidence_resource_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi.com-assets/shop/pro/js/product/redmi-k60/specs.fa84ad99.js",
+        "evidence_resource_sha256": "efedf67ae9b03b463cfa178aa26a918814aad1cead46072c7d47f80bddb9dd8d"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-18",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "data_scope": "小米与REDMI国行新增参数草稿；选定规格，不代表当前在售或完整参数",
+    "runtime_registration": "只生成知识文件，不修改phone_profiles.yaml，不写主数据库"
+  },
+  "tags": [
+    "国行手机",
+    "小米REDMI补充",
+    "REDMI"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "REDMI K60",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "REDMI中国官网",
+    "url": "https://www.mi.com/redmi-k60/specs",
+    "location": "各字段位置见payload.facts",
+    "license": "必要规格事实重组，许可与使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

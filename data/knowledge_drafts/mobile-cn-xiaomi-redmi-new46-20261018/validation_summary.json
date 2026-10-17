@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-18",
+  "new_models": 46,
+  "brand_counts": {
+    "REDMI": 24,
+    "Xiaomi": 22
+  },
+  "field_entries": 974,
+  "sources": 46,
+  "prior_464_overlap": 0,
+  "strict_project_schema": true,
+  "batch_sizes": [
+    20,
+    20,
+    6
+  ],
+  "all_imported_in_isolated_database_as_draft": true,
+  "repeat_import_idempotent": true,
+  "drafts_excluded_from_managed_retrieval": true,
+  "main_database_and_runtime_profiles_unchanged": true,
+  "critical_camera_battery_and_fold_conditions_checked": true,
+  "limitations": [
+    "AI整理，未做独立人工事实审核或真机测试。",
+    "视频为官网声明片段；逐镜头和前后摄模式对应待核验。",
+    "不是实时在售清单或完整规格数据库。"
+  ],
+  "validation_stage": "上传前本地校验；GitHub完成状态以仓库提交记录为准"
+}
