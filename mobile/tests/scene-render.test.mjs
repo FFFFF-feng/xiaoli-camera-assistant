@@ -44,7 +44,8 @@ test('配色按来源与实际轮廓字段去重，说明文字不触发重算�
   const moved=board();moved.layers[0].source_bbox[0]=.1;await renderer.colors('blob:first',moved);
   const label=board();label.layers[0].label='红色花朵';await renderer.colors('blob:first',label);
   const contour=board();contour.layers[0].contours=[[[0,0],[.5,0],[.5,.5]]];await renderer.colors('blob:first',contour);
-  await renderer.colors('blob:second',original);assert.equal(jobs,5);assert.deepEqual(input,pixels());
+  const holes=board();holes.layers[0].holes=[[[.1,.1],[.3,.1],[.2,.3]]];await renderer.colors('blob:first',holes);
+  await renderer.colors('blob:second',original);assert.equal(jobs,6);assert.deepEqual(input,pixels());
 });
 
 test('背景缓存包含来源、目标变换、画幅与边界方向，并且不会转移原像素所有权',async()=>{

@@ -153,7 +153,7 @@ export function colorizeScenePixels(original,board,createCanvas=()=>document.cre
     if(layer.representation==='context_lines'||!layer.source_bbox)return [];
     return silhouetteLayers({...layer,bbox:layer.source_bbox}).map(part=>{
       maskContext.clearRect(0,0,mask.width,mask.height);
-      maskContext.fillStyle='#fff';maskContext.fill(new Path2D(outlinePath(part,mask.width,mask.height)));
+      maskContext.fillStyle='#fff';maskContext.fill(new Path2D(outlinePath(part,mask.width,mask.height)),'evenodd');
       const pixels=maskContext.getImageData(0,0,mask.width,mask.height).data;
       const counts=new Map();
       for(let p=0;p<pixels.length;p+=4)if(pixels[p+3]>127&&original.data[p+3]) {

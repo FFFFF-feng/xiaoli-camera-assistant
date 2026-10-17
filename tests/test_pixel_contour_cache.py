@@ -62,7 +62,7 @@ def test_key_uses_image_bytes_and_normalized_metadata_not_discarded_model_paths(
     assert calls == ["object1"]
 
 
-@pytest.mark.parametrize("changed", ["pixels", "bbox", "features", "limitations", "version", "resolution"])
+@pytest.mark.parametrize("changed", ["pixels", "bbox", "features", "limitations", "version", "resolution", "detail_resolution", "structure_version", "pet_iterations"])
 def test_algorithm_effective_inputs_invalidate_cache(monkeypatch, changed):
     calls = count_segmentation(monkeypatch)
     photo, source = inspection(building()), metadata()
@@ -77,12 +77,35 @@ def test_algorithm_effective_inputs_invalidate_cache(monkeypatch, changed):
         source["limitations"] = ["different evidence note"]
     elif changed == "version":
         monkeypatch.setattr(tracing, "_ALGORITHM_VERSION", "test-algorithm-version")
+    elif changed == "detail_resolution":
+        monkeypatch.setattr(tracing, "DETAIL_EDGE", tracing.DETAIL_EDGE - 1)
+    elif changed == "structure_version":
+        monkeypatch.setattr(tracing.scene_structure, "STRUCTURE_VERSION", "test-structure-version")
+    elif changed == "pet_iterations":
+        monkeypatch.setattr(tracing, "PET_ITERATIONS", tracing.PET_ITERATIONS + 1)
     else:
         monkeypatch.setattr(tracing, "MAX_EDGE", tracing.MAX_EDGE - 1)
     second = tracing.trace_observed_scene(source, photo)
     assert calls == ["object1", "object1"]
     if changed == "pixels":
         assert second.objects[0].outline != first.objects[0].outline
+
+
+def test_continuous_scene_mode_never_reuses_an_objects_cache_entry(monkeypatch):
+    source, photo = metadata(), inspection(building())
+    first = tracing.trace_observed_scene(source, photo)
+    calls = []
+    def structure(_rgb, obj):
+        calls.append(obj.object_id)
+        return obj.model_copy(update={"representation": "scene_structure", "outline": [],
+            "details": [[[0, 0], [1, 1]], [[0, 1], [1, 0]], [[.1, .1], [.9, .1]], [[.1, .9], [.9, .9]]]})
+    monkeypatch.setattr(tracing.scene_structure, "trace_structure", structure)
+    source["scene_mode"] = "continuous"
+    second = tracing.trace_observed_scene(source, photo)
+    assert calls == ["object1"] and first != second
+    assert second.objects[0].representation == "scene_structure"
+    assert tracing.trace_observed_scene(source, photo) == second
+    assert calls == ["object1"]
 
 
 def test_validation_and_failed_segmentation_are_not_hidden_or_cached(monkeypatch):

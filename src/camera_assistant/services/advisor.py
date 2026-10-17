@@ -15,6 +15,7 @@ from camera_assistant.models import (
 from camera_assistant.services.advice_safety import screen_parameter_advice
 from camera_assistant.services.cloud import request_json
 from camera_assistant.services.phone_advisor import DemoPhoneRecommendationAdvisor
+from camera_assistant.services.photography_facts import photography_facts
 
 
 class RecommendationAdvisor(Protocol):
@@ -198,6 +199,7 @@ class OpenAICompatibleRecommendationAdvisor:
             f"[资料 {index}: {hit.title}]\n{hit.content}"
             for index, hit in enumerate(knowledge_hits, start=1)
         )
+        facts = photography_facts(request, scene, camera)
         prompt = f"""
 你是面向摄影新手的相机参数助手。只依据提供的场景分析与检索资料提出建议。
 建议应是可执行的参数范围；无法从参考图判断现场绝对照度时必须说明。
@@ -217,6 +219,7 @@ shutter_speed仅写带秒单位的曝光时间或范围，例如1/125s或1-2秒�
 用户请求：{request.model_dump_json()}
 场景分析：{scene.model_dump_json()}
 目标相机能力：{camera.model_dump_json()}
+共享摄影事实与约束：{facts.prompt()}
 检索资料：
 {evidence}
 

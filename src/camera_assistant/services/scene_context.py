@@ -57,7 +57,7 @@ def _tone_strokes(gray, mask):
     return result
 
 
-def _strokes(rgb, mask):
+def _strokes(rgb, mask, *, sparse=False):
     if min(rgb.shape[:2]) < 4:
         return []
     # Context needs large connected structure, not bark/leaf texture. Extract at
@@ -65,7 +65,8 @@ def _strokes(rgb, mask):
     # across missing evidence or generating a semantic shape from an icon.
     smooth = cv2.GaussianBlur(rgb, (11, 11), 2.2)
     gray = cv2.cvtColor(smooth, cv2.COLOR_RGB2GRAY)
-    large_shapes = _tone_strokes(gray, mask)
+    budget = 10 if sparse else CONTEXT_PATHS
+    large_shapes = _tone_strokes(gray, mask)[:budget//2 if sparse else 16]
     low, high = 8, 22
     for _ in range(7):
         edges = cv2.bitwise_and(cv2.Canny(gray, low, high, L2gradient=True), mask)
@@ -80,7 +81,8 @@ def _strokes(rgb, mask):
         closed = bool(np.array_equal(line[0], line[-1]))
         length = cv2.arcLength(line, closed)
         x, y, dx, dy = cv2.boundingRect(line)
-        if length < max(8, (w+h)*.025) or max(dx, dy) < max(4, min(w, h)*.035):
+        if (length < max(8, (w+h)*(.065 if sparse else .025))
+                or max(dx, dy) < max(4, min(w, h)*(.10 if sparse else .035))):
             continue
         epsilon = max(1, length*.003)
         for _ in range(16):
@@ -99,21 +101,21 @@ def _strokes(rgb, mask):
     # Preserve dominant connected boundaries before spending the rest of the
     # budget on spatial coverage; equal cell quotas can otherwise erase a trunk.
     strongest = sorted((row for rows in buckets.values() for row in rows),
-                       key=lambda row: row[0], reverse=True)[:(CONTEXT_PATHS-len(large_shapes))*2//3]
+                       key=lambda row: row[0], reverse=True)[:(budget-len(large_shapes))*2//3]
     chosen = {id(points) for _, points in strongest}
     selected, depth = [*large_shapes, *(points for _, points in strongest)], 0
     buckets = {key: [row for row in rows if id(row[1]) not in chosen] for key, rows in buckets.items()}
-    while len(selected) < CONTEXT_PATHS:
+    while len(selected) < budget:
         rows = sorted((r[depth] for r in buckets.values() if len(r) > depth),
                       key=lambda row: row[0], reverse=True)
         if not rows:
             break
-        selected.extend(points for _, points in rows[:CONTEXT_PATHS-len(selected)])
+        selected.extend(points for _, points in rows[:budget-len(selected)])
         depth += 1
     return selected
 
 
-def trace_context(rgb, obj: ObservedObject, *, mask=None) -> ObservedObject | None:
+def trace_context(rgb, obj: ObservedObject, *, mask=None, sparse=False) -> ObservedObject | None:
     """Trace a branch, blurred structure or scene remainder as open strokes."""
     h, w = rgb.shape[:2]
     x1, y1, x2, y2 = [round(n*(w if i % 2 == 0 else h)) for i, n in enumerate(obj.bbox)]
@@ -121,7 +123,7 @@ def trace_context(rgb, obj: ObservedObject, *, mask=None) -> ObservedObject | No
     if min(patch.shape[:2]) < 4:
         return None
     region_mask = np.full(patch.shape[:2], 255, dtype=np.uint8) if mask is None else mask[y1:y2, x1:x2]
-    lines = _strokes(patch, region_mask)
+    lines = _strokes(patch, region_mask, sparse=sparse)
     if not lines:
         return None
     details = [[[round(float(x/(x2-x1)), 5), round(float(y/(y2-y1)), 5)]
@@ -142,7 +144,7 @@ def context_mask(rgb, objects: list[ObservedObject]):
         def project(path, x1=x1, y1=y1, x2=x2, y2=y2):
             return np.array([[(x1+x*(x2-x1))*w, (y1+y*(y2-y1))*h] for x, y in path],
                             dtype=np.int32).reshape(-1, 1, 2)
-        if obj.representation == "context_lines":
+        if obj.representation in {"context_lines", "scene_structure"}:
             for path in obj.details:
                 cv2.polylines(mask, [project(path)], False, 0, 5)
         else:
@@ -161,7 +163,8 @@ def scene_remainder(rgb, objects: list[ObservedObject], identifier: str) -> Obse
         "identity_features": ["原图中未单独命名的环境边界", "不推测物体类别或画外内容"],
         "evidence_photo_ids": ["photo1"], "mobility": "fixed",
     })
-    return trace_context(rgb, obj, mask=context_mask(rgb, objects))
+    sparse = any(o.role == "main" and o.kind in {"pet", "dog", "cat"} for o in objects)
+    return trace_context(rgb, obj, mask=context_mask(rgb, objects), sparse=sparse)
 
 
 def clip_path(path):
@@ -205,7 +208,7 @@ def clip_path(path):
 def project_context(obj: ObservedObject, transform: tuple[float, float, float, float]) -> TargetLayer | None:
     """Place environment with the same camera-frame transform as the main object."""
     paths = list(obj.details)
-    if obj.representation != "context_lines":
+    if obj.representation not in {"context_lines", "scene_structure"}:
         paths = [*(p+[p[0]] if p[-1] != p[0] else p for p in obj.contours or [obj.outline]), *paths]
     paths = paths[:96]
     sx, sy, tx, ty = transform
@@ -227,8 +230,9 @@ def project_context(obj: ObservedObject, transform: tuple[float, float, float, f
     ax, bx = extent(xs)
     ay, by = extent(ys)
     return TargetLayer.model_validate({
-        **obj.model_dump(exclude={"object_id", "parts"}), "representation": "context_lines",
-        "bbox": [ax, ay, bx, by], "outline": [], "contours": [], "outline_style": "angular",
+        **obj.model_dump(exclude={"object_id", "parts"}),
+        "representation": "scene_structure" if obj.representation == "scene_structure" else "context_lines",
+        "bbox": [ax, ay, bx, by], "outline": [], "contours": [], "holes": [], "outline_style": "angular",
         "details": [[[round((x-ax)/(bx-ax), 6), round((y-ay)/(by-ay), 6)] for x, y in line] for line in projected],
         "source_bbox": obj.bbox, "source_details": paths, "source_object_id": obj.object_id,
         "certainty": "approximate",

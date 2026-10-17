@@ -1,0 +1,858 @@
+{
+  "contract_version": 1,
+  "kind": "synthetic_wire_examples",
+  "valid": [
+    {
+      "id": "legacy",
+      "board": {
+        "aspect": "landscape",
+        "reference_photo_id": "photo1",
+        "intent": "合成契约示例",
+        "distance_relation": "unknown",
+        "distance_instruction": "仅核对表示，不推断实拍距离",
+        "layers": [
+          {
+            "label": "合成主体",
+            "kind": "object",
+            "role": "main",
+            "depth": 1,
+            "bbox": [
+              0.2,
+              0.2,
+              0.8,
+              0.8
+            ],
+            "color": "slate",
+            "outline": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                1
+              ]
+            ],
+            "details": [],
+            "identity_features": [
+              "合成边界"
+            ],
+            "evidence_photo_ids": [
+              "photo1"
+            ],
+            "certainty": "approximate"
+          }
+        ],
+        "changes": [
+          {
+            "problem": "契约验收",
+            "adjustment": "保持已知坐标",
+            "benefit": "检查兼容"
+          }
+        ],
+        "limitations": [
+          "合成数据，不是实拍输出"
+        ]
+      }
+    },
+    {
+      "id": "silhouette_hole",
+      "board": {
+        "aspect": "landscape",
+        "reference_photo_id": "photo1",
+        "intent": "合成契约示例",
+        "distance_relation": "unknown",
+        "distance_instruction": "仅核对表示，不推断实拍距离",
+        "layers": [
+          {
+            "label": "合成主体",
+            "kind": "object",
+            "role": "main",
+            "depth": 1,
+            "bbox": [
+              0.2,
+              0.2,
+              0.8,
+              0.8
+            ],
+            "color": "slate",
+            "outline": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                1
+              ]
+            ],
+            "details": [],
+            "identity_features": [
+              "合成边界"
+            ],
+            "evidence_photo_ids": [
+              "photo1"
+            ],
+            "certainty": "approximate",
+            "source_object_id": "object1",
+            "source_bbox": [
+              0.2,
+              0.2,
+              0.8,
+              0.8
+            ],
+            "mobility": "unknown",
+            "representation": "silhouette",
+            "holes": [
+              [
+                [
+                  0.2,
+                  0.2
+                ],
+                [
+                  0.4,
+                  0.2
+                ],
+                [
+                  0.3,
+                  0.4
+                ]
+              ]
+            ]
+          }
+        ],
+        "changes": [
+          {
+            "problem": "契约验收",
+            "adjustment": "保持已知坐标",
+            "benefit": "检查兼容"
+          }
+        ],
+        "limitations": [
+          "合成数据，不是实拍输出"
+        ],
+        "render_basis": "source_geometry",
+        "source_photo_aspect": 1.3333333333333333,
+        "layout_engine": "local_v1"
+      }
+    },
+    {
+      "id": "continuous",
+      "board": {
+        "aspect": "landscape",
+        "reference_photo_id": "photo1",
+        "intent": "合成契约示例",
+        "distance_relation": "unknown",
+        "distance_instruction": "仅核对表示，不推断实拍距离",
+        "layers": [
+          {
+            "label": "合成连续场景",
+            "kind": "building",
+            "role": "main",
+            "depth": 1,
+            "bbox": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "color": "slate",
+            "outline": [],
+            "details": [
+              [
+                [
+                  0,
+                  0.1
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.1
+                ]
+              ],
+              [
+                [
+                  0,
+                  0.9
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.9
+                ]
+              ],
+              [
+                [
+                  0.1,
+                  0
+                ],
+                [
+                  0.4,
+                  1
+                ]
+              ],
+              [
+                [
+                  0.9,
+                  0
+                ],
+                [
+                  0.6,
+                  1
+                ]
+              ]
+            ],
+            "identity_features": [
+              "合成边界"
+            ],
+            "evidence_photo_ids": [
+              "photo1"
+            ],
+            "certainty": "approximate",
+            "source_object_id": "object1",
+            "source_bbox": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "mobility": "fixed",
+            "representation": "scene_structure",
+            "holes": [],
+            "source_details": [
+              [
+                [
+                  0,
+                  0.1
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.1
+                ]
+              ],
+              [
+                [
+                  0,
+                  0.9
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.9
+                ]
+              ],
+              [
+                [
+                  0.1,
+                  0
+                ],
+                [
+                  0.4,
+                  1
+                ]
+              ],
+              [
+                [
+                  0.9,
+                  0
+                ],
+                [
+                  0.6,
+                  1
+                ]
+              ]
+            ]
+          }
+        ],
+        "changes": [
+          {
+            "problem": "契约验收",
+            "adjustment": "保持已知坐标",
+            "benefit": "检查兼容"
+          }
+        ],
+        "limitations": [
+          "合成数据，不是实拍输出"
+        ],
+        "render_basis": "source_geometry",
+        "source_photo_aspect": 1.3333333333333333,
+        "layout_engine": "local_v1",
+        "layout_mode": "source_preserving"
+      }
+    }
+  ],
+  "invalid": [
+    {
+      "id": "context_main",
+      "board": {
+        "aspect": "landscape",
+        "reference_photo_id": "photo1",
+        "intent": "合成契约示例",
+        "distance_relation": "unknown",
+        "distance_instruction": "仅核对表示，不推断实拍距离",
+        "layers": [
+          {
+            "label": "合成连续场景",
+            "kind": "building",
+            "role": "main",
+            "depth": 1,
+            "bbox": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "color": "slate",
+            "outline": [],
+            "details": [
+              [
+                [
+                  0,
+                  0.1
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.1
+                ]
+              ],
+              [
+                [
+                  0,
+                  0.9
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.9
+                ]
+              ],
+              [
+                [
+                  0.1,
+                  0
+                ],
+                [
+                  0.4,
+                  1
+                ]
+              ],
+              [
+                [
+                  0.9,
+                  0
+                ],
+                [
+                  0.6,
+                  1
+                ]
+              ]
+            ],
+            "identity_features": [
+              "合成边界"
+            ],
+            "evidence_photo_ids": [
+              "photo1"
+            ],
+            "certainty": "approximate",
+            "source_object_id": "object1",
+            "source_bbox": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "mobility": "fixed",
+            "representation": "context_lines",
+            "holes": [],
+            "source_details": [
+              [
+                [
+                  0,
+                  0.1
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.1
+                ]
+              ],
+              [
+                [
+                  0,
+                  0.9
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.9
+                ]
+              ],
+              [
+                [
+                  0.1,
+                  0
+                ],
+                [
+                  0.4,
+                  1
+                ]
+              ],
+              [
+                [
+                  0.9,
+                  0
+                ],
+                [
+                  0.6,
+                  1
+                ]
+              ]
+            ]
+          }
+        ],
+        "changes": [
+          {
+            "problem": "契约验收",
+            "adjustment": "保持已知坐标",
+            "benefit": "检查兼容"
+          }
+        ],
+        "limitations": [
+          "合成数据，不是实拍输出"
+        ],
+        "render_basis": "source_geometry",
+        "source_photo_aspect": 1.3333333333333333,
+        "layout_engine": "local_v1",
+        "layout_mode": "source_preserving"
+      }
+    },
+    {
+      "id": "outside_hole",
+      "board": {
+        "aspect": "landscape",
+        "reference_photo_id": "photo1",
+        "intent": "合成契约示例",
+        "distance_relation": "unknown",
+        "distance_instruction": "仅核对表示，不推断实拍距离",
+        "layers": [
+          {
+            "label": "合成主体",
+            "kind": "object",
+            "role": "main",
+            "depth": 1,
+            "bbox": [
+              0.2,
+              0.2,
+              0.8,
+              0.8
+            ],
+            "color": "slate",
+            "outline": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                1
+              ]
+            ],
+            "details": [],
+            "identity_features": [
+              "合成边界"
+            ],
+            "evidence_photo_ids": [
+              "photo1"
+            ],
+            "certainty": "approximate",
+            "source_object_id": "object1",
+            "source_bbox": [
+              0.2,
+              0.2,
+              0.8,
+              0.8
+            ],
+            "mobility": "unknown",
+            "representation": "silhouette",
+            "holes": [
+              [
+                [
+                  0,
+                  0.1
+                ],
+                [
+                  0.2,
+                  0.1
+                ],
+                [
+                  0.1,
+                  0.3
+                ]
+              ]
+            ]
+          }
+        ],
+        "changes": [
+          {
+            "problem": "契约验收",
+            "adjustment": "保持已知坐标",
+            "benefit": "检查兼容"
+          }
+        ],
+        "limitations": [
+          "合成数据，不是实拍输出"
+        ],
+        "render_basis": "source_geometry",
+        "source_photo_aspect": 1.3333333333333333,
+        "layout_engine": "local_v1"
+      }
+    },
+    {
+      "id": "closed_scene",
+      "board": {
+        "aspect": "landscape",
+        "reference_photo_id": "photo1",
+        "intent": "合成契约示例",
+        "distance_relation": "unknown",
+        "distance_instruction": "仅核对表示，不推断实拍距离",
+        "layers": [
+          {
+            "label": "合成连续场景",
+            "kind": "building",
+            "role": "main",
+            "depth": 1,
+            "bbox": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "color": "slate",
+            "outline": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                1
+              ]
+            ],
+            "details": [
+              [
+                [
+                  0,
+                  0.1
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.1
+                ]
+              ],
+              [
+                [
+                  0,
+                  0.9
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.9
+                ]
+              ],
+              [
+                [
+                  0.1,
+                  0
+                ],
+                [
+                  0.4,
+                  1
+                ]
+              ],
+              [
+                [
+                  0.9,
+                  0
+                ],
+                [
+                  0.6,
+                  1
+                ]
+              ]
+            ],
+            "identity_features": [
+              "合成边界"
+            ],
+            "evidence_photo_ids": [
+              "photo1"
+            ],
+            "certainty": "approximate",
+            "source_object_id": "object1",
+            "source_bbox": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "mobility": "fixed",
+            "representation": "scene_structure",
+            "holes": [],
+            "source_details": [
+              [
+                [
+                  0,
+                  0.1
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.1
+                ]
+              ],
+              [
+                [
+                  0,
+                  0.9
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.9
+                ]
+              ],
+              [
+                [
+                  0.1,
+                  0
+                ],
+                [
+                  0.4,
+                  1
+                ]
+              ],
+              [
+                [
+                  0.9,
+                  0
+                ],
+                [
+                  0.6,
+                  1
+                ]
+              ]
+            ]
+          }
+        ],
+        "changes": [
+          {
+            "problem": "契约验收",
+            "adjustment": "保持已知坐标",
+            "benefit": "检查兼容"
+          }
+        ],
+        "limitations": [
+          "合成数据，不是实拍输出"
+        ],
+        "render_basis": "source_geometry",
+        "source_photo_aspect": 1.3333333333333333,
+        "layout_engine": "local_v1",
+        "layout_mode": "source_preserving"
+      }
+    },
+    {
+      "id": "missing_source",
+      "board": {
+        "aspect": "landscape",
+        "reference_photo_id": "photo1",
+        "intent": "合成契约示例",
+        "distance_relation": "unknown",
+        "distance_instruction": "仅核对表示，不推断实拍距离",
+        "layers": [
+          {
+            "label": "合成连续场景",
+            "kind": "building",
+            "role": "main",
+            "depth": 1,
+            "bbox": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "color": "slate",
+            "outline": [],
+            "details": [
+              [
+                [
+                  0,
+                  0.1
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.1
+                ]
+              ],
+              [
+                [
+                  0,
+                  0.9
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  1,
+                  0.9
+                ]
+              ],
+              [
+                [
+                  0.1,
+                  0
+                ],
+                [
+                  0.4,
+                  1
+                ]
+              ],
+              [
+                [
+                  0.9,
+                  0
+                ],
+                [
+                  0.6,
+                  1
+                ]
+              ]
+            ],
+            "identity_features": [
+              "合成边界"
+            ],
+            "evidence_photo_ids": [
+              "photo1"
+            ],
+            "certainty": "approximate",
+            "source_object_id": "object1",
+            "source_bbox": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "mobility": "fixed",
+            "representation": "scene_structure",
+            "holes": [],
+            "source_details": null
+          }
+        ],
+        "changes": [
+          {
+            "problem": "契约验收",
+            "adjustment": "保持已知坐标",
+            "benefit": "检查兼容"
+          }
+        ],
+        "limitations": [
+          "合成数据，不是实拍输出"
+        ],
+        "render_basis": "source_geometry",
+        "source_photo_aspect": 1.3333333333333333,
+        "layout_engine": "local_v1",
+        "layout_mode": "source_preserving"
+      }
+    }
+  ],
+  "failure_advice": {
+    "status": "unavailable",
+    "proposals": [],
+    "notes": [
+      "合成失败：没有可用主体，不展示占位图"
+    ],
+    "diagnostics": [
+      {
+        "stage": "contours",
+        "status": "failed",
+        "code": "foreground_empty",
+        "object_id": "object1"
+      }
+    ]
+  }
+}

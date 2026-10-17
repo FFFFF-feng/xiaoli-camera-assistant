@@ -12,6 +12,7 @@ from camera_assistant.models import (
     UserRequest,
 )
 from camera_assistant.services.phone_advisor import PhoneRecommendationValidator
+from camera_assistant.services.photography_facts import photography_facts, reconcile_parameter_facts
 
 
 class RecommendationValidator:
@@ -115,7 +116,8 @@ class RecommendationValidator:
 
         updates["risks"] = risks
         updates["validation_notes"] = notes
-        return recommendation.model_copy(update=updates)
+        return reconcile_parameter_facts(recommendation.model_copy(update=updates),
+                                         photography_facts(request, scene, camera))
 
     @staticmethod
     def _first_aperture(value: str) -> float | None:

@@ -35,6 +35,10 @@ from camera_assistant.services.image_analyzer import ImageAnalyzer
 from camera_assistant.services.lens_knowledge import LensKnowledgeBase
 from camera_assistant.services.localization import GroundingDinoLocalizer
 from camera_assistant.services.phone_knowledge import PhoneKnowledgeBase
+from camera_assistant.services.photography_facts import (
+    build_photography_facts, reconcile_composition_facts, reconcile_parameter_facts,
+    use_photography_facts,
+)
 from camera_assistant.services.retriever import LocalKnowledgeRetriever
 from camera_assistant.services.scene_knowledge import SceneKnowledgeBase
 from camera_assistant.services.timing import measure_stage
@@ -317,18 +321,26 @@ class CameraAssistantPipeline:
                         self.settings.knowledge_dir / "composition"
                     ).search(composition_query, top_k=4)
 
+        # Establish the same immutable facts before either parallel branch starts.
+        # copy_context below carries this value without adding a cloud dependency.
+        shared_facts = build_photography_facts(effective_request, scene, camera)
+
+        def composition_snapshot(kind: str, advice: CompositionAdvice) -> None:
+            publish_partial(kind, reconcile_composition_facts(advice, shared_facts))
+
         def generate_composition() -> CompositionAdvice | None:
             if self.composition_advisor is None or mixed_scene:
                 return composition
             try:
                 report("正在生成构图建议…")
                 with measure_stage("composition"), observe_composition(
-                    lambda advice: publish_partial("composition", advice),
-                    on_ready=lambda advice: publish_partial("composition_ready", advice),
+                    lambda advice: composition_snapshot("composition", advice),
+                    on_ready=lambda advice: composition_snapshot("composition_ready", advice),
                 ):
-                    return self.composition_advisor.recommend(
+                    advice = self.composition_advisor.recommend(
                         inspection, effective_request, scene, localization, composition_hits, camera
                     )
+                    return reconcile_composition_facts(advice, shared_facts)
             except (ValueError, KeyError, TypeError) as exc:
                 return CompositionAdvice(
                     status="unavailable", proposals=[],
@@ -359,6 +371,8 @@ class CameraAssistantPipeline:
                     risks=[str(exc) if isinstance(exc, ModelServiceError)
                            else "参数模型本次未返回可校验的设置，请重新分析。"], confidence=0,
                 )
+            if validated:
+                recommendation = reconcile_parameter_facts(recommendation, shared_facts)
             recommendation.validation_notes = list(
                 dict.fromkeys([*recommendation.validation_notes, *device_notes])
             )
@@ -366,21 +380,27 @@ class CameraAssistantPipeline:
                 publish_partial("parameters", recommendation)
             return recommendation
 
-        if parallel_advice and self.composition_advisor is not None and not mixed_scene:
-            # A Context cannot be entered by two threads at once. Independent
-            # copies carry request observers to both otherwise separate stages.
-            composition_context = copy_context()
-            parameter_context = copy_context()
-            with ThreadPoolExecutor(max_workers=2) as executor:
-                composition_future = executor.submit(
-                    composition_context.run, generate_composition,
-                )
-                parameter_future = executor.submit(parameter_context.run, generate_parameters)
-                composition = composition_future.result()
-                recommendation = parameter_future.result()
-        else:
-            composition = generate_composition()
-            recommendation = generate_parameters()
+        with use_photography_facts(shared_facts):
+            if parallel_advice and self.composition_advisor is not None and not mixed_scene:
+                # A Context cannot be entered by two threads at once. Independent
+                # copies carry request observers to both otherwise separate stages.
+                composition_context = copy_context()
+                parameter_context = copy_context()
+                with ThreadPoolExecutor(max_workers=2) as executor:
+                    composition_future = executor.submit(
+                        composition_context.run, generate_composition,
+                    )
+                    parameter_future = executor.submit(parameter_context.run, generate_parameters)
+                    composition = composition_future.result()
+                    recommendation = parameter_future.result()
+            else:
+                composition = generate_composition()
+                recommendation = generate_parameters()
+        # Both outputs have independently used the same facts, including their
+        # published snapshots. Recheck locally at the join; this makes custom
+        # advisors obey the same contract without serializing the cloud branches.
+        if composition is not None:
+            composition = reconcile_composition_facts(composition, shared_facts)
         result = PipelineResult(
             inspection=inspection,
             camera_profile=camera,

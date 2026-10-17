@@ -72,7 +72,7 @@ export function createSceneWorkerClient({createWorker=browserWorker,fallback=run
 // Only source geometry and object colour evidence affect the sampled palette.
 function colorGeometry(board) {
   return {layers:board.layers.map(layer=>({kind:layer.kind,label:layer.label,representation:layer.representation,
-    source_bbox:layer.source_bbox,outline:layer.outline,outline_style:layer.outline_style,contours:layer.contours}))};
+    source_bbox:layer.source_bbox,outline:layer.outline,outline_style:layer.outline_style,contours:layer.contours,holes:layer.holes}))};
 }
 
 export function createSceneRenderer({decode=scenePhotoPixels,encode=scenePixelsUrl,process=createSceneWorkerClient().run}={}) {

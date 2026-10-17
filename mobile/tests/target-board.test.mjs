@@ -89,6 +89,34 @@ test('不能用环境线条冒充主体、空线条或无依据的原始对照',
     const b=withContext();mutate(b.layers[1]);assert.equal(usableTargetBoard(b),null);
   }
 });
+const continuous=()=>{
+  const b=linked();
+  b.layout_mode='source_preserving';
+  Object.assign(b.layers[0],{representation:'scene_structure',outline:[],contours:[],outline_style:'curved',
+    details:[[[0,.8],[.3,.2],[.7,.3],[1,.6]],[[0,.9],[1,.9]]],
+    source_details:[[[0,.75],[.3,.1],[.7,.25],[1,.5]],[[0,.85],[1,.85]]]});
+  return b;
+};
+test('连续场景保留main身份，开放主结构不填充、不柔化、不被转为闭合主体',()=>{
+  const b=continuous(),layer=b.layers[0];
+  assert.equal(usableTargetBoard(b),b);
+  assert.equal(layer.role,'main');assert.deepEqual(silhouetteLayers(layer),[]);
+  assert.equal(targetLayerPaint(layer).fill,'none');assert.equal(targetLayerPaint(layer,false).fillOpacity,0);
+  const path=detailPath(layer,layer.details[0],100,100);
+  assert.ok(!/[QZ]/.test(path));assert.match(path,/^M10.00,68.00L/);
+  const original=sourceLayout(b);
+  assert.equal(original.layers[0].details,layer.source_details);
+  assert.deepEqual(original.layers[0].bbox,layer.source_bbox);
+});
+test('连续主场景必须有独立来源路径与source_geometry，仍拒绝空线条或假闭合轮廓',()=>{
+  for(const mutate of [b=>delete b.render_basis,b=>b.render_basis='legacy',b=>b.layers[0].representation='context_lines',b=>b.layers[0].details=[],
+    b=>delete b.layers[0].source_details,b=>b.layers[0].source_details=[],
+    b=>b.layers[0].outline=[[0,0],[1,0],[1,1]],b=>b.layers[0].contours=[[[0,0],[1,0],[1,1]]],
+    b=>b.layers[0].source_details=[[[0,0],[1,Infinity]]]]) {
+    const b=continuous();mutate(b);assert.equal(usableTargetBoard(b),null);
+  }
+  const old=linked();assert.equal(usableTargetBoard(old),old,'旧封闭轮廓保持兼容');
+});
 test('原始布局和目标布局共用轮廓，但分别使用原图位置和目标位置',()=>{
   const b=linked(),snapshot=JSON.stringify(b),source=sourceLayout(b);
   assert.equal(usableTargetBoard(b),b);assert.equal(source.aspect,1.5);
@@ -133,4 +161,27 @@ test('花瓣结构柔化保留开放端点，建筑硬线与真实闭合结构�
   assert.ok(detailPath(layer,[...path,path[0]],100,100).endsWith('Z'));
   const coords=[...rounded.matchAll(/([\d.]+),([\d.]+)/g)].map(m=>[+m[1],+m[2]]);
   assert.ok(coords.every(([x,y])=>x>=18&&x<=82&&y>=32&&y<=68));
+});
+test('真实主体孔隙作为同一复合路径保留，原始对照共用孔隙而非另填色块',()=>{
+  const b=linked(),layer=b.layers[0];
+  layer.holes=[[[.2,.2],[.4,.2],[.3,.6]]];
+  assert.equal(usableTargetBoard(b),b);
+  const path=outlinePath(layer,100,100);
+  assert.equal((path.match(/M/g)||[]).length,2);assert.equal((path.match(/Z/g)||[]).length,2);
+  assert.equal(sourceLayout(b).layers[0].holes,layer.holes);
+  assert.equal(silhouetteLayers(layer).length,1);
+  layer.contours=[[[0,0],[.45,0],[.45,1],[0,1]],[[.55,0],[1,0],[1,1],[.55,1]]];
+  assert.equal(usableTargetBoard(b),b);
+  const parts=silhouetteLayers(layer);
+  assert.equal(parts[0].holes.length,1);assert.equal(parts[1].holes.length,0);
+  assert.equal((outlinePath(parts[1],100,100).match(/M/g)||[]).length,1);
+});
+test('主体孔拒绝自交、外露、跨边界、重叠及过量路径，旧记录无需补孔字段',()=>{
+  const good=[[.2,.2],[.4,.2],[.3,.6]];
+  for(const holes of [null,[[[0,0],[.4,.2],[.3,.6]]],[[[.2,.2],[.4,.6],[.2,.6],[.4,.2]]],
+    [[[.2,.2],[1.1,.2],[.3,.6]]],[good,good],Array.from({length:13},()=>good)]){
+    const b=linked();b.layers[0].holes=holes;assert.equal(usableTargetBoard(b),null);
+  }
+  const b=continuous();b.layers[0].holes=[good];assert.equal(usableTargetBoard(b),null);
+  assert.equal(usableTargetBoard(linked())?.layers[0].holes,undefined);
 });

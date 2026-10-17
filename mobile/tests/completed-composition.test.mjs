@@ -17,6 +17,16 @@ test('完整的本地布局可单独显示，不需要完整参数或写入历�
   assert.equal(completedComposition(source,['photo1']).proposals[0].storyboard,source.proposals[0].storyboard);
   assert.equal(JSON.stringify(source),before);
 });
+test('已校验连续场景也可提前显示，保留来源路径和main身份；缺失来源仍拒绝',()=>{
+  const source=value(),board=source.proposals[0].storyboard;
+  board.layout_mode='source_preserving';
+  const layer=board.layers[0];
+  Object.assign(layer,{representation:'scene_structure',outline:[],details:[[[0,.8],[.5,.1],[1,.8]]],
+    source_details:[[[0,.8],[.5,.1],[1,.8]]]});
+  assert.equal(completedComposition(source,['photo1']).proposals[0].storyboard,board);
+  assert.equal(layer.role,'main');
+  delete layer.source_details;assert.equal(completedComposition(source,['photo1']),null);
+});
 test('旧版几何、未完成布局和错误参考图不能走提前显示入口',()=>{
   for(const edit of [v=>v.proposals[0].storyboard.layout_engine='legacy',
     v=>v.diagnostics[0].status='failed',v=>v.proposals[0].storyboard.reference_photo_id='photo2',
