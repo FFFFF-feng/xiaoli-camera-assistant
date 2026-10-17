@@ -1,0 +1,390 @@
+{
+  "knowledge_id": "phone20261017x-cn-honor-power2-d3657244",
+  "library_id": "equipment",
+  "title": "HONOR Power2（国行）：手机硬件与相机参数补充",
+  "kind": "manufacturer_fact",
+  "content": "# HONOR Power2（国行）\n\n整理日期：2026-10-17；待独立审核的厂商参数草稿。\n\n- 处理器：天玑8500 Elite\n- 屏幕尺寸：6.79英寸；备注：显示屏采用圆角设计，按照标准矩形测量时，屏幕的对角线长度是 6.79 英寸（实际可视区域略小）。\n- 屏幕分辨率：2640*1200 像素；备注：该分辨率对应标准矩形，实际屏幕有效像素略少。\n- 屏幕类型：AMOLED\n- 官网列示存储组合：存储；12GB+256GB 12GB+512GB 内存规格：LPDDR5X 存储规格：UFS 4.1；备注：可使用的内存容量小于此值，因为手机软件占用部分空间。\n- 电池容量及版本条件：10080mAh（典型值）；备注：电池额定容量为 9886mAh\n- 充电标称及条件：支持（最大20V/4A超级快充，兼容11V/6A，10V/4A超级快充） 支持27W有线反向快充；备注: 有线超级快充需搭配原装有线超级快充充电器与充电线使用。实际充电功率会随不同场景智能变化，请以实际使用情况为准。 最大支持27W有线反向充电，支持对通过荣耀实验室测试的设备进行反向充电。\n- 高度：162.1mm\n- 宽度：76.3mm\n- 厚度：7.98mm\n- 重量及版本条件：约216克（含电池）；备注：手机厚度不包含摄像头凸起部分，实际重量依配置、制造工艺、测量方法的不同可能有所差异。\n- 后置摄像头及辅助传感器：5000万像素摄像头（f/1.88 光圈，支持OIS光学防抖） 500万像素广角摄像头；备注: 不同拍照模式的照片像素可能有差异，请以实际为准。\n- 前置摄像头：1600万像素摄像头（f/2.45光圈）；备注: 不同拍照模式的照片像素可能有差异，请以实际为准。\n- 防抖：电子防抖、光学防抖；备注: 仅后置支持光学防抖\n- 变焦：最大支持10倍数字变焦\n- 视频录制摘要：最大支持4K（3840×2160）视频录制\n- 蓝牙：蓝牙6.0， 支持低功耗蓝牙(BLE) 支持LE Audio，Auracast 支持SBC、AAC、LDAC、aptX、aptX HD、LC3、LHDC5.0 支持适配LE Audio、ASHA助听器\n- 来源列示系统：MagicOS 10（基于Android 16）\n\n未核验字段：刷新率及条件、实体RAM选项、存储选项、USB接口、WLAN、NFC、来源列示上市时间、散热系统、触控肩键、指纹识别\n\n\n使用边界：\n- 只适用对应完整型号的中国大陆销售版本，不能用于海外版、相近型号或未注明的卫星通信版。\n- 厂商公开规格由AI提取，未经独立人工审核或真机验证；全部为草稿，禁止受管检索。\n- 保留内外屏、折叠状态、配色材质和RAM/存储版本条件。未列出的组合不能通过排列生成。\n- 电池保留典型值、额定值、双电芯等效值；不同数值不能无条件相加或替换。\n- 快充标称需相应适配器、线材与测试条件，不是持续功率；无线充电与有线充电分开理解。\n- 镜头像素不等于输出照片像素；等效焦距不等于实际焦距；光学品质变焦不增加物理镜头。\n- 来源中的辅助感光、色彩及深度传感器按原表保留，不据此增加独立可拍摄镜头。\n- 原生/第三方App手动ISO、快门、可调光圈与逐镜头模式组合未核验，不能由硬件参数推断。\n- 系统为来源列示版本；官网页面保留不代表当前在售，未核验实时库存、价格、销量或软件支持期限。\n- 未知字段为null，不代表不支持。字段条目数不是完整度评分。\n\n来源：[HONOR中国官网参数](https://www.honor.com/cn/phones/honor-power2/spec/)",
+  "payload": {
+    "brand": "HONOR",
+    "model_variant": "HONOR Power2",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "天玑8500 Elite",
+      "display_size": "6.79英寸；备注：显示屏采用圆角设计，按照标准矩形测量时，屏幕的对角线长度是 6.79 英寸（实际可视区域略小）。",
+      "display_resolution": "2640*1200 像素；备注：该分辨率对应标准矩形，实际屏幕有效像素略少。",
+      "display_refresh": null,
+      "display_panel": "AMOLED",
+      "ram": null,
+      "storage": null,
+      "sku": "存储；12GB+256GB 12GB+512GB 内存规格：LPDDR5X 存储规格：UFS 4.1；备注：可使用的内存容量小于此值，因为手机软件占用部分空间。",
+      "battery": "10080mAh（典型值）；备注：电池额定容量为 9886mAh",
+      "charging": "支持（最大20V/4A超级快充，兼容11V/6A，10V/4A超级快充） 支持27W有线反向快充；备注: 有线超级快充需搭配原装有线超级快充充电器与充电线使用。实际充电功率会随不同场景智能变化，请以实际使用情况为准。 最大支持27W有线反向充电，支持对通过荣耀实验室测试的设备进行反向充电。",
+      "height": "162.1mm",
+      "width": "76.3mm",
+      "thickness": "7.98mm",
+      "weight": "约216克（含电池）；备注：手机厚度不包含摄像头凸起部分，实际重量依配置、制造工艺、测量方法的不同可能有所差异。",
+      "rear": "5000万像素摄像头（f/1.88 光圈，支持OIS光学防抖） 500万像素广角摄像头；备注: 不同拍照模式的照片像素可能有差异，请以实际为准。",
+      "front": "1600万像素摄像头（f/2.45光圈）；备注: 不同拍照模式的照片像素可能有差异，请以实际为准。",
+      "stabilization": "电子防抖、光学防抖；备注: 仅后置支持光学防抖",
+      "zoom": "最大支持10倍数字变焦",
+      "video": "最大支持4K（3840×2160）视频录制",
+      "usb": null,
+      "wifi": null,
+      "bluetooth": "蓝牙6.0， 支持低功耗蓝牙(BLE) 支持LE Audio，Auracast 支持SBC、AAC、LDAC、aptX、aptX HD、LC3、LHDC5.0 支持适配LE Audio、ASHA助听器",
+      "nfc": null,
+      "os": "MagicOS 10（基于Android 16）",
+      "launch": null,
+      "cooling": null,
+      "shoulder_buttons": null,
+      "fingerprint": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "天玑8500 Elite",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "CPU型号",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "6.79英寸；备注：显示屏采用圆角设计，按照标准矩形测量时，屏幕的对角线长度是 6.79 英寸（实际可视区域略小）。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "屏幕尺寸",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "2640*1200 像素；备注：该分辨率对应标准矩形，实际屏幕有效像素略少。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "屏幕分辨率",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "AMOLED",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "屏幕类型",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.sku",
+        "value": "存储；12GB+256GB 12GB+512GB 内存规格：LPDDR5X 存储规格：UFS 4.1；备注：可使用的内存容量小于此值，因为手机软件占用部分空间。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "存储",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "10080mAh（典型值）；备注：电池额定容量为 9886mAh",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "电池容量",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "支持（最大20V/4A超级快充，兼容11V/6A，10V/4A超级快充） 支持27W有线反向快充；备注: 有线超级快充需搭配原装有线超级快充充电器与充电线使用。实际充电功率会随不同场景智能变化，请以实际使用情况为准。 最大支持27W有线反向充电，支持对通过荣耀实验室测试的设备进行反向充电。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "有线快充",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "162.1mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "长度",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "76.3mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "宽度",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "7.98mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "厚度",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "约216克（含电池）；备注：手机厚度不包含摄像头凸起部分，实际重量依配置、制造工艺、测量方法的不同可能有所差异。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "重量",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "5000万像素摄像头（f/1.88 光圈，支持OIS光学防抖） 500万像素广角摄像头；备注: 不同拍照模式的照片像素可能有差异，请以实际为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "后置摄像头",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "1600万像素摄像头（f/2.45光圈）；备注: 不同拍照模式的照片像素可能有差异，请以实际为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "前置摄像头",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.stabilization",
+        "value": "电子防抖、光学防抖；备注: 仅后置支持光学防抖",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "防抖模式",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.zoom",
+        "value": "最大支持10倍数字变焦",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "后置摄像头变焦模式",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "最大支持4K（3840×2160）视频录制",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "后置摄像头视频拍摄",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "蓝牙6.0， 支持低功耗蓝牙(BLE) 支持LE Audio，Auracast 支持SBC、AAC、LDAC、aptX、aptX HD、LC3、LHDC5.0 支持适配LE Audio、ASHA助听器",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "蓝牙",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "MagicOS 10（基于Android 16）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-5583a16a8906bb01"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "HONOR Power2",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      }
+    ],
+    "unknown_fields": [
+      "display_refresh",
+      "ram",
+      "storage",
+      "usb",
+      "wifi",
+      "nfc",
+      "launch",
+      "cooling",
+      "shoulder_buttons",
+      "fingerprint"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "CN400-5583a16a8906bb01",
+        "publisher": "HONOR",
+        "title": "荣耀Power2-续航巨无霸 | 荣耀官方网站",
+        "url": "https://www.honor.com/cn/phones/honor-power2/spec/",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "method": "品牌中国官网公开HTML参数表提取；未访问登录数据或私有接口",
+        "source_content_sha256": "768196db86f407932a95959e762d52bd0d425bb3539c8cf28ab548f17f319704",
+        "retrieval_allowed": false,
+        "rights_status": "必要规格事实重组与链接，未收录图片/整页；许可及项目使用待审核"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "data_scope": "选定硬件参数，包含保留的历史机型；不是完整规格库或实时在售清单",
+    "runtime_registration": "只生成知识文件，不修改phone_profiles.yaml，不写主数据库"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "400款扩充",
+    "HONOR"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "HONOR Power2",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "HONOR中国官网",
+    "url": "https://www.honor.com/cn/phones/honor-power2/spec/",
+    "location": "各字段位置见payload.facts",
+    "license": "必要规格事实重组，许可与使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}

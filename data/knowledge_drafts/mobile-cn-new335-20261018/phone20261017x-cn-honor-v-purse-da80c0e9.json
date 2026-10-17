@@ -1,0 +1,390 @@
+{
+  "knowledge_id": "phone20261017x-cn-honor-v-purse-da80c0e9",
+  "library_id": "equipment",
+  "title": "HONOR V Purse（国行）：手机硬件与相机参数补充",
+  "kind": "manufacturer_fact",
+  "content": "# HONOR V Purse（国行）\n\n整理日期：2026-10-17；待独立审核的厂商参数草稿。\n\n- 处理器：高通骁龙778G\n- 屏幕尺寸：展开态：7.71英寸 折叠态：6.45英寸；备注：显示屏采用圆角设计，按照标准矩形测量时，展开态屏幕的对角线长度是 7.71 英寸（实际可视区域略小），折叠态屏幕的对角线长度是 6.45 英寸（实际可视区域略小）。\n- 屏幕分辨率：展开态：2348x2016像素 折叠态：2348x1088像素；备注：该分辨率对应标准矩形，实际屏幕有效像素略少。\n- 屏幕类型：柔性OLED屏\n- 官网列示存储组合：存储；16GB+256GB 16GB+512GB；备注：可使用的内存容量小于此值，因为手机软件占用部分空间。\n- 电池容量及版本条件：4500mAh（典型值）；备注：电池额定容量为4400mAh（内置不可拆卸）。\n- 充电标称及条件：35W有线快充；备注：最大支持35W有线快充，需搭配原装超级快充充电器使用。实际充电功率会随不同场景智能变化，请以实际为准。\n- 高度：156.5 mm\n- 宽度：折叠态：74.7 mm；展开态：135.6 mm\n- 厚度：折叠态：8.6 mm；展开态：4.3 mm\n- 重量及版本条件：约214克（含电池）；备注：数据源自荣耀实验室，整机重量不包含保护膜的重量；整机尺寸不包含保护膜的厚度以及摄像头凸起部分：受产品配置和制造工艺、测量方法的影响，实际产品重量和尺寸可能有所差异，请以实物为准。\n- 后置摄像头及辅助传感器：5000万像素主摄摄像头（f/1.9光圈） 1200万超广角摄像头（f/2.2光圈）；备注：不同拍照模式的照片像素可能有差异，请以实际为准。\n- 前置摄像头：800万像素摄像头（f/2.0光圈）；备注：不同拍照模式的照片像素可能有差异，请以实际为准。\n- 防抖：支持\n- 变焦：最大10倍数字变焦；备注：不同模式下可能有差异，请以实际为准。\n- 视频录制摘要：最大支持4K（3840×2160）视频录制，支持防抖\n- 蓝牙：蓝牙5.2，支持BLE，支持SBC、AAC，支持LDAC高清音频，支持aptX，aptX HD\n- 来源列示系统：MagicOS 7.2（基于Android T）\n\n未核验字段：刷新率及条件、实体RAM选项、存储选项、USB接口、WLAN、NFC、来源列示上市时间、散热系统、触控肩键、指纹识别\n\n\n使用边界：\n- 只适用对应完整型号的中国大陆销售版本，不能用于海外版、相近型号或未注明的卫星通信版。\n- 厂商公开规格由AI提取，未经独立人工审核或真机验证；全部为草稿，禁止受管检索。\n- 保留内外屏、折叠状态、配色材质和RAM/存储版本条件。未列出的组合不能通过排列生成。\n- 电池保留典型值、额定值、双电芯等效值；不同数值不能无条件相加或替换。\n- 快充标称需相应适配器、线材与测试条件，不是持续功率；无线充电与有线充电分开理解。\n- 镜头像素不等于输出照片像素；等效焦距不等于实际焦距；光学品质变焦不增加物理镜头。\n- 来源中的辅助感光、色彩及深度传感器按原表保留，不据此增加独立可拍摄镜头。\n- 原生/第三方App手动ISO、快门、可调光圈与逐镜头模式组合未核验，不能由硬件参数推断。\n- 系统为来源列示版本；官网页面保留不代表当前在售，未核验实时库存、价格、销量或软件支持期限。\n- 未知字段为null，不代表不支持。字段条目数不是完整度评分。\n\n来源：[HONOR中国官网参数](https://www.honor.com/cn/phones/honor-v-purse/spec/)",
+  "payload": {
+    "brand": "HONOR",
+    "model_variant": "HONOR V Purse",
+    "region_scope": "中国大陆",
+    "specifications": {
+      "chipset": "高通骁龙778G",
+      "display_size": "展开态：7.71英寸 折叠态：6.45英寸；备注：显示屏采用圆角设计，按照标准矩形测量时，展开态屏幕的对角线长度是 7.71 英寸（实际可视区域略小），折叠态屏幕的对角线长度是 6.45 英寸（实际可视区域略小）。",
+      "display_resolution": "展开态：2348x2016像素 折叠态：2348x1088像素；备注：该分辨率对应标准矩形，实际屏幕有效像素略少。",
+      "display_refresh": null,
+      "display_panel": "柔性OLED屏",
+      "ram": null,
+      "storage": null,
+      "sku": "存储；16GB+256GB 16GB+512GB；备注：可使用的内存容量小于此值，因为手机软件占用部分空间。",
+      "battery": "4500mAh（典型值）；备注：电池额定容量为4400mAh（内置不可拆卸）。",
+      "charging": "35W有线快充；备注：最大支持35W有线快充，需搭配原装超级快充充电器使用。实际充电功率会随不同场景智能变化，请以实际为准。",
+      "height": "156.5 mm",
+      "width": "折叠态：74.7 mm；展开态：135.6 mm",
+      "thickness": "折叠态：8.6 mm；展开态：4.3 mm",
+      "weight": "约214克（含电池）；备注：数据源自荣耀实验室，整机重量不包含保护膜的重量；整机尺寸不包含保护膜的厚度以及摄像头凸起部分：受产品配置和制造工艺、测量方法的影响，实际产品重量和尺寸可能有所差异，请以实物为准。",
+      "rear": "5000万像素主摄摄像头（f/1.9光圈） 1200万超广角摄像头（f/2.2光圈）；备注：不同拍照模式的照片像素可能有差异，请以实际为准。",
+      "front": "800万像素摄像头（f/2.0光圈）；备注：不同拍照模式的照片像素可能有差异，请以实际为准。",
+      "stabilization": "支持",
+      "zoom": "最大10倍数字变焦；备注：不同模式下可能有差异，请以实际为准。",
+      "video": "最大支持4K（3840×2160）视频录制，支持防抖",
+      "usb": null,
+      "wifi": null,
+      "bluetooth": "蓝牙5.2，支持BLE，支持SBC、AAC，支持LDAC高清音频，支持aptX，aptX HD",
+      "nfc": null,
+      "os": "MagicOS 7.2（基于Android T）",
+      "launch": null,
+      "cooling": null,
+      "shoulder_buttons": null,
+      "fingerprint": null
+    },
+    "facts": [
+      {
+        "field": "specifications.chipset",
+        "value": "高通骁龙778G",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "CPU型号",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_size",
+        "value": "展开态：7.71英寸 折叠态：6.45英寸；备注：显示屏采用圆角设计，按照标准矩形测量时，展开态屏幕的对角线长度是 7.71 英寸（实际可视区域略小），折叠态屏幕的对角线长度是 6.45 英寸（实际可视区域略小）。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "屏幕尺寸",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_resolution",
+        "value": "展开态：2348x2016像素 折叠态：2348x1088像素；备注：该分辨率对应标准矩形，实际屏幕有效像素略少。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "屏幕分辨率",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.display_panel",
+        "value": "柔性OLED屏",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "屏幕类型",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.sku",
+        "value": "存储；16GB+256GB 16GB+512GB；备注：可使用的内存容量小于此值，因为手机软件占用部分空间。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "存储",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.battery",
+        "value": "4500mAh（典型值）；备注：电池额定容量为4400mAh（内置不可拆卸）。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "电池容量",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.charging",
+        "value": "35W有线快充；备注：最大支持35W有线快充，需搭配原装超级快充充电器使用。实际充电功率会随不同场景智能变化，请以实际为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "有线快充",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.height",
+        "value": "156.5 mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "长度",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.width",
+        "value": "折叠态：74.7 mm；展开态：135.6 mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "宽度",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.thickness",
+        "value": "折叠态：8.6 mm；展开态：4.3 mm",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "厚度",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.weight",
+        "value": "约214克（含电池）；备注：数据源自荣耀实验室，整机重量不包含保护膜的重量；整机尺寸不包含保护膜的厚度以及摄像头凸起部分：受产品配置和制造工艺、测量方法的影响，实际产品重量和尺寸可能有所差异，请以实物为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "重量",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.rear",
+        "value": "5000万像素主摄摄像头（f/1.9光圈） 1200万超广角摄像头（f/2.2光圈）；备注：不同拍照模式的照片像素可能有差异，请以实际为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "后置摄像头",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.front",
+        "value": "800万像素摄像头（f/2.0光圈）；备注：不同拍照模式的照片像素可能有差异，请以实际为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "前置摄像头",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.stabilization",
+        "value": "支持",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "防抖模式",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.zoom",
+        "value": "最大10倍数字变焦；备注：不同模式下可能有差异，请以实际为准。",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "后置摄像头变焦模式",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.video",
+        "value": "最大支持4K（3840×2160）视频录制，支持防抖",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "后置摄像头视频拍摄",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.bluetooth",
+        "value": "蓝牙5.2，支持BLE，支持SBC、AAC，支持LDAC高清音频，支持aptX，aptX HD",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "蓝牙",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      },
+      {
+        "field": "specifications.os",
+        "value": "MagicOS 7.2（基于Android T）",
+        "unit": "保留来源文本中的单位及条件",
+        "source_ids": [
+          "CN400-b1a16af89b43dbe0"
+        ],
+        "source_location": "操作系统",
+        "conditions": {
+          "model_variant": "HONOR V Purse",
+          "region_scope": "中国大陆",
+          "parameter_scope": "source_declared_specification",
+          "variant_conditions": "字段文本中的版本、配色、内外屏、额定/典型等条件不可丢弃"
+        },
+        "verification_status": "AI_extracted_pending_independent_human_review"
+      }
+    ],
+    "unknown_fields": [
+      "display_refresh",
+      "ram",
+      "storage",
+      "usb",
+      "wifi",
+      "nfc",
+      "launch",
+      "cooling",
+      "shoulder_buttons",
+      "fingerprint"
+    ],
+    "unknown_means": "未核验，不代表不支持；不从海外或相邻型号补值。",
+    "variant_notes": [],
+    "sources": [
+      {
+        "source_id": "CN400-b1a16af89b43dbe0",
+        "publisher": "HONOR",
+        "title": "荣耀V Purse-规格参数 | 荣耀官方网站",
+        "url": "https://www.honor.com/cn/phones/honor-v-purse/spec/",
+        "region": "中国大陆",
+        "accessed_at": "2026-10-17",
+        "method": "品牌中国官网公开HTML参数表提取；未访问登录数据或私有接口",
+        "source_content_sha256": "9438922f5696a42dbd35c05238fa8402c94cb0eb6101731df16076a2112571e3",
+        "retrieval_allowed": false,
+        "rights_status": "必要规格事实重组与链接，未收录图片/整页；许可及项目使用待审核"
+      }
+    ],
+    "verification": {
+      "checked_at": "2026-10-17",
+      "device_tested": false,
+      "independent_human_review": false,
+      "reviewer": null
+    },
+    "data_scope": "选定硬件参数，包含保留的历史机型；不是完整规格库或实时在售清单",
+    "runtime_registration": "只生成知识文件，不修改phone_profiles.yaml，不写主数据库"
+  },
+  "tags": [
+    "国行手机",
+    "手机参数",
+    "400款扩充",
+    "HONOR"
+  ],
+  "conditions": {
+    "device_type": "phone",
+    "camera_model": "HONOR V Purse",
+    "region_scope": "中国大陆"
+  },
+  "source": {
+    "name": "HONOR中国官网",
+    "url": "https://www.honor.com/cn/phones/honor-v-purse/spec/",
+    "location": "各字段位置见payload.facts",
+    "license": "必要规格事实重组，许可与使用待审核",
+    "retrieval_allowed": false
+  },
+  "author": "AI assistant",
+  "version": 1,
+  "schema_version": 1,
+  "dataset_split": "reference"
+}
