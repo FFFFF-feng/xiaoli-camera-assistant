@@ -551,3 +551,14 @@ def test_user_explicit_motion_sentence_is_evidence_with_structured_status_priori
     request = UserRequest(intent="狗正在快速奔跑，我想凝固动作")
     assert build_photography_facts(request, scene("static"), camera()).motion == "fast"
     assert build_photography_facts(request.model_copy(update={"subject_motion": "静止"}), scene("fast"), camera()).motion == "static"
+
+
+def test_top_level_composition_observations_do_not_promote_unknown_facts():
+    value = response([proposal()])
+    value["observations"] = ["现场光源是钨丝灯。", "主体正在高速奔跑。"]
+    facts = build_photography_facts(UserRequest(intent="保留暖色"), scene("fast"), camera())
+    result = reconcile_composition_facts(CompositionAdvice.model_validate(value), facts)
+    assert all(semantic_issues(text, facts) == set() for text in result.observations)
+    assert result.observations != value["observations"]
+    assert any("观察" in text for text in result.notes)
+    assert reconcile_composition_facts(result, facts) == result

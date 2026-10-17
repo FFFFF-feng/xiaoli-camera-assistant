@@ -473,7 +473,15 @@ def reconcile_composition_facts(advice: CompositionAdvice,
         checked, messages = reconcile_composition_proposal(proposal, facts)
         proposals.append(checked)
         notes.extend(messages)
-    return advice.model_copy(update={"proposals": proposals, "notes": list(dict.fromkeys(notes))})
+    observations = []
+    for text in advice.observations:
+        if semantic_issues(text, facts):
+            observations.append(_correct_text(text, facts))
+            notes.append("构图观察中的未确认摄影事实已改为条件式核对建议。")
+        else:
+            observations.append(text)
+    return advice.model_copy(update={"proposals": proposals, "observations": observations,
+                                     "notes": list(dict.fromkeys(notes))})
 
 
 def preserve_continuous_framing(advice: CompositionAdvice,
