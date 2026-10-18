@@ -14,6 +14,7 @@ from camera_assistant.models import (
 )
 from camera_assistant.services.advice_safety import screen_parameter_advice
 from camera_assistant.services.cloud import request_json
+from camera_assistant.services.parameter_context import candidate_prompt
 from camera_assistant.services.phone_advisor import DemoPhoneRecommendationAdvisor
 from camera_assistant.services.photography_facts import photography_facts, reconcile_parameter_facts
 
@@ -187,8 +188,9 @@ class DemoRecommendationAdvisor:
 
 
 class OpenAICompatibleRecommendationAdvisor:
-    def __init__(self, settings: Settings) -> None:
+    def __init__(self, settings: Settings, *, compact_context: bool = False) -> None:
         self.settings = settings
+        self.compact_context = compact_context
 
     def recommend(
         self,
@@ -231,6 +233,9 @@ shutter_speed仅写带秒单位的曝光时间或范围，例如1/125s或1-2秒�
 JSON Schema：
 {json.dumps(CameraRecommendation.model_json_schema(), ensure_ascii=False)}
 """.strip()
+        if self.compact_context:
+            prompt = candidate_prompt(prompt, request, scene, camera, facts, knowledge_hits,
+                                      CameraRecommendation.model_json_schema())
         payload = {
             "model": self.settings.text_model,
             "temperature": 0.2,
