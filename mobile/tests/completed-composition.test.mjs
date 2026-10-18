@@ -17,6 +17,33 @@ test('完整的本地布局可单独显示，不需要完整参数或写入历�
   assert.equal(completedComposition(source,['photo1']).proposals[0].storyboard,source.proposals[0].storyboard);
   assert.equal(JSON.stringify(source),before);
 });
+test('已校验连续场景也可提前显示，保留来源路径和main身份；缺失来源仍拒绝',()=>{
+  const source=value(),board=source.proposals[0].storyboard;
+  board.layout_mode='source_preserving';
+  const layer=board.layers[0];
+  const details=[[[0,.8],[.5,.1],[1,.8]],[[0,.9],[1,.9]],[[0,.1],[.2,.3]],[[.8,.3],[1,.1]]];
+  Object.assign(layer,{representation:'scene_structure',outline:[],details,
+    source_details:structuredClone(details),mobility:'fixed'});
+  assert.equal(completedComposition(source,['photo1']).proposals[0].storyboard,board);
+  assert.equal(layer.role,'main');
+  delete layer.source_details;assert.equal(completedComposition(source,['photo1']),null);
+});
+test('提前显示的连续场景同样执行后端条数、覆盖与固定属性校验',()=>{
+  for(const mutate of [
+    layer=>layer.details=layer.details.slice(0,3),
+    layer=>layer.details=[[[0,.1],[.4,.2]],[[0,.8],[.4,.9]],[[.1,.2],[.2,.3]],[[.3,.4],[.4,.5]]],
+    layer=>layer.mobility='movable',
+    layer=>layer.source_details=layer.source_details.slice(0,3),
+  ]) {
+    const source=value(),layer=source.proposals[0].storyboard.layers[0];
+    source.proposals[0].storyboard.layout_mode='source_preserving';
+    const details=[[[0,.8],[.5,.1],[1,.8]],[[0,.9],[1,.9]],[[0,.1],[.2,.3]],[[.8,.3],[1,.1]]];
+    Object.assign(layer,{representation:'scene_structure',outline:[],details,
+      source_details:structuredClone(details),mobility:'fixed'});
+    mutate(layer);
+    assert.equal(completedComposition(source,['photo1']),null);
+  }
+});
 test('旧版几何、未完成布局和错误参考图不能走提前显示入口',()=>{
   for(const edit of [v=>v.proposals[0].storyboard.layout_engine='legacy',
     v=>v.diagnostics[0].status='failed',v=>v.proposals[0].storyboard.reference_photo_id='photo2',

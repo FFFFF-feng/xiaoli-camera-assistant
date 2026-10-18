@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib
+import importlib.util
 import json
 import os
 import re
@@ -22,6 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / ".launcher"
 HTTP = build_opener(ProxyHandler({}))
 NO_WINDOW = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
+_SEGMENTATION_WEIGHT_LIMIT = 128 * 1024 * 1024
 
 
 class LaunchError(RuntimeError):
@@ -42,6 +45,7 @@ def check_runtime() -> str:
     if not (ROOT / "mobile/node_modules/vite").is_dir():
         raise LaunchError("前端依赖尚未安装，请执行：npm --prefix mobile ci")
     check_image_editor()
+    check_segmentation()
     return npm
 
 
@@ -57,6 +61,86 @@ def check_image_editor() -> None:
         ImageEditSettings.from_env(environment)
     except ValueError as error:
         raise LaunchError(f"可选图片编辑配置无效：{error}") from None
+
+
+def _segmentation_weight_check(path, expected_sha256):
+    if path is None:
+        return "weights_missing", None
+    try:
+        before = path.stat()
+        if not path.is_file():
+            return "weights_missing", None
+        if not 0 < before.st_size <= _SEGMENTATION_WEIGHT_LIMIT:
+            return "weights_invalid", None
+        digest = hashlib.sha256()
+        remaining = _SEGMENTATION_WEIGHT_LIMIT
+        with path.open("rb") as stream:
+            while chunk := stream.read(min(1024 * 1024, remaining + 1)):
+                if len(chunk) > remaining:
+                    return "weights_invalid", None
+                digest.update(chunk)
+                remaining -= len(chunk)
+        after = path.stat()
+        if ((before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns, before.st_ctime_ns)
+                != (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns, after.st_ctime_ns)):
+            return "weights_invalid", None
+        actual_sha256 = digest.hexdigest()
+        if expected_sha256 and actual_sha256 != expected_sha256:
+            return "weights_invalid", actual_sha256
+        return None, actual_sha256
+    except OSError:
+        return "weights_missing", None
+
+
+def check_segmentation() -> dict:
+    """Check configuration/presence only; never import Torch or load a model.
+
+    Avoid Settings.from_env(), which may consult the provider credential vault.
+    The demo Settings below validate the exact product segmentation parser.
+    """
+    from dotenv import dotenv_values
+
+    from camera_assistant.config import Settings
+
+    environment = {key: value for key, value in dotenv_values(ROOT / ".env").items()
+                   if value is not None}
+    environment.update(os.environ)
+    try:
+        options = Settings.segmentation_options(environment)
+        if options["segmentation_device"] != "cpu":
+            raise LaunchError("可选分割配置无效：device_unavailable；目前只验证 CPU。")
+        config = Settings(
+            demo_mode=True, api_key="", base_url="https://example.invalid", vision_model="",
+            text_model="", timeout_seconds=5, max_image_mb=1, knowledge_dir=ROOT / "knowledge",
+            **options,
+        )
+    except (ValueError, TypeError):
+        raise LaunchError("可选分割配置无效：segmentation_configuration_invalid。") from None
+    report = {"configured_backend": config.segmentation_backend,
+              "device": "cpu", "code": "configuration_checked", "weights_sha256": None,
+              "fallback_backend": None, "inference_proven": False}
+    if config.segmentation_backend == "grabcut":
+        return report
+    code, digest = _segmentation_weight_check(config.segmentation_weights_path,
+                                               config.segmentation_weights_sha256)
+    report["weights_sha256"] = digest
+    if code is None:
+        try:
+            if any(importlib.util.find_spec(name) is None
+                   for name in ("torch", "torchvision", "timm", "mobile_sam")):
+                code = "backend_unavailable"
+        except (ImportError, ValueError, OSError):
+            code = "backend_unavailable"
+    if code is not None:
+        report["code"] = code
+        if not config.segmentation_fallback:
+            raise LaunchError(f"可选分割预检失败：{code}；fallback=disabled。") from None
+        report["fallback_backend"] = "grabcut"
+        print(f"可选分割预检：requested=mobile_sam code={code} fallback=grabcut；"
+              "实际分析仍会记录后端和降级原因。", flush=True)
+    else:
+        print("可选分割配置预检通过；仅发现依赖并核对本地权重，尚未执行模型推理。", flush=True)
+    return report
 
 
 def local_environment(port: int, demo: bool = False) -> tuple[dict[str, str], str]:

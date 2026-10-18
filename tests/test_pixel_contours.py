@@ -229,6 +229,7 @@ def test_same_pixels_and_observation_produce_identical_contours_across_requests(
     # Other callers may have advanced OpenCV's global generator in between.
     tracing.cv2.setRNGSeed(741)
     tracing.cv2.randn(np.zeros((8, 8), np.float32), 0, 1)
+    tracing._CACHE.clear()  # Exercise RNG reproducibility, not a cache hit's distinct diagnostics.
     second = tracing.trace_observed_scene(metadata(), photo)
     assert first == second
 

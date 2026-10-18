@@ -12,6 +12,7 @@ from camera_assistant.models import (
     UserRequest,
 )
 from camera_assistant.services.phone_advisor import PhoneRecommendationValidator
+from camera_assistant.services.photography_facts import photography_facts, reconcile_parameter_facts
 
 
 class RecommendationValidator:
@@ -24,6 +25,10 @@ class RecommendationValidator:
     ) -> CameraRecommendation:
         if isinstance(camera, PhoneProfile):
             return PhoneRecommendationValidator().validate(recommendation, request, scene, camera)
+        facts = photography_facts(request, scene, camera)
+        # An image-derived label is a precautionary estimate, not a confirmed
+        # motion fact. An explicit user status always takes precedence.
+        fast_motion = facts.motion == "fast" or (facts.motion == "unknown" and scene.subject_motion == "fast")
         updates: dict[str, object] = {}
         # These notes describe checks performed here, never model-authored verification claims.
         notes: list[str] = []
@@ -42,9 +47,10 @@ class RecommendationValidator:
         if shutter_seconds is None:
             updates["shutter_speed"] = "无法校验快门数值；请在机身界面确认"
             risks.append("无法校验建议中的快门数值；请确认有效曝光时间后再拍摄。")
-        if scene.subject_motion == "fast" and shutter_seconds and max(shutter_seconds) > 1 / 500:
+        if fast_motion and shutter_seconds and max(shutter_seconds) > 1 / 500:
             updates["shutter_speed"] = "1/500s 或更快"
-            notes.append("快速主体的快门已修正为不慢于 1/500s。")
+            notes.append("快速主体的快门已修正为不慢于 1/500s。" if facts.motion == "fast" else
+                         "运动状态未确认；若现场确认快速运动，以不慢于 1/500s 为试拍起点。")
             shutter_seconds = (1 / 500,)
 
         if camera is not None:
@@ -87,7 +93,7 @@ class RecommendationValidator:
             elif "快门优先" in recommendation.shooting_mode:
                 updates["shooting_mode"] = camera.shutter_priority_name
 
-            if scene.subject_motion == "fast":
+            if fast_motion:
                 updates["focus_mode"] = camera.continuous_focus_name
 
             updates["metering_mode"] = camera.metering_name
@@ -100,7 +106,7 @@ class RecommendationValidator:
                 )
                 notes.append("仅匹配基础目录，不代表完成机型适配；数值建议仅作通用试拍目标。")
             notes.append(f"已匹配 {camera.display_name} 的机身能力目录资料；未收录能力不作保证。")
-            if camera.ibis_stops and scene.subject_motion != "fast":
+            if facts.ibis == "present" and camera.ibis_stops and not fast_motion:
                 notes.append(
                     f"该机型具备约 {camera.ibis_stops:g} 挡标称机身防抖；实际效果受镜头和拍摄姿势影响。"
                 )
@@ -115,7 +121,7 @@ class RecommendationValidator:
 
         updates["risks"] = risks
         updates["validation_notes"] = notes
-        return recommendation.model_copy(update=updates)
+        return reconcile_parameter_facts(recommendation.model_copy(update=updates), facts)
 
     @staticmethod
     def _first_aperture(value: str) -> float | None:

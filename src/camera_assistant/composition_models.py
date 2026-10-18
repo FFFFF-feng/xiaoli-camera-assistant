@@ -7,7 +7,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator, model_validator
 
-from camera_assistant.services.drawing_geometry import simple_outline
+from camera_assistant.services.drawing_geometry import contained_outline, simple_outline
 
 
 class CompositionModel(BaseModel):
@@ -103,6 +103,40 @@ class FramingPlan(CompositionModel):
         return value.strip()
 
 
+class PhotoBoundary(CompositionModel):
+    version: Literal[1] = 1
+    basis: Literal["pixel_mask_v1", "saved_outline_v1"]
+    work_width: int = Field(ge=2, le=16384)
+    work_height: int = Field(ge=2, le=16384)
+    clipped_edges: list[Literal["left", "top", "right", "bottom"]] = Field(max_length=4)
+    visible_paths: list[list[list[float]]] = Field(default_factory=list, max_length=96)
+
+    @field_validator("visible_paths", mode="before")
+    @classmethod
+    def valid_paths(cls, value):
+        return validate_target_paths(value, False)
+
+    @model_validator(mode="after")
+    def bounded_evidence(self):
+        if len(set(self.clipped_edges)) != len(self.clipped_edges):
+            raise ValueError("画幅接触边不能重复")
+        if not self.clipped_edges and self.visible_paths:
+            raise ValueError("未接触画幅时不覆盖主体描边")
+        return self
+
+
+class CategoryAdaptation(CompositionModel):
+    original_kind: str = Field(min_length=1, max_length=30)
+    normalized_kind: str = Field(min_length=1, max_length=30)
+    reason: Literal["specific_label_category_consistency"]
+
+
+class UnrenderedObject(CompositionModel):
+    object_id: str = Field(pattern=r"^object[1-6]$")
+    label: str = Field(min_length=1, max_length=30)
+    reason_code: str = Field(pattern=r"^[a-z_]{1,48}$")
+
+
 class TargetLayer(CompositionModel):
     label: str = Field(min_length=1, max_length=30)
     kind: str = Field(min_length=1, max_length=30, description="实际对象类别，如rocket/tower/light；平整背景色块为background")
@@ -110,9 +144,10 @@ class TargetLayer(CompositionModel):
     depth: int = Field(ge=0, le=9)
     bbox: list[float]
     color: Literal["slate", "blue", "ochre", "sage", "rose"] = "slate"
-    representation: Literal["silhouette", "context_lines"] = "silhouette"
+    representation: Literal["silhouette", "context_lines", "scene_structure"] = "silhouette"
     outline: list[list[float]] = Field(min_length=0, max_length=64)
     contours: list[list[list[float]]] = Field(default_factory=list, max_length=12)
+    holes: list[list[list[float]]] = Field(default_factory=list, max_length=12)
     outline_style: Literal["angular", "curved"] = "angular"
     details: list[list[list[float]]] = Field(default_factory=list, max_length=96)
     identity_features: list[str] = Field(default_factory=list, max_length=6)
@@ -122,6 +157,8 @@ class TargetLayer(CompositionModel):
     source_bbox: list[float] | None = None
     source_details: list[list[list[float]]] | None = None
     mobility: Literal["fixed", "movable", "unknown"] = "unknown"
+    photo_boundary: PhotoBoundary | None = None
+    category_adaptation: CategoryAdaptation | None = None
 
     @field_validator("source_bbox", mode="before")
     @classmethod
@@ -148,7 +185,7 @@ class TargetLayer(CompositionModel):
     @field_validator("outline", "details", mode="before")
     @classmethod
     def numeric_geometry(cls, value, info):
-        if info.field_name == "outline" and value == [] and info.data.get("representation") == "context_lines":
+        if info.field_name == "outline" and value == [] and info.data.get("representation") in {"context_lines", "scene_structure"}:
             return value
         return validate_target_paths(value, info.field_name == "outline")
 
@@ -157,7 +194,7 @@ class TargetLayer(CompositionModel):
     def valid_source_details(cls, value):
         return None if value is None else validate_target_paths(value, False)
 
-    @field_validator("contours", mode="before")
+    @field_validator("contours", "holes", mode="before")
     @classmethod
     def separate_silhouettes(cls, value):
         if not isinstance(value, list) or len(value) > 12:
@@ -170,10 +207,20 @@ class TargetLayer(CompositionModel):
 
     @model_validator(mode="after")
     def meaningful_outline(self):
+        if self.photo_boundary and (self.representation != "silhouette" or self.contours):
+            raise ValueError("画幅边界证据只用于单一实际主体轮廓")
         if self.kind == "background" and self.role != "background":
             raise ValueError("背景色块不能代替主体或前景")
+        if self.representation == "scene_structure":
+            if self.outline or self.contours or self.holes or len(self.details) < 4 or self.mobility != "fixed":
+                raise ValueError("连续场景须有至少四条实际开放结构线，不生成填充轮廓")
+            xs = [p[0] for path in self.details for p in path]
+            ys = [p[1] for path in self.details for p in path]
+            if max(xs)-min(xs) < .5 or max(ys)-min(ys) < .5:
+                raise ValueError("连续场景结构覆盖不足")
+            return self
         if self.representation == "context_lines":
-            if self.role == "main" or self.outline or self.contours or not self.details:
+            if self.role == "main" or self.outline or self.contours or self.holes or not self.details:
                 raise ValueError("环境线条不能代替主体，须有实际线条且不生成填充轮廓")
             return self
         area = abs(sum(a[0]*b[1] - b[0]*a[1]
@@ -182,6 +229,10 @@ class TargetLayer(CompositionModel):
             raise ValueError("主体轮廓不能退化为一条线")
         if not simple_outline(self.outline):
             raise ValueError("主体外轮廓不能自交、重复折返或重叠")
+        if self.holes and self.contours:
+            raise ValueError('孔隙只用于单一主体外轮廓')
+        if any(not contained_outline(self.outline, hole) for hole in self.holes):
+            raise ValueError('主体孔隙必须完整位于外轮廓内部')
         return self
 
 
@@ -226,13 +277,43 @@ class ObservedObject(TargetLayer):
                 "塔架": "tower", "火箭": "rocket"}.get(value, value)
 
 
+class SegmentationProcessing(CompositionModel):
+    """Locally produced execution evidence; excluded from observation prompts."""
+
+    object_id: str = Field(pattern=r"^object[1-6]$")
+    requested_backend: Literal["grabcut", "mobile_sam"]
+    actual_backend: Literal["grabcut", "mobile_sam", "scene_structure", "scene_context", "none"]
+    mask_backend: Literal["grabcut", "mobile_sam"] | None = None
+    code: str = Field(pattern=r"^[a-z_]{1,48}$")
+    fallback_code: str | None = Field(default=None, pattern=r"^[a-z_]{1,48}$")
+    model_version: str | None = Field(default=None, max_length=128)
+    weights_sha256: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
+    device: Literal["cpu"] = "cpu"
+    timings: dict[str, float] = Field(default_factory=dict)
+    cache_hit: bool = False
+    component_count: int = Field(default=1, ge=0)
+    discarded_noise_pixels: int = Field(default=0, ge=0)
+    local_attempts: int = Field(default=1, ge=1, le=2)
+    local_retry_code: str | None = Field(default=None, pattern=r"^[a-z_]{1,48}$")
+
+
 class ObservedScene(CompositionModel):
     reference_photo_id: Literal["photo1"] = "photo1"
+    scene_mode: Literal["objects", "continuous"] = "objects"
     objects: list[ObservedObject] = Field(min_length=1, max_length=6)
     limitations: list[str] = Field(min_length=1, max_length=5)
+    processing: list[SegmentationProcessing] = Field(default_factory=list, max_length=4)
+    unrendered_objects: list[UnrenderedObject] = Field(default_factory=list, max_length=4)
 
     @model_validator(mode="after")
     def distinct_objects(self):
+        if self.scene_mode == 'continuous' and any(
+            obj.kind not in {'building', 'mountain', 'landscape', 'architecture'} or obj.mobility != 'fixed'
+            for obj in self.objects if obj.role == 'main'
+        ):
+            raise ValueError('连续场景主体必须是固定建筑或山水整体')
+        if self.scene_mode != "continuous" and any(obj.representation == "scene_structure" for obj in self.objects):
+            raise ValueError("开放主体结构只用于明确的连续场景")
         if len({obj.object_id for obj in self.objects}) != len(self.objects):
             raise ValueError("原始物体编号不能重复")
         if not any(obj.role == "main" and obj.kind != "background" for obj in self.objects):
@@ -253,14 +334,36 @@ class TargetBoard(CompositionModel):
     changes: list[CompositionChange] = Field(min_length=1, max_length=3)
     limitations: list[str] = Field(min_length=1, max_length=5)
     render_basis: Literal["legacy", "source_geometry"] = "legacy"
-    layout_mode: Literal["schematic", "crop_projection"] = "schematic"
+    layout_mode: Literal["schematic", "crop_projection", "source_preserving"] = "schematic"
     source_photo_aspect: float | None = Field(default=None, gt=0, le=100)
     layout_engine: Literal["legacy", "local_v1"] = "legacy"
+    observed_frame: list[float] | None = None
+    unrendered_objects: list[str] = Field(default_factory=list, max_length=4)
+
+    @field_validator("unrendered_objects")
+    @classmethod
+    def valid_missing_labels(cls, values):
+        if any(not value.strip() or len(value) > 30 for value in values):
+            raise ValueError("未绘出对象名称无效")
+        return values
+
+    @field_validator("observed_frame", mode="before")
+    @classmethod
+    def valid_observed_frame(cls, value):
+        return None if value is None else TargetLayer.valid_box(value)
 
     @model_validator(mode="after")
     def contains_main(self):
+        if self.observed_frame is not None and (self.render_basis != "source_geometry" or self.source_photo_aspect is None):
+            raise ValueError("已观察画幅需要原图来源及比例")
         if not any(layer.role == "main" for layer in self.layers):
             raise ValueError("推荐分镜必须包含主体")
+        if any(layer.representation == 'scene_structure' for layer in self.layers):
+            if self.render_basis != 'source_geometry' or self.source_photo_aspect is None:
+                raise ValueError('连续场景结构必须有原图来源与比例')
+            if any(layer.source_object_id is None or layer.source_bbox is None or not layer.source_details
+                   for layer in self.layers if layer.representation == 'scene_structure'):
+                raise ValueError('连续场景结构缺少可核对的原始路径')
         return self
 
 
@@ -287,6 +390,9 @@ class CompositionDiagnostic(CompositionModel):
     stage: Literal["recognition", "contours", "intent", "layout"]
     status: Literal["complete", "failed", "skipped"]
     code: str = Field(pattern=r"^[a-z_]{1,48}$")
+    object_id: str | None = Field(default=None, pattern=r"^object[1-6]$")
+    field_path: str | None = Field(default=None, pattern=r"^[a-z_0-9.]{1,120}$")
+    segmentation: SegmentationProcessing | None = None
 
 
 class CompositionProposal(CompositionModel):

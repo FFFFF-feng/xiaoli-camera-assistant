@@ -31,6 +31,16 @@ def count_segmentation(monkeypatch):
     return calls
 
 
+def assert_cached_equivalent(cached, computed):
+    expected = computed.model_dump() if hasattr(computed, "model_dump") else deepcopy(computed)
+    assert all(row["cache_hit"] is False for row in expected["processing"])
+    for row in expected["processing"]:
+        row["cache_hit"] = True
+    # Every geometry, source and diagnostic field remains identical; only the
+    # explicit execution provenance changes between fresh work and reuse.
+    assert cached.model_dump() == expected
+
+
 def test_exact_repeat_avoids_real_segmentation_and_returns_independent_geometry(monkeypatch):
     calls = count_segmentation(monkeypatch)
     photo = inspection(building())
@@ -40,9 +50,9 @@ def test_exact_repeat_avoids_real_segmentation_and_returns_independent_geometry(
     first.limitations.append("caller-private-note")
     second = tracing.trace_observed_scene(metadata(), photo)
     assert calls == ["object1"]
-    assert second.model_dump() == expected
+    assert_cached_equivalent(second, expected)
     second.objects[0].identity_features.append("another-caller-note")
-    assert tracing.trace_observed_scene(metadata(), photo).model_dump() == expected
+    assert_cached_equivalent(tracing.trace_observed_scene(metadata(), photo), expected)
     assert calls == ["object1"]
 
 
@@ -58,11 +68,11 @@ def test_key_uses_image_bytes_and_normalized_metadata_not_discarded_model_paths(
     # These inspection fields are not read by the tracing algorithm.
     photo.metrics.width = 999
     photo.metrics.height = 999
-    assert tracing.trace_observed_scene(changed, photo) == first
+    assert_cached_equivalent(tracing.trace_observed_scene(changed, photo), first)
     assert calls == ["object1"]
 
 
-@pytest.mark.parametrize("changed", ["pixels", "bbox", "features", "limitations", "version", "resolution"])
+@pytest.mark.parametrize("changed", ["pixels", "bbox", "features", "limitations", "version", "resolution", "detail_resolution", "structure_version", "pet_iterations"])
 def test_algorithm_effective_inputs_invalidate_cache(monkeypatch, changed):
     calls = count_segmentation(monkeypatch)
     photo, source = inspection(building()), metadata()
@@ -77,12 +87,35 @@ def test_algorithm_effective_inputs_invalidate_cache(monkeypatch, changed):
         source["limitations"] = ["different evidence note"]
     elif changed == "version":
         monkeypatch.setattr(tracing, "_ALGORITHM_VERSION", "test-algorithm-version")
+    elif changed == "detail_resolution":
+        monkeypatch.setattr(tracing, "DETAIL_EDGE", tracing.DETAIL_EDGE - 1)
+    elif changed == "structure_version":
+        monkeypatch.setattr(tracing.scene_structure, "STRUCTURE_VERSION", "test-structure-version")
+    elif changed == "pet_iterations":
+        monkeypatch.setattr(tracing, "PET_ITERATIONS", tracing.PET_ITERATIONS + 1)
     else:
         monkeypatch.setattr(tracing, "MAX_EDGE", tracing.MAX_EDGE - 1)
     second = tracing.trace_observed_scene(source, photo)
     assert calls == ["object1", "object1"]
     if changed == "pixels":
         assert second.objects[0].outline != first.objects[0].outline
+
+
+def test_continuous_scene_mode_never_reuses_an_objects_cache_entry(monkeypatch):
+    source, photo = metadata(), inspection(building())
+    first = tracing.trace_observed_scene(source, photo)
+    calls = []
+    def structure(_rgb, obj):
+        calls.append(obj.object_id)
+        return obj.model_copy(update={"representation": "scene_structure", "outline": [],
+            "details": [[[0, 0], [1, 1]], [[0, 1], [1, 0]], [[.1, .1], [.9, .1]], [[.1, .9], [.9, .9]]]})
+    monkeypatch.setattr(tracing.scene_structure, "trace_structure", structure)
+    source["scene_mode"] = "continuous"
+    second = tracing.trace_observed_scene(source, photo)
+    assert calls == ["object1"] and first != second
+    assert second.objects[0].representation == "scene_structure"
+    assert_cached_equivalent(tracing.trace_observed_scene(source, photo), second)
+    assert calls == ["object1"]
 
 
 def test_validation_and_failed_segmentation_are_not_hidden_or_cached(monkeypatch):
@@ -101,7 +134,7 @@ def test_validation_and_failed_segmentation_are_not_hidden_or_cached(monkeypatch
         tracing.trace_observed_scene(source, photo)
     good = tracing.trace_observed_scene(source, photo)
     assert good.objects[0].outline
-    assert tracing.trace_observed_scene(source, photo) == good
+    assert_cached_equivalent(tracing.trace_observed_scene(source, photo), good)
     assert len(calls) == 2
     invalid = deepcopy(source)
     invalid["objects"][0]["bbox"] = [.8, .1, .2, .9]
@@ -141,7 +174,8 @@ def test_concurrent_same_key_rechecks_after_cpu_slot_without_duplicate_work(monk
         assert waiting.wait(timeout=2)
         release.set()
         a, b = first.result(timeout=3), second.result(timeout=3)
-    assert a == b and a is not b
+    assert_cached_equivalent(b, a)
+    assert a is not b
     assert calls == ["object1"]
 
 
@@ -155,7 +189,7 @@ def test_cached_result_needs_no_cpu_slot_or_rng_mutation(monkeypatch):
     monkeypatch.setattr(tracing.cv2, "setRNGSeed", no_random_work)
     assert tracing._SLOT.acquire(blocking=False)
     try:
-        assert tracing.trace_observed_scene(metadata(), photo) == first
+        assert_cached_equivalent(tracing.trace_observed_scene(metadata(), photo), first)
     finally:
         tracing._SLOT.release()
 

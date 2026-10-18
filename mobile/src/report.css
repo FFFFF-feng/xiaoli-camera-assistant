@@ -1,0 +1,57 @@
+/* Shared report hierarchy: headings, actions, then supporting explanations. */
+.report-heading { display: flex; align-items: flex-start; gap: 12px; margin: 0 0 18px; min-width: 0; }
+.report-heading-icon { display: grid; place-items: center; flex: 0 0 38px; height: 38px; border: 1px solid #e8cbb7; border-radius: 12px; color: var(--green); background: #faeee3; }
+.report-heading-icon .ui-icon { width: 19px; height: 19px; }
+.report-heading-copy { flex: 1; min-width: 0; }
+.report-heading h2, .report-heading h3, .report-heading h4 { font-family: inherit; color: var(--ink); font-weight: 700; font-size: 19px; line-height: 1.5; margin: 3px 0 0; overflow-wrap: break-word; }
+.report-heading h4 { font-size: 17px; }
+.report-heading p { margin: 5px 0 0; font-size: 12px; line-height: 1.8; color: var(--muted); font-weight: 400; }
+.report-eyebrow { display: block; color: #96502c; font-size: 11px; font-weight: 650; letter-spacing: .08em; margin-bottom: 3px; }
+.report-heading > .result-badge { flex-shrink: 0; margin-top: 8px; }
+.report-disclosure { margin: 16px 0; border: 1px solid var(--border); border-radius: 12px; padding: 0 16px; background: #fcfaf6; font-size: 13px; color: var(--muted); line-height: 1.85; }
+.report-disclosure > summary { cursor: pointer; padding: 14px 0; color: var(--ink); font-size: 13px; font-weight: 650; }
+.report-disclosure > summary::marker { color: var(--green); }
+.report-disclosure[open] > summary { margin-bottom: 14px; border-bottom: 1px solid var(--border); }
+.report-disclosure > summary small { display: inline-block; margin-left: 8px; font-size: 11px; font-weight: 400; color: var(--muted); }
+.report-disclosure > p { font-size: 13px; line-height: 1.9; margin: 10px 0 16px; }
+.report-disclosure > p:last-child { margin-bottom: 18px; }
+.report-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 22px 0 28px; padding: 8px; background: #f5efe6; border: 1px solid var(--border); border-radius: 14px; }
+.report-nav button { display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 47px; padding: 10px 8px; color: var(--ink); background: var(--paper); border: 1px solid #eadbcc; border-radius: 9px; font-size: 13px; font-weight: 650; }
+.report-nav button span { color: #a8673d; font-family: Georgia, serif; font-size: 14px; font-weight: 400; }
+.report-nav button:hover:enabled { background: #fbe8d8; border-color: #cd9973; }
+.report-nav button:disabled { opacity: .45; }
+.report-section-anchor { scroll-margin-top: 24px; }
+.report-parameters { padding: 0 20px 20px; border: 1px solid var(--border); border-radius: 16px; background: #fdfbf7; margin: 28px 0 18px; }
+.report-parameters > summary { display: flex; align-items: center; gap: 13px; padding: 20px 0; list-style: none; }
+.report-parameters > summary::-webkit-details-marker { display: none; }
+.report-parameters > summary::after { content: '+'; font-size: 23px; font-weight: 400; color: var(--green); margin-left: auto; }
+.report-parameters[open] > summary::after { content: '−'; }
+.report-parameters > summary .report-heading { margin: 0; flex: 1; }
+.report-parameters:not([open]) { padding-bottom: 0; }
+.report-parameters .result-section { border-top: 1px solid var(--border); padding-top: 20px; }
+.report-parameters .result-section h2 { display: flex; align-items: center; gap: 9px; font-size: 16px; font-weight: 700; }
+.report-parameters .result-section h2::before { content: ''; width: 4px; height: 16px; background: var(--coral); border-radius: 2px; }
+.report-parameters .result-section li { padding: 4px 0 4px 3px; line-height: 1.95; }
+.report-parameters .result-section li::marker { color: var(--green); }
+.report-parameters .result-section[data-kind='注意这些情况'] { border: 1px solid #ead6ad; border-radius: 10px; padding: 16px; background: #fff7e8; }
+.report-parameters .result-section[data-kind='注意这些情况'] h2 { color: #795322; }
+.report-parameters .result-section[data-kind='器材校验说明'] { color: var(--muted); }
+[aria-labelledby='result-title'] > .scene-summary { padding: 20px; background: #f8f3ec; border: 1px solid var(--border); border-radius: 14px; margin-bottom: 16px; }
+[aria-labelledby='result-title'] > .scene-summary h2 { font-size: 23px; font-weight: 750; }
+[aria-labelledby='result-title'] > .knowledge { padding: 0 16px; margin: 12px 0; }
+[aria-labelledby='result-title'] > .knowledge > summary { padding: 15px 0; }
+[aria-labelledby='result-title'] > .knowledge[open] > summary { margin-bottom: 15px; }
+[aria-labelledby='result-title'] > .phase-timings { margin: 16px 0; }
+.report-save-status:empty { display: none; }
+@media (max-width: 600px) {
+  .report-heading { gap: 10px; flex-wrap: wrap; }
+  .report-heading-icon { flex-basis: 34px; height: 34px; border-radius: 10px; }
+  .report-heading h2, .report-heading h3 { font-size: 18px; }
+  .report-heading > .result-badge { margin-left: 44px; margin-top: -8px; }
+  .report-nav { gap: 5px; padding: 6px; }
+  .report-nav button { gap: 5px; font-size: 12px; padding: 9px 3px; }
+  .report-nav button span { font-size: 12px; }
+  .report-parameters { padding: 0 14px 16px; }
+  .report-disclosure { padding-left: 13px; padding-right: 13px; }
+  [aria-labelledby='result-title'] > .scene-summary { padding: 16px; }
+}

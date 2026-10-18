@@ -68,6 +68,26 @@ def test_shapes_are_frozen_and_physical_aspect_is_preserved(inspection):
     assert original.model_dump() == before
 
 
+def test_continuous_legacy_projection_keeps_source_preserving_mode(inspection):
+    data = observed()
+    data["scene_mode"] = "continuous"
+    details = [[[0, .8], [.5, .1], [1, .8]], [[0, .9], [1, .9]],
+               [[0, .1], [.2, .3]], [[.8, .3], [1, .1]]]
+    data["objects"][0].update(bbox=[0, 0, 1, 1], representation="scene_structure",
+                               outline=[], details=details)
+    scene = ObservedScene.model_validate(data)
+    value = advice()
+    layer = value.proposals[0].storyboard.layers[0]
+    layer.representation = "scene_structure"
+    layer.outline = []
+    layer.details = details
+    layer.source_details = details
+
+    result = service.apply_observed_layout(value, scene, inspection)
+
+    assert result.proposals[0].storyboard.layout_mode == "source_preserving"
+
+
 @pytest.mark.parametrize("ids", [("object2",), ("object1", "object1"), (None,)])
 def test_unknown_duplicate_or_missing_ids_never_publish_placeholder(ids, inspection):
     result = service.apply_observed_layout(advice(ids), ObservedScene.model_validate(observed()), inspection)

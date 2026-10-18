@@ -14,7 +14,9 @@ from camera_assistant.models import (
 )
 from camera_assistant.services.advice_safety import screen_parameter_advice
 from camera_assistant.services.cloud import request_json
+from camera_assistant.services.parameter_context import candidate_prompt
 from camera_assistant.services.phone_advisor import DemoPhoneRecommendationAdvisor
+from camera_assistant.services.photography_facts import photography_facts, reconcile_parameter_facts
 
 
 class RecommendationAdvisor(Protocol):
@@ -39,6 +41,9 @@ class DemoRecommendationAdvisor:
     ) -> CameraRecommendation:
         if isinstance(camera, PhoneProfile):
             return DemoPhoneRecommendationAdvisor().recommend(request, scene, camera)
+        facts = photography_facts(request, scene, camera)
+        if facts.motion != "unknown":
+            scene = scene.model_copy(update={"subject_motion": facts.motion})
         intent = request.intent.lower()
         wide_aperture = self._wide_aperture(request)
         base: dict[str, object] = {
@@ -80,7 +85,8 @@ class DemoRecommendationAdvisor:
                 iso=self._auto_iso(camera, preferred_max=6400),
                 focus_mode=camera.continuous_focus_name,
                 drive_mode="高速连拍",
-                reasons=["快速主体先保证足够快的快门，再让自动 ISO 补足曝光。"],
+                reasons=["若现场确认主体快速运动，先保证足够快的快门，再让自动 ISO 补足曝光。"
+                         if facts.motion == "unknown" else "快速主体先保证足够快的快门，再让自动 ISO 补足曝光。"],
                 risks=["弱光下 ISO 可能升高并产生噪点。"],
                 adjustments=["仍有运动模糊时提高到 1/1000s；噪点过多时寻找更亮环境。"],
                 confidence=0.86,
@@ -141,7 +147,8 @@ class DemoRecommendationAdvisor:
                 iso=self._auto_iso(camera, preferred_max=1600),
                 focus_mode=f"{camera.single_focus_name}，单点对焦",
                 reasons=["中等光圈能保留主体层次，同时避免景深过浅。"],
-                adjustments=["颜色偏黄时尝试手动选择钨丝灯或自定义白平衡。"],
+                adjustments=[facts.white_balance_instruction + "。" if facts.white_balance_goal != "unspecified" else
+                             "颜色偏黄时先核对目标；若要中和偏色，可用中性参照设自定义白平衡并试拍比较。"],
                 confidence=0.79,
             )
 
@@ -153,7 +160,7 @@ class DemoRecommendationAdvisor:
             base["exposure_compensation"] = "+0.3 至 +1.0 EV"
             base["risks"].append("逆光补偿过多可能导致天空高光溢出。")
 
-        return CameraRecommendation(**base)
+        return reconcile_parameter_facts(CameraRecommendation(**base), facts)
 
     @staticmethod
     def _auto_iso(camera: CameraProfile, preferred_max: int) -> str:
@@ -181,8 +188,9 @@ class DemoRecommendationAdvisor:
 
 
 class OpenAICompatibleRecommendationAdvisor:
-    def __init__(self, settings: Settings) -> None:
+    def __init__(self, settings: Settings, *, compact_context: bool = False) -> None:
         self.settings = settings
+        self.compact_context = compact_context
 
     def recommend(
         self,
@@ -198,6 +206,7 @@ class OpenAICompatibleRecommendationAdvisor:
             f"[资料 {index}: {hit.title}]\n{hit.content}"
             for index, hit in enumerate(knowledge_hits, start=1)
         )
+        facts = photography_facts(request, scene, camera)
         prompt = f"""
 你是面向摄影新手的相机参数助手。只依据提供的场景分析与检索资料提出建议。
 建议应是可执行的参数范围；无法从参考图判断现场绝对照度时必须说明。
@@ -217,12 +226,16 @@ shutter_speed仅写带秒单位的曝光时间或范围，例如1/125s或1-2秒�
 用户请求：{request.model_dump_json()}
 场景分析：{scene.model_dump_json()}
 目标相机能力：{camera.model_dump_json()}
+共享摄影事实与约束：{facts.prompt()}
 检索资料：
 {evidence}
 
 JSON Schema：
 {json.dumps(CameraRecommendation.model_json_schema(), ensure_ascii=False)}
 """.strip()
+        if self.compact_context:
+            prompt = candidate_prompt(prompt, request, scene, camera, facts, knowledge_hits,
+                                      CameraRecommendation.model_json_schema())
         payload = {
             "model": self.settings.text_model,
             "temperature": 0.2,

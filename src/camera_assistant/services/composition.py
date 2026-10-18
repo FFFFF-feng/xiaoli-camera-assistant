@@ -31,10 +31,18 @@ from camera_assistant.services.advice_safety import composition_issue, unconfirm
 from camera_assistant.services.cloud import ModelServiceError, request_json
 from camera_assistant.services.composition_trace import observe_diagnostics
 from camera_assistant.services.layout_solver import solve_layout
+from camera_assistant.services.observation_evidence import observation_summary
 from camera_assistant.services.observed_composition import (
     apply_observed_layout,
     object_catalog,
     observe_objects,
+)
+from camera_assistant.services.photography_facts import (
+    PhotographyFacts,
+    build_photography_facts,
+    photography_facts,
+    preserve_continuous_framing,
+    reconcile_composition_facts,
 )
 from camera_assistant.services.scene_images import image_messages
 from camera_assistant.services.timing import measure_stage
@@ -279,7 +287,13 @@ def _validate_advice(
     localization: MethodResult | None,
     knowledge_hits: list[KnowledgeHit],
     request: UserRequest | None = None,
+    facts: PhotographyFacts | None = None,
 ) -> CompositionAdvice:
+    semantic_notes = []
+    if request is not None:
+        original_notes = set(advice.notes)
+        advice = reconcile_composition_facts(advice, facts or build_photography_facts(request, None, None))
+        semantic_notes = [note for note in advice.notes if note not in original_notes]
     allowed_ids = {hit.document_id for hit in knowledge_hits}
     for proposal in advice.proposals:
         if not set(proposal.knowledge_ids) <= allowed_ids:
@@ -287,7 +301,7 @@ def _validate_advice(
 
     boxes = _selected_boxes(localization)
     proposals = []
-    notes = []
+    notes = semantic_notes
     for proposal in advice.proposals:
         if request is not None:
             updates = {}
@@ -349,7 +363,7 @@ class OpenAICompatibleCompositionAdvisor:
         self.settings = settings
 
     def _resolve_intents(self, answer, observed, inspection, localization, knowledge_hits, request,
-                         trace_id, diagnostics, observation_issues):
+                         trace_id, diagnostics, observation_issues, facts=None):
         def event(stage, status, code):
             diagnostics.append(CompositionDiagnostic(stage=stage, status=status, code=code))
 
@@ -360,7 +374,9 @@ class OpenAICompatibleCompositionAdvisor:
             event("layout", "skipped", "no_valid_intent")
             return CompositionAdvice(status="unavailable", trace_id=trace_id, diagnostics=diagnostics,
                                      notes=[*observation_issues, "构图文字或意图格式无效，未生成推荐图。"])
-        checked = _validate_advice(advice, localization, knowledge_hits, request)
+        if getattr(observed, "scene_mode", None) == "continuous" and facts is not None:
+            advice = preserve_continuous_framing(advice, facts)
+        checked = _validate_advice(advice, localization, knowledge_hits, request, facts)
         notes = [*checked.notes, *observation_issues]
         proposals = []
         for proposal in checked.proposals:
@@ -386,13 +402,14 @@ class OpenAICompatibleCompositionAdvisor:
               "intent_validated" if valid_intent else "source_geometry_unavailable" if observed is None
               else "intent_missing_or_invalid")
         rechecked = _validate_advice(checked.model_copy(update={"proposals": proposals}),
-                                    localization, knowledge_hits, request)
+                                    localization, knowledge_hits, request, facts)
         drawn = any(p.storyboard for p in rechecked.proposals)
         event("layout", "complete" if drawn else "skipped" if not valid_intent or not observed else "failed",
               "local_layout_solved" if drawn else "source_geometry_unavailable" if not observed
               else "no_valid_intent" if not valid_intent else "layout_rejected")
         resolved = rechecked.model_copy(update={"trace_id": trace_id, "diagnostics": diagnostics,
             "notes": list(dict.fromkeys([*notes, *rechecked.notes]))})
+        resolved = observation_summary(resolved, observed)
         _publish_layout(resolved)
         _publish_ready(resolved)
         return resolved
@@ -417,6 +434,7 @@ class OpenAICompatibleCompositionAdvisor:
             }
             for hit in knowledge_hits
         ]
+        facts = photography_facts(request, scene, camera)
         context = {
             "user_request": request.model_dump(mode="json"),
             "scene": scene.model_dump(mode="json"),
@@ -426,10 +444,11 @@ class OpenAICompatibleCompositionAdvisor:
             "photo_count": 1 + len(inspection.reference_images),
             "crop_allowed": bool(_selected_boxes(localization)),
             "knowledge": evidence,
+            "photography_facts": facts.prompt(),
         }
         observation_issues: list[str] = []
         trace_id, diagnostics = uuid4().hex, []
-        with observe_diagnostics(diagnostics.append):
+        with observe_diagnostics(diagnostics.append, trace_id=trace_id):
             observed = observe_objects(self.settings, inspection, {
                 "user_request": context["user_request"], "scene": context["scene"],
                 "localization": context["localization"],
@@ -474,6 +493,9 @@ class OpenAICompatibleCompositionAdvisor:
             "vertical_placement为keep/upper/center/lower，subject_scale为keep/larger/smaller，"
             "aspect为keep/portrait/landscape/square。没有摄影理由就选keep，不机械套用三分法。"
             "其余可选字段可省略，由程序采用保守默认值；不能猜测不存在的主体编号。"
+            "observed_objects中representation=scene_structure表示连续场景开放路径；"
+            "此类场景保持placement/vertical_placement/subject_scale/aspect均为keep，"
+            "说明保留原居中或山峰与倒影关联的理由，并比较三分的代价。不能将连续景物单独搬动。"
             "程序根据原始物体计算位置、大小和边缘余量，保护全部主要主体。"
             "侧移、蹲下的真实视差和遮挡无法由单图保证，推荐图只表示统一重新取景；"
             "若核心建议是侧移分开遮挡，actions写明观察与试拍条件，不声称示意图已经消除了遮挡。"
@@ -519,7 +541,7 @@ class OpenAICompatibleCompositionAdvisor:
                 or not isinstance(raw_proposals, list)
                 or not any(isinstance(p, dict) and (p.get("storyboard") or p.get("sketch")) for p in raw_proposals)):
             return self._resolve_intents(answer, observed, inspection, localization, knowledge_hits, request,
-                                         trace_id, diagnostics, observation_issues)
+                                         trace_id, diagnostics, observation_issues, facts)
         # Resolve IDs into observed pixel geometry before model validation. The
         # planner never owns identity, silhouette or depth; no placeholders are
         # needed to validate its minimal layout contract.
@@ -564,7 +586,7 @@ class OpenAICompatibleCompositionAdvisor:
             advice = CompositionAdvice.model_validate(answer)
         except ValidationError:
             raise ValueError("构图模型返回的方案格式或裁切坐标无效，请重新分析。") from None
-        checked = _validate_advice(advice, localization, knowledge_hits, request)
+        checked = _validate_advice(advice, localization, knowledge_hits, request, facts)
         if observation_issues or layout_issues:
             checked = checked.model_copy(update={
                 "notes": list(dict.fromkeys([*checked.notes, *observation_issues, *layout_issues])),
@@ -576,7 +598,7 @@ class OpenAICompatibleCompositionAdvisor:
         # Reject unknown IDs and freeze source geometry before publishing any
         # target board. No rectangle placeholders can escape this boundary.
         grounded = apply_observed_layout(checked, observed, inspection)
-        rechecked = _validate_advice(grounded, localization, knowledge_hits, request)
+        rechecked = _validate_advice(grounded, localization, knowledge_hits, request, facts)
         grounded = rechecked.model_copy(update={
             "notes": list(dict.fromkeys([*grounded.notes, *rechecked.notes])),
         })
@@ -586,5 +608,6 @@ class OpenAICompatibleCompositionAdvisor:
             CompositionDiagnostic(stage="layout", status="complete" if any(p.storyboard for p in resolved.proposals)
                 else "failed", code="legacy_layout_validated" if any(p.storyboard for p in resolved.proposals)
                 else "legacy_layout_rejected")]})
+        resolved = observation_summary(resolved, observed)
         _publish_layout(resolved)
         return resolved

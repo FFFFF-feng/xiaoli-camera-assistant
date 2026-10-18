@@ -4,11 +4,37 @@ const point=p=>Array.isArray(p)&&p.length===2&&p.every(n=>typeof n==='number'&&N
 const points=(p,min)=>Array.isArray(p)&&p.length>=min&&p.length<=64&&p.every(point);
 const text=(s,n)=>typeof s==='string'&&s.trim().length>0&&s.length<=n;
 const photo=s=>typeof s==='string'&&/^photo[1-6]$/.test(s);
+export const openStructure=layer=>['context_lines','scene_structure'].includes(layer?.representation);
 
 // Illustrative tints, not sampled or reconstructed photo colors. No geometry
 // changes: open environmental strokes must never become filled polygons.
 export const DEFAULT_TARGET_COLOR=true;
 export const DEFAULT_TARGET_GRID=true;
+const SOURCE_PRESERVING_COPY={
+  status:'原图更优',
+  heading:'保留原取景',
+  reason:'原图更优：当前原图的连续场景已经较好地保留了路牌、路灯、树木和道路环境的真实空间关系；这不是系统没有生成推荐，系统不虚构把景物分别移动后的新机位。',
+  action:'现场拍摄重点：通过调整机位、距离或时机（包括机位高度、等待灯光时机），或保持现有关系，现场核对成片。',
+  drawing:'线绘只表达原取景中的空间关系，不是新机位的透视、遮挡或实拍预测。',
+  changeLabel:'现场拍摄重点',
+  changeText:'保留路牌、路灯与环境的相对位置，在现场通过机位、距离或时机调整强化视觉关联。',
+};
+const CLIPPED_COPY={
+  status:'',
+  heading:'保留原取景',
+  reason:'这不是系统没有生成推荐：主体接触参考照片边界，画外形体未知，系统不补画未知边界。',
+  action:'现场拍摄重点：按可见边界核对机位、距离和画外区域，不把斜线区域当作已知留白。',
+  drawing:'线绘只表达原图中可见的轮廓，不是新机位的透视、遮挡或实拍预测。',
+  changeLabel:'现场拍摄重点',
+  changeText:'保留已观察到的可见边界，在现场通过机位、距离或时机确认画外形体。',
+};
+export function targetCompositionCopy(board) {
+  if(board?.layout_mode==='source_preserving') {
+    return {...(board.layers?.some(layer=>layer?.representation==='scene_structure')
+      ? SOURCE_PRESERVING_COPY : CLIPPED_COPY)};
+  }
+  return {status:'',heading:'推荐构图线稿',reason:'',action:'',drawing:'推荐布局不是新机位的透视、遮挡或实拍效果预测。',changeLabel:'推荐调整',changeText:''};
+}
 export function thirdsGuide(width,height) {
   if(!Number.isFinite(width)||!Number.isFinite(height)||width<=0||height<=0)throw new RangeError('无效画幅');
   return {lines:[[width/3,0,width/3,height],[width*2/3,0,width*2/3,height],
@@ -17,15 +43,16 @@ export function thirdsGuide(width,height) {
 }
 const tints={slate:'#c7d4df',blue:'#bcd9e9',ochre:'#e7c38d',sage:'#c2d9b4',rose:'#e8b5b9'};
 export function targetLayerPaint(layer,colored=DEFAULT_TARGET_COLOR) {
-  const context=layer.representation==='context_lines';
+  const context=openStructure(layer);
+  const structure=layer.representation==='scene_structure';
   if(!colored)return {fill:context?'none':'#fff',fillOpacity:context?0:1,
-    stroke:context?(layer.role==='foreground'?'#71859a':'#96a5b4'):'#415970'};
+    stroke:structure?'#415970':context?(layer.role==='foreground'?'#71859a':'#96a5b4'):'#415970'};
   const botanical=['tree','branch','tree_branch','leaf','plant'].includes(layer.kind);
   const architecture=['building','tower','wall'].includes(layer.kind);
   const neutral=!layer.color||layer.color==='slate';
   const fill=neutral&&layer.kind==='flower'?'#ead9ae':neutral&&botanical?tints.sage:tints[layer.color]||tints.slate;
   return {fill:context?'none':fill,fillOpacity:context?0:layer.role==='background'?.42:.82,
-    stroke:context?(botanical?'#4f7b56':architecture?'#967241':'#638697'):'#415970'};
+    stroke:structure?'#415970':context?(botanical?'#4f7b56':architecture?'#967241':'#638697'):'#415970'};
 }
 
 export function simpleOutline(points) {
@@ -46,6 +73,43 @@ export function simpleOutline(points) {
   return true;
 }
 
+const openRing=path=>path[0].every((v,k)=>v===path.at(-1)[k])?path.slice(0,-1):path;
+function ringsTouch(first,second) {
+  const cross=(a,b,c)=>(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);
+  const on=(a,b,p)=>Math.abs(cross(a,b,p))<1e-10&&[0,1].every(k=>p[k]>=Math.min(a[k],b[k])-1e-10&&p[k]<=Math.max(a[k],b[k])+1e-10);
+  const a=openRing(first),b=openRing(second);
+  return a.some((p,i)=>b.some((q,j)=>{
+    const r=a[(i+1)%a.length],s=b[(j+1)%b.length];
+    return on(p,r,q)||on(p,r,s)||on(q,s,p)||on(q,s,r)
+      ||(cross(p,r,q)*cross(p,r,s)<0&&cross(q,s,p)*cross(q,s,r)<0);
+  }));
+}
+function insideRing(point,path) {
+  const ring=openRing(path);let inside=false;
+  for(let i=0,j=ring.length-1;i<ring.length;j=i++) {
+    const a=ring[i],b=ring[j];
+    if((a[1]>point[1])!==(b[1]>point[1])&&point[0]<(b[0]-a[0])*(point[1]-a[1])/(b[1]-a[1])+a[0])inside=!inside;
+  }
+  return inside;
+}
+const ringContains=(outer,inner)=>inner.every(p=>insideRing(p,outer))&&!ringsTouch(outer,inner);
+const coversBothAxes=paths=>{
+  const xs=paths.flatMap(path=>path.map(p=>p[0])),ys=paths.flatMap(path=>path.map(p=>p[1]));
+  return xs.length>0&&Math.max(...xs)-Math.min(...xs)>=.5&&Math.max(...ys)-Math.min(...ys)>=.5;
+};
+export const hasPhotoCut=layer=>!!layer?.photo_boundary?.clipped_edges?.length;
+function validPhotoBoundary(layer) {
+  const b=layer.photo_boundary;if(b==null)return true;
+  return !openStructure(layer)&&!layer.contours?.length&&b.version===1
+    &&['pixel_mask_v1','saved_outline_v1'].includes(b.basis)
+    &&[b.work_width,b.work_height].every(n=>Number.isInteger(n)&&n>=2&&n<=16384)
+    &&Array.isArray(b.clipped_edges)&&b.clipped_edges.length<=4
+    &&new Set(b.clipped_edges).size===b.clipped_edges.length
+    &&b.clipped_edges.every(e=>['left','top','right','bottom'].includes(e))
+    &&Array.isArray(b.visible_paths)&&b.visible_paths.length<=96&&b.visible_paths.every(p=>points(p,2))
+    &&(b.clipped_edges.length>0||!b.visible_paths.length);
+}
+
 export function usableTargetBoard(value) {
   if(!value||!['portrait','landscape','square'].includes(value.aspect)||!photo(value.reference_photo_id)
     ||!text(value.intent,100)||!text(value.distance_instruction,160)
@@ -56,21 +120,32 @@ export function usableTargetBoard(value) {
     ||!Array.isArray(value.limitations)||!value.limitations.length||value.limitations.length>5
     ||!value.limitations.every(s=>text(s,500)))return null;
   if(value.render_basis!==undefined&&!['legacy','source_geometry'].includes(value.render_basis))return null;
-  if(value.layout_mode!==undefined&&!['schematic','crop_projection'].includes(value.layout_mode))return null;
+  if(value.unrendered_objects!==undefined&&(!Array.isArray(value.unrendered_objects)
+    ||value.unrendered_objects.length>4||!value.unrendered_objects.every(s=>text(s,30))))return null;
+  if(value.layout_mode!==undefined&&!['schematic','crop_projection','source_preserving'].includes(value.layout_mode))return null;
+  if(value.layout_mode==='source_preserving'&&(value.render_basis!=='source_geometry'
+    ||!value.layers.some(layer=>layer?.representation==='scene_structure'||hasPhotoCut(layer))))return null;
+  if(value.observed_frame!=null&&(!Array.isArray(value.observed_frame)||value.observed_frame.length!==4
+    ||!point(value.observed_frame.slice(0,2))||!point(value.observed_frame.slice(2))
+    ||value.observed_frame[2]-value.observed_frame[0]<.005||value.observed_frame[3]-value.observed_frame[1]<.005
+    ||value.render_basis!=='source_geometry'))return null;
   if(value.render_basis==='source_geometry'&&(
     typeof value.source_photo_aspect!=='number'||!Number.isFinite(value.source_photo_aspect)
     ||value.source_photo_aspect<=0||value.source_photo_aspect>100))return null;
   const sourceIds=new Set();
   for(const layer of value.layers) {
+    if(!validPhotoBoundary(layer))return null;
     const b=layer?.bbox;
-    const context=layer?.representation==='context_lines';
+    const context=layer?.representation==='context_lines',structure=layer?.representation==='scene_structure';
+    const open=context||structure;
     if(!text(layer?.label,30)||!text(layer.kind,30)||!roles.has(layer.role)||!colors.has(layer.color)
       ||(layer.kind==='background'&&layer.role!=='background')
       ||!Number.isInteger(layer.depth)||layer.depth<0||layer.depth>9
       ||!Array.isArray(b)||b.length!==4||!point(b.slice(0,2))||!point(b.slice(2))
       ||b[2]-b[0]<.005||b[3]-b[1]<.005
-      ||(layer.representation!==undefined&&!['silhouette','context_lines'].includes(layer.representation))
-      ||(context ? (!Array.isArray(layer.outline)||layer.outline.length!==0||layer.role==='main') : !points(layer.outline,3))
+      ||(layer.representation!==undefined&&!['silhouette','context_lines','scene_structure'].includes(layer.representation))
+      ||(open ? (!Array.isArray(layer.outline)||layer.outline.length!==0||(context&&layer.role==='main')) : !points(layer.outline,3))
+      ||(structure&&value.render_basis!=='source_geometry')
       ||(layer.outline_style!==undefined&&!['angular','curved'].includes(layer.outline_style))
       ||!Array.isArray(layer.details)||layer.details.length>96||!layer.details.every(p=>points(p,2))
       ||!Array.isArray(layer.evidence_photo_ids)||!layer.evidence_photo_ids.length
@@ -80,14 +155,26 @@ export function usableTargetBoard(value) {
       ||!['observed','approximate'].includes(layer.certainty))return null;
     const p=layer.outline;
     const area=Math.abs(p.reduce((a,v,i)=>{const n=p[(i+1)%p.length];return a+v[0]*n[1]-n[0]*v[1]},0))/2;
-    if(!context&&(area<.01||!simpleOutline(p)))return null;
-    if(context&&(!layer.details.length||layer.contours?.length))return null;
+    if(!open&&(area<.01||!simpleOutline(p)))return null;
+    if(open&&(!layer.details.length||layer.contours?.length))return null;
+    if(structure&&(layer.mobility!=='fixed'||layer.details.length<4||!coversBothAxes(layer.details)))return null;
     if(layer.source_details!==undefined&&layer.source_details!==null&&(
       !Array.isArray(layer.source_details)||layer.source_details.length>96||!layer.source_details.every(p=>points(p,2))))return null;
     if(layer.contours!==undefined&&(!Array.isArray(layer.contours)||layer.contours.length>12
       ||!layer.contours.every(path=>points(path,3)&&simpleOutline(path))))return null;
+    if(layer.holes!==undefined&&(!Array.isArray(layer.holes)||layer.holes.length>12
+      ||!layer.holes.every(path=>points(path,3)&&simpleOutline(path))))return null;
+    if(layer.holes?.length&&layer.contours?.length)return null;
+    if(layer.holes?.length) {
+      if(open)return null;
+      const outlines=layer.contours?.length?layer.contours:[layer.outline];
+      if(!layer.holes.every(hole=>outlines.filter(outline=>ringContains(outline,hole)).length===1))return null;
+      if(layer.holes.some((hole,i)=>layer.holes.slice(i+1).some(other=>ringsTouch(hole,other)
+        ||insideRing(hole[0],other)||insideRing(other[0],hole))))return null;
+    }
     if(value.render_basis==='source_geometry') {
-      if(context&&(!Array.isArray(layer.source_details)||!layer.source_details.length))return null;
+      if(open&&(!Array.isArray(layer.source_details)||!layer.source_details.length))return null;
+      if(structure&&(layer.source_details.length<4||!coversBothAxes(layer.source_details)))return null;
       const b=layer.source_bbox;
       if(!/^object[1-6]$/.test(layer.source_object_id)||sourceIds.has(layer.source_object_id)
         ||!Array.isArray(b)||b.length!==4||!point(b.slice(0,2))||!point(b.slice(2))
@@ -107,7 +194,7 @@ export function sourceLayout(board) {
   if(!usableTargetBoard(board)||board.render_basis!=='source_geometry')return null;
   return {aspect:board.source_photo_aspect,
     layers:board.layers.map(layer=>({...layer,bbox:[...layer.source_bbox],
-      details:layer.representation==='context_lines'?layer.source_details:layer.details}))};
+      details:openStructure(layer)?layer.source_details:layer.details}))};
 }
 
 export function projectedPoints(layer, path, width, height) {
@@ -116,13 +203,14 @@ export function projectedPoints(layer, path, width, height) {
 }
 
 export function silhouetteLayers(layer) {
-  if(layer.representation==='context_lines')return [];
-  return layer.contours?.length ? layer.contours.map(outline=>({...layer,outline})) : [layer];
+  if(openStructure(layer)||(layer.holes?.length&&layer.contours?.length))return [];
+  return layer.contours?.length ? layer.contours.map(outline=>({...layer,outline,
+    holes:(layer.holes||[]).filter(hole=>ringContains(outline,hole))})) : [layer];
 }
 
 export function detailPath(layer,path,width,height) {
-  if(layer.representation==='context_lines'||layer.outline_style!=='curved'||path.length<3)return `M${projectedPoints(layer,path,width,height).replaceAll(' ','L')}`;
-  if(path.length>3&&path[0].every((n,k)=>n===path.at(-1)[k]))return outlinePath({...layer,outline:path},width,height);
+  if(openStructure(layer)||layer.outline_style!=='curved'||path.length<3)return `M${projectedPoints(layer,path,width,height).replaceAll(' ','L')}`;
+  if(path.length>3&&path[0].every((n,k)=>n===path.at(-1)[k]))return outlinePath({...layer,outline:path,holes:[]},width,height);
   const [x1,y1,x2,y2]=layer.bbox;
   const points=path.map(([x,y])=>[(x1+x*(x2-x1))*width,(y1+y*(y2-y1))*height]);
   const fmt=p=>p.map(n=>n.toFixed(2)).join(',');
@@ -134,7 +222,7 @@ export function detailPath(layer,path,width,height) {
 
 // Round only explicitly curved silhouettes, using bounded quadratic corner
 // cuts. Unlike Catmull-Rom splines, control points cannot overshoot the box.
-export function outlinePath(layer,width,height) {
+function singleOutlinePath(layer,width,height) {
   if(!layer.outline?.length)return '';
   const ring=layer.outline[0].every((v,k)=>v===layer.outline.at(-1)[k])?layer.outline.slice(0,-1):layer.outline;
   const [x1,y1,x2,y2]=layer.bbox;
@@ -148,4 +236,28 @@ export function outlinePath(layer,width,height) {
     d+=`Q${fmt(v)} ${fmt(toward(v,next))}L${fmt(toward(next,v))}`;
   }
   return `${d}Z`;
+}
+
+// Keep genuine enclosed background gaps transparent. Every part receives only
+// its own holes; adding an outside hole to another part would create a filled island.
+export function outlinePath(layer,width,height) {
+  if(!layer.outline?.length)return '';
+  return singleOutlinePath(layer,width,height)+(layer.holes||[]).map(outline=>
+    singleOutlinePath({...layer,outline,outline_style:'angular'},width,height)).join('');
+}
+
+// Filling can close a clipped silhouette; stroking that closure invents an edge.
+// Both Canvas/Worker colour masks keep outlinePath. Only visible SVG strokes differ.
+export function silhouetteStrokePath(layer,width,height) {
+  if(!hasPhotoCut(layer))return outlinePath(layer,width,height);
+  return layer.photo_boundary.visible_paths.map(path=>
+    `M${projectedPoints(layer,path,width,height).replaceAll(' ','L')}`).join('')
+    +(layer.holes||[]).map(outline=>singleOutlinePath({...layer,outline,outline_style:'angular'},width,height)).join('');
+}
+
+export function unknownFrameRects(board,source=false) {
+  if(source||!board.observed_frame)return [];
+  const [x1,y1,x2,y2]=board.observed_frame;
+  return [[0,0,1,y1],[0,y2,1,1-y2],[0,y1,x1,y2-y1],[x2,y1,1-x2,y2-y1]]
+    .filter(([, ,w,h])=>w>1e-8&&h>1e-8);
 }

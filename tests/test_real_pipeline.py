@@ -241,7 +241,8 @@ def test_managed_pipeline_separates_evidence_and_respects_publication_conditions
     assert result.scene.main_subject_ids == ["visual_person"]
     assert result.scene.subject_status == "selected"
     assert result.scene.composition_clues == ["主体右侧留白"]
-    assert result.scene.uncertainties == ["单帧无法确定实际运动速度"]
+    assert "单帧无法确定实际运动速度" in result.scene.uncertainties
+    assert any("光源" in note and "视觉估计" in note for note in result.scene.uncertainties)
     assert composition.calls[0][2] == result.scene
     assert result.camera_profile.profile_id == "canon_eos_r50"
     assert composition.calls[0][1].camera_format == "APS-C"
