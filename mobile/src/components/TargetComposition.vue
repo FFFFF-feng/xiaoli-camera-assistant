@@ -66,7 +66,7 @@ function save() {
     <div class="target-heading"><h3>{{ board.intent }}</h3><span>{{ showSource?'原始布局估计':copy.heading }}</span></div>
     <div v-if="original" class="target-mode" role="group" aria-label="轮廓布局对照"><button type="button" :aria-pressed="!showSource" @click="showSource=false">推荐布局</button><button type="button" :aria-pressed="showSource" @click="showSource=true">原始物体布局</button></div>
     <aside v-if="sourcePreserving" class="target-preserving" data-source-preserving>
-      <strong>{{ copy.heading }}</strong><p>{{ copy.reason }}</p><p>{{ copy.action }}</p><p>{{ copy.drawing }}</p>
+      <strong>{{ copy.status ? `${copy.status} · ${copy.heading}` : copy.heading }}</strong><p>{{ copy.reason }}</p><p>{{ copy.action }}</p><p>{{ copy.drawing }}</p>
     </aside>
     <figure class="target-sheet">
       <svg ref="sheet" :viewBox="`-18 -18 ${width+36} ${height+36}`" role="img" :aria-label="showSource?'原始布局估计，用于核对轮廓与空间位置':`推荐构图：${board.intent}。使用${structureScene?'真实边界的场景结构线':'物体轮廓'}表达目标布局。${copy.drawing}`" font-family="sans-serif">

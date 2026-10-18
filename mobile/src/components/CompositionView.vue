@@ -39,7 +39,7 @@ const framingChecklist = computed(() => {
   };
   const copy = framingCopy.value;
   return {
-    '取景状态': `${copy.heading}。${copy.reason}`,
+    '取景状态': `${copy.status ? `${copy.status} · ` : ''}${copy.heading}。${copy.reason}`,
     [copy.changeLabel]: copy.action,
     '空间关系': copy.changeText,
     '线绘说明': copy.drawing,

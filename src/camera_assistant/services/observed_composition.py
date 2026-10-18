@@ -395,10 +395,14 @@ def apply_observed_layout(advice: CompositionAdvice, scene: ObservedScene | None
             ) for obj in scene.objects):
                 raise ValueError("原始主体不能变为陪体")
             _check_fixed_order(layers)
+            preserve_source = scene.scene_mode == "continuous" or any(
+                obj.role == "main" and obj.photo_boundary and obj.photo_boundary.clipped_edges
+                for obj in scene.objects
+            )
             board = TargetBoard.model_validate({
                 **board.model_dump(), "layers": [layer.model_dump() for layer in layers],
                 "render_basis": "source_geometry", "source_photo_aspect": photo_aspect,
-                "layout_mode": "crop_projection" if crop else "schematic",
+                "layout_mode": "source_preserving" if preserve_source else "crop_projection" if crop else "schematic",
                 "limitations": list(dict.fromkeys([SCHEMATIC_LIMIT,
                     "环境线索沿主体取景变换保留，超出目标画框的部分被裁去；不预测侧移后的视差或补画画外背景。",
                     *scene.limitations, *board.limitations]))[:5],

@@ -11,14 +11,16 @@ export const openStructure=layer=>['context_lines','scene_structure'].includes(l
 export const DEFAULT_TARGET_COLOR=true;
 export const DEFAULT_TARGET_GRID=true;
 const SOURCE_PRESERVING_COPY={
+  status:'原图更优',
   heading:'保留原取景',
-  reason:'这不是系统没有生成推荐：路牌、路灯、树木和道路环境属于连续场景，需要保持真实空间关系，系统不虚构把景物分别移动后的新机位。',
+  reason:'原图更优：当前原图的连续场景已经较好地保留了路牌、路灯、树木和道路环境的真实空间关系；这不是系统没有生成推荐，系统不虚构把景物分别移动后的新机位。',
   action:'现场拍摄重点：通过调整机位、距离或时机（包括机位高度、等待灯光时机），或保持现有关系，现场核对成片。',
   drawing:'线绘只表达原取景中的空间关系，不是新机位的透视、遮挡或实拍预测。',
   changeLabel:'现场拍摄重点',
   changeText:'保留路牌、路灯与环境的相对位置，在现场通过机位、距离或时机调整强化视觉关联。',
 };
 const CLIPPED_COPY={
+  status:'',
   heading:'保留原取景',
   reason:'这不是系统没有生成推荐：主体接触参考照片边界，画外形体未知，系统不补画未知边界。',
   action:'现场拍摄重点：按可见边界核对机位、距离和画外区域，不把斜线区域当作已知留白。',
@@ -31,7 +33,7 @@ export function targetCompositionCopy(board) {
     return {...(board.layers?.some(layer=>layer?.representation==='scene_structure')
       ? SOURCE_PRESERVING_COPY : CLIPPED_COPY)};
   }
-  return {heading:'推荐构图线稿',reason:'',action:'',drawing:'推荐布局不是新机位的透视、遮挡或实拍效果预测。',changeLabel:'推荐调整',changeText:''};
+  return {status:'',heading:'推荐构图线稿',reason:'',action:'',drawing:'推荐布局不是新机位的透视、遮挡或实拍效果预测。',changeLabel:'推荐调整',changeText:''};
 }
 export function thirdsGuide(width,height) {
   if(!Number.isFinite(width)||!Number.isFinite(height)||width<=0||height<=0)throw new RangeError('无效画幅');
