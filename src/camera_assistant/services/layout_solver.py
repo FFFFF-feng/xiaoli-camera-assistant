@@ -27,7 +27,9 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
     ratio = photo_aspect/ASPECTS[aspect]
     base = min(1., 1/ratio)
     continuous = scene.scene_mode == "continuous"
-    if continuous:
+    clipped = any(o.photo_boundary and o.photo_boundary.clipped_edges for o in mains)
+    preserve_source = continuous or clipped
+    if preserve_source:
         # A continuous scene has no independent movable silhouette. Preserve the
         # complete source field, including genuine edge truncation. Any requested
         # camera shift still needs a new photograph, not a fabricated 2D view.
@@ -50,7 +52,7 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
     cy = {"upper": 1/3, "center": .5, "lower": 2/3}.get(plan.vertical_placement, .5+(fy-.5)*base)
     tx = max(.04-union[0]*sx, min(1-.04-union[2]*sx, cx-fx*sx))
     ty = max(.04-union[1]*sy, min(1-.04-union[3]*sy, cy-fy*sy))
-    if continuous:
+    if preserve_source:
         sx, sy = base*ratio, base
         tx, ty = (1-sx)/2, (1-sy)/2
     layers = []
@@ -77,7 +79,10 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
     if continuous:
         limitations = ["本方案保留原取景：连续场景结构线只表示原图可见边界，不是已实现侧移的新视角。",
                        "开放路径不表示封闭物体分割，也不补画画外区域；山峰与倒影、两侧建筑共享同一变换。", LIMIT]
-    if constrained:
+    elif clipped:
+        limitations = ["主体接触参考照片边界：保留原取景，填色闭合不代表真实物体底边；画外形体未知，不补全。",
+                       "斜线区域未被参考照片覆盖，不表示已知留白；所有轮廓与内部细节使用同一变换。", LIMIT]
+    if constrained and not preserve_source:
         limitations.append("为完整保留全部主要主体及边缘余量，已限制放大或偏移幅度，以图中实际占比为准。")
     # Partial extraction warnings must remain visible within the board's five
     # note budget, ahead of general descriptions of the tracing method.
@@ -89,7 +94,8 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
         layers=layers, changes=[{"problem": plan.diagnosis, "adjustment": (placement+size)[:140],
                                 "benefit": "用真实轮廓比较主体占比和边缘余量；拍摄效果仍需现场核对。"}],
         limitations=list(dict.fromkeys(limitations))[:5], render_basis="source_geometry",
-        source_photo_aspect=photo_aspect, layout_mode="source_preserving" if continuous else "schematic", layout_engine="local_v1",
+        source_photo_aspect=photo_aspect, layout_mode="source_preserving" if preserve_source else "schematic", layout_engine="local_v1",
+        observed_frame=[tx, ty, tx+sx, ty+sy] if clipped else None,
     )
     framing = FramingPlan(
         diagnosis=plan.diagnosis, visual_priority=f"先看{focus.label}，其余已观察景物保留相互位置。",

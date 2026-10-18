@@ -72,6 +72,18 @@ const coversBothAxes=paths=>{
   const xs=paths.flatMap(path=>path.map(p=>p[0])),ys=paths.flatMap(path=>path.map(p=>p[1]));
   return xs.length>0&&Math.max(...xs)-Math.min(...xs)>=.5&&Math.max(...ys)-Math.min(...ys)>=.5;
 };
+export const hasPhotoCut=layer=>!!layer?.photo_boundary?.clipped_edges?.length;
+function validPhotoBoundary(layer) {
+  const b=layer.photo_boundary;if(b==null)return true;
+  return !openStructure(layer)&&!layer.contours?.length&&b.version===1
+    &&['pixel_mask_v1','saved_outline_v1'].includes(b.basis)
+    &&[b.work_width,b.work_height].every(n=>Number.isInteger(n)&&n>=2&&n<=16384)
+    &&Array.isArray(b.clipped_edges)&&b.clipped_edges.length<=4
+    &&new Set(b.clipped_edges).size===b.clipped_edges.length
+    &&b.clipped_edges.every(e=>['left','top','right','bottom'].includes(e))
+    &&Array.isArray(b.visible_paths)&&b.visible_paths.length<=96&&b.visible_paths.every(p=>points(p,2))
+    &&(b.clipped_edges.length>0||!b.visible_paths.length);
+}
 
 export function usableTargetBoard(value) {
   if(!value||!['portrait','landscape','square'].includes(value.aspect)||!photo(value.reference_photo_id)
@@ -85,12 +97,17 @@ export function usableTargetBoard(value) {
   if(value.render_basis!==undefined&&!['legacy','source_geometry'].includes(value.render_basis))return null;
   if(value.layout_mode!==undefined&&!['schematic','crop_projection','source_preserving'].includes(value.layout_mode))return null;
   if(value.layout_mode==='source_preserving'&&(value.render_basis!=='source_geometry'
-    ||!value.layers.some(layer=>layer?.representation==='scene_structure')))return null;
+    ||!value.layers.some(layer=>layer?.representation==='scene_structure'||hasPhotoCut(layer))))return null;
+  if(value.observed_frame!=null&&(!Array.isArray(value.observed_frame)||value.observed_frame.length!==4
+    ||!point(value.observed_frame.slice(0,2))||!point(value.observed_frame.slice(2))
+    ||value.observed_frame[2]-value.observed_frame[0]<.005||value.observed_frame[3]-value.observed_frame[1]<.005
+    ||value.render_basis!=='source_geometry'))return null;
   if(value.render_basis==='source_geometry'&&(
     typeof value.source_photo_aspect!=='number'||!Number.isFinite(value.source_photo_aspect)
     ||value.source_photo_aspect<=0||value.source_photo_aspect>100))return null;
   const sourceIds=new Set();
   for(const layer of value.layers) {
+    if(!validPhotoBoundary(layer))return null;
     const b=layer?.bbox;
     const context=layer?.representation==='context_lines',structure=layer?.representation==='scene_structure';
     const open=context||structure;
@@ -200,4 +217,20 @@ export function outlinePath(layer,width,height) {
   if(!layer.outline?.length)return '';
   return singleOutlinePath(layer,width,height)+(layer.holes||[]).map(outline=>
     singleOutlinePath({...layer,outline,outline_style:'angular'},width,height)).join('');
+}
+
+// Filling can close a clipped silhouette; stroking that closure invents an edge.
+// Both Canvas/Worker colour masks keep outlinePath. Only visible SVG strokes differ.
+export function silhouetteStrokePath(layer,width,height) {
+  if(!hasPhotoCut(layer))return outlinePath(layer,width,height);
+  return layer.photo_boundary.visible_paths.map(path=>
+    `M${projectedPoints(layer,path,width,height).replaceAll(' ','L')}`).join('')
+    +(layer.holes||[]).map(outline=>singleOutlinePath({...layer,outline,outline_style:'angular'},width,height)).join('');
+}
+
+export function unknownFrameRects(board,source=false) {
+  if(source||!board.observed_frame)return [];
+  const [x1,y1,x2,y2]=board.observed_frame;
+  return [[0,0,1,y1],[0,y2,1,1-y2],[0,y1,x1,y2-y1],[x2,y1,1-x2,y2-y1]]
+    .filter(([, ,w,h])=>w>1e-8&&h>1e-8);
 }

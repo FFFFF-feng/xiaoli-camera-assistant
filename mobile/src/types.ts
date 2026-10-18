@@ -40,11 +40,13 @@ export interface TargetBoard {
   aspect:'portrait'|'landscape'|'square'; reference_photo_id:string; intent:string;narration?:string;
   distance_relation:'closer'|'farther'|'similar'|'unknown'; distance_instruction:string;
   render_basis?:'legacy'|'source_geometry';layout_mode?:'schematic'|'crop_projection'|'source_preserving';source_photo_aspect?:number|null;
-  layout_engine?:'legacy'|'local_v1';
+  layout_engine?:'legacy'|'local_v1';observed_frame?:number[]|null;
   layers:{label:string;kind:string;role:'main'|'foreground'|'background'|'prop';depth:number;bbox:number[];
     color:'slate'|'blue'|'ochre'|'sage'|'rose';representation?:'silhouette'|'context_lines'|'scene_structure';outline:number[][];contours?:number[][][];holes?:number[][][];outline_style?:'angular'|'curved';details:number[][][];source_details?:number[][][]|null;
     identity_features:string[];evidence_photo_ids:string[];certainty:'observed'|'approximate';
-    source_object_id?:string|null;source_bbox?:number[]|null;mobility?:'fixed'|'movable'|'unknown'}[];
+    source_object_id?:string|null;source_bbox?:number[]|null;mobility?:'fixed'|'movable'|'unknown';
+    photo_boundary?:{version:1;basis:'pixel_mask_v1'|'saved_outline_v1';work_width:number;work_height:number;
+      clipped_edges:('left'|'top'|'right'|'bottom')[];visible_paths:number[][][]}|null}[];
   changes:{problem:string;adjustment:string;benefit:string}[];limitations:string[];
 }
 export interface SceneSurvey {

@@ -209,7 +209,10 @@ def project_context(obj: ObservedObject, transform: tuple[float, float, float, f
     """Place environment with the same camera-frame transform as the main object."""
     paths = list(obj.details)
     if obj.representation not in {"context_lines", "scene_structure"}:
-        paths = [*(p+[p[0]] if p[-1] != p[0] else p for p in obj.contours or [obj.outline]), *paths]
+        boundary = obj.photo_boundary
+        perimeters = boundary.visible_paths if boundary and boundary.clipped_edges else [
+            p+[p[0]] if p[-1] != p[0] else p for p in obj.contours or [obj.outline]]
+        paths = [*perimeters, *paths]
     paths = paths[:96]
     sx, sy, tx, ty = transform
     x1, y1, x2, y2 = obj.bbox
@@ -235,5 +238,5 @@ def project_context(obj: ObservedObject, transform: tuple[float, float, float, f
         "bbox": [ax, ay, bx, by], "outline": [], "contours": [], "holes": [], "outline_style": "angular",
         "details": [[[round((x-ax)/(bx-ax), 6), round((y-ay)/(by-ay), 6)] for x, y in line] for line in projected],
         "source_bbox": obj.bbox, "source_details": paths, "source_object_id": obj.object_id,
-        "certainty": "approximate",
+        "certainty": "approximate", "photo_boundary": None,
     })

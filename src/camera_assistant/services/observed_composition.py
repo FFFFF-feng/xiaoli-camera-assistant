@@ -77,7 +77,7 @@ def prepare_observation(answer: dict) -> dict:
     for raw in answer["objects"]:
         if not isinstance(raw, dict):
             return answer
-        base = {**raw, "color": "slate", "parts": [], "representation": "silhouette", "source_details": None,
+        base = {**raw, "color": "slate", "parts": [], "representation": "silhouette", "source_details": None, "photo_boundary": None,
                 "outline": [[0, 0], [1, 0], [1, 1], [0, 1]], "details": [], "contours": [], "holes": []}
         # Required identity/position fields remain strict, even for an optional
         # subdivision. Do not expand/clamp the parent to make bad parts fit.
@@ -100,7 +100,7 @@ def prepare_observation(answer: dict) -> dict:
                 notes.append("部分可选分部的位置无效或重复，已省略；主体范围保持原识别结果，细小部件可能未完整表达。")
         if len(hints) > 8:
             notes.append("可选分部超出数量上限，仅处理前八个，未完整表达全部细小部件。")
-        objects.append({**raw, "color": "slate", "parts": parts})
+        objects.append({**raw, "color": "slate", "parts": parts, "photo_boundary": None})
     limitations = answer.get("limitations")
     if not isinstance(limitations, list) or any(not isinstance(note, str) for note in limitations):
         # Let the strict parser diagnose invalid root data; do not split text
@@ -129,7 +129,7 @@ def observe_objects(settings: Settings, inspection: ImageInspection, context: di
     schema["properties"].pop("processing", None)
     object_schema = schema["$defs"]["ObservedObject"]
     for name in ("outline", "details", "holes", "outline_style", "source_object_id", "source_bbox",
-                 "representation", "source_details", "color"):
+                 "representation", "source_details", "color", "photo_boundary"):
         object_schema["properties"].pop(name, None)
         if name in object_schema["required"]:
             object_schema["required"].remove(name)

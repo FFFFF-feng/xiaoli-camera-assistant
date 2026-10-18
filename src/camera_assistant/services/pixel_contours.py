@@ -26,6 +26,7 @@ from camera_assistant.services import scene_structure
 from camera_assistant.services.composition_trace import stage_result
 from camera_assistant.services.contour_cache import MemoryContourCache
 from camera_assistant.services.drawing_geometry import contained_outline, simple_outline
+from camera_assistant.services.photo_boundary import boundary_evidence, split_frame_edges
 from camera_assistant.services.pixel_strokes import structural_strokes
 from camera_assistant.services.scene_context import context_mask, scene_remainder, trace_context
 from camera_assistant.services.segmentation_provider import get_provider
@@ -35,7 +36,7 @@ cv2.setNumThreads(1)
 MAX_EDGE = 720
 DETAIL_EDGE = 1280
 PET_ITERATIONS = 5
-_ALGORITHM_VERSION = "pixel-contours-v5-optional-segmentation"
+_ALGORITHM_VERSION = "pixel-contours-v6-photo-boundary"
 _CACHE = MemoryContourCache()
 _CAPTURE_MASKS: ContextVar[dict | None] = ContextVar("contour_evidence_masks", default=None)
 _STRUCTURE_FAILURE_CODES = frozenset({
@@ -180,9 +181,12 @@ def _trace_single(rgb: np.ndarray, obj: ObservedObject, *, seeded=False,
             for start in range(0, min(len(precise)-1, 8*63), 63):
                 gaps.append(local(precise[start:start+64]))
     details = [*gaps, *[local(path) for path in structural_strokes(patch, inner, kind=obj.kind)]][:96]
+    box = [(ox+int(lx))/width, (oy+int(ly))/height, (ox+int(hx))/width, (oy+int(hy))/height]
+    boundary = boundary_evidence(outline, box, width, height)
+    if boundary["clipped_edges"]:
+        details = split_frame_edges(details, box, width, height, boundary["clipped_edges"])[:96]
     return ObservedObject.model_validate({
-        **obj.model_dump(), "bbox": [(ox+int(lx))/width, (oy+int(ly))/height,
-                                    (ox+int(hx))/width, (oy+int(hy))/height],
+        **obj.model_dump(), "bbox": box, "photo_boundary": boundary,
         "outline": outline, "holes": hole_paths, "details": details,
         "outline_style": "curved" if obj.kind in {"pet", "cat", "dog", "bird", "flower"} else "angular",
         "certainty": "approximate",
@@ -239,7 +243,7 @@ def observed_metadata(answer: dict) -> ObservedScene:
     if not isinstance(answer, dict) or not isinstance(answer.get("objects"), list):
         raise TypeError("缺少原始物体")
     return ObservedScene.model_validate({**answer, "processing": [], "objects": [
-        {**obj, "representation": "silhouette", "source_details": None,
+        {**obj, "representation": "silhouette", "source_details": None, "photo_boundary": None,
          "outline": [[0, 0], [1, 0], [1, 1], [0, 1]], "details": [], "contours": [], "holes": []}
         for obj in answer["objects"]
     ]})

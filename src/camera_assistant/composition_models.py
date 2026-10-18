@@ -103,6 +103,28 @@ class FramingPlan(CompositionModel):
         return value.strip()
 
 
+class PhotoBoundary(CompositionModel):
+    version: Literal[1] = 1
+    basis: Literal["pixel_mask_v1", "saved_outline_v1"]
+    work_width: int = Field(ge=2, le=16384)
+    work_height: int = Field(ge=2, le=16384)
+    clipped_edges: list[Literal["left", "top", "right", "bottom"]] = Field(max_length=4)
+    visible_paths: list[list[list[float]]] = Field(default_factory=list, max_length=96)
+
+    @field_validator("visible_paths", mode="before")
+    @classmethod
+    def valid_paths(cls, value):
+        return validate_target_paths(value, False)
+
+    @model_validator(mode="after")
+    def bounded_evidence(self):
+        if len(set(self.clipped_edges)) != len(self.clipped_edges):
+            raise ValueError("画幅接触边不能重复")
+        if not self.clipped_edges and self.visible_paths:
+            raise ValueError("未接触画幅时不覆盖主体描边")
+        return self
+
+
 class TargetLayer(CompositionModel):
     label: str = Field(min_length=1, max_length=30)
     kind: str = Field(min_length=1, max_length=30, description="实际对象类别，如rocket/tower/light；平整背景色块为background")
@@ -123,6 +145,7 @@ class TargetLayer(CompositionModel):
     source_bbox: list[float] | None = None
     source_details: list[list[list[float]]] | None = None
     mobility: Literal["fixed", "movable", "unknown"] = "unknown"
+    photo_boundary: PhotoBoundary | None = None
 
     @field_validator("source_bbox", mode="before")
     @classmethod
@@ -171,6 +194,8 @@ class TargetLayer(CompositionModel):
 
     @model_validator(mode="after")
     def meaningful_outline(self):
+        if self.photo_boundary and (self.representation != "silhouette" or self.contours):
+            raise ValueError("画幅边界证据只用于单一实际主体轮廓")
         if self.kind == "background" and self.role != "background":
             raise ValueError("背景色块不能代替主体或前景")
         if self.representation == "scene_structure":
@@ -296,9 +321,17 @@ class TargetBoard(CompositionModel):
     layout_mode: Literal["schematic", "crop_projection", "source_preserving"] = "schematic"
     source_photo_aspect: float | None = Field(default=None, gt=0, le=100)
     layout_engine: Literal["legacy", "local_v1"] = "legacy"
+    observed_frame: list[float] | None = None
+
+    @field_validator("observed_frame", mode="before")
+    @classmethod
+    def valid_observed_frame(cls, value):
+        return None if value is None else TargetLayer.valid_box(value)
 
     @model_validator(mode="after")
     def contains_main(self):
+        if self.observed_frame is not None and (self.render_basis != "source_geometry" or self.source_photo_aspect is None):
+            raise ValueError("已观察画幅需要原图来源及比例")
         if not any(layer.role == "main" for layer in self.layers):
             raise ValueError("推荐分镜必须包含主体")
         if any(layer.representation == 'scene_structure' for layer in self.layers):
