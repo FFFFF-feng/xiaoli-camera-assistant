@@ -35,6 +35,10 @@ def obj(identifier="object1"):
 
 @pytest.fixture(autouse=True)
 def release_provider():
+    # A preceding pixel test may have used the process-owned default provider.
+    # This module's lazy-start assertions require a fresh provider on entry too.
+    if "camera_assistant.services.segmentation_provider" in sys.modules:
+        api().close_providers()
     yield
     if "camera_assistant.services.segmentation_provider" in sys.modules:
         api().close_providers()

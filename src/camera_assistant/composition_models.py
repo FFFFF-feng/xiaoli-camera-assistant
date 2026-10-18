@@ -125,6 +125,18 @@ class PhotoBoundary(CompositionModel):
         return self
 
 
+class CategoryAdaptation(CompositionModel):
+    original_kind: str = Field(min_length=1, max_length=30)
+    normalized_kind: str = Field(min_length=1, max_length=30)
+    reason: Literal["specific_label_category_consistency"]
+
+
+class UnrenderedObject(CompositionModel):
+    object_id: str = Field(pattern=r"^object[1-6]$")
+    label: str = Field(min_length=1, max_length=30)
+    reason_code: str = Field(pattern=r"^[a-z_]{1,48}$")
+
+
 class TargetLayer(CompositionModel):
     label: str = Field(min_length=1, max_length=30)
     kind: str = Field(min_length=1, max_length=30, description="实际对象类别，如rocket/tower/light；平整背景色块为background")
@@ -146,6 +158,7 @@ class TargetLayer(CompositionModel):
     source_details: list[list[list[float]]] | None = None
     mobility: Literal["fixed", "movable", "unknown"] = "unknown"
     photo_boundary: PhotoBoundary | None = None
+    category_adaptation: CategoryAdaptation | None = None
 
     @field_validator("source_bbox", mode="before")
     @classmethod
@@ -280,6 +293,8 @@ class SegmentationProcessing(CompositionModel):
     cache_hit: bool = False
     component_count: int = Field(default=1, ge=0)
     discarded_noise_pixels: int = Field(default=0, ge=0)
+    local_attempts: int = Field(default=1, ge=1, le=2)
+    local_retry_code: str | None = Field(default=None, pattern=r"^[a-z_]{1,48}$")
 
 
 class ObservedScene(CompositionModel):
@@ -288,6 +303,7 @@ class ObservedScene(CompositionModel):
     objects: list[ObservedObject] = Field(min_length=1, max_length=6)
     limitations: list[str] = Field(min_length=1, max_length=5)
     processing: list[SegmentationProcessing] = Field(default_factory=list, max_length=4)
+    unrendered_objects: list[UnrenderedObject] = Field(default_factory=list, max_length=4)
 
     @model_validator(mode="after")
     def distinct_objects(self):
@@ -322,6 +338,14 @@ class TargetBoard(CompositionModel):
     source_photo_aspect: float | None = Field(default=None, gt=0, le=100)
     layout_engine: Literal["legacy", "local_v1"] = "legacy"
     observed_frame: list[float] | None = None
+    unrendered_objects: list[str] = Field(default_factory=list, max_length=4)
+
+    @field_validator("unrendered_objects")
+    @classmethod
+    def valid_missing_labels(cls, values):
+        if any(not value.strip() or len(value) > 30 for value in values):
+            raise ValueError("未绘出对象名称无效")
+        return values
 
     @field_validator("observed_frame", mode="before")
     @classmethod

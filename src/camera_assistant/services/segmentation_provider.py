@@ -318,6 +318,9 @@ def _geometry(objects):
                for key, limit in (("contours", 12), ("holes", 12), ("details", 96),
                                   ("source_details", 96))},
         })
+        boundary = getattr(obj, "photo_boundary", None)
+        if boundary and boundary.clipped_edges:
+            records[-1]["visible_boundary_paths"] = [_path_points(path) for path in boundary.visible_paths[:96]]
     return records
 
 
@@ -325,7 +328,7 @@ def _processing(records):
     safe = []
     numeric = {"component_count", "hole_count", "contour_count", "coverage", "area",
                "foreground_pixels", "discarded_components", "discarded_pixels", "discarded_noise_pixels", "total_seconds",
-               "queue_seconds", "load_seconds", "encode_seconds", "decode_seconds",
+               "queue_seconds", "load_seconds", "encode_seconds", "decode_seconds", "local_attempts",
                "postprocess_seconds", "candidate_count", "cache_hit", "fallback"}
     for record in records[:32]:
         if not isinstance(record, dict):
@@ -336,8 +339,8 @@ def _processing(records):
                 (key == "object_id" and _ID.fullmatch(value))
                 or (key in {"backend", "requested_backend", "actual_backend", "mask_backend"}
                     and value in {
-                    "grabcut", "mobile_sam", "scene_structure", "scene_context"})
-                or (key in {"code", "fallback_code"} and _CODE.fullmatch(value))
+                    "grabcut", "mobile_sam", "scene_structure", "scene_context", "none"})
+                or (key in {"code", "fallback_code", "local_retry_code"} and _CODE.fullmatch(value))
                 or (key in {"weights_sha256", "weights_version"} and _DIGEST.fullmatch(value))
                 or (key == "status" and value in {"success", "failed", "skipped", "fallback"})
             )
@@ -347,7 +350,7 @@ def _processing(records):
                 item[key] = value
             if key == "timings" and isinstance(value, dict):
                 item[key] = {stage: seconds for stage, seconds in value.items()
-                             if stage in {"queue", "load", "encode", "decode", "postprocess", "total"}
+                             if stage in {"queue", "load", "encode", "decode", "postprocess", "total", "local_retry_seconds"}
                              and isinstance(seconds, (int, float)) and math.isfinite(seconds)
                              and seconds >= 0}
         safe.append(item)
@@ -358,8 +361,10 @@ def _svg(records, width, height):
     paths = []
     for record in records:
         x1, y1, x2, y2 = record["bbox"]
-        local_paths = [(path, True) for path in [record["outline"], *record["contours"],
+        perimeters = [] if "visible_boundary_paths" in record else [record["outline"]]
+        local_paths = [(path, True) for path in [*perimeters, *record["contours"],
                                                *record["holes"]]]
+        local_paths.extend((path, False) for path in record.get("visible_boundary_paths", []))
         local_paths.extend((path, False) for path in record["details"])
         for path, closed in local_paths:
             if len(path) < 2:

@@ -95,6 +95,8 @@ export function usableTargetBoard(value) {
     ||!Array.isArray(value.limitations)||!value.limitations.length||value.limitations.length>5
     ||!value.limitations.every(s=>text(s,500)))return null;
   if(value.render_basis!==undefined&&!['legacy','source_geometry'].includes(value.render_basis))return null;
+  if(value.unrendered_objects!==undefined&&(!Array.isArray(value.unrendered_objects)
+    ||value.unrendered_objects.length>4||!value.unrendered_objects.every(s=>text(s,30))))return null;
   if(value.layout_mode!==undefined&&!['schematic','crop_projection','source_preserving'].includes(value.layout_mode))return null;
   if(value.layout_mode==='source_preserving'&&(value.render_basis!=='source_geometry'
     ||!value.layers.some(layer=>layer?.representation==='scene_structure'||hasPhotoCut(layer))))return null;

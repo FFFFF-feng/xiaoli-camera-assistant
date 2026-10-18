@@ -24,6 +24,7 @@ from camera_assistant.models import ImageInspection
 from camera_assistant.services.cloud import ModelServiceError, request_json
 from camera_assistant.services.composition_replay import ReplayRecord, validation_fields
 from camera_assistant.services.composition_trace import stage_result
+from camera_assistant.services.observation_evidence import category_adaptation
 from camera_assistant.services.pixel_contours import observed_metadata, trace_observed_scene
 from camera_assistant.services.scene_context import project_context
 from camera_assistant.services.scene_images import image_messages
@@ -77,6 +78,9 @@ def prepare_observation(answer: dict) -> dict:
     for raw in answer["objects"]:
         if not isinstance(raw, dict):
             return answer
+        adaptation = category_adaptation(raw)
+        raw = {**raw, "category_adaptation": adaptation,
+               **({"kind": adaptation["normalized_kind"]} if adaptation else {})}
         base = {**raw, "color": "slate", "parts": [], "representation": "silhouette", "source_details": None, "photo_boundary": None,
                 "outline": [[0, 0], [1, 0], [1, 1], [0, 1]], "details": [], "contours": [], "holes": []}
         # Required identity/position fields remain strict, even for an optional
@@ -127,9 +131,10 @@ def observe_objects(settings: Settings, inspection: ImageInspection, context: di
             diagnostics.append(message)
     schema = ObservedScene.model_json_schema()
     schema["properties"].pop("processing", None)
+    schema["properties"].pop("unrendered_objects", None)
     object_schema = schema["$defs"]["ObservedObject"]
     for name in ("outline", "details", "holes", "outline_style", "source_object_id", "source_bbox",
-                 "representation", "source_details", "color", "photo_boundary"):
+                 "representation", "source_details", "color", "photo_boundary", "category_adaptation"):
         object_schema["properties"].pop(name, None)
         if name in object_schema["required"]:
             object_schema["required"].remove(name)
@@ -164,7 +169,8 @@ def observe_objects(settings: Settings, inspection: ImageInspection, context: di
         "通常为[0,0,1,1]；kind=building或mountain，mobility=fixed，不能用background替代主体。"
         "连续场景随后提取真实开放边界而非封闭分割；不把峰与倒影拆成独立可移动对象。"
         "手持相机、衣物等已属于主体的部件写进identity_features，不再识别为另一份独立物体。"
-        "kind使用英文类别person/pet/tree/building/tower/rocket/flower/object/background等。"
+        "kind使用与label一致的英文类别person/pet/tree/building/tower/rocket/flower/cup/bottle/camera/ball/object/background等，"
+        "咖啡杯等容器不能因为通用枚举示例而写成building；拿不准具体类别用object，不虚构建筑属性。"
         "无法辨认时宁可不返回对象，不以矩形占位。\n观察上下文：\n"
         + json.dumps(context, ensure_ascii=False, allow_nan=False)
         + "\n输出Schema：\n" + json.dumps(schema, ensure_ascii=False)

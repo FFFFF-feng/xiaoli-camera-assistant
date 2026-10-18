@@ -31,6 +31,7 @@ from camera_assistant.services.advice_safety import composition_issue, unconfirm
 from camera_assistant.services.cloud import ModelServiceError, request_json
 from camera_assistant.services.composition_trace import observe_diagnostics
 from camera_assistant.services.layout_solver import solve_layout
+from camera_assistant.services.observation_evidence import observation_summary
 from camera_assistant.services.observed_composition import (
     apply_observed_layout,
     object_catalog,
@@ -408,6 +409,7 @@ class OpenAICompatibleCompositionAdvisor:
               else "no_valid_intent" if not valid_intent else "layout_rejected")
         resolved = rechecked.model_copy(update={"trace_id": trace_id, "diagnostics": diagnostics,
             "notes": list(dict.fromkeys([*notes, *rechecked.notes]))})
+        resolved = observation_summary(resolved, observed)
         _publish_layout(resolved)
         _publish_ready(resolved)
         return resolved
@@ -446,7 +448,7 @@ class OpenAICompatibleCompositionAdvisor:
         }
         observation_issues: list[str] = []
         trace_id, diagnostics = uuid4().hex, []
-        with observe_diagnostics(diagnostics.append):
+        with observe_diagnostics(diagnostics.append, trace_id=trace_id):
             observed = observe_objects(self.settings, inspection, {
                 "user_request": context["user_request"], "scene": context["scene"],
                 "localization": context["localization"],
@@ -606,5 +608,6 @@ class OpenAICompatibleCompositionAdvisor:
             CompositionDiagnostic(stage="layout", status="complete" if any(p.storyboard for p in resolved.proposals)
                 else "failed", code="legacy_layout_validated" if any(p.storyboard for p in resolved.proposals)
                 else "legacy_layout_rejected")]})
+        resolved = observation_summary(resolved, observed)
         _publish_layout(resolved)
         return resolved

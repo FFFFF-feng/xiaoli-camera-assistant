@@ -96,6 +96,7 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
         limitations=list(dict.fromkeys(limitations))[:5], render_basis="source_geometry",
         source_photo_aspect=photo_aspect, layout_mode="source_preserving" if preserve_source else "schematic", layout_engine="local_v1",
         observed_frame=[tx, ty, tx+sx, ty+sy] if clipped else None,
+        unrendered_objects=[obj.label for obj in scene.unrendered_objects],
     )
     framing = FramingPlan(
         diagnosis=plan.diagnosis, visual_priority=f"先看{focus.label}，其余已观察景物保留相互位置。",

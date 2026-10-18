@@ -27,6 +27,7 @@ from camera_assistant.services.composition_trace import stage_result
 from camera_assistant.services.contour_cache import MemoryContourCache
 from camera_assistant.services.drawing_geometry import contained_outline, simple_outline
 from camera_assistant.services.photo_boundary import boundary_evidence, split_frame_edges
+from camera_assistant.services.pixel_small_objects import hole_matches_exterior, small_roi_mask
 from camera_assistant.services.pixel_strokes import structural_strokes
 from camera_assistant.services.scene_context import context_mask, scene_remainder, trace_context
 from camera_assistant.services.segmentation_provider import get_provider
@@ -36,9 +37,10 @@ cv2.setNumThreads(1)
 MAX_EDGE = 720
 DETAIL_EDGE = 1280
 PET_ITERATIONS = 5
-_ALGORITHM_VERSION = "pixel-contours-v6-photo-boundary"
+_ALGORITHM_VERSION = "pixel-contours-v7-bounded-small-roi"
 _CACHE = MemoryContourCache()
 _CAPTURE_MASKS: ContextVar[dict | None] = ContextVar("contour_evidence_masks", default=None)
+_LOCAL_RETRIES: ContextVar[dict | None] = ContextVar("local_contour_retries", default=None)
 _STRUCTURE_FAILURE_CODES = frozenset({
     "structure_low_contrast", "structure_density_exceeded", "structure_paths_insufficient",
     "structure_coverage_insufficient",
@@ -164,7 +166,8 @@ def _trace_single(rgb: np.ndarray, obj: ObservedObject, *, seeded=False,
                                      stage="simplification")
             if len(points) >= 3:
                 path = local(points)
-                if simple_outline(path) and contained_outline(outline, path):
+                if (simple_outline(path) and contained_outline(outline, path)
+                        and (foreground_mask is not None or hole_matches_exterior(patch, selected, hole))):
                     hole_paths.append(path)
                 elif foreground_mask is not None:
                     raise ContourFailure("mask_hole_invalid", "模型孔隙无法可靠简化", object_id=obj.object_id,
@@ -197,7 +200,23 @@ def _trace(rgb: np.ndarray, obj: ObservedObject) -> ObservedObject:
     if not obj.parts or obj.kind != "flower":
         # A face or a held item is a detail of a person, never a replacement for
         # their whole silhouette. Compound extraction currently owns flower groups.
-        return _trace_single(rgb, obj.model_copy(update={"parts": []}))
+        try:
+            return _trace_single(rgb, obj.model_copy(update={"parts": []}))
+        except ContourFailure as first:
+            if obj.role != "prop" or first.code not in {"foreground_empty", "foreground_insufficient"}:
+                raise
+            mask, diagnostic = small_roi_mask(rgb, obj.bbox)
+            diagnostic["initial_code"] = first.code
+            retries = _LOCAL_RETRIES.get()
+            if retries is not None:
+                retries[obj.object_id] = diagnostic
+            if mask is None:
+                raise
+            result = _trace_single(rgb, obj.model_copy(update={"parts": []}), foreground_mask=mask)
+            captures = _CAPTURE_MASKS.get()
+            if captures is not None:
+                captures[obj.object_id] = mask
+            return result
     parts = []
     for part in obj.parts:
         x1, y1, x2, y2 = part.bbox
@@ -242,7 +261,7 @@ def _trace(rgb: np.ndarray, obj: ObservedObject) -> ObservedObject:
 def observed_metadata(answer: dict) -> ObservedScene:
     if not isinstance(answer, dict) or not isinstance(answer.get("objects"), list):
         raise TypeError("缺少原始物体")
-    return ObservedScene.model_validate({**answer, "processing": [], "objects": [
+    return ObservedScene.model_validate({**answer, "processing": [], "unrendered_objects": [], "objects": [
         {**obj, "representation": "silhouette", "source_details": None, "photo_boundary": None,
          "outline": [[0, 0], [1, 0], [1, 1], [0, 1]], "details": [], "contours": [], "holes": []}
         for obj in answer["objects"]
@@ -312,6 +331,8 @@ def trace_observed_scene(answer: dict, inspection: ImageInspection) -> ObservedS
     if not _SLOT.acquire(timeout=.5):
         raise ContourFailure("compute_slot_busy", "轮廓提取任务繁忙或对象数量过多", stage="queue")
     masks, objects, processing, grabcut_masks = {}, [], [], {}
+    local_retries = {}
+    retry_token = _LOCAL_RETRIES.set(local_retries)
     capture_token = _CAPTURE_MASKS.set(grabcut_masks if getattr(provider, "evidence_enabled", False) else None)
     image_sha256 = hashlib.sha256(raw).hexdigest()
     try:
@@ -330,6 +351,7 @@ def trace_observed_scene(answer: dict, inspection: ImageInspection) -> ObservedS
                 image.thumbnail((MAX_EDGE, MAX_EDGE))
             rgb = np.asarray(image.convert("RGB"))
         omitted = []
+        unrendered = []
         part_notes = []
         candidates = [obj for obj in sorted(metadata.objects, key=lambda item: item.role != "main")
                       if not _attached(obj, metadata.objects)]
@@ -340,6 +362,8 @@ def trace_observed_scene(answer: dict, inspection: ImageInspection) -> ObservedS
         masks = {identifier: result.mask for identifier, result in batch.items() if result.mask is not None}
         cacheable = True
         for obj in candidates:
+            # A preceding object's GMM must not change this object's candidate.
+            cv2.setRNGSeed(0)
             # A held item already inside the person's/animal's silhouette must
             # not be independently relocated and drawn a second time. Require
             # explicit semantic evidence *and* containment, not a bbox alone.
@@ -357,7 +381,8 @@ def trace_observed_scene(answer: dict, inspection: ImageInspection) -> ObservedS
             row = SegmentationProcessing(object_id=obj.object_id, requested_backend=requested,
                                          actual_backend="grabcut", code="contours_extracted")
             try:
-                pixels = detailed_rgb if (obj.kind == "flower" and obj.parts) or obj.kind in {"pet", "dog", "cat"} else rgb
+                small_prop = obj.role == "prop" and (obj.bbox[2]-obj.bbox[0])*(obj.bbox[3]-obj.bbox[1]) <= .02
+                pixels = detailed_rgb if small_prop or (obj.kind == "flower" and obj.parts) or obj.kind in {"pet", "dog", "cat"} else rgb
                 if getattr(metadata, "scene_mode", "objects") == "continuous" and obj.role == "main":
                     try:
                         traced = scene_structure.trace_structure(rgb, obj)
@@ -405,6 +430,15 @@ def trace_observed_scene(answer: dict, inspection: ImageInspection) -> ObservedS
                         row.fallback_code = "compound_parts_require_grabcut"
                         row.code = "grabcut_compound_parts"
                 objects.append(traced)
+                if obj.object_id in local_retries:
+                    retry = local_retries[obj.object_id]
+                    cacheable = False
+                    row.local_attempts = 2
+                    row.local_retry_code = retry["initial_code"]
+                    row.fallback_code = row.fallback_code or retry["initial_code"]
+                    row.timings["local_retry_seconds"] = retry["seconds"]
+                    if requested == "grabcut":
+                        row.code = "grabcut_small_roi_retry"
                 if obj.object_id not in masks and obj.object_id in grabcut_masks:
                     masks[obj.object_id] = grabcut_masks[obj.object_id]
                     row.mask_backend = "grabcut"
@@ -419,13 +453,19 @@ def trace_observed_scene(answer: dict, inspection: ImageInspection) -> ObservedS
             except (ValueError, cv2.error) as error:
                 row.actual_backend = "none"
                 row.code = error.code if isinstance(error, ContourFailure) else "pixel_processing_failed"
+                if obj.object_id in local_retries:
+                    retry = local_retries[obj.object_id]
+                    row.local_attempts = 2
+                    row.local_retry_code = retry["initial_code"]
+                    row.fallback_code = row.fallback_code or retry["code"]
+                    row.timings["local_retry_seconds"] = retry["seconds"]
                 if obj.role == "main":
                     _record_processing(provider, processing, row)
                     raise ContourFailure(
                         error.code if isinstance(error, ContourFailure) else "pixel_processing_failed",
                         "主要物体轮廓提取失败，请补充清晰的主体照片", object_id=obj.object_id,
                         stage=error.stage if isinstance(error, ContourFailure) else "segmentation") from None
-                context = trace_context(rgb, obj, mask=context_mask(rgb, objects))
+                context = None if small_prop else trace_context(rgb, obj, mask=context_mask(rgb, objects))
                 cacheable = False
                 if context:
                     objects.append(context)
@@ -433,7 +473,8 @@ def trace_observed_scene(answer: dict, inspection: ImageInspection) -> ObservedS
                     row.code = "context_fallback"
                     row.actual_backend = "scene_context"
                 else:
-                    omitted.append(f"“{obj.label}”未提取到可辨认的像素边界，未补画；其空间关系需对照原图核对。")
+                    omitted.append(f"已识别到“{obj.label}”，但未可靠绘出；请对照原图核对。")
+                    unrendered.append({"object_id": obj.object_id, "label": obj.label, "reason_code": row.code})
                 _record_processing(provider, processing, row)
         if not objects:
             raise ContourFailure("no_usable_geometry", "没有可用的物体轮廓")
@@ -443,11 +484,11 @@ def trace_observed_scene(answer: dict, inspection: ImageInspection) -> ObservedS
         if remainder:
             objects.append(remainder)
         result = ObservedScene.model_validate({**metadata.model_dump(), "objects": [o.model_dump() for o in objects],
-            "processing": [row.model_dump() for row in processing],
-            "limitations": [*part_notes,
+            "processing": [row.model_dump() for row in processing], "unrendered_objects": unrendered,
+            "limitations": [*omitted, *part_notes,
                             "物体区域来自视觉识别，轮廓由CPU像素分割提取；复杂背景、遮挡与细小部件可能提取不准。",
                             "环境线条来自区域内实际边界，可能含邻近景物，不是逐物体语义分割；低纹理背景不补画。",
-                            *omitted, *metadata.limitations][:5]})
+                            *metadata.limitations][:5]})
         provider.export_evidence(image_sha256, masks, objects, [row.model_dump() for row in processing])
         if cacheable:
             _CACHE.put(key, result.model_dump_json().encode("utf-8"))
@@ -463,5 +504,6 @@ def trace_observed_scene(answer: dict, inspection: ImageInspection) -> ObservedS
                                  failed_code=error.code)
         raise
     finally:
+        _LOCAL_RETRIES.reset(retry_token)
         _CAPTURE_MASKS.reset(capture_token)
         _SLOT.release()

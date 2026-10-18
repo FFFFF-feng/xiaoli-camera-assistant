@@ -108,7 +108,7 @@ function save() {
         <path v-for="(path,index) in main.details" :key="`detail-${index}`" class="subject-detail" :d="detailPath(portrait.layer,path,portrait.w,portrait.h)" fill="none" :stroke-width="main.details.length>10 ? .9 : 1.1" vector-effect="non-scaling-stroke"/>
       </svg><p>{{ main.identity_features.join('、') }}。新机位下的形态仍需现场核对。</p>
     </details>
-    <div class="target-legend"><p v-for="(layer,index) in board.layers" :key="index"><b>{{ layer.kind==='background' ? '背景' : index+1 }}</b><strong>{{ layer.label }}</strong><span>{{ layer.identity_features?.join('、') }}</span><small>{{ layer.certainty==='approximate' ? '视角近似，需试拍' : '特征依据参考照片' }}</small></p></div>
+    <div class="target-legend"><p v-if="board.unrendered_objects?.length" data-unrendered-objects><strong>已识别但未可靠绘出：{{ board.unrendered_objects.join('、') }}</strong><span>下列辨识描述来自视觉识别，不表示这些部件都已画出。</span></p><p v-for="(layer,index) in board.layers" :key="index"><b>{{ layer.kind==='background' ? '背景' : index+1 }}</b><strong>{{ layer.label }}</strong><span>{{ layer.identity_features?.join('、') }}</span><small>{{ layer.certainty==='approximate' ? '视角近似，需试拍' : '特征依据参考照片' }}</small></p></div>
     <div class="target-changes"><h4>比原图改善在哪里</h4><article v-for="(change,index) in board.changes" :key="index"><p><span>原图问题</span>{{ change.problem }}</p><p><span>推荐调整</span>{{ change.adjustment }}</p><p><span>预期改善</span>{{ change.benefit }}</p></article></div>
     <div class="target-distance"><strong>{{ distanceNames[board.distance_relation] }}</strong><p>{{ board.distance_instruction }}</p></div>
     <p v-for="note in board.limitations" :key="note" class="target-limit">{{ note }}</p><span role="status">{{ saved }}</span>
