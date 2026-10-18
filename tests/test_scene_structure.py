@@ -1,14 +1,13 @@
 """Synthetic scene geometry, not a claim of real-photo semantic quality."""
-from copy import deepcopy
 
 import cv2
 import numpy as np
 import pytest
 from pydantic import ValidationError
+from test_observed_composition import advice, observed
 
 from camera_assistant.composition_models import CompositionIntent, ObservedScene
 from camera_assistant.services.layout_solver import solve_layout
-from test_observed_composition import observed, advice
 
 
 def scene():

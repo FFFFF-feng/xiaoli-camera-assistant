@@ -5,11 +5,11 @@ import argparse
 import hashlib
 import json
 import os
-from pathlib import Path
 import sqlite3
 import subprocess
 import sys
 import tempfile
+from pathlib import Path
 
 
 def digest(path):
@@ -29,7 +29,11 @@ def main():
     from camera_assistant.knowledge.models import KnowledgeRecord
     from camera_assistant.knowledge.retriever import ManagedKnowledgeRetriever
     from camera_assistant.knowledge.store import KnowledgeStore
-    from camera_assistant.knowledge.uploads import UploadedRecordFile, commit_preview, preview_uploads
+    from camera_assistant.knowledge.uploads import (
+        UploadedRecordFile,
+        commit_preview,
+        preview_uploads,
+    )
 
     main_db = project / "data/knowledge.db"
 

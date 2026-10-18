@@ -1,10 +1,10 @@
 """Diagnostics never echo remote inputs, secrets or image base64."""
-from copy import deepcopy
+
+from test_observed_composition import observed
 
 from camera_assistant.services.composition_replay import ReplayRecord, validation_fields
 from camera_assistant.services.observed_composition import observation_failure
 from camera_assistant.services.pixel_contours import observed_metadata
-from test_observed_composition import observed
 
 
 def test_invalid_enum_and_missing_fields_have_safe_distinct_codes():

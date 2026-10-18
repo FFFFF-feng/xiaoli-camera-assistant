@@ -36,11 +36,14 @@ from camera_assistant.services.observed_composition import (
     object_catalog,
     observe_objects,
 )
-from camera_assistant.services.scene_images import image_messages
 from camera_assistant.services.photography_facts import (
-    PhotographyFacts, build_photography_facts, photography_facts, preserve_continuous_framing,
+    PhotographyFacts,
+    build_photography_facts,
+    photography_facts,
+    preserve_continuous_framing,
     reconcile_composition_facts,
 )
+from camera_assistant.services.scene_images import image_messages
 from camera_assistant.services.timing import measure_stage
 from vision_lab_tool.detector_models import MethodResult
 

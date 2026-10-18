@@ -22,11 +22,12 @@ from camera_assistant.composition_models import (
 from camera_assistant.config import Settings
 from camera_assistant.models import ImageInspection
 from camera_assistant.services.cloud import ModelServiceError, request_json
-from camera_assistant.services.composition_trace import stage_result
 from camera_assistant.services.composition_replay import ReplayRecord, validation_fields
+from camera_assistant.services.composition_trace import stage_result
 from camera_assistant.services.pixel_contours import observed_metadata, trace_observed_scene
 from camera_assistant.services.scene_context import project_context
 from camera_assistant.services.scene_images import image_messages
+from camera_assistant.services.segmentation_provider import use_segmentation
 from camera_assistant.services.target_drawing import _local_geometry, _repair_hint
 from camera_assistant.services.timing import measure_stage
 
@@ -125,6 +126,7 @@ def observe_objects(settings: Settings, inspection: ImageInspection, context: di
         if diagnostics is not None:
             diagnostics.append(message)
     schema = ObservedScene.model_json_schema()
+    schema["properties"].pop("processing", None)
     object_schema = schema["$defs"]["ObservedObject"]
     for name in ("outline", "details", "holes", "outline_style", "source_object_id", "source_bbox",
                  "representation", "source_details", "color"):
@@ -213,7 +215,7 @@ def observe_objects(settings: Settings, inspection: ImageInspection, context: di
         stage_result("recognition", "complete", "objects_validated")
         record.metadata(observed)
         try:
-            with measure_stage("composition_contours"):
+            with measure_stage("composition_contours"), use_segmentation(settings):
                 result = trace_observed_scene(answer, inspection)
             stage_result("contours", "complete", "contours_extracted")
             record.update(stage='contours', status='complete', extracted=result.model_dump())

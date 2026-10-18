@@ -10,7 +10,7 @@ import secrets
 import time
 import warnings
 from collections.abc import Callable
-from contextlib import nullcontext
+from contextlib import asynccontextmanager, nullcontext
 from threading import Lock
 from typing import Annotated, Literal
 from uuid import uuid4
@@ -29,6 +29,7 @@ from camera_assistant.models import UserRequest
 from camera_assistant.pipeline import CameraAssistantPipeline
 from camera_assistant.services.cloud import cloud_session, observe_stream
 from camera_assistant.services.lens_knowledge import EquipmentSelectionError
+from camera_assistant.services.segmentation_provider import close_providers, get_provider
 from camera_assistant.services.timing import observe_timings
 
 logger = logging.getLogger(__name__)
@@ -122,8 +123,19 @@ def create_app(
     if len(access_token) < 24 or access_token != access_token.strip():
         raise ValueError("MOBILE_API_TOKEN 必须为至少 24 个字符且无首尾空格。")
     pipeline = pipeline or CameraAssistantPipeline(settings)
+
+    @asynccontextmanager
+    async def lifespan(_app):
+        try:
+            yield
+        finally:
+            # Native inference keeps its slot until it returns. Shutdown waits
+            # off the event loop instead of pretending a deadline killed it.
+            await run_in_threadpool(close_providers)
+
     app = FastAPI(
-        title="小栗手机接口", version="0.1.0", docs_url=None, redoc_url=None, openapi_url=None
+        title="小栗手机接口", version="0.1.0", docs_url=None, redoc_url=None, openapi_url=None,
+        lifespan=lifespan,
     )
     max_bytes = settings.max_image_mb * 1024 * 1024
     scene_limit = min(MAX_SCENE_BYTES, max_bytes * MAX_SCENE_IMAGES)
@@ -167,6 +179,7 @@ def create_app(
             "max_scene_images": MAX_SCENE_IMAGES,
             "max_scene_mb": scene_limit // (1024 * 1024),
             "detector_enabled": settings.detector_enabled,
+            "segmentation": get_provider(settings).diagnostics(),
         }
 
     @app.get("/api/v1/devices")

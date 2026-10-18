@@ -4,8 +4,8 @@ from __future__ import annotations
 import base64
 import hashlib
 import json
-import os
 import math
+import os
 from pathlib import Path
 from uuid import uuid4
 
@@ -97,7 +97,11 @@ class ReplayRecord:
         self.update(stage='recognition', status='received')
 
     def metadata(self, scene):
-        from camera_assistant.services.pixel_contours import _ALGORITHM_VERSION, MAX_EDGE, DETAIL_EDGE
+        from camera_assistant.services.pixel_contours import (
+            _ALGORITHM_VERSION,
+            DETAIL_EDGE,
+            MAX_EDGE,
+        )
         from camera_assistant.services.scene_structure import STRUCTURE_VERSION
         self.update(stage='contours', status='started', metadata=scene.model_dump(),
                     processing={'algorithm': _ALGORITHM_VERSION, 'max_edge': MAX_EDGE, 'detail_edge': DETAIL_EDGE,

@@ -7,7 +7,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator, model_validator
 
-from camera_assistant.services.drawing_geometry import simple_outline, contained_outline
+from camera_assistant.services.drawing_geometry import contained_outline, simple_outline
 
 
 class CompositionModel(BaseModel):
@@ -239,11 +239,30 @@ class ObservedObject(TargetLayer):
                 "塔架": "tower", "火箭": "rocket"}.get(value, value)
 
 
+class SegmentationProcessing(CompositionModel):
+    """Locally produced execution evidence; excluded from observation prompts."""
+
+    object_id: str = Field(pattern=r"^object[1-6]$")
+    requested_backend: Literal["grabcut", "mobile_sam"]
+    actual_backend: Literal["grabcut", "mobile_sam", "scene_structure", "scene_context", "none"]
+    mask_backend: Literal["grabcut", "mobile_sam"] | None = None
+    code: str = Field(pattern=r"^[a-z_]{1,48}$")
+    fallback_code: str | None = Field(default=None, pattern=r"^[a-z_]{1,48}$")
+    model_version: str | None = Field(default=None, max_length=128)
+    weights_sha256: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
+    device: Literal["cpu"] = "cpu"
+    timings: dict[str, float] = Field(default_factory=dict)
+    cache_hit: bool = False
+    component_count: int = Field(default=1, ge=0)
+    discarded_noise_pixels: int = Field(default=0, ge=0)
+
+
 class ObservedScene(CompositionModel):
     reference_photo_id: Literal["photo1"] = "photo1"
     scene_mode: Literal["objects", "continuous"] = "objects"
     objects: list[ObservedObject] = Field(min_length=1, max_length=6)
     limitations: list[str] = Field(min_length=1, max_length=5)
+    processing: list[SegmentationProcessing] = Field(default_factory=list, max_length=4)
 
     @model_validator(mode="after")
     def distinct_objects(self):
@@ -316,6 +335,7 @@ class CompositionDiagnostic(CompositionModel):
     code: str = Field(pattern=r"^[a-z_]{1,48}$")
     object_id: str | None = Field(default=None, pattern=r"^object[1-6]$")
     field_path: str | None = Field(default=None, pattern=r"^[a-z_0-9.]{1,120}$")
+    segmentation: SegmentationProcessing | None = None
 
 
 class CompositionProposal(CompositionModel):

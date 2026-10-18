@@ -17,8 +17,8 @@ def observe_diagnostics(callback):
         _sink.reset(token)
 
 
-def stage_result(stage, status, code, *, object_id=None, field_path=None):
+def stage_result(stage, status, code, *, object_id=None, field_path=None, segmentation=None):
     sink = _sink.get()
     if sink:
         sink(CompositionDiagnostic(stage=stage, status=status, code=code,
-                                   object_id=object_id, field_path=field_path))
+                                   object_id=object_id, field_path=field_path, segmentation=segmentation))

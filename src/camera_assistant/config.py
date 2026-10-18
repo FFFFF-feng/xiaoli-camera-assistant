@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -49,6 +50,13 @@ class Settings:
     detector_warmup: bool = True
     image_edit: ImageEditSettings = field(default_factory=ImageEditSettings)
     trust_env: bool = True
+    segmentation_backend: str = "grabcut"
+    segmentation_weights_path: Path | None = None
+    segmentation_weights_sha256: str = ""
+    segmentation_device: str = "cpu"
+    segmentation_fallback: bool = True
+    segmentation_timeout_seconds: float = 10.0
+    segmentation_evidence: bool = False
 
     def __post_init__(self) -> None:
         if self.knowledge_mode not in {"legacy", "managed"}:
@@ -73,6 +81,15 @@ class Settings:
             raise ValueError("检测阈值应为 0–1。")
         if not 1 <= self.detector_timeout_seconds <= 600:
             raise ValueError("检测超时应为 1–600 秒。")
+        if self.segmentation_backend not in {"grabcut", "mobile_sam"}:
+            raise ValueError("分割后端只能是 grabcut 或 mobile_sam。")
+        if self.segmentation_device != "cpu":
+            raise ValueError("可选分割目前只验证了 CPU；设备只能是 cpu。")
+        if (self.segmentation_weights_sha256
+                and not re.fullmatch(r"[a-f0-9]{64}", self.segmentation_weights_sha256)):
+            raise ValueError("分割权重 SHA-256 必须是64位小写十六进制。")
+        if not 1 <= self.segmentation_timeout_seconds <= 600:
+            raise ValueError("分割阶段边界超时应为 1–600 秒；不能中断在途本地推理。")
 
     @property
     def cloud_ready(self) -> bool:
@@ -132,7 +149,25 @@ class Settings:
             detector_warmup=_as_bool(os.getenv("CAMERA_AI_DETECTOR_WARMUP"), True),
             image_edit=ImageEditSettings.from_env(),
             trust_env=_as_bool(os.getenv("CAMERA_AI_TRUST_ENV"), True),
+            **cls.segmentation_options(os.environ),
         )
+
+    @staticmethod
+    def segmentation_options(environment) -> dict:
+        """Pure optional configuration parsing, also used by startup checks."""
+        value = environment.get("CAMERA_AI_SEGMENTATION_WEIGHTS_PATH", "").strip()
+        path = Path(value).expanduser() if value else None
+        if path is not None:
+            path = path.resolve() if path.is_absolute() else (PROJECT_ROOT / path).resolve()
+        return {
+            "segmentation_backend": environment.get("CAMERA_AI_SEGMENTATION_BACKEND", "grabcut").strip().lower(),
+            "segmentation_weights_path": path,
+            "segmentation_weights_sha256": environment.get("CAMERA_AI_SEGMENTATION_WEIGHTS_SHA256", "").strip().lower(),
+            "segmentation_device": environment.get("CAMERA_AI_SEGMENTATION_DEVICE", "cpu").strip().lower(),
+            "segmentation_fallback": _as_bool(environment.get("CAMERA_AI_SEGMENTATION_FALLBACK"), True),
+            "segmentation_timeout_seconds": float(environment.get("CAMERA_AI_SEGMENTATION_TIMEOUT_SECONDS", "10")),
+            "segmentation_evidence": _as_bool(environment.get("CAMERA_AI_SEGMENTATION_EVIDENCE"), False),
+        }
 
     @staticmethod
     def _optional_path(name: str) -> Path | None:

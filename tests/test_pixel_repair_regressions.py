@@ -3,8 +3,8 @@ import cv2
 import numpy as np
 import pytest
 from PIL import Image, ImageDraw
-
 from test_pixel_contours import inspection, metadata
+
 from camera_assistant.services import pixel_contours as tracing
 from camera_assistant.services.pixel_strokes import MAX_EDGE_PIXELS, structural_strokes
 
@@ -108,8 +108,8 @@ def test_pet_processing_keeps_detail_resolution_within_the_existing_bound(monkey
 
 
 def test_pet_background_remainder_has_a_small_structural_budget():
+
     from camera_assistant.services.scene_context import scene_remainder
-    from test_pixel_contours import building
     data = metadata()
     data["objects"][0].update(kind="pet", bbox=[.3, .3, .7, .8])
     subject = tracing.observed_metadata(data).objects[0]

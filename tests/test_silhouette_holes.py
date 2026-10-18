@@ -1,12 +1,11 @@
-from copy import deepcopy
 
 import pytest
 from pydantic import ValidationError
+from test_observed_composition import observed
 
 from camera_assistant.composition_models import ObservedScene
 from camera_assistant.services.drawing_geometry import contained_outline
 from camera_assistant.services.pixel_contours import observed_metadata
-from test_observed_composition import observed
 
 
 def test_hole_cannot_cross_or_touch_concave_subject_boundary():
