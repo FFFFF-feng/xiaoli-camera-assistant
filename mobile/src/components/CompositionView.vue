@@ -5,7 +5,7 @@ import TargetComposition from './TargetComposition.vue';
 import PhotoFeedback from './PhotoFeedback.vue';
 import CompositionPreview from './CompositionPreview.vue';
 import SceneSurvey from './SceneSurvey.vue';
-import { usableTargetBoard } from '../target-board.mjs';
+import { targetCompositionCopy, usableTargetBoard } from '../target-board.mjs';
 import { usableFramingPlan } from '../composition-sketch.mjs';
 const props = withDefaults(defineProps<{ result: Analysis['result']; preview: string;photos?:{id:string;url:string}[];previewApi?:PreviewApi }>(),{photos:()=>[]});
 const selectedPhoto=ref('');
@@ -28,6 +28,25 @@ const compareId=computed(()=>selectedPhoto.value || board.value?.reference_photo
 const comparePreview=computed(()=>props.photos.find(p=>p.id===compareId.value)?.url || props.preview);
 const survey=computed(()=>props.result.scene?.scene_survey);
 const framing = computed(() => usableFramingPlan(current.value?.framing_plan) as FramingPlan | null);
+const framingCopy = computed(() => board.value?.layout_mode === 'source_preserving'
+  ? targetCompositionCopy(board.value) : null);
+const framingChecklist = computed(() => {
+  if (!framing.value) return {};
+  if (!framingCopy.value) return {
+    '主体摆位': framing.value.placement, '画面比例': framing.value.scale,
+    '方向与留白': framing.value.negative_space, '边缘保护': framing.value.edge_check,
+    '背景控制': framing.value.background_control, '完成标准': framing.value.success_check,
+  };
+  const copy = framingCopy.value;
+  return {
+    '取景状态': `${copy.heading}。${copy.reason}`,
+    [copy.changeLabel]: copy.action,
+    '空间关系': copy.changeText,
+    '线绘说明': copy.drawing,
+    '边界核对': framing.value.edge_check,
+    '环境控制': framing.value.background_control,
+  };
+});
 const actionNames: Record<string, string> = { crop: '裁切画面', camera_position: '调整机位', focal_length: '调整焦段', reshoot: '重新拍摄' };
 const statusNames: Record<string, string> = { grounded: '有知识依据', unverified: '待试拍验证', unavailable: '本次暂不可用', demo: '演示模式' };
 const subjects = computed(() => {
@@ -46,13 +65,13 @@ const shadePath = computed(() => {
 <template>
   <section class="composition-panel" aria-labelledby="composition-title">
     <SceneSurvey v-if="survey" :survey="survey"/><div class="section-heading"><h2 id="composition-title">推荐构图</h2><span class="result-badge">{{ statusNames[result.composition?.status || 'unavailable'] }}</span></div>
-    <p class="composition-intro">保留现场物体的轮廓与特征，查看推荐的位置、大小和前后层次。</p>
+    <p class="composition-intro">{{ framingCopy?'保留现场物体的轮廓与特征，查看原取景中的空间关系和现场拍摄重点。':'保留现场物体的轮廓与特征，查看推荐的位置、大小和前后层次。' }}</p>
     <div v-if="proposals.length" class="composition-plan-switch" role="group" aria-label="选择构图方案"><button v-for="(proposal, index) in proposals" :key="index" type="button" :aria-pressed="selected === index" @click="selected = index; selectedCrop = null; selectedPhoto = ''">方案{{ index+1 }} · {{ actionNames[proposal.action_type] || '取景' }}</button></div>
-    <div v-if="framing" class="framing-diagnosis"><strong>先看这一点</strong><p>{{ framing.diagnosis }}</p><span>视觉主次：{{ framing.visual_priority }}</span></div>
+    <div v-if="framing" class="framing-diagnosis"><strong>先看这一点</strong><p>{{ framingCopy?.reason || framing.diagnosis }}</p><span>{{ framingCopy?framingCopy.action:`视觉主次：${framing.visual_priority}` }}</span></div>
     <div v-if="preview || board" class="composition-view-switch" role="group" aria-label="构图查看方式"><button type="button" :aria-pressed="view === 'sketch'" @click="view = 'sketch'">推荐构图线稿</button><button v-if="preview" type="button" :aria-pressed="view === 'photo'" @click="view = 'photo'">原图与裁切对照</button></div>
     <PhotoFeedback v-if="preview && view==='photo'" :source="preview" :crop="current?.action_type==='crop'?current.crop_bbox:null"/>
     <template v-if="view === 'sketch' || !preview">
-      <p v-if="board" class="helper">{{ board.render_basis==='source_geometry'?'轮廓来自原图物体解析，位置和大小表达推荐取景；换机位的透视与遮挡仍需试拍核对。':'这是旧版布局草图，尚未关联原始物体轮廓；建议重新分析获取新版线稿。' }}</p>
+      <p v-if="board" class="helper">{{ framingCopy?`${framingCopy.drawing}现场重点是机位、距离或时机核对。`:(board.render_basis==='source_geometry'?'轮廓来自原图物体解析，位置和大小表达推荐取景；换机位的透视与遮挡仍需试拍核对。':'这是旧版布局草图，尚未关联原始物体轮廓；建议重新分析获取新版线稿。') }}</p>
       <TargetComposition v-if="board" :board="board" :reference="boardReference" />
       <div v-else-if="proposals.length" class="sketch-unavailable" role="status"><strong>推荐线稿未完成</strong><p>{{ current?.storyboard?'布局已返回，但前端未通过绘图数据检查。':'文字建议已生成，但这次未获得可展示的主体轮廓或目标布局。' }}</p><p v-for="note in result.composition?.notes" :key="note">{{ note }}</p><p>可以切换到原图对照继续检查取景；重新分析会再次调用模型。</p></div>
     </template>
@@ -72,8 +91,8 @@ const shadePath = computed(() => {
     </details>
     <CompositionPreview v-if="current&&previewApi" :key="selected" :proposal="current" :source="editReference" :reference-photo-id="editReferenceId" :api="previewApi"/>
     <template v-if="result.composition">
-      <p v-if="framing" class="helper">推荐线稿表达目标构图；原图用于核对物体特征。实际透视、遮挡与新视角仍需现场试拍验证。</p>
-      <dl v-if="framing" class="framing-checklist"><div v-for="(text,label) in { '主体摆位': framing.placement, '画面比例': framing.scale, '方向与留白': framing.negative_space, '边缘保护': framing.edge_check, '背景控制': framing.background_control, '完成标准': framing.success_check }" :key="label"><dt>{{ label }}</dt><dd>{{ text }}</dd></div></dl>
+      <p v-if="framing" class="helper">{{ framingCopy?framingCopy.drawing:'推荐线稿表达目标构图；原图用于核对物体特征。实际透视、遮挡与新视角仍需现场试拍验证。' }}</p>
+      <dl v-if="framing" class="framing-checklist"><div v-for="(text,label) in framingChecklist" :key="label"><dt>{{ label }}</dt><dd>{{ text }}</dd></div></dl>
       <article v-if="current" class="composition-proposal">
         <span class="proposal-type">{{ actionNames[current.action_type] || '构图建议' }}</span><h3>{{ current.goal }}</h3>
         <ol class="composition-steps"><li v-for="action in current.actions" :key="action">{{ action }}</li></ol>

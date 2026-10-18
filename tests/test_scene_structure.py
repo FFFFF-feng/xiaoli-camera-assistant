@@ -51,6 +51,18 @@ def test_continuous_keep_does_not_shrink_scene_and_invent_edge_margins():
     assert '保留' in framing.edge_check
 
 
+def test_continuous_keep_uses_photography_action_guidance_instead_of_layout_change():
+    source = scene()
+    board, _ = solve_layout(
+        CompositionIntent(focus_object_id='object1', diagnosis='保留路牌、路灯与道路环境的真实关系'),
+        source, .75, advice().proposals[0])
+
+    change = board.changes[0]
+    assert change.adjustment == '保留路牌、路灯与环境的相对位置，在现场通过机位、距离或时机调整强化视觉关联。'
+    assert '主体中心' not in change.adjustment
+    assert '占比' not in change.adjustment
+
+
 def test_structure_extractor_keeps_open_edges_and_rejects_blank_pixels():
     from camera_assistant.services.scene_structure import trace_structure
     obj = scene().objects[0]

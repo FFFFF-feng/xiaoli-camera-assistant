@@ -88,11 +88,24 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
     # note budget, ahead of general descriptions of the tracing method.
     limitations.extend(sorted(scene.limitations,
         key=lambda note: not any(word in note for word in ("孔隙", "分部", "省略", "未分离", "未完整", "格式无效"))))
+    if continuous:
+        change = {"problem": "连续场景中的路牌、路灯与环境需要一起保留",
+                  "adjustment": "保留路牌、路灯与环境的相对位置，在现场通过机位、距离或时机调整强化视觉关联。",
+                  "benefit": "保持真实空间关系，让灯光、路牌与环境的关联自然成立；拍摄效果仍需现场核对。"}
+        distance_instruction = "现场通过调整机位、距离或时机（包括机位高度、等待灯光时机）强化视觉关联，也可以保持现有关系并现场核对成片。"
+    elif clipped:
+        change = {"problem": "主体接触参考照片边界，画外形体未知",
+                  "adjustment": "保留已观察到的可见边界，在现场通过机位、距离或时机确认画外形体。",
+                  "benefit": "不把画外区域误当作已知留白；拍摄效果仍需现场核对。"}
+        distance_instruction = "现场通过机位、距离或时机核对可见边界和画外区域，不把斜线区域当作已知留白。"
+    else:
+        change = {"problem": plan.diagnosis, "adjustment": (placement+size)[:140],
+                  "benefit": "用真实轮廓比较主体占比和边缘余量；拍摄效果仍需现场核对。"}
+        distance_instruction = "本图仅表示取景范围与主体占比；身体移动方向和距离按文字建议现场核对。"
     board = TargetBoard(
         aspect=aspect, reference_photo_id=scene.reference_photo_id, intent=proposal.goal[:100],
-        distance_relation="unknown", distance_instruction="本图仅表示取景范围与主体占比；身体移动方向和距离按文字建议现场核对。",
-        layers=layers, changes=[{"problem": plan.diagnosis, "adjustment": (placement+size)[:140],
-                                "benefit": "用真实轮廓比较主体占比和边缘余量；拍摄效果仍需现场核对。"}],
+        distance_relation="unknown", distance_instruction=distance_instruction,
+        layers=layers, changes=[change],
         limitations=list(dict.fromkeys(limitations))[:5], render_basis="source_geometry",
         source_photo_aspect=photo_aspect, layout_mode="source_preserving" if preserve_source else "schematic", layout_engine="local_v1",
         observed_frame=[tx, ty, tx+sx, ty+sy] if clipped else None,

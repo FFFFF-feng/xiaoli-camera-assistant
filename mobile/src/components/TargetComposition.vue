@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed,onBeforeUnmount,ref,useId,watch } from 'vue';
 import type { TargetBoard } from '../types';
-import { DEFAULT_TARGET_COLOR, DEFAULT_TARGET_GRID, detailPath, outlinePath, sourceLayout, silhouetteLayers, silhouetteStrokePath, hasPhotoCut, unknownFrameRects, targetLayerPaint, thirdsGuide } from '../target-board.mjs';
+import { DEFAULT_TARGET_COLOR, DEFAULT_TARGET_GRID, detailPath, outlinePath, sourceLayout, silhouetteLayers, silhouetteStrokePath, hasPhotoCut, unknownFrameRects, targetLayerPaint, targetCompositionCopy, thirdsGuide } from '../target-board.mjs';
 import { frameAspect } from '../composition-sketch.mjs';
 import { sceneColorTransform } from '../scene-colors.mjs';
 import { sceneEdgeDirections,sceneContinuationPaths } from '../scene-extension.mjs';
@@ -19,6 +19,8 @@ const markedLayers=computed(()=>layers.value.filter(layer=>layer.kind!=='backgro
 const visibleLayers=computed(()=>layers.value.filter(layer=>environment.value||layer.representation!=='context_lines'));
 const visibleMarks=computed(()=>markedLayers.value.filter(layer=>environment.value||layer.representation!=='context_lines'));
 const distanceNames={closer:'适当靠近',farther:'适当退后',similar:'保持相近距离',unknown:'距离需现场判断'};
+const copy=computed(()=>targetCompositionCopy(props.board));
+const sourcePreserving=computed(()=>props.board.layout_mode==='source_preserving');
 const main=computed(()=>props.board.layers.find(layer=>layer.role==='main')!);
 const structureScene=computed(()=>props.board.layers.some(layer=>layer.representation==='scene_structure'));
 const clippedScene=computed(()=>props.board.layers.some(hasPhotoCut));
@@ -61,11 +63,14 @@ function save() {
 </script>
 <template>
   <div class="target-composition">
-    <div class="target-heading"><h3>{{ board.intent }}</h3><span>{{ showSource?'原始布局估计':'推荐构图线稿' }}</span></div>
+    <div class="target-heading"><h3>{{ board.intent }}</h3><span>{{ showSource?'原始布局估计':copy.heading }}</span></div>
     <div v-if="original" class="target-mode" role="group" aria-label="轮廓布局对照"><button type="button" :aria-pressed="!showSource" @click="showSource=false">推荐布局</button><button type="button" :aria-pressed="showSource" @click="showSource=true">原始物体布局</button></div>
+    <aside v-if="sourcePreserving" class="target-preserving" data-source-preserving>
+      <strong>{{ copy.heading }}</strong><p>{{ copy.reason }}</p><p>{{ copy.action }}</p><p>{{ copy.drawing }}</p>
+    </aside>
     <figure class="target-sheet">
-      <svg ref="sheet" :viewBox="`-18 -18 ${width+36} ${height+36}`" role="img" :aria-label="showSource?'原始布局估计，用于核对轮廓与空间位置':`推荐构图：${board.intent}。使用${structureScene?'真实边界的场景结构线':'物体轮廓'}表达目标布局，不是实拍预测。`" font-family="sans-serif">
-        <title>{{ showSource?'原始物体布局估计':board.intent }}</title><desc>物体识别和轮廓提取可能有误，请对照原图。推荐布局不是新机位的透视、遮挡或实拍效果预测。{{ color?'插画配色用于区分主体和背景，不代表景物的准确颜色或实际拍摄效果。':'' }}{{ extensionImage?'画框边缘依据可见轮廓与线条方向作推测延伸，未拍到的景物未知。':'' }}</desc>
+      <svg ref="sheet" :viewBox="`-18 -18 ${width+36} ${height+36}`" role="img" :aria-label="showSource?'原始布局估计，用于核对轮廓与空间位置':`推荐构图：${board.intent}。使用${structureScene?'真实边界的场景结构线':'物体轮廓'}表达目标布局。${copy.drawing}`" font-family="sans-serif">
+        <title>{{ showSource?'原始物体布局估计':board.intent }}</title><desc>物体识别和轮廓提取可能有误，请对照原图。{{ copy.drawing }}{{ color?'插画配色用于区分主体和背景，不代表景物的准确颜色或实际拍摄效果。':'' }}{{ extensionImage?'画框边缘依据可见轮廓与线条方向作推测延伸，未拍到的景物未知。':'' }}</desc>
         <rect x="-18" y="-18" :width="width+36" :height="height+36" fill="#fafcfd"/>
         <rect :width="width" :height="height" :fill="color?'#f5f8f6':'#fff'" stroke="#a5b4c5" stroke-width="1"/>
         <defs><clipPath :id="colorClip"><rect :width="width" :height="height"/></clipPath><pattern :id="`${colorClip}-unknown`" width="9" height="9" patternUnits="userSpaceOnUse"><rect width="9" height="9" fill="#f3f3ef"/><path d="M-2,2L2,-2M0,9L9,0M7,11L11,7" stroke="#c7c9c4" stroke-width="1"/></pattern></defs>
@@ -89,11 +94,11 @@ function save() {
         </g>
       </svg>
       <div class="target-controls"><label><input v-model="environment" type="checkbox"/>环境线条</label><label><input v-model="grid" type="checkbox"/>三分线</label><label><input v-model="labels" type="checkbox"/>景物标记</label><label><input v-model="color" type="checkbox"/>场景填色</label><label v-if="hasSceneColor&&!showSource&&!structureScene&&!clippedScene"><input v-model="extendBackground" type="checkbox"/>延伸背景</label><button type="button" @click="save">{{ showSource?'保存原始布局':'保存推荐图' }}</button></div>
-      <figcaption>{{ showSource?'同一组物体轮廓放回原图位置，用于核对物体形状与空间关系；不代表精确分割。':`以第 ${board.reference_photo_id.slice(5)} 张为参考规划；主体目标占比：宽 ${size.w}%、高 ${size.h}%。这是构图示意，不是实拍预测。` }}<span v-if="hasSceneColor"> 插画配色帮助区分景物，颜色不作精确还原；未绘制的范围不等于现场留白。</span><span v-else-if="color">{{ colorBusy?' 正在准备场景填色…':colorFailed?' 参考图配色暂时无法读取，保留原有示意色。':' 完整场景填色需要匹配的参考照片，当前保留主体示意色。' }}</span></figcaption>
+      <figcaption>{{ showSource?'同一组物体轮廓放回原图位置，用于核对物体形状与空间关系；不代表精确分割。':sourcePreserving?`以第 ${board.reference_photo_id.slice(5)} 张为参考保留原取景中的空间关系。${copy.drawing}`:`以第 ${board.reference_photo_id.slice(5)} 张为参考规划；主体目标占比：宽 ${size.w}%、高 ${size.h}%。这是构图示意，不是实拍预测。` }}<span v-if="hasSceneColor"> 插画配色帮助区分景物，颜色不作精确还原；未绘制的范围不等于现场留白。</span><span v-else-if="color">{{ colorBusy?' 正在准备场景填色…':colorFailed?' 参考图配色暂时无法读取，保留原有示意色。':' 完整场景填色需要匹配的参考照片，当前保留主体示意色。' }}</span></figcaption>
       <p v-if="extensionImage" class="target-guide-tip">边缘依据可见轮廓与线条方向作推测延伸，新增区域为示意，实际景物需现场确认。</p>
       <p v-if="clippedScene" class="target-guide-tip" data-photo-boundary-note>主体与原照片边界接触，画外形体未知；填色闭合不表示真实物体底边。斜线区域未被原照片覆盖。</p>
       <p v-else-if="legacyBoundary" class="target-guide-tip" data-legacy-boundary-note>这份历史轮廓未记录画幅截断证据，虚线闭合不代表物体已拍完整。</p>
-      <p v-if="structureScene" class="target-guide-tip" data-scene-structure-note>场景结构线来自参考照片的可见边界，整体共同变换以保留空间关联；开放路径不代表完整物体分割，未拍到的区域保持未知。<span v-if="board.layout_mode==='source_preserving'">当前保留原取景，用结构线核对保留依据及现场检查重点。</span><span v-if="hasSceneColor">底层配色仅映射参考照片，结构路径自身不填充。</span></p>
+      <p v-if="structureScene" class="target-guide-tip" data-scene-structure-note>场景结构线来自参考照片的可见边界，整体共同变换以保留空间关联；开放路径不代表完整物体分割，未拍到的区域保持未知。<span v-if="sourcePreserving">当前保留原取景，用结构线核对保留依据及现场检查重点。</span><span v-if="hasSceneColor">底层配色仅映射参考照片，结构路径自身不填充。</span></p>
       <p v-if="grid" class="target-guide-tip">两横两竖将画面分为九格，圆点标出四个交点，方便比较主体位置；不必强行把主体放在交点上。</p>
     </figure>
     <figure v-if="reference" class="target-reference">
@@ -106,16 +111,16 @@ function save() {
         <path v-for="(part,index) in silhouetteLayers(portrait.layer)" :key="index" :d="outlinePath(part,portrait.w,portrait.h)" fill-rule="evenodd" :fill="hasSceneColor?(mainFills[Number(index)]||targetLayerPaint(main,color).fill):targetLayerPaint(main,color).fill" :fill-opacity="hasSceneColor?1:targetLayerPaint(main,color).fillOpacity" stroke="none"/>
         <path v-for="(part,index) in silhouetteLayers(portrait.layer)" :key="`boundary-${index}`" :d="silhouetteStrokePath(part,portrait.w,portrait.h)" fill="none" :stroke-dasharray="!main.photo_boundary?'4 3':undefined" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
         <path v-for="(path,index) in main.details" :key="`detail-${index}`" class="subject-detail" :d="detailPath(portrait.layer,path,portrait.w,portrait.h)" fill="none" :stroke-width="main.details.length>10 ? .9 : 1.1" vector-effect="non-scaling-stroke"/>
-      </svg><p>{{ main.identity_features.join('、') }}。新机位下的形态仍需现场核对。</p>
+      </svg><p>{{ main.identity_features.join('、') }}。{{ sourcePreserving?'保留原取景时的形态与结构线仍需现场核对。':'新机位下的形态仍需现场核对。' }}</p>
     </details>
     <div class="target-legend"><p v-if="board.unrendered_objects?.length" data-unrendered-objects><strong>已识别但未可靠绘出：{{ board.unrendered_objects.join('、') }}</strong><span>下列辨识描述来自视觉识别，不表示这些部件都已画出。</span></p><p v-for="(layer,index) in board.layers" :key="index"><b>{{ layer.kind==='background' ? '背景' : index+1 }}</b><strong>{{ layer.label }}</strong><span>{{ layer.identity_features?.join('、') }}</span><small>{{ layer.certainty==='approximate' ? '视角近似，需试拍' : '特征依据参考照片' }}</small></p></div>
-    <div class="target-changes"><h4>比原图改善在哪里</h4><article v-for="(change,index) in board.changes" :key="index"><p><span>原图问题</span>{{ change.problem }}</p><p><span>推荐调整</span>{{ change.adjustment }}</p><p><span>预期改善</span>{{ change.benefit }}</p></article></div>
+    <div class="target-changes"><h4>比原图改善在哪里</h4><template v-if="sourcePreserving"><article><p><span>当前取景</span>路牌、路灯与道路环境作为连续场景一起保留。</p><p><span>{{ copy.changeLabel }}</span>{{ copy.changeText }}</p><p><span>预期改善</span>保持真实空间关系，让灯光、路牌与环境的关联自然成立。</p></article></template><template v-else><article v-for="(change,index) in board.changes" :key="index"><p><span>原图问题</span>{{ change.problem }}</p><p><span>推荐调整</span>{{ change.adjustment }}</p><p><span>预期改善</span>{{ change.benefit }}</p></article></template></div>
     <div class="target-distance"><strong>{{ distanceNames[board.distance_relation] }}</strong><p>{{ board.distance_instruction }}</p></div>
     <p v-for="note in board.limitations" :key="note" class="target-limit">{{ note }}</p><span role="status">{{ saved }}</span>
   </div>
 </template>
 <style scoped>
-.target-guide-tip{margin:8px 0 0;font-size:12px;line-height:1.9;color:var(--muted);word-break:normal;overflow-wrap:break-word}
+.target-guide-tip{margin:8px 0 0;font-size:12px;line-height:1.9;color:var(--muted);word-break:normal;overflow-wrap:break-word}.target-preserving{margin:12px 0 0;padding:14px 16px;background:#f2f7f4;border:1px solid #cbded2;border-left:3px solid var(--green);color:#355675;font-size:13px;line-height:1.9}.target-preserving strong{font-size:15px;font-weight:600}.target-preserving p{margin:4px 0 0;color:var(--muted)}
 .target-mode{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.target-mode button{border:1px solid var(--border);border-radius:5px;background:#fff;color:var(--muted);padding:9px 14px;font-size:13px}.target-mode button[aria-pressed=true]{background:var(--green);color:#fff;border-color:var(--green)}.target-composition{min-width:0;word-break:normal;overflow-wrap:break-word}.target-changes p{min-width:0}
 .target-reference{display:flex;gap:16px;align-items:center;margin:16px 0;padding-bottom:16px;border-bottom:1px solid #e1e8ef}.target-reference img{width:140px;max-height:120px;object-fit:contain;background:#f5f8fa}.target-reference figcaption{display:flex;flex-direction:column;gap:6px;min-width:0;font-size:12px;line-height:1.8;color:var(--muted);overflow-wrap:break-word;word-break:normal}.target-reference strong{color:var(--ink);font-weight:500}@media(max-width:400px){.target-reference img{width:100px}.target-reference{gap:12px}}
 .target-narration{font-family:"Songti SC","SimSun",serif;color:var(--muted);font-size:16px;line-height:2;margin:20px 12px}.subject-study{margin:20px 0;padding:12px 0;border-bottom:1px solid #e1e8ef;color:#627e98;font-size:12px}.subject-study summary{cursor:pointer}.subject-study svg{display:block;max-width:320px;width:100%;height:260px;margin:18px auto}.subject-study p{font-size:12px;line-height:1.9;color:#74879b}
