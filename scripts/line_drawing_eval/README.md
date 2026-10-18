@@ -54,15 +54,52 @@ A 在集成完成后写 `INTEGRATION_READY.json`（E 不写、不改服务）：
   "dirty_files": ["<按 git status --porcelain 排序后的路径>"],
   "port": 8093,
   "pid": 12345,
-  "built_assets": {"mobile/dist/index.html": "<sha256>"},
+  "built_assets": {
+    "mobile/dist/index.html": "<sha256>",
+    "mobile/dist/assets/<当前index引用的JS文件名>.js": "<sha256>",
+    "mobile/dist/assets/<当前index引用的CSS文件名>.css": "<sha256>"
+  },
   "health": {"service": "xiaoli-mobile-api", "analysis_mode": "cloud"},
   "segmentation": {"backend": "grabcut", "device": "cpu"},
   "frozen_at": "<ISO时间>"
 }
 ```
 
+`commit` 必须是完整 40 位十六进制 SHA，`frozen_at` 必须是带时区的 ISO 时间。
+`health` 至少声明实际 `service` 和 `analysis_mode`。`built_assets` 必须列出当前
+`index.html` 以及其中引用的全部本地 JS/MJS/CSS（包括 modulepreload）；空表、缺文件、
+漏列引用或散列变化均拒绝。示例中的资产名须替换为本次实际构建名。
+
+源码散列直接复用 `line_drawing_eval.preflight.source_fingerprint(Path(source_root))`。
+它覆盖 `src`、`mobile/src`、`mobile/tests`、`tests` 下的 `.py/.mjs/.ts/.vue/.css`；
+返回的 `tracked_diff_sha256` 是额外诊断值，当前门禁比较 `source_tree_sha256` 与 dirty
+清单。A 应在最终干净提交后冻结，不能把此散列当整个仓库所有配置与脚本的内容证明。
+
+`segmentation.backend` 仅接受 `grabcut` 或 `mobile_sam`，本轮 `device` 仅接受 `cpu`。
+GrabCut 的权重字段省略或为 null；显式启用 MobileSAM 时，另填绝对本地 `weights_path`
+和真实 `weights_sha256`，预检会重新计算本地文件散列。默认普通启动仍是 GrabCut。
+
+`/health` 必须提供实际运行进程的 `segmentation` 诊断，例如尚未分割时：
+
+```json
+{
+  "configured_backend": "grabcut",
+  "device": "cpu",
+  "weights_sha256": null,
+  "last_actual_backend": null,
+  "last_weights_sha256": null,
+  "inference_proven": false
+}
+```
+
+预检单独核对前三项与门禁配置身份；后三项是最近执行证据，必须如实保留。
+`inference_proven: false` 与两个 null 允许配置检查通过，但表示尚无实际分割证明。
+MobileSAM 配置下最近实际执行 GrabCut 可以记录为 `last_actual_backend: "grabcut"`、
+`last_weights_sha256: null`；这只证明实际 GrabCut 分割，不能称模型成功。实际 MobileSAM
+执行须记录相同权重散列。预检将这些字段原样列入 `segmentation` 报告，不发起推理来填证据。
+
 `preflight.verify()` 只读取 Git、netstat、进程命令行、构建散列和 `/health`，
-逐项核对提交、分支、dirty 清单、源码散列、端口→PID、构建产物和分割权重；
+逐项核对提交、分支、dirty 清单、源码散列、端口→PID、构建产物、分割配置与本地权重；
 任何一项不符就拒绝开批。E2 发送器：
 
 ```powershell
@@ -81,6 +118,10 @@ $args = @(
 不带 `--live` 时只做预检并打印计划；带 `--live` 时先通过门禁和账本检查，
 再逐图串行上传。每张图发送前扣减一次网关预算，失败仍计数；传输重试为 0，
 不会有外层自动重试。运行目录已存在时拒绝覆盖。
+默认预检会执行一次本机 `GET /health`，报告 `health_get_requests: 1`、
+`generated_model_requests: 0`；它不修改账本、不创建运行目录，也不 POST。
+真实发送器保留 HTTP 非 200、内容类型错误、服务 error 事件各自的固定失败码，
+不会被“无 final”通用码覆盖。
 
 ## 计时口径
 

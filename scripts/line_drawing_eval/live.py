@@ -191,16 +191,17 @@ def analyze_case(client: Any, case: dict[str, Any], target: Path) -> dict[str, A
                         }
         if final is not None:
             write_json(target / "result.json", final)
-        row.update(
-            summarize(
-                final,
-                case_id=case["id"],
-                sample_sha256=case["sha256"],
-                seconds=time.monotonic() - started,
-                events=events,
-                ready=ready if isinstance(ready, dict) else None,
-            )
+        summary = summarize(
+            final,
+            case_id=case["id"],
+            sample_sha256=case["sha256"],
+            seconds=time.monotonic() - started,
+            events=events,
+            ready=ready if isinstance(ready, dict) else None,
         )
+        if "failure_code" in row:
+            summary["failure_code"] = row["failure_code"]
+        row.update(summary)
         if final is None:
             row.setdefault("failure_code", "connection_ended_without_final")
     except Exception as error:  # noqa: BLE001 - no raw message: it may hold private config
@@ -337,7 +338,8 @@ def main(argv: list[str] | None = None) -> int:
             "remaining_gateway_posts": ledger.remaining,
             "can_run": len(cases) <= ledger.remaining,
             "dry_run": True,
-            "network_calls": 0,
+            "generated_model_requests": 0,
+            "health_get_requests": report["health_get_requests"],
         }
         print(json.dumps(plan, ensure_ascii=False, indent=2))
         return 0 if plan["can_run"] else 1
