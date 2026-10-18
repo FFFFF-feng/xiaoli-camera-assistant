@@ -4,15 +4,23 @@ import {usableTargetBoard} from '../../src/target-board.mjs';
 import {completedComposition} from '../../src/completed-composition.mjs';
 
 const caseId=new URLSearchParams(location.search).get('case')||'dog';
+const offlineFixtures=globalThis.__OFFLINE_FIXTURES||{};
+const offlinePhotos=globalThis.__OFFLINE_PHOTOS||{};
 const json=async path=>{
+  if(Object.prototype.hasOwnProperty.call(offlineFixtures,path))return offlineFixtures[path];
   const response=await fetch(path);
   if(!response.ok)throw new Error(`${path} 未加载`);
   return response.json();
 };
-const [contract,dogResult]=await Promise.all([json('/fixtures/contract.json'),json('/fixtures/dog-result.json')]);
+const resultPath=caseId==='dog'?'/fixtures/dog-result.json':`/fixtures/result-${caseId}.json`;
+const photoFile=caseId==='dog'?'/fixtures/dog.jpg':`/fixtures/photo-${caseId}.jpg`;
+const photoPath=offlinePhotos[photoFile]||photoFile;
+const [contract,caseResult]=await Promise.all([json('/fixtures/contract.json'),json(resultPath)]);
 
 const fixture=id=>contract.valid.find(item=>item.id===id)?.board;
-const dog=completedComposition(dogResult.result.composition,['photo1'])?.proposals?.[0]?.storyboard||null;
+const savedComposition=caseResult.result?.composition||caseResult.composition;
+const actual=completedComposition(savedComposition,['photo1'])?.proposals?.[0]?.storyboard||null;
+const dog=caseId==='dog'?actual:null;
 const holeBoard=fixture('silhouette_hole');
 const continuousBoard=fixture('continuous');
 const contourBoard=structuredClone(holeBoard);
@@ -34,6 +42,12 @@ function boardFixture({id,title,tags,note,board,reference='',timing=''}) {
     timing?h('p',{class:'timing'},timing):null,
   ]);
 }
+function actualFixture() {
+  return boardFixture({id:caseId,title:`${caseId} · E2 离线正式组件回放`,
+    tags:['已保存E2几何','当前 TargetComposition.vue','不发送请求'],
+    note:'从已保存的 E2 结果重建并通过 completedComposition 与前端可信校验；原始识别框和二值 mask 未留存，候选改动仍需新的受控预算才能云端复测。',
+    board:actual,reference:photoPath});
+}
 function failureFixture() {
   return h('section',{class:'fixture','data-fixture-id':'cup-failure'},[
     meta('杯子 · 失败回放',['真实失败结果','不生成占位主体'],'真实 06 结果没有通过主体轮廓阶段；此处只保留原图与失败说明，不补画杯把、杯底或占位轮廓。'),
@@ -50,6 +64,9 @@ function failureFixture() {
 const timing=`<b>总用时</b> 73.1 秒（递增墙钟；页面加载后持续计时）。<b>固定事件时刻</b>：画面 37.33 秒、参数 67.20 秒、构图 73.12 秒、最终 73.12 秒。事件时刻不是阶段耗时；并行环节不能相加。`;
 const markup={
   dog:()=>boardFixture({id:'dog',title:'狗 · 真实完整结果','tags':['真实结果回放','Worker 配色','ready/final 同源'],note:'由已保存的真实 02 结果经 completedComposition 与前端可信校验回放；本次不发送分析请求。',board:dog,reference:'/fixtures/dog.jpg',timing}),
+  '06':actualFixture,
+  '07':actualFixture,
+  '02':actualFixture,
   holes:()=>boardFixture({id:'holes',title:'孔隙 · 冻结契约','tags':['合成协议样例','evenodd','真实空隙'],note:'外环内的三角形孔保持透明；路径数量和闭合数与契约 fixture 一致。合成坐标不是照片效果证据。',board:holeBoard}),
   contours:()=>boardFixture({id:'contours',title:'多轮廓 · 冻结契约派生','tags':['合成协议样例','两个实心分部','不跨空隙填色'],note:'两个独立分部共享同一包围盒但分别成形，中间空隙不被连成大色块。',board:contourBoard}),
   continuous:()=>boardFixture({id:'continuous',title:'连续场景 · 冻结契约','tags':['合成协议样例','开放结构','不闭合'],note:'至少四条真实开放线覆盖双轴；路径不闭合、不填色，固定属性为 fixed。后端真实连续场景仍未验收。',board:continuousBoard}),
