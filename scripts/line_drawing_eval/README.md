@@ -33,6 +33,19 @@ node "$taskRepo\scripts\line_drawing_eval\browser_replay.cjs" `
 abort，并向 `/api/analyze` 与 `/api/composition/preview` 各发一次故意探针，
 用 `blocked_posts == 2` 且 `actual_analysis_posts == 0` 证明拦截生效。
 
+## 存档 manifest 兼容
+
+`index` 和 `gallery` 通过共享读取层同时支持旧 `samples/photos` 与新
+`cases/photo`。`photo` 与 `photos` 同时出现时必须指向同一绝对本地路径；
+重复 case ID、不同路径、照片数量不为 1、URL 或相对路径都保留为诊断并拒绝选中。
+
+源码身份只读取 summary 和 manifest 中已记录的 `git_sha`、
+`source_tree_sha256`、`tracked_diff_sha256` 及对应
+`source_fingerprint` 嵌套字段。不同来源冲突时字段置为 unknown 并列出诊断，
+不会用当前仓库 HEAD、默认模型或现配置补值；未记录 dirty 状态保持
+`unrecorded_by_run_manifest`。gallery 只有在 manifest SHA-256 与实际文件一致时
+才展示原图，缺失文件、散列不符和 manifest 冲突分别显示不同原因。
+
 ## 账本
 
 `E-cloud-ledger.json` 由 E 独占维护，创建时继承 A 的交接：

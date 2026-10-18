@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from .evidence import RunLayout, load_json
+from .manifest import normalize_manifest, normalize_source, verify_original
 
 _PALETTE = ["#3f5b6b", "#8a6f4d", "#5c7a5a", "#7a5c6b", "#6b6b7a", "#8a5a4d"]
 
@@ -132,6 +133,35 @@ def _composition_text(composition: dict[str, Any] | None) -> str:
     return "".join(blocks)
 
 
+def _source_label(source: dict[str, Any]) -> str:
+    git_sha = source.get("git_sha")
+    tree = source.get("source_tree_sha256")
+    if git_sha and tree:
+        label = f"git {git_sha} · tree {tree}"
+    elif git_sha:
+        label = f"git {git_sha} · tree unknown"
+    elif tree:
+        label = f"git unknown · tree {tree}"
+    else:
+        label = "source unknown"
+    return f"{label} · dirty {source.get('dirty') or 'unknown'}"
+
+
+def _original_markup(original: dict[str, Any], photo_name: str) -> str:
+    if photo_name:
+        return f"<img src='assets/{_escape(photo_name)}' alt='原图'>"
+    status = original.get("status")
+    messages = {
+        "missing_file": "原图缺失：manifest 记录的文件不存在。",
+        "hash_mismatch": "原图散列不符：未载入图像，也不会用同名文件补位。",
+        "hash_unrecorded": "原图 SHA-256 未记录，无法证明是同一张图。",
+        "hash_format_invalid": "原图 SHA-256 格式无效，未载入图像。",
+        "manifest_ambiguous": "manifest 的照片字段或 ID 存在冲突，原图保持未知。",
+        "manifest_case_missing": "manifest 未记录该案例，原图保持未知。",
+    }
+    return f"<p class='missing'>{_escape(messages.get(status, '原图不可用。'))}</p>"
+
+
 def build_gallery(layouts: Iterable[RunLayout], output_dir: Path) -> dict[str, Any]:
     """Write ``gallery.html`` plus copied originals; return a receipt."""
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -144,13 +174,13 @@ def build_gallery(layouts: Iterable[RunLayout], output_dir: Path) -> dict[str, A
         result = load_json(layout.result_path) if layout.result_path.is_file() else {}
         manifest_path = layout.root.parent / "run_manifest.json"
         manifest = load_json(manifest_path) if manifest_path.is_file() else {}
-        sample = next(
-            (item for item in manifest.get("samples") or [] if str(item.get("id")) == layout.case_id),
-            {},
-        )
-        photo = Path((sample.get("photos") or [""])[0]) if sample.get("photos") else None
+        manifest_view = normalize_manifest(manifest)
+        sample = manifest_view.case(layout.case_id)
+        original = verify_original(sample)
+        source = normalize_source(summary, manifest)
         photo_name = ""
-        if photo and photo.is_file():
+        if original["usable"]:
+            photo = Path(original["path"])
             photo_name = f"{layout.run}-{layout.case_id}{photo.suffix or '.jpg'}"
             shutil.copyfile(photo, assets / photo_name)
         payload = result.get("result") or {}
@@ -173,16 +203,17 @@ def build_gallery(layouts: Iterable[RunLayout], output_dir: Path) -> dict[str, A
         )
         cards.append(
             "<section class='card'>"
-            f"<header><h2>{_escape(layout.case_id)} · {_escape(sample.get('title') or '')}</h2>"
+            f"<header><h2>{_escape(layout.case_id)} · {_escape(sample.title if sample else '')}</h2>"
             f"<span class='badge'>离线回放 · 未调用模型</span></header>"
             f"<p class='meta'>{_escape(layout.run)} · 原始墙钟 {_escape(summary.get('seconds'))} 秒 · "
-            f"source {_escape(summary.get('source_fingerprint'))}</p>"
-            f"<p class='intent'>用户意图：{_escape(sample.get('intent'))}</p>"
+            f"source {_escape(_source_label(source))}</p>"
+            f"<p class='meta'>原图核对：{_escape(original.get('status'))}</p>"
+            f"<p class='intent'>用户意图：{_escape(sample.intent if sample else None)}</p>"
             + (f"<p class='failure'>失败码：{_escape(', '.join(str(code) for code in failure_codes))}</p>"
                if failure_codes else "")
             + "<div class='grid'>"
             + "<figure><figcaption>原图</figcaption>"
-            + (f"<img src='assets/{_escape(photo_name)}' alt='原图'>" if photo_name else "<p class='missing'>原图缺失</p>")
+            + _original_markup(original, photo_name)
             + "</figure>"
             + f"<figure><figcaption>实际推荐图（存档）</figcaption>{render_board_svg(board)}</figure>"
             + f"<figure><figcaption>场景</figcaption><p>{_escape(scene.get('scene_label'))}</p>"
@@ -197,7 +228,16 @@ def build_gallery(layouts: Iterable[RunLayout], output_dir: Path) -> dict[str, A
             {
                 "case_id": layout.case_id,
                 "run": layout.run,
+                "title": sample.title if sample else None,
                 "photo": f"assets/{photo_name}" if photo_name else None,
+                "original": original,
+                "source": {
+                    "git_sha": source.get("git_sha"),
+                    "source_tree_sha256": source.get("source_tree_sha256"),
+                    "tracked_diff_sha256": source.get("tracked_diff_sha256"),
+                    "dirty": source.get("dirty"),
+                    "diagnostics": source.get("diagnostics"),
+                },
                 "failure_codes": failure_codes,
                 "seconds": summary.get("seconds"),
             }
@@ -245,8 +285,9 @@ ul {{ margin:2px 0 8px; padding-left:20px; }}
 </style></head><body>
 <h1>线绘修复 · 离线证据回放</h1>
 <div class="notice">本页面是一次静态回放：只读取已保存的结果与原图，不包含脚本，
-不会向任何分析或预演接口发送 POST，也不会产生模型调用计费。历史结果的源码版本早于
-检查点，不能当作集成版本验收。</div>
+不会向任何分析或预演接口发送 POST，也不会产生模型调用计费。原图只有在 manifest
+记录的 SHA-256 与实际文件一致时才显示；源码身份只来自保存的 summary/manifest，
+缺失或冲突会明确标注。</div>
 {''.join(cards)}
 </body></html>
 """

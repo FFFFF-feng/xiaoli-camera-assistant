@@ -19,6 +19,7 @@ from line_drawing_eval.evidence import RunLayout, discover_runs, index_run
 from line_drawing_eval.gallery import build_gallery, render_board_svg
 from line_drawing_eval.ledger import BudgetError, GateError, Ledger
 from line_drawing_eval.live import analyze_case, load_cases, run_batch, summarize
+from line_drawing_eval.manifest import normalize_manifest, normalize_source, verify_original
 from line_drawing_eval.preflight import PreflightError, source_fingerprint, verify
 from line_drawing_eval.serve import create_server
 from line_drawing_eval.timing import analyze_run
@@ -119,8 +120,194 @@ def test_index_flags_unrecorded_model_and_mask(tmp_path: Path) -> None:
     assert record["generated_model_requests"] == 0
     assert record["device"]["model"] == "unrecorded_in_run_manifest"
     assert record["masks"]["raw_mask_saved"] is False
+    assert record["original"]["path"] == str(tmp_path / "photo.jpg")
+    assert record["original"]["status"] == "hash_format_invalid"
     assert record["original"]["sha256_matches"] is False
+    assert record["source"]["git_sha"] is None
+    assert record["source"]["dirty"] == "unrecorded_by_run_manifest"
+    assert "986fd059" not in record["source"]["note"]
     assert discover_runs(tmp_path)[0].case_id == "02"
+
+
+def _rewrite_new_manifest(
+    layout: RunLayout,
+    *,
+    photo: Path,
+    sha256: str,
+    source_sha: str = "1" * 40,
+    source_tree: str = "2" * 64,
+) -> dict:
+    manifest = {
+        "cases": [
+            {
+                "id": layout.case_id,
+                "title": "新 schema",
+                "photo": str(photo),
+                "sha256": sha256,
+                "intent": "新意图",
+                "request": {"intent": "新意图"},
+            }
+        ],
+        "source_fingerprint": {
+            "git_sha": source_sha,
+            "source_tree_sha256": source_tree,
+            "tracked_diff_sha256": "3" * 64,
+        },
+    }
+    _write(layout.root.parent / "run_manifest.json", manifest)
+    return manifest
+
+
+def test_new_cases_photo_schema_verifies_original_and_nested_source(tmp_path: Path) -> None:
+    layout = _run_fixture(tmp_path)
+    photo = tmp_path / "photo.jpg"
+    import hashlib
+
+    _rewrite_new_manifest(layout, photo=photo, sha256=hashlib.sha256(photo.read_bytes()).hexdigest())
+    record = index_run(layout)
+    assert record["original"]["status"] == "verified"
+    assert record["original"]["sha256_matches"] is True
+    assert record["original"]["path"] == str(photo)
+    assert record["source"]["git_sha"] == "1" * 40
+    assert record["source"]["source_tree_sha256"] == "2" * 64
+    assert record["source"]["tracked_diff_sha256"] == "3" * 64
+    assert record["request"] == {"intent": "新意图"}
+    assert record["intent"] == "新意图"
+    assert "986fd059" not in record["source"]["note"]
+
+    receipt = build_gallery([layout], tmp_path / "gallery")
+    assert receipt["cases"][0]["original"]["status"] == "verified"
+    assert (tmp_path / "gallery" / receipt["cases"][0]["photo"]).is_file()
+
+
+def test_photo_and_photos_agree_but_conflict_stays_unknown(tmp_path: Path) -> None:
+    layout = _run_fixture(tmp_path)
+    photo = tmp_path / "photo.jpg"
+    other = tmp_path / "other.jpg"
+    other.write_bytes(b"other")
+    import hashlib
+
+    sha256 = hashlib.sha256(photo.read_bytes()).hexdigest()
+    manifest = _rewrite_new_manifest(layout, photo=photo, sha256=sha256)
+    manifest["cases"][0]["photos"] = [str(photo)]
+    _write(layout.root.parent / "run_manifest.json", manifest)
+    agreed = normalize_manifest(manifest)
+    assert verify_original(agreed.case("02"))["status"] == "verified"
+
+    manifest["cases"][0]["photos"] = [str(other)]
+    _write(layout.root.parent / "run_manifest.json", manifest)
+    conflicted = normalize_manifest(manifest)
+    assert conflicted.case("02").photo is None
+    assert verify_original(conflicted.case("02"))["status"] == "manifest_ambiguous"
+    assert any(
+        item["code"] == "photo_fields_conflict"
+        for item in conflicted.case("02").diagnostics
+    )
+
+    manifest["cases"][0]["photos"] = [str(photo), str(other)]
+    ambiguous = normalize_manifest(manifest)
+    assert ambiguous.case("02").photo is None
+    assert any(
+        item["code"] == "photos_count_ambiguous"
+        for item in ambiguous.case("02").diagnostics
+    )
+
+
+def test_duplicate_case_ids_are_not_silently_selected(tmp_path: Path) -> None:
+    layout = _run_fixture(tmp_path)
+    photo = tmp_path / "photo.jpg"
+    import hashlib
+
+    manifest = _rewrite_new_manifest(
+        layout, photo=photo, sha256=hashlib.sha256(photo.read_bytes()).hexdigest()
+    )
+    manifest["samples"] = [
+        {
+            "id": "02",
+            "photos": [str(photo)],
+            "sha256": manifest["cases"][0]["sha256"],
+        }
+    ]
+    _write(layout.root.parent / "run_manifest.json", manifest)
+    record = index_run(layout)
+    assert record["original"]["status"] == "manifest_ambiguous"
+    assert record["request"] is None
+    assert record["intent"] is None
+    assert any(item["code"] == "duplicate_case_id" for item in record["manifest"]["diagnostics"])
+
+
+def test_original_missing_and_hash_mismatch_are_distinct(tmp_path: Path) -> None:
+    layout = _run_fixture(tmp_path)
+    missing = tmp_path / "missing.jpg"
+    _rewrite_new_manifest(layout, photo=missing, sha256="0" * 64)
+    missing_record = index_run(layout)
+    assert missing_record["original"]["status"] == "missing_file"
+    assert missing_record["original"]["exists"] is False
+
+    photo = tmp_path / "photo.jpg"
+    _rewrite_new_manifest(layout, photo=photo, sha256="0" * 64)
+    mismatch_record = index_run(layout)
+    assert mismatch_record["original"]["status"] == "hash_mismatch"
+    assert mismatch_record["original"]["exists"] is True
+    assert mismatch_record["original"]["sha256_matches"] is False
+
+    receipt = build_gallery([layout], tmp_path / "gallery")
+    page = Path(receipt["page"]).read_text(encoding="utf-8")
+    assert receipt["cases"][0]["photo"] is None
+    assert "原图散列不符" in page
+    assert "<img" not in page
+
+    manifest = json.loads((layout.root.parent / "run_manifest.json").read_text(encoding="utf-8"))
+    manifest["cases"][0].pop("photo")
+    _write(layout.root.parent / "run_manifest.json", manifest)
+    missing_field = index_run(layout)
+    assert missing_field["original"]["status"] == "manifest_ambiguous"
+    assert any(
+        item["code"] == "photo_missing"
+        for item in missing_field["manifest"]["case_diagnostics"]
+    )
+
+
+def test_source_conflict_and_missing_source_stay_unknown(tmp_path: Path) -> None:
+    layout = _run_fixture(tmp_path)
+    photo = tmp_path / "photo.jpg"
+    import hashlib
+
+    manifest = _rewrite_new_manifest(
+        layout, photo=photo, sha256=hashlib.sha256(photo.read_bytes()).hexdigest()
+    )
+    summary = json.loads(layout.summary_path.read_text(encoding="utf-8"))
+    summary["source_fingerprint"] = {"git_sha": "f" * 40}
+    _write(layout.summary_path, summary)
+    source = normalize_source(summary, manifest)
+    assert source["git_sha"] is None
+    assert any(item["code"] == "source_field_conflict" for item in source["diagnostics"])
+    assert "conflict" in source["note"].lower()
+
+    summary.pop("source_fingerprint")
+    manifest.pop("source_fingerprint")
+    _write(layout.summary_path, summary)
+    _write(layout.root.parent / "run_manifest.json", manifest)
+    unknown = normalize_source(summary, manifest)
+    assert unknown["git_sha"] is None
+    assert unknown["dirty"] == "unrecorded_by_run_manifest"
+    assert "was not recorded" in unknown["note"]
+
+
+def test_gallery_notice_is_neutral_for_integrated_manifest(tmp_path: Path) -> None:
+    layout = _run_fixture(tmp_path)
+    photo = tmp_path / "photo.jpg"
+    import hashlib
+
+    _rewrite_new_manifest(
+        layout, photo=photo, sha256=hashlib.sha256(photo.read_bytes()).hexdigest()
+    )
+    receipt = build_gallery([layout], tmp_path / "gallery")
+    page = Path(receipt["page"]).read_text(encoding="utf-8")
+    assert "986fd059" not in page
+    assert "早于" not in page
+    assert "git " + "1" * 40 in page
+    assert "tree " + "2" * 64 in page
 
 
 def test_index_writes_one_directory_per_attempt(tmp_path: Path) -> None:

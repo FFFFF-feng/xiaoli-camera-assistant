@@ -2,21 +2,13 @@
 
 from __future__ import annotations
 
-import hashlib
 import json
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 from . import SCHEMA_RUN
-
-
-def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1 << 20), b""):
-            digest.update(block)
-    return digest.hexdigest()
+from .manifest import normalize_manifest, normalize_source, sha256_file, verify_original
 
 
 def load_json(path: Path) -> Any:
@@ -81,15 +73,6 @@ def discover_runs(evidence_root: Path) -> list[RunLayout]:
     return layouts
 
 
-def _manifest_sample(manifest: dict[str, Any] | None, case_id: str) -> dict[str, Any] | None:
-    if not isinstance(manifest, dict):
-        return None
-    for sample in manifest.get("samples") or []:
-        if str(sample.get("id")) == case_id:
-            return sample
-    return None
-
-
 def _diagnostic_codes(summary: dict[str, Any]) -> list[dict[str, Any]]:
     codes = []
     for item in summary.get("diagnostics") or []:
@@ -141,23 +124,10 @@ def index_run(layout: RunLayout) -> dict[str, Any]:
     result = load_json(layout.result_path) if layout.result_path.is_file() else None
     manifest_path = layout.root.parent / "run_manifest.json"
     manifest = load_json(manifest_path) if manifest_path.is_file() else None
-    sample = _manifest_sample(manifest, layout.case_id)
-
-    original = None
-    if sample and isinstance(sample.get("photos"), list) and sample["photos"]:
-        photo_path = Path(sample["photos"][0])
-        recorded = sample.get("sha256")
-        actual = sha256_file(photo_path) if photo_path.is_file() else None
-        original = {
-            "path": str(photo_path),
-            "exists": photo_path.is_file(),
-            "sha256_recorded": recorded,
-            "sha256_observed": actual,
-            "sha256_matches": bool(recorded and actual and recorded == actual),
-        }
-
-    fingerprint = summary.get("source_fingerprint")
-    manifest_fingerprint = (manifest or {}).get("source_fingerprint") or {}
+    manifest_view = normalize_manifest(manifest)
+    sample = manifest_view.case(layout.case_id)
+    original = verify_original(sample)
+    source = normalize_source(summary, manifest)
     return {
         "schema": SCHEMA_RUN,
         "kind": "stored_result_replay",
@@ -166,17 +136,16 @@ def index_run(layout: RunLayout) -> dict[str, Any]:
         "run": layout.run,
         "case_id": layout.case_id,
         "evidence_dir": str(layout.root),
-        "source": {
-            "git_sha": summary.get("git_sha") or (manifest or {}).get("git_sha"),
-            "source_fingerprint": fingerprint,
-            "tracked_diff_sha256": manifest_fingerprint.get("tracked_diff_sha256"),
-            "dirty": "unrecorded_by_run_manifest",
-            "note": (
-                "Produced before checkpoint 986fd059; treated as localization evidence only, "
-                "not as acceptance evidence for an integrated version."
-            ),
+        "source": source,
+        "manifest": {
+            "sources": list(manifest_view.sources),
+            "diagnostics": list(manifest_view.diagnostics),
+            "case_sources": list(sample.sources) if sample is not None else [],
+            "case_diagnostics": list(sample.diagnostics) if sample is not None else [],
         },
-        "analysis_mode": summary.get("analysis_mode"),
+        "analysis_mode": summary.get("analysis_mode") or (
+            result.get("analysis_mode") if isinstance(result, dict) else None
+        ),
         "device": {
             "backend": "cloud",
             "model": "unrecorded_in_run_manifest",
@@ -190,8 +159,8 @@ def index_run(layout: RunLayout) -> dict[str, Any]:
             "gateway_budget": (manifest or {}).get("gateway_budget"),
         },
         "original": original,
-        "request": (sample or {}).get("request"),
-        "intent": (sample or {}).get("intent"),
+        "request": sample.request if sample is not None else None,
+        "intent": sample.intent if sample is not None else None,
         "attempts": [
             {
                 "index": 1,
