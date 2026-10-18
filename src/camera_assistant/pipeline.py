@@ -36,7 +36,9 @@ from camera_assistant.services.lens_knowledge import LensKnowledgeBase
 from camera_assistant.services.localization import GroundingDinoLocalizer
 from camera_assistant.services.phone_knowledge import PhoneKnowledgeBase
 from camera_assistant.services.photography_facts import (
-    build_photography_facts, reconcile_composition_facts, reconcile_parameter_facts,
+    build_photography_facts,
+    reconcile_composition_facts,
+    reconcile_parameter_facts,
     use_photography_facts,
 )
 from camera_assistant.services.retriever import LocalKnowledgeRetriever
@@ -256,6 +258,15 @@ class CameraAssistantPipeline:
         if inspection.reference_images and self.settings.demo_mode:
             scene = scene.model_copy(update={"uncertainties": [*scene.uncertainties,
                 "规则演示不识别多图空间关系；真实模式才会联合分析所有参考图。"]})
+        # Publish the same qualified scene that both advice branches consume.
+        # Visual labels remain useful estimates; only user declarations establish facts.
+        shared_facts = build_photography_facts(effective_request, scene, camera)
+        uncertainties = list(scene.uncertainties)
+        if shared_facts.motion == "unknown":
+            uncertainties.append("主体运动标签为单帧视觉估计，实际运动状态尚未由用户确认。")
+        if shared_facts.declared_light is None:
+            uncertainties.append("光线与照片色调为视觉估计，不能据此确认光源种类；请现场核对。")
+        scene = scene.model_copy(update={"uncertainties": list(dict.fromkeys(uncertainties))})
         publish_partial("scene", scene)
         localization = None
         if self.localizer is not None and not self.settings.demo_mode:
@@ -320,10 +331,6 @@ class CameraAssistantPipeline:
                     composition_hits = LocalKnowledgeRetriever(
                         self.settings.knowledge_dir / "composition"
                     ).search(composition_query, top_k=4)
-
-        # Establish the same immutable facts before either parallel branch starts.
-        # copy_context below carries this value without adding a cloud dependency.
-        shared_facts = build_photography_facts(effective_request, scene, camera)
 
         def composition_snapshot(kind: str, advice: CompositionAdvice) -> None:
             publish_partial(kind, reconcile_composition_facts(advice, shared_facts))
