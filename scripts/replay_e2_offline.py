@@ -21,6 +21,7 @@ from unittest.mock import patch
 
 import cv2
 import numpy as np
+from line_drawing_eval.preflight import dirty_files, source_fingerprint
 from PIL import Image
 
 from camera_assistant.composition_models import CompositionAdvice, CompositionIntent, ObservedScene
@@ -34,7 +35,6 @@ from camera_assistant.services.photo_boundary import boundary_evidence, split_fr
 from camera_assistant.services.pixel_contours import trace_observed_scene
 from camera_assistant.services.pixel_small_objects import hole_matches_exterior
 from camera_assistant.services.segmentation_provider import use_segmentation
-from line_drawing_eval.preflight import dirty_files, source_fingerprint
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -85,7 +85,8 @@ def candidate_scene(scene, rgb, work_size):
                                                 obj["photo_boundary"]["clipped_edges"])
         if obj["kind"] in {"pet", "dog", "cat"} and obj["holes"]:
             x1, y1, x2, y2 = obj["bbox"]
-            def pixels(path):
+            def pixels(path, bbox=(x1, y1, x2, y2)):
+                x1, y1, x2, y2 = bbox
                 return np.array([[round((x1+x*(x2-x1))*rgb.shape[1]),
                                   round((y1+y*(y2-y1))*rgb.shape[0])] for x, y in path], np.int32).reshape(-1, 1, 2)
             selected = np.zeros(rgb.shape[:2], np.uint8)
