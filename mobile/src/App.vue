@@ -16,6 +16,7 @@ import type { Analysis, CameraLensProfile, CameraProfile, PhoneProfile } from '.
 import DevicePicker from './components/DevicePicker.vue';
 import CompositionView from './components/CompositionView.vue';
 import TargetComposition from './components/TargetComposition.vue';
+import ReportHeading from './components/ReportHeading.vue';
 import { compatibleLenses, deviceSelection, linkedCameraSettings, mountNames, sensorLabel } from './device-selection.mjs';
 
 const page = ref<'shoot' | 'result' | 'history' | 'connect'>('shoot');
@@ -384,6 +385,15 @@ function showPage(value: 'shoot' | 'result' | 'history' | 'connect') {
   }, () => mainContent.value);
 }
 function navigate(value: 'shoot' | 'result' | 'history' | 'connect') { error.value = ''; exportMessage.value = ''; showPage(value); }
+async function jumpToReport(id: string) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  if (target instanceof HTMLDetailsElement) target.open = true;
+  await nextTick();
+  target.setAttribute('tabindex', '-1');
+  target.focus({ preventScroll: true });
+  target.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+}
 onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
 </script>
 
@@ -498,14 +508,15 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
           <div class="notice" :class="{ demo: analysis?.analysis_mode === 'demo' }">{{ analysis?.analysis_mode === 'demo' ? '规则演示结果，不是真实多模态场景识别。' : '云模型分析结果。建议可能有误，以机型能力和试拍为准。' }}</div>
           <div class="scene-summary"><img v-if="preview" :src="preview" alt="本次分析的现场照片" /><div><span>{{ result.camera_profile.display_name }}</span><h2>{{ result.scene.scene_label || result.scene.scene_type }}</h2><p>{{ lightingText }}</p></div></div>
           <div v-if="result.equipment_settings" class="equipment-summary"><strong>{{ sensorLabel(result.camera_profile.sensor_format) }} · {{ result.equipment_settings.camera_lens?.display_name || '未指定镜头' }}</strong><span v-if="result.equipment_settings.focal_length_mm">实际 {{ result.equipment_settings.focal_length_mm }}mm · {{ result.equipment_settings.equivalent_focal_length_mm ? `约 ${result.equipment_settings.equivalent_focal_length_mm}mm 等效` : '等效待核验' }}</span></div>
+          <nav class="report-nav" aria-label="报告阅读导航"><button type="button" @click="jumpToReport('result-composition')"><span>01</span>看构图</button><button type="button" :disabled="!result.composition?.proposals.length" @click="jumpToReport('result-action-plan')"><span>02</span>照着拍</button><button type="button" @click="jumpToReport('result-parameters')"><span>03</span>查参数</button></nav>
           <CompositionView :key="analysis?.request_id" :result="result" :preview="preview" :photos="resultPhotos" :preview-api="api" />
           <details v-if="analysis?.timings?.length" class="phase-timings"><summary>本次处理用时</summary><p v-for="(item, index) in analysis.timings.filter(t => timingNames[t.stage])" :key="index">{{ timingNames[item.stage] }}：{{ item.duration_seconds.toFixed(1) }} 秒{{ item.status === 'failed' ? '（未完成）' : '' }}</p><p class="helper">环节可能并行，用时不能直接相加；照片上传时间不含浏览器本地选图。</p></details>
-          <details class="parameter-drawer"><summary>拍摄参数与试拍调整<span>按需要展开</span></summary><div class="shooting-mode"><span>建议拍摄模式</span><strong>{{ result.recommendation.shooting_mode }}</strong></div>
+          <details id="result-parameters" class="parameter-drawer report-parameters report-section-anchor"><summary><ReportHeading title="拍摄参数与试拍调整" eyebrow="03 · 拍摄设置" description="查看参数起点，以及试拍后的调整方法。" icon="camera" level="h2" /></summary><div class="shooting-mode"><span>建议拍摄模式</span><strong>{{ result.recommendation.shooting_mode }}</strong></div>
           <dl class="exposure" :class="{ 'phone-exposure': result.camera_profile.device_type === 'phone' }"><div><dt>光圈</dt><dd>{{ result.recommendation.aperture }}</dd></div><div><dt>快门</dt><dd>{{ result.recommendation.shutter_speed }}</dd></div><div><dt>ISO</dt><dd>{{ result.recommendation.iso }}</dd></div></dl>
           <dl class="settings-list"><div v-for="(value, label) in { '曝光补偿': result.recommendation.exposure_compensation, '对焦': result.recommendation.focus_mode, '测光': result.recommendation.metering_mode, '白平衡': result.recommendation.white_balance, '驱动模式': result.recommendation.drive_mode }" :key="label"><dt>{{ label }}</dt><dd>{{ value }}</dd></div></dl>
-          <section class="result-section" v-for="(items, title) in { '为什么这样拍': result.recommendation.reasons, '试拍后怎么调': result.recommendation.adjustments, '注意这些情况': result.recommendation.risks, '器材校验说明': result.recommendation.validation_notes }" :key="title"><h2>{{ title }}</h2><ul v-if="items.length"><li v-for="item in items" :key="item">{{ item }}</li></ul><p v-else>本次没有额外说明。</p></section>
-          </details><details class="knowledge"><summary>看看建议依据（{{ result.knowledge_hits.length }} 条）</summary><p>检索模式：{{ result.knowledge_mode }}。相关度不是准确率。</p><p v-for="note in result.knowledge_notes" :key="note">{{ note }}</p><article v-for="hit in result.knowledge_hits" :key="hit.document_id"><h3>{{ hit.title }}</h3><p>{{ hit.content }}</p><a v-if="safeSourceUrl(hit.source)" :href="safeSourceUrl(hit.source)!" target="_blank" rel="noopener noreferrer">查看来源</a><span v-else>{{ hit.source }}</span></article></details>
-          <details v-if="result.composition_knowledge_hits?.length" class="knowledge"><summary>构图建议的参考资料</summary><article v-for="hit in result.composition_knowledge_hits" :key="hit.document_id"><h3>{{ hit.title }}</h3><p>{{ hit.content }}</p><a v-if="safeSourceUrl(hit.source)" :href="safeSourceUrl(hit.source)!" target="_blank" rel="noopener noreferrer">查看来源</a></article></details>
+          <section class="result-section" v-for="(items, title) in { '为什么这样拍': result.recommendation.reasons, '试拍后怎么调': result.recommendation.adjustments, '注意这些情况': result.recommendation.risks, '器材校验说明': result.recommendation.validation_notes }" :key="title" :data-kind="title"><h2>{{ title }}</h2><ul v-if="items.length"><li v-for="item in items" :key="item">{{ item }}</li></ul><p v-else>本次没有额外说明。</p></section>
+          </details><details class="knowledge report-disclosure"><summary>看看建议依据（{{ result.knowledge_hits.length }} 条）</summary><p>检索模式：{{ result.knowledge_mode }}。相关度不是准确率。</p><p v-for="note in result.knowledge_notes" :key="note">{{ note }}</p><article v-for="hit in result.knowledge_hits" :key="hit.document_id"><h3>{{ hit.title }}</h3><p>{{ hit.content }}</p><a v-if="safeSourceUrl(hit.source)" :href="safeSourceUrl(hit.source)!" target="_blank" rel="noopener noreferrer">查看来源</a><span v-else>{{ hit.source }}</span></article></details>
+          <details v-if="result.composition_knowledge_hits?.length" class="knowledge report-disclosure"><summary>构图建议的参考资料</summary><article v-for="hit in result.composition_knowledge_hits" :key="hit.document_id"><h3>{{ hit.title }}</h3><p>{{ hit.content }}</p><a v-if="safeSourceUrl(hit.source)" :href="safeSourceUrl(hit.source)!" target="_blank" rel="noopener noreferrer">查看来源</a></article></details>
           <div class="result-actions"><button class="secondary" @click="exportAdvice">导出拍摄方案</button><button class="primary" @click="navigate('shoot')">调整需求，再试一次</button></div>
           <p v-if="exportMessage" class="helper" role="status">{{ exportMessage }}</p>
         </template>

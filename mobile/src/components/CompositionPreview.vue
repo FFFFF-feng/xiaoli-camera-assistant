@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {computed,onMounted,onBeforeUnmount,ref,watch} from 'vue';
 import type {Analysis,PreviewApi} from '../types';
+import ReportHeading from './ReportHeading.vue';
 import {previewPlan,safePreviewImage,localReference} from '../composition-preview.mjs';
 type Proposal=NonNullable<Analysis['result']['composition']>['proposals'][number];
 const props=defineProps<{proposal:Proposal;source:string;referencePhotoId:string;api:PreviewApi}>();
@@ -51,9 +52,9 @@ async function generate(){
 
 <template>
   <section class="image-preview" aria-label="AI构图预演">
-    <div class="image-preview-heading"><h3>AI 构图预演</h3><span>参考原图编辑 · 非实拍</span></div>
+    <ReportHeading title="AI 构图预演" description="参考原图编辑 · 非实拍" eyebrow="可选工具" icon="sparkles" />
     <p>按当前方案编辑参考图，尽量保留物体外形、纹理和关键细节。生成仍可能失真，不替代现场试拍。</p>
-    <p v-if="configuration&&!configuration.available" class="preview-status">{{ configuration.message }}</p>
+    <p v-if="configuration&&!configuration.available" class="preview-status"><strong>暂未启用</strong>{{ configuration.message }}</p>
     <template v-if="configuration?.available">
       <p class="preview-provider">编辑服务：{{ configuration.provider }} / {{ configuration.model }}；参考图：第 {{ referencePhotoId.slice(5) }} 张。</p>
       <p v-if="!source" class="preview-status">当前没有这张参考图。历史记录不保存原图，请重新上传后生成。</p>
@@ -70,5 +71,5 @@ async function generate(){
 </template>
 
 <style scoped>
-.image-preview{margin:24px 0;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}.image-preview-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}.image-preview h3{font-size:18px;color:var(--ink);font-weight:500;margin:0}.image-preview-heading span{font-size:11px;color:var(--muted)}.image-preview p{font-size:12px;color:var(--muted);line-height:1.9;word-break:normal;overflow-wrap:break-word}.preview-status{color:var(--muted)!important}.preview-consent{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.9;color:var(--ink)}.preview-consent input{flex:none;margin-top:5px;accent-color:var(--green)}.preview-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px}.preview-actions button{border:1px solid var(--green);background:var(--green);color:white;border-radius:4px;padding:10px 16px;font-size:13px;cursor:pointer}.preview-actions button:disabled{opacity:.5;cursor:not-allowed}.preview-actions .preview-cancel{background:white;color:var(--muted);border-color:var(--border)}.preview-actions button:focus-visible{outline:2px solid var(--green);outline-offset:3px}.preview-error{color:#9d3d32!important}.preview-comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}.preview-comparison figure{margin:0;min-width:0}.preview-comparison figcaption{font-size:12px;color:var(--ink);line-height:1.8;margin-bottom:8px}.preview-comparison img{width:100%;height:300px;object-fit:contain;background:var(--wash);border:1px solid var(--border);box-sizing:border-box}.preview-generated figcaption{font-weight:600;color:var(--green)}@media(max-width:600px){.preview-comparison{grid-template-columns:1fr}.preview-comparison img{height:auto;max-height:420px}}
+.image-preview{margin:24px 0;padding:22px;border:1px dashed #d8c2ab;border-radius:14px;background:#faf6ef}.image-preview-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}.image-preview h3{font-size:18px;color:var(--ink);font-weight:500;margin:0}.image-preview-heading span{font-size:11px;color:var(--muted)}.image-preview p{font-size:12px;color:var(--muted);line-height:1.9;word-break:normal;overflow-wrap:break-word}.preview-status{color:var(--muted)!important}.preview-status strong{display:inline-block;font-size:11px;margin-right:8px;padding:2px 7px;border:1px solid #ddd0bf;background:#eee7dc;border-radius:5px;color:#79654f;font-weight:650}.preview-consent{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.9;color:var(--ink)}.preview-consent input{flex:none;margin-top:5px;accent-color:var(--green)}.preview-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px}.preview-actions button{border:1px solid var(--green);background:var(--green);color:white;border-radius:4px;padding:10px 16px;font-size:13px;cursor:pointer}.preview-actions button:disabled{opacity:.5;cursor:not-allowed}.preview-actions .preview-cancel{background:white;color:var(--muted);border-color:var(--border)}.preview-actions button:focus-visible{outline:2px solid var(--green);outline-offset:3px}.preview-error{color:#9d3d32!important}.preview-comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}.preview-comparison figure{margin:0;min-width:0}.preview-comparison figcaption{font-size:12px;color:var(--ink);line-height:1.8;margin-bottom:8px}.preview-comparison img{width:100%;height:300px;object-fit:contain;background:var(--wash);border:1px solid var(--border);box-sizing:border-box}.preview-generated figcaption{font-weight:600;color:var(--green)}@media(max-width:600px){.image-preview{padding:18px 15px}.preview-comparison{grid-template-columns:1fr}.preview-comparison img{height:auto;max-height:420px}}
 </style>
