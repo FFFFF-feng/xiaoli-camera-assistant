@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D 线绘视觉核验</title>
+    <style>
+      :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; color: #233140; background: #f4f1ea; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; min-width: 0; }
+      body { padding: 20px; }
+      main { width: min(980px, 100%); margin: 0 auto; }
+      .harness-head { padding: 18px 20px; background: #fffdf9; border: 1px solid #ded8cd; border-radius: 8px; }
+      .harness-head h1 { margin: 0 0 8px; font-size: 20px; font-weight: 600; }
+      .harness-head p { margin: 4px 0; font-size: 12px; line-height: 1.8; color: #68727e; }
+      .fixture { margin: 16px 0; padding: 18px; background: #fffdf9; border: 1px solid #ded8cd; border-radius: 8px; min-width: 0; }
+      .fixture-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+      .fixture-meta strong { font-size: 14px; }
+      .fixture-meta span { padding: 3px 8px; border-radius: 999px; background: #eef2f0; color: #365b50; font-size: 11px; }
+      .fixture-note { margin: 0 0 12px; font-size: 12px; line-height: 1.8; color: #68727e; }
+      .failure { display: flex; gap: 16px; align-items: center; padding: 14px; background: #f6f1e8; border-left: 3px solid #a77d36; }
+      .failure img { width: 180px; max-width: 45%; aspect-ratio: 4/3; object-fit: cover; }
+      .failure h2 { margin: 0 0 6px; font-size: 16px; }
+      .failure p { margin: 4px 0; font-size: 12px; line-height: 1.8; color: #68727e; }
+      .timing { margin-top: 12px; padding: 10px 12px; background: #f2f5f7; font-size: 12px; line-height: 1.8; color: #50606e; }
+      .timing b { color: #233140; }
+      @media (max-width: 480px) {
+        body { padding: 10px; }
+        .harness-head, .fixture { padding: 12px; }
+        .failure { align-items: flex-start; flex-direction: column; }
+        .failure img { width: 100%; max-width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <main id="app"></main>
+    <script type="module" src="./target-board.js"></script>
+  </body>
+</html>
