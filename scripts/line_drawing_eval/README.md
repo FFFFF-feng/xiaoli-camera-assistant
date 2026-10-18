@@ -40,6 +40,48 @@ abort，并向 `/api/analyze` 与 `/api/composition/preview` 各发一次故意�
 2 次、外层自动重试 0 次。`Ledger.reserve()` 在发请求前扣减，失败不退还。
 `require_live_allowed()` 同时要求显式 `--live` 与 A 的集成门禁文件。
 
+## E2 门禁与试运行
+
+A 在集成完成后写 `INTEGRATION_READY.json`（E 不写、不改服务）：
+
+```json
+{
+  "status": "INTEGRATION_READY",
+  "commit": "<40位SHA>",
+  "branch": "<分支>",
+  "source_root": "<服务实际使用的源码绝对路径>",
+  "source_tree_sha256": "<src/mobile-src/mobile-tests/tests 源码树散列>",
+  "dirty_files": ["<按 git status --porcelain 排序后的路径>"],
+  "port": 8093,
+  "pid": 12345,
+  "built_assets": {"mobile/dist/index.html": "<sha256>"},
+  "health": {"service": "xiaoli-mobile-api", "analysis_mode": "cloud"},
+  "segmentation": {"backend": "grabcut", "device": "cpu"},
+  "frozen_at": "<ISO时间>"
+}
+```
+
+`preflight.verify()` 只读取 Git、netstat、进程命令行、构建散列和 `/health`，
+逐项核对提交、分支、dirty 清单、源码散列、端口→PID、构建产物和分割权重；
+任何一项不符就拒绝开批。E2 发送器：
+
+```powershell
+$env:PYTHONPATH = "$taskRepo\scripts"
+$python = 'C:\Users\丁铭哲\Documents\ChatGPT\摄影\xiaoli-camera-assistant\.venv\Scripts\python.exe'
+$args = @(
+  '--gate', '..\并行修复协调包-20261017\INTEGRATION_READY.json',
+  '--ledger', '..\并行修复协调包-20261017\reports\E-cloud-ledger.json',
+  '--manifest', 'C:\Users\丁铭哲\Documents\ChatGPT\摄影\xiaoli-camera-assistant-latest\.tmp\line-drawing-eval-20261017\run_manifest.json',
+  '--out', "$taskRepo\.tmp\e2", '--run-name', 'e2-run-1', '--cases', '06,07,02'
+)
+& $python -m line_drawing_eval.live @args            # 只读预检，不发请求
+& $python -m line_drawing_eval.live @args --live     # 显式真实上传
+```
+
+不带 `--live` 时只做预检并打印计划；带 `--live` 时先通过门禁和账本检查，
+再逐图串行上传。每张图发送前扣减一次网关预算，失败仍计数；传输重试为 0，
+不会有外层自动重试。运行目录已存在时拒绝覆盖。
+
 ## 计时口径
 
 `timing.py` 使用后端的单调时钟阶段时长，并用 `max(参数, 构图)` 合并并行分支：

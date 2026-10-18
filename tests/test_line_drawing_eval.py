@@ -5,6 +5,7 @@ import json
 import socket
 import sys
 import threading
+from contextlib import contextmanager
 from pathlib import Path
 
 import pytest
@@ -17,6 +18,8 @@ from line_drawing_eval.cli import main
 from line_drawing_eval.evidence import RunLayout, discover_runs, index_run
 from line_drawing_eval.gallery import build_gallery, render_board_svg
 from line_drawing_eval.ledger import BudgetError, GateError, Ledger
+from line_drawing_eval.live import analyze_case, load_cases, run_batch, summarize
+from line_drawing_eval.preflight import PreflightError, source_fingerprint, verify
 from line_drawing_eval.serve import create_server
 from line_drawing_eval.timing import analyze_run
 
@@ -229,3 +232,188 @@ def test_replay_server_rejects_posts(tmp_path: Path) -> None:
         server.server_close()
     log = (gallery_dir / "access.jsonl").read_text(encoding="utf-8").splitlines()
     assert any(json.loads(line)["kind"] == "blocked_post" for line in log)
+
+
+class _FakeResponse:
+    def __init__(self, payload=None, lines=None, status_code=200):
+        self._payload = payload or {}
+        self._lines = lines or []
+        self.status_code = status_code
+        self.headers = {"content-type": "application/x-ndjson"}
+
+    def raise_for_status(self):
+        return None
+
+    def json(self):
+        return self._payload
+
+    def iter_lines(self):
+        return iter(self._lines)
+
+
+class _FakeClient:
+    def __init__(self, lines):
+        self.lines = lines
+        self.posts = 0
+
+    def get(self, path):
+        return _FakeResponse({"service": "xiaoli-mobile-api", "analysis_mode": "cloud"})
+
+    def post(self, path):
+        self.posts += 1
+        return _FakeResponse()
+
+    @contextmanager
+    def stream(self, method, path, **kwargs):
+        yield _FakeResponse(lines=self.lines)
+
+    def close(self):
+        return None
+
+
+def _ndjson() -> list[bytes]:
+    return [
+        json.dumps({"type": "timing", "stage": "vision", "duration_seconds": 2.0,
+                    "status": "complete", "elapsed_seconds": 2.0}).encode(),
+        json.dumps({"type": "activity", "stage": "vision", "phase": "request_started",
+                    "chars": 0}).encode(),
+        json.dumps({"type": "activity", "stage": "composition_observation",
+                    "phase": "request_started", "chars": 0}).encode(),
+        json.dumps({"type": "activity", "stage": "composition_observation",
+                    "phase": "request_started", "chars": 0}).encode(),
+        json.dumps({"type": "partial", "kind": "composition_ready",
+                    "value": {"status": "ok",
+                              "proposals": [{"goal": "g", "storyboard": {"layers": []}}]}}).encode(),
+        json.dumps({"type": "result", "timings": [],
+                    "result": {
+                        "scene": {"scene_label": "测试"},
+                        "recommendation": {"shutter_speed": "1/500s"},
+                        "composition": {
+                            "status": "ok",
+                            "proposals": [{"goal": "g", "storyboard": {"layers": []}}],
+                        },
+                    }}).encode(),
+    ]
+
+
+def test_analyze_case_parses_ndjson_without_retry(tmp_path: Path) -> None:
+    case = {"id": "02", "photo": str(tmp_path / "p.jpg"), "sha256": "abc", "request": {}}
+    (tmp_path / "p.jpg").write_bytes(b"stub")
+    client = _FakeClient(_ndjson())
+    row = analyze_case(client, case, tmp_path / "run" / "02")
+    assert row["success"] is True
+    assert row["gateway_analysis_posts"] == 1
+    assert row["internal_cloud_request_starts_total"] == 3
+    assert row["observation_protocol_repairs"] == 1
+    assert row["backend_board_count"] == 1
+    assert row["ready_matches_final"] is True
+    assert client.posts == 1  # only /session; analyze is streamed once
+
+
+def test_summarize_reports_missing_final_and_ready_mismatch() -> None:
+    row = summarize(None, case_id="07", sample_sha256="x", seconds=1.0, events=[], ready=None)
+    assert row["failure_code"] == "connection_ended_without_final"
+    mismatch = summarize(
+        {"result": {"scene": {}, "recommendation": {}, "composition": {"proposals": []}}},
+        case_id="07", sample_sha256="x", seconds=1.0, events=[],
+        ready={"status": "different"},
+    )
+    assert mismatch["ready_matches_final"] is False
+
+
+def test_load_cases_rejects_photo_hash_mismatch(tmp_path: Path) -> None:
+    photo = tmp_path / "p.jpg"
+    photo.write_bytes(b"stub")
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(json.dumps({"samples": [{
+        "id": "02", "photos": [str(photo)], "sha256": "wrong", "request": {},
+    }]}), encoding="utf-8")
+    with pytest.raises(ValueError, match="hash differs"):
+        load_cases(manifest, ["02"])
+
+
+def test_run_batch_refuses_short_budget_before_any_run(tmp_path: Path, monkeypatch) -> None:
+    ledger = Ledger.create_inherited(tmp_path / "ledger.json", {"attempts": []})
+    ledger.save()
+    gate = tmp_path / "gate.json"
+    gate.write_text("{}", encoding="utf-8")
+    manifest = tmp_path / "manifest.json"
+    photos = []
+    samples = []
+    for case_id in ("02", "06", "07", "08"):
+        photo = tmp_path / f"{case_id}.jpg"
+        photo.write_bytes(b"stub")
+        samples.append({"id": case_id, "photos": [str(photo)], "sha256": "0" * 64, "request": {}})
+        photos.append(photo)
+    manifest.write_text(json.dumps({"samples": samples}), encoding="utf-8")
+    # Use the real load_cases hash check by writing matching hashes.
+    import hashlib
+    for sample, photo in zip(samples, photos):
+        sample["sha256"] = hashlib.sha256(photo.read_bytes()).hexdigest()
+    manifest.write_text(json.dumps({"samples": samples}), encoding="utf-8")
+    monkeypatch.setattr(
+        "line_drawing_eval.live.verify",
+        lambda *a, **k: {"gate": str(gate), "origin": "http://127.0.0.1:9",
+                         "source_fingerprint": {}, "health": {}},
+    )
+    with pytest.raises(BudgetError):
+        run_batch(
+            gate_path=gate, ledger_path=tmp_path / "ledger.json", manifest_path=manifest,
+            out_root=tmp_path / "out", run_name="e2-test",
+            case_ids=["02", "06", "07", "08"], client_factory=lambda origin: _FakeClient([]),
+        )
+    assert not (tmp_path / "out").exists()
+
+
+def test_run_batch_reserves_and_finalizes_each_case(tmp_path: Path, monkeypatch) -> None:
+    ledger = Ledger.create_inherited(tmp_path / "ledger.json", {"attempts": []})
+    ledger.save()
+    gate = tmp_path / "gate.json"
+    gate.write_text("{}", encoding="utf-8")
+    import hashlib
+    samples = []
+    for case_id in ("02", "06", "07"):
+        photo = tmp_path / f"{case_id}.jpg"
+        photo.write_bytes(b"stub")
+        samples.append({"id": case_id, "photos": [str(photo)],
+                        "sha256": hashlib.sha256(photo.read_bytes()).hexdigest(), "request": {}})
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(json.dumps({"samples": samples}), encoding="utf-8")
+    monkeypatch.setattr(
+        "line_drawing_eval.live.verify",
+        lambda *a, **k: {"gate": str(gate), "origin": "http://127.0.0.1:9",
+                         "source_fingerprint": {}, "health": {}},
+    )
+    monkeypatch.setattr(
+        "line_drawing_eval.live.analyze_case",
+        lambda client, case, target: {
+            "case_id": case["id"], "success": True, "seconds": 1.0,
+            "internal_cloud_request_starts_total": 4, "observation_protocol_repairs": 0,
+        },
+    )
+    result = run_batch(
+        gate_path=gate, ledger_path=tmp_path / "ledger.json", manifest_path=manifest,
+        out_root=tmp_path / "out", run_name="e2-test",
+        case_ids=["06", "07", "02"], client_factory=lambda origin: _FakeClient([]),
+    )
+    assert result["remaining_gateway_posts"] == 0
+    stored = Ledger.load(tmp_path / "ledger.json")
+    assert stored.data["budget"]["used_gateway_posts"] == 8
+    assert stored.data["internal_request_starts"]["used"] == 34
+    assert [item["status"] for item in stored.data["reservations"]] == ["complete"] * 3
+
+
+def test_preflight_refuses_incomplete_gate(tmp_path: Path) -> None:
+    ledger = Ledger.create_inherited(tmp_path / "ledger.json", {"attempts": []})
+    ledger.save()
+    gate = tmp_path / "gate.json"
+    gate.write_text("{}", encoding="utf-8")
+    with pytest.raises(PreflightError, match="missing fields"):
+        verify(gate, tmp_path / "ledger.json")
+
+
+def test_source_fingerprint_covers_tracked_source() -> None:
+    fingerprint = source_fingerprint(ROOT)
+    assert len(fingerprint["source_tree_sha256"]) == 64
+    assert fingerprint["git_sha"]
+    assert "src/camera_assistant/pipeline.py" in fingerprint["source_files"]
