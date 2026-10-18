@@ -10,6 +10,7 @@ import { createSceneTransition, useTactileSurfaces } from './interaction';
 import { selectSceneFiles } from './scene-files.mjs';
 import { normalizeBaseUrl, safeSourceUrl } from './connection.mjs';
 import { readAnalysis } from './analysis-stream.mjs';
+import { fixedEventSeconds, liveElapsed, statusSeconds } from './progress-timing.mjs';
 import { completedComposition } from './completed-composition.mjs';
 import type { Analysis, CameraLensProfile, CameraProfile, PhoneProfile } from './types';
 import DevicePicker from './components/DevicePicker.vue';
@@ -52,7 +53,7 @@ const resultPhotos = ref<{id:string;url:string}[]>([]);
 const busy = ref(false);
 const elapsed = ref(0);
 const statusStartedAt = ref(0);
-const statusElapsed = computed(() => Math.max(0, elapsed.value - statusStartedAt.value));
+const statusElapsed = computed(() => statusSeconds(elapsed.value, statusStartedAt.value));
 const progressMessage = ref('正在上传照片…');
 const progressLog = ref<{ message: string; seconds: number }[]>([]);
 const received = ref<Record<string, number>>({});
@@ -271,7 +272,7 @@ async function analyze() {
   received.value = {}; progressLog.value = []; progressStage.value = 0;
   progressMessage.value = '正在上传照片…'; elapsed.value = 0; statusStartedAt.value = 0;
   const started = performance.now();
-  const clock = setInterval(() => { elapsed.value = (performance.now() - started) / 1000; }, 500);
+  const clock = setInterval(() => { elapsed.value = liveElapsed(started); }, 500);
   const submittedIntent = intent.value.trim();
   const controller = new AbortController(); activeController = controller;
   const timer = setTimeout(() => controller.abort(), 540000);
@@ -300,9 +301,9 @@ async function analyze() {
     pendingPhotos.value=ordered.map((item,index)=>({id:`photo${index+1}`,url:item.url}));
     analysis.value = await api(ordered.length > 1 ? '/api/v1/analyze-scene' : '/api/v1/analyze', { method: 'POST', body: form, signal: controller.signal }, event => {
       if (event.type === 'progress' && typeof event.message === 'string') {
-        if (progressMessage.value !== event.message) statusStartedAt.value = (performance.now() - started) / 1000;
+        if (progressMessage.value !== event.message) statusStartedAt.value = elapsed.value;
         progressMessage.value = event.message;
-        progressLog.value.push({ message: event.message, seconds: event.elapsed_seconds || 0 });
+        progressLog.value.push({ message: event.message, seconds: fixedEventSeconds(event.elapsed_seconds) });
         const stage = /生成|校验/.test(event.message) ? 3 : /查阅|检索/.test(event.message) ? 2 : /识别|定位/.test(event.message) ? 1 : 0;
         progressStage.value = Math.max(progressStage.value, stage);
       } else if (event.type === 'activity' && typeof event.request_id === 'string' && Number.isFinite(event.chars)) {
@@ -312,20 +313,20 @@ async function analyze() {
         if (event.kind === 'composition') {
           partialComposition.value = event.value;
           progressMessage.value = partialReady.value ? '构图已完成，正在整理其余拍摄建议…' : '构图文字已校验，正在整理推荐画面…';
-          statusStartedAt.value = (performance.now() - started) / 1000;
+          statusStartedAt.value = elapsed.value;
         }
         if (event.kind === 'composition_ready') {
           const ready=completedComposition(event.value,pendingPhotos.value.map(item=>item.id));
           if(ready) {
             partialReady.value=ready;
             progressMessage.value='构图已完成，正在整理其余拍摄建议…';
-            statusStartedAt.value=(performance.now()-started)/1000;
+            statusStartedAt.value=elapsed.value;
           }
         }
         if (event.kind === 'parameters') {
           partialParameters.value = event.value;
           progressMessage.value = partialReady.value ? '构图与参数已完成，正在汇总方案…' : '拍摄参数已校验，正在整理完整方案…';
-          statusStartedAt.value = (performance.now() - started) / 1000;
+          statusStartedAt.value = elapsed.value;
         }
       } else if (event.type === 'timing' && timingNames[event.stage]
                  && Number.isFinite(event.duration_seconds) && event.duration_seconds >= 0) {
@@ -344,7 +345,7 @@ async function analyze() {
     error.value = readableError(e, '分析未完成：检查电脑服务及网络。不会自动重复提交照片。');
     if (error.value.includes('分析方式已改变')) { connected.value = false; consent.value = false; page.value = 'connect'; }
   }
-  finally { clearTimeout(timer); clearInterval(clock); elapsed.value = (performance.now() - started) / 1000; busy.value = false; activeController = null; }
+  finally { clearTimeout(timer); clearInterval(clock); elapsed.value = liveElapsed(started); busy.value = false; activeController = null; }
 }
 function clearConnection() {
   localStorage.removeItem(storedKey); baseUrl.value = ''; token.value = ''; connected.value = false;
