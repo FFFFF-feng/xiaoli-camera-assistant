@@ -3,11 +3,14 @@ from __future__ import annotations
 import json
 from typing import Protocol
 
+from pydantic import ValidationError
+
 from camera_assistant.config import Settings
 from camera_assistant.models import (
     ImageInspection,
     SceneAnalysis,
     SceneCandidate,
+    SceneSurvey,
     UserRequest,
 )
 from camera_assistant.services.cloud import request_json
@@ -144,4 +147,67 @@ JSON Schema：{json.dumps(schema, ensure_ascii=False)}
                 }
             ],
         }
-        return SceneAnalysis.model_validate(request_json(self.settings, payload))
+        response = request_json(self.settings, payload)
+        try:
+            return SceneAnalysis.model_validate(response)
+        except ValidationError:
+            fallback = _recover_mixed_scene(response, inspection, candidates)
+            if fallback is None:
+                raise
+            return fallback
+
+
+def _recover_mixed_scene(
+    response: object,
+    inspection: ImageInspection,
+    candidates: list[SceneCandidate],
+) -> SceneAnalysis | None:
+    """Keep a valid mixed-scene survey when unrelated model fields are invalid.
+
+    The fallback intentionally drops all unvalidated visual facts. It only
+    allows the existing pipeline to explain that the photos should not be
+    combined, without inventing a subject, contour, or scene identity.
+    """
+    if not inspection.reference_images or not isinstance(response, dict):
+        return None
+    try:
+        survey = SceneSurvey.model_validate(response.get("scene_survey"))
+    except (ValidationError, TypeError, ValueError):
+        return None
+    available = {f"photo{index}" for index in range(1, 1 + len(inspection.reference_images) + 1)}
+    view_ids = [view.image_id for view in survey.views]
+    if survey.status != "mixed" or survey.preferred_photo_id not in available:
+        return None
+    if set(view_ids) != available or len(view_ids) != len(set(view_ids)):
+        return None
+
+    scene_type = next(
+        (
+            candidate.profile_id
+            for candidate in candidates
+            if candidate.profile_id == "general_scene"
+        ),
+        candidates[0].profile_id if candidates else "general_scene",
+    )
+    return SceneAnalysis(
+        scene_type=scene_type,
+        subject="",
+        environment="",
+        lighting="",
+        brightness="medium",
+        backlight=False,
+        subject_motion="unknown",
+        dynamic_range="medium",
+        desired_effects=[],
+        confidence=0,
+        notes=["多图视觉响应未通过完整结构校验；仅保留已校验的混合场景判断。"],
+        recognition_evidence=[],
+        candidate_scenes=[],
+        retrieval_terms=[],
+        objects=[],
+        main_subject_ids=[],
+        subject_status="abstained",
+        composition_clues=[],
+        uncertainties=["多图视觉响应未通过结构校验；照片可能来自不同场景，未采用主体和空间细节，不会生成合成构图。"],
+        scene_survey=survey,
+    )
