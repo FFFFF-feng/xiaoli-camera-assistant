@@ -13,6 +13,8 @@ from uuid import uuid4
 
 from pydantic import ValidationError
 
+from camera_assistant.services.observation_coordinates import ObservationCoordinateError
+
 VERSION = "composition-replay-v3"
 REPLAY_ROOT = Path(__file__).resolve().parents[3] / '.tmp' / 'composition-replay'
 MAX_RECORDS = 32
@@ -22,6 +24,12 @@ _LOCK = RLock()
 
 
 def validation_fields(error: Exception) -> list[dict]:
+    if isinstance(error, ObservationCoordinateError):
+        # Paths are produced locally, but validate again before persisting them.
+        path = error.field_path
+        if re.fullmatch(r'objects\.[0-9]{1,2}(?:\.parts\.[0-9])?\.bbox|coordinate_unit', path):
+            return [{'field_path': path, 'type': 'value_error'}]
+        return [{'field_path': 'unknown', 'type': 'value_error'}]
     if not isinstance(error, ValidationError):
         return []
     # Only schema keys and bounded numeric indices enter diagnostics. Never copy
@@ -64,7 +72,7 @@ class ReplayRecord:
         if self.path is None:
             return
         allowed = {'stage', 'status', 'code', 'object_id', 'internal_stage', 'observation_type',
-                   'metadata', 'processing', 'extracted'}
+                   'metadata', 'processing', 'extracted', 'coordinate_unit'}
         self.value.update({key: value for key, value in fields.items() if key in allowed})
         try:
             data = json.dumps(self.value, ensure_ascii=False, indent=2).encode('utf-8')

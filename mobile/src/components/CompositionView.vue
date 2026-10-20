@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import type { Analysis, TargetBoard, FramingPlan, PreviewApi } from '../types';
+import type { Analysis, TargetBoard, FramingPlan } from '../types';
 import TargetComposition from './TargetComposition.vue';
 import PhotoFeedback from './PhotoFeedback.vue';
-import CompositionPreview from './CompositionPreview.vue';
 import SceneSurvey from './SceneSurvey.vue';
 import ReportHeading from './ReportHeading.vue';
 import { targetCompositionCopy, usableTargetBoard } from '../target-board.mjs';
 import { usableFramingPlan } from '../composition-sketch.mjs';
-const props = withDefaults(defineProps<{ result: Analysis['result']; preview: string;photos?:{id:string;url:string}[];previewApi?:PreviewApi }>(),{photos:()=>[]});
+import { compositionStatus } from '../composition-status.mjs';
+const props = withDefaults(defineProps<{ result: Analysis['result']; preview: string;photos?:{id:string;url:string}[] }>(),{photos:()=>[]});
 const selectedPhoto=ref('');
 const view = ref<'sketch' | 'photo'>('sketch');
 const selected = ref(0);
@@ -19,12 +19,11 @@ watch(()=>props.preview,()=>{selected.value=0;selectedPhoto.value='';selectedCro
 const proposals = computed(() => props.result.composition?.proposals || []);
 const current = computed(() => proposals.value[selected.value] || proposals.value[0]);
 const board = computed(() => usableTargetBoard(current.value?.storyboard) as TargetBoard | null);
+const presentation = computed(() => compositionStatus(props.result.composition, current.value, !!board.value));
 const diagnosticNames={recognition:'物体识别',contours:'主体轮廓',intent:'构图意图',layout:'布局计算'};
 const diagnosticStatus={complete:'完成',failed:'未完成',skipped:'未执行'};
 const boardReference = computed(() => props.photos.find(p=>p.id===board.value?.reference_photo_id)?.url
   || (board.value?.reference_photo_id==='photo1'?props.preview:''));
-const editReferenceId=computed(()=>board.value?.reference_photo_id||'photo1');
-const editReference=computed(()=>editReferenceId.value==='photo1'?props.preview:boardReference.value);
 const compareId=computed(()=>selectedPhoto.value || board.value?.reference_photo_id || 'photo1');
 const comparePreview=computed(()=>props.photos.find(p=>p.id===compareId.value)?.url || props.preview);
 const survey=computed(()=>props.result.scene?.scene_survey);
@@ -49,7 +48,6 @@ const framingChecklist = computed(() => {
   };
 });
 const actionNames: Record<string, string> = { crop: '裁切画面', camera_position: '调整机位', focal_length: '调整焦段', reshoot: '重新拍摄' };
-const statusNames: Record<string, string> = { grounded: '有知识依据', unverified: '待试拍验证', unavailable: '本次暂不可用', demo: '演示模式' };
 const subjects = computed(() => {
   const loc = props.result.localization;
   if (!loc?.real || loc.selection.status !== 'selected') return [];
@@ -65,17 +63,18 @@ const shadePath = computed(() => {
 
 <template>
   <section class="composition-panel" aria-labelledby="composition-title">
-    <SceneSurvey v-if="survey" :survey="survey"/><div id="result-composition" class="report-section-anchor"><ReportHeading title="推荐构图" title-id="composition-title" eyebrow="01 · 画面方向" :description="framingCopy?'查看原取景中的空间关系和现场拍摄重点。':'查看主体的位置、大小和前后层次。'" icon="image" level="h2"><span class="result-badge">{{ statusNames[result.composition?.status || 'unavailable'] }}</span></ReportHeading></div>
+    <p v-if="survey && survey.status !== 'consistent'" class="helper" role="status">参考照片的场景关联需核对，请以原图为准。</p>
+    <details v-if="survey" class="report-disclosure"><summary>场景与参考照片</summary><SceneSurvey :survey="survey"/></details>
+    <div id="result-composition" class="report-section-anchor"><ReportHeading title="推荐构图" title-id="composition-title" eyebrow="01 · 画面方向" :description="framingCopy?'查看原取景中的空间关系和现场拍摄重点。':'查看主体的位置、大小和前后层次。'" icon="image" level="h2"><span class="result-badge">{{ presentation.badge }}</span></ReportHeading></div>
     <div v-if="proposals.length" class="composition-plan-switch" role="group" aria-label="选择构图方案"><button v-for="(proposal, index) in proposals" :key="index" type="button" :aria-pressed="selected === index" @click="selected = index; selectedCrop = null; selectedPhoto = ''">方案{{ index+1 }} · {{ actionNames[proposal.action_type] || '取景' }}</button></div>
     <div v-if="framing" class="framing-diagnosis"><strong>先看这一点</strong><p>{{ framingCopy?.reason || framing.diagnosis }}</p><span>{{ framingCopy?framingCopy.action:`视觉主次：${framing.visual_priority}` }}</span></div>
     <div v-if="preview || board" class="composition-view-switch" role="group" aria-label="构图查看方式"><button type="button" :aria-pressed="view === 'sketch'" @click="view = 'sketch'">推荐构图线稿</button><button v-if="preview" type="button" :aria-pressed="view === 'photo'" @click="view = 'photo'">原图与裁切对照</button></div>
     <PhotoFeedback v-if="preview && view==='photo'" :source="preview" :crop="current?.action_type==='crop'?current.crop_bbox:null"/>
     <template v-if="view === 'sketch' || !preview">
-      <p v-if="board" class="helper">{{ framingCopy?`${framingCopy.drawing}现场重点是机位、距离或时机核对。`:(board.render_basis==='source_geometry'?'轮廓来自原图物体解析，位置和大小表达推荐取景；换机位的透视与遮挡仍需试拍核对。':'这是旧版布局草图，尚未关联原始物体轮廓；建议重新分析获取新版线稿。') }}</p>
       <TargetComposition v-if="board" :board="board" :reference="boardReference" />
-      <div v-else-if="proposals.length" class="sketch-unavailable" role="status"><strong>推荐线稿未完成</strong><p>{{ current?.storyboard?'布局已返回，但前端未通过绘图数据检查。':'文字建议已生成，但这次未获得可展示的主体轮廓或目标布局。' }}</p><p v-for="note in result.composition?.notes" :key="note">{{ note }}</p><p>可以切换到原图对照继续检查取景；重新分析会再次调用模型。</p></div>
+      <div v-else-if="presentation.failed" class="sketch-unavailable" role="status"><strong>推荐线稿未完成</strong><p>{{ presentation.reason }}{{ presentation.action }}</p><button v-if="preview" class="secondary" type="button" @click="view='photo'">查看原图对照</button><small>重新分析会再次调用模型，不会自动重试。</small></div>
     </template>
-    <details v-if="result.composition?.diagnostics?.length" class="photo-inspection report-disclosure"><summary>查看生成环节</summary><p v-for="(item,index) in result.composition.diagnostics" :key="index">{{ diagnosticNames[item.stage] }}：{{ diagnosticStatus[item.status] }}</p><p v-if="current?.storyboard&&!board">画面展示：绘图数据检查未通过。</p><p v-if="result.composition.trace_id">排查编号：{{ result.composition.trace_id }}</p></details>
+    <details v-if="result.composition?.diagnostics?.length || result.composition?.notes.length || result.composition?.trace_id" class="photo-inspection report-disclosure"><summary>查看生成环节与说明</summary><p v-for="(item,index) in result.composition?.diagnostics" :key="index">{{ diagnosticNames[item.stage] }}：{{ diagnosticStatus[item.status] }}<small class="diagnostic-code">{{ item.code }}</small></p><p v-if="current?.storyboard&&!board">画面展示：绘图数据检查未通过。</p><p v-if="result.composition?.trace_id" class="diagnostic-code">排查编号：{{ result.composition.trace_id }}</p><p v-for="note in result.composition?.notes" :key="note">{{ note }}</p></details>
     <details v-if="preview && view === 'photo'" class="photo-inspection" :open="selectedCrop!==null"><summary>检查原图主体与裁切边界</summary>
       <div v-if="photos.length>1" class="reference-photo-switch" aria-label="原图参考选择"><button v-for="item in photos" :key="item.id" type="button" :aria-pressed="compareId===item.id" @click="selectedPhoto=item.id; selectedCrop=null">第 {{ item.id.slice(5) }} 张</button></div><div class="composition-image">
         <img :src="comparePreview" alt="现场照片与构图参考线" />
@@ -99,12 +98,9 @@ const shadePath = computed(() => {
       </article>
       <details v-if="framing" class="framing-details report-disclosure"><summary>取景检查清单<small>摆位、比例、留白与边缘</small></summary><dl class="framing-checklist"><div v-for="(text,label) in framingChecklist" :key="label"><dt>{{ label }}</dt><dd>{{ text }}</dd></div></dl><p class="helper">{{ framingCopy?framingCopy.drawing:'推荐线稿表达目标构图；原图用于核对物体特征。实际透视、遮挡与新视角仍需现场试拍验证。' }}</p></details>
       <p v-if="!result.composition.proposals.length" class="helper">{{ result.composition.status === 'demo' ? '当前规则演示提供参数与操作起点。配置真实图像模型后，小栗才能针对画面给出构图建议。' : '本次没有通过校验的构图方案。可以补充主体与希望保留的画面，再试一次。' }}</p>
-      <aside v-if="result.composition.uncertainties.length" class="composition-cautions"><strong>这些地方，需要现场确认</strong><ul><li v-for="text in result.composition.uncertainties" :key="text">{{ text }}</li></ul></aside>
-      <details v-if="result.composition.observations.length" class="composition-evidence report-disclosure"><summary>看看小栗观察到了什么</summary><p v-for="text in result.composition.observations" :key="text">{{ text }}</p></details>
-      <details v-if="result.composition.notes.length" class="report-disclosure"><summary>其他构图说明<small>{{ result.composition.notes.length }} 条</small></summary><p v-for="text in result.composition.notes" :key="text">{{ text }}</p></details>
+      <details v-if="result.composition.uncertainties.length || result.composition.observations.length" class="composition-evidence report-disclosure"><summary>观察与现场核对</summary><p v-for="text in result.composition.observations" :key="text">{{ text }}</p><ul><li v-for="text in result.composition.uncertainties" :key="text">{{ text }}</li></ul></details>
     </template>
     <p v-else class="helper">服务尚未开启构图分析；拍摄参数与操作建议仍可使用。</p>
-    <CompositionPreview v-if="current&&previewApi" :key="selected" :proposal="current" :source="editReference" :reference-photo-id="editReferenceId" :api="previewApi"/>
   </section>
 </template>
 
@@ -131,6 +127,8 @@ const shadePath = computed(() => {
 .sketch-unavailable { background: var(--wash); padding: 20px; border-radius: 12px; margin: 16px 0; }
 .sketch-unavailable strong { font-size: 15px; }
 .sketch-unavailable p { font-size: 13px; color: var(--muted); line-height: 1.9; }
+.sketch-unavailable small { display: block; margin-top: 12px; color: var(--muted); font-size: 12px; }
+.diagnostic-code { display: block; overflow-wrap: anywhere; font-size: 12px; color: var(--muted); }
 .composition-proposal { margin: 28px 0 20px; padding: 24px; border: 1px solid #e5cbb1; background: #fffbf4; border-radius: 16px; }
 .composition-proposal .report-heading { margin-bottom: 20px; }
 .proposal-type { display: inline-block; font-size: 11px; font-weight: 650; border-radius: 5px; padding: 3px 8px; color: #855936; background: #f2e6d7; }

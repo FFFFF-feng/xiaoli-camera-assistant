@@ -2,14 +2,15 @@
 import { computed,onBeforeUnmount,ref,useId,watch } from 'vue';
 import type { TargetBoard } from '../types';
 import ReportHeading from './ReportHeading.vue';
+import CompositionCompare from './CompositionCompare.vue';
 import { DEFAULT_TARGET_COLOR, DEFAULT_TARGET_GRID, detailPath, outlinePath, sourceLayout, silhouetteLayers, silhouetteStrokePath, hasPhotoCut, unknownFrameRects, targetLayerPaint, targetCompositionCopy, thirdsGuide } from '../target-board.mjs';
 import { frameAspect } from '../composition-sketch.mjs';
-import { sceneColorTransform } from '../scene-colors.mjs';
-import { sceneEdgeDirections,sceneContinuationPaths } from '../scene-extension.mjs';
+import { sceneColorTransform,lineartPaint,OBJECT_COLOR_VERSION } from '../scene-colors.mjs';
 import { sceneRenderer,createLatestTask } from '../scene-render.mjs';
 const props=defineProps<{board:TargetBoard;reference?:string}>();
 const sheet=ref<SVGSVGElement>();
-const grid=ref(DEFAULT_TARGET_GRID),labels=ref(true),color=ref(DEFAULT_TARGET_COLOR),environment=ref(true),extendBackground=ref(true),saved=ref(''),showSource=ref(false);
+const comparisonView=ref(true);
+const grid=ref(DEFAULT_TARGET_GRID),labels=ref(true),color=ref(DEFAULT_TARGET_COLOR),environment=ref(true),saved=ref(''),showSource=ref(false);
 watch(()=>props.board,()=>{showSource.value=false;saved.value='';});
 const width=720;
 const original=computed(()=>sourceLayout(props.board) as {aspect:number;layers:TargetBoard['layers']}|null);
@@ -27,33 +28,26 @@ const structureScene=computed(()=>props.board.layers.some(layer=>layer.represent
 const clippedScene=computed(()=>props.board.layers.some(hasPhotoCut));
 const unknownRects=computed(()=>unknownFrameRects(props.board,showSource.value));
 const legacyBoundary=computed(()=>props.board.layers.some(layer=>layer.representation!=='scene_structure'&&layer.role==='main'&&!layer.photo_boundary));
-const sceneColor=ref<{key:string;url:string;aspect:number;fills:(string|null)[][];pixels:{data:Uint8ClampedArray;width:number;height:number}}|null>(null),colorBusy=ref(false),colorFailed=ref(false);
+const sceneColor=ref<{key:string;url:string;contextUrl:string|null;aspect:number;version:string;background:string;fills:(string|null)[][];pixels:{data:Uint8ClampedArray;width:number;height:number}}|null>(null),colorBusy=ref(false),colorFailed=ref(false);
 const colorClip=`scene-color-${useId()}`;
-const colorsTask=createLatestTask(),extensionTask=createLatestTask();
+const colorsTask=createLatestTask();
 watch([()=>props.reference,()=>props.board],([source,board])=>{
   colorsTask.cancel();sceneColor.value=null;colorFailed.value=false;colorBusy.value=!!source;
   if(!source)return;
   void colorsTask.run(()=>sceneRenderer.colors(source,board),(result:NonNullable<typeof sceneColor.value>)=>{sceneColor.value=result;},
     ()=>{colorFailed.value=true;},()=>{colorBusy.value=false;});
 },{immediate:true});
-onBeforeUnmount(()=>{colorsTask.cancel();extensionTask.cancel();});
+onBeforeUnmount(()=>{colorsTask.cancel();});
 const colorTransform=computed(()=>sceneColorTransform(props.board,showSource.value));
-const hasSceneColor=computed(()=>color.value&&sceneColor.value&&colorTransform.value
+const hasSceneColor=computed(()=>color.value&&sceneColor.value?.version===OBJECT_COLOR_VERSION&&colorTransform.value
   &&Math.abs(sceneColor.value.aspect/(props.board.source_photo_aspect||0)-1)<.02);
-const edgeDirections=computed(()=>sceneColor.value?sceneEdgeDirections(props.board,sceneColor.value.pixels.width,sceneColor.value.pixels.height):[]);
-const extensionImage=ref<string|null>(null);
-watch(()=>({enabled:hasSceneColor.value&&extendBackground.value&&!showSource.value&&!structureScene.value&&!clippedScene.value,scene:sceneColor.value,
-  transform:colorTransform.value,aspect:frameAspect(props.board.aspect),directions:edgeDirections.value}),state=>{
-  extensionTask.cancel();extensionImage.value=null;
-  if(!state.enabled||!state.scene||!state.transform)return;
-  void extensionTask.run(()=>sceneRenderer.extension(state.scene!,state.transform!,state.aspect,state.directions),
-    (result:string|null)=>{extensionImage.value=result;});
-},{immediate:true});
-const continuedLines=computed(()=>extensionImage.value&&colorTransform.value&&sceneColor.value
-  ?sceneContinuationPaths(edgeDirections.value,colorTransform.value,sceneColor.value.pixels.width,sceneColor.value.pixels.height,width,height.value):[]);
-const mainFills=computed(()=>sceneColor.value?.fills[props.board.layers.indexOf(main.value)]||[]);
 const size=computed(()=>({w:Math.round((main.value.bbox[2]!-main.value.bbox[0]!)*100),h:Math.round((main.value.bbox[3]!-main.value.bbox[1]!)*100)}));
 const portrait=computed(()=>({layer:{...main.value,bbox:[0,0,1,1]},w:(main.value.bbox[2]!-main.value.bbox[0]!)*width,h:(main.value.bbox[3]!-main.value.bbox[1]!)*width/frameAspect(props.board.aspect)}));
+const portraitColor=computed(()=>{
+  const b=main.value.source_bbox;if(!b)return null;
+  const w=b[2]!-b[0]!,h=b[3]!-b[1]!;
+  return {x:-b[0]!/w*portrait.value.w,y:-b[1]!/h*portrait.value.h,width:portrait.value.w/w,height:portrait.value.h/h};
+});
 function save() {
   if(!sheet.value)return;
   const copy=sheet.value.cloneNode(true) as SVGSVGElement;
@@ -65,27 +59,28 @@ function save() {
 <template>
   <div class="target-composition">
     <div class="target-heading"><ReportHeading :title="board.intent" icon="image" eyebrow="目标画面" /><span>{{ showSource?'原始布局估计':copy.heading }}</span></div>
-    <div v-if="original" class="target-mode" role="group" aria-label="轮廓布局对照"><button type="button" :aria-pressed="!showSource" @click="showSource=false">推荐布局</button><button type="button" :aria-pressed="showSource" @click="showSource=true">原始物体布局</button></div>
+    <div v-if="original" class="target-mode" role="group" aria-label="轮廓布局对照"><button type="button" :aria-pressed="comparisonView" @click="comparisonView=true;showSource=false">前后大图对照</button><button type="button" :aria-pressed="!comparisonView&&!showSource" @click="comparisonView=false;showSource=false">推荐大图</button><button type="button" :aria-pressed="!comparisonView&&showSource" @click="comparisonView=false;showSource=true">原始布局大图</button></div>
     <aside v-if="sourcePreserving" class="target-preserving" data-source-preserving>
-      <strong>{{ copy.status ? `${copy.status} · ${copy.heading}` : copy.heading }}</strong><p>{{ copy.reason }}</p><p>{{ copy.action }}</p><p>{{ copy.drawing }}</p>
+      <strong>{{ copy.status ? `${copy.status} · ${copy.heading}` : copy.heading }}</strong><p>{{ copy.action }}</p>
     </aside>
-    <figure class="target-sheet">
+    <CompositionCompare v-if="original&&comparisonView" :board="board" :colors="color?sceneColor:null" :environment="environment" :grid="grid" :colored="color"/>
+    <p v-if="original&&comparisonView&&colorBusy" class="target-guide-tip" role="status">正在读取原图颜色…</p>
+    <figure v-show="!original||!comparisonView" class="target-sheet">
       <svg ref="sheet" :viewBox="`-18 -18 ${width+36} ${height+36}`" role="img" :aria-label="showSource?'原始布局估计，用于核对轮廓与空间位置':`推荐构图：${board.intent}。使用${structureScene?'真实边界的场景结构线':'物体轮廓'}表达目标布局。${copy.drawing}`" font-family="sans-serif">
-        <title>{{ showSource?'原始物体布局估计':board.intent }}</title><desc>物体识别和轮廓提取可能有误，请对照原图。{{ copy.drawing }}{{ color?'插画配色用于区分主体和背景，不代表景物的准确颜色或实际拍摄效果。':'' }}{{ extensionImage?'画框边缘依据可见轮廓与线条方向作推测延伸，未拍到的景物未知。':'' }}</desc>
+        <title>{{ showSource?'原始物体布局估计':board.intent }}</title><desc>物体识别和轮廓提取可能有误，请对照原图。{{ copy.drawing }}{{ color?'仅在物体轮廓内取原图颜色，适度提亮便于阅读，不代表实拍曝光。':'' }}</desc>
         <rect x="-18" y="-18" :width="width+36" :height="height+36" fill="#fafcfd"/>
-        <rect :width="width" :height="height" :fill="color?'#f5f8f6':'#fff'" stroke="#a5b4c5" stroke-width="1"/>
+        <rect :width="width" :height="height" :fill="hasSceneColor?sceneColor?.background:'#fff'" stroke="#a5b4c5" stroke-width="1"/>
         <defs><clipPath :id="colorClip"><rect :width="width" :height="height"/></clipPath><pattern :id="`${colorClip}-unknown`" width="9" height="9" patternUnits="userSpaceOnUse"><rect width="9" height="9" fill="#f3f3ef"/><path d="M-2,2L2,-2M0,9L9,0M7,11L11,7" stroke="#c7c9c4" stroke-width="1"/></pattern></defs>
-        <g v-if="extensionImage" data-scene-extension :clip-path="`url(#${colorClip})`" pointer-events="none"><image :href="extensionImage" x="0" y="0" :width="width" :height="height" preserveAspectRatio="none"/></g>
-        <g v-if="hasSceneColor&&colorTransform&&sceneColor" data-scene-color :clip-path="`url(#${colorClip})`" pointer-events="none">
+        <g v-if="hasSceneColor&&colorTransform&&sceneColor" data-object-color :clip-path="`url(#${colorClip})`" pointer-events="none">
+          <image v-if="sceneColor.contextUrl&&environment" data-environment-wash :href="sceneColor.contextUrl" :x="colorTransform.x*width" :y="colorTransform.y*height" :width="colorTransform.width*width" :height="colorTransform.height*height" preserveAspectRatio="none"/>
           <image :href="sceneColor.url" :x="colorTransform.x*width" :y="colorTransform.y*height" :width="colorTransform.width*width" :height="colorTransform.height*height" preserveAspectRatio="none"/>
         </g>
-        <g v-for="layer in visibleLayers" :key="layer.index" :data-representation="layer.representation||'silhouette'" :data-source-object-id="layer.source_object_id" :stroke="targetLayerPaint(layer,color).stroke" stroke-linecap="round" stroke-linejoin="round">
-          <path v-for="(part,index) in silhouetteLayers(layer)" :key="`shape-${index}`" :d="outlinePath(part,width,height)" fill-rule="evenodd" :fill="hasSceneColor?(sceneColor?.fills[layer.index]?.[Number(index)]||targetLayerPaint(layer,color).fill):targetLayerPaint(layer,color).fill" :fill-opacity="hasSceneColor?1:targetLayerPaint(layer,color).fillOpacity" stroke="none"/>
+        <g v-for="layer in visibleLayers" :key="layer.index" :data-representation="layer.representation||'silhouette'" :data-source-object-id="layer.source_object_id" :stroke="lineartPaint(layer).stroke" :opacity="lineartPaint(layer).opacity" stroke-linecap="round" stroke-linejoin="round">
+          <path v-for="(part,index) in silhouetteLayers(layer)" :key="`shape-${index}`" :d="outlinePath(part,width,height)" fill-rule="evenodd" :fill="hasSceneColor?'none':targetLayerPaint(layer,color).fill" :fill-opacity="hasSceneColor?1:targetLayerPaint(layer,color).fillOpacity" stroke="none"/>
           <path v-for="(part,index) in silhouetteLayers(layer)" :key="`boundary-${index}`" data-visible-boundary :d="silhouetteStrokePath(part,width,height)" fill="none" :stroke="layer.kind==='background' ? 'none' : undefined" :stroke-dasharray="!layer.photo_boundary?'4 3':undefined" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
-          <path v-for="(path,index) in layer.details" :key="`detail-${index}`" class="subject-detail" :d="detailPath(layer,path,width,height)" fill="none" :stroke-width="layer.representation==='scene_structure'?1.4:layer.representation==='context_lines' ? (color?1.1:.85) : layer.details.length>10 ? .72 : 1.1" vector-effect="non-scaling-stroke"/>
+          <path v-for="(path,index) in layer.details" :key="`detail-${index}`" class="subject-detail" :d="detailPath(layer,path,width,height)" fill="none" :opacity="lineartPaint(layer).detailOpacity" :stroke-width="layer.representation==='scene_structure'?1.4:layer.representation==='context_lines' ? .85 : layer.details.length>10 ? .72 : 1.1" vector-effect="non-scaling-stroke"/>
         </g>
         <g v-if="unknownRects.length" data-unknown-photo-field pointer-events="none"><rect v-for="(rect,index) in unknownRects" :key="index" :x="rect[0]*width" :y="rect[1]*height" :width="rect[2]*width" :height="rect[3]*height" :fill="`url(#${colorClip}-unknown)`"/></g>
-        <g v-if="environment&&continuedLines.length" data-scene-continuations :clip-path="`url(#${colorClip})`" fill="none" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity=".8"><path v-for="(line,index) in continuedLines" :key="index" :d="line!.path" :stroke="targetLayerPaint(board.layers[line!.layerIndex],true).stroke" vector-effect="non-scaling-stroke"/></g>
         <g v-if="grid" data-thirds-guide role="group" aria-label="三分线与四个交点，作为构图位置参考" pointer-events="none">
           <line v-for="(line,index) in guides.lines" :key="`guide-${index}`" :x1="line[0]" :y1="line[1]" :x2="line[2]" :y2="line[3]" stroke="#607e94" stroke-width="1.1" opacity=".8" stroke-dasharray="6 7" vector-effect="non-scaling-stroke"/>
           <circle v-for="(point,index) in guides.points" :key="`point-${index}`" :cx="point[0]" :cy="point[1]" r="4.5" :fill="color?'#fff3d5':'#fff'" :stroke="color?'#a77d36':'#607e94'" stroke-width="1.3" vector-effect="non-scaling-stroke"/>
@@ -94,29 +89,33 @@ function save() {
           <g v-for="layer in visibleMarks" :key="layer.index"><circle :cx="layer.bbox[0]!*width+14" :cy="layer.bbox[1]!*height+14" r="12" :fill="layer.role==='main' ? '#315b9c' : '#8094a6'"/><text :x="layer.bbox[0]!*width+14" :y="layer.bbox[1]!*height+20" fill="white">{{ layer.index+1 }}</text></g>
         </g>
       </svg>
-      <div class="target-controls"><label><input v-model="environment" type="checkbox"/>环境线条</label><label><input v-model="grid" type="checkbox"/>三分线</label><label><input v-model="labels" type="checkbox"/>景物标记</label><label><input v-model="color" type="checkbox"/>场景填色</label><label v-if="hasSceneColor&&!showSource&&!structureScene&&!clippedScene"><input v-model="extendBackground" type="checkbox"/>延伸背景</label><button type="button" @click="save">{{ showSource?'保存原始布局':'保存推荐图' }}</button></div>
-      <figcaption>{{ showSource?'同一组物体轮廓放回原图位置，用于核对物体形状与空间关系；不代表精确分割。':sourcePreserving?`以第 ${board.reference_photo_id.slice(5)} 张为参考保留原取景中的空间关系。${copy.drawing}`:`以第 ${board.reference_photo_id.slice(5)} 张为参考规划；主体目标占比：宽 ${size.w}%、高 ${size.h}%。这是构图示意，不是实拍预测。` }}<span v-if="hasSceneColor"> 插画配色帮助区分景物，颜色不作精确还原；未绘制的范围不等于现场留白。</span><span v-else-if="color">{{ colorBusy?' 正在准备场景填色…':colorFailed?' 参考图配色暂时无法读取，保留原有示意色。':' 完整场景填色需要匹配的参考照片，当前保留主体示意色。' }}</span></figcaption>
-      <p v-if="extensionImage" class="target-guide-tip">边缘依据可见轮廓与线条方向作推测延伸，新增区域为示意，实际景物需现场确认。</p>
+      <figcaption>构图示意，非实拍效果；位置、透视与遮挡需现场核对。<span v-if="colorBusy"> 正在填色…</span><span v-else-if="colorFailed"> 填色未完成，线稿仍可查看。</span></figcaption>
+    </figure>
+    <div class="target-controls"><label><input v-model="environment" type="checkbox"/>环境参考</label><label><input v-model="grid" type="checkbox"/>三分线</label><label v-if="!comparisonView"><input v-model="labels" type="checkbox"/>景物标记</label><label><input v-model="color" type="checkbox"/>物体取色</label><button type="button" @click="save">{{ showSource?'保存原始布局':'保存推荐图' }}</button></div>
+    <details class="report-disclosure"><summary>线稿阅读说明</summary>
+      <p>{{ showSource?'同一组物体轮廓放回原图位置，用于核对物体形状与空间关系；不代表精确分割。':sourcePreserving?`以第 ${board.reference_photo_id.slice(5)} 张为参考保留原取景中的空间关系。${copy.reason}${copy.drawing}`:`以第 ${board.reference_photo_id.slice(5)} 张为参考规划；主体目标占比：宽 ${size.w}%、高 ${size.h}%。这是构图示意，不是实拍预测。` }}<span v-if="hasSceneColor"> 仅在闭合物体轮廓内保留原图分区颜色，适度提亮便于阅读；背景减淡且不补画。颜色不是实拍曝光预测。</span><span v-else-if="color">{{ colorBusy?' 正在准备物体取色…':colorFailed?' 参考图取色未完成，当前为示意色。':' 物体取色需要匹配的参考照片，当前为示意色。' }}</span></p>
       <p v-if="clippedScene" class="target-guide-tip" data-photo-boundary-note>主体与原照片边界接触，画外形体未知；填色闭合不表示真实物体底边。斜线区域未被原照片覆盖。</p>
       <p v-else-if="legacyBoundary" class="target-guide-tip" data-legacy-boundary-note>这份历史轮廓未记录画幅截断证据，虚线闭合不代表物体已拍完整。</p>
-      <p v-if="structureScene" class="target-guide-tip" data-scene-structure-note>场景结构线来自参考照片的可见边界，整体共同变换以保留空间关联；开放路径不代表完整物体分割，未拍到的区域保持未知。<span v-if="sourcePreserving">当前保留原取景，用结构线核对保留依据及现场检查重点。</span><span v-if="hasSceneColor">底层配色仅映射参考照片，结构路径自身不填充。</span></p>
+      <p v-if="structureScene" class="target-guide-tip" data-scene-structure-note>场景结构线来自参考照片的可见边界，整体共同变换以保留空间关联；开放路径不代表完整物体分割，未拍到的区域保持未知。<span v-if="sourcePreserving">当前保留原取景，用结构线核对保留依据及现场检查重点。</span><span v-if="hasSceneColor">连续场景只保留结构线与淡背景，不把开放路径伪造为物体填色。</span></p>
       <p v-if="grid" class="target-guide-tip">两横两竖将画面分为九格，圆点标出四个交点，方便比较主体位置；不必强行把主体放在交点上。</p>
-    </figure>
+    </details>
     <figure v-if="reference" class="target-reference">
       <img :src="reference" :alt="`第 ${board.reference_photo_id.slice(5)} 张原图，用于核对物体外形`"/>
       <figcaption><strong>形态对照 · 第 {{ board.reference_photo_id.slice(5) }} 张原图</strong><span>对照主体外形和可见细节；上方是取景示意，不是实际拍摄效果。</span></figcaption>
     </figure>
-    <p v-if="board.narration" class="target-narration">{{ board.narration }}</p>
+    <details v-if="board.narration" class="report-disclosure"><summary>构图解读</summary><p class="target-narration">{{ board.narration }}</p></details>
     <details class="subject-study report-disclosure"><summary>放大看主体细节 · {{ main.label }}</summary>
-      <svg :viewBox="`-8 -8 ${portrait.w+16} ${portrait.h+16}`" role="img" :aria-label="`${main.label}的推荐形象与结构线条`" stroke="#415970" stroke-linecap="round" stroke-linejoin="round">
-        <path v-for="(part,index) in silhouetteLayers(portrait.layer)" :key="index" :d="outlinePath(part,portrait.w,portrait.h)" fill-rule="evenodd" :fill="hasSceneColor?(mainFills[Number(index)]||targetLayerPaint(main,color).fill):targetLayerPaint(main,color).fill" :fill-opacity="hasSceneColor?1:targetLayerPaint(main,color).fillOpacity" stroke="none"/>
+      <svg :viewBox="`-8 -8 ${portrait.w+16} ${portrait.h+16}`" role="img" :aria-label="`${main.label}的推荐形象与结构线条`" :stroke="lineartPaint(main).stroke" stroke-linecap="round" stroke-linejoin="round">
+        <defs><clipPath :id="`${colorClip}-study`"><path v-for="(part,index) in silhouetteLayers(portrait.layer)" :key="index" :d="outlinePath(part,portrait.w,portrait.h)" clip-rule="evenodd"/></clipPath></defs>
+        <image v-if="hasSceneColor&&sceneColor&&portraitColor" :href="sceneColor.url" :x="portraitColor.x" :y="portraitColor.y" :width="portraitColor.width" :height="portraitColor.height" preserveAspectRatio="none" :clip-path="`url(#${colorClip}-study)`"/>
+        <path v-for="(part,index) in silhouetteLayers(portrait.layer)" :key="index" :d="outlinePath(part,portrait.w,portrait.h)" fill-rule="evenodd" :fill="hasSceneColor?'none':targetLayerPaint(main,color).fill" :fill-opacity="hasSceneColor?1:targetLayerPaint(main,color).fillOpacity" stroke="none"/>
         <path v-for="(part,index) in silhouetteLayers(portrait.layer)" :key="`boundary-${index}`" :d="silhouetteStrokePath(part,portrait.w,portrait.h)" fill="none" :stroke-dasharray="!main.photo_boundary?'4 3':undefined" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
         <path v-for="(path,index) in main.details" :key="`detail-${index}`" class="subject-detail" :d="detailPath(portrait.layer,path,portrait.w,portrait.h)" fill="none" :stroke-width="main.details.length>10 ? .9 : 1.1" vector-effect="non-scaling-stroke"/>
       </svg><p>{{ main.identity_features.join('、') }}。{{ sourcePreserving?'保留原取景时的形态与结构线仍需现场核对。':'新机位下的形态仍需现场核对。' }}</p>
     </details>
     <p v-if="board.unrendered_objects?.length" class="target-unrendered" data-unrendered-objects><strong>已识别但未可靠绘出：{{ board.unrendered_objects.join('、') }}</strong><span>下列辨识描述来自视觉识别，不表示这些部件都已画出。</span></p>
     <details class="target-legend report-disclosure"><summary>景物标记说明<small>{{ board.layers.length }} 项 · 对照图中编号</small></summary><div class="target-legend-list"><article v-for="(layer,index) in board.layers" :key="index"><b>{{ layer.kind==='background' ? '景' : index+1 }}</b><div><strong>{{ layer.label }}</strong><p>{{ layer.identity_features?.join('、') }}</p><small>{{ layer.certainty==='approximate' ? '视角近似，需试拍' : '特征依据参考照片' }}</small></div></article></div></details>
-    <section class="target-changes" aria-label="构图改善对照"><ReportHeading title="比原图改善在哪里" description="先看推荐调整，再对照原图与预期效果。" icon="sparkles" level="h4" /><template v-if="sourcePreserving"><article><div class="change-row change-original"><span>当前取景</span><p>路牌、路灯与道路环境作为连续场景一起保留。</p></div><div class="change-row change-adjustment"><span>{{ copy.changeLabel }}</span><p>{{ copy.changeText }}</p></div><div class="change-row change-benefit"><span>预期改善</span><p>保持真实空间关系，让灯光、路牌与环境的关联自然成立。</p></div></article></template><template v-else><article v-for="(change,index) in board.changes" :key="index"><div class="change-row change-original"><span>原图问题</span><p>{{ change.problem }}</p></div><div class="change-row change-adjustment"><span>推荐调整</span><p>{{ change.adjustment }}</p></div><div class="change-row change-benefit"><span>预期改善</span><p>{{ change.benefit }}</p></div></article></template></section>
+    <details class="target-changes report-disclosure" aria-label="构图改善对照"><summary>调整前后对比</summary><template v-if="sourcePreserving"><article><div class="change-row change-original"><span>当前取景</span><p>{{ copy.reason }}</p></div><div class="change-row change-adjustment"><span>{{ copy.changeLabel }}</span><p>{{ copy.changeText }}</p></div><div class="change-row change-benefit"><span>现场核对</span><p>保留已观察景物的空间关系，实际效果需要现场试拍。</p></div></article></template><template v-else><article v-for="(change,index) in board.changes" :key="index"><div class="change-row change-original"><span>原图问题</span><p>{{ change.problem }}</p></div><div class="change-row change-adjustment"><span>推荐调整</span><p>{{ change.adjustment }}</p></div><div class="change-row change-benefit"><span>预期改善</span><p>{{ change.benefit }}</p></div></article></template></details>
     <aside class="target-distance"><span class="distance-label">机位与距离 · 现场操作</span><strong>{{ distanceNames[board.distance_relation] }}</strong><p>{{ board.distance_instruction }}</p></aside>
     <details v-if="board.limitations.length" class="target-limitations report-disclosure"><summary>线稿说明与识别限制<small>{{ board.limitations.length }} 条 · 使用前了解</small></summary><ul><li v-for="note in board.limitations" :key="note">{{ note }}</li></ul></details><span class="report-save-status" role="status">{{ saved }}</span>
   </div>
@@ -133,7 +132,7 @@ function save() {
 .target-preserving strong { font-size: 15px; font-weight: 700; }
 .target-preserving p { margin: 6px 0 0; color: #5b6b50; }
 .target-sheet { margin: 0; padding: 18px; background: #fafcfd; border: 1px solid #dce4eb; border-radius: 12px; }
-.target-sheet svg { display: block; width: 100%; max-height: 520px; }
+.target-sheet svg { display: block; width: 100%; height: auto; }
 .target-controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; padding-top: 14px; margin-top: 12px; border-top: 1px solid #dce4eb; }
 .target-controls label { display: flex; gap: 5px; align-items: center; font-size: 12px; color: #566a7c; }
 .target-controls input { accent-color: var(--green); }

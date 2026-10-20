@@ -17,6 +17,8 @@ def staged_provider(monkeypatch, before_drawing):
 
     source = {"objects": [{**board["layers"][0], "object_id": "object1"}],
               "limitations": ["测试轮廓"]}
+    # Match the fixture's explicit GLM-V wire protocol, not internal layout units.
+    source['objects'][0]['bbox'] = [n*1000 for n in source['objects'][0]['bbox']]
     monkeypatch.setattr(observed_composition, "request_json", lambda *_: deepcopy(source))
     monkeypatch.setattr(observed_composition, "trace_observed_scene",
                         lambda answer, _: observed_composition.parse_observed_scene(answer))

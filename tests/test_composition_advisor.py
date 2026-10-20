@@ -162,7 +162,10 @@ def call_advisor(inputs, monkeypatch, answer, loc=None, hits=None, captured=None
                       if item.get("storyboard")), None)
         if not board:
             return {"objects": []}
-        return {"objects": [{**layer, "object_id": layer.get("source_object_id", f"object{i+1}")}
+        # The fixture's GLM model returns 0..1000 bboxes on the wire; drawing
+        # paths and the separately supplied layout fixtures remain unchanged.
+        return {"objects": [{**layer, "object_id": layer.get("source_object_id", f"object{i+1}"),
+                             "bbox": [n*1000 for n in layer['bbox']]}
                             for i, layer in enumerate(board["layers"])],
                 "limitations": ["测试轮廓非实拍分割"]}
     monkeypatch.setattr(observed_composition, "request_json", observed_request)
@@ -597,6 +600,7 @@ def test_layout_stage_does_not_require_geometry_and_background_is_not_a_subject(
         if prompt.startswith("[OBSERVED_OBJECTS_V1]"):
             stages.append("observation")
             return {"objects": [{**layer, "object_id": layer["source_object_id"],
+                                  "bbox": [n*1000 for n in layer['bbox']],
                                   "outline": [[0, 0], [1, 0], [1, 1], [0, 1]],
                                   "details": [[[.1, .3], [.9, .3]], [[.2, .3], [.2, 1]]]}
                                  for layer in board["layers"]], "limitations": ["模型估计"]}

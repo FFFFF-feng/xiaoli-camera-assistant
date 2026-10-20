@@ -11,13 +11,13 @@ export const openStructure=layer=>['context_lines','scene_structure'].includes(l
 export const DEFAULT_TARGET_COLOR=true;
 export const DEFAULT_TARGET_GRID=true;
 const SOURCE_PRESERVING_COPY={
-  status:'原图更优',
+  status:'原取景对照',
   heading:'保留原取景',
-  reason:'原图更优：当前原图的连续场景已经较好地保留了路牌、路灯、树木和道路环境的真实空间关系；这不是系统没有生成推荐，系统不虚构把景物分别移动后的新机位。',
+  reason:'连续场景中的景物保留原图真实空间关系；当前线稿用于核对取景，不表示已经验证原图最优，也不虚构景物分别移动后的新机位。',
   action:'现场拍摄重点：通过调整机位、距离或时机（包括机位高度、等待灯光时机），或保持现有关系，现场核对成片。',
   drawing:'线绘只表达原取景中的空间关系，不是新机位的透视、遮挡或实拍预测。',
   changeLabel:'现场拍摄重点',
-  changeText:'保留路牌、路灯与环境的相对位置，在现场通过机位、距离或时机调整强化视觉关联。',
+  changeText:'保留主要结构与环境的相对位置，在现场通过机位、距离或时机调整强化视觉关联。',
 };
 const CLIPPED_COPY={
   status:'',

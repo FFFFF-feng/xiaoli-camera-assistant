@@ -1,9 +1,10 @@
-import { scenePhotoPixels,scenePixelsUrl } from './scene-colors.mjs';
+import { scenePhotoPixels,scenePixelsUrl,OBJECT_COLOR_VERSION } from './scene-colors.mjs';
 import { runSceneRenderJob } from './scene-render-job.mjs';
 
 // Private, per-tab memory only. Completed work is limited by both entry count and bytes.
 export function createMemoryTasks({maxEntries=4,maxBytes=8*1024*1024,maxPending=4,weight=(value,key)=>
-  key.length*2+(value?.url?.length||0)*2+(value?.pixels?.data?.byteLength||0)+JSON.stringify(value?.fills||[]).length*2}={}) {
+  key.length*2+(value?.url?.length||0)*2+(value?.contextUrl?.length||0)*2
+    +(value?.pixels?.data?.byteLength||0)+(value?.contextPixels?.data?.byteLength||0)+JSON.stringify(value?.fills||[]).length*2}={}) {
   const completed=new Map(),pending=new Map();let bytes=0;
   async function get(key,load) {
     if(completed.has(key)) {
@@ -71,7 +72,7 @@ export function createSceneWorkerClient({createWorker=browserWorker,fallback=run
 
 // Only source geometry and object colour evidence affect the sampled palette.
 function colorGeometry(board) {
-  return {layers:board.layers.map(layer=>({kind:layer.kind,label:layer.label,representation:layer.representation,
+  return {version:OBJECT_COLOR_VERSION,layers:board.layers.map(layer=>({kind:layer.kind,label:layer.label,role:layer.role,depth:layer.depth,representation:layer.representation,
     source_bbox:layer.source_bbox,outline:layer.outline,outline_style:layer.outline_style,contours:layer.contours,holes:layer.holes}))};
 }
 
@@ -82,7 +83,8 @@ export function createSceneRenderer({decode=scenePhotoPixels,encode=scenePixelsU
     return colorsCache.get(key,async()=>{
       const decoded=await decode(source);
       const result=await process({kind:'colors',pixels:decoded.pixels,board:JSON.parse(geometry)});
-      return {...result,aspect:decoded.aspect,url:encode(result.pixels),key};
+      return {...result,aspect:decoded.aspect,url:encode(result.pixels),
+        contextUrl:result.contextPixels?encode(result.contextPixels):null,key};
     });
   }
   function extension(scene,transform,aspect,directions) {

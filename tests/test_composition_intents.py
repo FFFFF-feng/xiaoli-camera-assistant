@@ -64,7 +64,12 @@ def test_observation_service_and_pixel_failures_have_distinct_diagnostics(inputs
     monkeypatch.setattr(observed_composition, "request_json", lambda *_: (_ for _ in ()).throw(ModelServiceError("模型服务超时")))
     first = run(inputs)
     assert any(d.stage == "recognition" and d.status == "failed" for d in first.diagnostics)
-    monkeypatch.setattr(observed_composition, "request_json", lambda *_: observed())
+    metadata = observed()
+    # This fixture uses GLM-4.6V: successful wire metadata uses its explicit
+    # 0..1000 protocol before the independent contour failure is exercised.
+    for obj in metadata['objects']:
+        obj['bbox'] = [round(n*1000) for n in obj['bbox']]
+    monkeypatch.setattr(observed_composition, "request_json", lambda *_: metadata)
     monkeypatch.setattr(observed_composition, "trace_observed_scene", lambda *_: (_ for _ in ()).throw(ValueError("private failure")))
     second = run(inputs)
     assert any(d.stage == "recognition" and d.status == "complete" for d in second.diagnostics)

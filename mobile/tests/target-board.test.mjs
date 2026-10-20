@@ -6,15 +6,15 @@ const board=()=>({aspect:'landscape',reference_photo_id:'photo1',intent:'突出�
 test('source_preserving 的展示文案说明保留原取景、真实空间关系和现场动作',()=>{
   const source={...board(),layout_mode:'source_preserving',layers:[{...board().layers[0],representation:'scene_structure'}]};
   const copy=targetCompositionCopy(source);
-  assert.equal(copy.status,'原图更优');
+  assert.equal(copy.status,'原取景对照');
   assert.equal(copy.heading,'保留原取景');
-  assert.match(copy.reason,/原图更优/);
+  assert.match(copy.reason,/不表示已经验证原图最优/);
   assert.match(copy.reason,/连续场景/);
   assert.match(copy.reason,/真实空间关系/);
   assert.match(copy.action,/机位、距离或时机/);
   assert.match(copy.drawing,/不是新机位的透视、遮挡或实拍预测/);
   assert.equal(copy.changeLabel,'现场拍摄重点');
-  assert.match(copy.changeText,/保留路牌、路灯与环境的相对位置/);
+  assert.match(copy.changeText,/保留主要结构与环境的相对位置/);
   assert.doesNotMatch(copy.changeText,/主体.*(位置|占比)/);
 });
 test('普通 schematic 与 crop_projection 继续使用推荐调整说明',()=>{

@@ -44,10 +44,11 @@ exit /b 1
 
 :launch
 echo 每次启动会自动构建当前代码，并重启本项目的新版网页服务。
-echo 新版相机工坊：主体清晰平涂，画框边缘沿可见轮廓方向延伸背景。
+echo 新版构图：原始布局与推荐构图双图对照，轮廓内分区取色、环境淡化、三分线参考。
 echo 推荐线稿默认使用 CPU GrabCut；MobileSAM 仅在显式配置后作为可选分割后端。
 echo 本地智谱默认直连；可用 CAMERA_AI_TRUST_ENV 显式选择代理继承。
-echo 图片编辑预演默认关闭，只有独立配置并手动确认后才会调用。
+echo 物体识别按模型约定的坐标单位转换；GLM-V 的0到1000坐标统一转换为内部0到1。
+echo 正式报告已移除 AI 构图预演板块；取色不调用生图服务。
 "%APP_LAUNCH_PYTHON%" %APP_LAUNCH_ARGS% -u "%~dp0scripts\launch_apps.py" --web %*
 if errorlevel 1 (
     echo.

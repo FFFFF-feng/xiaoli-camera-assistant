@@ -178,7 +178,8 @@ class TargetLayer(CompositionModel):
         if (not isinstance(value, list) or len(value) != 4 or any(
             isinstance(n, bool) or not isinstance(n, (int, float))
             or not math.isfinite(n) or not 0 <= n <= 1 for n in value
-        ) or value[2]-value[0] < .005 or value[3]-value[1] < .005):
+        ) or (value[2]-value[0] < .005 and not math.isclose(value[2]-value[0], .005, rel_tol=0, abs_tol=1e-12))
+                or (value[3]-value[1] < .005 and not math.isclose(value[3]-value[1], .005, rel_tol=0, abs_tol=1e-12))):
             raise ValueError("目标对象位置需要有效的0到1包围盒")
         return value
 

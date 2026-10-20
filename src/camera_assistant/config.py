@@ -57,12 +57,15 @@ class Settings:
     segmentation_fallback: bool = True
     segmentation_timeout_seconds: float = 10.0
     segmentation_evidence: bool = False
+    observation_coordinate_unit: str = 'model_default'
 
     def __post_init__(self) -> None:
         if self.knowledge_mode not in {"legacy", "managed"}:
             raise ValueError("KNOWLEDGE_RETRIEVAL_MODE 只能是 legacy 或 managed。")
         if self.preset not in {"custom", "glm-dino"}:
             raise ValueError("CAMERA_AI_PRESET 只能是 custom 或 glm-dino。")
+        if self.observation_coordinate_unit not in {'model_default', 'normalized_0_1', 'normalized_0_1000'}:
+            raise ValueError("CAMERA_AI_OBSERVATION_COORDINATE_UNIT 只能是 model_default、normalized_0_1 或 normalized_0_1000。")
         url = urlsplit(self.base_url)
         if (url.scheme not in {"http", "https"} or not url.hostname
                 or url.username or url.password or url.query or url.fragment):
@@ -144,6 +147,7 @@ class Settings:
                 "json_object" if selected else "prompt"
             ),
             format_retry_count=int(os.getenv("CAMERA_AI_FORMAT_RETRY_COUNT", "1")),
+            observation_coordinate_unit=cls.observation_coordinate_option(os.environ),
             stream_output=_as_bool(os.getenv("CAMERA_AI_STREAM_OUTPUT"), True),
             parallel_advice=_as_bool(os.getenv("CAMERA_AI_PARALLEL_ADVICE"), True),
             detector_warmup=_as_bool(os.getenv("CAMERA_AI_DETECTOR_WARMUP"), True),
@@ -151,6 +155,13 @@ class Settings:
             trust_env=_as_bool(os.getenv("CAMERA_AI_TRUST_ENV"), True),
             **cls.segmentation_options(os.environ),
         )
+
+    @staticmethod
+    def observation_coordinate_option(environment) -> str:
+        value = environment.get('CAMERA_AI_OBSERVATION_COORDINATE_UNIT', 'model_default').strip().lower()
+        if value not in {'model_default', 'normalized_0_1', 'normalized_0_1000'}:
+            raise ValueError('CAMERA_AI_OBSERVATION_COORDINATE_UNIT 只能是 model_default、normalized_0_1 或 normalized_0_1000。')
+        return value
 
     @staticmethod
     def segmentation_options(environment) -> dict:

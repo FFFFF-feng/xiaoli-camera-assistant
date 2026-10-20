@@ -1,5 +1,7 @@
 import { outlinePath,silhouetteLayers } from './target-board.mjs';
 
+// Legacy palette helpers retained for compatibility tests. Production rendering
+// uses colorizeScenePixels below and must not use full-frame quantization.
 // Deliberate illustration colours; do not retain the photograph's grey shadow/bokeh noise.
 // These are explanatory colours, not a prediction of real exposure or object material.
 export function illustrationColor(rgb,woody=false) {
@@ -38,16 +40,30 @@ function mergeSmallPatches(labels,width,height,palette) {
   return labels;
 }
 
-export function subjectIllustrationColor(layer,counts) {
-  // Explicit object colour takes priority over incidental shadows inside its mask.
-  // Generic role colours (e.g. "rose" as a main-subject tag) are not object evidence.
-  /** @type {[RegExp,string][]} */
-  const named=[[/^(白色|洁白|纯白|white\b)/i,'#fff9e9'],[/^(红色|鲜红|red\b)/i,'#e9a092'],
-    [/^(粉色|粉红|pink\b)/i,'#f1c4d4'],[/^(黄色|金黄|yellow\b)/i,'#f5dc99'],
-    [/^(蓝色|blue\b)/i,'#b2d9ef'],[/^(紫色|purple\b)/i,'#d9c6e8'],[/^(绿色|green\b)/i,'#bcdca3']];
-  const name=(layer.label||'').trim();
-  const declared=named.find(([pattern])=>pattern.test(name));
-  return declared?.[1]||[...counts].sort((a,b)=>b[1]-a[1])[0]?.[0]||null;
+export function referenceColor(rgb) {
+  return '#'+rgb.map(n=>Math.round(Math.max(0,Math.min(255,n))).toString(16).padStart(2,'0')).join('');
+}
+
+export function referenceOutlineColor(fill,fallback='#415970') {
+  if(typeof fill!=='string'||!/^#[a-f\d]{6}$/i.test(fill))return fallback;
+  const [r,g,b]=[1,3,5].map(i=>parseInt(fill.slice(i,i+2),16));
+  return r*.2126+g*.7152+b*.0722<90?'#dce4e7':fallback;
+}
+
+export function subjectIllustrationColor(_layer,counts) {
+  // Keep the compatibility name, but labels and role tags must never override sampled pixels.
+  return [...counts].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]))[0]?.[0]||null;
+}
+
+export function sampledSubjectColor(original,mask) {
+  const bins=new Map();
+  for(let p=0;p<original.length;p+=4)if(mask[p+3]>127&&original[p+3]) {
+    const key=((original[p]>>4)<<8)|((original[p+1]>>4)<<4)|(original[p+2]>>4);
+    const bin=bins.get(key)||{n:0,sum:[0,0,0]};
+    bin.n++;for(let k=0;k<3;k++)bin.sum[k]+=original[p+k];bins.set(key,bin);
+  }
+  const dominant=[...bins.entries()].sort((a,b)=>b[1].n-a[1].n||a[0]-b[0])[0]?.[1];
+  return dominant?referenceColor(dominant.sum.map(n=>n/dominant.n)):null;
 }
 
 // Local, bounded flat colours from the reference. No new scene geometry and no network/model call.
@@ -82,7 +98,8 @@ export function flatSceneColors({data,width,height}, limit=6, {woody=false}={}) 
     boxes.splice(chosen,1,sorted.slice(0,split),sorted.slice(split));
   }
   const raw=boxes.map(b=>[0,1,2].map(k=>b.reduce((s,p)=>s+p.sum[k],0)/b.reduce((s,p)=>s+p.n,0)));
-  const paint=raw.map(rgb=>illustrationColor(rgb,woody));
+  // Quantize the photograph itself. Do not remap reds/blacks/whites into a pastel palette.
+  const paint=raw.map(referenceColor);
   const unique=[...new Set(paint)];
   const palette=unique.map(hex=>[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)));
   const lookup=new Map(bins.map(bin=>{
@@ -130,7 +147,7 @@ export async function scenePhotoPixels(source) {
   await image.decode();
   const aspect=image.naturalWidth/image.naturalHeight;
   if(!Number.isFinite(aspect)||aspect<=0)throw new Error('参考图尺寸无效');
-  const scale=Math.min(1,360/Math.max(image.naturalWidth,image.naturalHeight));
+  const scale=Math.min(1,720/Math.max(image.naturalWidth,image.naturalHeight));
   const canvas=document.createElement('canvas');
   canvas.width=Math.max(1,Math.round(image.naturalWidth*scale));canvas.height=Math.max(1,Math.round(image.naturalHeight*scale));
   const context=canvas.getContext('2d',{willReadFrequently:true});
@@ -140,30 +157,128 @@ export async function scenePhotoPixels(source) {
   return {aspect,pixels:{data:original.data,width:original.width,height:original.height}};
 }
 
-// The same masks and palette run on either Canvas or OffscreenCanvas.
+const PAPER=[250,249,245];
+export const OBJECT_COLOR_VERSION='masked-object-color-v1';
+
+function checkPixels(image) {
+  if(!Number.isInteger(image.width)||!Number.isInteger(image.height)||image.width<1||image.height<1
+    ||image.width*image.height>720*720||image.data.length!==image.width*image.height*4)
+    throw new RangeError('物体取色尺寸无效');
+}
+
+// Diagram brightness, not a claim about exposure: retain the original hue while
+// lifting dark fills enough to read the dark contour lines on paper.
+export function diagramColor(rgb,role='main') {
+  const light=rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722;
+  const mix=role==='background'?.9:role==='foreground'?.58:.12+Math.max(0,100-light)/400;
+  return rgb.map((v,k)=>Math.round(v*(1-mix)+PAPER[k]*mix));
+}
+
+export function lineartPaint(layer) {
+  if(layer.role==='main')return {stroke:'#4b555b',opacity:1,detailOpacity:.65};
+  if(layer.role==='background')return {stroke:'#89928e',opacity:.46,detailOpacity:.65};
+  return {stroke:'#75847a',opacity:.7,detailOpacity:.7};
+}
+
+// Smooth inside one observed silhouette only. No global palette, no cross-mask
+// merging, no inferred polygon for environmental/open paths.
+export function paintObjectRegion(original,mask,role='main') {
+  checkPixels(original);
+  if(mask.length!==original.data.length)throw new RangeError('物体掩码尺寸无效');
+  const {data,width,height}=original,out=new Uint8ClampedArray(data.length);
+  const claimed=[];
+  for(let p=0;p<width*height;p++)if(mask[p*4+3]>127&&data[p*4+3])claimed.push(p);
+  for(const p of claimed) {
+    const x=p%width,y=Math.floor(p/width),at=p*4;
+    let count=0;const sum=[0,0,0];
+    for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++) {
+      const nx=x+dx,ny=y+dy;if(nx<0||ny<0||nx>=width||ny>=height)continue;
+      const q=(ny*width+nx)*4;if(mask[q+3]<=127||!data[q+3])continue;
+      const distance=(data[q]-data[at])**2+(data[q+1]-data[at+1])**2+(data[q+2]-data[at+2])**2;
+      if(distance>3600)continue; // Do not mix a red/blue or petal/leaf boundary.
+      const weight=1/(1+(dx*dx+dy*dy)/4+distance/900);
+      count+=weight;for(let k=0;k<3;k++)sum[k]+=data[q+k]*weight;
+    }
+    const rgb=diagramColor(sum.map(v=>v/count),role);
+    out.set(rgb,at);out[at+3]=Math.round(data[at+3]*mask[at+3]/255);
+  }
+  return {data:out,width,height};
+}
+
+export function backgroundWash(original,claimed) {
+  checkPixels(original);
+  if(claimed.length!==original.width*original.height)throw new RangeError('背景掩码尺寸无效');
+  const sum=[0,0,0];let count=0;
+  for(let p=0;p<original.width*original.height;p++) {
+    const at=p*4;if(claimed[p]||!original.data[at+3])continue;
+    count++;for(let k=0;k<3;k++)sum[k]+=original.data[at+k];
+  }
+  // One restrained paper tint, never a full-frame posterized photograph.
+  return referenceColor(count?sum.map((n,k)=>PAPER[k]*.94+n/count*.06):PAPER);
+}
+
+// A blurred, low-opacity reference wash is NOT an object mask. It keeps the
+// broad environment visible without quantizing shadows into solid patches.
+export function softContextPixels(original,opacity=.12) {
+  checkPixels(original);
+  if(!Number.isFinite(opacity)||opacity<0||opacity>.55)throw new RangeError('环境底色浓度无效');
+  const {data,width,height}=original,radius=3,horizontal=new Float32Array(data.length);
+  for(let y=0;y<height;y++) {
+    const sums=[0,0,0,0];
+    const add=(x,sign)=>{const i=(y*width+x)*4,a=data[i+3]/255;for(let k=0;k<3;k++)sums[k]+=data[i+k]*a*sign;sums[3]+=a*sign;};
+    for(let x=0;x<=Math.min(radius,width-1);x++)add(x,1);
+    for(let x=0;x<width;x++) {
+      horizontal.set(sums,(y*width+x)*4);
+      if(x-radius>=0)add(x-radius,-1);if(x+radius+1<width)add(x+radius+1,1);
+    }
+  }
+  const out=new Uint8ClampedArray(data.length);
+  for(let x=0;x<width;x++) {
+    const sums=[0,0,0,0];
+    const add=(y,sign)=>{const i=(y*width+x)*4;for(let k=0;k<4;k++)sums[k]+=horizontal[i+k]*sign;};
+    for(let y=0;y<=Math.min(radius,height-1);y++)add(y,1);
+    for(let y=0;y<height;y++) {
+      const at=(y*width+x)*4,area=(Math.min(width-1,x+radius)-Math.max(0,x-radius)+1)
+        *(Math.min(height-1,y+radius)-Math.max(0,y-radius)+1);
+      if(sums[3]>1e-6) {
+        for(let k=0;k<3;k++)out[at+k]=sums[k]/sums[3];
+        out[at+3]=Math.round(Math.min(1,sums[3]/area)*255*opacity);
+      }
+      if(y-radius>=0)add(y-radius,-1);if(y+radius+1<height)add(y+radius+1,1);
+    }
+  }
+  return {data:out,width,height};
+}
+
+// Canvas and Worker share identical per-object masks and colours.
 export function colorizeScenePixels(original,board,createCanvas=()=>document.createElement('canvas')) {
-  const woody=board.layers.some(l=>['tree','branch','tree_branch'].includes(l.kind));
-  const flat=flatSceneColors(original,6,{woody});
-  // Sample only within each observed, closed subject outline, then paint it cleanly.
-  // Do not close open environmental lines or infer a new object mask from a bounding box.
+  checkPixels(original);
+  if(!Array.isArray(board?.layers)||board.layers.length>6)throw new RangeError('取色对象数量无效');
   const mask=createCanvas();mask.width=original.width;mask.height=original.height;
   const maskContext=mask.getContext('2d',{willReadFrequently:true});
   if(!maskContext)throw new Error('无法准备主体配色');
-  const fills=board.layers.map(layer=>{
-    if(layer.representation==='context_lines'||!layer.source_bbox)return [];
-    return silhouetteLayers({...layer,bbox:layer.source_bbox}).map(part=>{
+  const output=new Uint8ClampedArray(original.data.length),claimed=new Uint8Array(original.width*original.height);
+  const fills=board.layers.map(()=>[]);
+  for(const {layer,index} of board.layers.map((layer,index)=>({layer,index})).sort((a,b)=>a.layer.depth-b.layer.depth)) {
+    if(['context_lines','scene_structure'].includes(layer.representation)||!layer.source_bbox)continue;
+    for(const part of silhouetteLayers({...layer,bbox:layer.source_bbox})) {
       maskContext.clearRect(0,0,mask.width,mask.height);
       maskContext.fillStyle='#fff';maskContext.fill(new Path2D(outlinePath(part,mask.width,mask.height)),'evenodd');
       const pixels=maskContext.getImageData(0,0,mask.width,mask.height).data;
-      const counts=new Map();
-      for(let p=0;p<pixels.length;p+=4)if(pixels[p+3]>127&&original.data[p+3]) {
-        const hex=illustrationColor([original.data[p],original.data[p+1],original.data[p+2]]);
-        counts.set(hex,(counts.get(hex)||0)+1);
+      const painted=paintObjectRegion(original,pixels,layer.role);
+      fills[index].push(sampledSubjectColor(painted.data,pixels));
+      for(let p=0;p<claimed.length;p++) {
+        const at=p*4,alpha=painted.data[at+3]/255;if(!alpha)continue;
+        const behind=output[at+3]/255,total=alpha+behind*(1-alpha);
+        for(let k=0;k<3;k++)output[at+k]=(painted.data[at+k]*alpha+output[at+k]*behind*(1-alpha))/total;
+        output[at+3]=Math.round(total*255);claimed[p]=1;
       }
-      return counts.size?subjectIllustrationColor(layer,counts):null;
-    });
-  });
-  return {fills,pixels:{data:flat.data,width:original.width,height:original.height}};
+    }
+  }
+  const continuous=board.layers.some(layer=>layer.role==='main'&&layer.representation==='scene_structure');
+  return {version:OBJECT_COLOR_VERSION,background:backgroundWash(original,claimed),fills,
+    contextPixels:softContextPixels(original,continuous ? .55 : .12),
+    pixels:{data:output,width:original.width,height:original.height}};
 }
 
 export function scenePixelsUrl(pixels) {
@@ -177,5 +292,5 @@ export function scenePixelsUrl(pixels) {
 export async function loadSceneColors(source,board) {
   const {aspect,pixels}=await scenePhotoPixels(source);
   const result=colorizeScenePixels(pixels,board);
-  return {...result,aspect,url:scenePixelsUrl(result.pixels)};
+  return {...result,aspect,url:scenePixelsUrl(result.pixels),contextUrl:scenePixelsUrl(result.contextPixels)};
 }

@@ -46,7 +46,22 @@ def check_runtime() -> str:
         raise LaunchError("前端依赖尚未安装，请执行：npm --prefix mobile ci")
     check_image_editor()
     check_segmentation()
+    check_observation_coordinates()
     return npm
+
+
+def check_observation_coordinates() -> None:
+    """Pure unit-option check: no model call or access to credential vaults."""
+    from dotenv import dotenv_values
+
+    from camera_assistant.config import Settings
+
+    environment = {key: value for key, value in dotenv_values(ROOT / '.env').items() if value is not None}
+    environment.update(os.environ)
+    try:
+        Settings.observation_coordinate_option(environment)
+    except (ValueError, TypeError, AttributeError):
+        raise LaunchError('识别坐标单位配置无效：请使用 model_default、normalized_0_1 或 normalized_0_1000。') from None
 
 
 def check_image_editor() -> None:
