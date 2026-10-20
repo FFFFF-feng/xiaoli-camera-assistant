@@ -2,11 +2,13 @@
 import {computed,onMounted,onBeforeUnmount,ref,watch} from 'vue';
 import type {Analysis,PreviewApi} from '../types';
 import ReportHeading from './ReportHeading.vue';
+import ProcessingProgress from './ProcessingProgress.vue';
 import {previewPlan,safePreviewImage,localReference} from '../composition-preview.mjs';
 type Proposal=NonNullable<Analysis['result']['composition']>['proposals'][number];
 const props=defineProps<{proposal:Proposal;source:string;referencePhotoId:string;api:PreviewApi}>();
 const configuration=ref<{available:boolean;provider:string;model:string;configuration_id:string;message:string}>();
 const consent=ref(false),busy=ref(false),generated=ref(''),error=ref(''),elapsed=ref(0);
+const previewPercent=ref(0),previewMessage=ref('正在准备原始参考图…');
 let controller:AbortController|undefined;
 let clock:ReturnType<typeof setInterval>|undefined;
 let revision=0;
@@ -21,6 +23,7 @@ onMounted(async()=>{
 async function generate(){
   if(busy.value||!configuration.value?.available||!consent.value||!props.source||!plan.value)return;
   busy.value=true;error.value='';generated.value='';elapsed.value=0;
+  previewPercent.value=0;previewMessage.value='正在准备原始参考图…';
   controller=new AbortController();const active=controller;
   const currentRevision=revision;
   const timeout=setTimeout(()=>active.abort(),330000);
@@ -30,16 +33,20 @@ async function generate(){
     const reference=await fetch(props.source,{signal:active.signal,credentials:'omit'});
     if(!reference.ok)throw new Error('参考图无法读取，请重新选择原图。');
     const blob=await reference.blob();
+    previewPercent.value=15;previewMessage.value='正在整理原图与构图方案…';
     const form=new FormData();
     form.append('file',blob,'reference-image');form.append('plan',JSON.stringify(plan.value));
     form.append('consent','true');form.append('configuration_id',configuration.value.configuration_id);
     form.append('request_id',crypto.randomUUID());
+    previewPercent.value=30;previewMessage.value='正在生成构图预演，尽量保留主体外形与照片细节…';
     const result=await props.api('/api/v1/composition-preview',{method:'POST',body:form,signal:active.signal});
     if(active.signal.aborted||currentRevision!==revision)return;
+    previewPercent.value=90;previewMessage.value='已收到预演图片，正在检查展示结果…';
     const image=safePreviewImage(result.image_data_url);
     if(!image||result.ai_generated!==true||result.semantic_verified!==false
       ||result.reference_photo_id!==props.referencePhotoId)throw new Error('预演结果不完整，未展示图片。');
     generated.value=image;
+    previewPercent.value=100;
   } catch(e) {
     if(currentRevision!==revision)return;
     error.value=active.signal.aborted?'已停止等待。服务可能仍在生成或已计费；不会自动重发。'
@@ -59,7 +66,8 @@ async function generate(){
       <p class="preview-provider">编辑服务：{{ configuration.provider }} / {{ configuration.model }}；参考图：第 {{ referencePhotoId.slice(5) }} 张。</p>
       <p v-if="!source" class="preview-status">当前没有这张参考图。历史记录不保存原图，请重新上传后生成。</p>
       <label class="preview-consent"><input v-model="consent" type="checkbox" :disabled="busy"/>我同意将这张参考图发送给上述编辑服务，并知晓可能产生额外费用。</label>
-      <div class="preview-actions"><button type="button" :disabled="busy||!consent||!source||!plan" @click="generate">{{ busy?`正在生成 · ${elapsed} 秒`:generated?'重新生成（可能再次计费）':'生成构图预演' }}</button><button v-if="busy" type="button" class="preview-cancel" @click="controller?.abort()">停止等待</button></div>
+      <div class="preview-actions"><button type="button" :disabled="busy||!consent||!source||!plan" @click="generate">{{ busy?'正在生成构图预演…':generated?'重新生成（可能再次计费）':'生成构图预演' }}</button><button v-if="busy" type="button" class="preview-cancel" @click="controller?.abort()">停止等待</button></div>
+      <ProcessingProgress v-if="busy" class="preview-progress" title="小栗正在准备构图预演" :percent="previewPercent" :message="previewMessage" :waiting="elapsed >= 18" />
     </template>
     <p v-if="error" role="alert" class="preview-error">{{ error }}</p>
     <div v-if="generated" class="preview-comparison">
@@ -71,5 +79,6 @@ async function generate(){
 </template>
 
 <style scoped>
+.preview-progress{margin-top:18px}
 .image-preview{margin:24px 0;padding:22px;border:1px dashed #d8c2ab;border-radius:14px;background:#faf6ef}.image-preview-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}.image-preview h3{font-size:18px;color:var(--ink);font-weight:500;margin:0}.image-preview-heading span{font-size:11px;color:var(--muted)}.image-preview p{font-size:12px;color:var(--muted);line-height:1.9;word-break:normal;overflow-wrap:break-word}.preview-status{color:var(--muted)!important}.preview-status strong{display:inline-block;font-size:11px;margin-right:8px;padding:2px 7px;border:1px solid #ddd0bf;background:#eee7dc;border-radius:5px;color:#79654f;font-weight:650}.preview-consent{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.9;color:var(--ink)}.preview-consent input{flex:none;margin-top:5px;accent-color:var(--green)}.preview-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px}.preview-actions button{border:1px solid var(--green);background:var(--green);color:white;border-radius:4px;padding:10px 16px;font-size:13px;cursor:pointer}.preview-actions button:disabled{opacity:.5;cursor:not-allowed}.preview-actions .preview-cancel{background:white;color:var(--muted);border-color:var(--border)}.preview-actions button:focus-visible{outline:2px solid var(--green);outline-offset:3px}.preview-error{color:#9d3d32!important}.preview-comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}.preview-comparison figure{margin:0;min-width:0}.preview-comparison figcaption{font-size:12px;color:var(--ink);line-height:1.8;margin-bottom:8px}.preview-comparison img{width:100%;height:300px;object-fit:contain;background:var(--wash);border:1px solid var(--border);box-sizing:border-box}.preview-generated figcaption{font-weight:600;color:var(--green)}@media(max-width:600px){.image-preview{padding:18px 15px}.preview-comparison{grid-template-columns:1fr}.preview-comparison img{height:auto;max-height:420px}}
 </style>

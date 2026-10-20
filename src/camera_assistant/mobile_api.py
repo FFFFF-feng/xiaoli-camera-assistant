@@ -40,6 +40,17 @@ MAX_SCENE_BYTES = 30 * 1024 * 1024
 MAX_PIXELS = 40_000_000
 STREAM_HEARTBEAT_SECONDS = 10
 ANALYSIS_FAILURE = "分析失败，请稍后重试；若持续失败，请联系维护者检查模型配置。"
+ANALYSIS_STAGE_MESSAGES = {
+    "image_preprocessing": "正在检查照片方向、清晰度与拍摄信息…",
+    "vision": "正在识别照片中的主体、光线和场景…",
+    "localization": "正在确认主体在画面中的位置…",
+    "composition_observation": "正在观察景物外形和前后空间关系…",
+    "composition_contours": "正在提取主体轮廓，保留照片细节…",
+    "composition_layout": "正在结合你的目标规划构图…",
+    "composition_local_layout": "正在计算取景布局，检查主体是否完整…",
+    "target_drawing": "正在绘制推荐构图的线条与细节…",
+    "parameter_validation": "正在核对拍摄参数与器材能力…",
+}
 
 
 class DeviceCatalogCompression:
@@ -324,6 +335,11 @@ def create_app(
         def progress(message):
             emit({"type": "progress", "message": message, "elapsed_seconds": elapsed()})
 
+        def stage_started(stage):
+            if stage in ANALYSIS_STAGE_MESSAGES:
+                emit({"type": "progress", "stage": stage,
+                      "message": ANALYSIS_STAGE_MESSAGES[stage], "elapsed_seconds": elapsed()})
+
         def activity(event):
             identifier = event.get("request_id", "")
             now = time.monotonic()
@@ -363,7 +379,7 @@ def create_app(
             observer = (observe_stream(activity) if stream_events and settings.stream_output
                         and settings.cloud_ready else nullcontext())
             connection = cloud_session(settings) if settings.cloud_ready else nullcontext()
-            with connection, observe_timings(record_timing), observer:
+            with connection, observe_timings(record_timing, on_started=stage_started), observer:
                 return pipeline.run(image_content, request, **options)
 
         async def run_analysis():
