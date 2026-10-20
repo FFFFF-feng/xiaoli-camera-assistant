@@ -7,7 +7,7 @@ import { DEFAULT_TARGET_COLOR, DEFAULT_TARGET_GRID, detailPath, outlinePath, sou
 import { frameAspect } from '../composition-sketch.mjs';
 import { sceneColorTransform,lineartPaint,OBJECT_COLOR_VERSION } from '../scene-colors.mjs';
 import { sceneRenderer,createLatestTask } from '../scene-render.mjs';
-const props=defineProps<{board:TargetBoard;reference?:string}>();
+const props=withDefaults(defineProps<{board:TargetBoard;reference?:string;compactAdvice?:boolean}>(),{compactAdvice:false});
 const sheet=ref<SVGSVGElement>();
 const comparisonView=ref(true);
 const grid=ref(DEFAULT_TARGET_GRID),labels=ref(true),color=ref(DEFAULT_TARGET_COLOR),environment=ref(true),saved=ref(''),showSource=ref(false);
@@ -61,7 +61,7 @@ function save() {
     <div class="target-heading"><ReportHeading :title="board.intent" icon="image" eyebrow="目标画面" /><span>{{ showSource?'原始布局估计':copy.heading }}</span></div>
     <div v-if="original" class="target-mode" role="group" aria-label="轮廓布局对照"><button type="button" :aria-pressed="comparisonView" @click="comparisonView=true;showSource=false">前后大图对照</button><button type="button" :aria-pressed="!comparisonView&&!showSource" @click="comparisonView=false;showSource=false">推荐大图</button><button type="button" :aria-pressed="!comparisonView&&showSource" @click="comparisonView=false;showSource=true">原始布局大图</button></div>
     <aside v-if="sourcePreserving" class="target-preserving" data-source-preserving>
-      <strong>{{ copy.status ? `${copy.status} · ${copy.heading}` : copy.heading }}</strong><p>{{ copy.action }}</p>
+      <strong>本次未调整取景 · 原始布局线稿对照</strong><p>{{ copy.reason }}{{ copy.action }}</p>
     </aside>
     <CompositionCompare v-if="original&&comparisonView" :board="board" :colors="color?sceneColor:null" :environment="environment" :grid="grid" :colored="color"/>
     <p v-if="original&&comparisonView&&colorBusy" class="target-guide-tip" role="status">正在读取原图颜色…</p>
@@ -92,6 +92,9 @@ function save() {
       <figcaption>构图示意，非实拍效果；位置、透视与遮挡需现场核对。<span v-if="colorBusy"> 正在填色…</span><span v-else-if="colorFailed"> 填色未完成，线稿仍可查看。</span></figcaption>
     </figure>
     <div class="target-controls"><label><input v-model="environment" type="checkbox"/>环境参考</label><label><input v-model="grid" type="checkbox"/>三分线</label><label v-if="!comparisonView"><input v-model="labels" type="checkbox"/>景物标记</label><label><input v-model="color" type="checkbox"/>物体取色</label><button type="button" @click="save">{{ showSource?'保存原始布局':'保存推荐图' }}</button></div>
+    <slot name="operations" />
+    <component :is="compactAdvice?'details':'div'" :class="compactAdvice?'report-disclosure target-extra-details':''">
+    <summary v-if="compactAdvice">线稿细节与说明</summary>
     <details class="report-disclosure"><summary>线稿阅读说明</summary>
       <p>{{ showSource?'同一组物体轮廓放回原图位置，用于核对物体形状与空间关系；不代表精确分割。':sourcePreserving?`以第 ${board.reference_photo_id.slice(5)} 张为参考保留原取景中的空间关系。${copy.reason}${copy.drawing}`:`以第 ${board.reference_photo_id.slice(5)} 张为参考规划；主体目标占比：宽 ${size.w}%、高 ${size.h}%。这是构图示意，不是实拍预测。` }}<span v-if="hasSceneColor"> 仅在闭合物体轮廓内保留原图分区颜色，适度提亮便于阅读；背景减淡且不补画。颜色不是实拍曝光预测。</span><span v-else-if="color">{{ colorBusy?' 正在准备物体取色…':colorFailed?' 参考图取色未完成，当前为示意色。':' 物体取色需要匹配的参考照片，当前为示意色。' }}</span></p>
       <p v-if="clippedScene" class="target-guide-tip" data-photo-boundary-note>主体与原照片边界接触，画外形体未知；填色闭合不表示真实物体底边。斜线区域未被原照片覆盖。</p>
@@ -117,7 +120,8 @@ function save() {
     <details class="target-legend report-disclosure"><summary>景物标记说明<small>{{ board.layers.length }} 项 · 对照图中编号</small></summary><div class="target-legend-list"><article v-for="(layer,index) in board.layers" :key="index"><b>{{ layer.kind==='background' ? '景' : index+1 }}</b><div><strong>{{ layer.label }}</strong><p>{{ layer.identity_features?.join('、') }}</p><small>{{ layer.certainty==='approximate' ? '视角近似，需试拍' : '特征依据参考照片' }}</small></div></article></div></details>
     <details class="target-changes report-disclosure" aria-label="构图改善对照"><summary>调整前后对比</summary><template v-if="sourcePreserving"><article><div class="change-row change-original"><span>当前取景</span><p>{{ copy.reason }}</p></div><div class="change-row change-adjustment"><span>{{ copy.changeLabel }}</span><p>{{ copy.changeText }}</p></div><div class="change-row change-benefit"><span>现场核对</span><p>保留已观察景物的空间关系，实际效果需要现场试拍。</p></div></article></template><template v-else><article v-for="(change,index) in board.changes" :key="index"><div class="change-row change-original"><span>原图问题</span><p>{{ change.problem }}</p></div><div class="change-row change-adjustment"><span>推荐调整</span><p>{{ change.adjustment }}</p></div><div class="change-row change-benefit"><span>预期改善</span><p>{{ change.benefit }}</p></div></article></template></details>
     <aside class="target-distance"><span class="distance-label">机位与距离 · 现场操作</span><strong>{{ distanceNames[board.distance_relation] }}</strong><p>{{ board.distance_instruction }}</p></aside>
-    <details v-if="board.limitations.length" class="target-limitations report-disclosure"><summary>线稿说明与识别限制<small>{{ board.limitations.length }} 条 · 使用前了解</small></summary><ul><li v-for="note in board.limitations" :key="note">{{ note }}</li></ul></details><span class="report-save-status" role="status">{{ saved }}</span>
+    <details v-if="board.limitations.length" class="target-limitations report-disclosure"><summary>线稿说明与识别限制<small>{{ board.limitations.length }} 条 · 使用前了解</small></summary><ul><li v-for="note in board.limitations" :key="note">{{ note }}</li></ul></details>
+    </component><span class="report-save-status" role="status">{{ saved }}</span>
   </div>
 </template>
 <style scoped>
