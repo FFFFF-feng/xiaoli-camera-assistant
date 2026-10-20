@@ -146,13 +146,39 @@ class WebGuard:
         await (rejected or self.app)(scope, receive, send_with_headers)
 
 
-def create_web_app(settings: Settings, sessions: WebSessions, frontend: Path, pipeline=None):
+def local_workbench_url(value: str, sessions: WebSessions, request: Request) -> str | None:
+    """Only advertise a launcher-provided loopback link to a local browser."""
+    from urllib.parse import urlsplit
+
+    local_hosts = {"127.0.0.1", "localhost", "::1"}
+    try:
+        origin = urlsplit(sessions.origin)
+        url = urlsplit(value)
+        if (origin.hostname not in local_hosts or sessions.trusted_proxy
+                or not request.client or request.client.host not in local_hosts
+                or str(request.base_url).rstrip("/") != sessions.origin
+                or url.scheme != "http" or url.hostname != "127.0.0.1"
+                or url.username or url.password or url.path not in {"", "/"}
+                or url.query or url.fragment or url.port is None
+                or not 1024 <= url.port <= 65535):
+            return None
+        return f"http://127.0.0.1:{url.port}/"
+    except ValueError:
+        return None
+
+
+def create_web_app(settings: Settings, sessions: WebSessions, frontend: Path, pipeline=None,
+                   *, knowledge_workbench_url: str = ""):
     app = create_app(settings, secrets.token_urlsafe(48), pipeline, session_auth=sessions.auth)
     app.add_middleware(WebGuard, sessions=sessions)
 
     @app.get("/web-config")
-    def web_config():
-        return {"web_client": True}
+    def web_config(request: Request):
+        config = {"web_client": True}
+        url = local_workbench_url(knowledge_workbench_url, sessions, request)
+        if url:
+            config["knowledge_workbench_url"] = url
+        return config
 
     @app.post("/session")
     def start_session(request: Request):
@@ -188,4 +214,7 @@ def from_env():
     if not secret and origin.startswith("http://127.0.0.1:"):
         secret = secrets.token_urlsafe(48)
     sessions = WebSessions(secret, origin)
-    return create_web_app(settings, sessions, PROJECT_ROOT / "mobile" / "dist")
+    return create_web_app(
+        settings, sessions, PROJECT_ROOT / "mobile" / "dist",
+        knowledge_workbench_url=os.getenv("WEB_KNOWLEDGE_WORKBENCH_URL", ""),
+    )

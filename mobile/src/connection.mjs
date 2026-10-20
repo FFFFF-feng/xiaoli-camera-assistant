@@ -24,3 +24,18 @@ export function safeSourceUrl(value) {
     return ['https:', 'http:'].includes(url.protocol) ? url.href : null;
   } catch { return null; }
 }
+
+// The import workbench is a local desktop tool, not a public/native client feature.
+export function localWorkbenchUrl(value, pageOrigin) {
+  try {
+    if (typeof value !== 'string') return '';
+    const origin = new URL(pageOrigin);
+    const url = new URL(value);
+    if (!['127.0.0.1', 'localhost', '[::1]'].includes(origin.hostname)
+      || !['http:', 'https:'].includes(origin.protocol)
+      || url.protocol !== 'http:' || url.hostname !== '127.0.0.1'
+      || url.username || url.password || url.search || url.hash || url.pathname !== '/'
+      || !url.port || Number(url.port) < 1024) return '';
+    return url.href;
+  } catch { return ''; }
+}

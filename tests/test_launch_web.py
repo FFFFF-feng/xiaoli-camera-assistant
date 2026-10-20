@@ -2,7 +2,11 @@
 from __future__ import annotations
 
 import importlib.util
+import json
+import sys
+from contextlib import nullcontext
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import Mock
 
 import pytest
@@ -33,6 +37,34 @@ def test_build_failure_does_not_reuse_or_restart_a_stale_server(tmp_path, monkey
     with pytest.raises(web.LaunchError, match="构建失败"):
         web.launch("npm", 8080, no_browser=True)
     selected.assert_not_called()
+
+
+def test_launch_starts_workbench_and_passes_loopback_link(tmp_path, monkeypatch):
+    monkeypatch.setattr(web, "RUNTIME", tmp_path)
+    monkeypatch.setattr(web, "build_frontend", lambda npm: b"index")
+    monkeypatch.setattr(web, "select_port", lambda preferred: (8080, None))
+    environment = {"WEB_SESSION_SECRET": "s" * 48}
+    monkeypatch.setattr(
+        web, "local_environment", lambda port, demo=False: (environment, "demo")
+    )
+    monkeypatch.setattr(web, "ready", lambda port, index, mode: True)
+    process = Mock(pid=1234)
+    monkeypatch.setattr(web.subprocess, "Popen", Mock(return_value=process))
+    fake = SimpleNamespace(
+        LaunchError=RuntimeError,
+        launch_lock=lambda runtime: nullcontext(),
+        ensure_knowledge_workbench=lambda preferred, reserved: "http://127.0.0.1:8503/",
+    )
+    monkeypatch.setitem(sys.modules, "launch_apps", fake)
+
+    assert web.launch("npm", 8080, no_browser=True, knowledge_port=8503).startswith(
+        "http://127.0.0.1:8080/"
+    )
+    assert web.subprocess.Popen.call_args.kwargs["env"][
+        "WEB_KNOWLEDGE_WORKBENCH_URL"
+    ] == "http://127.0.0.1:8503/"
+    state = json.loads((tmp_path / "web-service.json").read_text(encoding="utf-8"))
+    assert state["knowledge_url"] == "http://127.0.0.1:8503/"
 
 
 def test_readiness_rejects_old_frontend_and_wrong_mode(monkeypatch):

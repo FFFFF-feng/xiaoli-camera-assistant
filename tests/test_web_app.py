@@ -2,6 +2,7 @@ import json
 from dataclasses import replace
 from io import BytesIO
 from pathlib import Path
+from unittest.mock import Mock
 
 import pytest
 from fastapi.testclient import TestClient
@@ -60,6 +61,66 @@ def test_static_client_and_private_routes(client):
     assert client.get("/api/v1/devices", headers=HEADERS).status_code == 401
     for path in ["/.env", "/knowledge_app.py", "/vision_lab.py", "/data/knowledge.db"]:
         assert client.get(path).status_code == 404
+
+
+def test_workbench_link_is_only_advertised_to_local_desktop(tmp_path, monkeypatch):
+    from starlette.requests import Request
+
+    def endpoint(app):
+        return next(
+            route.endpoint for route in app.routes
+            if getattr(route, "path", None) == "/web-config"
+        )
+
+    def request(host="127.0.0.1:8080", client_host="127.0.0.1"):
+        server, port = host.rsplit(":", 1) if ":" in host else (host, "80")
+        return Request({
+            "type": "http", "method": "GET", "path": "/web-config",
+            "scheme": "http", "server": (server, int(port)), "client": (client_host, 50000),
+            "root_path": "", "query_string": b"",
+            "headers": [(b"host", host.encode("ascii"))],
+        })
+
+    frontend = tmp_path / "dist"
+    (frontend / "assets").mkdir(parents=True)
+    (frontend / "index.html").write_text("<html>小栗</html>", encoding="utf-8")
+    settings = Settings(True, "", "https://example.invalid", "", "", 5, 1, tmp_path / "knowledge")
+    link = "http://127.0.0.1:8503/"
+    local = create_web_app(
+        settings, WebSessions("s" * 48, "http://127.0.0.1:8080"), frontend,
+        pipeline=Mock(), knowledge_workbench_url=link,
+    )
+    assert endpoint(local)(request()) == {
+        "web_client": True, "knowledge_workbench_url": link,
+    }
+    assert endpoint(local)(request(client_host="192.168.1.2")) == {"web_client": True}
+    assert endpoint(local)(request(host="attacker.invalid")) == {"web_client": True}
+
+    monkeypatch.setenv("WEB_TRUSTED_PROXY_IP", "127.0.0.1")
+    proxied = create_web_app(
+        settings, WebSessions("s" * 48, "http://127.0.0.1:8080"), frontend,
+        pipeline=Mock(), knowledge_workbench_url=link,
+    )
+    assert endpoint(proxied)(request()) == {"web_client": True}
+
+    public = create_web_app(
+        settings, WebSessions("s" * 48, ORIGIN), frontend,
+        pipeline=Mock(), knowledge_workbench_url=link,
+    )
+    assert endpoint(public)(request()) == {"web_client": True}
+
+    for unsafe_link in (
+        "https://127.0.0.1:8503/",
+        "http://127.0.0.1:8503/?token=x",
+        "http://127.0.0.1:8503/import",
+        "http://user:pass@127.0.0.1:8503/",
+        "http://127.0.0.1:80/",
+    ):
+        unsafe = create_web_app(
+            settings, WebSessions("s" * 48, "http://127.0.0.1:8080"), frontend,
+            pipeline=Mock(), knowledge_workbench_url=unsafe_link,
+        )
+        assert endpoint(unsafe)(request()) == {"web_client": True}
 
 
 def test_static_assets_transfer_completely_over_real_http(tmp_path):

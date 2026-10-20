@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
+from urllib.parse import urlsplit
 
 from camera_assistant.knowledge.models import KnowledgeRecord, LibraryId, SourceInfo
 
@@ -27,6 +29,41 @@ ACTION_LABELS = {
     "publish": "发布",
     "retire": "退役",
 }
+
+
+def _launcher_port(state: Path, project_root: Path, project_key: str) -> int | None:
+    if state.stat().st_size > 16 * 1024:
+        return None
+    data = json.loads(state.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        return None
+    project = data.get(project_key)
+    if not isinstance(project, str) or Path(project).resolve() != project_root.resolve():
+        return None
+    port = data.get("port")
+    if type(port) is int and 1024 <= port <= 65535:
+        return port
+    url = data.get("url")
+    if isinstance(url, str):
+        parsed = urlsplit(url)
+        if (parsed.scheme == "http" and parsed.hostname == "127.0.0.1"
+                and not parsed.username and not parsed.password
+                and parsed.path in {"", "/"} and not parsed.query and not parsed.fragment
+                and parsed.port is not None and 1024 <= parsed.port <= 65535):
+            return parsed.port
+    return None
+
+
+def assistant_web_url(project_root: Path) -> str:
+    """Use this project's current local launcher port, never an arbitrary URL."""
+    for name, key in (("web-service.json", "project"), ("web-start.json", "project_root")):
+        try:
+            port = _launcher_port(project_root / ".launcher" / name, project_root, key)
+        except (OSError, ValueError, TypeError):
+            continue
+        if port is not None:
+            return f"http://127.0.0.1:{port}/"
+    return "http://localhost:8501/"
 
 
 def template_record(library_id: LibraryId = "composition") -> KnowledgeRecord:

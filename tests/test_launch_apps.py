@@ -70,6 +70,26 @@ def test_existing_healthy_project_service_is_reused(
     assert launcher.select_port(services[0], {8502}) == (8501, True)
 
 
+def test_knowledge_workbench_reuses_owned_service_or_starts_one(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(launcher, "RUNTIME", tmp_path)
+    start = Mock()
+    monkeypatch.setattr(launcher, "start_service", start)
+    monkeypatch.setattr(launcher, "select_port", lambda service, reserved: (8503, True))
+    assert launcher.ensure_knowledge_workbench(8503, {8080}) == "http://127.0.0.1:8503/"
+    start.assert_not_called()
+
+    process = Mock(pid=1234)
+    start.return_value = process
+    monkeypatch.setattr(launcher, "select_port", lambda service, reserved: (8504, False))
+    wait = Mock()
+    monkeypatch.setattr(launcher, "wait_ready", wait)
+    assert launcher.ensure_knowledge_workbench(8503, {8080}) == "http://127.0.0.1:8504/"
+    start.assert_called_once()
+    wait.assert_called_once()
+
+
 def test_unhealthy_existing_process_is_not_reused(
     services: tuple, monkeypatch: pytest.MonkeyPatch
 ) -> None:

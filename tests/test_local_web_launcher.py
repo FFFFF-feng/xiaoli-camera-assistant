@@ -1,8 +1,11 @@
 import json
 import sys
+from contextlib import nullcontext
 from dataclasses import replace
 from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import Mock
 
 import pytest
 
@@ -50,3 +53,41 @@ def test_check_output_survives_windows_powershell_native_pipe(monkeypatch, capsy
     assert json.loads(output)["project_root"] == str(launcher.ROOT)
     assert json.loads(output)["launch_id"] == "test-launch"
     assert configured().api_key not in output
+
+
+def test_startup_links_workbench_and_passes_its_url(monkeypatch, tmp_path):
+    root = tmp_path / "project"
+    root.mkdir()
+    monkeypatch.setattr(launcher, "ROOT", root)
+    monkeypatch.setattr(launcher, "prepare_settings", lambda _: configured())
+    monkeypatch.setattr(launcher, "build_id", lambda: "test-build")
+    monkeypatch.setattr(launcher, "configuration_id", lambda settings: "test-config")
+    monkeypatch.setattr(sys, "argv", ["local_web.py", "--port", "8080", "--launch-id", "test-launch"])
+
+    captured = {}
+    app = Mock()
+    app.get.return_value = lambda fn: fn
+
+    def create_app(settings, sessions, frontend, **kwargs):
+        captured["kwargs"] = kwargs
+        return app
+
+    import uvicorn
+
+    from camera_assistant import web_app
+
+    monkeypatch.setattr(web_app, "create_web_app", create_app)
+    run = Mock()
+    monkeypatch.setattr(uvicorn, "run", run)
+    start = Mock(return_value="http://127.0.0.1:8503/")
+    fake = SimpleNamespace(
+        LaunchError=RuntimeError,
+        launch_lock=lambda runtime: nullcontext(),
+        ensure_knowledge_workbench=start,
+    )
+    monkeypatch.setitem(sys.modules, "launch_apps", fake)
+
+    launcher.main()
+    start.assert_called_once_with(8503, {8080})
+    assert captured["kwargs"]["knowledge_workbench_url"] == "http://127.0.0.1:8503/"
+    run.assert_called_once()

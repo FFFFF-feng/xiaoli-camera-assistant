@@ -8,7 +8,7 @@ import UiIcon from './components/UiIcon.vue';
 import ApertureMark from './components/ApertureMark.vue';
 import { createSceneTransition, useTactileSurfaces } from './interaction';
 import { selectSceneFiles } from './scene-files.mjs';
-import { normalizeBaseUrl, safeSourceUrl } from './connection.mjs';
+import { localWorkbenchUrl, normalizeBaseUrl, safeSourceUrl } from './connection.mjs';
 import { readAnalysis } from './analysis-stream.mjs';
 import { liveElapsed } from './progress-timing.mjs';
 import { initialAnalysisProgress, advanceAnalysisProgress } from './analysis-progress.mjs';
@@ -23,6 +23,7 @@ import { compatibleLenses, deviceSelection, linkedCameraSettings, mountNames, se
 
 const page = ref<'shoot' | 'result' | 'history' | 'connect'>('shoot');
 const webHosted = ref(false);
+const knowledgeWorkbenchUrl = ref('');
 const archiveKey = 'xiaoli-advice-history-v1';
 type SavedAdvice = { id: string; date: string; intent: string; analysis: Analysis };
 const history = ref<SavedAdvice[]>([]);
@@ -186,6 +187,7 @@ onMounted(async () => {
     const config = await response.json();
     if (config.web_client !== true) return;
     webHosted.value = true;
+    knowledgeWorkbenchUrl.value = localWorkbenchUrl(config.knowledge_workbench_url, window.location.origin);
     await connect();
   } catch { /* A standalone Android/LAN client has no web gateway. */ }
 });
@@ -392,6 +394,10 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
       <div class="brand"><span class="brand-mark" aria-hidden="true"><img :src="mascot" alt="" /></span><div><strong>小栗<span class="brand-divider"> / </span>取景参谋</strong><span>YOUR EVERYDAY PHOTO COMPANION</span></div></div>
       <button class="status" :class="{ online: connected }" @click="navigate('connect')"><i aria-hidden="true"></i>{{ statusText }}</button>
     </header>
+    <aside v-if="webHosted && knowledgeWorkbenchUrl" class="local-workbench" aria-label="本地知识管理">
+      <span>本地资料管理</span>
+      <a :href="knowledgeWorkbenchUrl" target="_blank" rel="noopener noreferrer">知识库导入 <UiIcon name="arrow" /></a>
+    </aside>
     <main ref="mainContent" :data-scene="page">
       <div v-if="error && page !== 'shoot'" class="notice error" role="alert">{{ error }}</div>
       <section v-if="page === 'shoot'" aria-labelledby="shoot-title">

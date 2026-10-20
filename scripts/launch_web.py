@@ -274,15 +274,22 @@ def ready(port: int, index: bytes, mode: str) -> bool:
         return False
 
 
-def launch(npm: str, preferred: int, *, demo: bool = False, no_browser: bool = False) -> str:
+def launch(npm: str, preferred: int, *, demo: bool = False, no_browser: bool = False,
+           knowledge_port: int = 8503) -> str:
     # Share the launch lock with the legacy entry point, but never stop legacy/unknown services.
     sys.path.insert(0, str(ROOT / "scripts"))
-    from launch_apps import launch_lock
+    from launch_apps import LaunchError as WorkbenchLaunchError
+    from launch_apps import ensure_knowledge_workbench, launch_lock
 
     with launch_lock(RUNTIME):
         index = build_frontend(npm)
         port, previous = select_port(preferred)
         environment, mode = local_environment(port, demo)
+        try:
+            knowledge_url = ensure_knowledge_workbench(knowledge_port, {port})
+        except WorkbenchLaunchError as error:
+            raise LaunchError(f"知识库工作台启动失败：{error}") from None
+        environment["WEB_KNOWLEDGE_WORKBENCH_URL"] = knowledge_url
         if previous:
             if owned_pid(port) != previous:
                 raise LaunchError("端口归属已变化，请重新启动；未关闭其他程序。")
@@ -306,7 +313,8 @@ def launch(npm: str, preferred: int, *, demo: bool = False, no_browser: bool = F
             time.sleep(.25)
         url = f"http://127.0.0.1:{port}/?v=local-{time.time_ns()}"
         (RUNTIME / "web-service.json").write_text(json.dumps({"pid": process.pid, "port": port,
-            "url": url, "project": str(ROOT), "mode": mode}, ensure_ascii=False, indent=2), encoding="utf-8")
+            "url": url, "project": str(ROOT), "mode": mode, "knowledge_url": knowledge_url},
+            ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"当前项目：{ROOT}\n新版网页已启动（{'云模型' if mode == 'cloud' else '规则演示'}）：{url}", flush=True)
     print("本次仅在本机运行，没有上传或更新服务器。日志：.launcher/web.log", flush=True)
     if mode == "cloud":
@@ -319,18 +327,20 @@ def launch(npm: str, preferred: int, *, demo: bool = False, no_browser: bool = F
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="构建并启动当前版本的小栗网页")
     parser.add_argument("--port", "--main-port", type=int, default=8080)
+    parser.add_argument("--knowledge-port", type=int, default=8503, help="知识库导入工作台首选端口")
     parser.add_argument("--no-browser", action="store_true")
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--demo", action="store_true", help="仅运行规则演示，不调用云模型")
     args = parser.parse_args(argv)
     try:
-        if not 1024 <= args.port <= 65515:
+        if not all(1024 <= port <= 65515 for port in (args.port, args.knowledge_port)):
             raise LaunchError("端口必须在1024到65515之间。")
         npm = check_runtime()
         if args.check:
             print("新版网页运行依赖检查通过。")
             return 0
-        launch(npm, args.port, demo=args.demo, no_browser=args.no_browser)
+        launch(npm, args.port, demo=args.demo, no_browser=args.no_browser,
+               knowledge_port=args.knowledge_port)
         return 0
     except (LaunchError, OSError, RuntimeError) as error:
         print(f"启动失败：{error}", file=sys.stderr, flush=True)

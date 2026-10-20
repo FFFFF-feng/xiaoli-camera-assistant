@@ -18,6 +18,7 @@ from camera_assistant.knowledge.ui_helpers import (
     ACTION_LABELS,
     KIND_LABELS,
     STATUS_LABELS,
+    assistant_web_url,
     template_json,
 )
 from camera_assistant.knowledge.uploads import (
@@ -379,7 +380,7 @@ def main() -> None:
                 else "旧版演示库（尚未开启 managed）"
             )
         )
-        st.link_button("打开取景参谋 ↗", "http://localhost:8501/", use_container_width=True)
+        st.link_button("打开取景参谋 ↗", assistant_web_url(PROJECT_ROOT), use_container_width=True)
         st.caption("仅限本机 / 可信团队使用。尚无登录鉴权，不要直接开放公网。")
 
     selected_library: LibraryId | None = None if scope == "all" else scope

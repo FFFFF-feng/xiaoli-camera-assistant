@@ -184,6 +184,26 @@ def wait_ready(process: subprocess.Popen, port: int, log: Path, timeout: float =
     raise LaunchError(f"服务启动超时，请查看日志：{log}")
 
 
+def ensure_knowledge_workbench(preferred: int, reserved: set[int]) -> str:
+    """Called under the shared startup lock; never expose or stop another app."""
+    service = Service("知识库导入工作台", "knowledge_app.py", preferred, "knowledge.log")
+    if not (ROOT / service.filename).is_file():
+        raise LaunchError("知识库入口不存在，请保留完整项目目录。")
+    port, reused = select_port(service, reserved)
+    if not reused:
+        process = start_service(service, port, RUNTIME)
+        try:
+            wait_ready(process, port, RUNTIME / service.log_name)
+        except BaseException:
+            if process.poll() is None:
+                process.terminate()
+                process.wait(timeout=10)
+            raise
+    url = f"http://127.0.0.1:{port}/"
+    print(f"{'复用' if reused else '启动'}知识库导入工作台：{url}", flush=True)
+    return url
+
+
 def launch(services: tuple[Service, ...], *, no_browser: bool = False) -> list[str]:
     created: list[subprocess.Popen] = []
     urls: list[str] = []

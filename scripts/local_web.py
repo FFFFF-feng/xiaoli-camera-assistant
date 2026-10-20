@@ -7,6 +7,7 @@ import json
 import os
 import secrets
 import shutil
+import sys
 from dataclasses import asdict
 from pathlib import Path
 
@@ -66,6 +67,7 @@ def main() -> None:
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--port", type=int, default=8080)
+    parser.add_argument("--knowledge-port", type=int, default=8503)
     parser.add_argument("--resource-root", type=Path, default=ROOT.parent / "xiaoli-camera-assistant")
     parser.add_argument("--launch-id", default=secrets.token_hex(16))
     parser.add_argument("--check", action="store_true")
@@ -86,7 +88,19 @@ def main() -> None:
         return
     origin = f"http://127.0.0.1:{args.port}"
     sessions = WebSessions(secrets.token_urlsafe(48), origin)
-    app = create_web_app(settings, sessions, ROOT / "mobile/dist")
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from launch_apps import LaunchError as WorkbenchLaunchError
+    from launch_apps import ensure_knowledge_workbench, launch_lock
+
+    try:
+        with launch_lock(ROOT / ".launcher"):
+            knowledge_url = ensure_knowledge_workbench(args.knowledge_port, {args.port})
+    except WorkbenchLaunchError as error:
+        raise SystemExit(f"知识库工作台启动失败：{error}") from None
+    app = create_web_app(
+        settings, sessions, ROOT / "mobile/dist",
+        knowledge_workbench_url=knowledge_url,
+    )
     launch_token = secrets.token_urlsafe(40)
 
     @app.get("/local-status")
