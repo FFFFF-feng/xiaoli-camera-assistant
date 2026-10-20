@@ -10,15 +10,22 @@ _observer: ContextVar[Callable[[dict], None] | None] = ContextVar(
     "analysis_timing_observer", default=None,
 )
 _stage: ContextVar[str | None] = ContextVar("analysis_current_stage", default=None)
+_started_observer: ContextVar[Callable[[str], None] | None] = ContextVar(
+    "analysis_stage_started_observer", default=None,
+)
 
 
 @contextmanager
-def observe_timings(callback: Callable[[dict], None]):
+def observe_timings(
+    callback: Callable[[dict], None], *, on_started: Callable[[str], None] | None = None,
+):
     """Receive stage, duration_seconds and status; never receive analysis content."""
     token = _observer.set(callback)
+    started_token = _started_observer.set(on_started)
     try:
         yield
     finally:
+        _started_observer.reset(started_token)
         _observer.reset(token)
 
 
@@ -33,6 +40,12 @@ def measure_stage(stage: str):
     token = _stage.set(stage)
     status = "failed"
     try:
+        started_observer = _started_observer.get()
+        if started_observer is not None:
+            try:
+                started_observer(stage)
+            except Exception:  # noqa: BLE001, S110 - feedback must not interrupt analysis
+                pass
         yield
         status = "complete"
     finally:

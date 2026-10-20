@@ -20,6 +20,7 @@ from starlette.requests import Request
 from camera_assistant import mobile_api
 from camera_assistant.config import Settings
 from camera_assistant.services import cloud
+from camera_assistant.services.timing import measure_stage
 
 TOKEN = "test-stream-token-not-a-real-secret"
 AUTH = {"Authorization": "Bearer " + TOKEN}
@@ -126,6 +127,24 @@ def test_default_json_envelope_and_cloud_parallel_setting_are_compatible():
     assert {"request_id", "analysis_mode", "image_provenance", "result"} <= response.json().keys()
     assert response.json()["scene_photo_count"] == 1
     assert pipeline.calls == [{"parallel_advice": False}]
+
+
+def test_local_contour_start_is_streamed_before_its_completed_timing():
+    def run(content, request, **options):
+        with measure_stage("composition_contours"):
+            options["on_progress"]("测试处理中")
+        return Value()
+
+    with TestClient(mobile_api.create_app(configured(), TOKEN, FakePipeline(run))) as client:
+        events = decoded(upload(client))
+    start = next(item for item in events if item.get("stage") == "composition_contours"
+                 and item["type"] == "progress")
+    finish = next(item for item in events if item.get("stage") == "composition_contours"
+                  and item["type"] == "timing")
+    assert "提取主体轮廓" in start["message"]
+    assert events.index(start) < events.index(finish)
+    assert set(start) == {"type", "stage", "message", "elapsed_seconds"}
+    assert finish["status"] == "complete" and events[-1]["type"] == "result"
 
 
 @pytest.mark.parametrize("stream_enabled", [True, False])
