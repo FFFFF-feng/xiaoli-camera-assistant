@@ -110,6 +110,64 @@ def test_crop_uses_one_transform_not_independent_object_placement(inspection):
     assert board.layers[0].bbox == pytest.approx([.3, .1, .5, .9])
 
 
+@pytest.mark.parametrize("shift,mode", [(0, "source_preserving"), (.02, "source_preserving"), (-.1, "schematic")])
+def test_legacy_path_uses_same_actual_change_policy(inspection, shift, mode):
+    inspection.metrics.width, inspection.metrics.height = 1200, 900
+    value = advice()
+    value.proposals[0].storyboard.aspect = "landscape"
+    value.proposals[0].storyboard.layers[0].bbox = [.4+shift, .1, .5+shift, .9]
+    result = service.apply_observed_layout(value, ObservedScene.model_validate(observed()), inspection)
+    assert result.proposals[0].storyboard.layout_mode == mode
+
+
+def test_legacy_multiple_mains_share_transform(inspection):
+    data = observed()
+    data["objects"].append({**deepcopy(data["objects"][0]), "object_id": "object2", "bbox": [.6, .1, .7, .9]})
+    value = advice(("object1", "object2"))
+    board = value.proposals[0].storyboard
+    board.aspect = "landscape"
+    board.layers[0].bbox = [.2, .1, .3, .9]
+    board.layers[1].bbox = [.7, .2, .8, .8]
+    board.layers[1].role = "main"
+    inspection.metrics.width, inspection.metrics.height = 1200, 900
+    result = service.apply_observed_layout(value, ObservedScene.model_validate(data), inspection)
+    a, b = result.proposals[0].storyboard.layers
+    assert a.bbox == pytest.approx([.2, .1, .3, .9])
+    assert b.bbox == pytest.approx([.4, .1, .5, .9])
+
+
+def test_optional_target_frame_is_bounded_and_old_boards_still_load():
+    from camera_assistant.composition_models import TargetBoard
+    old = advice().proposals[0].storyboard.model_dump(exclude={"target_frame"})
+    assert TargetBoard.model_validate(old).target_frame is None
+    with pytest.raises(ValidationError):
+        TargetBoard.model_validate({**old, "target_frame": [0, 0, 2, 1]})
+
+
+def test_valid_aspect_crop_of_edge_subject_remains_projection(inspection):
+    data = observed()
+    data["objects"][0]["bbox"] = [0., .1, .1, .9]
+    result = service.apply_observed_layout(advice(action="crop", crop=[0., 0., .5, 1.]),
+        ObservedScene.model_validate(data), inspection)
+    board = result.proposals[0].storyboard
+    assert board.layout_mode == "crop_projection"
+    assert board.layers[0].bbox == pytest.approx([0., .1, .2, .9])
+
+
+def test_edge_evidence_survives_legacy_source_preservation(inspection):
+    from camera_assistant.services.photo_boundary import boundary_evidence
+    data = observed()
+    obj = data["objects"][0]
+    obj["bbox"] = [0., .1, .1, .9]
+    obj["photo_boundary"] = boundary_evidence(obj["outline"], obj["bbox"], 1200, 800)
+    source = ObservedScene.model_validate(data)
+    result = service.apply_observed_layout(advice(), source, inspection)
+    board = result.proposals[0].storyboard
+    assert board.layout_mode == "source_preserving" and board.target_frame == [0, 0, 1, 1]
+    assert board.layers[0].photo_boundary == source.objects[0].photo_boundary
+    assert board.layers[0].outline == source.objects[0].outline
+
+
 @pytest.mark.parametrize("crop", [None, [.45, 0, .95, 1], [.2, .1, .8, .9]])
 def test_missing_cut_subject_or_wrong_aspect_crop_is_not_drawn(crop, inspection):
     result = service.apply_observed_layout(advice(action="crop", crop=crop),

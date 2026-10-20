@@ -5,8 +5,6 @@ import TargetComposition from './TargetComposition.vue';
 import PhotoFeedback from './PhotoFeedback.vue';
 import SceneSurvey from './SceneSurvey.vue';
 import ReportHeading from './ReportHeading.vue';
-import FieldActionCard from './FieldActionCard.vue';
-import { fieldActionCard } from '../field-actions.mjs';
 import { targetCompositionCopy, usableTargetBoard } from '../target-board.mjs';
 import { usableFramingPlan } from '../composition-sketch.mjs';
 import { compositionStatus } from '../composition-status.mjs';
@@ -30,7 +28,6 @@ const compareId=computed(()=>selectedPhoto.value || board.value?.reference_photo
 const comparePreview=computed(()=>props.photos.find(p=>p.id===compareId.value)?.url || props.preview);
 const survey=computed(()=>props.result.scene?.scene_survey);
 const framing = computed(() => usableFramingPlan(current.value?.framing_plan) as FramingPlan | null);
-const operations = computed(() => fieldActionCard(current.value, board.value, framing.value));
 const framingCopy = computed(() => board.value?.layout_mode === 'source_preserving'
   ? targetCompositionCopy(board.value) : null);
 const framingChecklist = computed(() => {
@@ -45,7 +42,7 @@ const framingChecklist = computed(() => {
     '取景状态': `${copy.status ? `${copy.status} · ` : ''}${copy.heading}。${copy.reason}`,
     [copy.changeLabel]: copy.action,
     '空间关系': copy.changeText,
-    '线绘说明': copy.drawing,
+    '取景说明': copy.drawing,
     '边界核对': framing.value.edge_check,
     '环境控制': framing.value.background_control,
   };
@@ -68,17 +65,15 @@ const shadePath = computed(() => {
   <section class="composition-panel" aria-labelledby="composition-title">
     <p v-if="survey && survey.status !== 'consistent'" class="helper" role="status">参考照片的场景关联需核对，请以原图为准。</p>
     <details v-if="survey" class="report-disclosure"><summary>场景与参考照片</summary><SceneSurvey :survey="survey"/></details>
-    <div id="result-composition" class="report-section-anchor"><ReportHeading :title="framingCopy?'原始布局线稿对照':'推荐构图'" title-id="composition-title" eyebrow="01 · 画面方向" :description="framingCopy?'本次没有形成新的取景布局；以下线稿用于核对原取景和现场拍摄重点。':'查看主体的位置、大小和前后层次。'" icon="image" level="h2"><span class="result-badge">{{ framingCopy?'本次未调整取景':presentation.badge }}</span></ReportHeading></div>
+    <div id="result-composition" class="report-section-anchor"><ReportHeading :title="framingCopy?framingCopy.heading:'推荐构图示意'" title-id="composition-title" eyebrow="01 · 画面方向" :description="framingCopy?'查看原取景中的空间关系和现场拍摄重点。':'查看主体的位置、大小和前后层次。'" icon="image" level="h2"><span class="result-badge">{{ presentation.badge }}</span></ReportHeading></div>
     <div v-if="proposals.length" class="composition-plan-switch" role="group" aria-label="选择构图方案"><button v-for="(proposal, index) in proposals" :key="index" type="button" :aria-pressed="selected === index" @click="selected = index; selectedCrop = null; selectedPhoto = ''">方案{{ index+1 }} · {{ actionNames[proposal.action_type] || '取景' }}</button></div>
-    <div v-if="preview || board" class="composition-view-switch" role="group" aria-label="构图查看方式"><button type="button" :aria-pressed="view === 'sketch'" @click="view = 'sketch'">{{ framingCopy?'原取景线稿':'推荐构图线稿' }}</button><button v-if="preview" type="button" :aria-pressed="view === 'photo'" @click="view = 'photo'">原图与裁切对照</button></div>
+    <div v-if="framing" class="framing-diagnosis"><strong>先看这一点</strong><p>{{ framingCopy?.reason || framing.diagnosis }}</p><span>{{ framingCopy?framingCopy.action:`视觉主次：${framing.visual_priority}` }}</span></div>
+    <div v-if="preview || board" class="composition-view-switch" role="group" aria-label="构图查看方式"><button type="button" :aria-pressed="view === 'sketch'" @click="view = 'sketch'">{{ framingCopy?'当前取景与现场调整':'推荐构图示意' }}</button><button v-if="preview" type="button" :aria-pressed="view === 'photo'" @click="view = 'photo'">原图与裁切对照</button></div>
     <PhotoFeedback v-if="preview && view==='photo'" :source="preview" :crop="current?.action_type==='crop'?current.crop_bbox:null"/>
     <template v-if="view === 'sketch' || !preview">
-      <TargetComposition v-if="board" :board="board" :reference="boardReference" compact-advice>
-        <template #operations><div v-if="operations" id="result-action-plan" class="report-section-anchor"><FieldActionCard :card="operations" /></div></template>
-      </TargetComposition>
+      <TargetComposition v-if="board" :board="board" :reference="boardReference" :actions="current?.actions" :framing="framing" />
       <div v-else-if="presentation.failed" class="sketch-unavailable" role="status"><strong>推荐线稿未完成</strong><p>{{ presentation.reason }}{{ presentation.action }}</p><button v-if="preview" class="secondary" type="button" @click="view='photo'">查看原图对照</button><small>重新分析会再次调用模型，不会自动重试。</small></div>
     </template>
-    <div v-if="operations && (!board || view==='photo')" id="result-action-plan" class="report-section-anchor"><FieldActionCard :card="operations" /></div>
     <details v-if="result.composition?.diagnostics?.length || result.composition?.notes.length || result.composition?.trace_id" class="photo-inspection report-disclosure"><summary>查看生成环节与说明</summary><p v-for="(item,index) in result.composition?.diagnostics" :key="index">{{ diagnosticNames[item.stage] }}：{{ diagnosticStatus[item.status] }}<small class="diagnostic-code">{{ item.code }}</small></p><p v-if="current?.storyboard&&!board">画面展示：绘图数据检查未通过。</p><p v-if="result.composition?.trace_id" class="diagnostic-code">排查编号：{{ result.composition.trace_id }}</p><p v-for="note in result.composition?.notes" :key="note">{{ note }}</p></details>
     <details v-if="preview && view === 'photo'" class="photo-inspection" :open="selectedCrop!==null"><summary>检查原图主体与裁切边界</summary>
       <div v-if="photos.length>1" class="reference-photo-switch" aria-label="原图参考选择"><button v-for="item in photos" :key="item.id" type="button" :aria-pressed="compareId===item.id" @click="selectedPhoto=item.id; selectedCrop=null">第 {{ item.id.slice(5) }} 张</button></div><div class="composition-image">
@@ -94,14 +89,16 @@ const shadePath = computed(() => {
       <p class="helper">参考线辅助取景，不修改原照片。{{ subjects.length ? `已定位主体：${subjects.map(s => s.label_display).join('、')}。` : '本次未确认可靠主体框。' }}</p>
     </details>
     <template v-if="result.composition">
-      <details v-if="current" class="advice-details report-disclosure"><summary>建议详情与适用条件</summary>
-        <p v-if="framing?.visual_priority" class="helper">视觉主次：{{ framing.visual_priority }}</p>
+      <article v-if="current" id="result-action-plan" class="composition-proposal report-section-anchor">
+        <ReportHeading title="接下来，照着这样拍" eyebrow="02 · 现场步骤" description="按顺序试拍，再回看画面是否达到预期。" icon="camera" level="h2" />
+        <span class="proposal-type">{{ actionNames[current.action_type] || '构图建议' }}</span><h3>{{ current.goal }}</h3>
+        <ol class="composition-steps"><li v-for="action in current.actions" :key="action">{{ action }}</li></ol>
         <button v-if="current.crop_bbox && preview" class="secondary" type="button" :aria-pressed="selectedCrop === selected" @click="view = 'photo'; selectedPhoto = 'photo1'; selectedCrop = selectedCrop === selected ? null : selected">{{ selectedCrop === selected ? '关闭裁切参考' : '在原图上看裁切参考' }}</button>
-        <template v-for="(items,title) in { '拍摄理由': current.reasons, '适用条件': current.conditions, '需要取舍': current.tradeoffs, '方案限制': current.limitations }" :key="title"><section v-if="items.length" class="proposal-explanation"><h4>{{ title }}</h4><ul><li v-for="text in items" :key="text">{{ text }}</li></ul></section></template>
+        <details v-if="current.reasons.length || current.conditions.length || current.tradeoffs.length || current.limitations.length" class="report-disclosure"><summary>为什么这样拍 · 适用条件</summary><template v-for="(items,title) in { '拍摄理由': current.reasons, '适用条件': current.conditions, '需要取舍': current.tradeoffs, '方案限制': current.limitations }" :key="title"><section v-if="items.length" class="proposal-explanation"><h4>{{ title }}</h4><ul><li v-for="text in items" :key="text">{{ text }}</li></ul></section></template></details>
+      </article>
       <details v-if="framing" class="framing-details report-disclosure"><summary>取景检查清单<small>摆位、比例、留白与边缘</small></summary><dl class="framing-checklist"><div v-for="(text,label) in framingChecklist" :key="label"><dt>{{ label }}</dt><dd>{{ text }}</dd></div></dl><p class="helper">{{ framingCopy?framingCopy.drawing:'推荐线稿表达目标构图；原图用于核对物体特征。实际透视、遮挡与新视角仍需现场试拍验证。' }}</p></details>
-      <details v-if="result.composition.uncertainties.length || result.composition.observations.length" class="composition-evidence report-disclosure"><summary>观察与现场核对</summary><p v-for="text in result.composition.observations" :key="text">{{ text }}</p><ul><li v-for="text in result.composition.uncertainties" :key="text">{{ text }}</li></ul></details>
-      </details>
       <p v-if="!result.composition.proposals.length" class="helper">{{ result.composition.status === 'demo' ? '当前规则演示提供参数与操作起点。配置真实图像模型后，小栗才能针对画面给出构图建议。' : '本次没有通过校验的构图方案。可以补充主体与希望保留的画面，再试一次。' }}</p>
+      <details v-if="result.composition.uncertainties.length || result.composition.observations.length" class="composition-evidence report-disclosure"><summary>观察与现场核对</summary><p v-for="text in result.composition.observations" :key="text">{{ text }}</p><ul><li v-for="text in result.composition.uncertainties" :key="text">{{ text }}</li></ul></details>
     </template>
     <p v-else class="helper">服务尚未开启构图分析；拍摄参数与操作建议仍可使用。</p>
   </section>

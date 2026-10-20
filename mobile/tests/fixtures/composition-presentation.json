@@ -1,0 +1,624 @@
+[
+  {
+    "name": "近似恒等变换",
+    "board": {
+      "aspect": "landscape",
+      "reference_photo_id": "photo1",
+      "intent": "近似恒等变换",
+      "narration": "",
+      "distance_relation": "unknown",
+      "distance_instruction": "当前布局变化很小，保留原取景；按文字动作试拍，检查主体、边缘和背景。",
+      "layers": [
+        {
+          "label": "测试建筑",
+          "kind": "building",
+          "role": "main",
+          "depth": 1,
+          "bbox": [
+            0.4,
+            0.1,
+            0.5,
+            0.9
+          ],
+          "color": "slate",
+          "representation": "silhouette",
+          "outline": [
+            [
+              0.0,
+              0.15
+            ],
+            [
+              0.5,
+              0.0
+            ],
+            [
+              1.0,
+              0.15
+            ],
+            [
+              1.0,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ]
+          ],
+          "contours": [],
+          "holes": [],
+          "outline_style": "angular",
+          "details": [
+            [
+              [
+                0.2,
+                0.3
+              ],
+              [
+                0.8,
+                0.3
+              ]
+            ],
+            [
+              [
+                0.3,
+                0.3
+              ],
+              [
+                0.3,
+                0.95
+              ]
+            ]
+          ],
+          "identity_features": [
+            "合成测试轮廓"
+          ],
+          "evidence_photo_ids": [
+            "photo1"
+          ],
+          "certainty": "approximate",
+          "source_object_id": "object1",
+          "source_bbox": [
+            0.4,
+            0.1,
+            0.5,
+            0.9
+          ],
+          "source_details": null,
+          "mobility": "fixed",
+          "photo_boundary": null,
+          "category_adaptation": null
+        }
+      ],
+      "changes": [
+        {
+          "problem": "近似恒等变换",
+          "adjustment": "按现场操作提示试拍，再核对主体位置和边缘余量。",
+          "benefit": "避免把近似原图的示意误认为新机位效果，改善仍需现场确认。"
+        }
+      ],
+      "limitations": [
+        "实际缩放、位移和主体占比变化低于展示阈值：保留原取景，未模拟新机位。",
+        "这是基于已观察轮廓的取景示意，不预测侧移后的视差、透视或遮挡；请按文字动作现场试拍。",
+        "所有景物使用同一取景变换；超出画框的环境线索被裁去，框内未绘制处不等于现场空白。",
+        "此图为合成验收样本，不验证真实照片的识别质量。"
+      ],
+      "render_basis": "source_geometry",
+      "layout_mode": "source_preserving",
+      "source_photo_aspect": 1.3333333333333333,
+      "layout_engine": "local_v1",
+      "observed_frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "target_frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "unrendered_objects": []
+    },
+    "framing": {
+      "diagnosis": "近似恒等变换",
+      "visual_priority": "先看测试建筑，其余已观察景物保留相互位置。",
+      "placement": "主体中心横向45%、纵向50%（从左上角计）。",
+      "scale": "主体宽约10%、高约80%，保留真实长宽比例。",
+      "negative_space": "四边余量：左40%、右50%、上10%、下10%；余量可能含其他景物，不等于留白。",
+      "edge_check": "检查全部主要主体的外轮廓；原图未拍全的部分无法由本图恢复。",
+      "background_control": "环境按同一取景变换呈现，不通过挪动背景虚构遮挡改善。",
+      "success_check": "核对主体宽高占比；检查四边是否切断关键部位，并现场确认背景干扰是否减弱。"
+    },
+    "actions": [
+      "检查塔顶与四边余量，再试拍一张"
+    ],
+    "reference": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9IiNjOWRlZTkiLz48cmVjdCB5PSI0ODAiIHdpZHRoPSI4MDAiIGhlaWdodD0iMTIwIiBmaWxsPSIjYWNiZGEwIi8+PHBvbHlnb24gcG9pbnRzPSIzMjAuMCwxMzIuMCAzNjAuMCw2MC4wIDQwMC4wLDEzMi4wIDQwMC4wLDU0MC4wIDMyMC4wLDU0MC4wIiBmaWxsPSIjZDBhZTgzIiBzdHJva2U9IiM0MTM5MmYiIHN0cm9rZS13aWR0aD0iMyIvPjxwb2x5bGluZSBwb2ludHM9IjMzNi4wLDIwNC4wIDM4NC4wLDIwNC4wIiBmaWxsPSJub25lIiBzdHJva2U9IiM0MTM5MmYiIHN0cm9rZS13aWR0aD0iMyIvPjxwb2x5bGluZSBwb2ludHM9IjM0NC4wLDIwNC4wIDM0NC4wLDUxNi4wIiBmaWxsPSJub25lIiBzdHJva2U9IiM0MTM5MmYiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjIwIiB5PSI1NzAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4Ij5TWU5USEVUSUMgVEVTVCBGSVhUVVJFPC90ZXh0Pjwvc3ZnPg=="
+  },
+  {
+    "name": "明显左移并放大",
+    "board": {
+      "aspect": "landscape",
+      "reference_photo_id": "photo1",
+      "intent": "明显左移并放大",
+      "narration": "",
+      "distance_relation": "unknown",
+      "distance_instruction": "本图仅表示取景范围与主体占比；身体移动方向和距离按文字建议现场核对。",
+      "layers": [
+        {
+          "label": "测试建筑",
+          "kind": "building",
+          "role": "main",
+          "depth": 1,
+          "bbox": [
+            0.2758333333333333,
+            0.040000000000000036,
+            0.3908333333333333,
+            0.96
+          ],
+          "color": "slate",
+          "representation": "silhouette",
+          "outline": [
+            [
+              0.0,
+              0.15
+            ],
+            [
+              0.5,
+              0.0
+            ],
+            [
+              1.0,
+              0.15
+            ],
+            [
+              1.0,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ]
+          ],
+          "contours": [],
+          "holes": [],
+          "outline_style": "angular",
+          "details": [
+            [
+              [
+                0.2,
+                0.3
+              ],
+              [
+                0.8,
+                0.3
+              ]
+            ],
+            [
+              [
+                0.3,
+                0.3
+              ],
+              [
+                0.3,
+                0.95
+              ]
+            ]
+          ],
+          "identity_features": [
+            "合成测试轮廓"
+          ],
+          "evidence_photo_ids": [
+            "photo1"
+          ],
+          "certainty": "approximate",
+          "source_object_id": "object1",
+          "source_bbox": [
+            0.4,
+            0.1,
+            0.5,
+            0.9
+          ],
+          "source_details": null,
+          "mobility": "fixed",
+          "photo_boundary": null,
+          "category_adaptation": null
+        }
+      ],
+      "changes": [
+        {
+          "problem": "明显左移并放大",
+          "adjustment": "主体中心横向33%、纵向50%（从左上角计）。主体宽约12%、高约92%，保留真实长宽比例。",
+          "benefit": "用真实轮廓比较主体占比和边缘余量；拍摄效果仍需现场核对。"
+        }
+      ],
+      "limitations": [
+        "这是基于已观察轮廓的取景示意，不预测侧移后的视差、透视或遮挡；请按文字动作现场试拍。",
+        "所有景物使用同一取景变换；超出画框的环境线索被裁去，框内未绘制处不等于现场空白。",
+        "为完整保留全部主要主体及边缘余量，已限制放大或偏移幅度，以图中实际占比为准。",
+        "此图为合成验收样本，不验证真实照片的识别质量。"
+      ],
+      "render_basis": "source_geometry",
+      "layout_mode": "schematic",
+      "source_photo_aspect": 1.3333333333333333,
+      "layout_engine": "local_v1",
+      "observed_frame": null,
+      "target_frame": null,
+      "unrendered_objects": []
+    },
+    "framing": {
+      "diagnosis": "明显左移并放大",
+      "visual_priority": "先看测试建筑，其余已观察景物保留相互位置。",
+      "placement": "主体中心横向33%、纵向50%（从左上角计）。",
+      "scale": "主体宽约12%、高约92%，保留真实长宽比例。",
+      "negative_space": "四边余量：左28%、右61%、上4%、下4%；余量可能含其他景物，不等于留白。",
+      "edge_check": "检查全部主要主体的外轮廓；原图未拍全的部分无法由本图恢复。",
+      "background_control": "环境按同一取景变换呈现，不通过挪动背景虚构遮挡改善。",
+      "success_check": "核对主体宽高占比；检查四边是否切断关键部位，并现场确认背景干扰是否减弱。"
+    },
+    "actions": [
+      "适当靠近，调整取景使主体位于画面左侧"
+    ],
+    "reference": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9IiNjOWRlZTkiLz48cmVjdCB5PSI0ODAiIHdpZHRoPSI4MDAiIGhlaWdodD0iMTIwIiBmaWxsPSIjYWNiZGEwIi8+PHBvbHlnb24gcG9pbnRzPSIzMjAuMCwxMzIuMCAzNjAuMCw2MC4wIDQwMC4wLDEzMi4wIDQwMC4wLDU0MC4wIDMyMC4wLDU0MC4wIiBmaWxsPSIjZDBhZTgzIiBzdHJva2U9IiM0MTM5MmYiIHN0cm9rZS13aWR0aD0iMyIvPjxwb2x5bGluZSBwb2ludHM9IjMzNi4wLDIwNC4wIDM4NC4wLDIwNC4wIiBmaWxsPSJub25lIiBzdHJva2U9IiM0MTM5MmYiIHN0cm9rZS13aWR0aD0iMyIvPjxwb2x5bGluZSBwb2ludHM9IjM0NC4wLDIwNC4wIDM0NC4wLDUxNi4wIiBmaWxsPSJub25lIiBzdHJva2U9IiM0MTM5MmYiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjIwIiB5PSI1NzAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4Ij5TWU5USEVUSUMgVEVTVCBGSVhUVVJFPC90ZXh0Pjwvc3ZnPg=="
+  },
+  {
+    "name": "主体接触左边缘",
+    "board": {
+      "aspect": "landscape",
+      "reference_photo_id": "photo1",
+      "intent": "主体接触左边缘",
+      "narration": "",
+      "distance_relation": "unknown",
+      "distance_instruction": "建议适当后退，重新拍摄并检查贴边部位及四边余量；画外形体未知，未模拟后退或侧移效果。",
+      "layers": [
+        {
+          "label": "测试建筑",
+          "kind": "building",
+          "role": "main",
+          "depth": 1,
+          "bbox": [
+            0.0,
+            0.1,
+            0.1,
+            0.9
+          ],
+          "color": "slate",
+          "representation": "silhouette",
+          "outline": [
+            [
+              0.0,
+              0.15
+            ],
+            [
+              0.5,
+              0.0
+            ],
+            [
+              1.0,
+              0.15
+            ],
+            [
+              1.0,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ]
+          ],
+          "contours": [],
+          "holes": [],
+          "outline_style": "angular",
+          "details": [
+            [
+              [
+                0.2,
+                0.3
+              ],
+              [
+                0.8,
+                0.3
+              ]
+            ],
+            [
+              [
+                0.3,
+                0.3
+              ],
+              [
+                0.3,
+                0.95
+              ]
+            ]
+          ],
+          "identity_features": [
+            "合成测试轮廓"
+          ],
+          "evidence_photo_ids": [
+            "photo1"
+          ],
+          "certainty": "approximate",
+          "source_object_id": "object1",
+          "source_bbox": [
+            0.0,
+            0.1,
+            0.1,
+            0.9
+          ],
+          "source_details": null,
+          "mobility": "fixed",
+          "photo_boundary": {
+            "version": 1,
+            "basis": "pixel_mask_v1",
+            "work_width": 800,
+            "work_height": 600,
+            "clipped_edges": [
+              "left"
+            ],
+            "visible_paths": [
+              [
+                [
+                  0.0,
+                  0.15
+                ],
+                [
+                  0.5,
+                  0.0
+                ],
+                [
+                  1.0,
+                  0.15
+                ],
+                [
+                  1.0,
+                  1.0
+                ],
+                [
+                  0.0,
+                  1.0
+                ]
+              ]
+            ]
+          },
+          "category_adaptation": null
+        }
+      ],
+      "changes": [
+        {
+          "problem": "主体贴近或接触参考照片边界，画外形体未知",
+          "adjustment": "建议适当后退重新取景，确认主体完整后再按文字建议移动机位。",
+          "benefit": "不把画外区域误当作已知留白；拍摄效果仍需现场核对。"
+        }
+      ],
+      "limitations": [
+        "主体贴近或接触参考照片边界：保留原取景，填色闭合不代表真实物体底边；画外形体未知，不补全。",
+        "斜线区域未被参考照片覆盖，不表示已知留白；所有轮廓与内部细节使用同一变换。",
+        "这是基于已观察轮廓的取景示意，不预测侧移后的视差、透视或遮挡；请按文字动作现场试拍。",
+        "此图为合成验收样本，不验证真实照片的识别质量。"
+      ],
+      "render_basis": "source_geometry",
+      "layout_mode": "source_preserving",
+      "source_photo_aspect": 1.3333333333333333,
+      "layout_engine": "local_v1",
+      "observed_frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "target_frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "unrendered_objects": []
+    },
+    "framing": {
+      "diagnosis": "主体接触左边缘",
+      "visual_priority": "先看测试建筑，其余已观察景物保留相互位置。",
+      "placement": "主体中心横向5%、纵向50%（从左上角计）。",
+      "scale": "主体宽约10%、高约80%，保留真实长宽比例。",
+      "negative_space": "四边余量：左0%、右90%、上10%、下10%；余量可能含其他景物，不等于留白。",
+      "edge_check": "检查全部主要主体的外轮廓；原图未拍全的部分无法由本图恢复。",
+      "background_control": "环境按同一取景变换呈现，不通过挪动背景虚构遮挡改善。",
+      "success_check": "核对主体宽高占比；检查四边是否切断关键部位，并现场确认背景干扰是否减弱。"
+    },
+    "actions": [
+      "适当后退，重新拍全主体并检查左侧余量"
+    ],
+    "reference": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9IiNjOWRlZTkiLz48cmVjdCB5PSI0ODAiIHdpZHRoPSI4MDAiIGhlaWdodD0iMTIwIiBmaWxsPSIjYWNiZGEwIi8+PHBvbHlnb24gcG9pbnRzPSIwLjAsMTMyLjAgNDAuMCw2MC4wIDgwLjAsMTMyLjAgODAuMCw1NDAuMCAwLjAsNTQwLjAiIGZpbGw9IiNkMGFlODMiIHN0cm9rZT0iIzQxMzkyZiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBvbHlsaW5lIHBvaW50cz0iMTYuMCwyMDQuMCA2NC4wLDIwNC4wIiBmaWxsPSJub25lIiBzdHJva2U9IiM0MTM5MmYiIHN0cm9rZS13aWR0aD0iMyIvPjxwb2x5bGluZSBwb2ludHM9IjI0LjAsMjA0LjAgMjQuMCw1MTYuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDEzOTJmIiBzdHJva2Utd2lkdGg9IjMiLz48dGV4dCB4PSIyMCIgeT0iNTcwIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCI+U1lOVEhFVElDIFRFU1QgRklYVFVSRTwvdGV4dD48L3N2Zz4="
+  },
+  {
+    "name": "连续场景",
+    "board": {
+      "aspect": "landscape",
+      "reference_photo_id": "photo1",
+      "intent": "连续场景",
+      "narration": "",
+      "distance_relation": "unknown",
+      "distance_instruction": "按文字建议调整机位、距离或拍摄时机，试拍后核对场景结构与背景干扰。",
+      "layers": [
+        {
+          "label": "测试建筑",
+          "kind": "building",
+          "role": "main",
+          "depth": 1,
+          "bbox": [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ],
+          "color": "slate",
+          "representation": "scene_structure",
+          "outline": [],
+          "contours": [],
+          "holes": [],
+          "outline_style": "angular",
+          "details": [
+            [
+              [
+                0.0,
+                0.1
+              ],
+              [
+                0.5,
+                0.5
+              ],
+              [
+                1.0,
+                0.1
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.9
+              ],
+              [
+                0.5,
+                0.5
+              ],
+              [
+                1.0,
+                0.9
+              ]
+            ],
+            [
+              [
+                0.1,
+                0.0
+              ],
+              [
+                0.4,
+                1.0
+              ]
+            ],
+            [
+              [
+                0.9,
+                0.0
+              ],
+              [
+                0.6,
+                1.0
+              ]
+            ]
+          ],
+          "identity_features": [
+            "合成测试轮廓"
+          ],
+          "evidence_photo_ids": [
+            "photo1"
+          ],
+          "certainty": "approximate",
+          "source_object_id": "object1",
+          "source_bbox": [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ],
+          "source_details": [
+            [
+              [
+                0.0,
+                0.1
+              ],
+              [
+                0.5,
+                0.5
+              ],
+              [
+                1.0,
+                0.1
+              ]
+            ],
+            [
+              [
+                0.0,
+                0.9
+              ],
+              [
+                0.5,
+                0.5
+              ],
+              [
+                1.0,
+                0.9
+              ]
+            ],
+            [
+              [
+                0.1,
+                0.0
+              ],
+              [
+                0.4,
+                1.0
+              ]
+            ],
+            [
+              [
+                0.9,
+                0.0
+              ],
+              [
+                0.6,
+                1.0
+              ]
+            ]
+          ],
+          "mobility": "fixed",
+          "photo_boundary": null,
+          "category_adaptation": null
+        }
+      ],
+      "changes": [
+        {
+          "problem": "连续场景",
+          "adjustment": "保留连续场景的真实空间关系，按现场动作调整机位、距离或拍摄时机。",
+          "benefit": "强化主体与环境的关联；透视、遮挡和实际效果需要现场试拍核对。"
+        }
+      ],
+      "limitations": [
+        "本方案保留原取景：连续场景结构线只表示原图可见边界，不是已实现侧移的新视角。",
+        "开放路径不表示封闭物体分割，也不补画画外区域；山峰与倒影、两侧建筑共享同一变换。",
+        "这是基于已观察轮廓的取景示意，不预测侧移后的视差、透视或遮挡；请按文字动作现场试拍。",
+        "此图为合成验收样本，不验证真实照片的识别质量。"
+      ],
+      "render_basis": "source_geometry",
+      "layout_mode": "source_preserving",
+      "source_photo_aspect": 1.3333333333333333,
+      "layout_engine": "local_v1",
+      "observed_frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "target_frame": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "unrendered_objects": []
+    },
+    "framing": {
+      "diagnosis": "连续场景",
+      "visual_priority": "先看测试建筑，其余已观察景物保留相互位置。",
+      "placement": "主体中心横向50%、纵向50%（从左上角计）。",
+      "scale": "主体宽约100%、高约100%，保留真实长宽比例。",
+      "negative_space": "四边余量：左0%、右0%、上0%、下0%；余量可能含其他景物，不等于留白。",
+      "edge_check": "保留原图可见边界与已有截断；核对两侧结构、山峰及倒影的关联。",
+      "background_control": "环境按同一取景变换呈现，不通过挪动背景虚构遮挡改善。",
+      "success_check": "核对主体宽高占比；检查四边是否切断关键部位，并现场确认背景干扰是否减弱。"
+    },
+    "actions": [
+      "降低机位试拍，核对两侧结构的关联"
+    ],
+    "reference": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9IiNjOWRlZTkiLz48cmVjdCB5PSI0ODAiIHdpZHRoPSI4MDAiIGhlaWdodD0iMTIwIiBmaWxsPSIjYWNiZGEwIi8+PHBvbHlsaW5lIHBvaW50cz0iMC4wLDYwLjAgNDAwLjAsMzAwLjAgODAwLjAsNjAuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDEzOTJmIiBzdHJva2Utd2lkdGg9IjMiLz48cG9seWxpbmUgcG9pbnRzPSIwLjAsNTQwLjAgNDAwLjAsMzAwLjAgODAwLjAsNTQwLjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzQxMzkyZiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBvbHlsaW5lIHBvaW50cz0iODAuMCwwLjAgMzIwLjAsNjAwLjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzQxMzkyZiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBvbHlsaW5lIHBvaW50cz0iNzIwLjAsMC4wIDQ4MC4wLDYwMC4wIiBmaWxsPSJub25lIiBzdHJva2U9IiM0MTM5MmYiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjIwIiB5PSI1NzAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4Ij5TWU5USEVUSUMgVEVTVCBGSVhUVVJFPC90ZXh0Pjwvc3ZnPg=="
+  }
+]

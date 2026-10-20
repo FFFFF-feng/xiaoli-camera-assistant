@@ -8,6 +8,60 @@ from test_observed_composition import advice, observed
 
 from camera_assistant.composition_models import CompositionIntent, ObservedScene
 from camera_assistant.services.layout_solver import ASPECTS, solve_layout
+from camera_assistant.services.layout_presentation import measure_layout
+
+
+def test_same_43_frame_and_keep_is_identity_and_retains_source():
+    scene = ObservedScene.model_validate(observed())
+    delta = measure_layout((1., 1., 0., 0.), [o.bbox for o in scene.objects], 4/3, 4/3)
+    assert delta.near_identity and delta.scale_change == delta.frame_center_shift == 0
+    board, _ = solve_layout(CompositionIntent(focus_object_id="object1", diagnosis="核对取景"),
+                            scene, 4/3, advice().proposals[0])
+    assert board.layout_mode == "source_preserving"
+    assert board.target_frame == board.observed_frame == [0., 0., 1., 1.]
+    assert board.layers[0].bbox == scene.objects[0].bbox
+
+
+@pytest.mark.parametrize("transform,expected", [
+    ((1.02, 1.02, -.01, -.01), True),
+    ((1., 1., .02, .01), True),
+    ((1.07, 1.07, -.035, -.035), False),
+    ((1., 1., -.1, 0.), False),
+    ((1., 1., .03, .03), False),  # combined diagonal movement exceeds 4%
+])
+def test_actual_changes_thresholds(transform, expected):
+    assert measure_layout(transform, [[.2, .1, .8, .9]], 4/3, 4/3).near_identity is expected
+
+
+def test_small_centering_change_keeps_source_but_left_shift_or_zoom_still_draws():
+    data = observed()
+    data["objects"][0]["bbox"] = [.43, .1, .53, .9]
+    scene = ObservedScene.model_validate(data)
+    for placement, scale, mode in [("center", "keep", "source_preserving"),
+                                    ("left", "keep", "schematic"), ("keep", "larger", "schematic")]:
+        board, _ = solve_layout(CompositionIntent(focus_object_id="object1", diagnosis="核对主体位置",
+            placement=placement, subject_scale=scale), scene, 4/3, advice().proposals[0])
+        assert board.layout_mode == mode
+
+
+@pytest.mark.parametrize("box", [[0., .1, .2, .9], [.4, 0., .5, .8], [.8, .1, 1., .9], [.4, .2, .5, 1.]])
+def test_edge_subject_keeps_visible_geometry_and_outputs_reference_frame(box):
+    data = observed()
+    data["objects"][0]["bbox"] = box
+    scene = ObservedScene.model_validate(data)
+    board, _ = solve_layout(CompositionIntent(focus_object_id="object1", diagnosis="保护主体边缘",
+        subject_scale="larger", placement="right"), scene, 4/3, advice().proposals[0])
+    assert board.layout_mode == "source_preserving" and board.target_frame == [0, 0, 1, 1]
+    assert board.layers[0].bbox == box
+    assert {l.source_object_id for l in board.layers} == {o.object_id for o in scene.objects}
+    assert "后退" in board.distance_instruction and "画外形体未知" in board.distance_instruction
+
+
+def test_identity_tests_all_mains_and_records_aspect_change():
+    boxes = [[.45, .45, .55, .55], [.1, .1, .3, .3]]
+    delta = measure_layout((1.1, 1.1, -.05, -.05), boxes, 4/3, 4/3)
+    assert delta.subject_center_shift > 0 and delta.subject_size_change > 0
+    assert measure_layout((1., 1., 0., 0.), boxes, 4/3, 1.).aspect_changed
 
 
 @pytest.mark.parametrize("placement,scale,aspect", list(product(

@@ -7,6 +7,7 @@ regions; a bounded CPU pixel tracer supplies actual paths, not invented icons.
 from __future__ import annotations
 
 import json
+import logging
 from dataclasses import replace
 
 from pydantic import ValidationError
@@ -32,6 +33,7 @@ from camera_assistant.services.observation_coordinates import (
 from camera_assistant.services.observation_evidence import category_adaptation
 from camera_assistant.services.pixel_contours import observed_metadata, trace_observed_scene
 from camera_assistant.services.scene_context import project_context
+from camera_assistant.services.layout_presentation import layout_mode, measure_layout
 from camera_assistant.services.scene_images import image_messages
 from camera_assistant.services.segmentation_provider import use_segmentation
 from camera_assistant.services.target_drawing import _local_geometry, _repair_hint
@@ -362,6 +364,9 @@ def apply_observed_layout(advice: CompositionAdvice, scene: ObservedScene | None
             planned_main = next((layer for layer in board.layers if layer.source_object_id == primary.object_id), None)
             if planned_main is None:
                 raise ValueError("目标构图遗漏原始主体")
+            _check_fixed_order([layer.model_copy(update={"source_bbox": objects[layer.source_object_id].bbox,
+                "mobility": objects[layer.source_object_id].mobility}) for layer in board.layers
+                if layer.source_object_id in objects])
             if crop:
                 transform = (1/(crop[2]-crop[0]), 1/(crop[3]-crop[1]),
                              -crop[0]/(crop[2]-crop[0]), -crop[1]/(crop[3]-crop[1]))
@@ -370,19 +375,33 @@ def apply_observed_layout(advice: CompositionAdvice, scene: ObservedScene | None
                 source = primary.bbox
                 sx, sy = (target[2]-target[0])/(source[2]-source[0]), (target[3]-target[1])/(source[3]-source[1])
                 transform = (sx, sy, target[0]-source[0]*sx, target[1]-source[1]*sy)
+            delta = measure_layout(transform, [o.bbox for o in scene.objects if o.role == "main"],
+                                   photo_aspect, frame_aspect)
+            mode = layout_mode(scene, delta, crop=crop is not None)
+            aspect = board.aspect
+            if mode == "source_preserving":
+                aspects = {"portrait": .75, "landscape": 4/3, "square": 1.}
+                aspect = min(aspects, key=lambda key: abs(aspects[key]-photo_aspect))
+                ratio = photo_aspect/aspects[aspect]
+                base = min(1., 1/ratio)
+                transform = (base*ratio, base, (1-base*ratio)/2, (1-base)/2)
+            sx, sy, tx, ty = transform
+            logging.getLogger(__name__).debug("layout_delta=%s decision_delta=%s mode=%s",
+                measure_layout(transform, [o.bbox for o in scene.objects if o.role == "main"],
+                               photo_aspect, {"portrait": .75, "landscape": 4/3, "square": 1.}[aspect]), delta, mode)
             seen, layers = set(), []
             for layer in board.layers:
                 obj = objects.get(layer.source_object_id)
                 if obj is None or obj.object_id in seen:
                     raise ValueError("缺失或重复引用原始物体")
                 seen.add(obj.object_id)
-                if obj.representation == "context_lines":
+                if obj.representation == "context_lines" or obj.role != "main":
                     context = project_context(obj, transform)
                     if context:
                         layers.append(context)
                     continue
-                box = _project_crop(obj.bbox, crop) if crop else _fit_box(
-                    layer.bbox, obj, photo_aspect, frame_aspect)
+                box = (_project_crop(obj.bbox, crop) if crop and mode != "source_preserving" else
+                       [obj.bbox[0]*sx+tx, obj.bbox[1]*sy+ty, obj.bbox[2]*sx+tx, obj.bbox[3]*sy+ty])
                 if box is None:
                     if obj.role == "main":
                         raise ValueError("裁切丢失主要主体")
@@ -395,6 +414,8 @@ def apply_observed_layout(advice: CompositionAdvice, scene: ObservedScene | None
                     "outline_style": obj.outline_style, "identity_features": obj.identity_features,
                     "evidence_photo_ids": obj.evidence_photo_ids, "source_bbox": obj.bbox,
                     "mobility": obj.mobility,
+                    "representation": obj.representation, "photo_boundary": obj.photo_boundary,
+                    "source_details": obj.details if obj.representation == "scene_structure" else obj.source_details,
                     "certainty": obj.certainty if crop else "approximate",
                 }))
             # A planner's short list is not permission to erase the rest of the
@@ -412,14 +433,12 @@ def apply_observed_layout(advice: CompositionAdvice, scene: ObservedScene | None
             ) for obj in scene.objects):
                 raise ValueError("原始主体不能变为陪体")
             _check_fixed_order(layers)
-            preserve_source = scene.scene_mode == "continuous" or any(
-                obj.role == "main" and obj.photo_boundary and obj.photo_boundary.clipped_edges
-                for obj in scene.objects
-            )
             board = TargetBoard.model_validate({
-                **board.model_dump(), "layers": [layer.model_dump() for layer in layers],
+                **board.model_dump(), "aspect": aspect, "layers": [layer.model_dump() for layer in layers],
                 "render_basis": "source_geometry", "source_photo_aspect": photo_aspect,
-                "layout_mode": "source_preserving" if preserve_source else "crop_projection" if crop else "schematic",
+                "layout_mode": mode,
+                "target_frame": [0., 0., 1., 1.] if mode == "source_preserving" else None,
+                "observed_frame": [tx, ty, tx+sx, ty+sy] if mode == "source_preserving" else None,
                 "limitations": list(dict.fromkeys([SCHEMATIC_LIMIT,
                     "环境线索沿主体取景变换保留，超出目标画框的部分被裁去；不预测侧移后的视差或补画画外背景。",
                     *scene.limitations, *board.limitations]))[:5],

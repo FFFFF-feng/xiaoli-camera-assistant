@@ -10,13 +10,15 @@ import { createSceneTransition, useTactileSurfaces } from './interaction';
 import { selectSceneFiles } from './scene-files.mjs';
 import { normalizeBaseUrl, safeSourceUrl } from './connection.mjs';
 import { readAnalysis } from './analysis-stream.mjs';
-import { fixedEventSeconds, liveElapsed, statusSeconds } from './progress-timing.mjs';
+import { liveElapsed } from './progress-timing.mjs';
+import { initialAnalysisProgress, advanceAnalysisProgress } from './analysis-progress.mjs';
 import { completedComposition } from './completed-composition.mjs';
 import type { Analysis, CameraLensProfile, CameraProfile, PhoneProfile } from './types';
 import DevicePicker from './components/DevicePicker.vue';
 import CompositionView from './components/CompositionView.vue';
 import TargetComposition from './components/TargetComposition.vue';
 import ReportHeading from './components/ReportHeading.vue';
+import ProcessingProgress from './components/ProcessingProgress.vue';
 import { compatibleLenses, deviceSelection, linkedCameraSettings, mountNames, sensorLabel } from './device-selection.mjs';
 
 const page = ref<'shoot' | 'result' | 'history' | 'connect'>('shoot');
@@ -53,18 +55,16 @@ const scenePhotos = ref<{id:string;file:File;url:string;source:string}[]>([]);
 const resultPhotos = ref<{id:string;url:string}[]>([]);
 const busy = ref(false);
 const elapsed = ref(0);
-const statusStartedAt = ref(0);
-const statusElapsed = computed(() => statusSeconds(elapsed.value, statusStartedAt.value));
-const progressMessage = ref('正在上传照片…');
-const progressLog = ref<{ message: string; seconds: number }[]>([]);
-const received = ref<Record<string, number>>({});
-const receivedChars = computed(() => Object.values(received.value).reduce((sum, n) => sum + n, 0));
+const progress = ref(initialAnalysisProgress());
+const lastSignalAt = ref(0);
+const lastContentAt = ref(-Infinity);
+const waitingForProgress = computed(() => elapsed.value - lastSignalAt.value >= 18);
+const receivingAnalysis = computed(() => elapsed.value - lastContentAt.value < 4);
 const partialScene = ref<Analysis['result']['scene'] | null>(null);
 const partialParameters = ref<Analysis['result']['recommendation'] | null>(null);
 const partialComposition = ref<Analysis['result']['composition'] | null>(null);
 const partialReady = ref<Analysis['result']['composition'] | null>(null);
 const pendingPhotos = ref<{id:string;url:string}[]>([]);
-const phaseTimings = ref<NonNullable<Analysis['timings']>>([]);
 const timingNames: Record<string, string> = {
   upload: '照片上传', upload_validation: '照片检查', queue: '等待处理',
   image_preprocessing: '照片准备', vision: '画面识别', localization: '主体定位',
@@ -72,7 +72,6 @@ const timingNames: Record<string, string> = {
   composition_observation: '物体与空间识别', composition_contours: '提取物体轮廓', composition_layout: '构图意图分析', composition_local_layout: '本地布局计算', target_drawing: '推荐图线条', composition: '完整构图',
   parameters: '拍摄建议', parameter_validation: '参数校验', total: '分析全程',
 };
-const progressStage = ref(0);
 const connecting = ref(false);
 const error = ref('');
 const connectionMessage = ref('');
@@ -269,9 +268,9 @@ async function analyze() {
   if (!consent.value) { error.value = '请先勾选照片上传与分析说明。'; return; }
   busy.value = true;
   analysis.value = null; partialScene.value = null; partialParameters.value = null;
-  partialComposition.value = null; partialReady.value = null; pendingPhotos.value = []; phaseTimings.value = [];
-  received.value = {}; progressLog.value = []; progressStage.value = 0;
-  progressMessage.value = '正在上传照片…'; elapsed.value = 0; statusStartedAt.value = 0;
+  partialComposition.value = null; partialReady.value = null; pendingPhotos.value = [];
+  progress.value = initialAnalysisProgress();
+  elapsed.value = 0; lastSignalAt.value = 0; lastContentAt.value = -Infinity;
   const started = performance.now();
   const clock = setInterval(() => { elapsed.value = liveElapsed(started); }, 500);
   const submittedIntent = intent.value.trim();
@@ -301,39 +300,29 @@ async function analyze() {
     }));
     pendingPhotos.value=ordered.map((item,index)=>({id:`photo${index+1}`,url:item.url}));
     analysis.value = await api(ordered.length > 1 ? '/api/v1/analyze-scene' : '/api/v1/analyze', { method: 'POST', body: form, signal: controller.signal }, event => {
-      if (event.type === 'progress' && typeof event.message === 'string') {
-        if (progressMessage.value !== event.message) statusStartedAt.value = elapsed.value;
-        progressMessage.value = event.message;
-        progressLog.value.push({ message: event.message, seconds: fixedEventSeconds(event.elapsed_seconds) });
-        const stage = /生成|校验/.test(event.message) ? 3 : /查阅|检索/.test(event.message) ? 2 : /识别|定位/.test(event.message) ? 1 : 0;
-        progressStage.value = Math.max(progressStage.value, stage);
-      } else if (event.type === 'activity' && typeof event.request_id === 'string' && Number.isFinite(event.chars)) {
-        received.value[event.request_id] = event.chars;
-      } else if (event.type === 'partial') {
+      let readyComposition = false;
+      if (['progress', 'activity', 'partial', 'timing'].includes(event.type)) lastSignalAt.value = elapsed.value;
+      if (event.type === 'activity' && event.phase === 'content' && event.chars > 0) lastContentAt.value = elapsed.value;
+      if (event.type === 'partial') {
         if (event.kind === 'scene') partialScene.value = event.value;
         if (event.kind === 'composition') {
           partialComposition.value = event.value;
-          progressMessage.value = partialReady.value ? '构图已完成，正在整理其余拍摄建议…' : '构图文字已校验，正在整理推荐画面…';
-          statusStartedAt.value = elapsed.value;
         }
         if (event.kind === 'composition_ready') {
           const ready=completedComposition(event.value,pendingPhotos.value.map(item=>item.id));
           if(ready) {
             partialReady.value=ready;
-            progressMessage.value='构图已完成，正在整理其余拍摄建议…';
-            statusStartedAt.value=elapsed.value;
+            readyComposition=true;
           }
         }
         if (event.kind === 'parameters') {
           partialParameters.value = event.value;
-          progressMessage.value = partialReady.value ? '构图与参数已完成，正在汇总方案…' : '拍摄参数已校验，正在整理完整方案…';
-          statusStartedAt.value = elapsed.value;
         }
-      } else if (event.type === 'timing' && timingNames[event.stage]
-                 && Number.isFinite(event.duration_seconds) && event.duration_seconds >= 0) {
-        phaseTimings.value.push(event);
-      } else if (event.type === 'result') { progressStage.value = 4; }
+      }
+      progress.value = advanceAnalysisProgress(progress.value, { ...event, ready: readyComposition });
     });
+    // A legacy JSON response has no stream events but still completes normally.
+    progress.value = advanceAnalysisProgress(progress.value, { type: 'result' });
     resultIntent.value = submittedIntent;
     resultPhotos.value=ordered.map((item,index)=>({id:`photo${index+1}`,url:item.url}));
     try {
@@ -477,14 +466,8 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
           </fieldset>
           <div v-if="error" id="shoot-error" class="notice error" role="alert">{{ error }}</div>
           <button class="primary generate" type="submit" :disabled="busy || connecting" :aria-busy="busy" :aria-describedby="error ? 'shoot-error' : undefined"><ApertureMark /><span>{{ busy ? '小栗正在整理拍摄建议…' : connected ? '让小栗给点拍摄灵感' : webHosted ? '连接拍摄服务，开始拍摄' : '先连接电脑服务' }}</span><UiIcon name="arrow" /></button>
-          <section v-if="busy" class="analysis-progress" aria-label="分析进度" aria-live="polite">
-            <div class="progress-heading"><strong>{{ progressMessage }}</strong><span>总用时 {{ elapsed.toFixed(0) }} 秒</span></div>
-            <p class="current-status-time">当前状态已持续 {{ statusElapsed.toFixed(0) }} 秒</p>
-            <progress :value="progressStage" max="4" :aria-label="`已完成 ${progressStage}/4 个环节`"></progress>
-            <p class="helper">图片与设备 → 识别与定位 → 知识检索 → 方案与校验。进度按环节计算。</p>
-            <p v-if="receivedChars" class="helper">已接收 {{ receivedChars.toLocaleString() }} 字符，完整构图校验后显示线稿。</p>
-            <p class="progress-log-heading">进度记录 · 左侧为服务处理开始后的记录时刻，不是步骤耗时</p>
-            <ol class="progress-log"><li v-for="(item, index) in progressLog" :key="index"><time>开始后 {{ item.seconds.toFixed(1) }} 秒</time>{{ item.message }}</li></ol>
+          <section v-if="busy" class="analysis-progress" aria-label="分析进度">
+            <ProcessingProgress :percent="progress.percent" :message="progress.message" :history="progress.history" :waiting="waitingForProgress" :receiving="receivingAnalysis" />
             <div v-if="partialScene" class="partial-result"><span class="result-badge">已完成的画面分析</span><h2>{{ partialScene.scene_label || partialScene.scene_type }}</h2><p>{{ partialScene.subject }} · {{ partialScene.lighting }}</p></div>
             <div v-if="partialReady?.proposals?.length" class="partial-result completed-composition">
               <span class="result-badge">推荐构图已完成 · 完整拍摄方案仍在整理</span>
@@ -497,13 +480,12 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
             </div>
             <div v-else-if="partialComposition?.proposals?.length" class="partial-result partial-composition"><span class="result-badge">构图文字已校验 · 推荐画面正在整理</span><article v-for="(proposal, index) in partialComposition.proposals" :key="index"><h2>{{ proposal.goal }}</h2><ul><li v-for="action in proposal.actions" :key="action">{{ action }}</li></ul><p v-if="proposal.framing_plan">{{ proposal.framing_plan.diagnosis }}</p><details v-if="proposal.conditions.length || proposal.tradeoffs.length || proposal.limitations.length"><summary>适用条件与限制</summary><p v-for="note in [...proposal.conditions, ...proposal.tradeoffs, ...proposal.limitations]" :key="note">{{ note }}</p></details></article><p v-for="note in partialComposition.uncertainties" :key="note">{{ note }}</p></div>
             <div v-if="partialParameters" class="partial-result"><span class="result-badge">参数已校验 · 完整方案仍在整理</span><h2>{{ partialParameters.shooting_mode }}</h2><dl class="settings-list"><div v-for="(value, label) in { '光圈': partialParameters.aperture, '快门': partialParameters.shutter_speed, 'ISO': partialParameters.iso, '对焦': partialParameters.focus_mode }" :key="label"><dt>{{ label }}</dt><dd>{{ value }}</dd></div></dl><p v-for="step in partialParameters.adjustments" :key="step">{{ step }}</p><details v-if="partialParameters.risks?.length || partialParameters.validation_notes?.length"><summary>适用条件与器材说明</summary><p v-for="note in [...partialParameters.risks, ...partialParameters.validation_notes]" :key="note">{{ note }}</p></details><p class="helper">这是当前已完成的部分，完整方案与构图仍需等待；参数是试拍起点。</p></div>
-            <details v-if="phaseTimings.length" class="phase-timings"><summary>已完成环节用时</summary><p v-for="(item, index) in phaseTimings" :key="index">{{ timingNames[item.stage] }}：{{ item.duration_seconds.toFixed(1) }} 秒{{ item.status === 'failed' ? '（未完成）' : '' }}</p><p class="helper">环节可能并行，用时不能直接相加。</p></details>
           </section>
         </form></div>
       </section>
       <section v-else-if="page === 'result'" aria-labelledby="result-title">
         <div class="intro module-intro"><div><h1 id="result-title">你的下一张，已经有了方向。</h1><p>先看构图，再照着走一步，拍一张。</p></div><MascotArt v-if="result" pose="advice" class="module-guide" /></div>
-        <div v-if="!result" class="empty-result"><MascotArt pose="advice" class="empty-mascot" priority /><h2>{{ busy ? '分析正在进行' : '建议还在等你的现场' }}</h2><p>{{ busy ? `${progressMessage} · 已用时 ${elapsed.toFixed(0)} 秒` : '选择照片，写下想要的效果，小栗会给你一个拍摄起点。' }}</p><button class="primary" @click="navigate('shoot')">{{ busy ? '查看当前进度' : '去选照片' }}</button></div>
+        <div v-if="!result" class="empty-result"><MascotArt pose="advice" class="empty-mascot" priority /><h2>{{ busy ? '分析正在进行' : '建议还在等你的现场' }}</h2><ProcessingProgress v-if="busy" :percent="progress.percent" :message="progress.message" :history="progress.history" :waiting="waitingForProgress" :receiving="receivingAnalysis" /><p v-else>选择照片，写下想要的效果，小栗会给你一个拍摄起点。</p><button class="primary" @click="navigate('shoot')">{{ busy ? '返回拍摄工作台' : '去选照片' }}</button></div>
         <template v-else>
           <div class="notice" :class="{ demo: analysis?.analysis_mode === 'demo' }">{{ analysis?.analysis_mode === 'demo' ? '规则演示结果，不是真实多模态场景识别。' : '云模型分析结果。建议可能有误，以机型能力和试拍为准。' }}</div>
           <div class="scene-summary"><img v-if="preview" :src="preview" alt="本次分析的现场照片" /><div><span>{{ result.camera_profile.display_name }}</span><h2>{{ result.scene.scene_label || result.scene.scene_type }}</h2><p>{{ lightingText }}</p></div></div>

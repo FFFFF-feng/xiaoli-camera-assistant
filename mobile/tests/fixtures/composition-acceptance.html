@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-CN"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>构图展示离线验收</title>
+<div id="app"></div>
+<script type="module">
+import {createApp,h} from 'vue';
+import TargetComposition from '../../src/components/TargetComposition.vue';
+import cases from './composition-presentation.json';
+import '../../src/style.css';
+import '../../src/report.css';
+createApp({render:()=>h('main',{style:'max-width:900px;margin:auto;padding:24px'},[
+  h('h1','构图展示离线验收'),h('p','以下四张均为合成测试场景，用于核对展示分支；真实摄影样本仍需现场验收。'),
+  ...cases.map(c=>h('section',{style:'margin:36px 0;border-top:2px solid #ddd'},[
+    h('h2',c.name),h('code',c.board.layout_mode),h(TargetComposition,c)]))
+])}).mount('#app');
+</script></html>

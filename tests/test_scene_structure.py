@@ -58,7 +58,7 @@ def test_continuous_keep_uses_photography_action_guidance_instead_of_layout_chan
         source, .75, advice().proposals[0])
 
     change = board.changes[0]
-    assert change.adjustment == '保留路牌、路灯与环境的相对位置，在现场通过机位、距离或时机调整强化视觉关联。'
+    assert '真实空间关系' in change.adjustment and '现场动作' in change.adjustment
     assert '主体中心' not in change.adjustment
     assert '占比' not in change.adjustment
 

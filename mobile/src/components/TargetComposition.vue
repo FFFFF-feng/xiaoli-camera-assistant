@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import { computed,onBeforeUnmount,ref,useId,watch } from 'vue';
-import type { TargetBoard } from '../types';
+import type { TargetBoard, FramingPlan } from '../types';
+import { fieldActions,sourceFrameGuide } from '../composition-presentation.mjs';
 import ReportHeading from './ReportHeading.vue';
 import CompositionCompare from './CompositionCompare.vue';
 import { DEFAULT_TARGET_COLOR, DEFAULT_TARGET_GRID, detailPath, outlinePath, sourceLayout, silhouetteLayers, silhouetteStrokePath, hasPhotoCut, unknownFrameRects, targetLayerPaint, targetCompositionCopy, thirdsGuide } from '../target-board.mjs';
 import { frameAspect } from '../composition-sketch.mjs';
 import { sceneColorTransform,lineartPaint,OBJECT_COLOR_VERSION } from '../scene-colors.mjs';
 import { sceneRenderer,createLatestTask } from '../scene-render.mjs';
-const props=withDefaults(defineProps<{board:TargetBoard;reference?:string;compactAdvice?:boolean}>(),{compactAdvice:false});
+const props=defineProps<{board:TargetBoard;reference?:string;actions?:string[];framing?:FramingPlan|null}>();
+const referenceFailed=ref(false);
+watch(()=>props.reference,()=>{referenceFailed.value=false;});
+const field=computed(()=>fieldActions(props.board,props.actions,props.framing));
+const sourceGuide=computed(()=>sourceFrameGuide(props.board,field.value.actions));
+const guideId=`source-guide-${useId()}`;
 const sheet=ref<SVGSVGElement>();
 const comparisonView=ref(true);
 const grid=ref(DEFAULT_TARGET_GRID),labels=ref(true),color=ref(DEFAULT_TARGET_COLOR),environment=ref(true),saved=ref(''),showSource=ref(false);
@@ -33,7 +39,7 @@ const colorClip=`scene-color-${useId()}`;
 const colorsTask=createLatestTask();
 watch([()=>props.reference,()=>props.board],([source,board])=>{
   colorsTask.cancel();sceneColor.value=null;colorFailed.value=false;colorBusy.value=!!source;
-  if(!source)return;
+  if(!source||board.layout_mode==='source_preserving'){colorBusy.value=false;return;}
   void colorsTask.run(()=>sceneRenderer.colors(source,board),(result:NonNullable<typeof sceneColor.value>)=>{sceneColor.value=result;},
     ()=>{colorFailed.value=true;},()=>{colorBusy.value=false;});
 },{immediate:true});
@@ -58,16 +64,36 @@ function save() {
 </script>
 <template>
   <div class="target-composition">
-    <div class="target-heading"><ReportHeading :title="board.intent" icon="image" eyebrow="目标画面" /><span>{{ showSource?'原始布局估计':copy.heading }}</span></div>
-    <div v-if="original" class="target-mode" role="group" aria-label="轮廓布局对照"><button type="button" :aria-pressed="comparisonView" @click="comparisonView=true;showSource=false">前后大图对照</button><button type="button" :aria-pressed="!comparisonView&&!showSource" @click="comparisonView=false;showSource=false">推荐大图</button><button type="button" :aria-pressed="!comparisonView&&showSource" @click="comparisonView=false;showSource=true">原始布局大图</button></div>
+    <div class="target-heading"><ReportHeading :title="sourcePreserving?copy.heading:board.intent" icon="image" :eyebrow="sourcePreserving?'现场取景':'目标画面'" /><span>{{ showSource?'原始布局估计':copy.heading }}</span></div>
+    <div v-if="original&&!sourcePreserving" class="target-mode" role="group" aria-label="轮廓布局对照"><button type="button" :aria-pressed="comparisonView" @click="comparisonView=true;showSource=false">前后大图对照</button><button type="button" :aria-pressed="!comparisonView&&!showSource" @click="comparisonView=false;showSource=false">推荐大图</button><button type="button" :aria-pressed="!comparisonView&&showSource" @click="comparisonView=false;showSource=true">原始布局大图</button></div>
     <aside v-if="sourcePreserving" class="target-preserving" data-source-preserving>
-      <strong>本次未调整取景 · 原始布局线稿对照</strong><p>{{ copy.reason }}{{ copy.action }}</p>
+      <strong>{{ copy.status ? `${copy.status} · ${copy.heading}` : copy.heading }}</strong><p>{{ copy.action }}</p>
     </aside>
+    <div class="target-presentation">
+    <figure v-if="sourcePreserving" class="source-photo-guide" data-source-photo-guide>
+      <div v-if="reference&&!referenceFailed" class="source-photo-frame">
+        <img :src="reference" alt="当前原图与现场取景参考框，未模拟新机位" @error="referenceFailed=true"/>
+        <svg v-if="sourceGuide" viewBox="0 0 1000 1000" preserveAspectRatio="none" role="img" aria-label="目标取景参考框与现场动作方向，框内为原图已知范围">
+          <defs><marker :id="guideId" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10Z" fill="#ffe09b"/></marker></defs>
+          <rect data-target-frame :x="sourceGuide.frame[0]*996+2" :y="sourceGuide.frame[1]*996+2" :width="(sourceGuide.frame[2]-sourceGuide.frame[0])*996" :height="(sourceGuide.frame[3]-sourceGuide.frame[1])*996" fill="none" stroke="#ffe09b" stroke-width="3" vector-effect="non-scaling-stroke"/>
+          <g v-for="margin in sourceGuide.margins.filter(m=>m.contact||m.near)" :key="margin.edge" data-contact-edge stroke="#ff775b" stroke-width="7" vector-effect="non-scaling-stroke">
+            <line v-if="margin.edge==='left'||margin.edge==='right'" :x1="margin.edge==='left'?6:994" y1="200" :x2="margin.edge==='left'?6:994" y2="800"/>
+            <line v-else x1="200" :y1="margin.edge==='top'?6:994" x2="800" :y2="margin.edge==='top'?6:994"/>
+          </g>
+          <line v-for="arrow in sourceGuide.directions" :key="arrow.label" data-camera-direction :x1="arrow.x1" :y1="arrow.y1" :x2="arrow.x2" :y2="arrow.y2" stroke="#ffe09b" stroke-width="4" :marker-end="`url(#${guideId})`" vector-effect="non-scaling-stroke"/>
+        </svg>
+      </div>
+      <p v-else class="target-guide-tip" role="status">原图暂不可用，请重新选择参考照片。当前保留文字操作提示，未模拟新机位。</p>
+      <figcaption>目标取景参考框 · 原图已知范围。框线不是扩展后的画面；贴边部位需现场重新取景确认。<strong>未模拟新机位</strong></figcaption>
+      <div v-if="sourceGuide" class="source-margin-list"><span v-for="margin in sourceGuide.margins" :key="margin.edge">{{ margin.label }}侧余量 {{ margin.percent }}%{{ margin.contact?' · 接触照片边缘':margin.near?' · 贴近边缘':'' }}</span></div>
+      <p class="target-guide-tip">余量按已观察主体的外框估计，可能含其他景物，不等于留白。<span v-if="sourceGuide?.directions.length">箭头表示现场动作：{{ sourceGuide.directions.map(d=>d.label).join('、') }}；不代表景物移动或新视角预测。</span></p>
+    </figure>
+    <div v-else class="schematic-presentation">
     <CompositionCompare v-if="original&&comparisonView" :board="board" :colors="color?sceneColor:null" :environment="environment" :grid="grid" :colored="color"/>
     <p v-if="original&&comparisonView&&colorBusy" class="target-guide-tip" role="status">正在读取原图颜色…</p>
     <figure v-show="!original||!comparisonView" class="target-sheet">
       <svg ref="sheet" :viewBox="`-18 -18 ${width+36} ${height+36}`" role="img" :aria-label="showSource?'原始布局估计，用于核对轮廓与空间位置':`推荐构图：${board.intent}。使用${structureScene?'真实边界的场景结构线':'物体轮廓'}表达目标布局。${copy.drawing}`" font-family="sans-serif">
-        <title>{{ showSource?'原始物体布局估计':board.intent }}</title><desc>物体识别和轮廓提取可能有误，请对照原图。{{ copy.drawing }}{{ color?'仅在物体轮廓内取原图颜色，适度提亮便于阅读，不代表实拍曝光。':'' }}</desc>
+        <title>{{ showSource?'原始物体布局估计':board.intent }}</title><desc>物体识别和轮廓提取可能有误，请对照原图。{{ copy.drawing }}{{ color?'插画配色用于区分主体和背景，不代表景物的准确颜色或实际拍摄效果。':'' }}</desc>
         <rect x="-18" y="-18" :width="width+36" :height="height+36" fill="#fafcfd"/>
         <rect :width="width" :height="height" :fill="hasSceneColor?sceneColor?.background:'#fff'" stroke="#a5b4c5" stroke-width="1"/>
         <defs><clipPath :id="colorClip"><rect :width="width" :height="height"/></clipPath><pattern :id="`${colorClip}-unknown`" width="9" height="9" patternUnits="userSpaceOnUse"><rect width="9" height="9" fill="#f3f3ef"/><path d="M-2,2L2,-2M0,9L9,0M7,11L11,7" stroke="#c7c9c4" stroke-width="1"/></pattern></defs>
@@ -89,12 +115,9 @@ function save() {
           <g v-for="layer in visibleMarks" :key="layer.index"><circle :cx="layer.bbox[0]!*width+14" :cy="layer.bbox[1]!*height+14" r="12" :fill="layer.role==='main' ? '#315b9c' : '#8094a6'"/><text :x="layer.bbox[0]!*width+14" :y="layer.bbox[1]!*height+20" fill="white">{{ layer.index+1 }}</text></g>
         </g>
       </svg>
-      <figcaption>构图示意，非实拍效果；位置、透视与遮挡需现场核对。<span v-if="colorBusy"> 正在填色…</span><span v-else-if="colorFailed"> 填色未完成，线稿仍可查看。</span></figcaption>
+      <figcaption>{{ copy.drawing }}位置、透视与遮挡需现场核对。<span v-if="colorBusy"> 正在填色…</span><span v-else-if="colorFailed"> 填色未完成，线稿仍可查看。</span></figcaption>
     </figure>
     <div class="target-controls"><label><input v-model="environment" type="checkbox"/>环境参考</label><label><input v-model="grid" type="checkbox"/>三分线</label><label v-if="!comparisonView"><input v-model="labels" type="checkbox"/>景物标记</label><label><input v-model="color" type="checkbox"/>物体取色</label><button type="button" @click="save">{{ showSource?'保存原始布局':'保存推荐图' }}</button></div>
-    <slot name="operations" />
-    <component :is="compactAdvice?'details':'div'" :class="compactAdvice?'report-disclosure target-extra-details':''">
-    <summary v-if="compactAdvice">线稿细节与说明</summary>
     <details class="report-disclosure"><summary>线稿阅读说明</summary>
       <p>{{ showSource?'同一组物体轮廓放回原图位置，用于核对物体形状与空间关系；不代表精确分割。':sourcePreserving?`以第 ${board.reference_photo_id.slice(5)} 张为参考保留原取景中的空间关系。${copy.reason}${copy.drawing}`:`以第 ${board.reference_photo_id.slice(5)} 张为参考规划；主体目标占比：宽 ${size.w}%、高 ${size.h}%。这是构图示意，不是实拍预测。` }}<span v-if="hasSceneColor"> 仅在闭合物体轮廓内保留原图分区颜色，适度提亮便于阅读；背景减淡且不补画。颜色不是实拍曝光预测。</span><span v-else-if="color">{{ colorBusy?' 正在准备物体取色…':colorFailed?' 参考图取色未完成，当前为示意色。':' 物体取色需要匹配的参考照片，当前为示意色。' }}</span></p>
       <p v-if="clippedScene" class="target-guide-tip" data-photo-boundary-note>主体与原照片边界接触，画外形体未知；填色闭合不表示真实物体底边。斜线区域未被原照片覆盖。</p>
@@ -102,12 +125,21 @@ function save() {
       <p v-if="structureScene" class="target-guide-tip" data-scene-structure-note>场景结构线来自参考照片的可见边界，整体共同变换以保留空间关联；开放路径不代表完整物体分割，未拍到的区域保持未知。<span v-if="sourcePreserving">当前保留原取景，用结构线核对保留依据及现场检查重点。</span><span v-if="hasSceneColor">连续场景只保留结构线与淡背景，不把开放路径伪造为物体填色。</span></p>
       <p v-if="grid" class="target-guide-tip">两横两竖将画面分为九格，圆点标出四个交点，方便比较主体位置；不必强行把主体放在交点上。</p>
     </details>
-    <figure v-if="reference" class="target-reference">
+    </div>
+    <section class="target-changes" aria-label="现场操作卡" data-field-actions>
+      <ReportHeading title="现场操作卡" description="按动作试拍，再回看构图是否改善。" icon="camera" level="h4" />
+      <article><div class="change-row change-original"><span>当前问题</span><p>{{ field.problem }}</p></div>
+        <div class="change-row change-adjustment"><span>推荐动作</span><ul><li v-for="action in field.actions" :key="action">{{ action }}</li></ul></div>
+        <div class="change-row change-benefit"><span>预期改善</span><p>{{ field.benefit }}</p></div>
+        <div class="change-row"><span>现场检查</span><p>{{ field.check }}</p></div></article>
+    </section>
+    </div>
+    <figure v-if="reference&&!sourcePreserving" class="target-reference">
       <img :src="reference" :alt="`第 ${board.reference_photo_id.slice(5)} 张原图，用于核对物体外形`"/>
       <figcaption><strong>形态对照 · 第 {{ board.reference_photo_id.slice(5) }} 张原图</strong><span>对照主体外形和可见细节；上方是取景示意，不是实际拍摄效果。</span></figcaption>
     </figure>
     <details v-if="board.narration" class="report-disclosure"><summary>构图解读</summary><p class="target-narration">{{ board.narration }}</p></details>
-    <details class="subject-study report-disclosure"><summary>放大看主体细节 · {{ main.label }}</summary>
+    <details v-if="!sourcePreserving" class="subject-study report-disclosure"><summary>放大看主体细节 · {{ main.label }}</summary>
       <svg :viewBox="`-8 -8 ${portrait.w+16} ${portrait.h+16}`" role="img" :aria-label="`${main.label}的推荐形象与结构线条`" :stroke="lineartPaint(main).stroke" stroke-linecap="round" stroke-linejoin="round">
         <defs><clipPath :id="`${colorClip}-study`"><path v-for="(part,index) in silhouetteLayers(portrait.layer)" :key="index" :d="outlinePath(part,portrait.w,portrait.h)" clip-rule="evenodd"/></clipPath></defs>
         <image v-if="hasSceneColor&&sceneColor&&portraitColor" :href="sceneColor.url" :x="portraitColor.x" :y="portraitColor.y" :width="portraitColor.width" :height="portraitColor.height" preserveAspectRatio="none" :clip-path="`url(#${colorClip}-study)`"/>
@@ -118,14 +150,23 @@ function save() {
     </details>
     <p v-if="board.unrendered_objects?.length" class="target-unrendered" data-unrendered-objects><strong>已识别但未可靠绘出：{{ board.unrendered_objects.join('、') }}</strong><span>下列辨识描述来自视觉识别，不表示这些部件都已画出。</span></p>
     <details class="target-legend report-disclosure"><summary>景物标记说明<small>{{ board.layers.length }} 项 · 对照图中编号</small></summary><div class="target-legend-list"><article v-for="(layer,index) in board.layers" :key="index"><b>{{ layer.kind==='background' ? '景' : index+1 }}</b><div><strong>{{ layer.label }}</strong><p>{{ layer.identity_features?.join('、') }}</p><small>{{ layer.certainty==='approximate' ? '视角近似，需试拍' : '特征依据参考照片' }}</small></div></article></div></details>
-    <details class="target-changes report-disclosure" aria-label="构图改善对照"><summary>调整前后对比</summary><template v-if="sourcePreserving"><article><div class="change-row change-original"><span>当前取景</span><p>{{ copy.reason }}</p></div><div class="change-row change-adjustment"><span>{{ copy.changeLabel }}</span><p>{{ copy.changeText }}</p></div><div class="change-row change-benefit"><span>现场核对</span><p>保留已观察景物的空间关系，实际效果需要现场试拍。</p></div></article></template><template v-else><article v-for="(change,index) in board.changes" :key="index"><div class="change-row change-original"><span>原图问题</span><p>{{ change.problem }}</p></div><div class="change-row change-adjustment"><span>推荐调整</span><p>{{ change.adjustment }}</p></div><div class="change-row change-benefit"><span>预期改善</span><p>{{ change.benefit }}</p></div></article></template></details>
     <aside class="target-distance"><span class="distance-label">机位与距离 · 现场操作</span><strong>{{ distanceNames[board.distance_relation] }}</strong><p>{{ board.distance_instruction }}</p></aside>
-    <details v-if="board.limitations.length" class="target-limitations report-disclosure"><summary>线稿说明与识别限制<small>{{ board.limitations.length }} 条 · 使用前了解</small></summary><ul><li v-for="note in board.limitations" :key="note">{{ note }}</li></ul></details>
-    </component><span class="report-save-status" role="status">{{ saved }}</span>
+    <details v-if="board.limitations.length" class="target-limitations report-disclosure"><summary>取景说明与识别限制<small>{{ board.limitations.length }} 条 · 使用前了解</small></summary><ul><li v-for="note in board.limitations" :key="note">{{ note }}</li></ul></details><span class="report-save-status" role="status">{{ saved }}</span>
   </div>
 </template>
 <style scoped>
 .target-composition { min-width: 0; word-break: normal; overflow-wrap: break-word; }
+.target-presentation { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(240px,1fr); gap: 20px; align-items: start; }
+.target-presentation > .target-changes { margin: 18px 0; padding: 16px; }
+.target-presentation .change-row { grid-template-columns: minmax(0,1fr); gap: 8px; }
+.source-photo-guide { margin: 18px 0; }
+.source-photo-frame { position: relative; overflow: hidden; border-radius: 10px; background: #22342b; }
+.source-photo-frame img { display: block; width: 100%; height: auto; }
+.source-photo-frame svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.source-photo-guide figcaption { font-size: 13px; line-height: 1.8; margin-top: 10px; }
+.source-photo-guide figcaption strong { display: block; color: #8a482e; }
+.source-margin-list { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; font-size: 13px; }
+.change-row ul { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.95; }
 .target-heading { display: flex; align-items: flex-start; gap: 16px; justify-content: space-between; margin: 26px 0 16px; }
 .target-heading .report-heading { margin-bottom: 0; flex: 1; }
 .target-heading > span { font-size: 11px; color: #7a5d44; background: #f5ebdf; border: 1px solid #e8d6c2; border-radius: 6px; padding: 5px 8px; max-width: 40%; }
@@ -179,6 +220,7 @@ function save() {
 .target-limitations li::marker { color: #ae8964; }
 .report-save-status { display: block; font-size: 12px; color: var(--green); margin-top: 12px; }
 button:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+@media(max-width:800px) { .target-presentation { grid-template-columns: minmax(0,1fr); gap: 0; } }
 @media(max-width:600px) {
   .target-heading { flex-direction: column; gap: 10px; }
   .target-heading > span { margin-left: 44px; max-width: calc(100% - 44px); }

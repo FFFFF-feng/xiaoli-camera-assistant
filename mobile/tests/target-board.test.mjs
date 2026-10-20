@@ -3,33 +3,31 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {DEFAULT_TARGET_COLOR,DEFAULT_TARGET_GRID,thirdsGuide,targetLayerPaint,usableTargetBoard,projectedPoints,outlinePath,sourceLayout,silhouetteLayers,detailPath,targetCompositionCopy} from '../src/target-board.mjs';
 const board=()=>({aspect:'landscape',reference_photo_id:'photo1',intent:'突出连廊结构',distance_relation:'similar',distance_instruction:'横向取景，检查立柱轮廓',limitations:['新视角需现场核对'],changes:[{problem:'树遮挡主体',adjustment:'将树作为边缘前景',benefit:'连廊更清晰'}],layers:[{label:'建筑',kind:'building',role:'main',depth:1,bbox:[.1,.2,.9,.8],outline:[[0,0],[1,0],[1,1],[0,1]],details:[[[.2,0],[.2,1]]],color:'ochre',identity_features:['横向连廊'],evidence_photo_ids:['photo1'],certainty:'approximate'}]});
-test('source_preserving 的展示文案说明保留原取景、真实空间关系和现场动作',()=>{
+test('保留取景文案按场景说明原因，不声称原图更优或虚构特定物体',()=>{
   const source={...board(),layout_mode:'source_preserving',layers:[{...board().layers[0],representation:'scene_structure'}]};
   const copy=targetCompositionCopy(source);
-  assert.equal(copy.status,'原取景对照');
-  assert.equal(copy.heading,'保留原取景');
-  assert.match(copy.reason,/不表示已经验证原图最优/);
+  assert.equal(copy.status,'未模拟新机位');
+  assert.equal(copy.heading,'当前取景与现场调整');
   assert.match(copy.reason,/连续场景/);
   assert.match(copy.reason,/真实空间关系/);
-  assert.match(copy.action,/机位、距离或时机/);
-  assert.match(copy.drawing,/不是新机位的透视、遮挡或实拍预测/);
-  assert.equal(copy.changeLabel,'现场拍摄重点');
-  assert.match(copy.changeText,/保留主要结构与环境的相对位置/);
-  assert.doesNotMatch(copy.changeText,/主体.*(位置|占比)/);
+  assert.doesNotMatch(copy.reason,/原图更优|路牌|路灯/);
+  assert.equal(copy.action,source.distance_instruction);
+  assert.match(copy.drawing,/未模拟新机位/);
+  assert.equal(copy.changeText,source.changes[0].adjustment);
 });
-test('普通 schematic 与 crop_projection 继续使用推荐调整说明',()=>{
+test('普通 schematic 与 crop_projection 继续使用推荐构图示意',()=>{
   for(const layout_mode of [undefined,'schematic','crop_projection']) {
     const copy=targetCompositionCopy({...board(),layout_mode});
-    assert.equal(copy.heading,'推荐构图线稿');
+    assert.equal(copy.heading,'推荐构图示意');
     assert.equal(copy.changeLabel,'推荐调整');
-    assert.equal(copy.reason,'');
-    assert.equal(copy.changeText,'');
+    assert.match(copy.drawing,/不代表真实新机位效果/);
   }
 });
-test('clipped 的 source_preserving 文案继续明确画外形体未知',()=>{
-  const copy=targetCompositionCopy({...board(),layout_mode:'source_preserving'});
-  assert.match(copy.reason,/画外形体未知/);
-  assert.match(copy.action,/斜线区域/);
+test('贴边与近似恒等变换的原因区分，未知画外内容保持未知',()=>{
+  const source={...board(),layout_mode:'source_preserving'};
+  assert.match(targetCompositionCopy(source).reason,/变化很小/);
+  source.layers[0].source_bbox=[0,.1,.4,.8];
+  assert.match(targetCompositionCopy(source).reason,/画外形体未知/);
 });
 test('淡彩默认开启，主体浅填色且不改变几何或原始资料',()=>{
   const layer=board().layers[0],before=JSON.stringify(layer);
@@ -247,4 +245,13 @@ test('冻结契约样例逐项对齐：三个有效、四个无效且失败建�
   for(const item of fixture.valid)assert.equal(usableTargetBoard(item.board),item.board,item.id);
   for(const item of fixture.invalid)assert.equal(usableTargetBoard(item.board),null,item.id);
   assert.equal(usableTargetBoard(fixture.failure_advice),null);
+});
+
+test('近似恒等变换与旧记录兼容，可选目标框拒绝越界或伪造来源',()=>{
+  const b=linked();b.layout_mode='source_preserving';b.target_frame=[0,0,1,1];
+  assert.equal(usableTargetBoard(b),b);
+  delete b.target_frame;assert.equal(usableTargetBoard(b),b);
+  for(const target_frame of [[0,0,2,1],[.5,0,.4,1],['0',0,1,1],[]])
+    assert.equal(usableTargetBoard({...b,target_frame}),null);
+  assert.equal(usableTargetBoard({...b,render_basis:'legacy'}),null);
 });

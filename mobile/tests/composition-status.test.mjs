@@ -68,11 +68,12 @@ test('参数理由与校验说明留在折叠区，试拍调整不与依据混�
   });
   assert.equal(reasons,1);
 });
-test('线稿解释、三分线教学与调整对比默认收起，保留简短实拍限制',()=>{
+test('现场操作卡保持可见，三分线教学仍默认收起',()=>{
   let comparison=0,guide=0;
   visit(template('../src/components/TargetComposition.vue'),[],(node,parents)=>{
     if(node.props?.some(p=>p.name==='class'&&p.value?.content.includes('target-changes'))){
-      comparison++;assert.ok(closedDetails(node));
+      comparison++;assert.equal(node.tag,'section');
+      assert.ok(node.props.some(p=>p.name==='data-field-actions'));
     }
     if(node.props?.some(p=>p.name==='if'&&p.exp?.content==='grid')&&node.tag==='p'){
       guide++;assert.ok(parents.some(closedDetails));

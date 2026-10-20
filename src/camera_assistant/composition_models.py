@@ -339,6 +339,8 @@ class TargetBoard(CompositionModel):
     source_photo_aspect: float | None = Field(default=None, gt=0, le=100)
     layout_engine: Literal["legacy", "local_v1"] = "legacy"
     observed_frame: list[float] | None = None
+    # Reference frame on the source photo, never a prediction of unseen pixels.
+    target_frame: list[float] | None = None
     unrendered_objects: list[str] = Field(default_factory=list, max_length=4)
 
     @field_validator("unrendered_objects")
@@ -348,14 +350,14 @@ class TargetBoard(CompositionModel):
             raise ValueError("未绘出对象名称无效")
         return values
 
-    @field_validator("observed_frame", mode="before")
+    @field_validator("observed_frame", "target_frame", mode="before")
     @classmethod
     def valid_observed_frame(cls, value):
         return None if value is None else TargetLayer.valid_box(value)
 
     @model_validator(mode="after")
     def contains_main(self):
-        if self.observed_frame is not None and (self.render_basis != "source_geometry" or self.source_photo_aspect is None):
+        if (self.observed_frame is not None or self.target_frame is not None) and (self.render_basis != "source_geometry" or self.source_photo_aspect is None):
             raise ValueError("已观察画幅需要原图来源及比例")
         if not any(layer.role == "main" for layer in self.layers):
             raise ValueError("推荐分镜必须包含主体")

@@ -11,7 +11,7 @@ const server=await createServer({root,server:{middlewareMode:true},appType:'cust
 after(()=>server.close());
 const TargetComposition=(await server.ssrLoadModule('/src/components/TargetComposition.vue')).default;
 const fixture=JSON.parse(readFileSync(new URL('../../tests/fixtures/composition_contract_v1.json',import.meta.url),'utf8'));
-const render=board=>renderToString(createSSRApp(()=>h(TargetComposition,{board,reference:''})));
+const render=(board,reference='')=>renderToString(createSSRApp(()=>h(TargetComposition,{board,reference})));
 
 test('默认真实Vue分支渲染原始布局与推荐构图双图，不被原照取景框替换',async()=>{
   const board=structuredClone(fixture.valid.find(row=>row.id==='silhouette_hole').board);
@@ -23,12 +23,12 @@ test('默认真实Vue分支渲染原始布局与推荐构图双图，不被原�
   assert.doesNotMatch(html,/本地紧凑裁切|原照与取景提示|source-framing/);
 });
 
-test('保留原取景也保留线稿对照，但不谎称新机位或伪造目标变化',async()=>{
+test('保留原取景显示原图与现场提示，不将近似原图重描为推荐对照',async()=>{
   const board=structuredClone(fixture.valid.find(row=>row.id==='continuous').board);
   board.layout_mode='source_preserving';
-  const html=await render(board);
-  assert.match(html,/data-comparison-frame="source"/);
-  assert.match(html,/data-comparison-frame="target"/);
-  assert.match(html,/保留原取景，未模拟新的机位/);
-  assert.doesNotMatch(html,/本地紧凑裁切|source-framing/);
+  const html=await render(board,'data:image/png;base64,TEST');
+  assert.match(html,/data-source-photo-guide/);
+  assert.match(html,/未模拟新机位/);
+  assert.match(html,/data-field-actions/);
+  assert.doesNotMatch(html,/data-comparison-frame|data-scene-extension/);
 });

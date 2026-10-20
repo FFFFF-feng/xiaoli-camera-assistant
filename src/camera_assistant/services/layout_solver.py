@@ -1,6 +1,8 @@
 """Deterministic reframe of observed pixels. No generated views or independent scenery moves."""
 from __future__ import annotations
 
+import logging
+
 from camera_assistant.composition_models import (
     CompositionIntent,
     CompositionProposal,
@@ -10,6 +12,7 @@ from camera_assistant.composition_models import (
     TargetLayer,
 )
 from camera_assistant.services.scene_context import project_context
+from camera_assistant.services.layout_presentation import layout_mode, measure_layout, needs_source_frame
 
 ASPECTS = {"portrait": .75, "square": 1., "landscape": 4/3}
 LIMIT = "这是基于已观察轮廓的取景示意，不预测侧移后的视差、透视或遮挡；请按文字动作现场试拍。"
@@ -27,8 +30,8 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
     ratio = photo_aspect/ASPECTS[aspect]
     base = min(1., 1/ratio)
     continuous = scene.scene_mode == "continuous"
-    clipped = any(o.photo_boundary and o.photo_boundary.clipped_edges for o in mains)
-    preserve_source = continuous or clipped
+    clipped = not continuous and needs_source_frame(scene)
+    preserve_source = needs_source_frame(scene)
     if preserve_source:
         # A continuous scene has no independent movable silhouette. Preserve the
         # complete source field, including genuine edge truncation. Any requested
@@ -52,9 +55,14 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
     cy = {"upper": 1/3, "center": .5, "lower": 2/3}.get(plan.vertical_placement, .5+(fy-.5)*base)
     tx = max(.04-union[0]*sx, min(1-.04-union[2]*sx, cx-fx*sx))
     ty = max(.04-union[1]*sy, min(1-.04-union[3]*sy, cy-fy*sy))
+    delta = measure_layout((sx, sy, tx, ty), [o.bbox for o in mains], photo_aspect, ASPECTS[aspect])
+    mode = layout_mode(scene, delta)
+    preserve_source = mode == "source_preserving"
     if preserve_source:
         sx, sy = base*ratio, base
         tx, ty = (1-sx)/2, (1-sy)/2
+    logging.getLogger(__name__).debug("layout_delta=%s decision_delta=%s mode=%s",
+        measure_layout((sx, sy, tx, ty), [o.bbox for o in mains], photo_aspect, ASPECTS[aspect]), delta, mode)
     layers = []
     constrained = abs(scale-requested) > 1e-8 or abs(tx+fx*sx-cx) > 1e-8 or abs(ty+fy*sy-cy) > 1e-8
     for obj in scene.objects:
@@ -80,8 +88,10 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
         limitations = ["本方案保留原取景：连续场景结构线只表示原图可见边界，不是已实现侧移的新视角。",
                        "开放路径不表示封闭物体分割，也不补画画外区域；山峰与倒影、两侧建筑共享同一变换。", LIMIT]
     elif clipped:
-        limitations = ["主体接触参考照片边界：保留原取景，填色闭合不代表真实物体底边；画外形体未知，不补全。",
+        limitations = ["主体贴近或接触参考照片边界：保留原取景，填色闭合不代表真实物体底边；画外形体未知，不补全。",
                        "斜线区域未被参考照片覆盖，不表示已知留白；所有轮廓与内部细节使用同一变换。", LIMIT]
+    elif preserve_source:
+        limitations.insert(0, "实际缩放、位移和主体占比变化低于展示阈值：保留原取景，未模拟新机位。")
     if constrained and not preserve_source:
         limitations.append("为完整保留全部主要主体及边缘余量，已限制放大或偏移幅度，以图中实际占比为准。")
     # Partial extraction warnings must remain visible within the board's five
@@ -89,15 +99,19 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
     limitations.extend(sorted(scene.limitations,
         key=lambda note: not any(word in note for word in ("孔隙", "分部", "省略", "未分离", "未完整", "格式无效"))))
     if continuous:
-        change = {"problem": "连续场景中的路牌、路灯与环境需要一起保留",
-                  "adjustment": "保留路牌、路灯与环境的相对位置，在现场通过机位、距离或时机调整强化视觉关联。",
-                  "benefit": "保持真实空间关系，让灯光、路牌与环境的关联自然成立；拍摄效果仍需现场核对。"}
-        distance_instruction = "现场通过调整机位、距离或时机（包括机位高度、等待灯光时机）强化视觉关联，也可以保持现有关系并现场核对成片。"
+        change = {"problem": plan.diagnosis,
+                  "adjustment": "保留连续场景的真实空间关系，按现场动作调整机位、距离或拍摄时机。",
+                  "benefit": "强化主体与环境的关联；透视、遮挡和实际效果需要现场试拍核对。"}
+        distance_instruction = "按文字建议调整机位、距离或拍摄时机，试拍后核对场景结构与背景干扰。"
     elif clipped:
-        change = {"problem": "主体接触参考照片边界，画外形体未知",
-                  "adjustment": "保留已观察到的可见边界，在现场通过机位、距离或时机确认画外形体。",
+        change = {"problem": "主体贴近或接触参考照片边界，画外形体未知",
+                  "adjustment": "建议适当后退重新取景，确认主体完整后再按文字建议移动机位。",
                   "benefit": "不把画外区域误当作已知留白；拍摄效果仍需现场核对。"}
-        distance_instruction = "现场通过机位、距离或时机核对可见边界和画外区域，不把斜线区域当作已知留白。"
+        distance_instruction = "建议适当后退，重新拍摄并检查贴边部位及四边余量；画外形体未知，未模拟后退或侧移效果。"
+    elif preserve_source:
+        change = {"problem": plan.diagnosis, "adjustment": "按现场操作提示试拍，再核对主体位置和边缘余量。",
+                  "benefit": "避免把近似原图的示意误认为新机位效果，改善仍需现场确认。"}
+        distance_instruction = "当前布局变化很小，保留原取景；按文字动作试拍，检查主体、边缘和背景。"
     else:
         change = {"problem": plan.diagnosis, "adjustment": (placement+size)[:140],
                   "benefit": "用真实轮廓比较主体占比和边缘余量；拍摄效果仍需现场核对。"}
@@ -107,8 +121,9 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
         distance_relation="unknown", distance_instruction=distance_instruction,
         layers=layers, changes=[change],
         limitations=list(dict.fromkeys(limitations))[:5], render_basis="source_geometry",
-        source_photo_aspect=photo_aspect, layout_mode="source_preserving" if preserve_source else "schematic", layout_engine="local_v1",
-        observed_frame=[tx, ty, tx+sx, ty+sy] if clipped else None,
+        source_photo_aspect=photo_aspect, layout_mode=mode, layout_engine="local_v1",
+        observed_frame=[tx, ty, tx+sx, ty+sy] if preserve_source else None,
+        target_frame=[0., 0., 1., 1.] if preserve_source else None,
         unrendered_objects=[obj.label for obj in scene.unrendered_objects],
     )
     framing = FramingPlan(
