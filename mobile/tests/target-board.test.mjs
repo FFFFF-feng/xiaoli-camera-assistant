@@ -6,30 +6,32 @@ const board=()=>({aspect:'landscape',reference_photo_id:'photo1',intent:'突出�
 test('source_preserving 的展示文案说明保留原取景、真实空间关系和现场动作',()=>{
   const source={...board(),layout_mode:'source_preserving',layers:[{...board().layers[0],representation:'scene_structure'}]};
   const copy=targetCompositionCopy(source);
-  assert.equal(copy.status,'原图更优');
-  assert.equal(copy.heading,'保留原取景');
-  assert.match(copy.reason,/原图更优/);
+  assert.equal(copy.status,'原取景对照');
+  assert.equal(copy.heading,'当前取景与现场调整');
+  assert.match(copy.reason,/不表示原图已是最优构图/);
   assert.match(copy.reason,/连续场景/);
   assert.match(copy.reason,/真实空间关系/);
   assert.match(copy.action,/机位、距离或时机/);
-  assert.match(copy.drawing,/不是新机位的透视、遮挡或实拍预测/);
+  assert.match(copy.drawing,/未模拟新机位的透视、遮挡或实拍效果/);
   assert.equal(copy.changeLabel,'现场拍摄重点');
-  assert.match(copy.changeText,/保留路牌、路灯与环境的相对位置/);
+  assert.match(copy.changeText,/保留主要结构与环境的相对位置/);
   assert.doesNotMatch(copy.changeText,/主体.*(位置|占比)/);
 });
 test('普通 schematic 与 crop_projection 继续使用推荐调整说明',()=>{
   for(const layout_mode of [undefined,'schematic','crop_projection']) {
     const copy=targetCompositionCopy({...board(),layout_mode});
-    assert.equal(copy.heading,'推荐构图线稿');
+    assert.equal(copy.heading,'推荐构图示意');
     assert.equal(copy.changeLabel,'推荐调整');
     assert.equal(copy.reason,'');
     assert.equal(copy.changeText,'');
   }
 });
 test('clipped 的 source_preserving 文案继续明确画外形体未知',()=>{
-  const copy=targetCompositionCopy({...board(),layout_mode:'source_preserving'});
+  const b=board();b.layers[0].photo_boundary={clipped_edges:['bottom']};
+  const copy=targetCompositionCopy({...b,layout_mode:'source_preserving'});
   assert.match(copy.reason,/画外形体未知/);
-  assert.match(copy.action,/斜线区域/);
+  assert.match(copy.action,/后退/);
+  assert.match(copy.drawing,/未知.*不表示真实留白/);
 });
 test('淡彩默认开启，主体浅填色且不改变几何或原始资料',()=>{
   const layer=board().layers[0],before=JSON.stringify(layer);

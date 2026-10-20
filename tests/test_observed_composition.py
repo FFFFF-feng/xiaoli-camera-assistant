@@ -86,6 +86,57 @@ def test_continuous_legacy_projection_keeps_source_preserving_mode(inspection):
     result = service.apply_observed_layout(value, scene, inspection)
 
     assert result.proposals[0].storyboard.layout_mode == "source_preserving"
+    board = result.proposals[0].storyboard
+    assert board.layers[0].bbox == pytest.approx([0, .25, 1, .75])
+    assert board.target_frame == [0, 0, 1, 1]
+
+
+@pytest.mark.parametrize('scale,shift,mode', [(1, 0, 'source_preserving'), (1.03, .01, 'source_preserving'),
+                                          (1, -.12, 'schematic'), (1.15, 0, 'schematic')])
+def test_legacy_layout_uses_shared_change_classification(inspection, scale, shift, mode):
+    data = observed()
+    data['objects'][0]['bbox'] = [.4, .3, .6, .7]
+    scene = ObservedScene.model_validate(data)
+    value = advice()
+    value.proposals[0].storyboard.aspect = 'landscape'
+    inspection.metrics.width, inspection.metrics.height = 1200, 900
+    value.proposals[0].storyboard.layers[0].bbox = [
+        .5+(n-.5)*scale+(shift if i % 2 == 0 else 0) for i, n in enumerate(data['objects'][0]['bbox'])]
+    board = service.apply_observed_layout(value, scene, inspection).proposals[0].storyboard
+    assert board is not None and board.layout_mode == mode
+    if mode == 'source_preserving':
+        assert board.layers[0].bbox == pytest.approx(scene.objects[0].bbox)
+        assert board.target_frame == [0, 0, 1, 1]
+
+
+def test_legacy_multiple_mains_share_primary_transform(inspection):
+    data = observed()
+    data['objects'][0]['bbox'] = [.2, .3, .3, .6]
+    data['objects'].append({**deepcopy(data['objects'][0]), 'object_id': 'object2', 'bbox': [.6, .3, .7, .6]})
+    value = advice(('object1', 'object2'))
+    board = value.proposals[0].storyboard
+    board.aspect = 'landscape'
+    board.layers[0].bbox = [.3, .3, .4, .6]
+    board.layers[1].bbox = [.65, .2, .95, .8]  # independent planner scale must not be rendered
+    board.layers[1].role = 'main'
+    inspection.metrics.width, inspection.metrics.height = 1200, 900
+    result = service.apply_observed_layout(value, ObservedScene.model_validate(data), inspection)
+    a, b = result.proposals[0].storyboard.layers
+    assert a.bbox == pytest.approx([.3, .3, .4, .6])
+    assert b.bbox == pytest.approx([.7, .3, .8, .6])
+
+
+def test_continuous_validated_crop_is_projection_not_a_new_view(inspection):
+    data = observed()
+    data['scene_mode'] = 'continuous'
+    details = [[[0, .8], [.5, .1], [1, .8]], [[0, .9], [1, .9]],
+               [[0, .1], [.2, .3]], [[.8, .3], [1, .1]]]
+    data['objects'][0].update(bbox=[.3, .1, .7, .9], representation='scene_structure', outline=[], details=details)
+    value = advice(action='crop', crop=[.25, 0, .75, 1])
+    board = service.apply_observed_layout(value, ObservedScene.model_validate(data), inspection).proposals[0].storyboard
+    assert board and board.layout_mode == 'crop_projection'
+    assert board.layers[0].bbox == pytest.approx([.1, .1, .9, .9])
+    assert board.layers[0].outline == []
 
 
 @pytest.mark.parametrize("ids", [("object2",), ("object1", "object1"), (None,)])

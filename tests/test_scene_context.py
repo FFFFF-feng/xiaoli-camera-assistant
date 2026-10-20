@@ -1,5 +1,6 @@
 """Environmental geometry must come from pixels and one scene transform."""
 from copy import deepcopy
+from math import cos, pi, sin
 
 import cv2
 import numpy as np
@@ -89,6 +90,18 @@ def test_projection_uses_scene_transform_and_preserves_original_source_paths():
     x1, y1, x2, y2 = projected.bbox
     first = projected.details[0][0]
     assert [x1+first[0]*(x2-x1), y1+first[1]*(y2-y1)] == pytest.approx([.25, .225])
+
+
+def test_maximum_length_environment_outline_keeps_every_segment_when_closed():
+    outline = [[.5+.4*cos(i*pi/32), .5+.4*sin(i*pi/32)] for i in range(64)]
+    obj = ObservedObject.model_validate({**object_data(), "outline": outline})
+    before = obj.model_dump()
+    projected = project_context(obj, (.8, .8, .1, .1))
+    assert projected and projected.representation == "context_lines"
+    assert all(2 <= len(path) <= 64 for path in projected.source_details)
+    segments = [(a, b) for path in projected.source_details for a, b in zip(path, path[1:])]
+    assert segments == list(zip(outline, outline[1:]+outline[:1]))
+    assert obj.model_dump() == before
 
 
 def test_partial_environment_is_clipped_not_shrunk_or_dropped():

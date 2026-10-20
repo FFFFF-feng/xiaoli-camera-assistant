@@ -9,6 +9,7 @@ from camera_assistant.composition_models import (
     TargetBoard,
     TargetLayer,
 )
+from camera_assistant.services.layout_presentation import classify_layout, target_frame
 from camera_assistant.services.scene_context import project_context
 
 ASPECTS = {"portrait": .75, "square": 1., "landscape": 4/3}
@@ -24,11 +25,19 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
     if focus is None:
         raise ValueError("unknown_focus")
     aspect = plan.aspect if plan.aspect != "keep" else min(ASPECTS, key=lambda k: abs(ASPECTS[k]-photo_aspect))
+    crop = proposal.crop_bbox if proposal.action_type == "crop" else None
+    if proposal.action_type == "crop" and crop is None:
+        raise ValueError("missing_crop_bounds")
+    crop_aspect = photo_aspect * (crop[2]-crop[0])/(crop[3]-crop[1]) if crop else None
+    if crop_aspect:
+        aspect = min(ASPECTS, key=lambda k: abs(ASPECTS[k]-crop_aspect))
+        if abs(crop_aspect/ASPECTS[aspect]-1) > .02:
+            raise ValueError("invalid_crop_aspect")
     ratio = photo_aspect/ASPECTS[aspect]
     base = min(1., 1/ratio)
     continuous = scene.scene_mode == "continuous"
     clipped = any(o.photo_boundary and o.photo_boundary.clipped_edges for o in mains)
-    preserve_source = continuous or clipped
+    preserve_source = (continuous or clipped) and crop is None
     if preserve_source:
         # A continuous scene has no independent movable silhouette. Preserve the
         # complete source field, including genuine edge truncation. Any requested
@@ -39,7 +48,9 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
     union = [min(o.bbox[0] for o in mains), min(o.bbox[1] for o in mains),
              max(o.bbox[2] for o in mains), max(o.bbox[3] for o in mains)]
     # Protect *all* observed main subjects, even if the model focuses on one.
-    requested = base * {"keep": 1., "larger": 1.35, "smaller": .8}[plan.subject_scale]
+    # Make an explicitly requested size change legible, while the existing
+    # all-main/edge constraints still determine the actually achievable change.
+    requested = base * {"keep": 1., "larger": 1.7, "smaller": .65}[plan.subject_scale]
     maximum = min(.92/((union[2]-union[0])*ratio), .92/(union[3]-union[1]))
     minimum = max(max(.00501/((o.bbox[2]-o.bbox[0])*ratio),
                       .00501/(o.bbox[3]-o.bbox[1])) for o in mains)
@@ -53,6 +64,19 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
     tx = max(.04-union[0]*sx, min(1-.04-union[2]*sx, cx-fx*sx))
     ty = max(.04-union[1]*sy, min(1-.04-union[3]*sy, cy-fy*sy))
     if preserve_source:
+        sx, sy = base*ratio, base
+        tx, ty = (1-sx)/2, (1-sy)/2
+    if crop:
+        if any(o.bbox[0] < crop[0] or o.bbox[1] < crop[1]
+               or o.bbox[2] > crop[2] or o.bbox[3] > crop[3] for o in mains):
+            raise ValueError("crop_cuts_main")
+        sx, sy = 1/(crop[2]-crop[0]), 1/(crop[3]-crop[1])
+        tx, ty = -crop[0]*sx, -crop[1]*sy
+    mode, _ = classify_layout(scene, photo_aspect, ASPECTS[aspect], (sx, sy, tx, ty), focus.bbox,
+                              crop=crop, aspect_changed=False if plan.aspect == "keep" and crop is None else None)
+    preserve_source = mode == "source_preserving"
+    if preserve_source:
+        # Suppress tiny corrections rather than presenting them as a new view.
         sx, sy = base*ratio, base
         tx, ty = (1-sx)/2, (1-sy)/2
     layers = []
@@ -76,28 +100,34 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
     size = f"主体宽约{(x2-x1)*100:.0f}%、高约{(y2-y1)*100:.0f}%，保留真实长宽比例。"
     space = f"四边余量：左{x1*100:.0f}%、右{(1-x2)*100:.0f}%、上{y1*100:.0f}%、下{(1-y2)*100:.0f}%；余量可能含其他景物，不等于留白。"
     limitations = [LIMIT, "所有景物使用同一取景变换；超出画框的环境线索被裁去，框内未绘制处不等于现场空白。"]
-    if continuous:
+    if continuous and preserve_source:
         limitations = ["本方案保留原取景：连续场景结构线只表示原图可见边界，不是已实现侧移的新视角。",
                        "开放路径不表示封闭物体分割，也不补画画外区域；山峰与倒影、两侧建筑共享同一变换。", LIMIT]
-    elif clipped:
+    elif clipped and preserve_source:
         limitations = ["主体接触参考照片边界：保留原取景，填色闭合不代表真实物体底边；画外形体未知，不补全。",
                        "斜线区域未被参考照片覆盖，不表示已知留白；所有轮廓与内部细节使用同一变换。", LIMIT]
-    if constrained and not preserve_source:
+    if constrained and crop is None and not (continuous or clipped):
         limitations.append("为完整保留全部主要主体及边缘余量，已限制放大或偏移幅度，以图中实际占比为准。")
     # Partial extraction warnings must remain visible within the board's five
     # note budget, ahead of general descriptions of the tracing method.
     limitations.extend(sorted(scene.limitations,
         key=lambda note: not any(word in note for word in ("孔隙", "分部", "省略", "未分离", "未完整", "格式无效"))))
-    if continuous:
-        change = {"problem": "连续场景中的路牌、路灯与环境需要一起保留",
-                  "adjustment": "保留路牌、路灯与环境的相对位置，在现场通过机位、距离或时机调整强化视觉关联。",
-                  "benefit": "保持真实空间关系，让灯光、路牌与环境的关联自然成立；拍摄效果仍需现场核对。"}
+    if continuous and preserve_source:
+        change = {"problem": "连续场景中的主要结构与环境需要一起保留",
+                  "adjustment": "保留主要结构与环境的相对位置，在现场通过机位、距离或时机调整强化视觉关联。",
+                  "benefit": "保持已观察景物的真实空间关系；拍摄效果仍需现场核对。"}
         distance_instruction = "现场通过调整机位、距离或时机（包括机位高度、等待灯光时机）强化视觉关联，也可以保持现有关系并现场核对成片。"
-    elif clipped:
+    elif clipped and preserve_source:
         change = {"problem": "主体接触参考照片边界，画外形体未知",
-                  "adjustment": "保留已观察到的可见边界，在现场通过机位、距离或时机确认画外形体。",
+                  "adjustment": "先适当后退，把被截断的关键部位拍全，再核对四边余量；无法后退时调整机位重新取景。",
                   "benefit": "不把画外区域误当作已知留白；拍摄效果仍需现场核对。"}
-        distance_instruction = "现场通过机位、距离或时机核对可见边界和画外区域，不把斜线区域当作已知留白。"
+        distance_instruction = "先适当后退，确认主体关键部位完整入画；无法后退时调整机位。目标框画外部分未知，框示余量不代表实际距离。"
+    elif preserve_source:
+        change = {"problem": plan.diagnosis,
+                  "adjustment": "当前可计算的缩放、位移和占比变化很小；保留原照作为操作参照，按文字建议现场试拍。",
+                  "benefit": "通过重新拍摄核对主体位置、边缘余量和背景干扰，未模拟新的机位效果。"}
+        distance_instruction = "当前布局与原取景接近，未模拟新机位；按方案中的现场动作试拍，再检查主体边缘与背景。"
+        limitations.insert(0, "实际构图变化低于展示阈值：使用原图与取景框，不将相近的轮廓称为新的推荐构图。")
     else:
         change = {"problem": plan.diagnosis, "adjustment": (placement+size)[:140],
                   "benefit": "用真实轮廓比较主体占比和边缘余量；拍摄效果仍需现场核对。"}
@@ -107,8 +137,9 @@ def solve_layout(plan: CompositionIntent, scene: ObservedScene,
         distance_relation="unknown", distance_instruction=distance_instruction,
         layers=layers, changes=[change],
         limitations=list(dict.fromkeys(limitations))[:5], render_basis="source_geometry",
-        source_photo_aspect=photo_aspect, layout_mode="source_preserving" if preserve_source else "schematic", layout_engine="local_v1",
-        observed_frame=[tx, ty, tx+sx, ty+sy] if clipped else None,
+        source_photo_aspect=photo_aspect, layout_mode=mode, layout_engine="local_v1",
+        observed_frame=[tx, ty, tx+sx, ty+sy] if preserve_source else None,
+        target_frame=target_frame(scene) if preserve_source else None,
         unrendered_objects=[obj.label for obj in scene.unrendered_objects],
     )
     framing = FramingPlan(

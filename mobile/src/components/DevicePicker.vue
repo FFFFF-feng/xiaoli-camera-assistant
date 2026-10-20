@@ -60,7 +60,7 @@ function useQuery() {
         <button type="button" class="text-button" @click="useQuery">使用“{{ query.trim() }}”继续</button>
       </p>
       <label :for="inputId">{{ deviceLabel }}型号</label>
-      <p v-if="matches.length > 100 && query.trim()" class="helper">匹配较多，请选择品牌或补全型号。</p>
+      <p v-if="matches.length > 100" class="helper">共匹配 {{ matches.length }} 款，当前先显示前100款；请选择品牌或输入型号，其他型号仍可搜索。</p>
       <select :id="inputId" :value="modelValue" @change="emit('update:modelValue', ($event.target as HTMLSelectElement).value)">
         <option v-for="profile in options" :key="profile.profile_id" :value="profile.profile_id">{{ profile.display_name }}</option>
       </select>

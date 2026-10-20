@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 from unittest.mock import Mock
 
@@ -101,3 +102,59 @@ def test_optional_image_editor_check_is_disabled_by_default_and_never_reuses_vis
     with pytest.raises(web.LaunchError, match="独立") as error:
         web.check_image_editor()
     assert "test-vision-secret" not in str(error.value)
+
+
+@pytest.mark.parametrize("no_browser", [True, False])
+def test_current_web_launch_includes_local_workbench_and_two_browser_pages(tmp_path, monkeypatch, no_browser):
+    import importlib
+
+    monkeypatch.syspath_prepend(str(ROOT / "scripts"))
+    workbench = importlib.import_module("launch_apps")
+    events = []
+    monkeypatch.setattr(web, "RUNTIME", tmp_path)
+    monkeypatch.setattr(web, "build_frontend", lambda _: events.append("build") or b"current")
+    monkeypatch.setattr(web, "select_port", lambda _: (8080, None))
+    monkeypatch.setattr(web, "local_environment", lambda *args: ({}, "cloud"))
+
+    def ensure(port, reserved):
+        assert events == ["build"] and port == 8503 and reserved == {8080}
+        events.append("workbench")
+        return "http://127.0.0.1:8504/"
+
+    monkeypatch.setattr(workbench, "ensure_knowledge_workbench", ensure)
+    process = Mock(pid=999)
+    start = Mock(side_effect=lambda *args, **kwargs: events.append("web") or process)
+    monkeypatch.setattr(web.subprocess, "Popen", start)
+    monkeypatch.setattr(web, "ready", lambda *args: True)
+    browser = Mock()
+    monkeypatch.setattr(web.webbrowser, "open", browser)
+    url = web.launch("npm", 8080, no_browser=no_browser)
+    assert events == ["build", "workbench", "web"]
+    assert start.call_args.kwargs["env"]["WEB_KNOWLEDGE_WORKBENCH_URL"] == "http://127.0.0.1:8504/"
+    metadata = json.loads((tmp_path / "web-service.json").read_text(encoding="utf-8"))
+    assert metadata["knowledge_url"] == "http://127.0.0.1:8504/"
+    if no_browser:
+        browser.assert_not_called()
+    else:
+        assert [call.args[0] for call in browser.call_args_list] == [url, metadata["knowledge_url"]]
+
+
+def test_workbench_failure_preserves_previous_web_and_never_opens_browser(tmp_path, monkeypatch):
+    import importlib
+
+    monkeypatch.syspath_prepend(str(ROOT / "scripts"))
+    workbench = importlib.import_module("launch_apps")
+    monkeypatch.setattr(web, "RUNTIME", tmp_path)
+    monkeypatch.setattr(web, "build_frontend", Mock(return_value=b"current"))
+    monkeypatch.setattr(web, "select_port", lambda _: (8080, 123))
+    monkeypatch.setattr(web, "local_environment", lambda *args: ({}, "cloud"))
+    monkeypatch.setattr(workbench, "ensure_knowledge_workbench",
+                        Mock(side_effect=workbench.LaunchError("测试端口耗尽")))
+    kill = Mock()
+    browser = Mock()
+    monkeypatch.setattr(web.os, "kill", kill)
+    monkeypatch.setattr(web.webbrowser, "open", browser)
+    with pytest.raises(web.LaunchError, match="知识库工作台启动失败"):
+        web.launch("npm", 8080)
+    kill.assert_not_called()
+    browser.assert_not_called()

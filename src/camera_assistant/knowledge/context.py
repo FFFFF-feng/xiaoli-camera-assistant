@@ -38,6 +38,7 @@ KNOWLEDGE_CONDITION_KEYS = frozenset(
         "shutter_type",
         "drive_mode",
         "focus_mode",
+        "region_scope",
     }
 )
 
@@ -121,6 +122,8 @@ def build_knowledge_conditions(
     }
     is_phone = isinstance(camera, PhoneProfile)
     if is_phone:
+        if camera.capability_level == "catalog" and camera.region_scope == "中国大陆":
+            conditions["region_scope"] = camera.region_scope
         conditions.update(
             {
                 "phone_profile_id": camera.profile_id,
@@ -135,7 +138,9 @@ def build_knowledge_conditions(
     else:
         conditions.update({
             "camera_format": camera.sensor_format, "capture_mode": "still_photo",
-            "camera_mount": camera.mount, "camera_lens_id": request.camera_lens_id,
+            "camera_mount": (request.declared_camera_mount
+                             if request.camera_lens_reference_id and request.declared_camera_mount
+                             else camera.mount), "camera_lens_id": request.camera_lens_id,
         })
 
     target_model = (request.target_model_name or request.device_model_name or "").strip()

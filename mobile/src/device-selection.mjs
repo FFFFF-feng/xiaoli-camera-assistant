@@ -72,7 +72,43 @@ export function deviceSelection(deviceType, selectedId, manual, name) {
 export const mountNames = {
   canon_rf: 'Canon RF / RF-S', canon_ef: 'Canon EF / EF-S', nikon_z: 'Nikon Z',
   sony_e: 'Sony E / FE', fujifilm_x: 'Fujifilm X', micro_four_thirds: 'Micro Four Thirds',
+  nikon_f: 'Nikon F', sony_a: 'Sony A', leica_l: 'Leica L', leica_m: 'Leica M',
+  pentax_k: 'Pentax K', canon_fd: 'Canon FD', four_thirds: 'Four Thirds',
 };
+const referenceMountAliases = {
+  canonrf: 'canon_rf', canonef: 'canon_ef', canonefs: 'canon_ef', nikonz: 'nikon_z',
+  nikonf: 'nikon_f', nikonfaf: 'nikon_f', nikonfai: 'nikon_f', sonye: 'sony_e', sonyfe: 'sony_e',
+  sonya: 'sony_a', sonyalpha: 'sony_a', minoltaaf: 'sony_a', fujifilmx: 'fujifilm_x', fujix: 'fujifilm_x',
+  microfourthirds: 'micro_four_thirds', 'micro4/3system': 'micro_four_thirds',
+  leical: 'leica_l', 'lmount': 'leica_l', leicam: 'leica_m', pentaxk: 'pentax_k',
+  pentaxkaf: 'pentax_k', pentaxkaf2: 'pentax_k', pentaxkaf3: 'pentax_k',
+  canonfd: 'canon_fd', fourthirds: 'four_thirds', '4/3system': 'four_thirds',
+};
+export function referenceCameraMounts(camera) {
+  if (camera?.capability_level !== 'catalog' && camera?.mount && camera.mount !== 'unknown') return [camera.mount];
+  return [...new Set((camera?.catalog_mount_labels || []).map(label => referenceMountAliases[normalizeModelName(label)] || (mountNames[label] ? label : '')).filter(Boolean))];
+}
+/** @param {import('./types').CameraProfile | undefined} camera
+ * @param {import('./types').LensReference[]} lenses */
+export function candidateReferenceLenses(camera, lenses, declaredMount = '') {
+  const mounts = referenceCameraMounts(camera);
+  if (!mounts.length && mountNames[declaredMount]) mounts.push(declaredMount);
+  return lenses.filter(lens => lens.mount_keys.some(key => mounts.includes(key))
+    && (!lens.sensor_formats?.length || !camera?.sensor_format || camera.sensor_format === '不清楚'
+      || lens.sensor_formats.includes(camera.sensor_format)));
+}
+
+/** @param {import('./types').CameraProfile | undefined} camera
+ * @param {import('./types').LensReference | undefined} lens */
+export function referenceLensSettings(camera, lens, focalLength) {
+  if (!lens?.parameter_linkage || typeof lens.focal_min_mm !== 'number' || typeof lens.focal_max_mm !== 'number') return null;
+  const current = focalLength === undefined || focalLength === null || focalLength === '' ? lens.focal_min_mm : Number(focalLength);
+  const focal = Math.min(lens.focal_max_mm, Math.max(lens.focal_min_mm, Number.isFinite(current) ? Math.round(current) : lens.focal_min_mm));
+  return { focal_min_mm: lens.focal_min_mm, focal_max_mm: lens.focal_max_mm,
+    focal_length_mm: focal,
+    equivalent_focal_length_mm: camera?.crop_factor ? Math.round(focal * camera.crop_factor * 100) / 100 : null,
+    max_aperture: (focal === lens.focal_min_mm ? lens.max_aperture_wide : lens.max_aperture_tele) ?? null };
+}
 export function sensorLabel(value) { return value === 'APS-C' ? 'APS-C（半画幅）' : (value || '不清楚'); }
 
 /** @param {{mount?: string, sensor_format?: string, capability_level?: string} | undefined} camera

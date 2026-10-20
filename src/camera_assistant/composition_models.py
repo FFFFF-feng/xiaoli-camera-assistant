@@ -178,7 +178,8 @@ class TargetLayer(CompositionModel):
         if (not isinstance(value, list) or len(value) != 4 or any(
             isinstance(n, bool) or not isinstance(n, (int, float))
             or not math.isfinite(n) or not 0 <= n <= 1 for n in value
-        ) or value[2]-value[0] < .005 or value[3]-value[1] < .005):
+        ) or (value[2]-value[0] < .005 and not math.isclose(value[2]-value[0], .005, rel_tol=0, abs_tol=1e-12))
+                or (value[3]-value[1] < .005 and not math.isclose(value[3]-value[1], .005, rel_tol=0, abs_tol=1e-12))):
             raise ValueError("目标对象位置需要有效的0到1包围盒")
         return value
 
@@ -338,6 +339,9 @@ class TargetBoard(CompositionModel):
     source_photo_aspect: float | None = Field(default=None, gt=0, le=100)
     layout_engine: Literal["legacy", "local_v1"] = "legacy"
     observed_frame: list[float] | None = None
+    # Desired field in source-photo coordinates, NOT generated scene geometry.
+    # Portions outside [0, 1] are unknown and require an on-site photograph.
+    target_frame: list[float] | None = None
     unrendered_objects: list[str] = Field(default_factory=list, max_length=4)
 
     @field_validator("unrendered_objects")
@@ -352,8 +356,23 @@ class TargetBoard(CompositionModel):
     def valid_observed_frame(cls, value):
         return None if value is None else TargetLayer.valid_box(value)
 
+    @field_validator("target_frame", mode="before")
+    @classmethod
+    def valid_target_frame(cls, value):
+        if value is None:
+            return None
+        if (not isinstance(value, list) or len(value) != 4
+                or any(isinstance(n, bool) or not isinstance(n, (int, float))
+                       or not math.isfinite(n) or not -.25 <= n <= 1.25 for n in value)
+                or value[2]-value[0] < .005 or value[3]-value[1] < .005):
+            raise ValueError("目标取景框须为有限的原图坐标，画外范围仅供现场核对")
+        return value
+
     @model_validator(mode="after")
     def contains_main(self):
+        if self.target_frame is not None and (self.layout_mode != "source_preserving"
+                or self.render_basis != "source_geometry" or self.source_photo_aspect is None):
+            raise ValueError("目标取景框需要保留原取景及原图比例")
         if self.observed_frame is not None and (self.render_basis != "source_geometry" or self.source_photo_aspect is None):
             raise ValueError("已观察画幅需要原图来源及比例")
         if not any(layer.role == "main" for layer in self.layers):

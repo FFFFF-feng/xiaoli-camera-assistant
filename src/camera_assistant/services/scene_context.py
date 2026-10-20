@@ -212,6 +212,11 @@ def project_context(obj: ObservedObject, transform: tuple[float, float, float, f
         boundary = obj.photo_boundary
         perimeters = boundary.visible_paths if boundary and boundary.clipped_edges else [
             p+[p[0]] if p[-1] != p[0] else p for p in obj.contours or [obj.outline]]
+        # Closing a valid 64-point silhouette creates 65 points. Preserve the
+        # closing segment in a second open stroke, sharing its endpoint, rather
+        # than invalidating the source paths (or dropping the whole board).
+        perimeters = [path[start:start+64] for path in perimeters
+                      for start in range(0, len(path)-1, 63)]
         paths = [*perimeters, *paths]
     paths = paths[:96]
     sx, sy, tx, ty = transform

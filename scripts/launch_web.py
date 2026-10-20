@@ -34,7 +34,7 @@ class LaunchError(RuntimeError):
 def check_runtime() -> str:
     if sys.version_info < (3, 11):  # noqa: UP036 - launcher can be invoked by an old Python
         raise LaunchError("需要 Python 3.11 或更新版本。")
-    for module in ("uvicorn", "fastapi", "multipart", "httpx", "numpy", "cv2", "PIL", "pydantic", "dotenv", "yaml"):
+    for module in ("uvicorn", "fastapi", "multipart", "httpx", "numpy", "cv2", "PIL", "pydantic", "dotenv", "yaml", "streamlit"):
         try:
             importlib.import_module(module)
         except (ImportError, OSError):
@@ -44,9 +44,26 @@ def check_runtime() -> str:
         raise LaunchError("未找到 Node.js/npm，请安装 Node.js 后重新启动。")
     if not (ROOT / "mobile/node_modules/vite").is_dir():
         raise LaunchError("前端依赖尚未安装，请执行：npm --prefix mobile ci")
+    if not (ROOT / "knowledge_app.py").is_file():
+        raise LaunchError("缺少知识库导入入口 knowledge_app.py，请保留完整项目目录。")
     check_image_editor()
     check_segmentation()
+    check_observation_coordinates()
     return npm
+
+
+def check_observation_coordinates() -> None:
+    """Pure unit-option check: no model call or access to credential vaults."""
+    from dotenv import dotenv_values
+
+    from camera_assistant.config import Settings
+
+    environment = {key: value for key, value in dotenv_values(ROOT / '.env').items() if value is not None}
+    environment.update(os.environ)
+    try:
+        Settings.observation_coordinate_option(environment)
+    except (ValueError, TypeError, AttributeError):
+        raise LaunchError('识别坐标单位配置无效：请使用 model_default、normalized_0_1 或 normalized_0_1000。') from None
 
 
 def check_image_editor() -> None:
@@ -259,15 +276,22 @@ def ready(port: int, index: bytes, mode: str) -> bool:
         return False
 
 
-def launch(npm: str, preferred: int, *, demo: bool = False, no_browser: bool = False) -> str:
+def launch(npm: str, preferred: int, *, demo: bool = False, no_browser: bool = False,
+           knowledge_port: int = 8503) -> str:
     # Share the launch lock with the legacy entry point, but never stop legacy/unknown services.
     sys.path.insert(0, str(ROOT / "scripts"))
-    from launch_apps import launch_lock
+    from launch_apps import LaunchError as WorkbenchLaunchError
+    from launch_apps import ensure_knowledge_workbench, launch_lock
 
     with launch_lock(RUNTIME):
         index = build_frontend(npm)
         port, previous = select_port(preferred)
         environment, mode = local_environment(port, demo)
+        try:
+            knowledge_url = ensure_knowledge_workbench(knowledge_port, {port})
+        except WorkbenchLaunchError as error:
+            raise LaunchError(f"知识库工作台启动失败：{error}") from None
+        environment["WEB_KNOWLEDGE_WORKBENCH_URL"] = knowledge_url
         if previous:
             if owned_pid(port) != previous:
                 raise LaunchError("端口归属已变化，请重新启动；未关闭其他程序。")
@@ -291,31 +315,36 @@ def launch(npm: str, preferred: int, *, demo: bool = False, no_browser: bool = F
             time.sleep(.25)
         url = f"http://127.0.0.1:{port}/?v=local-{time.time_ns()}"
         (RUNTIME / "web-service.json").write_text(json.dumps({"pid": process.pid, "port": port,
-            "url": url, "project": str(ROOT), "mode": mode}, ensure_ascii=False, indent=2), encoding="utf-8")
+            "url": url, "project": str(ROOT), "mode": mode, "knowledge_url": knowledge_url},
+            ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"当前项目：{ROOT}\n新版网页已启动（{'云模型' if mode == 'cloud' else '规则演示'}）：{url}", flush=True)
     print("本次仅在本机运行，没有上传或更新服务器。日志：.launcher/web.log", flush=True)
+    print("已加载已发布器材知识：手机后置镜头及相机明确的焦段/光圈参与联动；缺失字段不猜填，新增资料后请重启。", flush=True)
+    print("构图使用物体轮廓内分区取色、淡化环境与前后大图对照；不再使用整图色块。", flush=True)
     if mode == "cloud":
         print("使用本机已有模型配置，密钥不会显示。", flush=True)
     if not no_browser:
         webbrowser.open(url, new=1)
+        webbrowser.open(knowledge_url, new=1)
     return url
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="构建并启动当前版本的小栗网页")
     parser.add_argument("--port", "--main-port", type=int, default=8080)
+    parser.add_argument("--knowledge-port", type=int, default=8503, help="知识库导入工作台首选端口")
     parser.add_argument("--no-browser", action="store_true")
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--demo", action="store_true", help="仅运行规则演示，不调用云模型")
     args = parser.parse_args(argv)
     try:
-        if not 1024 <= args.port <= 65515:
+        if not all(1024 <= port <= 65515 for port in (args.port, args.knowledge_port)):
             raise LaunchError("端口必须在1024到65515之间。")
         npm = check_runtime()
         if args.check:
             print("新版网页运行依赖检查通过。")
             return 0
-        launch(npm, args.port, demo=args.demo, no_browser=args.no_browser)
+        launch(npm, args.port, demo=args.demo, no_browser=args.no_browser, knowledge_port=args.knowledge_port)
         return 0
     except (LaunchError, OSError, RuntimeError) as error:
         print(f"启动失败：{error}", file=sys.stderr, flush=True)

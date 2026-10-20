@@ -1,4 +1,5 @@
 /* Shared report hierarchy: headings, actions, then supporting explanations. */
+main > section[aria-labelledby='result-title'] { max-width: 1160px; }
 .report-heading { display: flex; align-items: flex-start; gap: 12px; margin: 0 0 18px; min-width: 0; }
 .report-heading-icon { display: grid; place-items: center; flex: 0 0 38px; height: 38px; border: 1px solid #e8cbb7; border-radius: 12px; color: var(--green); background: #faeee3; }
 .report-heading-icon .ui-icon { width: 19px; height: 19px; }

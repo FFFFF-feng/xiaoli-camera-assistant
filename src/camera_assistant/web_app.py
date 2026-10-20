@@ -104,9 +104,14 @@ class WebSessions:
 class WebGuard:
     """Apply web policy without intercepting the request/response body streams."""
 
-    def __init__(self, app: ASGIApp, sessions: WebSessions):
+    def __init__(self, app: ASGIApp, sessions: WebSessions, mobile_token: str = ""):
         self.app = app
         self.sessions = sessions
+        self.mobile_token = mobile_token.encode()
+
+    def native_auth(self, scope: Scope) -> bool:
+        supplied = dict(scope.get("headers", [])).get(b"authorization", b"")
+        return bool(self.mobile_token) and secrets.compare_digest(supplied, b"Bearer " + self.mobile_token)
 
     async def __call__(self, scope: Scope, receive: Receive, send: Send):
         if scope["type"] != "http":
@@ -121,9 +126,12 @@ class WebGuard:
             or request.headers.get("x-xiaoli-client") != "web"
         ):
             rejected = JSONResponse({"detail": "请在小栗网页内操作。"}, 403)
-        elif path in {"/api/v1/analyze", "/api/v1/analyze-scene", "/api/v1/composition-preview"} and sessions.auth(request.scope):
+        elif path in {"/api/v1/analyze", "/api/v1/analyze-scene", "/api/v1/composition-preview"} and (
+            sessions.auth(request.scope) or self.native_auth(request.scope)
+        ):
             peer = sessions.peer(request)
-            cookie = request.cookies.get(COOKIE, "")
+            cookie = (request.cookies.get(COOKIE, "") if sessions.auth(request.scope)
+                      else "mobile:" + hashlib.sha256(self.mobile_token).hexdigest())
             if not sessions.allow(sessions.analyses, peer, 20, 3600):
                 rejected = JSONResponse({"detail": "这个网络的体验次数已用完，请一小时后再试。"}, 429)
             elif not sessions.allow(sessions.analyses, "session:" + cookie, 6, 600):
@@ -146,13 +154,41 @@ class WebGuard:
         await (rejected or self.app)(scope, receive, send_with_headers)
 
 
-def create_web_app(settings: Settings, sessions: WebSessions, frontend: Path, pipeline=None):
-    app = create_app(settings, secrets.token_urlsafe(48), pipeline, session_auth=sessions.auth)
-    app.add_middleware(WebGuard, sessions=sessions)
+def local_workbench_url(value: str, sessions: WebSessions, request: Request) -> str | None:
+    """Only advertise a launcher-provided loopback link to a local browser."""
+    from urllib.parse import urlsplit
+
+    local_hosts = {"127.0.0.1", "localhost", "::1"}
+    try:
+        origin = urlsplit(sessions.origin)
+        url = urlsplit(value)
+        if (origin.hostname not in local_hosts or sessions.trusted_proxy
+                or not request.client or request.client.host not in local_hosts
+                or str(request.base_url).rstrip("/") != sessions.origin
+                or url.scheme != "http" or url.hostname != "127.0.0.1"
+                or url.username or url.password or url.path not in {"", "/"}
+                or url.query or url.fragment or url.port is None
+                or not 1024 <= url.port <= 65535):
+            return None
+        return f"http://127.0.0.1:{url.port}/"
+    except ValueError:
+        return None
+
+
+def create_web_app(settings: Settings, sessions: WebSessions, frontend: Path, pipeline=None,
+                   *, knowledge_workbench_url: str = "", mobile_access_token: str | None = None):
+    # An optional native token shares the existing HTTPS gateway, never its web cookie.
+    access_token = secrets.token_urlsafe(48) if mobile_access_token is None else mobile_access_token
+    app = create_app(settings, access_token, pipeline, session_auth=sessions.auth)
+    app.add_middleware(WebGuard, sessions=sessions, mobile_token=mobile_access_token or "")
 
     @app.get("/web-config")
-    def web_config():
-        return {"web_client": True}
+    def web_config(request: Request):
+        config = {"web_client": True}
+        url = local_workbench_url(knowledge_workbench_url, sessions, request)
+        if url:
+            config["knowledge_workbench_url"] = url
+        return config
 
     @app.post("/session")
     def start_session(request: Request):
@@ -188,4 +224,6 @@ def from_env():
     if not secret and origin.startswith("http://127.0.0.1:"):
         secret = secrets.token_urlsafe(48)
     sessions = WebSessions(secret, origin)
-    return create_web_app(settings, sessions, PROJECT_ROOT / "mobile" / "dist")
+    return create_web_app(settings, sessions, PROJECT_ROOT / "mobile" / "dist",
+                          knowledge_workbench_url=os.getenv("WEB_KNOWLEDGE_WORKBENCH_URL", ""),
+                          mobile_access_token=os.getenv("MOBILE_API_TOKEN") or None)

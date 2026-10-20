@@ -7,5 +7,5 @@ if errorlevel 1 (
   pause
   exit /b 1
 )
-python "%~dp0scripts\start_mobile_api.py" --host 0.0.0.0 %*
+python "%~dp0scripts\start_mobile_api.py" --host 0.0.0.0 --local-config %*
 if errorlevel 1 pause

@@ -1,6 +1,29 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { compatibleLenses, deviceSelection, exactDeviceMatch, linkedCameraSettings, searchDevices, sensorLabel } from '../src/device-selection.mjs';
+import { candidateReferenceLenses, compatibleLenses, deviceSelection, exactDeviceMatch, linkedCameraSettings, referenceCameraMounts, referenceLensSettings, searchDevices, sensorLabel } from '../src/device-selection.mjs';
+
+test('知识库镜头不再只有名称，焦距与光圈端点实际联动', () => {
+  const lens = { reference_id: 'source', mount_keys: ['sony_e'], parameter_linkage: true,
+    focal_min_mm: 18, focal_max_mm: 55, max_aperture_wide: 3.5, max_aperture_tele: 5.6,
+    sensor_formats: ['APS-C'] };
+  assert.equal(referenceLensSettings({ crop_factor: 1.5 }, lens, undefined).focal_length_mm, 18);
+  assert.equal(referenceLensSettings({ crop_factor: 1.5 }, lens, 18).max_aperture, 3.5);
+  assert.equal(referenceLensSettings({ crop_factor: 1.5 }, lens, 35).max_aperture, 5.6);
+  assert.equal(referenceLensSettings({ crop_factor: 1.5 }, lens, 500).equivalent_focal_length_mm, 82.5);
+  assert.equal(referenceLensSettings({}, { ...lens, parameter_linkage: false }, 50), null);
+  assert.deepEqual(candidateReferenceLenses({ mount: 'sony_e', sensor_format: '全画幅' }, [lens]), []);
+});
+
+test('知识库镜头只按明确卡口做参考候选，不提升为精确兼容', () => {
+  const refs = [{ reference_id: 'sony', mount_keys: ['sony_e'] }, { reference_id: 'nikon', mount_keys: ['nikon_f'] }];
+  const camera = { capability_level: 'catalog', mount: 'unknown', catalog_mount_labels: ['Nikon F AF'] };
+  assert.deepEqual(referenceCameraMounts(camera), ['nikon_f']);
+  assert.deepEqual(candidateReferenceLenses(camera, refs).map(x => x.reference_id), ['nikon']);
+  assert.deepEqual(candidateReferenceLenses({mount: 'canon_rf'}, refs, 'sony_e'), []);
+  assert.deepEqual(candidateReferenceLenses({mount: 'unknown'}, refs), []);
+  assert.deepEqual(candidateReferenceLenses({mount: 'unknown'}, refs, 'sony_e').map(x => x.reference_id), ['sony']);
+  assert.deepEqual(compatibleLenses(camera, []), []);
+});
 
 const profiles = [
   { profile_id: 'generic_phone', display_name: '未知手机' },

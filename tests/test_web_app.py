@@ -62,6 +62,41 @@ def test_static_client_and_private_routes(client):
         assert client.get(path).status_code == 404
 
 
+@pytest.mark.parametrize("origin,peer,link,proxy,visible", [
+    ("http://127.0.0.1:8080", "127.0.0.1", "http://127.0.0.1:8504/", "", True),
+    ("http://localhost:8080", "127.0.0.1", "http://127.0.0.1:8504/", "", True),
+    (ORIGIN, "127.0.0.1", "http://127.0.0.1:8504/", "", False),
+    ("http://127.0.0.1:8080", "192.168.1.2", "http://127.0.0.1:8504/", "", False),
+    ("http://127.0.0.1:8080", "127.0.0.1", "http://127.0.0.1:8504/", "127.0.0.1", False),
+    ("http://127.0.0.1:8080", "127.0.0.1", "https://example.com/", "", False),
+    ("http://127.0.0.1:8080", "127.0.0.1", "javascript:alert(1)", "", False),
+    ("http://127.0.0.1:8080", "127.0.0.1", "http://user:pass@127.0.0.1:8503/", "", False),
+    ("http://127.0.0.1:8080", "127.0.0.1", "http://127.0.0.1:8503/?secret=x", "", False),
+    ("http://127.0.0.1:8080", "127.0.0.1", "http://127.0.0.1:8503/import", "", False),
+    ("http://127.0.0.1:8080", "127.0.0.1", "http://127.0.0.1:bad/", "", False),
+    ("http://127.0.0.1:8080", "127.0.0.1", "", "", False),
+])
+def test_workbench_link_only_advertised_to_local_desktop(tmp_path, monkeypatch, origin, peer, link, proxy, visible):
+    monkeypatch.setenv("WEB_TRUSTED_PROXY_IP", proxy)
+    (tmp_path / "assets").mkdir()
+    (tmp_path / "index.html").write_text("<html>小栗</html>", encoding="utf-8")
+    settings = Settings(True, "", "https://example.invalid", "", "", 5, 1,
+                        Path(__file__).resolve().parents[1] / "knowledge")
+    app = create_web_app(settings, WebSessions("s" * 48, origin), tmp_path, knowledge_workbench_url=link)
+    with TestClient(app, base_url=origin, client=(peer, 50000)) as client:
+        response = client.get("/web-config")
+        assert response.headers["cache-control"] == "no-store"
+        data = response.json()
+        assert data["web_client"] is True
+        assert ("knowledge_workbench_url" in data) is visible
+        if visible:
+            assert data["knowledge_workbench_url"] == link
+        # A local link must not mount the administration surface on this server.
+        assert client.get("/knowledge_app.py").status_code == 404
+        assert client.get("/data/knowledge.db").status_code == 404
+        assert "knowledge_workbench_url" not in client.get("/web-config", headers={"Host": "attacker.invalid"}).json()
+
+
 def test_static_assets_transfer_completely_over_real_http(tmp_path):
     """TestClient alone misses disconnect races in streamed FileResponse bodies."""
     import socket
@@ -170,3 +205,43 @@ def test_cloud_starts_and_issues_session_without_credentials(tmp_path):
         assert client.get("/api/v1/devices", headers=HEADERS).status_code == 401
         assert start_session(client).status_code == 200
         assert client.get("/api/v1/devices", headers=HEADERS).status_code == 200
+
+
+def test_optional_native_token_uses_same_https_without_exposing_credentials(tmp_path):
+    (tmp_path / "assets").mkdir()
+    (tmp_path / "index.html").write_text("<html>小栗</html>", encoding="utf-8")
+    settings = Settings(True, "", "https://example.invalid", "", "", 5, 1,
+                        Path(__file__).resolve().parents[1] / "knowledge")
+    token = "test-native-private-token-123456789"
+    app = create_web_app(settings, WebSessions("s" * 48, ORIGIN), tmp_path, mobile_access_token=token)
+    native = {"Origin": "http://localhost", "Authorization": "Bearer " + token}
+    with TestClient(app, base_url=ORIGIN) as client:
+        response = client.get("/api/v1/devices", headers=native)
+        assert response.status_code == 200
+        assert response.headers["access-control-allow-origin"] == "http://localhost"
+        assert client.get("/api/v1/devices", headers={**native, "Authorization": "Bearer wrong"}).status_code == 401
+        assert client.get("/api/v1/devices").status_code == 401
+        assert token not in client.get("/web-config").text + client.get("/health").text + client.get("/").text
+        preflight = client.options("/api/v1/analyze", headers={
+            "Origin": "http://localhost", "Access-Control-Request-Method": "POST",
+            "Access-Control-Request-Headers": "authorization,content-type",
+        })
+        assert preflight.status_code == 200
+        image = BytesIO()
+        Image.new("RGB", (100, 80), (100, 120, 90)).save(image, format="JPEG")
+        for _ in range(6):
+            response = client.post("/api/v1/analyze", headers=native,
+                files={"file": ("scene.jpg", image.getvalue(), "image/jpeg")},
+                data={"consent": "true", "expected_analysis_mode": "demo",
+                      "user_request": json.dumps({"intent": "窗边静物", "device_type": "phone"})})
+            assert response.status_code == 200
+        assert client.post("/api/v1/analyze", headers=native).status_code == 429
+        assert start_session(client).status_code == 200
+        assert client.get("/api/v1/devices", headers=HEADERS).status_code == 200
+
+
+def test_native_token_must_not_be_a_short_placeholder(tmp_path):
+    settings = Settings(True, "", "https://example.invalid", "", "", 5, 1,
+                        Path(__file__).resolve().parents[1] / "knowledge")
+    with pytest.raises(ValueError, match="MOBILE_API_TOKEN"):
+        create_web_app(settings, WebSessions("s" * 48, ORIGIN), tmp_path, mobile_access_token="short")

@@ -4,11 +4,20 @@ export interface DeviceCatalogProfile {
 }
 export type PreviewApi = (path:string,options?:RequestInit)=>Promise<any>;
 export interface PhoneProfile extends DeviceCatalogProfile {
+  region_scope?: string;
+  rear_camera_summary?: string;
   modes: string[];
   pro_controls?: string[];
   lenses: { lens_id: string; name: string; modes?: string[]; aperture?: number | null;
     aperture_max?: number | null; aperture_control?: string; equivalent_focal_length_mm?: number | null }[];
   notes: string[];
+}
+export interface LensReference {
+  reference_id: string; display_name: string; brand: string; mount_keys: string[];
+  source_urls: string[]; capability_level: 'catalog'; controls_hardware_limits: boolean;
+  focal_min_mm?: number | null; focal_max_mm?: number | null;
+  max_aperture_wide?: number | null; max_aperture_tele?: number | null;
+  sensor_formats?: string[]; parameter_linkage?: boolean; specification_basis?: string;
 }
 export interface CameraProfile extends DeviceCatalogProfile {
   sensor_format?: string; crop_factor?: number | null; mount?: string; capability_level?: string;
@@ -41,6 +50,7 @@ export interface TargetBoard {
   distance_relation:'closer'|'farther'|'similar'|'unknown'; distance_instruction:string;
   render_basis?:'legacy'|'source_geometry';layout_mode?:'schematic'|'crop_projection'|'source_preserving';source_photo_aspect?:number|null;
   layout_engine?:'legacy'|'local_v1';observed_frame?:number[]|null;unrendered_objects?:string[];
+  target_frame?:number[]|null;
   layers:{label:string;kind:string;role:'main'|'foreground'|'background'|'prop';depth:number;bbox:number[];
     color:'slate'|'blue'|'ochre'|'sage'|'rose';representation?:'silhouette'|'context_lines'|'scene_structure';outline:number[][];contours?:number[][][];holes?:number[][][];outline_style?:'angular'|'curved';details:number[][][];source_details?:number[][][]|null;
     identity_features:string[];evidence_photo_ids:string[];certainty:'observed'|'approximate';
@@ -60,7 +70,7 @@ export interface Analysis {
   scene_photo_count?:number;
   result: {
     camera_profile: { display_name: string; device_type: 'phone' | 'camera'; sensor_format?: string };
-    equipment_settings?: { camera_lens?: CameraLensProfile | null; focal_length_mm?: number | null;
+    equipment_settings?: { camera_lens?: CameraLensProfile | null; reference_lens?: LensReference | null; focal_length_mm?: number | null;
       equivalent_focal_length_mm?: number | null; max_aperture?: number | null } | null;
     scene: { scene_label: string; scene_type: string; subject: string; lighting: string; notes: string[];scene_survey?:SceneSurvey|null };
     composition?: {

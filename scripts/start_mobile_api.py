@@ -12,6 +12,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT / "scripts"))
+
+
+def apply_local_configuration(port: int, demo: bool) -> None:
+    """Reuse the local web launcher's model/proxy policy, never its web session."""
+    from launch_web import local_environment
+
+    environment, _ = local_environment(port, demo)
+    os.environ.update({key: value for key, value in environment.items()
+                       if not key.startswith("WEB_")})
 
 
 def load_token() -> tuple[str, Path]:
@@ -34,6 +44,8 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument("--local-config", action="store_true",
+                        help="Reuse this project's local model and proxy configuration")
     parser.add_argument(
         "--demo", action="store_true", help="Force offline rule demo; no cloud calls"
     )
@@ -46,6 +58,8 @@ def main() -> int:
         from camera_assistant.config import Settings
         from camera_assistant.mobile_api import create_app
 
+        if args.local_config:
+            apply_local_configuration(args.port, args.demo)
         settings = Settings.from_env()
         if args.demo:
             settings = replace(settings, demo_mode=True)

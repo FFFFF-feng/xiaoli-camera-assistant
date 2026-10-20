@@ -21,6 +21,8 @@ class UserRequest(BaseModel):
     camera_format: CameraFormat = "不清楚"
     camera_profile_id: str = "generic_unknown"
     camera_lens_id: str = Field(default="", max_length=100)
+    camera_lens_reference_id: str = Field(default="", max_length=100)
+    declared_camera_mount: str = Field(default="", max_length=60)
     focal_length_mm: int | None = Field(default=None, ge=8, le=1200)
     max_aperture: float | None = Field(default=None, ge=0.7, le=32)
     device_type: Literal["camera", "phone"] = "camera"
@@ -166,6 +168,7 @@ class CameraLensProfile(BaseModel):
 
 class EquipmentSettings(BaseModel):
     camera_lens: CameraLensProfile | None = None
+    reference_lens: dict | None = None
     sensor_format: CameraFormat
     focal_length_mm: int | None = None
     equivalent_focal_length_mm: float | None = None
@@ -192,6 +195,9 @@ class PhoneProfile(BaseModel):
     model: str
     display_name: str
     aliases: list[str] = Field(default_factory=list)
+    capability_level: Literal["catalog", "detailed"] = "detailed"
+    knowledge_ids: list[str] = Field(default_factory=list)
+    rear_camera_summary: str = ""
     native_app: str = "原生相机"
     modes: list[PhoneCaptureMode] = Field(default_factory=lambda: ["auto"])
     pro_controls: list[Literal["iso", "shutter", "focus", "white_balance"]] = Field(

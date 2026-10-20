@@ -31,8 +31,13 @@ from camera_assistant.services.composition import (
     OpenAICompatibleCompositionAdvisor,
     observe_composition,
 )
+from camera_assistant.services.device_reference_catalog import (
+    camera_reference_mounts,
+    read_reference_devices,
+    reference_lenses_for,
+)
 from camera_assistant.services.image_analyzer import ImageAnalyzer
-from camera_assistant.services.lens_knowledge import LensKnowledgeBase
+from camera_assistant.services.lens_knowledge import EquipmentSelectionError, LensKnowledgeBase
 from camera_assistant.services.localization import GroundingDinoLocalizer
 from camera_assistant.services.phone_knowledge import PhoneKnowledgeBase
 from camera_assistant.services.photography_facts import (
@@ -83,6 +88,10 @@ class CameraAssistantPipeline:
         self.lens_knowledge = LensKnowledgeBase(
             settings.knowledge_dir / "cameras" / "lens_profiles.yaml"
         )
+        reference_phones, self.lens_references = read_reference_devices(
+            settings.knowledge_db_path or PROJECT_ROOT / "data" / "knowledge.db"
+        )
+        self.phone_knowledge.add_reference_profiles(reference_phones)
         if retriever is not None:
             self.retriever = retriever
         elif settings.knowledge_mode == "managed":
@@ -170,6 +179,8 @@ class CameraAssistantPipeline:
                     "camera_format": "不清楚",
                     "camera_profile_id": "generic_unknown",
                     "camera_lens_id": "",
+                    "camera_lens_reference_id": "",
+                    "declared_camera_mount": "",
                     "focal_length_mm": None,
                     "max_aperture": None,
                     "phone_profile_id": camera.profile_id,
@@ -186,6 +197,38 @@ class CameraAssistantPipeline:
                 request, camera
             )
             device_notes.extend(lens_notes)
+            if request.camera_lens_reference_id:
+                if request.camera_lens_id:
+                    raise EquipmentSelectionError("不能同时选择适配镜头和参考镜头，请重新选择。")
+                candidates = reference_lenses_for(camera, self.lens_references, request.declared_camera_mount)
+                reference = next((item for item in candidates
+                                  if item["reference_id"] == request.camera_lens_reference_id), None)
+                if reference is None:
+                    raise EquipmentSelectionError("参考镜头不存在或与当前卡口候选不符，请重新选择。")
+                mounts = camera_reference_mounts(camera) or {request.declared_camera_mount}
+                matched_mounts = mounts.intersection(reference["mount_keys"])
+                effective_request = effective_request.model_copy(update={
+                    "target_lens_name": reference["retrieval_name"],
+                    "declared_camera_mount": next(iter(matched_mounts)) if len(matched_mounts) == 1 else "",
+                })
+                focal = effective_request.focal_length_mm
+                aperture = effective_request.max_aperture
+                if reference.get("parameter_linkage"):
+                    low, high = reference["focal_min_mm"], reference["focal_max_mm"]
+                    focal = min(high, max(low, focal if focal is not None else low))
+                    limit = reference.get("max_aperture_wide" if focal == low else "max_aperture_tele")
+                    if limit is not None:
+                        aperture = max(aperture if aperture is not None else limit, limit)
+                    effective_request = effective_request.model_copy(update={"focal_length_mm": focal,
+                                                                             "max_aperture": aperture})
+                equipment_settings = equipment_settings.model_copy(update={
+                    "reference_lens": reference, "focal_length_mm": focal, "max_aperture": aperture,
+                    "equivalent_focal_length_mm": round(focal * camera.crop_factor, 2)
+                    if focal is not None and camera.crop_factor is not None and camera.sensor_format != "不清楚" else None,
+                })
+                device_notes.append(f"所选参考镜头：{reference['display_name']}。仅按目录卡口筛选，"
+                                    "具体卡口版本、成像圈与兼容性须由用户核对；"
+                                    "资料明确的焦段与光圈已参与联动，未知字段未补猜，也不改变机身能力。")
             if equipment_settings and equipment_settings.camera_lens:
                 effective_request = effective_request.model_copy(update={
                     "target_lens_name": equipment_settings.camera_lens.display_name,

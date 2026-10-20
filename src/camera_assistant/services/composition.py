@@ -29,6 +29,7 @@ from camera_assistant.models import (
 )
 from camera_assistant.services.advice_safety import composition_issue, unconfirmed_phone_controls
 from camera_assistant.services.cloud import ModelServiceError, request_json
+from camera_assistant.services.composition_replay import validation_fields
 from camera_assistant.services.composition_trace import observe_diagnostics
 from camera_assistant.services.layout_solver import solve_layout
 from camera_assistant.services.observation_evidence import observation_summary
@@ -392,8 +393,27 @@ class OpenAICompatibleCompositionAdvisor:
                 with measure_stage("composition_local_layout"):
                     board, framing = solve_layout(plan, observed,
                         inspection.metrics.width/max(inspection.metrics.height, 1), proposal)
-            except (ValueError, TypeError):
-                notes.append("本地布局未完成：主体编号不匹配或照片尺寸无效，未生成占位推荐图。")
+            except (ValueError, TypeError) as error:
+                # Keep the actual local stage failure without copying inputs,
+                # provider text or exception messages into the public response.
+                failures = {
+                    "unknown_focus": ("layout_focus_unavailable", "构图意图引用的主体未在已提取的主要主体中找到。"),
+                    "invalid_photo_aspect": ("layout_photo_invalid", "参考照片的宽高比无效。"),
+                    "main_subjects_too_small": ("layout_subjects_too_small", "无法在同一取景范围内完整保留全部主要主体及有效大小。"),
+                    "missing_crop_bounds": ("layout_crop_invalid", "裁切方案缺少有效取景范围。"),
+                    "invalid_crop_aspect": ("layout_crop_invalid", "裁切范围与目标画幅不一致。"),
+                    "crop_cuts_main": ("layout_crop_invalid", "裁切范围会截断主要主体。"),
+                }
+                fields = validation_fields(error)
+                if isinstance(error, ValidationError):
+                    code, reason = "layout_geometry_invalid", "本地投影后的轮廓或布局数据未通过校验。"
+                else:
+                    key = error.args[0] if error.args and isinstance(error.args[0], str) else ""
+                    code, reason = failures.get(key, ("layout_invalid_data", "本地布局数据未完成有效转换。"))
+                diagnostics.append(CompositionDiagnostic(stage="layout", status="failed", code=code,
+                    object_id=plan.focus_object_id,
+                    field_path=fields[0]["field_path"] if fields else None))
+                notes.append(reason + "保留文字建议，未生成占位推荐图。")
                 proposals.append(proposal.model_copy(update={"storyboard": None}))
                 continue
             proposals.append(proposal.model_copy(update={"storyboard": board, "framing_plan": framing}))
@@ -492,6 +512,9 @@ class OpenAICompatibleCompositionAdvisor:
             "diagnosis具体说明主要问题或值得保留的优点。placement为keep/left/center/right，"
             "vertical_placement为keep/upper/center/lower，subject_scale为keep/larger/smaller，"
             "aspect为keep/portrait/landscape/square。没有摄影理由就选keep，不机械套用三分法。"
+            "若诊断指出主体过小、主体位置不当或需要更多环境，必须让subject_scale或placement等与该诊断一致，"
+            "不要在actions写靠近或明显调整取景却把所有意图字段都设为keep。"
+            "larger/smaller由程序在主体完整性允许范围内执行清晰可辨的调整，不靠分别移动景物制造变化。"
             "其余可选字段可省略，由程序采用保守默认值；不能猜测不存在的主体编号。"
             "observed_objects中representation=scene_structure表示连续场景开放路径；"
             "此类场景保持placement/vertical_placement/subject_scale/aspect均为keep，"

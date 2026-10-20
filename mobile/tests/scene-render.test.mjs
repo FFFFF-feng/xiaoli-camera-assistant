@@ -61,6 +61,21 @@ test('背景缓存包含来源、目标变换、画幅与边界方向，并且�
   assert.equal(jobs,7);assert.deepEqual(first.pixels,original);assert.equal(original.data.byteLength,64);
 });
 
+test('角色与遮挡层次改变需要重取色，环境参考与物体透明层分别编码',async()=>{
+  let jobs=0;const encoded=[];
+  const renderer=createSceneRenderer({decode:async()=>({aspect:1,pixels:pixels()}),
+    process:async job=>{jobs++;return {pixels:job.pixels,contextPixels:{...job.pixels,data:job.pixels.data.slice()},fills:[]};},
+    encode:value=>{encoded.push(value);return `png-${encoded.length}`;}});
+  const original=board();original.layers[0].role='main';original.layers[0].depth=1;
+  const value=await renderer.colors('blob:layers',original);
+  assert.notEqual(value.url,value.contextUrl);assert.equal(encoded.length,2);
+  const background=structuredClone(original);background.layers[0].role='background';
+  await renderer.colors('blob:layers',background);
+  const closer=structuredClone(original);closer.layers[0].depth=2;
+  await renderer.colors('blob:layers',closer);
+  assert.equal(jobs,3);
+});
+
 test('异步等待期间更改输入不能把新几何写入旧缓存键',async()=>{
   const jobs=[];const renderer=createSceneRenderer({decode:async()=>({aspect:1,pixels:pixels()}),
     process:async job=>{jobs.push(job);return job.kind==='colors'?{pixels:job.pixels,fills:[]}:job.pixels;},encode:()=> 'png'});

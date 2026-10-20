@@ -17,7 +17,7 @@ AUTH = {"Authorization": "Bearer " + TOKEN}
 
 
 @pytest.fixture
-def settings():
+def settings(tmp_path):
     return Settings(
         True,
         "",
@@ -27,6 +27,7 @@ def settings():
         5,
         1,
         Path(__file__).resolve().parents[1] / "knowledge",
+        knowledge_db_path=tmp_path / "knowledge.db",
     )
 
 

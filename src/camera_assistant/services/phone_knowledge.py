@@ -46,6 +46,17 @@ class PhoneKnowledgeBase:
     def list_profiles(self) -> list[PhoneProfile]:
         return list(self.profiles.values())
 
+    def add_reference_profiles(self, profiles: list[PhoneProfile]) -> None:
+        for profile in profiles:
+            # 独立适配档案优先；同名参考资料不能扩张已适配型号的模式或镜头。
+            keys = [normalized_model_name(value) for value in
+                    (profile.model, profile.display_name, *profile.aliases)]
+            if any(key in self.aliases for key in keys):
+                continue
+            self.profiles[profile.profile_id] = profile
+            for value in (profile.profile_id, profile.model, profile.display_name, *profile.aliases):
+                self.aliases.setdefault(normalized_model_name(value), profile.profile_id)
+
     def search(self, query: str) -> list[PhoneProfile]:
         key = normalized_model_name(query)
         if not key:

@@ -137,6 +137,44 @@ def test_repeated_launch_does_not_create_more_processes(
     browser.assert_not_called()
 
 
+def test_new_web_workbench_uses_selected_port_and_waits(tmp_path, monkeypatch):
+    monkeypatch.setattr(launcher, "RUNTIME", tmp_path)
+    selected = Mock(return_value=(8504, False))
+    process = Mock(pid=2026)
+    start = Mock(return_value=process)
+    wait = Mock()
+    monkeypatch.setattr(launcher, "select_port", selected)
+    monkeypatch.setattr(launcher, "start_service", start)
+    monkeypatch.setattr(launcher, "wait_ready", wait)
+    assert launcher.ensure_knowledge_workbench(8503, {8080}) == "http://127.0.0.1:8504/"
+    service = selected.call_args.args[0]
+    assert service.filename == "knowledge_app.py"
+    assert selected.call_args.args[1] == {8080}
+    start.assert_called_once_with(service, 8504, tmp_path)
+    wait.assert_called_once_with(process, 8504, tmp_path / "knowledge.log")
+
+
+def test_new_web_workbench_reuses_only_healthy_owned_selection(monkeypatch):
+    monkeypatch.setattr(launcher, "select_port", lambda *args: (8503, True))
+    start = Mock()
+    monkeypatch.setattr(launcher, "start_service", start)
+    assert launcher.ensure_knowledge_workbench(8503, set()) == "http://127.0.0.1:8503/"
+    start.assert_not_called()
+
+
+def test_new_web_workbench_failure_cleans_only_its_new_process(tmp_path, monkeypatch):
+    monkeypatch.setattr(launcher, "RUNTIME", tmp_path)
+    monkeypatch.setattr(launcher, "select_port", lambda *args: (8503, False))
+    process = Mock()
+    process.poll.return_value = None
+    monkeypatch.setattr(launcher, "start_service", Mock(return_value=process))
+    monkeypatch.setattr(launcher, "wait_ready", Mock(side_effect=launcher.LaunchError("测试超时")))
+    with pytest.raises(launcher.LaunchError, match="测试超时"):
+        launcher.ensure_knowledge_workbench(8503, set())
+    process.terminate.assert_called_once()
+    process.wait.assert_called_once_with(timeout=10)
+
+
 def test_partial_failure_only_cleans_up_new_processes(
     tmp_path: Path, services: tuple, monkeypatch: pytest.MonkeyPatch
 ) -> None:

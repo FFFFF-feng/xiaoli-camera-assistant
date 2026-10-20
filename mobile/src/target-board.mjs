@@ -11,29 +11,35 @@ export const openStructure=layer=>['context_lines','scene_structure'].includes(l
 export const DEFAULT_TARGET_COLOR=true;
 export const DEFAULT_TARGET_GRID=true;
 const SOURCE_PRESERVING_COPY={
-  status:'原图更优',
-  heading:'保留原取景',
-  reason:'原图更优：当前原图的连续场景已经较好地保留了路牌、路灯、树木和道路环境的真实空间关系；这不是系统没有生成推荐，系统不虚构把景物分别移动后的新机位。',
+  status:'原取景对照',
+  heading:'当前取景与现场调整',
+  reason:'连续场景需要保留原图真实空间关系；线稿用于核对原始布局，未模拟新机位，也不表示原图已是最优构图。',
   action:'现场拍摄重点：通过调整机位、距离或时机（包括机位高度、等待灯光时机），或保持现有关系，现场核对成片。',
-  drawing:'线绘只表达原取景中的空间关系，不是新机位的透视、遮挡或实拍预测。',
+  drawing:'原取景线稿只作为现场操作参照，未模拟新机位的透视、遮挡或实拍效果。',
   changeLabel:'现场拍摄重点',
-  changeText:'保留路牌、路灯与环境的相对位置，在现场通过机位、距离或时机调整强化视觉关联。',
+  changeText:'保留主要结构与环境的相对位置，在现场通过机位、距离或时机调整强化视觉关联。',
 };
 const CLIPPED_COPY={
   status:'',
-  heading:'保留原取景',
-  reason:'这不是系统没有生成推荐：主体接触参考照片边界，画外形体未知，系统不补画未知边界。',
-  action:'现场拍摄重点：按可见边界核对机位、距离和画外区域，不把斜线区域当作已知留白。',
-  drawing:'线绘只表达原图中可见的轮廓，不是新机位的透视、遮挡或实拍预测。',
+  heading:'当前取景与现场调整',
+  reason:'主体接触参考照片边界，画外形体未知；线稿保留已观察的可见边界，不补画未知边界。',
+  action:'先适当后退，检查被截断的关键部位能否完整入画，再核对四边余量；无法后退时调整机位。',
+  drawing:'超出原照片的区域仍然未知，不表示真实留白；线稿未模拟新机位。',
   changeLabel:'现场拍摄重点',
   changeText:'保留已观察到的可见边界，在现场通过机位、距离或时机确认画外形体。',
 };
 export function targetCompositionCopy(board) {
   if(board?.layout_mode==='source_preserving') {
     return {...(board.layers?.some(layer=>layer?.representation==='scene_structure')
-      ? SOURCE_PRESERVING_COPY : CLIPPED_COPY)};
+      ? SOURCE_PRESERVING_COPY : board.layers?.some(hasPhotoCut) ? CLIPPED_COPY : {
+        status:'原取景参照',heading:'当前取景与现场调整',
+        reason:'本次可计算的构图变化很小，线稿保留原始布局；两图相近不表示已经给出新的构图。',
+        action:'按现场动作试拍，再检查主体位置、边缘余量与背景干扰。',
+        drawing:'原取景线稿不代表已经实现新的构图，也不是新机位效果预测。',
+        changeLabel:'现场拍摄重点',changeText:'按文字建议重新取景，现场核对是否改善主体与背景关系。',
+      })};
   }
-  return {status:'',heading:'推荐构图线稿',reason:'',action:'',drawing:'推荐布局不是新机位的透视、遮挡或实拍效果预测。',changeLabel:'推荐调整',changeText:''};
+  return {status:'',heading:'推荐构图示意',reason:'',action:'',drawing:'基于原图可见轮廓的构图示意，不代表真实新机位效果。',changeLabel:'推荐调整',changeText:''};
 }
 export function thirdsGuide(width,height) {
   if(!Number.isFinite(width)||!Number.isFinite(height)||width<=0||height<=0)throw new RangeError('无效画幅');
@@ -123,8 +129,11 @@ export function usableTargetBoard(value) {
   if(value.unrendered_objects!==undefined&&(!Array.isArray(value.unrendered_objects)
     ||value.unrendered_objects.length>4||!value.unrendered_objects.every(s=>text(s,30))))return null;
   if(value.layout_mode!==undefined&&!['schematic','crop_projection','source_preserving'].includes(value.layout_mode))return null;
-  if(value.layout_mode==='source_preserving'&&(value.render_basis!=='source_geometry'
-    ||!value.layers.some(layer=>layer?.representation==='scene_structure'||hasPhotoCut(layer))))return null;
+  if(value.layout_mode==='source_preserving'&&value.render_basis!=='source_geometry')return null;
+  if(value.target_frame!=null&&(!Array.isArray(value.target_frame)||value.target_frame.length!==4
+    ||!value.target_frame.every(n=>typeof n==='number'&&Number.isFinite(n)&&n>=-.25&&n<=1.25)
+    ||value.target_frame[2]-value.target_frame[0]<.005||value.target_frame[3]-value.target_frame[1]<.005
+    ||value.layout_mode!=='source_preserving'||value.render_basis!=='source_geometry'))return null;
   if(value.observed_frame!=null&&(!Array.isArray(value.observed_frame)||value.observed_frame.length!==4
     ||!point(value.observed_frame.slice(0,2))||!point(value.observed_frame.slice(2))
     ||value.observed_frame[2]-value.observed_frame[0]<.005||value.observed_frame[3]-value.observed_frame[1]<.005

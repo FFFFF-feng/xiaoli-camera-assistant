@@ -8,19 +8,23 @@ import UiIcon from './components/UiIcon.vue';
 import ApertureMark from './components/ApertureMark.vue';
 import { createSceneTransition, useTactileSurfaces } from './interaction';
 import { selectSceneFiles } from './scene-files.mjs';
-import { normalizeBaseUrl, safeSourceUrl } from './connection.mjs';
+import { localWorkbenchUrl, normalizeBaseUrl, safeSourceUrl } from './connection.mjs';
 import { readAnalysis } from './analysis-stream.mjs';
-import { fixedEventSeconds, liveElapsed, statusSeconds } from './progress-timing.mjs';
+import { liveElapsed } from './progress-timing.mjs';
+import { initialAnalysisProgress, advanceAnalysisProgress } from './analysis-progress.mjs';
 import { completedComposition } from './completed-composition.mjs';
-import type { Analysis, CameraLensProfile, CameraProfile, PhoneProfile } from './types';
+import { compositionComparisonProposals } from './composition-alternative.mjs';
+import type { Analysis, CameraLensProfile, CameraProfile, LensReference, PhoneProfile } from './types';
 import DevicePicker from './components/DevicePicker.vue';
 import CompositionView from './components/CompositionView.vue';
 import TargetComposition from './components/TargetComposition.vue';
 import ReportHeading from './components/ReportHeading.vue';
-import { compatibleLenses, deviceSelection, linkedCameraSettings, mountNames, sensorLabel } from './device-selection.mjs';
+import ProcessingProgress from './components/ProcessingProgress.vue';
+import { candidateReferenceLenses, compatibleLenses, deviceSelection, linkedCameraSettings, mountNames, referenceCameraMounts, referenceLensSettings, sensorLabel } from './device-selection.mjs';
 
 const page = ref<'shoot' | 'result' | 'history' | 'connect'>('shoot');
 const webHosted = ref(false);
+const knowledgeWorkbenchUrl = ref('');
 const archiveKey = 'xiaoli-advice-history-v1';
 type SavedAdvice = { id: string; date: string; intent: string; analysis: Analysis };
 const history = ref<SavedAdvice[]>([]);
@@ -53,18 +57,17 @@ const scenePhotos = ref<{id:string;file:File;url:string;source:string}[]>([]);
 const resultPhotos = ref<{id:string;url:string}[]>([]);
 const busy = ref(false);
 const elapsed = ref(0);
-const statusStartedAt = ref(0);
-const statusElapsed = computed(() => statusSeconds(elapsed.value, statusStartedAt.value));
-const progressMessage = ref('正在上传照片…');
-const progressLog = ref<{ message: string; seconds: number }[]>([]);
-const received = ref<Record<string, number>>({});
-const receivedChars = computed(() => Object.values(received.value).reduce((sum, n) => sum + n, 0));
+const progress = ref(initialAnalysisProgress());
+const lastSignalAt = ref(0);
+const lastContentAt = ref(-Infinity);
+const waitingForProgress = computed(() => elapsed.value - lastSignalAt.value >= 18);
+const receivingAnalysis = computed(() => elapsed.value - lastContentAt.value < 4);
 const partialScene = ref<Analysis['result']['scene'] | null>(null);
 const partialParameters = ref<Analysis['result']['recommendation'] | null>(null);
 const partialComposition = ref<Analysis['result']['composition'] | null>(null);
 const partialReady = ref<Analysis['result']['composition'] | null>(null);
 const pendingPhotos = ref<{id:string;url:string}[]>([]);
-const phaseTimings = ref<NonNullable<Analysis['timings']>>([]);
+const readyComparisonProposals = computed(() => compositionComparisonProposals(partialReady.value?.proposals || [],intent.value));
 const timingNames: Record<string, string> = {
   upload: '照片上传', upload_validation: '照片检查', queue: '等待处理',
   image_preprocessing: '照片准备', vision: '画面识别', localization: '主体定位',
@@ -72,7 +75,6 @@ const timingNames: Record<string, string> = {
   composition_observation: '物体与空间识别', composition_contours: '提取物体轮廓', composition_layout: '构图意图分析', composition_local_layout: '本地布局计算', target_drawing: '推荐图线条', composition: '完整构图',
   parameters: '拍摄建议', parameter_validation: '参数校验', total: '分析全程',
 };
-const progressStage = ref(0);
 const connecting = ref(false);
 const error = ref('');
 const connectionMessage = ref('');
@@ -97,6 +99,10 @@ const proConfirmed = ref(false);
 const focalLength = ref<number | undefined>();
 const maxAperture = ref<number | undefined>();
 const cameraLensId = ref('');
+const cameraLensReferenceId = ref('');
+const declaredCameraMount = ref('');
+const lensQuery = ref('');
+const lensReferences = ref<LensReference[]>([]);
 const cameraFormat = ref('不清楚');
 const cameraLenses = ref<CameraLensProfile[]>([]);
 const cameras = ref<CameraProfile[]>([{ profile_id: 'generic_unknown', display_name: '未知相机' }]);
@@ -108,7 +114,20 @@ const selectedCamera = computed(() => cameras.value.find(p => p.profile_id === (
 const knownCamera = computed(() => selectedCamera.value && !selectedCamera.value.profile_id.startsWith('generic_') && selectedCamera.value.capability_level !== 'catalog');
 const availableCameraLenses = computed(() => compatibleLenses(selectedCamera.value, cameraLenses.value));
 const selectedCameraLens = computed(() => availableCameraLenses.value.find(l => l.lens_id === cameraLensId.value));
-const linkedSettings = computed(() => selectedCamera.value && selectedCameraLens.value ? linkedCameraSettings(selectedCamera.value, selectedCameraLens.value, focalLength.value) : null);
+const normalizedLensQuery = computed(() => lensQuery.value.normalize('NFKC').toLowerCase().replace(/[\s_–—-]+/g, ''));
+const visibleAdaptedLenses = computed(() => availableCameraLenses.value.filter(lens => lens.lens_id === cameraLensId.value || !normalizedLensQuery.value || lens.display_name.normalize('NFKC').toLowerCase().replace(/[\s_–—-]+/g, '').includes(normalizedLensQuery.value)));
+const cameraReferenceMounts = computed(() => referenceCameraMounts(selectedCamera.value));
+const referenceCamera = computed(() => selectedCamera.value ? { ...selectedCamera.value, sensor_format: knownCamera.value ? selectedCamera.value.sensor_format : cameraFormat.value } : undefined);
+const candidateLensReferences = computed(() => candidateReferenceLenses(referenceCamera.value, lensReferences.value, declaredCameraMount.value));
+const selectedLensReference = computed(() => candidateLensReferences.value.find(lens => lens.reference_id === cameraLensReferenceId.value));
+const linkedReferenceSettings = computed(() => referenceLensSettings(referenceCamera.value, selectedLensReference.value, focalLength.value));
+const visibleLensReferences = computed(() => {
+  const query = normalizedLensQuery.value;
+  return candidateLensReferences.value.filter(lens => lens.reference_id === cameraLensReferenceId.value || !query || lens.display_name.normalize('NFKC').toLowerCase().replace(/[\s_–—-]+/g, '').includes(query));
+});
+const cameraLensSelection = computed({ get: () => cameraLensId.value || cameraLensReferenceId.value,
+  set: (value: string) => { cameraLensId.value = value.startsWith('kb_lens_') ? '' : value; cameraLensReferenceId.value = value.startsWith('kb_lens_') ? value : ''; } });
+const linkedSettings = computed(() => selectedCamera.value && selectedCameraLens.value ? linkedCameraSettings(selectedCamera.value, selectedCameraLens.value, focalLength.value) : linkedReferenceSettings.value);
 const selectedMountName = computed(() => (mountNames as Record<string, string>)[selectedCamera.value?.mount || ''] || '卡口未确认');
 const modeNames: Record<string, string> = { auto: '照片 / 自动', portrait: '人像', night: '夜间', pro: '专业 / Pro' };
 const analysis = ref<Analysis | null>(null);
@@ -128,8 +147,12 @@ watch([baseUrl, token], () => { connected.value = false; consent.value = false; 
 watch([phoneId, phoneManual, phoneModelName], () => { phoneMode.value = 'auto'; lensId.value = 'main'; proConfirmed.value = false; });
 watch(phoneMode, () => { proConfirmed.value = false; });
 watch(lensId, () => { phoneMode.value = 'auto'; proConfirmed.value = false; });
-watch([cameraId, cameraManual, cameraModelName], () => { cameraLensId.value = ''; focalLength.value = undefined; maxAperture.value = undefined; cameraFormat.value = selectedCamera.value?.sensor_format || '不清楚'; });
+watch([cameraId, cameraManual, cameraModelName], () => { cameraLensId.value = ''; cameraLensReferenceId.value = ''; declaredCameraMount.value = ''; lensQuery.value = ''; focalLength.value = undefined; maxAperture.value = undefined; cameraFormat.value = selectedCamera.value?.sensor_format || '不清楚'; });
 watch(cameraLensId, () => { focalLength.value = selectedCameraLens.value?.focal_min_mm; maxAperture.value = undefined; });
+watch(cameraLensReferenceId, () => { focalLength.value = selectedLensReference.value?.focal_min_mm ?? undefined; maxAperture.value = undefined; });
+watch(declaredCameraMount, () => { cameraLensReferenceId.value = ''; lensQuery.value = ''; });
+watch(cameraFormat, () => { if (cameraLensReferenceId.value && !candidateLensReferences.value.some(l => l.reference_id === cameraLensReferenceId.value)) cameraLensReferenceId.value = ''; });
+watch([cameraLensReferenceId, declaredCameraMount], () => { analysis.value = null; });
 watch([deviceType, cameraId, phoneId, cameraManual, phoneManual, cameraModelName, phoneModelName, phoneMode, lensId, proConfirmed, focalLength, maxAperture, cameraLensId, cameraFormat], () => { analysis.value = null; });
 
 async function api(path: string, options: RequestInit = {}, onEvent?: (event: any) => void) {
@@ -165,6 +188,8 @@ async function connect() {
     if (!devices.catalog_summary?.equipment_linkage || !Array.isArray(devices.camera_lenses)) throw new Error('电脑端尚未支持镜头联动，请更新项目并重启手机服务。');
     cameras.value = devices.cameras; phones.value = devices.phones;
     cameraLenses.value = devices.camera_lenses;
+    lensReferences.value = Array.isArray(devices.lens_references) ? devices.lens_references : [];
+    if (!candidateLensReferences.value.some(l => l.reference_id === cameraLensReferenceId.value)) cameraLensReferenceId.value = '';
     if (!availableCameraLenses.value.some(l => l.lens_id === cameraLensId.value)) cameraLensId.value = '';
     if (!cameras.value.some(p => p.profile_id === cameraId.value)) cameraId.value = 'generic_unknown';
     if (!phones.value.some(p => p.profile_id === phoneId.value)) phoneId.value = 'generic_phone';
@@ -187,6 +212,7 @@ onMounted(async () => {
     const config = await response.json();
     if (config.web_client !== true) return;
     webHosted.value = true;
+    knowledgeWorkbenchUrl.value = localWorkbenchUrl(config.knowledge_workbench_url, window.location.origin);
     await connect();
   } catch { /* A standalone Android/LAN client has no web gateway. */ }
 });
@@ -269,9 +295,9 @@ async function analyze() {
   if (!consent.value) { error.value = '请先勾选照片上传与分析说明。'; return; }
   busy.value = true;
   analysis.value = null; partialScene.value = null; partialParameters.value = null;
-  partialComposition.value = null; partialReady.value = null; pendingPhotos.value = []; phaseTimings.value = [];
-  received.value = {}; progressLog.value = []; progressStage.value = 0;
-  progressMessage.value = '正在上传照片…'; elapsed.value = 0; statusStartedAt.value = 0;
+  partialComposition.value = null; partialReady.value = null; pendingPhotos.value = [];
+  progress.value = initialAnalysisProgress();
+  elapsed.value = 0; lastSignalAt.value = 0; lastContentAt.value = -Infinity;
   const started = performance.now();
   const clock = setInterval(() => { elapsed.value = liveElapsed(started); }, 500);
   const submittedIntent = intent.value.trim();
@@ -290,6 +316,8 @@ async function analyze() {
       handheld: !tripod.value, tripod: tripod.value,
       camera_profile_id: deviceType.value === 'camera' ? selection.profile_id : 'generic_unknown',
       camera_lens_id: deviceType.value === 'camera' && !cameraManual.value ? cameraLensId.value : '',
+      camera_lens_reference_id: deviceType.value === 'camera' ? cameraLensReferenceId.value : '',
+      declared_camera_mount: deviceType.value === 'camera' ? declaredCameraMount.value : '',
       device_model_name: selection.device_model_name,
       camera_format: deviceType.value === 'phone' ? '不清楚' : knownCamera.value ? selectedCamera.value!.sensor_format : cameraFormat.value,
       focal_length_mm: deviceType.value === 'camera' ? linkedSettings.value?.focal_length_mm || focalLength.value || null : null,
@@ -301,39 +329,29 @@ async function analyze() {
     }));
     pendingPhotos.value=ordered.map((item,index)=>({id:`photo${index+1}`,url:item.url}));
     analysis.value = await api(ordered.length > 1 ? '/api/v1/analyze-scene' : '/api/v1/analyze', { method: 'POST', body: form, signal: controller.signal }, event => {
-      if (event.type === 'progress' && typeof event.message === 'string') {
-        if (progressMessage.value !== event.message) statusStartedAt.value = elapsed.value;
-        progressMessage.value = event.message;
-        progressLog.value.push({ message: event.message, seconds: fixedEventSeconds(event.elapsed_seconds) });
-        const stage = /生成|校验/.test(event.message) ? 3 : /查阅|检索/.test(event.message) ? 2 : /识别|定位/.test(event.message) ? 1 : 0;
-        progressStage.value = Math.max(progressStage.value, stage);
-      } else if (event.type === 'activity' && typeof event.request_id === 'string' && Number.isFinite(event.chars)) {
-        received.value[event.request_id] = event.chars;
-      } else if (event.type === 'partial') {
+      let readyComposition = false;
+      if (['progress', 'activity', 'partial', 'timing'].includes(event.type)) lastSignalAt.value = elapsed.value;
+      if (event.type === 'activity' && event.phase === 'content' && event.chars > 0) lastContentAt.value = elapsed.value;
+      if (event.type === 'partial') {
         if (event.kind === 'scene') partialScene.value = event.value;
         if (event.kind === 'composition') {
           partialComposition.value = event.value;
-          progressMessage.value = partialReady.value ? '构图已完成，正在整理其余拍摄建议…' : '构图文字已校验，正在整理推荐画面…';
-          statusStartedAt.value = elapsed.value;
         }
         if (event.kind === 'composition_ready') {
           const ready=completedComposition(event.value,pendingPhotos.value.map(item=>item.id));
           if(ready) {
             partialReady.value=ready;
-            progressMessage.value='构图已完成，正在整理其余拍摄建议…';
-            statusStartedAt.value=elapsed.value;
+            readyComposition=true;
           }
         }
         if (event.kind === 'parameters') {
           partialParameters.value = event.value;
-          progressMessage.value = partialReady.value ? '构图与参数已完成，正在汇总方案…' : '拍摄参数已校验，正在整理完整方案…';
-          statusStartedAt.value = elapsed.value;
         }
-      } else if (event.type === 'timing' && timingNames[event.stage]
-                 && Number.isFinite(event.duration_seconds) && event.duration_seconds >= 0) {
-        phaseTimings.value.push(event);
-      } else if (event.type === 'result') { progressStage.value = 4; }
+      }
+      progress.value = advanceAnalysisProgress(progress.value, { ...event, ready: readyComposition });
     });
+    // A legacy JSON response has no stream events but still completes normally.
+    progress.value = advanceAnalysisProgress(progress.value, { type: 'result' });
     resultIntent.value = submittedIntent;
     resultPhotos.value=ordered.map((item,index)=>({id:`photo${index+1}`,url:item.url}));
     try {
@@ -364,7 +382,7 @@ function exportAdvice() {
   const text = [`小栗摄影助手 · 拍摄方案`, resultIntent.value, r.camera_profile.display_name, r.scene.scene_label || r.scene.scene_type,
     `模式：${r.recommendation.shooting_mode}`, `光圈：${r.recommendation.aperture}`, `快门：${r.recommendation.shutter_speed}`, `ISO：${r.recommendation.iso}`,
     ...r.recommendation.reasons, ...r.recommendation.adjustments,
-    ...(r.composition?.proposals || []).flatMap(p => [p.goal, ...p.actions]),
+    ...compositionComparisonProposals(r.composition?.proposals || [],resultIntent.value).flatMap(p => [p.goal, ...p.actions]),
     ...r.recommendation.risks, `分析方式：${analysis.value?.analysis_mode === 'demo' ? '规则演示' : '云模型'}；参数是试拍起点。`].join('\n');
   const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
   const link = document.createElement('a'); link.href = url; link.download = '小栗拍摄方案.txt'; link.click();
@@ -403,6 +421,10 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
       <div class="brand"><span class="brand-mark" aria-hidden="true"><img :src="mascot" alt="" /></span><div><strong>小栗<span class="brand-divider"> / </span>取景参谋</strong><span>YOUR EVERYDAY PHOTO COMPANION</span></div></div>
       <button class="status" :class="{ online: connected }" @click="navigate('connect')"><i aria-hidden="true"></i>{{ statusText }}</button>
     </header>
+    <aside v-if="webHosted && knowledgeWorkbenchUrl" class="local-workbench" aria-label="本地知识管理">
+      <span>本地资料管理</span>
+      <a :href="knowledgeWorkbenchUrl" target="_blank" rel="noopener noreferrer">知识库导入 <UiIcon name="arrow" /></a>
+    </aside>
     <main ref="mainContent" :data-scene="page">
       <div v-if="error && page !== 'shoot'" class="notice error" role="alert">{{ error }}</div>
       <section v-if="page === 'shoot'" aria-labelledby="shoot-title">
@@ -435,9 +457,11 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
             <details class="equipment-drawer"><summary>拍摄设备与现场设置<span>{{ deviceType === 'phone' ? '手机' : '相机' }} · 点击调整</span></summary><div class="section-heading"><h2>用什么拍</h2><div class="segmented"><button type="button" :class="{ selected: deviceType === 'phone' }" :aria-pressed="deviceType === 'phone'" @click="deviceType = 'phone'">手机</button><button type="button" :class="{ selected: deviceType === 'camera' }" :aria-pressed="deviceType === 'camera'" @click="deviceType = 'camera'">相机</button></div></div>
             <template v-if="deviceType === 'phone'">
               <DevicePicker :profiles="phones" v-model="phoneId" v-model:manual="phoneManual" v-model:manual-model-name="phoneModelName" :catalog-loaded="connected" device-label="手机" generic-id="generic_phone" input-id="phone" />
+              <p v-if="selectedPhone?.capability_level === 'catalog'" class="helper" role="status">该型号来自项目知识库，适用地区：{{ selectedPhone.region_scope }}。后置镜头按结构化资料列出，模式与硬件能力尚未完整适配，先提供通用照片指导。</p>
               <div class="two-fields"><div><label for="lens">当前后置镜头</label><select id="lens" v-model="lensId"><option v-for="l in selectedPhone?.lenses" :key="l.lens_id" :value="l.lens_id">{{ l.name }}</option></select></div><div><label for="phone-mode">拍摄模式</label><select id="phone-mode" v-model="phoneMode"><option v-for="m in availablePhoneModes" :key="m" :value="m">{{ modeNames[m] || m }}</option></select></div></div>
               <div class="equipment-summary" aria-live="polite"><strong>{{ selectedPhoneLens?.name }}</strong><span>{{ selectedPhoneLens?.equivalent_focal_length_mm ? `约 ${selectedPhoneLens.equivalent_focal_length_mm}mm 等效` : '等效焦距待核验' }}</span><span>{{ selectedPhoneLens?.aperture ? `f/${selectedPhoneLens.aperture}${selectedPhoneLens.aperture_max ? `–f/${selectedPhoneLens.aperture_max}` : ''}` : '光圈待核验' }} · {{ selectedPhoneLens?.aperture_control === 'variable' ? '可变物理光圈，按本机界面核对' : selectedPhoneLens?.aperture_control === 'fixed' ? '固定物理光圈，不可手调' : '物理光圈控制待核验' }}</span></div>
               <p class="helper">这里只列已录入的镜头与模式组合；未列出不代表本机不支持。手机显示等效焦距，不套用相机的半画幅或可换镜头。</p>
+              <details v-if="selectedPhone?.rear_camera_summary" class="device-reference"><summary>查看这款手机的后置镜头原始资料</summary><p class="helper">{{ selectedPhone.rear_camera_summary }}</p></details>
               <label v-if="phoneMode === 'pro' && selectedPhone?.pro_controls?.length" class="check-row"><input type="checkbox" v-model="proConfirmed" />我已在手机相机中确认专业模式可调参数</label>
               <p v-else-if="phoneMode === 'pro'" class="helper">专业模式已列入型号资料，具体控件尚未录入；暂不输出手动曝光数值。</p>
             </template>
@@ -461,7 +485,10 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
               </div>
               <div v-if="knownCamera" class="equipment-summary"><strong>{{ sensorLabel(selectedCamera?.sensor_format) }} · 自动匹配</strong><span>{{ selectedMountName }} 原生卡口</span><span v-if="selectedCamera?.capability_level === 'basic'">本次已核验画幅与卡口；曝光边界仍待补充。</span></div>
               <template v-else><label for="camera-format" class="field-label">相机画幅（可选）</label><select id="camera-format" v-model="cameraFormat"><option>不清楚</option><option>全画幅</option><option value="APS-C">APS-C（半画幅）</option><option>M4/3</option></select></template>
-              <label for="camera-lens" class="field-label lens-label">实际安装的镜头</label><select id="camera-lens" v-model="cameraLensId"><option value="">未选择 / 自定义镜头</option><option v-for="lens in availableCameraLenses" :key="lens.lens_id" :value="lens.lens_id">{{ lens.display_name }}</option></select>
+              <template v-if="!cameraReferenceMounts.length"><label for="reference-mount" class="field-label">实际镜头卡口（可选）</label><select id="reference-mount" v-model="declaredCameraMount"><option value="">不清楚 / 不筛选参考镜头</option><option v-for="(name, key) in mountNames" :key="key" :value="key">{{ name }}</option></select><p class="helper">未知卡口不按品牌猜测；确认实际卡口后可查看对应候选。</p></template>
+              <label for="lens-search" class="field-label">搜索镜头</label><input id="lens-search" v-model="lensQuery" type="search" placeholder="例如 18-55、50mm、NIKKOR" maxlength="120" />
+              <label for="camera-lens" class="field-label lens-label">实际安装的镜头</label><select id="camera-lens" v-model="cameraLensSelection"><option value="">未选择 / 自定义镜头</option><optgroup v-if="visibleAdaptedLenses.length" label="已适配：支持焦段与光圈联动"><option v-for="lens in visibleAdaptedLenses" :key="lens.lens_id" :value="lens.lens_id">{{ lens.display_name }}</option></optgroup><optgroup v-if="visibleLensReferences.some(l => l.parameter_linkage)" label="知识库规格：支持参数联动"><option v-for="lens in visibleLensReferences.filter(l => l.parameter_linkage)" :key="lens.reference_id" :value="lens.reference_id">{{ lens.display_name }}</option></optgroup><optgroup v-if="visibleLensReferences.some(l => !l.parameter_linkage)" label="仅型号资料：规格需手填"><option v-for="lens in visibleLensReferences.filter(l => !l.parameter_linkage)" :key="lens.reference_id" :value="lens.reference_id">{{ lens.display_name }}</option></optgroup></select>
+              <p class="helper">当前卡口有 {{ candidateLensReferences.length }} 条镜头资料。已知成像圈不匹配的项目已排除；其余具体版本、对焦与电子功能仍需核对，不默认转接或裁切。</p>
               <p class="helper">{{ selectedCamera?.capability_level === 'catalog' ? '镜头兼容信息待确认，可填写实际焦距和光圈。' : '请选择实际安装的原生镜头；转接或裁切模式暂未适配。' }}</p>
               <template v-if="selectedCameraLens && linkedSettings">
                 <label for="lens-focal" class="field-label">当前实际焦距 · {{ linkedSettings.focal_length_mm }}mm</label>
@@ -470,6 +497,14 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
                 <div class="equipment-summary" aria-live="polite"><strong>约 {{ linkedSettings.equivalent_focal_length_mm }}mm 全画幅等效视角</strong><span>保守可用光圈起点 f/{{ linkedSettings.max_aperture }}</span></div>
                 <p class="helper">焦段与光圈约束会用于建议。变焦中间段未逐档核验最大光圈，非广角端按长焦端值保守处理，不作线性插值。</p>
               </template>
+              <template v-else-if="selectedLensReference && linkedReferenceSettings">
+                <label for="reference-focal" class="field-label">当前实际焦距 · {{ linkedReferenceSettings.focal_length_mm }}mm</label>
+                <input v-if="linkedReferenceSettings.focal_min_mm !== linkedReferenceSettings.focal_max_mm" id="reference-focal" type="range" v-model.number="focalLength" :min="linkedReferenceSettings.focal_min_mm" :max="linkedReferenceSettings.focal_max_mm" step="1" />
+                <div class="focal-range"><span>{{ linkedReferenceSettings.focal_min_mm }}mm</span><span>{{ linkedReferenceSettings.focal_max_mm }}mm</span></div>
+                <div class="equipment-summary" aria-live="polite"><strong>{{ selectedLensReference.display_name }}</strong><span v-if="linkedReferenceSettings.max_aperture">该焦段保守光圈起点 f/{{ linkedReferenceSettings.max_aperture }}</span><span v-if="linkedReferenceSettings.equivalent_focal_length_mm">约 {{ linkedReferenceSettings.equivalent_focal_length_mm }}mm 等效视角</span><span v-else>机身裁切系数未知，不猜等效焦距</span></div>
+                <template v-if="linkedReferenceSettings.max_aperture === null"><label for="reference-aperture">最大光圈 / f（资料缺失时可按镜头填写）</label><input id="reference-aperture" type="number" v-model.number="maxAperture" min="0.7" max="32" step="0.1" /></template>
+                <p class="helper">参数来自{{ selectedLensReference.specification_basis === 'structured_source' ? '知识库结构化规格' : '型号中明写的标称规格' }}，并非实拍认证；变焦中间档不插值光圈。请选择实际安装的具体版本。</p>
+              </template>
               <div v-else class="two-fields"><div><label for="focal">实际焦距 / mm</label><input id="focal" type="number" v-model="focalLength" min="8" max="1200" placeholder="可不填" /></div><div><label for="aperture">最大光圈 / f</label><input id="aperture" type="number" v-model="maxAperture" min="0.7" max="32" step="0.1" placeholder="可不填" /></div></div>
             </template>
             <div class="two-fields"><div><label for="motion">主体动作</label><select id="motion" v-model="motion"><option>不确定</option><option>静止</option><option>缓慢</option><option>快速</option></select></div><label class="check-row tripod"><input type="checkbox" v-model="tripod" />使用三脚架</label></div>
@@ -477,18 +512,12 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
           </fieldset>
           <div v-if="error" id="shoot-error" class="notice error" role="alert">{{ error }}</div>
           <button class="primary generate" type="submit" :disabled="busy || connecting" :aria-busy="busy" :aria-describedby="error ? 'shoot-error' : undefined"><ApertureMark /><span>{{ busy ? '小栗正在整理拍摄建议…' : connected ? '让小栗给点拍摄灵感' : webHosted ? '连接拍摄服务，开始拍摄' : '先连接电脑服务' }}</span><UiIcon name="arrow" /></button>
-          <section v-if="busy" class="analysis-progress" aria-label="分析进度" aria-live="polite">
-            <div class="progress-heading"><strong>{{ progressMessage }}</strong><span>总用时 {{ elapsed.toFixed(0) }} 秒</span></div>
-            <p class="current-status-time">当前状态已持续 {{ statusElapsed.toFixed(0) }} 秒</p>
-            <progress :value="progressStage" max="4" :aria-label="`已完成 ${progressStage}/4 个环节`"></progress>
-            <p class="helper">图片与设备 → 识别与定位 → 知识检索 → 方案与校验。进度按环节计算。</p>
-            <p v-if="receivedChars" class="helper">已接收 {{ receivedChars.toLocaleString() }} 字符，完整构图校验后显示线稿。</p>
-            <p class="progress-log-heading">进度记录 · 左侧为服务处理开始后的记录时刻，不是步骤耗时</p>
-            <ol class="progress-log"><li v-for="(item, index) in progressLog" :key="index"><time>开始后 {{ item.seconds.toFixed(1) }} 秒</time>{{ item.message }}</li></ol>
+          <section v-if="busy" class="analysis-progress" aria-label="分析进度">
+            <ProcessingProgress :percent="progress.percent" :message="progress.message" :history="progress.history" :waiting="waitingForProgress" :receiving="receivingAnalysis" />
             <div v-if="partialScene" class="partial-result"><span class="result-badge">已完成的画面分析</span><h2>{{ partialScene.scene_label || partialScene.scene_type }}</h2><p>{{ partialScene.subject }} · {{ partialScene.lighting }}</p></div>
             <div v-if="partialReady?.proposals?.length" class="partial-result completed-composition">
-              <span class="result-badge">推荐构图已完成 · 完整拍摄方案仍在整理</span>
-              <article v-for="(proposal,index) in partialReady.proposals" :key="index">
+              <span class="result-badge">取景反馈已就绪 · 完整拍摄方案仍在整理</span>
+              <article v-for="(proposal,index) in readyComparisonProposals" :key="index">
                 <TargetComposition v-if="proposal.storyboard" :board="proposal.storyboard" :reference="pendingPhotos.find(item=>item.id===proposal.storyboard?.reference_photo_id)?.url || ''" />
                 <h2>{{ proposal.goal }}</h2><ul><li v-for="action in proposal.actions" :key="action">{{ action }}</li></ul>
                 <details v-if="proposal.conditions.length || proposal.tradeoffs.length || proposal.limitations.length"><summary>适用条件与限制</summary><p v-for="note in [...proposal.conditions,...proposal.tradeoffs,...proposal.limitations]" :key="note">{{ note }}</p></details>
@@ -497,26 +526,25 @@ onBeforeUnmount(() => { clearScene(); activeController?.abort(); });
             </div>
             <div v-else-if="partialComposition?.proposals?.length" class="partial-result partial-composition"><span class="result-badge">构图文字已校验 · 推荐画面正在整理</span><article v-for="(proposal, index) in partialComposition.proposals" :key="index"><h2>{{ proposal.goal }}</h2><ul><li v-for="action in proposal.actions" :key="action">{{ action }}</li></ul><p v-if="proposal.framing_plan">{{ proposal.framing_plan.diagnosis }}</p><details v-if="proposal.conditions.length || proposal.tradeoffs.length || proposal.limitations.length"><summary>适用条件与限制</summary><p v-for="note in [...proposal.conditions, ...proposal.tradeoffs, ...proposal.limitations]" :key="note">{{ note }}</p></details></article><p v-for="note in partialComposition.uncertainties" :key="note">{{ note }}</p></div>
             <div v-if="partialParameters" class="partial-result"><span class="result-badge">参数已校验 · 完整方案仍在整理</span><h2>{{ partialParameters.shooting_mode }}</h2><dl class="settings-list"><div v-for="(value, label) in { '光圈': partialParameters.aperture, '快门': partialParameters.shutter_speed, 'ISO': partialParameters.iso, '对焦': partialParameters.focus_mode }" :key="label"><dt>{{ label }}</dt><dd>{{ value }}</dd></div></dl><p v-for="step in partialParameters.adjustments" :key="step">{{ step }}</p><details v-if="partialParameters.risks?.length || partialParameters.validation_notes?.length"><summary>适用条件与器材说明</summary><p v-for="note in [...partialParameters.risks, ...partialParameters.validation_notes]" :key="note">{{ note }}</p></details><p class="helper">这是当前已完成的部分，完整方案与构图仍需等待；参数是试拍起点。</p></div>
-            <details v-if="phaseTimings.length" class="phase-timings"><summary>已完成环节用时</summary><p v-for="(item, index) in phaseTimings" :key="index">{{ timingNames[item.stage] }}：{{ item.duration_seconds.toFixed(1) }} 秒{{ item.status === 'failed' ? '（未完成）' : '' }}</p><p class="helper">环节可能并行，用时不能直接相加。</p></details>
           </section>
         </form></div>
       </section>
       <section v-else-if="page === 'result'" aria-labelledby="result-title">
         <div class="intro module-intro"><div><h1 id="result-title">你的下一张，已经有了方向。</h1><p>先看构图，再照着走一步，拍一张。</p></div><MascotArt v-if="result" pose="advice" class="module-guide" /></div>
-        <div v-if="!result" class="empty-result"><MascotArt pose="advice" class="empty-mascot" priority /><h2>{{ busy ? '分析正在进行' : '建议还在等你的现场' }}</h2><p>{{ busy ? `${progressMessage} · 已用时 ${elapsed.toFixed(0)} 秒` : '选择照片，写下想要的效果，小栗会给你一个拍摄起点。' }}</p><button class="primary" @click="navigate('shoot')">{{ busy ? '查看当前进度' : '去选照片' }}</button></div>
+        <div v-if="!result" class="empty-result"><MascotArt pose="advice" class="empty-mascot" priority /><h2>{{ busy ? '分析正在进行' : '建议还在等你的现场' }}</h2><ProcessingProgress v-if="busy" :percent="progress.percent" :message="progress.message" :history="progress.history" :waiting="waitingForProgress" :receiving="receivingAnalysis" /><p v-else>选择照片，写下想要的效果，小栗会给你一个拍摄起点。</p><button class="primary" @click="navigate('shoot')">{{ busy ? '返回拍摄工作台' : '去选照片' }}</button></div>
         <template v-else>
           <div class="notice" :class="{ demo: analysis?.analysis_mode === 'demo' }">{{ analysis?.analysis_mode === 'demo' ? '规则演示结果，不是真实多模态场景识别。' : '云模型分析结果。建议可能有误，以机型能力和试拍为准。' }}</div>
           <div class="scene-summary"><img v-if="preview" :src="preview" alt="本次分析的现场照片" /><div><span>{{ result.camera_profile.display_name }}</span><h2>{{ result.scene.scene_label || result.scene.scene_type }}</h2><p>{{ lightingText }}</p></div></div>
-          <div v-if="result.equipment_settings" class="equipment-summary"><strong>{{ sensorLabel(result.camera_profile.sensor_format) }} · {{ result.equipment_settings.camera_lens?.display_name || '未指定镜头' }}</strong><span v-if="result.equipment_settings.focal_length_mm">实际 {{ result.equipment_settings.focal_length_mm }}mm · {{ result.equipment_settings.equivalent_focal_length_mm ? `约 ${result.equipment_settings.equivalent_focal_length_mm}mm 等效` : '等效待核验' }}</span></div>
+          <div v-if="result.equipment_settings" class="equipment-summary"><strong>{{ sensorLabel(result.camera_profile.sensor_format) }} · {{ result.equipment_settings.camera_lens?.display_name || result.equipment_settings.reference_lens?.display_name || '未指定镜头' }}</strong><span v-if="result.equipment_settings.focal_length_mm">实际 {{ result.equipment_settings.focal_length_mm }}mm · {{ result.equipment_settings.equivalent_focal_length_mm ? `约 ${result.equipment_settings.equivalent_focal_length_mm}mm 等效` : '等效待核验' }}</span></div>
           <nav class="report-nav" aria-label="报告阅读导航"><button type="button" @click="jumpToReport('result-composition')"><span>01</span>看构图</button><button type="button" :disabled="!result.composition?.proposals.length" @click="jumpToReport('result-action-plan')"><span>02</span>照着拍</button><button type="button" @click="jumpToReport('result-parameters')"><span>03</span>查参数</button></nav>
-          <CompositionView :key="analysis?.request_id" :result="result" :preview="preview" :photos="resultPhotos" :preview-api="api" />
+          <CompositionView :key="analysis?.request_id" :result="result" :preview="preview" :photos="resultPhotos" :intent="resultIntent" />
           <details v-if="analysis?.timings?.length" class="phase-timings"><summary>本次处理用时</summary><p v-for="(item, index) in analysis.timings.filter(t => timingNames[t.stage])" :key="index">{{ timingNames[item.stage] }}：{{ item.duration_seconds.toFixed(1) }} 秒{{ item.status === 'failed' ? '（未完成）' : '' }}</p><p class="helper">环节可能并行，用时不能直接相加；照片上传时间不含浏览器本地选图。</p></details>
           <details id="result-parameters" class="parameter-drawer report-parameters report-section-anchor"><summary><ReportHeading title="拍摄参数与试拍调整" eyebrow="03 · 拍摄设置" description="查看参数起点，以及试拍后的调整方法。" icon="camera" level="h2" /></summary><div class="shooting-mode"><span>建议拍摄模式</span><strong>{{ result.recommendation.shooting_mode }}</strong></div>
           <dl class="exposure" :class="{ 'phone-exposure': result.camera_profile.device_type === 'phone' }"><div><dt>光圈</dt><dd>{{ result.recommendation.aperture }}</dd></div><div><dt>快门</dt><dd>{{ result.recommendation.shutter_speed }}</dd></div><div><dt>ISO</dt><dd>{{ result.recommendation.iso }}</dd></div></dl>
           <dl class="settings-list"><div v-for="(value, label) in { '曝光补偿': result.recommendation.exposure_compensation, '对焦': result.recommendation.focus_mode, '测光': result.recommendation.metering_mode, '白平衡': result.recommendation.white_balance, '驱动模式': result.recommendation.drive_mode }" :key="label"><dt>{{ label }}</dt><dd>{{ value }}</dd></div></dl>
-          <section class="result-section" v-for="(items, title) in { '为什么这样拍': result.recommendation.reasons, '试拍后怎么调': result.recommendation.adjustments, '注意这些情况': result.recommendation.risks, '器材校验说明': result.recommendation.validation_notes }" :key="title" :data-kind="title"><h2>{{ title }}</h2><ul v-if="items.length"><li v-for="item in items" :key="item">{{ item }}</li></ul><p v-else>本次没有额外说明。</p></section>
-          </details><details class="knowledge report-disclosure"><summary>看看建议依据（{{ result.knowledge_hits.length }} 条）</summary><p>检索模式：{{ result.knowledge_mode }}。相关度不是准确率。</p><p v-for="note in result.knowledge_notes" :key="note">{{ note }}</p><article v-for="hit in result.knowledge_hits" :key="hit.document_id"><h3>{{ hit.title }}</h3><p>{{ hit.content }}</p><a v-if="safeSourceUrl(hit.source)" :href="safeSourceUrl(hit.source)!" target="_blank" rel="noopener noreferrer">查看来源</a><span v-else>{{ hit.source }}</span></article></details>
-          <details v-if="result.composition_knowledge_hits?.length" class="knowledge report-disclosure"><summary>构图建议的参考资料</summary><article v-for="hit in result.composition_knowledge_hits" :key="hit.document_id"><h3>{{ hit.title }}</h3><p>{{ hit.content }}</p><a v-if="safeSourceUrl(hit.source)" :href="safeSourceUrl(hit.source)!" target="_blank" rel="noopener noreferrer">查看来源</a></article></details>
+          <section v-if="result.recommendation.adjustments.length" class="result-section"><h2>试拍后怎么调</h2><ul><li v-for="item in result.recommendation.adjustments" :key="item">{{ item }}</li></ul></section>
+          <details class="report-disclosure"><summary>参数依据与适用限制</summary><section class="result-section" v-for="(items, title) in { '拍摄理由': result.recommendation.reasons, '注意事项': result.recommendation.risks, '器材说明': result.recommendation.validation_notes }" :key="title"><template v-if="items.length"><h3>{{ title }}</h3><ul><li v-for="item in items" :key="item">{{ item }}</li></ul></template></section></details>
+          </details><details class="knowledge report-disclosure"><summary>参考资料</summary><p>检索模式：{{ result.knowledge_mode }}。相关度不是准确率。</p><p v-for="note in result.knowledge_notes" :key="note">{{ note }}</p><h3 v-if="result.knowledge_hits.length">参数参考</h3><article v-for="hit in result.knowledge_hits" :key="hit.document_id"><h4>{{ hit.title }}</h4><p>{{ hit.content }}</p><a v-if="safeSourceUrl(hit.source)" :href="safeSourceUrl(hit.source)!" target="_blank" rel="noopener noreferrer">查看来源</a><span v-else>{{ hit.source }}</span></article><h3 v-if="result.composition_knowledge_hits?.length">构图参考</h3><article v-for="hit in result.composition_knowledge_hits" :key="hit.document_id"><h4>{{ hit.title }}</h4><p>{{ hit.content }}</p><a v-if="safeSourceUrl(hit.source)" :href="safeSourceUrl(hit.source)!" target="_blank" rel="noopener noreferrer">查看来源</a></article></details>
           <div class="result-actions"><button class="secondary" @click="exportAdvice">导出拍摄方案</button><button class="primary" @click="navigate('shoot')">调整需求，再试一次</button></div>
           <p v-if="exportMessage" class="helper" role="status">{{ exportMessage }}</p>
         </template>

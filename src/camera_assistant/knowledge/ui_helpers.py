@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 
 from camera_assistant.knowledge.models import KnowledgeRecord, LibraryId, SourceInfo
 
@@ -27,6 +28,22 @@ ACTION_LABELS = {
     "publish": "发布",
     "retire": "退役",
 }
+
+
+def assistant_web_url(project_root: Path) -> str:
+    """Use this project's current local launcher port, never an arbitrary URL."""
+    try:
+        state = project_root / ".launcher" / "web-service.json"
+        if state.stat().st_size > 16 * 1024:
+            return "http://localhost:8501/"
+        data = json.loads(state.read_text(encoding="utf-8"))
+        if (isinstance(data, dict) and isinstance(data.get("project"), str)
+                and Path(data["project"]).resolve() == project_root.resolve()
+                and type(data.get("port")) is int and 1024 <= data["port"] <= 65535):
+            return f"http://127.0.0.1:{data['port']}/"
+    except (OSError, ValueError, TypeError):
+        pass
+    return "http://localhost:8501/"
 
 
 def template_record(library_id: LibraryId = "composition") -> KnowledgeRecord:

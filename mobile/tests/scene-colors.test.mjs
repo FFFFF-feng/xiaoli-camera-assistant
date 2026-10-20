@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { flatSceneColors, illustrationColor,sceneColorTransform,subjectIllustrationColor } from '../src/scene-colors.mjs';
+import { flatSceneColors, illustrationColor,sceneColorTransform,subjectIllustrationColor,sampledSubjectColor,referenceColor,referenceOutlineColor } from '../src/scene-colors.mjs';
 
 const pixels=(width,height,at)=>({width,height,data:Uint8ClampedArray.from(Array.from({length:width*height},(_,p)=>at(p%width,Math.floor(p/width))).flat())});
 
@@ -62,11 +62,35 @@ test('小片背景碎色被合并，大范围前后景仍有区分',()=>{
   assert.notDeepEqual(at(25,50),at(75,50));
 });
 
-test('明确的白花不再被局部阴影涂成灰蓝，无颜色依据时采用轮廓内占优色',()=>{
+test('填色采用实际像素主色，物体名称和角色标签不能强制覆盖颜色',()=>{
   const shade=new Map([['#a0becd',80],['#fff9e9',20]]);
-  assert.equal(subjectIllustrationColor({label:'白色花朵簇',color:'rose'},shade),'#fff9e9');
-  assert.equal(subjectIllustrationColor({label:'粉色花朵'},shade),'#f1c4d4');
+  assert.equal(subjectIllustrationColor({label:'白色花朵簇',color:'rose'},shade),'#a0becd');
+  assert.equal(subjectIllustrationColor({label:'粉色花朵'},shade),'#a0becd');
   assert.equal(subjectIllustrationColor({label:'相机',color:'rose'},shade),'#a0becd');
+});
+
+test('原图红绿蓝、黑白和棕色不被改为统一浅色，平涂保留原色',()=>{
+  for(const rgb of [[220,28,31],[20,140,45],[25,80,210],[12,13,14],[245,246,242],[95,60,35]]) {
+    const input=pixels(8,8,()=>[...rgb,255]);
+    const result=flatSceneColors(input);
+    assert.deepEqual([...result.data.slice(0,3)],rgb);
+    assert.equal(referenceColor(rgb),'#'+rgb.map(n=>n.toString(16).padStart(2,'0')).join(''));
+  }
+});
+
+test('主体取色只统计轮廓内像素，透明孔洞和外部背景不污染主色',()=>{
+  const input=pixels(8,8,x=>x<3?[221,31,25,255]:[10,160,45,255]);
+  const mask=pixels(8,8,x=>[255,255,255,x<3?255:0]);
+  const before=input.data.slice();
+  assert.equal(sampledSubjectColor(input.data,mask.data),'#dd1f19');
+  assert.deepEqual(input.data,before);
+  assert.equal(sampledSubjectColor(input.data,new Uint8ClampedArray(mask.data.length)),null);
+});
+
+test('深色物体保留黑色填充，同时用浅色细节线保持辨识度',()=>{
+  assert.equal(referenceOutlineColor('#101214'),'#dce4e7');
+  assert.equal(referenceOutlineColor('#f2f3ee'),'#415970');
+  assert.equal(referenceOutlineColor(null,'#123456'),'#123456');
 });
 
 const layer=(source_bbox,bbox)=>({role:'main',source_bbox,bbox});

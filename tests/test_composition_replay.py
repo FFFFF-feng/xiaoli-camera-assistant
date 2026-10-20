@@ -5,6 +5,7 @@ from test_observed_composition import observed
 from camera_assistant.services.composition_replay import ReplayRecord, validation_fields
 from camera_assistant.services.observed_composition import observation_failure
 from camera_assistant.services.pixel_contours import observed_metadata
+import pytest
 
 
 def test_invalid_enum_and_missing_fields_have_safe_distinct_codes():
@@ -32,6 +33,23 @@ def test_replay_disabled_by_default_does_not_write(monkeypatch):
     record = ReplayRecord(None)
     record.update(stage='recognition', code='recognition_invalid')
     assert record.path is None
+
+
+@pytest.mark.parametrize('box', [[10, 20, 600, 800], [.8, .2, .1, .9],
+    [0, 0, .001, .8], ['0', 0, 1, 1], [False, 0, 1, 1], [[0, 0], [1, 1]]])
+def test_invalid_boxes_get_specific_safe_repair_without_weakening_validation(box):
+    from camera_assistant.services.observed_composition import observation_repair_hint, prepare_observation
+    data = observed()
+    data['objects'][0]['bbox'] = box
+    data['objects'][0]['label'] = 'SECRET_LABEL_MUST_NOT_LEAK'
+    with pytest.raises(ValueError) as failure:
+        prepare_observation(data)
+    assert observation_failure(failure.value)[0] == 'recognition_bbox_invalid'
+    hint = observation_repair_hint(failure.value)
+    for rule in ('[x1,y1,x2,y2]', '0.005', '字符串', '像素', '不机械交换'):
+        assert rule in hint
+    assert 'SECRET_LABEL' not in hint
+    assert data['objects'][0]['bbox'] == box
 
 
 def test_invalid_continuous_relation_records_safe_inputs_and_specific_repair():
